@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<configExtensions>
+		<configExtension>xml</configExtension>
+	</configExtensions>
+	<configs>
+	</configs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[app-sample-ulc]]></name>
+			<allowBeanDefinitionOverriding>false</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>/design2see-framework/app-template/src/main/resources/com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
+				<config>/design2see-framework/app-template/src/main/resources/com/d2s/framework/application/commons.xml</config>
+				<config>/design2see-framework/app-template/src/main/resources/com/d2s/framework/application/frontend/commons-frontend.xml</config>
+				<config>/design2see-framework/app-template/src/main/resources/com/d2s/framework/application/frontend/ulc/commons-ulc.xml</config>
+			</configs>
+		</configSet>
+		<configSet>
+			<name><![CDATA[app-sample-swing]]></name>
+			<allowBeanDefinitionOverriding>false</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>/design2see-framework/app-template/src/main/resources/com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
+				<config>/design2see-framework/app-template/src/main/resources/com/d2s/framework/application/commons.xml</config>
+				<config>/design2see-framework/app-template/src/main/resources/com/d2s/framework/application/frontend/commons-frontend.xml</config>
+				<config>/design2see-framework/app-template/src/main/resources/com/d2s/framework/application/frontend/swing/commons-swing.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>

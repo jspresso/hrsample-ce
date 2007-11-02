@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+
+<project default="all">
+
+	<property file="build.properties" />
+	<property name="xdoclet.lib.dir"
+	          value="${xdoclet.home}/lib" />
+	<property name="xdoclet.plugins.dir"
+	          value="${xdoclet.home}/plugins" />
+
+	<property name="src.dir"
+	          value="${basedir}/src/main" />
+	<property name="java.src.dir" value="${src.dir}/java" />
+	<property name="resources.src.dir"
+	          value="${src.dir}/resources" />
+	<property name="ddl.dir" value="${src.dir}/ddl" />
+
+	<path id="entity.generator.classpath">
+		<dirset dir="${d2s.project.home}">
+			<include name="**/target/classes" />
+		</dirset>
+		<dirset dir="${basedir}">
+			<include name="**/target/classes" />
+		</dirset>
+		<fileset dir="${m2.repo}">
+			<include name="**/commons-cli-1.0.jar" />
+			<include name="**/freemarker-2.3.3.jar" />
+			<include name="**/spring-2.0.jar" />
+			<include name="**/commons-logging-1.1.jar" />
+			<include name="**/xml-apis-2.0.2.jar" />
+			<include name="**/xerces-2.0.2.jar" />
+			<include name="**/bsf-2.3.0.jar" />
+			<include name="**/commons-beanutils-1.7.0.jar" />
+		</fileset>
+	</path>
+
+	<target name="generate-entities">
+		<java classname="com.d2s.framework.tools.entitygenerator.EntityGenerator"
+		      classpathref="entity.generator.classpath">
+			<arg value="-applicationContextKey" />
+			<arg value="sample-model-context" />
+			<arg value="-templateResourcePath" />
+			<arg value="/com/d2s/framework/tools/entitygenerator" />
+			<arg value="-templateName" />
+			<arg value="HibernateXdocletEntity.ftl" />
+			<arg value="-outputDir" />
+			<arg value="${java.src.dir}" />
+			<arg value="-includePackages" />
+			<arg value="com.d2s.framework.sample.backend.domain" />
+		</java>
+	</target>
+
+	<target name="clean-hibernate">
+		<delete>
+			<fileset dir="${resources.src.dir}" includes="**/*.hbm.xml" />
+		</delete>
+	</target>
+
+	<target name="xdoclet-hibernate"
+	        depends="clean-hibernate, generate-entities">
+		<mkdir dir="${resources.src.dir}" />
+		<path id="xdoclet.task.classpath">
+			<pathelement location="${xdoclet.plugins.dir}/xdoclet-plugin-hibernate-1.0.2.jar" />
+			<fileset dir="${xdoclet.lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+		<taskdef name="xdoclet"
+		         classname="org.xdoclet.ant.XDocletTask"
+		         classpathref="xdoclet.task.classpath" />
+
+		<xdoclet>
+			<fileset dir="${java.src.dir}" />
+			<component classname="org.xdoclet.plugin.hibernate.HibernateMappingPlugin"
+			           destdir="${resources.src.dir}"
+			           version="3.0" />
+		</xdoclet>
+		<replaceregexp byline="true">
+			<regexp pattern="&lt;component name=&quot;(.*)&quot;&gt;" />
+			<substitution expression="&lt;component name=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;com.d2s.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
+			<fileset dir="${resources.src.dir}">
+				<include name="**/*.hbm.xml" />
+			</fileset>
+		</replaceregexp>
+	</target>
+
+	<path id="schemaexport.classpath">
+		<dirset dir="${d2s.project.home}">
+			<include name="**/target/classes" />
+		</dirset>
+		<dirset dir="${basedir}">
+			<include name="**/target/classes" />
+		</dirset>
+		<fileset dir="${m2.repo}">
+			<include name="**/hibernate-3.1.3.jar" />
+			<include name="**/dom4j-1.6.1.jar" />
+			<include name="**/commons-logging-1.0.4.jar" />
+			<include name="**/commons-collections-3.1.jar" />
+		</fileset>
+	</path>
+
+	<target name="schemaexport">
+		<taskdef name="schemaexport"
+		         classname="org.hibernate.tool.hbm2ddl.SchemaExportTask"
+		         classpathref="schemaexport.classpath" />
+		<schemaexport namingstrategy="org.hibernate.cfg.DefaultNamingStrategy"
+		              properties="schema-export-mysql-innodb.properties"
+		              quiet="yes"
+		              text="yes"
+		              drop="no"
+		              delimiter=";"
+		              output="${ddl.dir}/app-sample-schema-mysql-innodb.sql">
+			<fileset dir="${resources.src.dir}">
+				<include name="**/*.hbm.xml" />
+			</fileset>
+		</schemaexport>
+	</target>
+
+	<target name="all" depends="xdoclet-hibernate,schemaexport" />
+
+</project>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+                      http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+  default-lazy-init="true">
+
+  <bean
+    id="Nameable"
+    class="com.d2s.framework.model.descriptor.basic.BasicComponentDescriptor">
+    <constructor-arg value="com.d2s.framework.hrsample.model.Nameable" />
+    <property name="propertyDescriptors">
+      <list>
+        <bean
+          class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+          <property
+            name="name"
+            value="name" />
+          <property
+            name="maxLength"
+            value="64" />
+          <property
+            name="mandatory"
+            value="true" />
+        </bean>
+      </list>
+    </property>
+  </bean>
+
+  <bean
+    id="Traceable"
+    class="com.d2s.framework.model.descriptor.basic.BasicComponentDescriptor">
+    <constructor-arg value="com.d2s.framework.hrsample.model.Traceable" />
+    <property name="propertyDescriptors">
+      <list>
+        <bean
+          class="com.d2s.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
+          <property
+            name="name"
+            value="createTimestamp" />
+          <property
+            name="type"
+            ref="DATE_TIME" />
+        </bean>
+        <bean
+          class="com.d2s.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
+          <property
+            name="name"
+            value="lastUpdateTimestamp" />
+          <property
+            name="type"
+            ref="DATE_TIME" />
+        </bean>
+      </list>
+    </property>
+    <property name="unclonedProperties">
+      <list>
+        <value>createTimestamp</value>
+        <value>lastUpdateTimestamp</value>
+      </list>
+    </property>
+    <property name="lifecycleInterceptors">
+      <list>
+        <bean
+          class="com.d2s.framework.hrsample.model.service.TraceableLifecycleInterceptor" />
+      </list>
+    </property>
+  </bean>
+
+</beans>

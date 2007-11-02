@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+  default-lazy-init="true">
+
+  <bean
+    id="hrsample-model-context"
+    class="org.springframework.context.support.ClassPathXmlApplicationContext"
+    lazy-init="true">
+    <constructor-arg>
+      <list>
+        <value>com/d2s/framework/application/commons.xml</value>
+        <value>com/d2s/framework/tools/entitygenerator/mock.xml</value>
+        <value>com/d2s/framework/hrsample/model/hrsample-model.xml</value>
+      </list>
+    </constructor-arg>
+  </bean>
+<!-- 
+<bean
+    id="hrsample-swing-context"
+    class="org.springframework.context.support.ClassPathXmlApplicationContext"
+    lazy-init="true">
+    <constructor-arg>
+      <list>
+        <value>com/d2s/framework/application/commons.xml</value>
+        <value>
+          com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/commons-frontend.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/swing/commons-swing.xml
+        </value>
+        <value>com/d2s/framework/hrsample/model/hrsample-model.xml</value>
+        <value>com/d2s/framework/hrsample/backend/hrsample-backend.xml</value>
+        <value>com/d2s/framework/hrsample/frontend/hrsample-frontend.xml</value>
+        <value>com/d2s/framework/hrsample/config.xml</value>
+      </list>
+    </constructor-arg>
+  </bean>
+  <bean
+    id="hrsample-ulc-context"
+    class="org.springframework.context.support.ClassPathXmlApplicationContext"
+    lazy-init="true">
+    <constructor-arg>
+      <list>
+        <value>com/d2s/framework/application/commons.xml</value>
+        <value>
+          com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/commons-frontend.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/ulc/commons-ulc.xml
+        </value>
+        <value>com/d2s/framework/hrsample/model/hrsample-model.xml</value>
+        <value>com/d2s/framework/hrsample/backend/hrsample-backend.xml</value>
+        <value>com/d2s/framework/hrsample/frontend/hrsample-frontend.xml</value>
+        <value>com/d2s/framework/hrsample/config.xml</value>
+      </list>
+    </constructor-arg>
+  </bean>
+  <bean
+    id="hrsample-wings-context"
+    class="org.springframework.context.support.ClassPathXmlApplicationContext"
+    lazy-init="true">
+    <constructor-arg>
+      <list>
+        <value>com/d2s/framework/application/commons.xml</value>
+        <value>
+          com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/commons-frontend.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/wings/commons-wings.xml
+        </value>
+        <value>com/d2s/framework/hrsample/model/hrsample-model.xml</value>
+        <value>com/d2s/framework/hrsample/backend/hrsample-backend.xml</value>
+        <value>com/d2s/framework/hrsample/frontend/hrsample-frontend.xml</value>
+        <value>com/d2s/framework/hrsample/config.xml</value>
+      </list>
+    </constructor-arg>
+  </bean>
+-->  
+</beans>
+

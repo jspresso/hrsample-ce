@@ -1,0 +1,17 @@
+window_sizes 1200 896 300 900 682 82
+diagrams
+  active  classdiagram_ref 128012 // commons
+    894 737 100 4 0 0
+  classdiagram_ref 128064 // employees
+    711 589 100 4 0 0
+  classdiagram_ref 129241 // organization
+    711 589 100 4 0 0
+end
+show_stereotypes
+selected 
+package_ref 129369 // com.d2s.sample.commons
+open
+  
+package_ref 129241 // com.d2s.sample.hr
+end
+end
