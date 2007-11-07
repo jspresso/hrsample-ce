@@ -13,5 +13,9 @@ package_ref 129369 // com.d2s.sample.commons
 open
   
 package_ref 129241 // com.d2s.sample.hr
+  
+package_ref 129369 // com.d2s.sample.commons
+  
+package_ref 128103 // java
 end
 end
