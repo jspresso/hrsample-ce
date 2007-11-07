@@ -8,7 +8,7 @@
 
   <bean
     id="Nameable"
-    class="com.d2s.framework.model.descriptor.basic.BasicComponentDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicInterfaceDescriptor">
     <constructor-arg value="com.d2s.framework.hrsample.model.Nameable" />
     <property name="propertyDescriptors">
       <list>
@@ -30,7 +30,7 @@
 
   <bean
     id="Traceable"
-    class="com.d2s.framework.model.descriptor.basic.BasicComponentDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicInterfaceDescriptor">
     <constructor-arg value="com.d2s.framework.hrsample.model.Traceable" />
     <property name="propertyDescriptors">
       <list>
@@ -64,6 +64,31 @@
       <list>
         <bean
           class="com.d2s.framework.hrsample.model.service.TraceableLifecycleInterceptor" />
+      </list>
+    </property>
+  </bean>
+
+  <bean
+    id="City"
+    class="com.d2s.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
+    <constructor-arg value="com.d2s.framework.hrsample.model.City" />
+    <property name="ancestorDescriptors">
+      <list>
+        <ref local="Nameable" />
+        <ref bean="com.d2s.framework.model.entity.IEntity" />
+      </list>
+    </property>
+    <property name="propertyDescriptors">
+      <list>
+        <bean
+          class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+          <property
+            name="name"
+            value="zip" />
+          <property
+            name="maxLength"
+            value="10" />
+        </bean>
       </list>
     </property>
   </bean>
