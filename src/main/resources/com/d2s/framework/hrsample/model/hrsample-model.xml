@@ -75,7 +75,6 @@
     <property name="ancestorDescriptors">
       <list>
         <ref local="Nameable" />
-        <ref bean="com.d2s.framework.model.entity.IEntity" />
       </list>
     </property>
     <property name="propertyDescriptors">
