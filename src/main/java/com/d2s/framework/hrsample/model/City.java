@@ -20,7 +20,8 @@ package com.d2s.framework.hrsample.model;
  * @version $LastChangedRevision$
  */
 public interface City extends
-  com.d2s.framework.hrsample.model.Nameable {
+  com.d2s.framework.hrsample.model.Nameable,
+  com.d2s.framework.model.entity.IEntity {
 
   /**
    * @hibernate.id generator-class = "assigned" column = "ID" type = "string"
