@@ -28,6 +28,14 @@
         </bean>
       </list>
     </property>
+    <property name="serviceDelegates">
+      <map>
+        <entry key="com.d2s.framework.hrsample.model.service.NameableService">
+          <bean
+            class="com.d2s.framework.hrsample.model.service.NameableServiceDelegate" />
+        </entry>
+      </map>
+    </property>
   </bean>
 
   <bean
@@ -170,7 +178,8 @@
     </property>
   </bean>
 
-  <bean id="contact"
+  <bean
+    id="contact"
     class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
     <property
       name="name"
@@ -217,6 +226,9 @@
           <property
             name="regexpPatternSample"
             value="0123456789" />
+          <property
+            name="unicityScope"
+            value="empSsn" />
         </bean>
         <bean
           class="com.d2s.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
@@ -263,6 +275,48 @@
         </bean>
         <ref bean="contact" />
         <ref local="Employee-events" />
+        <bean
+          class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+          <property
+            name="name"
+            value="company" />
+          <property
+            name="referencedDescriptor"
+            ref="Company" />
+          <property
+            name="reverseRelationEnd"
+            ref="Company-employees" />
+          <property
+            name="mandatory"
+            value="true" />
+        </bean>
+        <bean
+          class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+          <property
+            name="name"
+            value="managedOu" />
+          <property
+            name="referencedDescriptor"
+            ref="OrganizationalUnit" />
+          <property
+            name="reverseRelationEnd"
+            ref="OrganizationalUnit-manager" />
+        </bean>
+        <bean
+          class="com.d2s.framework.model.descriptor.basic.BasicIntegerPropertyDescriptor">
+          <property
+            name="name"
+            value="age" />
+          <property
+            name="minValue"
+            value="0" />
+          <property
+            name="maxValue"
+            value="150" />
+          <property
+            name="delegateClassName"
+            value="com.d2s.framework.hrsample.model.extension.EmployeeExtension" />
+        </bean>
       </list>
     </property>
   </bean>
@@ -292,6 +346,50 @@
   <!-- Organization model  -->
 
   <bean
+    id="Company-departments"
+    class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
+    <property
+      name="name"
+      value="departments" />
+    <property
+      name="composition"
+      value="true" />
+    <property name="referencedDescriptor">
+      <bean
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        <property
+          name="collectionInterface"
+          value="java.util.Set" />
+        <property
+          name="elementDescriptor"
+          ref="Department" />
+      </bean>
+    </property>
+  </bean>
+
+  <bean
+    id="Company-employees"
+    class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
+    <property
+      name="name"
+      value="employees" />
+    <property
+      name="composition"
+      value="true" />
+    <property name="referencedDescriptor">
+      <bean
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        <property
+          name="collectionInterface"
+          value="java.util.Set" />
+        <property
+          name="elementDescriptor"
+          ref="Employee" />
+      </bean>
+    </property>
+  </bean>
+
+  <bean
     id="Company"
     class="com.d2s.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
     <constructor-arg value="com.d2s.framework.hrsample.model.Company" />
@@ -304,10 +402,26 @@
     <property name="propertyDescriptors">
       <list>
         <ref bean="contact" />
+        <ref bean="Company-departments" />
+        <ref bean="Company-employees" />
       </list>
     </property>
   </bean>
-  
+
+  <bean
+    id="OrganizationalUnit-manager"
+    class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+    <property
+      name="name"
+      value="manager" />
+    <property
+      name="referencedDescriptor"
+      ref="Employee" />
+    <property
+      name="mandatory"
+      value="true" />
+  </bean>
+
   <bean
     id="OrganizationalUnit"
     class="com.d2s.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
@@ -340,7 +454,30 @@
             value="6" />
         </bean>
         <ref bean="contact" />
+        <ref bean="OrganizationalUnit-manager" />
       </list>
+    </property>
+  </bean>
+
+  <bean
+    id="Department-teams"
+    class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
+    <property
+      name="name"
+      value="teams" />
+    <property
+      name="composition"
+      value="true" />
+    <property name="referencedDescriptor">
+      <bean
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        <property
+          name="collectionInterface"
+          value="java.util.Set" />
+        <property
+          name="elementDescriptor"
+          ref="Team" />
+      </bean>
     </property>
   </bean>
 
@@ -353,6 +490,26 @@
         <ref local="OrganizationalUnit" />
       </list>
     </property>
+    <property name="propertyDescriptors">
+      <list>
+        <bean
+          class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+          <property
+            name="name"
+            value="company" />
+          <property
+            name="referencedDescriptor"
+            ref="Company" />
+          <property
+            name="reverseRelationEnd"
+            ref="Company-departments" />
+          <property
+            name="mandatory"
+            value="true" />
+        </bean>
+        <ref bean="Department-teams" />
+      </list>
+    </property>
   </bean>
 
   <bean
@@ -362,6 +519,25 @@
     <property name="ancestorDescriptors">
       <list>
         <ref local="OrganizationalUnit" />
+      </list>
+    </property>
+    <property name="propertyDescriptors">
+      <list>
+        <bean
+          class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+          <property
+            name="name"
+            value="department" />
+          <property
+            name="referencedDescriptor"
+            ref="Department" />
+          <property
+            name="reverseRelationEnd"
+            ref="Department-teams" />
+          <property
+            name="mandatory"
+            value="true" />
+        </bean>
       </list>
     </property>
   </bean>

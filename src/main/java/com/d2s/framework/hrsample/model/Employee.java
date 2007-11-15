@@ -65,6 +65,7 @@ public interface Employee extends
    * @hibernate.column
    *           name = "SSN"
    *           length = "10"
+   *           unique-key = "EMP_SSN_UNQ"
    * @return the ssn.
    */
   java.lang.String getSsn();
@@ -201,5 +202,52 @@ public interface Employee extends
    *          the events element to remove.
    */
   void removeFromEvents(com.d2s.framework.hrsample.model.Event eventsElement);
+
+  /**
+   * Gets the company.
+   *
+   * @hibernate.many-to-one
+   *           cascade = "persist,merge,save-update"
+   * @hibernate.column
+   *           name = "COMPANY_ID"
+   *           not-null = "true"
+   * @return the company.
+   */
+  com.d2s.framework.hrsample.model.Company getCompany();
+
+  /**
+   * Sets the company.
+   *
+   * @param company
+   *          the company to set.
+   */
+  void setCompany(com.d2s.framework.hrsample.model.Company company);
+
+  /**
+   * Gets the managedOu.
+   *
+   * @hibernate.many-to-one
+   *           cascade = "persist,merge,save-update,refresh,evict,replicate"
+   * @hibernate.column
+   *           name = "MANAGED_OU_ID"
+   *           unique = "true"
+   * @return the managedOu.
+   */
+  com.d2s.framework.hrsample.model.OrganizationalUnit getManagedOu();
+
+  /**
+   * Sets the managedOu.
+   *
+   * @param managedOu
+   *          the managedOu to set.
+   */
+  void setManagedOu(com.d2s.framework.hrsample.model.OrganizationalUnit managedOu);
+
+  /**
+   * Gets the age.
+   *
+   * @return the age.
+   */
+  java.lang.Integer getAge();
 
 }

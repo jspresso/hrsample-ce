@@ -25,5 +25,24 @@ public interface Team extends
   com.d2s.framework.hrsample.model.OrganizationalUnit,
   com.d2s.framework.model.entity.IEntity {
 
-  // THIS IS JUST A MARKER INTERFACE.
+  /**
+   * Gets the department.
+   *
+   * @hibernate.many-to-one
+   *           cascade = "persist,merge,save-update"
+   * @hibernate.column
+   *           name = "DEPARTMENT_ID"
+   *           not-null = "true"
+   * @return the department.
+   */
+  com.d2s.framework.hrsample.model.Department getDepartment();
+
+  /**
+   * Sets the department.
+   *
+   * @param department
+   *          the department to set.
+   */
+  void setDepartment(com.d2s.framework.hrsample.model.Department department);
+
 }

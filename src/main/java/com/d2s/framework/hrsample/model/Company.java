@@ -56,4 +56,80 @@ public interface Company extends
    */
   void setContact(com.d2s.framework.hrsample.model.ContactInfo contact);
 
+  /**
+   * Gets the departments.
+   *
+   * @hibernate.set
+   *           cascade = "persist,merge,save-update,refresh,evict,replicate,delete"
+   *           inverse = "true"
+   * @hibernate.key
+   *           column = "COMPANY_ID"
+   * @hibernate.one-to-many
+   *           class = "com.d2s.framework.hrsample.model.Department"
+   * @return the departments.
+   */
+  java.util.Set<com.d2s.framework.hrsample.model.Department> getDepartments();
+
+  /**
+   * Sets the departments.
+   *
+   * @param departments
+   *          the departments to set.
+   */
+  void setDepartments(java.util.Set<com.d2s.framework.hrsample.model.Department> departments);
+
+  /**
+   * Adds an element to the departments.
+   *
+   * @param departmentsElement
+   *          the departments element to add.
+   */
+  void addToDepartments(com.d2s.framework.hrsample.model.Department departmentsElement);
+
+  /**
+   * Removes an element from the departments.
+   *
+   * @param departmentsElement
+   *          the departments element to remove.
+   */
+  void removeFromDepartments(com.d2s.framework.hrsample.model.Department departmentsElement);
+
+  /**
+   * Gets the employees.
+   *
+   * @hibernate.set
+   *           cascade = "persist,merge,save-update,refresh,evict,replicate,delete"
+   *           inverse = "true"
+   * @hibernate.key
+   *           column = "COMPANY_ID"
+   * @hibernate.one-to-many
+   *           class = "com.d2s.framework.hrsample.model.Employee"
+   * @return the employees.
+   */
+  java.util.Set<com.d2s.framework.hrsample.model.Employee> getEmployees();
+
+  /**
+   * Sets the employees.
+   *
+   * @param employees
+   *          the employees to set.
+   */
+  void setEmployees(java.util.Set<com.d2s.framework.hrsample.model.Employee> employees);
+
+  /**
+   * Adds an element to the employees.
+   *
+   * @param employeesElement
+   *          the employees element to add.
+   */
+  void addToEmployees(com.d2s.framework.hrsample.model.Employee employeesElement);
+
+  /**
+   * Removes an element from the employees.
+   *
+   * @param employeesElement
+   *          the employees element to remove.
+   */
+  void removeFromEmployees(com.d2s.framework.hrsample.model.Employee employeesElement);
+
 }

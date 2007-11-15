@@ -76,4 +76,22 @@ public interface OrganizationalUnit extends
    */
   void setContact(com.d2s.framework.hrsample.model.ContactInfo contact);
 
+  /**
+   * Gets the manager.
+   *
+   * @hibernate.one-to-one
+   *           cascade = "persist,merge,save-update,refresh,evict,replicate"
+   *           property-ref = "managedOu"
+   * @return the manager.
+   */
+  com.d2s.framework.hrsample.model.Employee getManager();
+
+  /**
+   * Sets the manager.
+   *
+   * @param manager
+   *          the manager to set.
+   */
+  void setManager(com.d2s.framework.hrsample.model.Employee manager);
+
 }

@@ -1,6 +1,6 @@
-format 45
+format 48
 "com.d2s.sample.hr" // com.d2s.sample.hr
-  revision 7
+  revision 9
   modified_by 7 "Vincent"
   // class settings
   //class diagram settings
@@ -220,8 +220,8 @@ ${members}}
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype} ${name}${value};
 "
 	    classrelation_ref 131392 // manager (<association>)
-	  b role_name "managedOU" multiplicity "0..1" public
-	    classrelation_ref 128401 // managedOU (<association>)
+	  b role_name "managedOu" multiplicity "0..1" public
+	    classrelation_ref 128401 // managedOu (<association>)
       end
 
       classrelation 128135 // contact (<directional aggregation by value>)
@@ -343,7 +343,7 @@ ${members}}
 	  b parent class_ref 130240 // Event
       end
 
-      classrelation 128401 // managedOU (<association>)
+      classrelation 128401 // managedOu (<association>)
 	relation_ref 131264 // <association>
       end
 
@@ -355,6 +355,7 @@ ${members}}
 	    classrelation_ref 128007 // contact (<directional aggregation by value>)
 	  b parent class_ref 129216 // ContactInfo
       end
+
     end
   end
 end

@@ -1,29 +1,37 @@
-format 45
+format 48
 
+classcanvas 128007 class_ref 128007 // NameableService
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 123 6 2005
+  end
 classcanvas 128012 class_ref 129625 // Traceable
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 254 1 2000
+  xyz 254 102 2000
   end
 classcanvas 128064 class_ref 129216 // ContactInfo
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 1 100 2000
+  xyz 1 201 2000
   end
 classcanvas 128140 class_ref 128012 // Nameable
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 139 1 2000
+  xyz 139 102 2000
   end
 classcanvas 128192 class_ref 129344 // City
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 163 127 2000
+  xyz 163 228 2000
   end
 classcanvas 128576 class_ref 130240 // Event
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 300 124 2000
+  xyz 300 225 2000
   end
+relationcanvas 128135 relation_ref 129415 // <realization>
+  from ref 128140 z 1999 to ref 128007
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
 relationcanvas 128448 relation_ref 129728 // <unidirectional association>
   from ref 128064 z 1999 to ref 128192
-  role_a_pos 131 132 3000 no_role_b
-  multiplicity_a_pos 145 161 3000 no_multiplicity_b
+  role_a_pos 131 233 3000 no_role_b
+  multiplicity_a_pos 145 262 3000 no_multiplicity_b
 relationcanvas 128832 relation_ref 131904 // <realization>
   from ref 128576 z 1999 to ref 128012
   no_role_a no_role_b

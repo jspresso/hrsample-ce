@@ -25,5 +25,62 @@ public interface Department extends
   com.d2s.framework.hrsample.model.OrganizationalUnit,
   com.d2s.framework.model.entity.IEntity {
 
-  // THIS IS JUST A MARKER INTERFACE.
+  /**
+   * Gets the company.
+   *
+   * @hibernate.many-to-one
+   *           cascade = "persist,merge,save-update"
+   * @hibernate.column
+   *           name = "COMPANY_ID"
+   *           not-null = "true"
+   * @return the company.
+   */
+  com.d2s.framework.hrsample.model.Company getCompany();
+
+  /**
+   * Sets the company.
+   *
+   * @param company
+   *          the company to set.
+   */
+  void setCompany(com.d2s.framework.hrsample.model.Company company);
+
+  /**
+   * Gets the teams.
+   *
+   * @hibernate.set
+   *           cascade = "persist,merge,save-update,refresh,evict,replicate,delete"
+   *           inverse = "true"
+   * @hibernate.key
+   *           column = "DEPARTMENT_ID"
+   * @hibernate.one-to-many
+   *           class = "com.d2s.framework.hrsample.model.Team"
+   * @return the teams.
+   */
+  java.util.Set<com.d2s.framework.hrsample.model.Team> getTeams();
+
+  /**
+   * Sets the teams.
+   *
+   * @param teams
+   *          the teams to set.
+   */
+  void setTeams(java.util.Set<com.d2s.framework.hrsample.model.Team> teams);
+
+  /**
+   * Adds an element to the teams.
+   *
+   * @param teamsElement
+   *          the teams element to add.
+   */
+  void addToTeams(com.d2s.framework.hrsample.model.Team teamsElement);
+
+  /**
+   * Removes an element from the teams.
+   *
+   * @param teamsElement
+   *          the teams element to remove.
+   */
+  void removeFromTeams(com.d2s.framework.hrsample.model.Team teamsElement);
+
 }
