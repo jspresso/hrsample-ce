@@ -22,7 +22,8 @@ package com.d2s.framework.hrsample.model;
 public interface Employee extends
   com.d2s.framework.hrsample.model.Nameable,
   com.d2s.framework.hrsample.model.Traceable,
-  com.d2s.framework.model.entity.IEntity {
+  com.d2s.framework.model.entity.IEntity,
+  com.d2s.framework.hrsample.model.service.EmployeeService {
 
   /**
    * @hibernate.id generator-class = "assigned" column = "ID" type = "string"

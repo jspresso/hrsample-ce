@@ -14,7 +14,7 @@ classcanvas 128217 class_ref 129369 // Department
   end
 classcanvas 128345 class_ref 129497 // Team
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 522 474 2000
+  xyz 530 474 2000
   end
 classcanvas 128473 class_ref 129625 // Traceable
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
@@ -80,22 +80,22 @@ relationcanvas 129241 relation_ref 129881 // companyDepartments
   multiplicity_a_pos 232 538 3000 multiplicity_b_pos 21 390 3000
 relationcanvas 129497 relation_ref 130009 // departmentTeams
   geometry HV
-  from ref 128217 z 1999 label "departmentTeams" italic xyz 416 513 1999 stereotype "<<set>>" xyz 447 529 3000 to point 544 528
+  from ref 128217 z 1999 label "departmentTeams" italic xyz 420 513 1999 stereotype "<<set>>" xyz 451 529 3000 to point 552 528
   line 131264 z 1999 to ref 128345
-  role_a_pos 551 515 3000 role_b_pos 344 509 3000
-  multiplicity_a_pos 533 530 3000 multiplicity_b_pos 344 538 3000
+  role_a_pos 564 522 3000 role_b_pos 344 509 3000
+  multiplicity_a_pos 539 522 3000 multiplicity_b_pos 344 538 3000
 relationcanvas 129600 relation_ref 131264 // <association>
   from ref 128601 z 1999 to ref 129472
-  role_a_pos 448 286 3000 role_b_pos 366 286 3000
-  multiplicity_a_pos 491 315 3000 multiplicity_b_pos 366 315 3000
+  role_a_pos 448 293 3000 role_b_pos 366 287 3000
+  multiplicity_a_pos 491 322 3000 multiplicity_b_pos 366 316 3000
 relationcanvas 129728 relation_ref 131392 // <association>
-  from ref 129472 z 1999 stereotype "<<set>>" xyz 521 421 3000 to ref 128345
-  role_a_pos 556 452 3000 role_b_pos 556 383 3000
-  multiplicity_a_pos 531 452 3000 multiplicity_b_pos 516 383 3000
+  from ref 129472 z 1999 stereotype "<<set>>" xyz 529 430 3000 to ref 128345
+  role_a_pos 564 452 3000 role_b_pos 564 401 3000
+  multiplicity_a_pos 539 452 3000 multiplicity_b_pos 524 401 3000
 relationcanvas 130368 relation_ref 131648 // companyEmployees
   from ref 128089 z 1999 to point 35 18
-  line 130624 z 1999 label "companyEmployees" italic xyz 232 4 1999 stereotype "<<set>>" xyz 266 20 3000 to point 543 18
+  line 130624 z 1999 label "companyEmployees" italic xyz 236 4 1999 stereotype "<<set>>" xyz 270 20 3000 to point 552 18
   line 130496 z 1999 to ref 129472
-  role_a_pos 555 217 3000 role_b_pos 5 303 3000
-  multiplicity_a_pos 515 217 3000 multiplicity_b_pos 20 320 3000
+  role_a_pos 564 217 3000 role_b_pos 5 303 3000
+  multiplicity_a_pos 524 217 3000 multiplicity_b_pos 20 320 3000
 end

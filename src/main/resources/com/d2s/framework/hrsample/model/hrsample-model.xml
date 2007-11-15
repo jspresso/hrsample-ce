@@ -28,14 +28,6 @@
         </bean>
       </list>
     </property>
-    <property name="serviceDelegates">
-      <map>
-        <entry key="com.d2s.framework.hrsample.model.service.NameableService">
-          <bean
-            class="com.d2s.framework.hrsample.model.service.NameableServiceDelegate" />
-        </entry>
-      </map>
-    </property>
   </bean>
 
   <bean
@@ -211,6 +203,12 @@
           <property
             name="maxLength"
             value="32" />
+          <property name="integrityProcessors">
+            <list>
+              <bean
+                class="com.d2s.framework.hrsample.model.processor.EmployeeIntegrityProcessors$FirstNameIntegrityProcessor" />
+            </list>
+          </property>
         </bean>
         <bean
           class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
@@ -238,6 +236,12 @@
           <property
             name="type"
             ref="DATE" />
+          <property name="integrityProcessors">
+            <list>
+              <bean
+                class="com.d2s.framework.hrsample.model.processor.EmployeeIntegrityProcessors$BirthDateIntegrityProcessor" />
+            </list>
+          </property>
         </bean>
         <bean
           class="com.d2s.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
@@ -318,6 +322,14 @@
             value="com.d2s.framework.hrsample.model.extension.EmployeeExtension" />
         </bean>
       </list>
+    </property>
+    <property name="serviceDelegates">
+      <map>
+        <entry key="com.d2s.framework.hrsample.model.service.EmployeeService">
+          <bean
+            class="com.d2s.framework.hrsample.model.service.EmployeeServiceDelegate" />
+        </entry>
+      </map>
     </property>
   </bean>
 

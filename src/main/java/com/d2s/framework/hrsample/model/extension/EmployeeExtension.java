@@ -5,7 +5,6 @@ package com.d2s.framework.hrsample.model.extension;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Date;
 
 import com.d2s.framework.hrsample.model.Employee;
 import com.d2s.framework.model.component.AbstractComponentExtension;
@@ -54,10 +53,7 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
     if (age != null) {
       return age;
     }
-    if (getComponent().getBirthDate() != null) {
-      age = new Integer((int) ((new Date().getTime() - getComponent()
-          .getBirthDate().getTime()) / (1000L * 60 * 60 * 24 * 365)));
-    }
+    age = getComponent().computeAge(getComponent().getBirthDate());
     return age;
   }
 }
