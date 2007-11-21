@@ -270,10 +270,10 @@
             <map>
               <entry
                 key="M"
-                value="classpath:images/male-48x48.png" />
+                value="classpath:com/d2s/framework/hrsample/images/male-48x48.png" />
               <entry
                 key="F"
-                value="classpath:images/female-48x48.png" />
+                value="classpath:com/d2s/framework/hrsample/images/female-48x48.png" />
             </map>
           </property>
         </bean>
