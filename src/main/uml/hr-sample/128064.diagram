@@ -1,12 +1,12 @@
-format 45
+format 48
 
 classcanvas 128064 class_ref 129472 // Employee
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 181 138 2000
+  xyz 172 137 2000
   end
 classcanvas 128192 class_ref 129625 // Traceable
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 288 3 2000
+  xyz 306 3 2000
   end
 classcanvas 128320 class_ref 128012 // Nameable
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
@@ -14,16 +14,16 @@ classcanvas 128320 class_ref 128012 // Nameable
   end
 classcanvas 128448 class_ref 129216 // ContactInfo
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 1 152 2000
+  xyz 1 160 2000
   end
 classcanvas 128960 class_ref 130240 // Event
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 353 180 2004
+  xyz 352 188 2004
   end
 relationcanvas 128007 relation_ref 128007 // <directional aggregation by value>
   from ref 128064 z 1999 to ref 128448
-  role_a_pos 119 185 3000 no_role_b
-  multiplicity_a_pos 119 214 3000 no_multiplicity_b
+  role_a_pos 119 193 3000 no_role_b
+  multiplicity_a_pos 119 222 3000 no_multiplicity_b
 relationcanvas 128576 relation_ref 130880 // <realization>
   from ref 128064 z 1999 to ref 128192
   no_role_a no_role_b
@@ -37,7 +37,7 @@ relationcanvas 129088 relation_ref 131904 // <realization>
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 129216 relation_ref 132160 // <directional aggregation>
-  from ref 128064 z 1999 stereotype "<<list>>" xyz 279 206 3000 to ref 128960
-  role_a_pos 305 185 3000 no_role_b
-  multiplicity_a_pos 337 214 3000 no_multiplicity_b
+  from ref 128064 z 1999 stereotype "<<list>>" xyz 274 211 3000 to ref 128960
+  role_a_pos 304 193 3000 no_role_b
+  multiplicity_a_pos 336 222 3000 no_multiplicity_b
 end

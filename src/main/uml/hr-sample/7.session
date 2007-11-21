@@ -2,11 +2,13 @@ window_sizes 1228 970 300 900 682 82
 diagrams
   classdiagram_ref 129241 // organization
     974 844 100 4 0 0
-  active  classdiagram_ref 128012 // commons
+  classdiagram_ref 128012 // commons
     922 811 100 4 0 0
+  active  classdiagram_ref 128064 // employees
+    733 651 100 4 0 0
 end
 show_stereotypes
-selected operation_ref 128135 // formatName
+selected classdiagram_ref 128064 // employees
 open
   class_ref 129241 // Company
   class_ref 128007 // NameableService
