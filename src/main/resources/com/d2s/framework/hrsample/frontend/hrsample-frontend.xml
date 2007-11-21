@@ -7,4 +7,27 @@
   default-lazy-init="true">
 
   
+  <!--
+    The controller.
+  -->
+  <bean id="applicationFrontController" parent="frontController" scope="prototype">
+    <property name="name" value="hrsample.name" />
+    <property name="iconImageURL" value="classpath:com/d2s/framework/hrsample/images/people-48x48.png" />
+    <property name="modulesMenuIconImageUrl" value="classpath:com/d2s/framework/hrsample/images/modules-48x48.png" />
+    <property name="loginContextName" value="hrsample-app" />
+    <property name="moduleDescriptors">
+      <map>
+      </map>
+    </property>
+  </bean>
+
+  <bean id="applicationMessageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="parentMessageSource" ref="commonsMessageSource" />
+    <property name="basenames">
+      <list>
+        <value>com.d2s.framework.hrsample.i18n.Messages</value>
+      </list>
+    </property>
+  </bean>
+
 </beans>

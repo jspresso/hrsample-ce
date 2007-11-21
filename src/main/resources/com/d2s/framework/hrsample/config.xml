@@ -9,7 +9,7 @@
 
   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-    <property name="url" value="jdbc:hsqldb:mem:sample" />
+    <property name="url" value="jdbc:hsqldb:mem:hrsample" />
     <property name="username" value="sa" />
     <property name="password" value="" />
   </bean>
@@ -31,10 +31,6 @@
     </property>
     <property name="mappingLocations">
       <list>
-        <value>com/d2s/framework/sample/backend/domain/City.hbm.xml</value>
-        <value>com/d2s/framework/sample/backend/domain/Department.hbm.xml</value>
-        <value>com/d2s/framework/sample/backend/domain/Person.hbm.xml</value>
-        <value>com/d2s/framework/sample/backend/domain/Project.hbm.xml</value>
       </list>
     </property>
   </bean>
