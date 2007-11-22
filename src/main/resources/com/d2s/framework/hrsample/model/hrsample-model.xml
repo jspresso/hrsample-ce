@@ -44,6 +44,9 @@
           <property
             name="type"
             ref="DATE_TIME" />
+          <property
+            name="readOnly"
+            value="true" />
         </bean>
         <bean
           class="com.d2s.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
@@ -53,6 +56,9 @@
           <property
             name="type"
             ref="DATE_TIME" />
+          <property
+            name="readOnly"
+            value="true" />
         </bean>
       </list>
     </property>

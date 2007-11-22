@@ -12,8 +12,24 @@
     <constructor-arg>
       <list>
         <value>com/d2s/framework/application/commons.xml</value>
-        <value>com/d2s/framework/tools/entitygenerator/mock.xml</value>
+        <value>com/d2s/framework/tools/mock.xml</value>
         <value>com/d2s/framework/hrsample/model/hrsample-model.xml</value>
+      </list>
+    </constructor-arg>
+  </bean>
+
+  <bean
+    id="hrsample-viewtester-context"
+    class="org.springframework.context.support.ClassPathXmlApplicationContext"
+    lazy-init="true">
+    <constructor-arg>
+      <list>
+        <value>com/d2s/framework/application/commons.xml</value>
+        <value>com/d2s/framework/tools/mock.xml</value>
+        <value>com/d2s/framework/hrsample/model/hrsample-model.xml</value>
+        <value>com/d2s/framework/application/frontend/commons-frontend.xml</value>
+        <value>com/d2s/framework/application/frontend/swing/commons-swing.xml</value>
+        <value>com/d2s/framework/hrsample/frontend/hrsample-frontend.xml</value>
       </list>
     </constructor-arg>
   </bean>
