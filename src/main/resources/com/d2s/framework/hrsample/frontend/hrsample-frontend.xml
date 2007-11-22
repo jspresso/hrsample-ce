@@ -28,29 +28,32 @@
   <!--
     The controller.
   -->
-<!-- 
-  <bean
+  <!-- 
+    <bean
     id="applicationFrontController"
     parent="frontController"
     scope="prototype">
     <property
-      name="name"
-      value="hrsample.name" />
+    name="name"
+    value="hrsample.name" />
     <property
-      name="iconImageURL"
-      value="classpath:com/d2s/framework/hrsample/images/people-48x48.png" />
+    name="iconImageURL"
+    value="classpath:com/d2s/framework/hrsample/images/people-48x48.png" />
     <property
-      name="modulesMenuIconImageUrl"
-      value="classpath:com/d2s/framework/hrsample/images/modules-48x48.png" />
+    name="modulesMenuIconImageUrl"
+    value="classpath:com/d2s/framework/hrsample/images/modules-48x48.png" />
     <property
-      name="loginContextName"
-      value="hrsample-app" />
+    name="loginContextName"
+    value="hrsample-app" />
     <property name="moduleDescriptors">
-      <map></map>
+    <map></map>
     </property>
-  </bean>
--->
-
+    </bean>
+  -->
+  
+  <!--
+   The application I18N resources. 
+  -->
   <bean
     id="applicationMessageSource"
     class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -63,7 +66,9 @@
       </list>
     </property>
   </bean>
-  
-  <bean id="testView" parent="Company.pane" />
+
+  <bean
+    id="testView"
+    parent="Company.pane" />
 
 </beans>
