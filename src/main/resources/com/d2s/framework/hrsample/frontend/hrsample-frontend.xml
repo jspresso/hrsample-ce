@@ -18,10 +18,51 @@
       ref="ABOVE" />
     <property
       name="columnCount"
-      value="3" />
+      value="2" />
     <property
       name="modelDescriptor"
       ref="Company" />
+    <property name="propertyViewDescriptors">
+      <list>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="name" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="contact.address" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="contact.city" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="contact.phone" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="contact.email" />
+        </bean>
+      </list>
+    </property>
+    <property name="propertyWidths">
+      <map>
+        <entry
+          key="name"
+          value="2" />
+      </map>
+    </property>
   </bean>
 
 
@@ -50,9 +91,9 @@
     </property>
     </bean>
   -->
-  
+
   <!--
-   The application I18N resources. 
+    The application I18N resources. 
   -->
   <bean
     id="applicationMessageSource"
