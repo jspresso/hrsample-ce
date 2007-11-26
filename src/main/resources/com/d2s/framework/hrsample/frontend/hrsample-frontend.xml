@@ -125,21 +125,18 @@
     <property
       name="modelDescriptor"
       ref="Company-departments" />
-    <property
+    <!-- <property
       name="actionMap"
-      ref="masterDetailActionMap" />
+      ref="masterDetailActionMap" /> -->
   </bean>
-
+  
   <bean
     id="Company.organization.view"
     class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
     <property
       name="modelDescriptor"
       ref="Company" />
-    <property
-      name="masterDetail"
-      value="true" />
-    <property
+     <property
       name="leftTopViewDescriptor"
       ref="Company.tab.pane" />
     <property
