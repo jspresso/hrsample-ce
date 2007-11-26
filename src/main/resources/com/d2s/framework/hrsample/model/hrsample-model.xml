@@ -534,6 +534,9 @@
         <ref bean="Department-teams" />
       </list>
     </property>
+    <property
+      name="iconImageURL"
+      value="classpath:com/d2s/framework/hrsample/images/department-48x48.png" />
   </bean>
 
   <bean
