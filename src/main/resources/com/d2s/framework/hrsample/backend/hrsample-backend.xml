@@ -8,9 +8,11 @@
   <!--
     The controller.
   -->
-  <bean
+  <!-- 
+    <bean
     id="applicationBackController"
     parent="abstractHibernateBackController"
     scope="prototype">
-  </bean>
+    </bean>
+  -->
 </beans>

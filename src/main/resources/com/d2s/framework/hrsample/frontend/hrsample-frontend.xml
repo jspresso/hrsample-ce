@@ -118,6 +118,35 @@
     </property>
   </bean>
 
+  <bean
+    id="Company-departments.table"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    <property
+      name="modelDescriptor"
+      ref="Company-departments" />
+    <property
+      name="actionMap"
+      ref="masterDetailActionMap" />
+  </bean>
+
+  <bean
+    id="Company.organization.view"
+    class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+    <property
+      name="modelDescriptor"
+      ref="Company" />
+    <property
+      name="masterDetail"
+      value="true" />
+    <property
+      name="leftTopViewDescriptor"
+      ref="Company.tab.pane" />
+    <property
+      name="rightBottomViewDescriptor"
+      ref="Company-departments.table" />
+  </bean>
+
   <!--
     The controller.
   -->
@@ -162,6 +191,6 @@
 
   <bean
     id="testView"
-    parent="Company.tab.pane" />
+    parent="Company.organization.view" />
 
 </beans>
