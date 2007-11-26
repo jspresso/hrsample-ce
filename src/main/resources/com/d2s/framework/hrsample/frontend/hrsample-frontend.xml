@@ -10,6 +10,41 @@
     The views.
   -->
   <bean
+    id="Traceable.pane"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    <property
+      name="labelsPosition"
+      ref="ABOVE" />
+    <property
+      name="columnCount"
+      value="2" />
+    <property
+      name="modelDescriptor"
+      ref="Traceable" />
+    <property name="propertyViewDescriptors">
+      <list>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="createTimestamp" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="lastUpdateTimestamp" />
+        </bean>
+      </list>
+    </property>
+    <property
+      name="description"
+      value="traceable.editing">
+    </property>
+  </bean>
+
+  <bean
     id="Company.pane"
     parent="decoratedView"
     class="com.d2s.framework.view.descriptor.basic.BasicComponentViewDescriptor">
@@ -63,8 +98,25 @@
           value="2" />
       </map>
     </property>
+    <property
+      name="description"
+      value="company.editing">
+    </property>
   </bean>
 
+  <bean
+    id="Company.tab.pane"
+    class="com.d2s.framework.view.descriptor.basic.BasicTabViewDescriptor">
+    <property
+      name="modelDescriptor"
+      ref="Company" />
+    <property name="viewDescriptors">
+      <list>
+        <ref local="Company.pane" />
+        <ref local="Traceable.pane" />
+      </list>
+    </property>
+  </bean>
 
   <!--
     The controller.
@@ -110,6 +162,6 @@
 
   <bean
     id="testView"
-    parent="Company.pane" />
+    parent="Company.tab.pane" />
 
 </beans>

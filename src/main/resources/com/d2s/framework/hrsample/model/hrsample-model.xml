@@ -74,6 +74,9 @@
           class="com.d2s.framework.hrsample.model.service.TraceableLifecycleInterceptor" />
       </list>
     </property>
+    <property
+      name="iconImageURL"
+      value="classpath:com/d2s/framework/hrsample/images/traceable-48x48.png" />
   </bean>
 
   <bean
@@ -424,6 +427,9 @@
         <ref bean="Company-employees" />
       </list>
     </property>
+    <property
+      name="iconImageURL"
+      value="classpath:com/d2s/framework/hrsample/images/company-48x48.png" />
   </bean>
 
   <bean

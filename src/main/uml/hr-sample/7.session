@@ -1,18 +1,9 @@
 window_sizes 1228 970 300 900 682 82
-diagrams
-  classdiagram_ref 129241 // organization
-    974 844 100 4 0 0
-  classdiagram_ref 128012 // commons
-    922 811 100 4 0 0
-  active  classdiagram_ref 128064 // employees
-    733 651 100 4 0 0
-end
 show_stereotypes
-selected classdiagram_ref 128064 // employees
+selected 
+package_ref 129241 // com.d2s.sample.hr
 open
-  class_ref 129241 // Company
-  class_ref 128007 // NameableService
   
-  package_ref 128103 // java
+package_ref 128103 // java
 end
 end
