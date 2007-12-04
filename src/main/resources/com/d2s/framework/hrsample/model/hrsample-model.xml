@@ -463,7 +463,7 @@
     <property name="propertyDescriptors">
       <list>
         <bean
-          class="com.d2s.framework.model.descriptor.basic.BasicTextPropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="ouId" />
@@ -472,10 +472,13 @@
             value="[A-Z]{2}-[\d]{3}" />
           <property
             name="regexpPatternSample"
-            value="0123456789" />
+            value="AB-123" />
           <property
             name="maxLength"
             value="6" />
+          <property
+            name="mandatory"
+            value="true" />
         </bean>
         <ref bean="contact" />
         <ref bean="OrganizationalUnit-manager" />
@@ -537,6 +540,17 @@
     <property
       name="iconImageURL"
       value="classpath:com/d2s/framework/hrsample/images/department-48x48.png" />
+    <property name="renderedProperties">
+      <list>
+        <value>ouId</value>
+        <value>name</value>
+        <value>manager</value>
+        <value>contact.address</value>
+        <value>contact.city</value>
+        <value>contact.phone</value>
+        <value>contact.email</value>
+      </list>
+    </property>
   </bean>
 
   <bean
@@ -567,6 +581,9 @@
         </bean>
       </list>
     </property>
+    <property
+      name="iconImageURL"
+      value="classpath:com/d2s/framework/hrsample/images/team-48x48.png" />
   </bean>
 
 </beans>

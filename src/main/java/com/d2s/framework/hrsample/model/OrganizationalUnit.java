@@ -47,6 +47,7 @@ public interface OrganizationalUnit extends
    * @hibernate.column
    *           name = "OU_ID"
    *           length = "6"
+   *           not-null = "true"
    * @return the ouId.
    */
   java.lang.String getOuId();
