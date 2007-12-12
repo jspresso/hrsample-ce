@@ -12,7 +12,7 @@ import com.d2s.framework.util.bean.integrity.IntegrityException;
 /**
  * Employee integrity processors.
  * <p>
- * Copyright 2005 Design2See. All rights reserved.
+ * Copyright 2005-2008 Vincent Vandenschrick. All rights reserved.
  * <p>
  * 
  * @version $LastChangedRevision$
@@ -23,7 +23,7 @@ public class EmployeeIntegrityProcessors {
   /**
    * Birth date integrity processor.
    * <p>
-   * Copyright 2005 Design2See. All rights reserved.
+   * Copyright 2005-2008 Vincent Vandenschrick. All rights reserved.
    * <p>
    * 
    * @version $LastChangedRevision$
@@ -51,7 +51,7 @@ public class EmployeeIntegrityProcessors {
   /**
    * First name integrity processor.
    * <p>
-   * Copyright 2005 Design2See. All rights reserved.
+   * Copyright 2005-2008 Vincent Vandenschrick. All rights reserved.
    * <p>
    * 
    * @version $LastChangedRevision$

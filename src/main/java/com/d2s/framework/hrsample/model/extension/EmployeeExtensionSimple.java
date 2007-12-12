@@ -9,7 +9,7 @@ import com.d2s.framework.model.component.AbstractComponentExtension;
 /**
  * Helper class computing extended properties for Employee entity.
  * <p>
- * Copyright 2005 Design2See. All rights reserved.
+ * Copyright 2005-2008 Vincent Vandenschrick. All rights reserved.
  * <p>
  * 
  * @version $LastChangedRevision$
