@@ -17,7 +17,7 @@ import com.d2s.framework.application.frontend.startup.swing.SwingStartup;
 public class SwingHrSampleStartup extends SwingStartup {
 
   /**
-   * Returns the "sample-swing-context" value.
+   * Returns the "hrsample-swing-context" value.
    * <p>
    * {@inheritDoc}
    */

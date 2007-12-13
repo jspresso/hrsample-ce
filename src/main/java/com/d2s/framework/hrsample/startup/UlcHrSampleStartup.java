@@ -17,7 +17,7 @@ import com.d2s.framework.application.frontend.startup.ulc.UlcStartup;
 public class UlcHrSampleStartup extends UlcStartup {
 
   /**
-   * Returns the "sample-ulc-context" value.
+   * Returns the "hrsample-ulc-context" value.
    * <p>
    * {@inheritDoc}
    */
