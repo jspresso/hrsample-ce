@@ -267,11 +267,9 @@
     <property
       name="modulesMenuIconImageUrl"
       value="classpath:com/d2s/framework/hrsample/images/modules-48x48.png" />
-<!--
     <property
       name="loginContextName"
       value="hrsample-app" />
- -->
    </bean>
 
   <!--
