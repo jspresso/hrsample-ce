@@ -101,6 +101,9 @@
         </bean>
       </list>
     </property>
+    <property
+      name="iconImageURL"
+      value="classpath:com/d2s/framework/hrsample/images/city-48x48.png" />
   </bean>
 
   <bean

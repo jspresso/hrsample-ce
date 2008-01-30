@@ -251,6 +251,60 @@
       ref="Departments.and.teams.view" />
   </bean>
 
+  <bean
+    id="Cities.table"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    <property name="modelDescriptor">
+      <bean
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        <property
+          name="collectionInterface"
+          value="java.util.List" />
+        <property
+          name="elementDescriptor"
+          ref="City" />
+      </bean>
+    </property>
+  </bean>
+
+  <!--
+    The modules
+  -->
+  <bean
+    id="Masterdata.module"
+    class="com.d2s.framework.application.model.Module"
+    scope="prototype">
+    <property
+      name="name"
+      value="masterdata.module" />
+    <property
+      name="description"
+      value="masterdata.module.description" />
+    <property
+      name="iconImageURL"
+      value="classpath:com/d2s/framework/hrsample/images/masterdata-48x48.png" />
+    <property name="subModules">
+      <list>
+        <bean
+          class="com.d2s.framework.application.model.BeanCollectionModule">
+          <property
+            name="name"
+            value="masterdata.cities.module" />
+          <property
+            name="description"
+            value="masterdata.cities.module.description" />
+          <property
+            name="iconImageURL"
+            value="classpath:com/d2s/framework/hrsample/images/city-48x48.png" />
+          <property
+            name="projectedViewDescriptor"
+            ref="Cities.table" />
+        </bean>
+      </list>
+    </property>
+  </bean>
+
   <!--
     The controller.
   -->
@@ -270,7 +324,12 @@
     <property
       name="loginContextName"
       value="hrsample-app" />
-   </bean>
+    <property name="modules">
+      <list>
+        <ref bean="Masterdata.module" />
+      </list>
+    </property>
+  </bean>
 
   <!--
     The application I18N resources. 
