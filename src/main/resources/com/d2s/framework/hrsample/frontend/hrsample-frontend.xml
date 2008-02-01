@@ -255,17 +255,6 @@
     id="Cities.table"
     parent="decoratedView"
     class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
-    <property name="modelDescriptor">
-      <bean
-        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
-        <property
-          name="collectionInterface"
-          value="java.util.List" />
-        <property
-          name="elementDescriptor"
-          ref="City" />
-      </bean>
-    </property>
   </bean>
 
   <!--
@@ -300,6 +289,9 @@
           <property
             name="projectedViewDescriptor"
             ref="Cities.table" />
+          <property
+            name="elementComponentDescriptor"
+            ref="City" />
         </bean>
       </list>
     </property>
