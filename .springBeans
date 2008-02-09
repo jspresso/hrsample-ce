@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
-	<configExtensions>
-		<configExtension>xml</configExtension>
-	</configExtensions>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.0.3.v200802061800]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>src/main/resources/com/d2s/framework/hrsample/model/hrsample-model.xml</config>
 		<config>src/main/resources/com/d2s/framework/hrsample/config.xml</config>
@@ -23,8 +26,8 @@
 				<config>src/main/resources/com/d2s/framework/hrsample/model/hrsample-model.xml</config>
 				<config>src/main/resources/com/d2s/framework/hrsample/backend/hrsample-backend.xml</config>
 				<config>src/main/resources/com/d2s/framework/hrsample/config.xml</config>
-				<config>src/main/resources/com/d2s/framework/hrsample/frontend/hrsample-frontend.xml</config>
 				<config>src/main/resources/com/d2s/framework/hrsample/view/hrsample-view.xml</config>
+				<config>src/main/resources/com/d2s/framework/hrsample/frontend/hrsample-frontend.xml</config>
 			</configs>
 		</configSet>
 		<configSet>
@@ -39,6 +42,7 @@
 				<config>src/main/resources/com/d2s/framework/hrsample/model/hrsample-model.xml</config>
 				<config>src/main/resources/com/d2s/framework/hrsample/backend/hrsample-backend.xml</config>
 				<config>src/main/resources/com/d2s/framework/hrsample/config.xml</config>
+				<config>src/main/resources/com/d2s/framework/hrsample/view/hrsample-view.xml</config>
 				<config>src/main/resources/com/d2s/framework/hrsample/frontend/hrsample-frontend.xml</config>
 			</configs>
 		</configSet>
