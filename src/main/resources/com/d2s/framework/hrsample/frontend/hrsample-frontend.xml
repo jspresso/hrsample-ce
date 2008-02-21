@@ -10,15 +10,15 @@
     The modules
   -->
   <bean
-    id="Masterdata.module"
+    id="Masterdata.workspace"
     class="com.d2s.framework.application.model.Workspace"
     scope="prototype">
     <property
       name="name"
-      value="masterdata.module" />
+      value="masterdata.workspace" />
     <property
       name="description"
-      value="masterdata.module.description" />
+      value="masterdata.workspace.description" />
     <property
       name="iconImageURL"
       value="classpath:com/d2s/framework/hrsample/images/masterdata-48x48.png" />
@@ -60,14 +60,14 @@
       name="iconImageURL"
       value="classpath:com/d2s/framework/hrsample/images/people-48x48.png" />
     <property
-      name="modulesMenuIconImageUrl"
+      name="workspacesMenuIconImageUrl"
       value="classpath:com/d2s/framework/hrsample/images/modules-48x48.png" />
     <property
       name="loginContextName"
       value="hrsample-app" />
     <property name="workspaces">
       <list>
-        <ref bean="Masterdata.module" />
+        <ref bean="Masterdata.workspace" />
       </list>
     </property>
   </bean>
