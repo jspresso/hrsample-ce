@@ -11,7 +11,7 @@
   -->
   <bean
     id="Masterdata.module"
-    class="com.d2s.framework.application.model.Module"
+    class="com.d2s.framework.application.model.Workspace"
     scope="prototype">
     <property
       name="name"
@@ -22,7 +22,7 @@
     <property
       name="iconImageURL"
       value="classpath:com/d2s/framework/hrsample/images/masterdata-48x48.png" />
-    <property name="subModules">
+    <property name="modules">
       <list>
         <bean
           class="com.d2s.framework.application.model.BeanCollectionModule">
@@ -65,7 +65,7 @@
     <property
       name="loginContextName"
       value="hrsample-app" />
-    <property name="modules">
+    <property name="workspaces">
       <list>
         <ref bean="Masterdata.module" />
       </list>
