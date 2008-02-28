@@ -27,8 +27,12 @@
         <value>com/d2s/framework/application/commons.xml</value>
         <value>com/d2s/framework/tools/mock.xml</value>
         <value>com/d2s/hrsample/model/hrsample-model.xml</value>
-        <value>com/d2s/framework/application/frontend/commons-frontend.xml</value>
-        <value>com/d2s/framework/application/frontend/swing/commons-swing.xml</value>
+        <value>
+          com/d2s/framework/application/frontend/commons-frontend.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/swing/commons-swing.xml
+        </value>
         <value>com/d2s/hrsample/view/hrsample-view.xml</value>
       </list>
     </constructor-arg>
@@ -41,9 +45,15 @@
     <constructor-arg>
       <list>
         <value>com/d2s/framework/application/commons.xml</value>
-        <value>com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
-        <value>com/d2s/framework/application/frontend/commons-frontend.xml</value>
-        <value>com/d2s/framework/application/frontend/swing/commons-swing.xml</value>
+        <value>
+          com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/commons-frontend.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/swing/commons-swing.xml
+        </value>
         <value>com/d2s/hrsample/model/hrsample-model.xml</value>
         <value>com/d2s/hrsample/backend/hrsample-backend.xml</value>
         <value>com/d2s/hrsample/view/hrsample-view.xml</value>
@@ -60,9 +70,15 @@
     <constructor-arg>
       <list>
         <value>com/d2s/framework/application/commons.xml</value>
-        <value>com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
-        <value>com/d2s/framework/application/frontend/commons-frontend.xml</value>
-        <value>com/d2s/framework/application/frontend/ulc/commons-ulc.xml</value>
+        <value>
+          com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/commons-frontend.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/ulc/commons-ulc.xml
+        </value>
         <value>com/d2s/hrsample/model/hrsample-model.xml</value>
         <value>com/d2s/hrsample/backend/hrsample-backend.xml</value>
         <value>com/d2s/hrsample/view/hrsample-view.xml</value>
@@ -79,9 +95,15 @@
     <constructor-arg>
       <list>
         <value>com/d2s/framework/application/commons.xml</value>
-        <value>com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
-        <value>com/d2s/framework/application/frontend/commons-frontend.xml</value>
-        <value>com/d2s/framework/application/frontend/wings/commons-wings.xml</value>
+        <value>
+          com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/commons-frontend.xml
+        </value>
+        <value>
+          com/d2s/framework/application/frontend/wings/commons-wings.xml
+        </value>
         <value>com/d2s/hrsample/model/hrsample-model.xml</value>
         <value>com/d2s/hrsample/backend/hrsample-backend.xml</value>
         <value>com/d2s/hrsample/view/hrsample-view.xml</value>
