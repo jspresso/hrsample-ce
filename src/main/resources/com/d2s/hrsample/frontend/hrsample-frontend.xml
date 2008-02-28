@@ -60,9 +60,6 @@
       name="iconImageURL"
       value="classpath:com/d2s/hrsample/images/people-48x48.png" />
     <property
-      name="workspacesMenuIconImageUrl"
-      value="classpath:com/d2s/hrsample/images/modules-48x48.png" />
-    <property
       name="loginContextName"
       value="hrsample-app" />
     <property name="workspaces">
