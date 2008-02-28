@@ -339,7 +339,7 @@
       <map>
         <entry key="com.d2s.hrsample.model.service.EmployeeService">
           <bean
-            class="com.d2s.framework.hrcom.d2s.hrsample.model.servicegate" />
+            class="com.d2s.hrsample.model.service.EmployeeServiceDelegate" />
         </entry>
       </map>
     </property>
