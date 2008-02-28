@@ -251,10 +251,17 @@
       ref="Departments.and.teams.view" />
   </bean>
 
+  <!--
+    The module views.
+  -->
+
   <bean
-    id="Cities.table"
+    id="Cities.module.table"
     parent="decoratedView"
     class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    <property
+      name="actionMap"
+      ref="filterableBeanCollectionModuleActionMap" />
   </bean>
 
   <!--
