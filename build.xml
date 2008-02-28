@@ -12,7 +12,7 @@
   <property name="xdoclet.lib.dir" value="${xdoclet.home}/lib" />
   <property name="xdoclet.plugins.dir" value="${xdoclet.home}/plugins" />
   <property name="model.src.dir"
-            value="${java.src.dir}/com/d2s/framework/hrsample/model" />
+            value="${java.src.dir}/com/d2s/hrsample/model" />
 
   <path id="entity.generator.classpath">
     <dirset dir="${basedir}">

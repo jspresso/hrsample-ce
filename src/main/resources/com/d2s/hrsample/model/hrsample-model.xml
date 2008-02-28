@@ -76,7 +76,7 @@
     </property>
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/framework/hrsample/images/traceable-48x48.png" />
+      value="classpath:com/d2s/hrsample/images/traceable-48x48.png" />
   </bean>
 
   <bean
@@ -103,7 +103,7 @@
     </property>
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/framework/hrsample/images/city-48x48.png" />
+      value="classpath:com/d2s/hrsample/images/city-48x48.png" />
   </bean>
 
   <bean
@@ -282,10 +282,10 @@
             <map>
               <entry
                 key="M"
-                value="classpath:com/d2s/framework/hrsample/images/male-48x48.png" />
+                value="classpath:com/d2s/hrsample/images/male-48x48.png" />
               <entry
                 key="F"
-                value="classpath:com/d2s/framework/hrsample/images/female-48x48.png" />
+                value="classpath:com/d2s/hrsample/images/female-48x48.png" />
             </map>
           </property>
         </bean>
@@ -432,7 +432,7 @@
     </property>
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/framework/hrsample/images/company-48x48.png" />
+      value="classpath:com/d2s/hrsample/images/company-48x48.png" />
   </bean>
 
   <bean
@@ -542,7 +542,7 @@
     </property>
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/framework/hrsample/images/department-48x48.png" />
+      value="classpath:com/d2s/hrsample/images/department-48x48.png" />
     <property name="renderedProperties">
       <list>
         <value>ouId</value>
@@ -586,7 +586,7 @@
     </property>
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/framework/hrsample/images/team-48x48.png" />
+      value="classpath:com/d2s/hrsample/images/team-48x48.png" />
   </bean>
 
 </beans>

@@ -159,7 +159,7 @@
       ref="Company-departments.subtree" />
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/framework/hrsample/images/structure-48x48.png" />
+      value="classpath:com/d2s/hrsample/images/structure-48x48.png" />
   </bean>
 
   <bean
