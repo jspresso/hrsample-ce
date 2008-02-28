@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="com.d2s.framework.model.persistence.hibernate.property.EntityPropertyAccessor">
+  <class dynamic-update="true" table="COMPANY" persister="com.d2s.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" name="com.d2s.hrsample.model.Company" dynamic-insert="true">
+    <id type="string" column="ID" length="36" name="id">
+      <generator class="assigned"/>
+    </id>
+    <version column="VERSION" unsaved-value="null" name="version"/>
+    <component name="contact"><tuplizer entity-mode="pojo" class="com.d2s.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer" />
+      <property name="address">
+        <column name="CONTACT_ADDRESS" length="256"/>
+      </property>
+      <many-to-one cascade="persist,merge,save-update,refresh,evict,replicate" name="city">
+        <column name="CONTACT_CITY_ID"/>
+      </many-to-one>
+      <property name="phone">
+        <column name="CONTACT_PHONE" length="32"/>
+      </property>
+      <property name="email">
+        <column name="CONTACT_EMAIL" length="128"/>
+      </property>
+    </component>
+    <set inverse="true" cascade="persist,merge,save-update,refresh,evict,replicate,delete" name="departments">
+      <key column="COMPANY_ID"/>
+      <one-to-many class="com.d2s.hrsample.model.Department"/>
+    </set>
+    <set inverse="true" cascade="persist,merge,save-update,refresh,evict,replicate,delete" name="employees">
+      <key column="COMPANY_ID"/>
+      <one-to-many class="com.d2s.hrsample.model.Employee"/>
+    </set>
+    <property name="createTimestamp" type="timestamp">
+      <column name="CREATE_TIMESTAMP"/>
+    </property>
+    <property name="lastUpdateTimestamp" type="timestamp">
+      <column name="LAST_UPDATE_TIMESTAMP"/>
+    </property>
+    <property name="name">
+      <column name="NAME" not-null="true" length="64"/>
+    </property>
+  </class>
+</hibernate-mapping>

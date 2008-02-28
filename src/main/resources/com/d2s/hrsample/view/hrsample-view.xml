@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+                      http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+  default-lazy-init="true">
+
+  <!--
+    The views.
+  -->
+  <bean
+    id="Traceable.pane"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    <property
+      name="labelsPosition"
+      ref="ABOVE" />
+    <property
+      name="columnCount"
+      value="2" />
+    <property
+      name="modelDescriptor"
+      ref="Traceable" />
+    <property name="propertyViewDescriptors">
+      <list>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="createTimestamp" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="lastUpdateTimestamp" />
+        </bean>
+      </list>
+    </property>
+    <property
+      name="description"
+      value="traceable.editing">
+    </property>
+  </bean>
+
+  <bean
+    id="Company.pane"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    <property
+      name="labelsPosition"
+      ref="ASIDE" />
+    <property
+      name="columnCount"
+      value="2" />
+    <property
+      name="modelDescriptor"
+      ref="Company" />
+    <property name="propertyViewDescriptors">
+      <list>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="name" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="contact.address" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="contact.city" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="contact.phone" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="contact.email" />
+        </bean>
+      </list>
+    </property>
+    <property name="propertyWidths">
+      <map>
+        <entry
+          key="name"
+          value="2" />
+      </map>
+    </property>
+    <property
+      name="description"
+      value="company.editing">
+    </property>
+  </bean>
+
+  <bean
+    id="Department-teams.subtree"
+    class="com.d2s.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
+    <property name="nodeGroupDescriptor">
+      <bean
+        class="com.d2s.framework.view.descriptor.basic.BasicListViewDescriptor">
+        <property
+          name="modelDescriptor"
+          ref="Department-teams" />
+        <property
+          name="actionMap"
+          ref="masterDetailActionMap" />
+        <property
+          name="renderedProperty"
+          value="ouId" />
+      </bean>
+    </property>
+  </bean>
+
+  <bean
+    id="Company-departments.subtree"
+    class="com.d2s.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
+    <property name="nodeGroupDescriptor">
+      <bean
+        class="com.d2s.framework.view.descriptor.basic.BasicListViewDescriptor">
+        <property
+          name="modelDescriptor"
+          ref="Company-departments" />
+        <property
+          name="actionMap"
+          ref="masterDetailActionMap" />
+        <property
+          name="renderedProperty"
+          value="ouId" />
+      </bean>
+    </property>
+    <property name="childDescriptor">
+      <ref local="Department-teams.subtree" />
+    </property>
+  </bean>
+
+  <bean
+    id="Company.tree"
+    class="com.d2s.framework.view.descriptor.basic.BasicTreeViewDescriptor">
+    <property
+      name="modelDescriptor"
+      ref="Company" />
+    <property
+      name="renderedProperty"
+      value="name" />
+    <property
+      name="childDescriptor"
+      ref="Company-departments.subtree" />
+    <property
+      name="iconImageURL"
+      value="classpath:com/d2s/framework/hrsample/images/structure-48x48.png" />
+  </bean>
+
+  <bean
+    id="Company.tab.pane"
+    class="com.d2s.framework.view.descriptor.basic.BasicTabViewDescriptor">
+    <property
+      name="modelDescriptor"
+      ref="Company" />
+    <property name="viewDescriptors">
+      <list>
+        <ref local="Company.pane" />
+        <ref local="Company.tree" />
+        <ref local="Traceable.pane" />
+      </list>
+    </property>
+  </bean>
+
+  <bean
+    id="Company-departments.table"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    <property
+      name="modelDescriptor"
+      ref="Company-departments" />
+    <property
+      name="actionMap"
+      ref="masterDetailActionMap" />
+  </bean>
+
+  <bean
+    id="Department-teams.table"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    <property
+      name="modelDescriptor"
+      ref="Department-teams" />
+    <property
+      name="actionMap"
+      ref="masterDetailActionMap" />
+    <property name="columnViewDescriptors">
+      <list>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="ouId" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="name" />
+        </bean>
+        <bean
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property
+            name="name"
+            value="manager" />
+        </bean>
+      </list>
+    </property>
+  </bean>
+
+  <bean
+    id="Departments.and.teams.view"
+    class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+    <property
+      name="leftTopViewDescriptor"
+      ref="Company-departments.table" />
+    <property
+      name="rightBottomViewDescriptor"
+      ref="Department-teams.table" />
+    <property
+      name="masterDetail"
+      value="true" />
+  </bean>
+
+  <bean
+    id="Company.organization.view"
+    class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+    <property
+      name="modelDescriptor"
+      ref="Company" />
+    <property
+      name="leftTopViewDescriptor"
+      ref="Company.tab.pane" />
+    <property
+      name="rightBottomViewDescriptor"
+      ref="Departments.and.teams.view" />
+  </bean>
+
+  <bean
+    id="Cities.table"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
+  </bean>
+
+  <!--
+    The application I18N resources. 
+  -->
+  <bean
+    id="applicationMessageSource"
+    class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property
+      name="parentMessageSource"
+      ref="commonsMessageSource" />
+    <property name="basenames">
+      <list>
+        <value>com.d2s.hrsample.i18n.Messages</value>
+      </list>
+    </property>
+  </bean>
+
+  <bean
+    id="testView"
+    parent="Company.organization.view" />
+
+</beans>

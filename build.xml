@@ -43,7 +43,7 @@
       <arg value="-outputDir" />
       <arg value="${java.src.dir}" />
       <arg value="-includePackages" />
-      <arg value="com.d2s.framework.hrsample.model" />
+      <arg value="com.d2s.hrsample.model" />
     </java>
   </target>
 
