@@ -7,11 +7,11 @@
   default-lazy-init="true">
 
   <!--
-    The modules
+    The workspaces and modules
   -->
   <bean
     id="Masterdata.workspace"
-    class="com.d2s.framework.application.model.Workspace"
+    parent="abstractWorkspace"
     scope="prototype">
     <property
       name="name"
@@ -24,8 +24,7 @@
       value="classpath:com/d2s/hrsample/images/masterdata-48x48.png" />
     <property name="modules">
       <list>
-        <bean
-          class="com.d2s.framework.application.model.FilterableBeanCollectionModule">
+        <bean parent="abstractFilterableBeanCollectionModule">
           <property
             name="name"
             value="masterdata.cities.module" />
@@ -33,17 +32,8 @@
             name="description"
             value="masterdata.cities.module.description" />
           <property
-            name="iconImageURL"
-            value="classpath:com/d2s/hrsample/images/city-48x48.png" />
-          <property
-            name="projectedViewDescriptor"
-            ref="Cities.module.table" />
-          <property
             name="elementComponentDescriptor"
             ref="City" />
-          <property
-            name="startupAction"
-            ref="initModuleFilterAction" />
         </bean>
       </list>
     </property>
@@ -71,5 +61,4 @@
       </list>
     </property>
   </bean>
-
 </beans>

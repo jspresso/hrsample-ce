@@ -588,5 +588,4 @@
       name="iconImageURL"
       value="classpath:com/d2s/hrsample/images/team-48x48.png" />
   </bean>
-
 </beans>
