@@ -233,7 +233,7 @@
       name="rightBottomViewDescriptor"
       ref="Department-teams.table" />
     <property
-      name="masterDetail"
+      name="cascadingModels"
       value="true" />
   </bean>
 
