@@ -3,7 +3,7 @@
   xmlns="http://www.springframework.org/schema/beans"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
-                      http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+                      http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
   default-lazy-init="true">
 
   <!--
@@ -24,16 +24,34 @@
       value="classpath:com/d2s/hrsample/images/masterdata-48x48.png" />
     <property name="modules">
       <list>
-        <bean parent="abstractFilterableBeanCollectionModule">
+        <bean parent="abstractSimpleModule">
           <property
             name="name"
-            value="masterdata.cities.module" />
+            value="masterdata.geography.module" />
           <property
             name="description"
-            value="masterdata.cities.module.description" />
+            value="masterdata.geography.module.description" />
           <property
-            name="elementComponentDescriptor"
-            ref="City" />
+            name="iconImageURL"
+            value="classpath:com/d2s/hrsample/images/geography-48x48.png" />
+          <property name="subModules">
+            <list>
+              <bean parent="abstractFilterableBeanCollectionModule">
+                <property
+                  name="name"
+                  value="masterdata.cities.module" />
+                <property
+                  name="description"
+                  value="masterdata.cities.module.description" />
+                <property
+                  name="elementComponentDescriptor"
+                  ref="City" />
+                <property
+                  name="elementViewDescriptor"
+                  ref="City.module.view" />
+              </bean>
+            </list>
+          </property>
         </bean>
       </list>
     </property>
