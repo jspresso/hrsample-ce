@@ -262,9 +262,7 @@
       name="columnCount"
       value="1" />
     <property name="actionMap">
-      <bean
-        id="readonlyBeanCollectionModuleActionMap"
-        class="com.d2s.framework.view.action.ActionMap">
+      <bean class="com.d2s.framework.view.action.ActionMap">
         <property name="actionLists">
           <list>
             <bean class="com.d2s.framework.view.action.ActionList">
