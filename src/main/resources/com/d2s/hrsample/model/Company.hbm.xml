@@ -29,14 +29,14 @@
       <key column="COMPANY_ID"/>
       <one-to-many class="com.d2s.hrsample.model.Employee"/>
     </set>
+    <property name="name">
+      <column name="NAME" not-null="true" length="64"/>
+    </property>
     <property name="createTimestamp" type="timestamp">
       <column name="CREATE_TIMESTAMP"/>
     </property>
     <property name="lastUpdateTimestamp" type="timestamp">
       <column name="LAST_UPDATE_TIMESTAMP"/>
-    </property>
-    <property name="name">
-      <column name="NAME" not-null="true" length="64"/>
     </property>
   </class>
 </hibernate-mapping>

@@ -41,20 +41,24 @@
       <list-index column="EVENTS_SEQ"/>
       <one-to-many class="com.d2s.hrsample.model.Event"/>
     </list>
+    <set table="TEAM_TEAM_MEMBERS" inverse="true" cascade="none" name="teams">
+      <key column="EMPLOYEE_ID"/>
+      <many-to-many column="TEAM_ID" class="com.d2s.hrsample.model.Team"/>
+    </set>
     <many-to-one cascade="persist,merge,save-update" name="company">
       <column name="COMPANY_ID" not-null="true"/>
     </many-to-one>
     <many-to-one cascade="persist,merge,save-update,refresh,evict,replicate" name="managedOu">
       <column name="MANAGED_OU_ID" unique="true"/>
     </many-to-one>
+    <property name="name">
+      <column name="NAME" not-null="true" length="64"/>
+    </property>
     <property name="createTimestamp" type="timestamp">
       <column name="CREATE_TIMESTAMP"/>
     </property>
     <property name="lastUpdateTimestamp" type="timestamp">
       <column name="LAST_UPDATE_TIMESTAMP"/>
-    </property>
-    <property name="name">
-      <column name="NAME" not-null="true" length="64"/>
     </property>
   </class>
 </hibernate-mapping>

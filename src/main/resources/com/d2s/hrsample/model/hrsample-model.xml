@@ -291,6 +291,7 @@
         </bean>
         <ref bean="contact" />
         <ref local="Employee-events" />
+        <ref local="Employee-teams" />
         <bean
           class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
@@ -338,11 +339,51 @@
     <property name="serviceDelegates">
       <map>
         <entry key="com.d2s.hrsample.model.service.EmployeeService">
-          <bean
-            class="com.d2s.hrsample.model.service.EmployeeServiceDelegate" />
+          <bean class="com.d2s.hrsample.model.service.EmployeeServiceDelegate" />
         </entry>
       </map>
     </property>
+  </bean>
+
+  <bean
+    id="Employee-teams"
+    class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
+    <property
+      name="name"
+      value="teams" />
+    <property name="referencedDescriptor">
+      <bean
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        <property
+          name="collectionInterface"
+          value="java.util.Set" />
+        <property
+          name="elementDescriptor"
+          ref="Team" />
+      </bean>
+    </property>
+  </bean>
+
+  <bean
+    id="Team-employees"
+    class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
+    <property
+      name="name"
+      value="teamMembers" />
+    <property name="referencedDescriptor">
+      <bean
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        <property
+          name="collectionInterface"
+          value="java.util.Set" />
+        <property
+          name="elementDescriptor"
+          ref="Employee" />
+      </bean>
+    </property>
+    <property
+      name="reverseRelationEnd"
+      ref="Employee-teams" />
   </bean>
 
   <bean
@@ -452,8 +493,7 @@
   <bean
     id="OrganizationalUnit"
     class="com.d2s.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg
-      value="com.d2s.hrsample.model.OrganizationalUnit" />
+    <constructor-arg value="com.d2s.hrsample.model.OrganizationalUnit" />
     <property
       name="purelyAbstract"
       value="true" />
@@ -582,6 +622,7 @@
             name="mandatory"
             value="true" />
         </bean>
+        <ref local="Team-employees" />
       </list>
     </property>
     <property
