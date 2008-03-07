@@ -3,7 +3,7 @@
  */
 package com.d2s.hrsample.startup;
 
-import com.d2s.framework.application.frontend.startup.swing.SwingStartup;
+import com.d2s.framework.application.startup.swing.SwingStartup;
 
 /**
  * Swing HR sample startup class.

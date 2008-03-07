@@ -5,7 +5,7 @@ package com.d2s.hrsample.startup.development;
 
 import org.springframework.beans.factory.BeanFactory;
 
-import com.d2s.framework.application.backend.startup.development.AbstractTestDataPersister;
+import com.d2s.framework.application.startup.development.AbstractTestDataPersister;
 import com.d2s.hrsample.model.City;
 
 /**
