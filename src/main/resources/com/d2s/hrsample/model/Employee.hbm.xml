@@ -2,16 +2,16 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping default-access="com.d2s.framework.model.persistence.hibernate.property.EntityPropertyAccessor">
-  <class dynamic-update="true" table="EMPLOYEE" persister="com.d2s.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" name="com.d2s.hrsample.model.Employee" dynamic-insert="true">
-    <id type="string" column="ID" length="36" name="id">
+  <class persister="com.d2s.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="EMPLOYEE" dynamic-insert="true" name="com.d2s.hrsample.model.Employee">
+    <id name="id" type="string" column="ID" length="36">
       <generator class="assigned"/>
     </id>
-    <version column="VERSION" unsaved-value="null" name="version"/>
+    <version unsaved-value="null" name="version" column="VERSION"/>
     <property name="firstName">
       <column name="FIRST_NAME" length="32"/>
     </property>
     <property name="ssn">
-      <column name="SSN" unique-key="EMP_SSN_UNQ" length="10"/>
+      <column name="SSN" length="10" unique-key="EMP_SSN_UNQ"/>
     </property>
     <property name="birthDate" type="date">
       <column name="BIRTH_DATE"/>
@@ -20,7 +20,7 @@
       <column name="HIRE_DATE"/>
     </property>
     <property name="gender">
-      <column name="GENDER" not-null="true" length="1"/>
+      <column name="GENDER" length="1" not-null="true"/>
     </property>
     <component name="contact"><tuplizer entity-mode="pojo" class="com.d2s.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer" />
       <property name="address">
@@ -41,9 +41,9 @@
       <list-index column="EVENTS_SEQ"/>
       <one-to-many class="com.d2s.hrsample.model.Event"/>
     </list>
-    <set table="TEAM_TEAM_MEMBERS" inverse="true" cascade="none" name="teams">
+    <set inverse="true" cascade="none" table="TEAM_TEAM_MEMBERS" name="teams">
       <key column="EMPLOYEE_ID"/>
-      <many-to-many column="TEAM_ID" class="com.d2s.hrsample.model.Team"/>
+      <many-to-many class="com.d2s.hrsample.model.Team" column="TEAM_ID"/>
     </set>
     <many-to-one cascade="persist,merge,save-update" name="company">
       <column name="COMPANY_ID" not-null="true"/>
@@ -52,7 +52,7 @@
       <column name="MANAGED_OU_ID" unique="true"/>
     </many-to-one>
     <property name="name">
-      <column name="NAME" not-null="true" length="64"/>
+      <column name="NAME" length="64" not-null="true"/>
     </property>
     <property name="createTimestamp" type="timestamp">
       <column name="CREATE_TIMESTAMP"/>

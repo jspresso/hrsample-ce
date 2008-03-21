@@ -10,7 +10,7 @@
   <property name="ddl.dir" value="${src.dir}/ddl" />
 
   <property name="xdoclet.lib.dir" value="${xdoclet.home}/lib" />
-  <property name="xdoclet.plugins.dir" value="${xdoclet.home}/plugins" />
+  <property name="xdoclet.plugins.dir" value="${xdoclet.home}/lib" />
   <property name="model.src.dir"
             value="${java.src.dir}/com/d2s/hrsample/model" />
 
@@ -56,7 +56,7 @@
   <target name="xdoclet-hibernate" depends="clean-hibernate">
     <mkdir dir="${resources.src.dir}" />
     <path id="xdoclet.task.classpath">
-      <pathelement location="${xdoclet.plugins.dir}/xdoclet-plugin-hibernate-1.0.2.jar" />
+      <pathelement location="${xdoclet.plugins.dir}/xdoclet-plugin-hibernate-1.0.4.jar" />
       <fileset dir="${xdoclet.lib.dir}">
         <include name="**/*.jar" />
       </fileset>
