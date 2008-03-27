@@ -282,6 +282,34 @@
     </property>
   </bean>
 
+  <bean
+    id="Employee.module.view"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    <property
+      name="columnCount"
+      value="1" />
+    <property name="actionMap">
+      <bean class="com.d2s.framework.view.action.ActionMap">
+        <property name="actionLists">
+          <list>
+            <bean class="com.d2s.framework.view.action.ActionList">
+              <property
+                name="name"
+                value="FILE" />
+              <property name="actions">
+                <list>
+                  <ref bean="saveModuleObjectFrontAction" />
+                  <ref bean="reloadModuleObjectFrontAction" />
+                </list>
+              </property>
+            </bean>
+          </list>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
   <!--
     The application I18N resources. 
   -->

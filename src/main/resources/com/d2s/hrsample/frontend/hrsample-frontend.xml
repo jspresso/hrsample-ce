@@ -57,6 +57,39 @@
     </property>
   </bean>
 
+  <bean
+    id="Employees.workspace"
+    parent="abstractWorkspace"
+    scope="prototype">
+    <property
+      name="name"
+      value="employees.workspace" />
+    <property
+      name="description"
+      value="employees.workspace.description" />
+    <property
+      name="iconImageURL"
+      value="classpath:com/d2s/hrsample/images/people-48x48.png" />
+    <property name="modules">
+      <list>
+        <bean parent="abstractFilterableBeanCollectionModule">
+          <property
+            name="name"
+            value="employees.module" />
+          <property
+            name="description"
+            value="employees.module.description" />
+          <property
+            name="elementComponentDescriptor"
+            ref="Employee" />
+          <property
+            name="elementViewDescriptor"
+            ref="Employee.module.view" />
+        </bean>
+      </list>
+    </property>
+  </bean>
+
   <!--
     The controller.
   -->
@@ -70,12 +103,15 @@
     <property
       name="iconImageURL"
       value="classpath:com/d2s/hrsample/images/people-48x48.png" />
+    <!--
     <property
       name="loginContextName"
       value="hrsample-app" />
-    <property name="workspaces">
+    -->
+     <property name="workspaces">
       <list>
         <ref bean="Masterdata.workspace" />
+        <ref bean="Employees.workspace" />
       </list>
     </property>
   </bean>
