@@ -29,6 +29,11 @@
       <key column="COMPANY_ID"/>
       <one-to-many class="com.d2s.hrsample.model.Employee"/>
     </set>
+    <list cascade="persist,merge,save-update,refresh,evict,replicate,delete" name="events">
+      <key column="EVENTS_COMPANY_ID"/>
+      <list-index column="EVENTS_SEQ"/>
+      <one-to-many class="com.d2s.hrsample.model.Event"/>
+    </list>
     <property name="name">
       <column name="NAME" length="64" not-null="true"/>
     </property>

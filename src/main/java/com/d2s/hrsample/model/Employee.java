@@ -160,7 +160,7 @@ public interface Employee extends
    * @hibernate.list
    *           cascade = "persist,merge,save-update,refresh,evict,replicate,delete"
    * @hibernate.key
-   *           column = "EVENTS_PARENT_ID"
+   *           column = "EVENTS_EMPLOYEE_ID"
    * @hibernate.one-to-many
    *           class = "com.d2s.hrsample.model.Event"
    * @hibernate.list-index

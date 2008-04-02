@@ -37,7 +37,7 @@
       </property>
     </component>
     <list cascade="persist,merge,save-update,refresh,evict,replicate,delete" name="events">
-      <key column="EVENTS_PARENT_ID"/>
+      <key column="EVENTS_EMPLOYEE_ID"/>
       <list-index column="EVENTS_SEQ"/>
       <one-to-many class="com.d2s.hrsample.model.Event"/>
     </list>

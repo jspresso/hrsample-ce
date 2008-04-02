@@ -251,6 +251,30 @@
       ref="Departments.and.teams.view" />
   </bean>
 
+  <bean
+    id="Employee.pane"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    <property
+      name="modelDescriptor"
+      ref="Employee" />
+    <property
+      name="columnCount"
+      value="3" />
+  </bean>
+
+  <bean
+    id="Employee-events.table"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    <property
+      name="modelDescriptor"
+      ref="Employee-events" />
+    <property
+      name="actionMap"
+      ref="masterDetailActionMap" />
+  </bean>
+
   <!--
     Customized module views
   -->
@@ -285,10 +309,16 @@
   <bean
     id="Employee.module.view"
     parent="decoratedView"
-    class="com.d2s.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
     <property
-      name="columnCount"
-      value="1" />
+      name="modelDescriptor"
+      ref="Employee" />
+    <property
+      name="leftTopViewDescriptor"
+      ref="Employee.pane" />
+    <property
+      name="rightBottomViewDescriptor"
+      ref="Employee-events.table" />
     <property name="actionMap">
       <bean class="com.d2s.framework.view.action.ActionMap">
         <property name="actionLists">

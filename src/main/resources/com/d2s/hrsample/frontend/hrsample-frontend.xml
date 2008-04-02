@@ -80,6 +80,9 @@
             name="description"
             value="employees.module.description" />
           <property
+            name="iconImageURL"
+            value="classpath:com/d2s/hrsample/images/employees-48x48.png" />
+          <property
             name="elementComponentDescriptor"
             ref="Employee" />
           <property
@@ -104,11 +107,11 @@
       name="iconImageURL"
       value="classpath:com/d2s/hrsample/images/people-48x48.png" />
     <!--
-    <property
+      <property
       name="loginContextName"
       value="hrsample-app" />
     -->
-     <property name="workspaces">
+    <property name="workspaces">
       <list>
         <ref bean="Masterdata.workspace" />
         <ref bean="Employees.workspace" />

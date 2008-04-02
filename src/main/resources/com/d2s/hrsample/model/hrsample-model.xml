@@ -180,6 +180,13 @@
         </bean>
       </list>
     </property>
+    <property name="renderedProperties">
+      <list>
+        <value>text</value>
+        <value>createTimestamp</value>
+        <value>lastUpdateTimestamp</value>
+      </list>
+    </property>
   </bean>
 
   <bean
@@ -343,6 +350,23 @@
         </entry>
       </map>
     </property>
+    <property
+      name="iconImageURL"
+      value="classpath:com/d2s/hrsample/images/male-48x48.png" />
+    <property name="renderedProperties">
+      <list>
+        <value>name</value>
+        <value>firstName</value>
+        <value>gender</value>
+        <value>birthDate</value>
+        <value>age</value>
+        <value>ssn</value>
+        <value>contact</value>
+        <value>company</value>
+        <value>createTimestamp</value>
+        <value>lastUpdateTimestamp</value>
+      </list>
+    </property>
   </bean>
 
   <bean
@@ -469,6 +493,7 @@
         <ref bean="contact" />
         <ref bean="Company-departments" />
         <ref bean="Company-employees" />
+        <ref bean="Employee-events"/>
       </list>
     </property>
     <property
