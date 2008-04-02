@@ -326,9 +326,6 @@
     parent="decoratedView"
     class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
     <property
-      name="modelDescriptor"
-      ref="Employee" />
-    <property
       name="leftTopViewDescriptor"
       ref="Employee.pane" />
     <property name="rightBottomViewDescriptor">
@@ -348,6 +345,30 @@
           ref="Event.text.pane" />
       </bean>
     </property>
+    <property name="actionMap">
+      <bean class="com.d2s.framework.view.action.ActionMap">
+        <property name="actionLists">
+          <list>
+            <bean class="com.d2s.framework.view.action.ActionList">
+              <property
+                name="name"
+                value="FILE" />
+              <property name="actions">
+                <list>
+                  <ref bean="saveModuleObjectFrontAction" />
+                  <ref bean="reloadModuleObjectFrontAction" />
+                </list>
+              </property>
+            </bean>
+          </list>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <bean
+    id="Company.module.view"
+    parent="Company.organization.view">
     <property name="actionMap">
       <bean class="com.d2s.framework.view.action.ActionMap">
         <property name="actionLists">

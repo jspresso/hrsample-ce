@@ -93,6 +93,42 @@
     </property>
   </bean>
 
+  <bean
+    id="Organization.workspace"
+    parent="abstractWorkspace"
+    scope="prototype">
+    <property
+      name="name"
+      value="organization.workspace" />
+    <property
+      name="description"
+      value="organization.workspace.description" />
+    <property
+      name="iconImageURL"
+      value="classpath:com/d2s/hrsample/images/structure-48x48.png" />
+    <property name="modules">
+      <list>
+        <bean parent="abstractFilterableBeanCollectionModule">
+          <property
+            name="name"
+            value="companies.module" />
+          <property
+            name="description"
+            value="companies.module.description" />
+          <property
+            name="iconImageURL"
+            value="classpath:com/d2s/hrsample/images/company-48x48.png" />
+          <property
+            name="elementComponentDescriptor"
+            ref="Company" />
+          <property
+            name="elementViewDescriptor"
+            ref="Company.module.view" />
+        </bean>
+      </list>
+    </property>
+  </bean>
+
   <!--
     The controller.
   -->
@@ -115,6 +151,7 @@
       <list>
         <ref bean="Masterdata.workspace" />
         <ref bean="Employees.workspace" />
+        <ref bean="Organization.workspace" />
       </list>
     </property>
   </bean>

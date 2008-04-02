@@ -49,7 +49,7 @@
       <column name="COMPANY_ID" not-null="true"/>
     </many-to-one>
     <many-to-one cascade="persist,merge,save-update,refresh,evict,replicate" name="managedOu">
-      <column name="MANAGED_OU_ID" unique="true"/>
+      <column name="MANAGED_OU_ID"/> <!-- unique="true" -->
     </many-to-one>
     <property name="name">
       <column name="NAME" length="64" not-null="true"/>

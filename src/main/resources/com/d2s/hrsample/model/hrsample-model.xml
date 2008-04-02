@@ -361,6 +361,7 @@
         <value>company</value>
         <value>createTimestamp</value>
         <value>lastUpdateTimestamp</value>
+        <value>managedOu</value>
       </list>
     </property>
   </bean>
@@ -489,12 +490,19 @@
         <ref bean="contact" />
         <ref bean="Company-departments" />
         <ref bean="Company-employees" />
-        <ref bean="Employee-events" />
       </list>
     </property>
     <property
       name="iconImageURL"
       value="classpath:com/d2s/hrsample/images/company-48x48.png" />
+    <property name="renderedProperties">
+      <list>
+        <value>name</value>
+        <value>contact</value>
+        <value>createTimestamp</value>
+        <value>lastUpdateTimestamp</value>
+      </list>
+    </property>
   </bean>
 
   <bean
@@ -609,10 +617,7 @@
         <value>ouId</value>
         <value>name</value>
         <value>manager</value>
-        <value>contact.address</value>
-        <value>contact.city</value>
-        <value>contact.phone</value>
-        <value>contact.email</value>
+        <value>contact</value>
       </list>
     </property>
   </bean>
@@ -649,5 +654,13 @@
     <property
       name="iconImageURL"
       value="classpath:com/d2s/hrsample/images/team-48x48.png" />
+    <property name="renderedProperties">
+      <list>
+        <value>ouId</value>
+        <value>name</value>
+        <value>manager</value>
+        <value>contact</value>
+      </list>
+    </property>
   </bean>
 </beans>

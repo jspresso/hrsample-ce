@@ -38,7 +38,7 @@ public class EmployeeIntegrityProcessors {
      * {@inheritDoc}
      */
     @Override
-    public void preprocessSetterIntegrity(Employee employee,
+    public void preprocessSetter(Employee employee,
         @SuppressWarnings("unused")
         Date oldBirthDate, Date newBirthDate) {
       if (newBirthDate == null
@@ -68,15 +68,16 @@ public class EmployeeIntegrityProcessors {
      * {@inheritDoc}
      */
     @Override
-    public void postprocessSetterIntegrity(Employee employee,
+    public String interceptSetter(Employee employee,
         @SuppressWarnings("unused")
         String oldFirstName, String newFirstName) {
       if (newFirstName != null && newFirstName.length() > 0) {
         StringBuffer formattedName = new StringBuffer();
         formattedName.append(newFirstName.substring(0, 1).toUpperCase());
         formattedName.append(newFirstName.substring(1).toLowerCase());
-        employee.setFirstName(formattedName.toString());
+        return formattedName.toString();
       }
+      return super.interceptSetter(employee, oldFirstName, newFirstName);
     }
   }
 }
