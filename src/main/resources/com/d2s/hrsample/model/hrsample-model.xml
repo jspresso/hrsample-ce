@@ -159,6 +159,17 @@
   </bean>
 
   <bean
+    id="Event.text"
+    class="com.d2s.framework.model.descriptor.basic.BasicTextPropertyDescriptor">
+    <property
+      name="name"
+      value="text" />
+    <property
+      name="maxLength"
+      value="2048" />
+  </bean>
+
+  <bean
     id="Event"
     class="com.d2s.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
     <constructor-arg value="com.d2s.hrsample.model.Event" />
@@ -169,22 +180,7 @@
     </property>
     <property name="propertyDescriptors">
       <list>
-        <bean
-          class="com.d2s.framework.model.descriptor.basic.BasicTextPropertyDescriptor">
-          <property
-            name="name"
-            value="text" />
-          <property
-            name="maxLength"
-            value="2048" />
-        </bean>
-      </list>
-    </property>
-    <property name="renderedProperties">
-      <list>
-        <value>text</value>
-        <value>createTimestamp</value>
-        <value>lastUpdateTimestamp</value>
+        <ref bean="Event.text" />
       </list>
     </property>
   </bean>
@@ -493,7 +489,7 @@
         <ref bean="contact" />
         <ref bean="Company-departments" />
         <ref bean="Company-employees" />
-        <ref bean="Employee-events"/>
+        <ref bean="Employee-events" />
       </list>
     </property>
     <property

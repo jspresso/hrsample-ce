@@ -275,6 +275,21 @@
       ref="masterDetailActionMap" />
   </bean>
 
+  <bean
+    id="Event.text.pane"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
+    <property
+      name="name"
+      value="text" />
+    <property
+      name="modelDescriptor"
+      ref="Event.text" />
+    <property
+      name="actionMap"
+      ref="binaryPropertyActionMap" />
+  </bean>
+
   <!--
     Customized module views
   -->
@@ -316,9 +331,23 @@
     <property
       name="leftTopViewDescriptor"
       ref="Employee.pane" />
-    <property
-      name="rightBottomViewDescriptor"
-      ref="Employee-events.table" />
+    <property name="rightBottomViewDescriptor">
+      <bean
+        class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+        <property
+          name="orientation"
+          ref="HORIZONTAL" />
+        <property
+          name="cascadingModels"
+          value="true" />
+        <property
+          name="leftTopViewDescriptor"
+          ref="Employee-events.table" />
+        <property
+          name="rightBottomViewDescriptor"
+          ref="Event.text.pane" />
+      </bean>
+    </property>
     <property name="actionMap">
       <bean class="com.d2s.framework.view.action.ActionMap">
         <property name="actionLists">
