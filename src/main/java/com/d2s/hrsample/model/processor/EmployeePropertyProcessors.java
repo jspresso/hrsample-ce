@@ -5,12 +5,12 @@ package com.d2s.hrsample.model.processor;
 
 import java.util.Date;
 
-import com.d2s.framework.util.bean.integrity.EmptyPropertyIntegrityProcessor;
+import com.d2s.framework.util.bean.integrity.EmptyPropertyProcessor;
 import com.d2s.framework.util.bean.integrity.IntegrityException;
 import com.d2s.hrsample.model.Employee;
 
 /**
- * Employee integrity processors.
+ * Employee property processors.
  * <p>
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  * <p>
@@ -18,10 +18,10 @@ import com.d2s.hrsample.model.Employee;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-public class EmployeeIntegrityProcessors {
+public class EmployeePropertyProcessors {
 
   /**
-   * Birth date integrity processor.
+   * Birth date property processor.
    * <p>
    * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
    * <p>
@@ -29,8 +29,8 @@ public class EmployeeIntegrityProcessors {
    * @version $LastChangedRevision$
    * @author Vincent Vandenschrick
    */
-  public static class BirthDateIntegrityProcessor extends
-      EmptyPropertyIntegrityProcessor<Employee, Date> {
+  public static class BirthDateProcessor extends
+      EmptyPropertyProcessor<Employee, Date> {
 
     /**
      * Checks that the employee age is at least 18.
@@ -49,7 +49,7 @@ public class EmployeeIntegrityProcessors {
   }
 
   /**
-   * First name integrity processor.
+   * First name property processor.
    * <p>
    * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
    * <p>
@@ -57,8 +57,8 @@ public class EmployeeIntegrityProcessors {
    * @version $LastChangedRevision$
    * @author Vincent Vandenschrick
    */
-  public static class FirstNameIntegrityProcessor extends
-      EmptyPropertyIntegrityProcessor<Employee, String> {
+  public static class FirstNameProcessor extends
+      EmptyPropertyProcessor<Employee, String> {
 
     /**
      * Formats the new first name. The formatting is :

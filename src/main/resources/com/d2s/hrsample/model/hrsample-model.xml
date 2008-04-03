@@ -221,7 +221,7 @@
           <property name="integrityProcessors">
             <list>
               <bean
-                class="com.d2s.hrsample.model.processor.EmployeeIntegrityProcessors$FirstNameIntegrityProcessor" />
+                class="com.d2s.hrsample.model.processor.EmployeePropertyProcessors$FirstNameProcessor" />
             </list>
           </property>
         </bean>
@@ -254,7 +254,7 @@
           <property name="integrityProcessors">
             <list>
               <bean
-                class="com.d2s.hrsample.model.processor.EmployeeIntegrityProcessors$BirthDateIntegrityProcessor" />
+                class="com.d2s.hrsample.model.processor.EmployeePropertyProcessors$BirthDateProcessor" />
             </list>
           </property>
         </bean>
