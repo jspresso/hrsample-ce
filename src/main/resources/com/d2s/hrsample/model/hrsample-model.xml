@@ -361,7 +361,6 @@
         <value>company</value>
         <value>createTimestamp</value>
         <value>lastUpdateTimestamp</value>
-        <value>managedOu</value>
       </list>
     </property>
   </bean>
