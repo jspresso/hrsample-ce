@@ -38,9 +38,7 @@ public class EmployeePropertyProcessors {
      * {@inheritDoc}
      */
     @Override
-    public void preprocessSetter(Employee employee,
-        @SuppressWarnings("unused")
-        Date oldBirthDate, Date newBirthDate) {
+    public void preprocessSetter(Employee employee, Date newBirthDate) {
       if (newBirthDate == null
           || employee.computeAge(newBirthDate).intValue() < 18) {
         throw new IntegrityException("Age is below 18", "age.below.18");
@@ -68,16 +66,14 @@ public class EmployeePropertyProcessors {
      * {@inheritDoc}
      */
     @Override
-    public String interceptSetter(Employee employee,
-        @SuppressWarnings("unused")
-        String oldFirstName, String newFirstName) {
+    public String interceptSetter(Employee employee, String newFirstName) {
       if (newFirstName != null && newFirstName.length() > 0) {
         StringBuffer formattedName = new StringBuffer();
         formattedName.append(newFirstName.substring(0, 1).toUpperCase());
         formattedName.append(newFirstName.substring(1).toLowerCase());
         return formattedName.toString();
       }
-      return super.interceptSetter(employee, oldFirstName, newFirstName);
+      return super.interceptSetter(employee, newFirstName);
     }
   }
 }

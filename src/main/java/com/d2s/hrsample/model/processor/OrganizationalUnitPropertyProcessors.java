@@ -39,8 +39,7 @@ public class OrganizationalUnitPropertyProcessors {
      */
     @Override
     public void preprocessSetter(OrganizationalUnit organizationalUnit,
-        @SuppressWarnings("unused")
-        Employee oldManager, Employee newManager) {
+        Employee newManager) {
       if (newManager == null || newManager.getCompany() == null
           || !newManager.getCompany().equals(organizationalUnit.getCompany())) {
         throw new IntegrityException(
