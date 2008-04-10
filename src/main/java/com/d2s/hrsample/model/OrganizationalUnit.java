@@ -95,4 +95,11 @@ public interface OrganizationalUnit extends
    */
   void setManager(com.d2s.hrsample.model.Employee manager);
 
+  /**
+   * Gets the company.
+   *
+   * @return the company.
+   */
+  com.d2s.hrsample.model.Company getCompany();
+
 }

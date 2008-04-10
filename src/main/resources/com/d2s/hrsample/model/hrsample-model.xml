@@ -516,6 +516,19 @@
     <property
       name="mandatory"
       value="true" />
+    <property name="integrityProcessors">
+      <list>
+        <bean
+          class="com.d2s.hrsample.model.processor.OrganizationalUnitPropertyProcessors$ManagerProcessor" />
+      </list>
+    </property>
+    <property name="initializationMapping">
+      <map>
+        <entry
+          key="company"
+          value="company" />
+      </map>
+    </property>
   </bean>
 
   <bean
@@ -553,6 +566,18 @@
         </bean>
         <ref bean="contact" />
         <ref bean="OrganizationalUnit-manager" />
+        <bean
+          class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+          <property
+            name="name"
+            value="company" />
+          <property
+            name="referencedDescriptor"
+            ref="Company" />
+          <property
+            name="delegateClassName"
+            value="com.d2s.hrsample.model.extension.OrganizationalUnitExtension" />
+        </bean>
       </list>
     </property>
   </bean>

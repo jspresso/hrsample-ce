@@ -47,80 +47,74 @@ public class HrTestDataPersister extends AbstractTestDataPersister {
     City suresnes = createCity("Suresnes", "92150");
     City evry = createCity("Evry", "91000");
 
+    // Company
+    Company design2see = createCompany("Design2See",
+        "123 avenue de la Liberté", paris, "contact@design2see.com",
+        "+33 123 456 000");
+
     // Employees
     Employee johnDoe = createEmployee("M", "Doe", "John",
         "12 allée du Chien qui Fume", evry, "john.doe@design2see.com",
-        "+33 1 152 368 984", "02/05/1972", "03/08/2005", "1523698754");
+        "+33 1 152 368 984", "02/05/1972", "03/08/2005", "1523698754",
+        design2see);
 
     Employee mikeDen = createEmployee("M", "Den", "Mike",
         "26 rue de la Pie qui Chante", suresnes, "mike.den@design2see.com",
-        "+33 1 968 846 398", "05/07/1970", "01/03/2004", "1859637461");
+        "+33 1 968 846 398", "05/07/1970", "01/03/2004", "1859637461",
+        design2see);
 
     Employee evaGreen = createEmployee("F", "Green", "Eva",
         "68 rue de l'Eléphant Vert", suresnes, "eva.green@design2see.com",
-        "+33 1 958 536 972", "10/08/1977", "06/04/2002", "2856752387");
+        "+33 1 958 536 972", "10/08/1977", "06/04/2002", "2856752387",
+        design2see);
 
     Employee gloriaSan = createEmployee("F", "San", "Gloria",
         "13 avenue du Poisson Enragé", evry, "gloria.san@design2see.com",
-        "+33 1 956 367 412", "09/01/1969", "03/01/2006", "2597853274");
+        "+33 1 956 367 412", "09/01/1969", "03/01/2006", "2597853274",
+        design2see);
 
     Employee mariaTrulli = createEmployee("F", "Trulli", "Maria",
         "20 avenue du Crocodile Marteau", evry, "maria.trulli@design2see.com",
-        "+33 1 868 745 369", "01/02/1976", "03/10/2006", "2325985423");
+        "+33 1 868 745 369", "01/02/1976", "03/10/2006", "2325985423",
+        design2see);
 
     Employee isabelleMartin = createEmployee("F", "Martin", "Isabelle",
         "20 allée de la Gazelle Sauteuse", evry,
         "isabelle.martin@design2see.com", "+33 1 698 256 365", "04/07/1970",
-        "12/06/2001", "2652398751");
+        "12/06/2001", "2652398751", design2see);
 
-    // Company departments teams and employees
-    Company design2see = createCompany("Design2See",
-        "123 avenue de la Liberté", paris, "contact@design2see.com",
-        "+33 123 456 000");
-    design2see.addToEmployees(johnDoe);
-    design2see.addToEmployees(mikeDen);
-    design2see.addToEmployees(evaGreen);
-    design2see.addToEmployees(gloriaSan);
-    design2see.addToEmployees(mariaTrulli);
-    design2see.addToEmployees(isabelleMartin);
-
+    // Departments and teams.
     Department hrDepartment = createDepartment("Human Resources", "HR-000",
         "124 avenue de la Liberté", paris, "hr@design2see.com",
-        "+33 123 456 100", johnDoe);
-    design2see.addToDepartments(hrDepartment);
+        "+33 123 456 100", design2see, johnDoe);
 
     Team hr001Team = createTeam("HR 001 Team", "HR-001",
         "124 avenue de la Liberté", paris, "hr001@design2see.com",
-        "+33 123 456 101", mikeDen);
+        "+33 123 456 101", hrDepartment, mikeDen);
     hr001Team.addToTeamMembers(johnDoe);
     hr001Team.addToTeamMembers(mikeDen);
-    hrDepartment.addToTeams(hr001Team);
 
     Team hr002Team = createTeam("HR 002 Team", "HR-002",
         "124 avenue de la Liberté", paris, "hr002@design2see.com",
-        "+33 123 456 102", evaGreen);
+        "+33 123 456 102", hrDepartment, evaGreen);
     hr002Team.addToTeamMembers(johnDoe);
     hr002Team.addToTeamMembers(evaGreen);
-    hrDepartment.addToTeams(hr002Team);
 
     Department itDepartment = createDepartment("Information Technology",
         "IT-000", "125 avenue de la Liberté", paris, "it@design2see.com",
-        "+33 123 456 200", gloriaSan);
-    design2see.addToDepartments(itDepartment);
+        "+33 123 456 200", design2see, gloriaSan);
 
     Team it001Team = createTeam("IT 001 Team", "IT-001",
         "125 avenue de la Liberté", paris, "it001@design2see.com",
-        "+33 123 456 201", mariaTrulli);
+        "+33 123 456 201", itDepartment, mariaTrulli);
     it001Team.addToTeamMembers(gloriaSan);
     it001Team.addToTeamMembers(mariaTrulli);
-    itDepartment.addToTeams(it001Team);
 
     Team it002Team = createTeam("IT 002 Team", "IT-002",
         "125 avenue de la Liberté", paris, "it002@design2see.com",
-        "+33 123 456 202", isabelleMartin);
+        "+33 123 456 202", itDepartment, isabelleMartin);
     it002Team.addToTeamMembers(gloriaSan);
     it002Team.addToTeamMembers(isabelleMartin);
-    itDepartment.addToTeams(it002Team);
 
     saveOrUpdate(design2see);
   }
@@ -145,7 +139,7 @@ public class HrTestDataPersister extends AbstractTestDataPersister {
   }
 
   private Department createDepartment(String name, String ouId, String address,
-      City city, String email, String phone, Employee manager) {
+      City city, String email, String phone, Company company, Employee manager) {
     Department department = createEntityInstance(Department.class);
     department.setName(name);
     department.setOuId(ouId);
@@ -153,12 +147,13 @@ public class HrTestDataPersister extends AbstractTestDataPersister {
     department.getContact().setCity(city);
     department.getContact().setEmail(email);
     department.getContact().setPhone(phone);
+    department.setCompany(company);
     department.setManager(manager);
     return department;
   }
 
   private Team createTeam(String name, String ouId, String address, City city,
-      String email, String phone, Employee manager) {
+      String email, String phone, Department department, Employee manager) {
     Team team = createEntityInstance(Team.class);
     team.setName(name);
     team.setOuId(ouId);
@@ -166,13 +161,14 @@ public class HrTestDataPersister extends AbstractTestDataPersister {
     team.getContact().setCity(city);
     team.getContact().setEmail(email);
     team.getContact().setPhone(phone);
+    team.setDepartment(department);
     team.setManager(manager);
     return team;
   }
 
   private Employee createEmployee(String gender, String name, String firstName,
       String address, City city, String email, String phone, String birthDate,
-      String hireDate, String ssn) {
+      String hireDate, String ssn, Company company) {
     SimpleDateFormat df = new SimpleDateFormat("DD/MM/yyyy");
 
     Employee employee = createEntityInstance(Employee.class);
@@ -194,6 +190,7 @@ public class HrTestDataPersister extends AbstractTestDataPersister {
       ex.printStackTrace(System.err);
     }
     employee.setSsn(ssn);
+    employee.setCompany(company);
     return employee;
   }
 }
