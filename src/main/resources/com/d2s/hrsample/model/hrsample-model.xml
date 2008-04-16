@@ -385,7 +385,7 @@
   </bean>
 
   <bean
-    id="Team-employees"
+    id="Team-teamMembers"
     class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
     <property
       name="name"
@@ -672,7 +672,7 @@
             name="mandatory"
             value="true" />
         </bean>
-        <ref local="Team-employees" />
+        <ref local="Team-teamMembers" />
       </list>
     </property>
     <property

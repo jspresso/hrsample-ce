@@ -224,14 +224,37 @@
   </bean>
 
   <bean
+    id="Team-teamMembers.table"
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    <property
+      name="modelDescriptor"
+      ref="Team-teamMembers" />
+  </bean>
+
+  <bean
     id="Departments.and.teams.view"
     class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
     <property
       name="leftTopViewDescriptor"
       ref="Company-departments.table" />
-    <property
-      name="rightBottomViewDescriptor"
-      ref="Department-teams.table" />
+    <property name="rightBottomViewDescriptor">
+      <bean
+        class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+        <property
+          name="orientation"
+          ref="HORIZONTAL" />
+        <property
+          name="leftTopViewDescriptor"
+          ref="Department-teams.table" />
+        <property
+          name="rightBottomViewDescriptor"
+          ref="Team-teamMembers.table" />
+        <property
+          name="cascadingModels"
+          value="true" />
+      </bean>
+    </property>
     <property
       name="cascadingModels"
       value="true" />
