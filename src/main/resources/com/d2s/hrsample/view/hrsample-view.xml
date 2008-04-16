@@ -244,20 +244,15 @@
                     <property
                       name="autoquery"
                       value="false" />
-                    <property name="entityRefQueryDescriptor">
-                      <bean
-                        class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
-                        <property
-                          name="referencedDescriptor"
-                          ref="Employee" />
-                        <property name="initializationMapping">
-                          <map>
-                            <entry
-                              key="company"
-                              value="company" />
-                          </map>
-                        </property>
-                      </bean>
+                    <property
+                      name="entityDescriptor"
+                      ref="Employee" />
+                    <property name="initializationMapping">
+                      <map>
+                        <entry
+                          key="company"
+                          value="company" />
+                      </map>
                     </property>
                     <property name="okAction">
                       <bean parent="lovOkFrontAction">
