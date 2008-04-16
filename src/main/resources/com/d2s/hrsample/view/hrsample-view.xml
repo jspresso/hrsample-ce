@@ -230,6 +230,52 @@
     <property
       name="modelDescriptor"
       ref="Team-teamMembers" />
+    <property name="actionMap">
+      <bean class="com.d2s.framework.view.action.ActionMap">
+        <property name="actionLists">
+          <list>
+            <bean class="com.d2s.framework.view.action.ActionList">
+              <property
+                name="name"
+                value="EDIT" />
+              <property name="actions">
+                <list>
+                  <bean parent="lovAction">
+                    <property
+                      name="autoquery"
+                      value="false" />
+                    <property name="entityRefQueryDescriptor">
+                      <bean
+                        class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+                        <property
+                          name="referencedDescriptor"
+                          ref="Employee" />
+                        <property name="initializationMapping">
+                          <map>
+                            <entry
+                              key="company"
+                              value="company" />
+                          </map>
+                        </property>
+                      </bean>
+                    </property>
+                    <property name="okAction">
+                      <bean parent="lovOkFrontAction">
+                        <property name="nextAction">
+                          <bean
+                            class="com.d2s.framework.application.backend.action.AddAnyCollectionToMasterAction" />
+                        </property>
+                      </bean>
+                    </property>
+                  </bean>
+                  <ref bean="removeAnyCollectionFromMasterFrontAction" />
+                </list>
+              </property>
+            </bean>
+          </list>
+        </property>
+      </bean>
+    </property>
   </bean>
 
   <bean
