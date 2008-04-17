@@ -12,7 +12,7 @@
   <bean
     id="Traceable.pane"
     parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicComponentViewDescriptor">
     <property
       name="labelsPosition"
       ref="ABOVE" />
@@ -25,13 +25,13 @@
     <property name="propertyViewDescriptors">
       <list>
         <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
           <property
             name="name"
             value="createTimestamp" />
         </bean>
         <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
           <property
             name="name"
             value="lastUpdateTimestamp" />
@@ -47,7 +47,7 @@
   <bean
     id="Company.pane"
     parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicComponentViewDescriptor">
     <property
       name="labelsPosition"
       ref="ASIDE" />
@@ -60,31 +60,31 @@
     <property name="propertyViewDescriptors">
       <list>
         <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
           <property
             name="name"
             value="name" />
         </bean>
         <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
           <property
             name="name"
             value="contact.address" />
         </bean>
         <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
           <property
             name="name"
             value="contact.city" />
         </bean>
         <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
           <property
             name="name"
             value="contact.phone" />
         </bean>
         <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
           <property
             name="name"
             value="contact.email" />
@@ -106,10 +106,10 @@
 
   <bean
     id="Department-teams.subtree"
-    class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
     <property name="nodeGroupDescriptor">
       <bean
-        class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
+        class="com.d2s.framework.view.descriptor.basic.BasicListViewDescriptor">
         <property
           name="modelDescriptor"
           ref="Department-teams" />
@@ -125,10 +125,10 @@
 
   <bean
     id="Company-departments.subtree"
-    class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
     <property name="nodeGroupDescriptor">
       <bean
-        class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
+        class="com.d2s.framework.view.descriptor.basic.BasicListViewDescriptor">
         <property
           name="modelDescriptor"
           ref="Company-departments" />
@@ -147,7 +147,7 @@
 
   <bean
     id="Company.tree"
-    class="org.jspresso.framework.view.descriptor.basic.BasicTreeViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicTreeViewDescriptor">
     <property
       name="modelDescriptor"
       ref="Company" />
@@ -164,7 +164,7 @@
 
   <bean
     id="Company.tab.pane"
-    class="org.jspresso.framework.view.descriptor.basic.BasicTabViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicTabViewDescriptor">
     <property
       name="modelDescriptor"
       ref="Company" />
@@ -180,7 +180,7 @@
   <bean
     id="Company-departments.table"
     parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
     <property
       name="modelDescriptor"
       ref="Company-departments" />
@@ -192,7 +192,7 @@
   <bean
     id="Department-teams.table"
     parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
     <property
       name="modelDescriptor"
       ref="Department-teams" />
@@ -202,19 +202,19 @@
     <property name="columnViewDescriptors">
       <list>
         <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
           <property
             name="name"
             value="ouId" />
         </bean>
         <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
           <property
             name="name"
             value="name" />
         </bean>
         <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          class="com.d2s.framework.view.descriptor.basic.BasicSubviewDescriptor">
           <property
             name="name"
             value="manager" />
@@ -226,15 +226,15 @@
   <bean
     id="Team-teamMembers.table"
     parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
     <property
       name="modelDescriptor"
       ref="Team-teamMembers" />
     <property name="actionMap">
-      <bean class="org.jspresso.framework.view.action.ActionMap">
+      <bean class="com.d2s.framework.view.action.ActionMap">
         <property name="actionLists">
           <list>
-            <bean class="org.jspresso.framework.view.action.ActionList">
+            <bean class="com.d2s.framework.view.action.ActionList">
               <property
                 name="name"
                 value="EDIT" />
@@ -258,7 +258,7 @@
                       <bean parent="lovOkFrontAction">
                         <property name="nextAction">
                           <bean
-                            class="org.jspresso.framework.application.backend.action.AddAnyCollectionToMasterAction" />
+                            class="com.d2s.framework.application.backend.action.AddAnyCollectionToMasterAction" />
                         </property>
                       </bean>
                     </property>
@@ -275,13 +275,13 @@
 
   <bean
     id="Departments.and.teams.view"
- org.jspresso.framework.view.descriptor.basicptor.basic.BasicSplitViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
     <property
       name="leftTopViewDescriptor"
       ref="Company-departments.table" />
     <property name="rightBottomViewDescriptor">
       <bean
-     org.jspresso.framework.view.descriptor.basicptor.basic.BasicSplitViewDescriptor">
+        class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
         <property
           name="orientation"
           ref="HORIZONTAL" />
@@ -303,7 +303,7 @@
 
   <bean
     id="Company.organization.view"
- org.jspresso.framework.view.descriptor.basicptor.basic.BasicSplitViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
     <property
       name="modelDescriptor"
       ref="Company" />
@@ -318,7 +318,7 @@
   <bean
     id="Employee.pane"
     parent="decoratedView"
- org.jspresso.framework.view.descriptor.basicptor.basic.BasicComponentViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicComponentViewDescriptor">
     <property
       name="modelDescriptor"
       ref="Employee" />
@@ -330,7 +330,7 @@
   <bean
     id="Employee-events.table"
     parent="decoratedView"
- org.jspresso.framework.view.descriptor.basicptor.basic.BasicTableViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicTableViewDescriptor">
     <property
       name="modelDescriptor"
       ref="Employee-events" />
@@ -342,7 +342,7 @@
   <bean
     id="Event.text.pane"
     parent="decoratedView"
- org.jspresso.framework.view.descriptor.basicptor.basic.BasicPropertyViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
     <property
       name="name"
       value="text" />
@@ -360,15 +360,15 @@
   <bean
     id="City.module.view"
     parent="decoratedView"
- org.jspresso.framework.view.descriptor.basicptor.basic.BasicComponentViewDescriptor">
+    class="com.d2s.framework.view.descriptor.basic.BasicComponentViewDescriptor">
     <property
       name="columnCount"
       value="1" />
     <property name="actionMap">
-      <bean class="org.jspresso.framework.view.action.ActionMap">
+      <bean class="com.d2s.framework.view.action.ActionMap">
         <property name="actionLists">
           <list>
-            <bean class="org.jspresso.framework.view.action.ActionList">
+            <bean class="com.d2s.framework.view.action.ActionList">
               <property
                 name="name"
                 value="FILE" />
@@ -387,12 +387,14 @@
 
   <bean
     id="Employee.module.view"
-    parent="decoratorg.jspresso.framework.view.descriptor.basiciew.descriptor.basic.BasicSplitViewDescriptor">
+    parent="decoratedView"
+    class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
     <property
       name="leftTopViewDescriptor"
       ref="Employee.pane" />
     <property name="rightBottomViewDescriptor">
-      <borg.jspresso.framework.view.descriptor.basiciew.descriptor.basic.BasicSplitViewDescriptor">
+      <bean
+        class="com.d2s.framework.view.descriptor.basic.BasicSplitViewDescriptor">
         <property
           name="orientation"
           ref="HORIZONTAL" />
@@ -408,10 +410,10 @@
       </bean>
     </property>
     <property name="actionMap">
-      <bean class="org.jspresso.framework.view.action.ActionMap">
+      <bean class="com.d2s.framework.view.action.ActionMap">
         <property name="actionLists">
           <list>
-            <bean class="org.jspresso.framework.view.action.ActionList">
+            <bean class="com.d2s.framework.view.action.ActionList">
               <property
                 name="name"
                 value="FILE" />
@@ -432,10 +434,10 @@
     id="Company.module.view"
     parent="Company.organization.view">
     <property name="actionMap">
-      <bean class="org.jspresso.framework.view.action.ActionMap">
+      <bean class="com.d2s.framework.view.action.ActionMap">
         <property name="actionLists">
           <list>
-            <bean class="org.jspresso.framework.view.action.ActionList">
+            <bean class="com.d2s.framework.view.action.ActionList">
               <property
                 name="name"
                 value="FILE" />

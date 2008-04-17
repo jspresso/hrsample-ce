@@ -10,12 +10,12 @@
 
   <bean
     id="Nameable"
-    class="org.jspresso.framework.model.descriptor.basic.BasicInterfaceDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicInterfaceDescriptor">
     <constructor-arg value="com.d2s.hrsample.model.Nameable" />
     <property name="propertyDescriptors">
       <list>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="name" />
@@ -32,12 +32,12 @@
 
   <bean
     id="Traceable"
-    class="org.jspresso.framework.model.descriptor.basic.BasicInterfaceDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicInterfaceDescriptor">
     <constructor-arg value="com.d2s.hrsample.model.Traceable" />
     <property name="propertyDescriptors">
       <list>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
           <property
             name="name"
             value="createTimestamp" />
@@ -49,7 +49,7 @@
             value="true" />
         </bean>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
           <property
             name="name"
             value="lastUpdateTimestamp" />
@@ -80,7 +80,8 @@
   </bean>
 
   <bean
- org.jspresso.framework.model.descriptor.entity.basicl.descriptor.entity.basic.BasicEntityDescriptor">
+    id="City"
+    class="com.d2s.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
     <constructor-arg value="com.d2s.hrsample.model.City" />
     <property name="ancestorDescriptors">
       <list>
@@ -90,7 +91,7 @@
     <property name="propertyDescriptors">
       <list>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="zip" />
@@ -107,12 +108,12 @@
 
   <bean
     id="ContactInfo"
-    class="org.jspresso.framework.model.descriptor.basic.BasicComponentDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicComponentDescriptor">
     <constructor-arg value="com.d2s.hrsample.model.ContactInfo" />
     <property name="propertyDescriptors">
       <list>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="address" />
@@ -121,7 +122,7 @@
             value="256" />
         </bean>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="city" />
@@ -130,7 +131,7 @@
             ref="City" />
         </bean>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="phone" />
@@ -139,7 +140,7 @@
             value="32" />
         </bean>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="email" />
@@ -159,13 +160,17 @@
 
   <bean
     id="Event.text"
-    class="org.jspresso.framework.model.descriptor.basic.BasicTextPropertyDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicTextPropertyDescriptor">
     <property
       name="name"
       value="text" />
     <property
       name="maxLength"
-      value=org.jspresso.framework.model.descriptor.entity.basic
+      value="2048" />
+  </bean>
+
+  <bean
+    id="Event"
     class="com.d2s.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
     <constructor-arg value="com.d2s.hrsample.model.Event" />
     <property name="ancestorDescriptors">
@@ -182,7 +187,7 @@
 
   <bean
     id="contact"
-    class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
     <property
       name="name"
       value="contact" />
@@ -191,7 +196,10 @@
       ref="ContactInfo" />
   </bean>
 
-  <!-org.jspresso.framework.model.descriptor.entity.basicoyee"
+  <!-- Employees model  -->
+
+  <bean
+    id="Employee"
     class="com.d2s.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
     <constructor-arg value="com.d2s.hrsample.model.Employee" />
     <property name="ancestorDescriptors">
@@ -203,7 +211,7 @@
     <property name="propertyDescriptors">
       <list>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="firstName" />
@@ -218,7 +226,7 @@
           </property>
         </bean>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="ssn" />
@@ -236,7 +244,7 @@
             value="empSsn" />
         </bean>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
           <property
             name="name"
             value="birthDate" />
@@ -251,7 +259,7 @@
           </property>
         </bean>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
           <property
             name="name"
             value="hireDate" />
@@ -260,7 +268,7 @@
             ref="DATE" />
         </bean>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicEnumerationPropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicEnumerationPropertyDescriptor">
           <property
             name="name"
             value="gender" />
@@ -288,7 +296,7 @@
         <ref local="Employee-events" />
         <ref local="Employee-teams" />
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="company" />
@@ -303,7 +311,7 @@
             value="true" />
         </bean>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="managedOu" />
@@ -315,7 +323,7 @@
             ref="OrganizationalUnit-manager" />
         </bean>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicIntegerPropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicIntegerPropertyDescriptor">
           <property
             name="name"
             value="age" />
@@ -359,13 +367,13 @@
 
   <bean
     id="Employee-teams"
-    class="org.jspresso.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
     <property
       name="name"
       value="teams" />
     <property name="referencedDescriptor">
       <bean
-        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
           value="java.util.Set" />
@@ -378,13 +386,13 @@
 
   <bean
     id="Team-teamMembers"
-    class="org.jspresso.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
     <property
       name="name"
       value="teamMembers" />
     <property name="referencedDescriptor">
       <bean
-        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
           value="java.util.Set" />
@@ -400,7 +408,7 @@
 
   <bean
     id="Employee-events"
-    class="org.jspresso.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
     <property
       name="name"
       value="events" />
@@ -409,7 +417,7 @@
       value="true" />
     <property name="referencedDescriptor">
       <bean
-        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
           value="java.util.List" />
@@ -424,7 +432,7 @@
 
   <bean
     id="Company-departments"
-    class="org.jspresso.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
     <property
       name="name"
       value="departments" />
@@ -433,7 +441,7 @@
       value="true" />
     <property name="referencedDescriptor">
       <bean
-        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
           value="java.util.Set" />
@@ -446,7 +454,7 @@
 
   <bean
     id="Company-employees"
-    class="org.jspresso.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
     <property
       name="name"
       value="employees" />
@@ -455,11 +463,13 @@
       value="true" />
     <property name="referencedDescriptor">
       <bean
-        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
           value="java.util.Set" />
-        <proorg.jspresso.framework.model.descriptor.entity.basic      ref="Employee" />
+        <property
+          name="elementDescriptor"
+          ref="Employee" />
       </bean>
     </property>
   </bean>
@@ -496,7 +506,7 @@
 
   <bean
     id="OrganizationalUnit-manager"
-    class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
     <property
       name="name"
       value="manager" />
@@ -514,7 +524,9 @@
     </property>
     <property name="initializationMapping">
       <map>
-    org.jspresso.framework.model.descriptor.entity.basicvalue="company" />
+        <entry
+          key="company"
+          value="company" />
       </map>
     </property>
   </bean>
@@ -535,7 +547,7 @@
     <property name="propertyDescriptors">
       <list>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="ouId" />
@@ -555,7 +567,7 @@
         <ref bean="contact" />
         <ref bean="OrganizationalUnit-manager" />
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="company" />
@@ -572,7 +584,7 @@
 
   <bean
     id="Department-teams"
-    class="org.jspresso.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
+    class="com.d2s.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
     <property
       name="name"
       value="teams" />
@@ -581,10 +593,12 @@
       value="true" />
     <property name="referencedDescriptor">
       <bean
-        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+        class="com.d2s.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
-          value="java.org.jspresso.framework.model.descriptor.entity.basic="elementDescriptor"
+          value="java.util.Set" />
+        <property
+          name="elementDescriptor"
           ref="Team" />
       </bean>
     </property>
@@ -602,7 +616,7 @@
     <property name="propertyDescriptors">
       <list>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="company" />
@@ -624,7 +638,9 @@
       value="classpath:com/d2s/hrsample/images/department-48x48.png" />
     <property name="renderedProperties">
       <list>
-        <value>ouorg.jspresso.framework.model.descriptor.entity.basic  <value>manager</value>
+        <value>ouId</value>
+        <value>name</value>
+        <value>manager</value>
         <value>contact</value>
       </list>
     </property>
@@ -642,7 +658,7 @@
     <property name="propertyDescriptors">
       <list>
         <bean
-          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+          class="com.d2s.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="department" />
