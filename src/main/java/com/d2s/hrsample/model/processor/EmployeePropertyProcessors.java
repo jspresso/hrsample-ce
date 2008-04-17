@@ -5,8 +5,9 @@ package com.d2s.hrsample.model.processor;
 
 import java.util.Date;
 
-import com.d2s.framework.util.bean.integrity.EmptyPropertyProcessor;
-import com.d2s.framework.util.bean.integrity.IntegrityException;
+import org.jspresso.framework.util.bean.integrity.EmptyPropertyProcessor;
+import org.jspresso.framework.util.bean.integrity.IntegrityException;
+
 import com.d2s.hrsample.model.Employee;
 
 /**

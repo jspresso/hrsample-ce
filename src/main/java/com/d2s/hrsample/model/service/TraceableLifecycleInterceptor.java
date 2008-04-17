@@ -5,9 +5,10 @@ package com.d2s.hrsample.model.service;
 
 import java.util.Date;
 
-import com.d2s.framework.model.component.service.EmptyLifecycleInterceptor;
-import com.d2s.framework.model.entity.IEntityFactory;
-import com.d2s.framework.model.entity.IEntityLifecycleHandler;
+import org.jspresso.framework.model.component.service.EmptyLifecycleInterceptor;
+import org.jspresso.framework.model.entity.IEntityFactory;
+import org.jspresso.framework.model.entity.IEntityLifecycleHandler;
+
 import com.d2s.framework.security.UserPrincipal;
 import com.d2s.hrsample.model.Traceable;
 

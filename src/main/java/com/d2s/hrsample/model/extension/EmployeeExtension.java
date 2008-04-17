@@ -6,8 +6,9 @@ package com.d2s.hrsample.model.extension;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import com.d2s.framework.model.component.AbstractComponentExtension;
-import com.d2s.framework.util.bean.IPropertyChangeCapable;
+import org.jspresso.framework.model.component.AbstractComponentExtension;
+import org.jspresso.framework.util.bean.IPropertyChangeCapable;
+
 import com.d2s.hrsample.model.Employee;
 
 /**

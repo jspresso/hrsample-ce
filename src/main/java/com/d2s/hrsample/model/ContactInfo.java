@@ -13,7 +13,7 @@ package com.d2s.hrsample.model;
  * @version $LastChangedRevision$
  */
 public interface ContactInfo extends
-  com.d2s.framework.model.component.IComponent {
+  org.jspresso.framework.model.component.IComponent {
 
   /**
    * Gets the address.

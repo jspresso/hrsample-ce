@@ -3,7 +3,8 @@
  */
 package com.d2s.hrsample.model.extension;
 
-import com.d2s.framework.model.component.AbstractComponentExtension;
+import org.jspresso.framework.model.component.AbstractComponentExtension;
+
 import com.d2s.hrsample.model.Company;
 import com.d2s.hrsample.model.Department;
 import com.d2s.hrsample.model.OrganizationalUnit;

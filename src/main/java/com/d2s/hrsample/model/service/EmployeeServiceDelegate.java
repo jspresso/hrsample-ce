@@ -5,7 +5,8 @@ package com.d2s.hrsample.model.service;
 
 import java.util.Date;
 
-import com.d2s.framework.model.component.service.IComponentService;
+import org.jspresso.framework.model.component.service.IComponentService;
+
 import com.d2s.hrsample.model.Employee;
 
 /**
