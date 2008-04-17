@@ -14,10 +14,6 @@
 			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
 			<incomplete>false</incomplete>
 			<configs>
-				<config>/jspresso-framework/app-template/src/main/resources/com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
-				<config>/jspresso-framework/app-template/src/main/resources/com/d2s/framework/application/commons.xml</config>
-				<config>/jspresso-framework/app-template/src/main/resources/com/d2s/framework/application/frontend/commons-frontend.xml</config>
-				<config>/jspresso-framework/app-template/src/main/resources/com/d2s/framework/application/frontend/swing/commons-swing.xml</config>
 			</configs>
 		</configSet>
 		<configSet>
@@ -25,10 +21,6 @@
 			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
 			<incomplete>false</incomplete>
 			<configs>
-				<config>/jspresso-framework/app-template/src/main/resources/com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
-				<config>/jspresso-framework/app-template/src/main/resources/com/d2s/framework/application/commons.xml</config>
-				<config>/jspresso-framework/app-template/src/main/resources/com/d2s/framework/application/frontend/commons-frontend.xml</config>
-				<config>/jspresso-framework/app-template/src/main/resources/com/d2s/framework/application/frontend/ulc/commons-ulc.xml</config>
 			</configs>
 		</configSet>
 	</configSets>
