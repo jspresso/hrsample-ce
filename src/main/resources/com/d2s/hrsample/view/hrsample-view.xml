@@ -159,7 +159,7 @@
       ref="Company-departments.subtree" />
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/hrsample/images/structure-48x48.png" />
+      value="classpath:org/jspresso/hrsample/images/structure-48x48.png" />
   </bean>
 
   <bean
@@ -465,7 +465,7 @@
       ref="commonsMessageSource" />
     <property name="basenames">
       <list>
-        <value>com.d2s.hrsample.i18n.Messages</value>
+        <value>org.jspresso.hrsample.i18n.Messages</value>
       </list>
     </property>
   </bean>

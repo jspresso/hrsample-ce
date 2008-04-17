@@ -11,7 +11,7 @@
   <bean
     id="Nameable"
     class="org.jspresso.framework.model.descriptor.basic.BasicInterfaceDescriptor">
-    <constructor-arg value="com.d2s.hrsample.model.Nameable" />
+    <constructor-arg value="org.jspresso.hrsample.model.Nameable" />
     <property name="propertyDescriptors">
       <list>
         <bean
@@ -33,7 +33,7 @@
   <bean
     id="Traceable"
     class="org.jspresso.framework.model.descriptor.basic.BasicInterfaceDescriptor">
-    <constructor-arg value="com.d2s.hrsample.model.Traceable" />
+    <constructor-arg value="org.jspresso.hrsample.model.Traceable" />
     <property name="propertyDescriptors">
       <list>
         <bean
@@ -71,18 +71,18 @@
     <property name="lifecycleInterceptors">
       <list>
         <bean
-          class="com.d2s.hrsample.model.service.TraceableLifecycleInterceptor" />
+          class="org.jspresso.hrsample.model.service.TraceableLifecycleInterceptor" />
       </list>
     </property>
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/hrsample/images/traceable-48x48.png" />
+      value="classpath:org/jspresso/hrsample/images/traceable-48x48.png" />
   </bean>
 
   <bean
     id="City"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="com.d2s.hrsample.model.City" />
+    <constructor-arg value="org.jspresso.hrsample.model.City" />
     <property name="ancestorDescriptors">
       <list>
         <ref local="Nameable" />
@@ -103,13 +103,13 @@
     </property>
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/hrsample/images/city-48x48.png" />
+      value="classpath:org/jspresso/hrsample/images/city-48x48.png" />
   </bean>
 
   <bean
     id="ContactInfo"
     class="org.jspresso.framework.model.descriptor.basic.BasicComponentDescriptor">
-    <constructor-arg value="com.d2s.hrsample.model.ContactInfo" />
+    <constructor-arg value="org.jspresso.hrsample.model.ContactInfo" />
     <property name="propertyDescriptors">
       <list>
         <bean
@@ -172,7 +172,7 @@
   <bean
     id="Event"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="com.d2s.hrsample.model.Event" />
+    <constructor-arg value="org.jspresso.hrsample.model.Event" />
     <property name="ancestorDescriptors">
       <list>
         <ref local="Traceable" />
@@ -201,7 +201,7 @@
   <bean
     id="Employee"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="com.d2s.hrsample.model.Employee" />
+    <constructor-arg value="org.jspresso.hrsample.model.Employee" />
     <property name="ancestorDescriptors">
       <list>
         <ref local="Nameable" />
@@ -221,7 +221,7 @@
           <property name="integrityProcessors">
             <list>
               <bean
-                class="com.d2s.hrsample.model.processor.EmployeePropertyProcessors$FirstNameProcessor" />
+                class="org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$FirstNameProcessor" />
             </list>
           </property>
         </bean>
@@ -254,7 +254,7 @@
           <property name="integrityProcessors">
             <list>
               <bean
-                class="com.d2s.hrsample.model.processor.EmployeePropertyProcessors$BirthDateProcessor" />
+                class="org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$BirthDateProcessor" />
             </list>
           </property>
         </bean>
@@ -285,10 +285,10 @@
             <map>
               <entry
                 key="M"
-                value="classpath:com/d2s/hrsample/images/male-48x48.png" />
+                value="classpath:org/jspresso/hrsample/images/male-48x48.png" />
               <entry
                 key="F"
-                value="classpath:com/d2s/hrsample/images/female-48x48.png" />
+                value="classpath:org/jspresso/hrsample/images/female-48x48.png" />
             </map>
           </property>
         </bean>
@@ -335,20 +335,20 @@
             value="150" />
           <property
             name="delegateClassName"
-            value="com.d2s.hrsample.model.extension.EmployeeExtension" />
+            value="org.jspresso.hrsample.model.extension.EmployeeExtension" />
         </bean>
       </list>
     </property>
     <property name="serviceDelegates">
       <map>
-        <entry key="com.d2s.hrsample.model.service.EmployeeService">
-          <bean class="com.d2s.hrsample.model.service.EmployeeServiceDelegate" />
+        <entry key="org.jspresso.hrsample.model.service.EmployeeService">
+          <bean class="org.jspresso.hrsample.model.service.EmployeeServiceDelegate" />
         </entry>
       </map>
     </property>
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/hrsample/images/male-48x48.png" />
+      value="classpath:org/jspresso/hrsample/images/male-48x48.png" />
     <property name="renderedProperties">
       <list>
         <value>name</value>
@@ -477,7 +477,7 @@
   <bean
     id="Company"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="com.d2s.hrsample.model.Company" />
+    <constructor-arg value="org.jspresso.hrsample.model.Company" />
     <property name="ancestorDescriptors">
       <list>
         <ref local="Nameable" />
@@ -493,7 +493,7 @@
     </property>
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/hrsample/images/company-48x48.png" />
+      value="classpath:org/jspresso/hrsample/images/company-48x48.png" />
     <property name="renderedProperties">
       <list>
         <value>name</value>
@@ -519,7 +519,7 @@
     <property name="integrityProcessors">
       <list>
         <bean
-          class="com.d2s.hrsample.model.processor.OrganizationalUnitPropertyProcessors$ManagerProcessor" />
+          class="org.jspresso.hrsample.model.processor.OrganizationalUnitPropertyProcessors$ManagerProcessor" />
       </list>
     </property>
     <property name="initializationMapping">
@@ -534,7 +534,7 @@
   <bean
     id="OrganizationalUnit"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="com.d2s.hrsample.model.OrganizationalUnit" />
+    <constructor-arg value="org.jspresso.hrsample.model.OrganizationalUnit" />
     <property
       name="purelyAbstract"
       value="true" />
@@ -576,7 +576,7 @@
             ref="Company" />
           <property
             name="delegateClassName"
-            value="com.d2s.hrsample.model.extension.OrganizationalUnitExtension" />
+            value="org.jspresso.hrsample.model.extension.OrganizationalUnitExtension" />
         </bean>
       </list>
     </property>
@@ -607,7 +607,7 @@
   <bean
     id="Department"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="com.d2s.hrsample.model.Department" />
+    <constructor-arg value="org.jspresso.hrsample.model.Department" />
     <property name="ancestorDescriptors">
       <list>
         <ref local="OrganizationalUnit" />
@@ -635,7 +635,7 @@
     </property>
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/hrsample/images/department-48x48.png" />
+      value="classpath:org/jspresso/hrsample/images/department-48x48.png" />
     <property name="renderedProperties">
       <list>
         <value>ouId</value>
@@ -649,7 +649,7 @@
   <bean
     id="Team"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="com.d2s.hrsample.model.Team" />
+    <constructor-arg value="org.jspresso.hrsample.model.Team" />
     <property name="ancestorDescriptors">
       <list>
         <ref local="OrganizationalUnit" />
@@ -677,7 +677,7 @@
     </property>
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/hrsample/images/team-48x48.png" />
+      value="classpath:org/jspresso/hrsample/images/team-48x48.png" />
     <property name="renderedProperties">
       <list>
         <value>ouId</value>

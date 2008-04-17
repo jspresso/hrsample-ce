@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package com.d2s.hrsample.startup;
+package org.jspresso.hrsample.startup;
 
 import org.jspresso.framework.application.startup.swing.SwingStartup;
 

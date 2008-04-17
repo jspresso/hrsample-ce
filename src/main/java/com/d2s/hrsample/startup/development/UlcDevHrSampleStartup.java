@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package com.d2s.hrsample.startup.development;
+package org.jspresso.hrsample.startup.development;
 
-import com.d2s.hrsample.startup.UlcHrSampleStartup;
+import org.jspresso.hrsample.startup.UlcHrSampleStartup;
 
 /**
  * ULC development HR sample startup class.

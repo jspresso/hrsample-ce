@@ -11,9 +11,9 @@
     lazy-init="true">
     <constructor-arg>
       <list>
-        <value>com/d2s/framework/application/commons.xml</value>
-        <value>com/d2s/framework/tools/mock.xml</value>
-        <value>com/d2s/hrsample/model/hrsample-model.xml</value>
+        <value>org/jspresso/framework/application/commons.xml</value>
+        <value>org/jspresso/framework/tools/mock.xml</value>
+        <value>org/jspresso/hrsample/model/hrsample-model.xml</value>
       </list>
     </constructor-arg>
   </bean>
@@ -24,16 +24,16 @@
     lazy-init="true">
     <constructor-arg>
       <list>
-        <value>com/d2s/framework/application/commons.xml</value>
-        <value>com/d2s/framework/tools/mock.xml</value>
-        <value>com/d2s/hrsample/model/hrsample-model.xml</value>
+        <value>org/jspresso/framework/application/commons.xml</value>
+        <value>org/jspresso/framework/tools/mock.xml</value>
+        <value>org/jspresso/hrsample/model/hrsample-model.xml</value>
         <value>
-          com/d2s/framework/application/frontend/commons-frontend.xml
+          org/jspresso/framework/application/frontend/commons-frontend.xml
         </value>
         <value>
-          com/d2s/framework/application/frontend/swing/commons-swing.xml
+          org/jspresso/framework/application/frontend/swing/commons-swing.xml
         </value>
-        <value>com/d2s/hrsample/view/hrsample-view.xml</value>
+        <value>org/jspresso/hrsample/view/hrsample-view.xml</value>
       </list>
     </constructor-arg>
   </bean>
@@ -44,21 +44,21 @@
     lazy-init="true">
     <constructor-arg>
       <list>
-        <value>com/d2s/framework/application/commons.xml</value>
+        <value>org/jspresso/framework/application/commons.xml</value>
         <value>
-          com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml
+          org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml
         </value>
         <value>
-          com/d2s/framework/application/frontend/commons-frontend.xml
+          org/jspresso/framework/application/frontend/commons-frontend.xml
         </value>
         <value>
-          com/d2s/framework/application/frontend/swing/commons-swing.xml
+          org/jspresso/framework/application/frontend/swing/commons-swing.xml
         </value>
-        <value>com/d2s/hrsample/model/hrsample-model.xml</value>
-        <value>com/d2s/hrsample/backend/hrsample-backend.xml</value>
-        <value>com/d2s/hrsample/view/hrsample-view.xml</value>
-        <value>com/d2s/hrsample/frontend/hrsample-frontend.xml</value>
-        <value>com/d2s/hrsample/config.xml</value>
+        <value>org/jspresso/hrsample/model/hrsample-model.xml</value>
+        <value>org/jspresso/hrsample/backend/hrsample-backend.xml</value>
+        <value>org/jspresso/hrsample/view/hrsample-view.xml</value>
+        <value>org/jspresso/hrsample/frontend/hrsample-frontend.xml</value>
+        <value>org/jspresso/hrsample/config.xml</value>
       </list>
     </constructor-arg>
   </bean>
@@ -69,21 +69,21 @@
     lazy-init="true">
     <constructor-arg>
       <list>
-        <value>com/d2s/framework/application/commons.xml</value>
+        <value>org/jspresso/framework/application/commons.xml</value>
         <value>
-          com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml
+          org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml
         </value>
         <value>
-          com/d2s/framework/application/frontend/commons-frontend.xml
+          org/jspresso/framework/application/frontend/commons-frontend.xml
         </value>
         <value>
-          com/d2s/framework/application/frontend/ulc/commons-ulc.xml
+          org/jspresso/framework/application/frontend/ulc/commons-ulc.xml
         </value>
-        <value>com/d2s/hrsample/model/hrsample-model.xml</value>
-        <value>com/d2s/hrsample/backend/hrsample-backend.xml</value>
-        <value>com/d2s/hrsample/view/hrsample-view.xml</value>
-        <value>com/d2s/hrsample/frontend/hrsample-frontend.xml</value>
-        <value>com/d2s/hrsample/config.xml</value>
+        <value>org/jspresso/hrsample/model/hrsample-model.xml</value>
+        <value>org/jspresso/hrsample/backend/hrsample-backend.xml</value>
+        <value>org/jspresso/hrsample/view/hrsample-view.xml</value>
+        <value>org/jspresso/hrsample/frontend/hrsample-frontend.xml</value>
+        <value>org/jspresso/hrsample/config.xml</value>
       </list>
     </constructor-arg>
   </bean>
@@ -94,21 +94,21 @@
     lazy-init="true">
     <constructor-arg>
       <list>
-        <value>com/d2s/framework/application/commons.xml</value>
+        <value>org/jspresso/framework/application/commons.xml</value>
         <value>
-          com/d2s/framework/application/backend/persistence/hibernate/commons-hibernate.xml
+          org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml
         </value>
         <value>
-          com/d2s/framework/application/frontend/commons-frontend.xml
+          org/jspresso/framework/application/frontend/commons-frontend.xml
         </value>
         <value>
-          com/d2s/framework/application/frontend/wings/commons-wings.xml
+          org/jspresso/framework/application/frontend/wings/commons-wings.xml
         </value>
-        <value>com/d2s/hrsample/model/hrsample-model.xml</value>
-        <value>com/d2s/hrsample/backend/hrsample-backend.xml</value>
-        <value>com/d2s/hrsample/view/hrsample-view.xml</value>
-        <value>com/d2s/hrsample/frontend/hrsample-frontend.xml</value>
-        <value>com/d2s/hrsample/config.xml</value>
+        <value>org/jspresso/hrsample/model/hrsample-model.xml</value>
+        <value>org/jspresso/hrsample/backend/hrsample-backend.xml</value>
+        <value>org/jspresso/hrsample/view/hrsample-view.xml</value>
+        <value>org/jspresso/hrsample/frontend/hrsample-frontend.xml</value>
+        <value>org/jspresso/hrsample/config.xml</value>
       </list>
     </constructor-arg>
   </bean>

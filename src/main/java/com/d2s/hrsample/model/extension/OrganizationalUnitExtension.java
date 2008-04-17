@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package com.d2s.hrsample.model.extension;
+package org.jspresso.hrsample.model.extension;
 
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 
-import com.d2s.hrsample.model.Company;
-import com.d2s.hrsample.model.Department;
-import com.d2s.hrsample.model.OrganizationalUnit;
-import com.d2s.hrsample.model.Team;
+import org.jspresso.hrsample.model.Company;
+import org.jspresso.hrsample.model.Department;
+import org.jspresso.hrsample.model.OrganizationalUnit;
+import org.jspresso.hrsample.model.Team;
 
 /**
  * Helper class computing extended properties for OrganizationalUnit entity.

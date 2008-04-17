@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package com.d2s.hrsample.startup.development;
+package org.jspresso.hrsample.startup.development;
 
-import com.d2s.hrsample.startup.SwingHrSampleStartup;
+import org.jspresso.hrsample.startup.SwingHrSampleStartup;
 
 /**
  * Swing development HR sample startup class.

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package com.d2s.hrsample.model.extension;
+package org.jspresso.hrsample.model.extension;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -9,7 +9,7 @@ import java.beans.PropertyChangeListener;
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.framework.util.bean.IPropertyChangeCapable;
 
-import com.d2s.hrsample.model.Employee;
+import org.jspresso.hrsample.model.Employee;
 
 /**
  * Helper class computing extended properties for Employee entity.

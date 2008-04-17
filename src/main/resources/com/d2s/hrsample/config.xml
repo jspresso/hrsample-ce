@@ -31,7 +31,7 @@
     </property>
     <property name="mappingLocations">
       <list>
-        <value>classpath*:com/d2s/hrsample/**/*.hbm.xml</value>
+        <value>classpath*:org/jspresso/hrsample/**/*.hbm.xml</value>
       </list>
     </property>
   </bean>

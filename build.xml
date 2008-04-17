@@ -12,14 +12,14 @@
   <property name="xdoclet.lib.dir" value="${xdoclet.home}/lib" />
   <property name="xdoclet.plugins.dir" value="${xdoclet.home}/lib" />
   <property name="model.src.dir"
-            value="${java.src.dir}/com/d2s/hrsample/model" />
+            value="${java.src.dir}/org/jspresso/hrsample/model" />
 
   <path id="entity.generator.classpath">
     <dirset dir="${basedir}">
       <include name="**/target/classes" />
     </dirset>
     <fileset dir="${m2.repo}">
-      <include name="**/design2see/**/2.0/*.jar" />
+      <include name="**/jspresso/**/2.0/*.jar" />
       <include name="**/commons-cli-1.0.jar" />
       <include name="**/freemarker-2.3.3.jar" />
       <include name="**/spring-2.5.1.jar" />
@@ -37,13 +37,13 @@
       <arg value="-applicationContextKey" />
       <arg value="hrsample-model-context" />
       <arg value="-templateResourcePath" />
-      <arg value="/com/d2s/framework/tools/entitygenerator" />
+      <arg value="/org/jspresso/framework/tools/entitygenerator" />
       <arg value="-templateName" />
       <arg value="HibernateXdocletEntity.ftl" />
       <arg value="-outputDir" />
       <arg value="${java.src.dir}" />
       <arg value="-includePackages" />
-      <arg value="com.d2s.hrsample.model" />
+      <arg value="org.jspresso.hrsample.model" />
     </java>
   </target>
 

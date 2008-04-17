@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package com.d2s.hrsample.startup.development;
+package org.jspresso.hrsample.startup.development;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,11 +9,11 @@ import java.text.SimpleDateFormat;
 import org.jspresso.framework.application.startup.development.AbstractTestDataPersister;
 import org.springframework.beans.factory.BeanFactory;
 
-import com.d2s.hrsample.model.City;
-import com.d2s.hrsample.model.Company;
-import com.d2s.hrsample.model.Department;
-import com.d2s.hrsample.model.Employee;
-import com.d2s.hrsample.model.Team;
+import org.jspresso.hrsample.model.City;
+import org.jspresso.hrsample.model.Company;
+import org.jspresso.hrsample.model.Department;
+import org.jspresso.hrsample.model.Employee;
+import org.jspresso.hrsample.model.Team;
 
 /**
  * Persists some test data for the HR sample application.
@@ -48,75 +48,75 @@ public class HrTestDataPersister extends AbstractTestDataPersister {
     City evry = createCity("Evry", "91000");
 
     // Company
-    Company design2see = createCompany("Design2See",
-        "123 avenue de la Liberté", paris, "contact@design2see.com",
+    Company jspresso = createCompany("Jspresso",
+        "123 avenue de la Liberté", paris, "contact@jspresso.com",
         "+33 123 456 000");
 
     // Employees
     Employee johnDoe = createEmployee("M", "Doe", "John",
-        "12 allée du Chien qui Fume", evry, "john.doe@design2see.com",
+        "12 allée du Chien qui Fume", evry, "john.doe@jspresso.com",
         "+33 1 152 368 984", "02/05/1972", "03/08/2005", "1523698754",
-        design2see);
+        jspresso);
 
     Employee mikeDen = createEmployee("M", "Den", "Mike",
-        "26 rue de la Pie qui Chante", suresnes, "mike.den@design2see.com",
+        "26 rue de la Pie qui Chante", suresnes, "mike.den@jspresso.com",
         "+33 1 968 846 398", "05/07/1970", "01/03/2004", "1859637461",
-        design2see);
+        jspresso);
 
     Employee evaGreen = createEmployee("F", "Green", "Eva",
-        "68 rue de l'Eléphant Vert", suresnes, "eva.green@design2see.com",
+        "68 rue de l'Eléphant Vert", suresnes, "eva.green@jspresso.com",
         "+33 1 958 536 972", "10/08/1977", "06/04/2002", "2856752387",
-        design2see);
+        jspresso);
 
     Employee gloriaSan = createEmployee("F", "San", "Gloria",
-        "13 avenue du Poisson Enragé", evry, "gloria.san@design2see.com",
+        "13 avenue du Poisson Enragé", evry, "gloria.san@jspresso.com",
         "+33 1 956 367 412", "09/01/1969", "03/01/2006", "2597853274",
-        design2see);
+        jspresso);
 
     Employee mariaTrulli = createEmployee("F", "Trulli", "Maria",
-        "20 avenue du Crocodile Marteau", evry, "maria.trulli@design2see.com",
+        "20 avenue du Crocodile Marteau", evry, "maria.trulli@jspresso.com",
         "+33 1 868 745 369", "01/02/1976", "03/10/2006", "2325985423",
-        design2see);
+        jspresso);
 
     Employee isabelleMartin = createEmployee("F", "Martin", "Isabelle",
         "20 allée de la Gazelle Sauteuse", evry,
-        "isabelle.martin@design2see.com", "+33 1 698 256 365", "04/07/1970",
-        "12/06/2001", "2652398751", design2see);
+        "isabelle.martin@jspresso.com", "+33 1 698 256 365", "04/07/1970",
+        "12/06/2001", "2652398751", jspresso);
 
     // Departments and teams.
     Department hrDepartment = createDepartment("Human Resources", "HR-000",
-        "124 avenue de la Liberté", paris, "hr@design2see.com",
-        "+33 123 456 100", design2see, johnDoe);
+        "124 avenue de la Liberté", paris, "hr@jspresso.com",
+        "+33 123 456 100", jspresso, johnDoe);
 
     Team hr001Team = createTeam("HR 001 Team", "HR-001",
-        "124 avenue de la Liberté", paris, "hr001@design2see.com",
+        "124 avenue de la Liberté", paris, "hr001@jspresso.com",
         "+33 123 456 101", hrDepartment, mikeDen);
     hr001Team.addToTeamMembers(johnDoe);
     hr001Team.addToTeamMembers(mikeDen);
 
     Team hr002Team = createTeam("HR 002 Team", "HR-002",
-        "124 avenue de la Liberté", paris, "hr002@design2see.com",
+        "124 avenue de la Liberté", paris, "hr002@jspresso.com",
         "+33 123 456 102", hrDepartment, evaGreen);
     hr002Team.addToTeamMembers(johnDoe);
     hr002Team.addToTeamMembers(evaGreen);
 
     Department itDepartment = createDepartment("Information Technology",
-        "IT-000", "125 avenue de la Liberté", paris, "it@design2see.com",
-        "+33 123 456 200", design2see, gloriaSan);
+        "IT-000", "125 avenue de la Liberté", paris, "it@jspresso.com",
+        "+33 123 456 200", jspresso, gloriaSan);
 
     Team it001Team = createTeam("IT 001 Team", "IT-001",
-        "125 avenue de la Liberté", paris, "it001@design2see.com",
+        "125 avenue de la Liberté", paris, "it001@jspresso.com",
         "+33 123 456 201", itDepartment, mariaTrulli);
     it001Team.addToTeamMembers(gloriaSan);
     it001Team.addToTeamMembers(mariaTrulli);
 
     Team it002Team = createTeam("IT 002 Team", "IT-002",
-        "125 avenue de la Liberté", paris, "it002@design2see.com",
+        "125 avenue de la Liberté", paris, "it002@jspresso.com",
         "+33 123 456 202", itDepartment, isabelleMartin);
     it002Team.addToTeamMembers(gloriaSan);
     it002Team.addToTeamMembers(isabelleMartin);
 
-    saveOrUpdate(design2see);
+    saveOrUpdate(jspresso);
   }
 
   private City createCity(String name, String zip) {

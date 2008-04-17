@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping default-access="org.jspresso.framework.model.persistence.hibernate.property.EntityPropertyAccessor">
-  <class persister="org.jspresso.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="EVENT" dynamic-insert="true" name="com.d2s.hrsample.model.Event">
+  <class persister="org.jspresso.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="EVENT" dynamic-insert="true" name="org.jspresso.hrsample.model.Event">
     <id name="id" type="string" column="ID" length="36">
       <generator class="assigned"/>
     </id>

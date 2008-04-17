@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package com.d2s.hrsample.model.service;
+package org.jspresso.hrsample.model.service;
 
 import java.util.Date;
 

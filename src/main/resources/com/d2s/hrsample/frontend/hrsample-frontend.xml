@@ -21,7 +21,7 @@
       value="masterdata.workspace.description" />
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/hrsample/images/masterdata-48x48.png" />
+      value="classpath:org/jspresso/hrsample/images/masterdata-48x48.png" />
     <property name="modules">
       <list>
         <bean parent="abstractSimpleModule">
@@ -33,7 +33,7 @@
             value="masterdata.geography.module.description" />
           <property
             name="iconImageURL"
-            value="classpath:com/d2s/hrsample/images/geography-48x48.png" />
+            value="classpath:org/jspresso/hrsample/images/geography-48x48.png" />
           <property name="subModules">
             <list>
               <bean parent="abstractFilterableBeanCollectionModule">
@@ -69,7 +69,7 @@
       value="employees.workspace.description" />
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/hrsample/images/people-48x48.png" />
+      value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
     <property name="modules">
       <list>
         <bean parent="abstractFilterableBeanCollectionModule">
@@ -81,7 +81,7 @@
             value="employees.module.description" />
           <property
             name="iconImageURL"
-            value="classpath:com/d2s/hrsample/images/employees-48x48.png" />
+            value="classpath:org/jspresso/hrsample/images/employees-48x48.png" />
           <property
             name="elementComponentDescriptor"
             ref="Employee" />
@@ -105,7 +105,7 @@
       value="organization.workspace.description" />
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/hrsample/images/structure-48x48.png" />
+      value="classpath:org/jspresso/hrsample/images/structure-48x48.png" />
     <property name="modules">
       <list>
         <bean parent="abstractFilterableBeanCollectionModule">
@@ -117,7 +117,7 @@
             value="companies.module.description" />
           <property
             name="iconImageURL"
-            value="classpath:com/d2s/hrsample/images/company-48x48.png" />
+            value="classpath:org/jspresso/hrsample/images/company-48x48.png" />
           <property
             name="elementComponentDescriptor"
             ref="Company" />
@@ -141,7 +141,7 @@
       value="hrsample.name" />
     <property
       name="iconImageURL"
-      value="classpath:com/d2s/hrsample/images/people-48x48.png" />
+      value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
     <property
       name="loginContextName"
       value="hrsample-app" />

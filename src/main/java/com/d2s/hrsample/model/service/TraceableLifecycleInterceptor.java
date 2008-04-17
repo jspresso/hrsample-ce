@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package com.d2s.hrsample.model.service;
+package org.jspresso.hrsample.model.service;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ import org.jspresso.framework.model.entity.IEntityFactory;
 import org.jspresso.framework.model.entity.IEntityLifecycleHandler;
 import org.jspresso.framework.security.UserPrincipal;
 
-import com.d2s.hrsample.model.Traceable;
+import org.jspresso.hrsample.model.Traceable;
 
 /**
  * Default lifecycle service for tracing.

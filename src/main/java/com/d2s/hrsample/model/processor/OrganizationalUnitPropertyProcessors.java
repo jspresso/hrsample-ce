@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package com.d2s.hrsample.model.processor;
+package org.jspresso.hrsample.model.processor;
 
 import org.jspresso.framework.util.bean.integrity.EmptyPropertyProcessor;
 import org.jspresso.framework.util.bean.integrity.IntegrityException;
 
-import com.d2s.hrsample.model.Employee;
-import com.d2s.hrsample.model.OrganizationalUnit;
+import org.jspresso.hrsample.model.Employee;
+import org.jspresso.hrsample.model.OrganizationalUnit;
 
 /**
  * OrganizationalUnit property processors.

@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping default-access="org.jspresso.framework.model.persistence.hibernate.property.EntityPropertyAccessor">
-  <class persister="org.jspresso.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="COMPANY" dynamic-insert="true" name="com.d2s.hrsample.model.Company">
+  <class persister="org.jspresso.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="COMPANY" dynamic-insert="true" name="org.jspresso.hrsample.model.Company">
     <id name="id" type="string" column="ID" length="36">
       <generator class="assigned"/>
     </id>
@@ -23,11 +23,11 @@
     </component>
     <set inverse="true" cascade="persist,merge,save-update,refresh,evict,replicate,delete" name="departments">
       <key column="COMPANY_ID"/>
-      <one-to-many class="com.d2s.hrsample.model.Department"/>
+      <one-to-many class="org.jspresso.hrsample.model.Department"/>
     </set>
     <set inverse="true" cascade="persist,merge,save-update,refresh,evict,replicate,delete" name="employees">
       <key column="COMPANY_ID"/>
-      <one-to-many class="com.d2s.hrsample.model.Employee"/>
+      <one-to-many class="org.jspresso.hrsample.model.Employee"/>
     </set>
     <property name="name">
       <column name="NAME" length="64" not-null="true"/>

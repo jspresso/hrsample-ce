@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package com.d2s.hrsample.model.service;
+package org.jspresso.hrsample.model.service;
 
 import java.util.Date;
 
 import org.jspresso.framework.model.component.service.IComponentService;
 
-import com.d2s.hrsample.model.Employee;
+import org.jspresso.hrsample.model.Employee;
 
 /**
  * The services delegate of the Employee entity

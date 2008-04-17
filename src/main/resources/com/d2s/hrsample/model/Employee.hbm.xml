@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping default-access="org.jspresso.framework.model.persistence.hibernate.property.EntityPropertyAccessor">
-  <class persister="org.jspresso.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="EMPLOYEE" dynamic-insert="true" name="com.d2s.hrsample.model.Employee">
+  <class persister="org.jspresso.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="EMPLOYEE" dynamic-insert="true" name="org.jspresso.hrsample.model.Employee">
     <id name="id" type="string" column="ID" length="36">
       <generator class="assigned"/>
     </id>
@@ -39,11 +39,11 @@
     <list cascade="persist,merge,save-update,refresh,evict,replicate,delete" name="events">
       <key column="EVENTS_EMPLOYEE_ID"/>
       <list-index column="EVENTS_SEQ"/>
-      <one-to-many class="com.d2s.hrsample.model.Event"/>
+      <one-to-many class="org.jspresso.hrsample.model.Event"/>
     </list>
     <set inverse="true" cascade="none" table="TEAM_TEAM_MEMBERS" name="teams">
       <key column="EMPLOYEE_ID"/>
-      <many-to-many class="com.d2s.hrsample.model.Team" column="TEAM_ID"/>
+      <many-to-many class="org.jspresso.hrsample.model.Team" column="TEAM_ID"/>
     </set>
     <many-to-one cascade="persist,merge,save-update" name="company">
       <column name="COMPANY_ID" not-null="true"/>
