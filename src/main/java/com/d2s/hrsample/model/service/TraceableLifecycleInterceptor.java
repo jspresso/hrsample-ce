@@ -8,8 +8,8 @@ import java.util.Date;
 import org.jspresso.framework.model.component.service.EmptyLifecycleInterceptor;
 import org.jspresso.framework.model.entity.IEntityFactory;
 import org.jspresso.framework.model.entity.IEntityLifecycleHandler;
+import org.jspresso.framework.security.UserPrincipal;
 
-import com.d2s.framework.security.UserPrincipal;
 import com.d2s.hrsample.model.Traceable;
 
 /**

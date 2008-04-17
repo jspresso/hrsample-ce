@@ -3,7 +3,7 @@
  */
 package com.d2s.hrsample.startup;
 
-import com.d2s.framework.application.startup.ulc.UlcStartup;
+import org.jspresso.framework.application.startup.ulc.UlcStartup;
 
 /**
  * ULC HR sample startup class.

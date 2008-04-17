@@ -6,9 +6,9 @@ package com.d2s.hrsample.startup.development;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import org.jspresso.framework.application.startup.development.AbstractTestDataPersister;
 import org.springframework.beans.factory.BeanFactory;
 
-import com.d2s.framework.application.startup.development.AbstractTestDataPersister;
 import com.d2s.hrsample.model.City;
 import com.d2s.hrsample.model.Company;
 import com.d2s.hrsample.model.Department;
