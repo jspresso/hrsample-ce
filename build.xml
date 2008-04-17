@@ -32,7 +32,7 @@
   </path>
 
   <target name="generate-entities">
-    <java classname="com.d2s.framework.tools.entitygenerator.EntityGenerator"
+    <java classname="org.jspresso.framework.tools.entitygenerator.EntityGenerator"
           classpathref="entity.generator.classpath">
       <arg value="-applicationContextKey" />
       <arg value="hrsample-model-context" />
@@ -75,7 +75,7 @@
     </xdoclet>
     <replaceregexp byline="true">
       <regexp pattern="&lt;component name=&quot;(.*)&quot;&gt;" />
-      <substitution expression="&lt;component name=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;com.d2s.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
+      <substitution expression="&lt;component name=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
       <fileset dir="${resources.src.dir}">
         <include name="**/*.hbm.xml" />
       </fileset>

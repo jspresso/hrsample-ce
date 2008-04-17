@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping default-access="com.d2s.framework.model.persistence.hibernate.property.EntityPropertyAccessor">
-  <class persister="com.d2s.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" abstract="true" table="ORGANIZATIONAL_UNIT" dynamic-insert="true" name="com.d2s.hrsample.model.OrganizationalUnit">
+<hibernate-mapping default-access="org.jspresso.framework.model.persistence.hibernate.property.EntityPropertyAccessor">
+  <class persister="org.jspresso.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" abstract="true" table="ORGANIZATIONAL_UNIT" dynamic-insert="true" name="com.d2s.hrsample.model.OrganizationalUnit">
     <id name="id" type="string" column="ID" length="36">
       <generator class="assigned"/>
     </id>
@@ -10,7 +10,7 @@
     <property name="ouId">
       <column name="OU_ID" length="6" not-null="true"/>
     </property>
-    <component name="contact"><tuplizer entity-mode="pojo" class="com.d2s.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer" />
+    <component name="contact"><tuplizer entity-mode="pojo" class="org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer" />
       <property name="address">
         <column name="CONTACT_ADDRESS" length="256"/>
       </property>
@@ -34,7 +34,7 @@
     <property name="lastUpdateTimestamp" type="timestamp">
       <column name="LAST_UPDATE_TIMESTAMP"/>
     </property>
-    <joined-subclass name="com.d2s.hrsample.model.Department" dynamic-insert="true" persister="com.d2s.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="DEPARTMENT">
+    <joined-subclass name="com.d2s.hrsample.model.Department" dynamic-insert="true" persister="org.jspresso.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="DEPARTMENT">
       <key column="ID"/>
       <many-to-one cascade="persist,merge,save-update" name="company">
         <column name="COMPANY_ID" not-null="true"/>
@@ -44,7 +44,7 @@
         <one-to-many class="com.d2s.hrsample.model.Team"/>
       </set>
     </joined-subclass>
-    <joined-subclass name="com.d2s.hrsample.model.Team" dynamic-insert="true" persister="com.d2s.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="TEAM">
+    <joined-subclass name="com.d2s.hrsample.model.Team" dynamic-insert="true" persister="org.jspresso.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="TEAM">
       <key column="ID"/>
       <many-to-one cascade="persist,merge,save-update" name="department">
         <column name="DEPARTMENT_ID" not-null="true"/>

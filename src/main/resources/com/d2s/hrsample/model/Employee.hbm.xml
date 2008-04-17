@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping default-access="com.d2s.framework.model.persistence.hibernate.property.EntityPropertyAccessor">
-  <class persister="com.d2s.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="EMPLOYEE" dynamic-insert="true" name="com.d2s.hrsample.model.Employee">
+<hibernate-mapping default-access="org.jspresso.framework.model.persistence.hibernate.property.EntityPropertyAccessor">
+  <class persister="org.jspresso.framework.model.persistence.hibernate.entity.persister.EntityProxyJoinedSubclassEntityPersister" dynamic-update="true" table="EMPLOYEE" dynamic-insert="true" name="com.d2s.hrsample.model.Employee">
     <id name="id" type="string" column="ID" length="36">
       <generator class="assigned"/>
     </id>
@@ -22,7 +22,7 @@
     <property name="gender">
       <column name="GENDER" length="1" not-null="true"/>
     </property>
-    <component name="contact"><tuplizer entity-mode="pojo" class="com.d2s.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer" />
+    <component name="contact"><tuplizer entity-mode="pojo" class="org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer" />
       <property name="address">
         <column name="CONTACT_ADDRESS" length="256"/>
       </property>
