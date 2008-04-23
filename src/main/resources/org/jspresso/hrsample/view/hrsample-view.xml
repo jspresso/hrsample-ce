@@ -272,7 +272,7 @@
       </bean>
     </property>
   </bean>
-
+  
   <bean
     id="Departments.and.teams.view"
     class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
