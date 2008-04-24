@@ -188,6 +188,22 @@
             <phase>install</phase>
             <configuration>
               <tasks>
+                <signjar
+                  alias="jspresso"
+                  keystore="jspresso.jks"
+                  storepass="jspresso"
+                  keypass="jspresso">
+                  <fileset dir="${project.build.directory}">
+                    <include name="**/jspresso-app-launch-*.jar" />
+                    <include name="**/jspresso-swing-components-*.jar" />
+                    <include name="**/ulc-base-trusted-*.jar" />
+                    <include name="**/ulc-base-client-*.jar" />
+                    <include name="**/ulc-jnlp-client-*.jar" />
+                    <include name="**/nachocalendar-*.jar" />
+                    <include name="**/jedit-syntax-*.jar" />
+                    <include name="**/substance-*.jar" />
+                  </fileset>
+                </signjar>
                 <mkdir dir="${project.build.directory}/development" />
                 <zip
                   destfile="${project.build.directory}/development/${project.artifactId}.war"
