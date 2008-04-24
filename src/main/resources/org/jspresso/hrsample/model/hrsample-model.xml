@@ -342,7 +342,8 @@
     <property name="serviceDelegates">
       <map>
         <entry key="org.jspresso.hrsample.model.service.EmployeeService">
-          <bean class="org.jspresso.hrsample.model.service.EmployeeServiceDelegate" />
+          <bean
+            class="org.jspresso.hrsample.model.service.EmployeeServiceDelegate" />
         </entry>
       </map>
     </property>
