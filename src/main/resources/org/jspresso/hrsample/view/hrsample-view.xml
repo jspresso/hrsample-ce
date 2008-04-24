@@ -82,6 +82,11 @@
           <property
             name="name"
             value="contact.phone" />
+          <property name="grantedRoles">
+            <list>
+              <value>administrator</value>
+            </list>
+          </property>
         </bean>
         <bean
           class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
@@ -272,7 +277,7 @@
       </bean>
     </property>
   </bean>
-  
+
   <bean
     id="Departments.and.teams.view"
     class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
