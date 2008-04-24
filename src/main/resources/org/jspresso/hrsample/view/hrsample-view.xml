@@ -84,7 +84,7 @@
             value="contact.phone" />
           <property name="grantedRoles">
             <list>
-              <value>administrator</value>
+              <value>test</value>
             </list>
           </property>
         </bean>
