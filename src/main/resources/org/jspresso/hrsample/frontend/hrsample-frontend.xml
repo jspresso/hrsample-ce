@@ -91,6 +91,12 @@
         </bean>
       </list>
     </property>
+    <property name="grantedRoles">
+      <list>
+        <value>administrator</value>
+        <value>staff-manager</value>
+      </list>
+    </property>
   </bean>
 
   <bean
@@ -125,6 +131,12 @@
             name="elementViewDescriptor"
             ref="Company.module.view" />
         </bean>
+      </list>
+    </property>
+    <property name="grantedRoles">
+      <list>
+        <value>administrator</value>
+        <value>organization-manager</value>
       </list>
     </property>
   </bean>
