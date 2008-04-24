@@ -59,6 +59,9 @@
           <property
             name="readOnly"
             value="true" />
+            <property name="grantedRoles">
+            <list><value>test</value></list>
+            </property>
         </bean>
       </list>
     </property>
