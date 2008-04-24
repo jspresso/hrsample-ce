@@ -7,6 +7,11 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
+		<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
+		<config>core/src/main/resources/org/jspresso/hrsample/backend/hrsample-backend.xml</config>
+		<config>core/src/main/resources/org/jspresso/hrsample/frontend/hrsample-frontend.xml</config>
+		<config>core/src/main/resources/org/jspresso/hrsample/model/hrsample-model.xml</config>
+		<config>core/src/main/resources/org/jspresso/hrsample/view/hrsample-view.xml</config>
 	</configs>
 	<configSets>
 		<configSet>
@@ -18,6 +23,11 @@
 				<config>/jspresso-framework/app-template/src/main/resources/org/jspresso/framework/application/commons.xml</config>
 				<config>/jspresso-framework/app-template/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
 				<config>/jspresso-framework/app-template/src/main/resources/org/jspresso/framework/application/frontend/swing/commons-swing.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/backend/hrsample-backend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/frontend/hrsample-frontend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/model/hrsample-model.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/view/hrsample-view.xml</config>
 			</configs>
 		</configSet>
 		<configSet>
@@ -29,6 +39,11 @@
 				<config>/jspresso-framework/app-template/src/main/resources/org/jspresso/framework/application/commons.xml</config>
 				<config>/jspresso-framework/app-template/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
 				<config>/jspresso-framework/app-template/src/main/resources/org/jspresso/framework/application/frontend/ulc/commons-ulc.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/backend/hrsample-backend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/frontend/hrsample-frontend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/model/hrsample-model.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/view/hrsample-view.xml</config>
 			</configs>
 		</configSet>
 	</configSets>
