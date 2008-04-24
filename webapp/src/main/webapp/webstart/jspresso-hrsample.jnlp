@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<jnlp spec="1.0+" codebase="$$context/webstart" href="geoxia-salesdesk.jnlp">
+
+  <information>
+    <title>Jspresso HR Sample</title>
+    <vendor>Jspresso</vendor>
+    <description>Jspresso HR Sample Application</description>
+    <homepage href="http://www.jspresso.org"/>
+    <icon href="$$context/webstart/jspresso.jpg" width="192" height="96"/>
+    <icon kind="splash" href="$$context/webstart/jspresso.jpg" width="192" height="96"/>
+  </information>
+
+  <resources>
+    <j2se version="1.5+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="../lib/jspresso-app-launch-2.0.jar" main="true"/>
+    <jar href="../lib/jspresso-swing-components-2.0.jar"/>
+    <jar href="../lib/ulc-base-client-6.0.5.jar"/>
+    <jar href="../lib/ulc-base-trusted-6.0.5.jar"/>
+    <jar href="../lib/ulc-jnlp-client-6.0.5.jar"/>
+    <jar href="../lib/nachocalendar-0.22.jar"/>
+    <jar href="../lib/substance-4.1.jar"/>
+    <property name="swing.defaultlaf" value="org.jvnet.substance.SubstanceLookAndFeel"/>
+    <property name="sun.awt.noerasebackground" value="true"/>
+    <extension name="untrusted jars" href="$$context/webstart/jspresso-hrsample-untrusted.jnlp"/>
+  </resources>
+
+  <security>
+    <all-permissions/>
+  </security>
+
+  <application-desc main-class="com.jspresso.framework.application.launch.ulc.jnlp.UlcJnlpLauncher">
+    <argument>-splash</argument>
+    <argument>$$context/webstart/jspresso.jpg</argument>
+    <argument>$$context/jspresso-hrsample</argument>
+    <argument>60</argument>
+    <argument>WARNING</argument>
+  </application-desc>
+
+</jnlp>

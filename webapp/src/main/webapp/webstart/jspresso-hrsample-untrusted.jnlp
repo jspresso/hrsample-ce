@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<jnlp spec="1.0+" codebase="$$context/webstart" href="bluevox-cms-untrusted.jnlp">
+
+  <information>
+    <title>Geoxia SalesDesk - Untrusted code</title>
+    <vendor>Geoxia</vendor>
+  </information>
+
+  <resources>
+    <jar href="../lib/jspresso-ulc-components-client-2.0.jar"/>
+    <jar href="../lib/jspresso-ulc-components-shared-2.0.jar"/>
+    <jar href="../lib/jspresso-util-2.0.jar"/>
+    <jar href="../lib/ulc-servlet-client-6.0.5.jar"/>
+    <jar href="../lib/jedit-syntax-1.0.jar"/>
+    <jar href="../lib/joda-time-1.4.jar"/>
+  </resources>
+
+  <component-desc/>
+
+</jnlp>

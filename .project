@@ -26,4 +26,16 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>webapp/src/main/webapp/lib</name>
+			<type>2</type>
+			<location>D:/Dev/Jspresso/geoxia-salesdesk/webapp/target/salesdesk-webapp-1.0-development.dir/lib</location>
+		</link>
+		<link>
+			<name>webapp/src/main/webapp/WEB-INF/web.xml</name>
+			<type>1</type>
+			<location>D:/Dev/Jspresso/geoxia-salesdesk/webapp/src/main/conf/development/WEB-INF/web.xml</location>
+		</link>
+	</linkedResources>
 </projectDescription>

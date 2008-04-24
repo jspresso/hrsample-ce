@@ -1,0 +1,5 @@
+<!--
+    Context configuration file for the BlueVox Web App
+-->
+
+<Context antiResourceLocking="false" antiJARLocking="false" />

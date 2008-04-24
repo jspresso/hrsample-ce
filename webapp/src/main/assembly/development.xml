@@ -1,0 +1,16 @@
+<assembly>
+  <id>development</id>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <componentDescriptors>
+    <componentDescriptor>src/main/assembly/commons.xml</componentDescriptor>
+  </componentDescriptors>
+  <fileSets>
+    <fileSet>
+      <directory>src/main/conf/development/WEB-INF</directory>
+      <outputDirectory>/WEB-INF</outputDirectory>
+    </fileSet>
+  </fileSets>
+</assembly>
