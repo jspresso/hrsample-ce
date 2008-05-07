@@ -2,8 +2,8 @@
 <jnlp spec="1.0+" codebase="$$context/webstart" href="bluevox-cms-untrusted.jnlp">
 
   <information>
-    <title>Geoxia SalesDesk - Untrusted code</title>
-    <vendor>Geoxia</vendor>
+    <title>Jspresso HR Sample - Untrusted code</title>
+    <vendor>Jspresso</vendor>
   </information>
 
   <resources>
