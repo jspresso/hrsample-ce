@@ -120,43 +120,8 @@
     </dependency>
   </dependencies>
   <build>
-    <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
-    <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
-    <outputDirectory>${basedir}/target/classes</outputDirectory>
-    <testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
-    <resources>
-      <resource>
-        <directory>${basedir}/src/main/resources</directory>
-        <filtering>false</filtering>
-      </resource>
-    </resources>
-    <testResources>
-      <testResource>
-        <directory>${basedir}/src/test/resources</directory>
-        <filtering>false</filtering>
-      </testResource>
-    </testResources>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <includes>
-            <include>**/*Test.java</include>
-            <include>**/*Tests.java</include>
-          </includes>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
        <plugin>
-        <inherited>false</inherited>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
         <executions>
@@ -169,9 +134,7 @@
         </executions>
         <configuration>
           <descriptors>
-            <descriptor>
-              ${basedir}/src/main/assembly/development.xml
-            </descriptor>
+            <descriptor>${basedir}/src/main/assembly/development.xml</descriptor>
             <!--
               <descriptor>${basedir}/src/main/assembly/preproduction.xml</descriptor>
               <descriptor>${basedir}/src/main/assembly/production.xml</descriptor>
