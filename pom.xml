@@ -18,6 +18,12 @@
       scm:svn:https://svn.jspresso.org:447/jspresso/app-hrsample/trunk
     </connection>
   </scm>
+  <distributionManagement>
+    <site>
+      <id>local-site</id>
+      <url>file:///tmp/jspresso/app-hrsample/site</url>
+    </site>
+  </distributionManagement>
   <modules>
     <module>core</module>
     <module>webapp</module>
@@ -119,12 +125,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>dist</id>
-            <inherited>false</inherited>
-          </execution>
-        </executions>
+        <inherited>false</inherited>
         <configuration>
           <descriptors>
             <descriptor>src/main/assembly/dist-bin.xml</descriptor>
