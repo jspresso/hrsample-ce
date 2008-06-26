@@ -9,6 +9,7 @@
     <artifactId>jspresso-framework</artifactId>
     <version>2.1</version>
   </parent>
+  <groupId>org.jspresso</groupId>
   <artifactId>hrsample</artifactId>
   <packaging>pom</packaging>
   <version>2.1-SNAPSHOT</version>
