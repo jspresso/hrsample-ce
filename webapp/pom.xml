@@ -1,4 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jspresso</groupId>
@@ -6,7 +9,7 @@
     <version>2.2-SNAPSHOT</version>
   </parent>
   <artifactId>hrsample-webapp</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <name>Jspresso HR Sample - Webapp</name>
   <dependencies>
     <dependency>
@@ -36,6 +39,7 @@
     <dependency>
       <groupId>org.jspresso</groupId>
       <artifactId>jspresso-ulc-components-client</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jspresso</groupId>
@@ -80,6 +84,7 @@
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>commons-lang</groupId>
@@ -88,66 +93,75 @@
     <dependency>
       <groupId>nachocalendar</groupId>
       <artifactId>nachocalendar</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>jedit</groupId>
       <artifactId>jedit-syntax</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>ulc</groupId>
       <artifactId>ulc-jnlp-client</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>ulc</groupId>
       <artifactId>ulc-base-client</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>ulc</groupId>
       <artifactId>ulc-base-trusted</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>ulc</groupId>
       <artifactId>ulc-servlet-client</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jvnet</groupId>
       <artifactId>substance</artifactId>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
   <build>
     <plugins>
-       <plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
+        <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
-            <phase>install</phase>
+            <id>copy-dependencies</id>
+            <phase>process-resources</phase>
             <goals>
-              <goal>directory</goal>
+              <goal>copy-dependencies</goal>
             </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/${project.build.finalName}/lib</outputDirectory>
+              <includeArtifactIds>
+                ulc-base-trusted,ulc-base-client,ulc-jnlp-client,ulc-servlet-client,nachocalendar,jedit-syntax,jspresso-util,jspresso-ulc-components-shared,jspresso-ulc-components-client,jspresso-swing-components,jspresso-app-launch,joda-time,substance
+              </includeArtifactIds>
+            </configuration>
           </execution>
         </executions>
-        <configuration>
-          <descriptors>
-            <descriptor>${basedir}/src/main/assembly/development.xml</descriptor>
-            <!--
-              <descriptor>${basedir}/src/main/assembly/preproduction.xml</descriptor>
-              <descriptor>${basedir}/src/main/assembly/production.xml</descriptor>
-            -->
-          </descriptors>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
           <execution>
-            <id>package</id>
-            <phase>install</phase>
+            <id>sign-dependencies</id>
+            <phase>process-resources</phase>
             <configuration>
               <tasks>
-                <signjar alias="jspresso" keystore="jspresso.jks" storepass="jspresso" keypass="jspresso">
-                  <fileset dir="${project.build.directory}">
+                <signjar
+                  alias="jspresso"
+                  keystore="jspresso.jks"
+                  storepass="jspresso"
+                  keypass="jspresso">
+                  <fileset dir="${project.build.directory}/${project.build.finalName}">
                     <include name="**/jspresso-app-launch-*.jar" />
                     <include name="**/jspresso-swing-components-*.jar" />
                     <include name="**/ulc-base-trusted-*.jar" />
@@ -158,14 +172,6 @@
                     <include name="**/substance-*.jar" />
                   </fileset>
                 </signjar>
-                <mkdir dir="${project.build.directory}/development" />
-                <zip destfile="${project.build.directory}/development/${project.artifactId}.war" basedir="${project.build.directory}/${project.artifactId}-${project.version}-development.dir" />
-                <!--
-                  <mkdir dir="${project.build.directory}/preproduction" />
-                  <zip destfile="${project.build.directory}/preproduction/${project.artifactId}.war" basedir="${project.build.directory}/${project.artifactId}-${project.version}-preproduction.dir" />
-                  <mkdir dir="${project.build.directory}/production" />
-                  <zip destfile="${project.build.directory}/production/${project.artifactId}.war" basedir="${project.build.directory}/${project.artifactId}-${project.version}-production.dir" />
-                -->
               </tasks>
             </configuration>
             <goals>
@@ -173,6 +179,11 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration></configuration>
       </plugin>
     </plugins>
   </build>
