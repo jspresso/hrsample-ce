@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jspresso</groupId>
@@ -12,12 +8,10 @@
   <groupId>org.jspresso</groupId>
   <artifactId>hrsample</artifactId>
   <packaging>pom</packaging>
-  <version>2.1-SNAPSHOT</version>
+  <version>2.1</version>
   <name>Jspresso HR Sample Application</name>
   <scm>
-    <connection>
-      scm:svn:https://svn.jspresso.org:447/jspresso/app-hrsample/trunk
-    </connection>
+    <connection>scm:svn:https://svn.jspresso.org:447/jspresso/app-hrsample/tags/hrsample-2.1</connection>
   </scm>
   <distributionManagement>
     <site>
@@ -34,7 +28,7 @@
       <dependency>
         <groupId>org.jspresso</groupId>
         <artifactId>hrsample-core</artifactId>
-        <version>2.1-SNAPSHOT</version>
+        <version>2.1</version>
       </dependency>
       <dependency>
         <groupId>net.sf.ehcache</groupId>
@@ -75,27 +69,19 @@
             <inherited>false</inherited>
             <configuration>
               <tasks>
-                <taskdef
-                  name="beandoc"
-                  classname="org.springframework.beandoc.client.AntTask" />
+                <taskdef name="beandoc" classname="org.springframework.beandoc.client.AntTask" />
                 <taskdef resource="net/sf/antcontrib/antlib.xml" />
                 <if>
-                  <equals
-                    arg1="${project.artifactId}"
-                    arg2="hrsample" />
+                  <equals arg1="${project.artifactId}" arg2="hrsample" />
                   <then>
                     <mkdir dir="${project.reporting.outputDirectory}/beandocs" />
                     <mkdir dir="${project.reporting.outputDirectory}/beandocs/tmp" />
-                    <copy
-                      todir="${project.reporting.outputDirectory}/beandocs/tmp"
-                      flatten="true">
+                    <copy todir="${project.reporting.outputDirectory}/beandocs/tmp" flatten="true">
                       <fileset dir="${basedir}/core/src/main/resources">
                         <include name="**/hrsample-*.xml" />
                       </fileset>
                     </copy>
-                    <beandoc
-                      outputDir="${project.reporting.outputDirectory}/beandocs"
-                      beandocProps="${basedir}/jspresso-app-hrsample-beandoc.properties">
+                    <beandoc outputDir="${project.reporting.outputDirectory}/beandocs" beandocProps="${basedir}/jspresso-app-hrsample-beandoc.properties">
                       <fileset dir="${project.reporting.outputDirectory}/beandocs/tmp">
                         <include name="**/*.xml" />
                       </fileset>
