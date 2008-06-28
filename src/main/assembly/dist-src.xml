@@ -10,7 +10,7 @@
   <moduleSets>
     <moduleSet>
       <sources>
-        <includeModuleDirectory>false</includeModuleDirectory>
+        <includeModuleDirectory>true</includeModuleDirectory>
         <fileSets>
           <fileSet>
             <directory>src/main/java</directory>

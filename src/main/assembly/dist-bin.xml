@@ -10,6 +10,7 @@
   <moduleSets>
     <moduleSet>
       <binaries>
+        <includeDependencies>false</includeDependencies>
         <unpack>false</unpack>
       </binaries>
     </moduleSet>
