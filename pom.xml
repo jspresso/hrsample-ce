@@ -8,7 +8,7 @@
   <groupId>org.jspresso</groupId>
   <artifactId>hrsample</artifactId>
   <packaging>pom</packaging>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <name>Jspresso HR Sample Application</name>
   <scm>
     <connection>scm:svn:https://svn.jspresso.org:447/jspresso/app-hrsample/trunk</connection>
@@ -28,7 +28,7 @@
       <dependency>
         <groupId>org.jspresso</groupId>
         <artifactId>hrsample-core</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>net.sf.ehcache</groupId>

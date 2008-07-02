@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.jspresso</groupId>
     <artifactId>hrsample</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
   <artifactId>hrsample-core</artifactId>
   <packaging>jar</packaging>
