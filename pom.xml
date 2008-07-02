@@ -8,10 +8,10 @@
   <groupId>org.jspresso</groupId>
   <artifactId>hrsample</artifactId>
   <packaging>pom</packaging>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <name>Jspresso HR Sample Application</name>
   <scm>
-    <connection>scm:svn:https://svn.jspresso.org:447/jspresso/app-hrsample/tags/hrsample-1.0</connection>
+    <connection>scm:svn:https://svn.jspresso.org:447/jspresso/app-hrsample/trunk</connection>
   </scm>
   <distributionManagement>
     <site>
@@ -28,7 +28,7 @@
       <dependency>
         <groupId>org.jspresso</groupId>
         <artifactId>hrsample-core</artifactId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>net.sf.ehcache</groupId>
