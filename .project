@@ -34,7 +34,7 @@
 		<link>
 			<name>webapp/src/main/webapp/lib</name>
 			<type>2</type>
-			<location>D:/Dev/Jspresso/jspresso-app-hrsample/webapp/target/hrsample-webapp-2.2-SNAPSHOT/lib</location>
+			<location>D:/Dev/Jspresso/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/lib</location>
 		</link>
 	</linkedResources>
 </projectDescription>

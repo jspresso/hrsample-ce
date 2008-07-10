@@ -12,8 +12,8 @@
 
   <resources>
     <j2se version="1.5+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="../lib/jspresso-app-launch-2.1.jar" main="true"/>
-    <jar href="../lib/jspresso-swing-components-2.1.jar"/>
+    <jar href="../lib/jspresso-app-launch-2.2-SNAPSHOT.jar" main="true"/>
+    <jar href="../lib/jspresso-swing-components-2.2-SNAPSHOT.jar"/>
     <jar href="../lib/ulc-base-client-6.0.5.jar"/>
     <jar href="../lib/ulc-base-trusted-6.0.5.jar"/>
     <jar href="../lib/ulc-jnlp-client-6.0.5.jar"/>
