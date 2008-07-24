@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>jspresso-app-hrsample</name>
+	<name>hrsample-webapp</name>
 	<comment></comment>
 	<projects>
 		<project>jspresso-framework</project>
@@ -34,7 +34,7 @@
 		<link>
 			<name>webapp/src/main/webapp/lib</name>
 			<type>2</type>
-			<location>D:/Dev/Jspresso/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/lib</location>
+			<location>D:/Dev/Jspresso/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/lib</location>
 		</link>
 	</linkedResources>
 </projectDescription>

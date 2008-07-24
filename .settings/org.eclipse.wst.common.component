@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="jspresso-hrsample">
+    <wb-module deploy-name="hrsample-webapp">
         <wb-resource deploy-path="/" source-path="/webapp/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/src/main/resources"/>
@@ -9,142 +9,142 @@
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-framework/jspresso-framework">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/antlr-2.7.6.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/antlr-2.7.6.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/bsf-2.3.0.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/bsf-2.3.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/bsh-2.0b4.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/bsh-2.0b4.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/cglib-nodep-2.1_3.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/cglib-nodep-2.1_3.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-beanutils-1.7.0.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-beanutils-1.7.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-collections-3.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-collections-3.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-dbcp-1.2.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-dbcp-1.2.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-digester-1.7.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-digester-1.7.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-lang-2.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-lang-2.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-logging-1.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-logging-1.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-pool-1.2.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/commons-pool-1.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/dom4j-1.6.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/dom4j-1.6.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/dwr-2.0.3.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/dwr-2.0.3.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/ehcache-1.2.4.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/ehcache-1.2.4.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/hibernate-3.2.5.ga.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/hibernate-3.2.5.ga.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/hsqldb-1.8.0.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/hsqldb-1.8.0.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/itext-1.3.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/itext-1.3.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jasperreports-1.3.2.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jasperreports-1.3.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jaxen-1.1-beta-6.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jaxen-1.1-beta-6.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jaxme-api-0.3.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jaxme-api-0.3.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jboss-common-4.2.2.GA.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jboss-common-4.2.2.GA.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jbosssx-4.2.2.GA.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jbosssx-4.2.2.GA.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jcommon-1.0.0.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jcommon-1.0.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jdbc-stdext-2.0.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jdbc-stdext-2.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jdtcore-3.1.0.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jdtcore-3.1.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jfreechart-1.0.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jfreechart-1.0.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jnlp-servlet-1.0.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jnlp-servlet-1.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/joda-time-1.4.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/joda-time-1.4.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jta-1.0.1B.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/jta-1.0.1B.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/ldapbp-1.0.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/ldapbp-1.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/log4j-1.2.14.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/log4j-1.2.14.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/relaxngDatatype-20030807.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/relaxngDatatype-20030807.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/spring-2.5.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/spring-2.5.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/spring-ldap-1.2.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/spring-ldap-1.2.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/stax-api-1.0.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/stax-api-1.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/ulc-base-server-6.0.5.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/ulc-base-server-6.0.5.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/ulc-deployment-key-6.0.5.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/ulc-deployment-key-6.0.5.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/ulc-servlet-server-6.0.5.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/ulc-servlet-server-6.0.5.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/wings-3.2.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/wings-3.2.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/wings-experimental-3.2.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/wings-experimental-3.2.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/wingx-3.2.1.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/wingx-3.2.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/xerces-2.0.2.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/xerces-2.0.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/xml-apis-2.0.2.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/xml-apis-2.0.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/xpp3-1.1.3.3.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/xpp3-1.1.3.3.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/jspresso-app-hrsample/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/xsdlib-20030807.jar">
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp-1.1-SNAPSHOT/WEB-INF/lib/xsdlib-20030807.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="build/classes"/>
-        <property name="context-root" value="jspresso-hrsample"/>
+        <property name="context-root" value="hrsample-webapp"/>
     </wb-module>
 </project-modules>
