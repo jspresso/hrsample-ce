@@ -35,4 +35,8 @@
       </list>
     </property>
   </bean>
+
+  <bean id="reportingJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    <property name="dataSource" ref="dataSource" />
+  </bean>
 </beans>
