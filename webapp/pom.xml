@@ -65,6 +65,7 @@
               <includeArtifactIds>
                 ulc-base-trusted,ulc-base-client,ulc-jnlp-client,ulc-servlet-client,nachocalendar,jedit-syntax,jspresso-util,jspresso-ulc-components-shared,jspresso-ulc-components-client,jspresso-swing-components,jspresso-app-launch-core,jspresso-app-launch-ulc,joda-time,substance
               </includeArtifactIds>
+              <stripVersion>true</stripVersion>
             </configuration>
           </execution>
         </executions>
@@ -80,14 +81,15 @@
               <tasks>
                 <signjar alias="jspresso" keystore="jspresso.jks" storepass="jspresso" keypass="jspresso">
                   <fileset dir="${project.build.directory}/${project.build.finalName}">
-                    <include name="**/jspresso-app-launch-*.jar" />
-                    <include name="**/jspresso-swing-components-*.jar" />
-                    <include name="**/ulc-base-trusted-*.jar" />
-                    <include name="**/ulc-base-client-*.jar" />
-                    <include name="**/ulc-jnlp-client-*.jar" />
-                    <include name="**/nachocalendar-*.jar" />
-                    <include name="**/jedit-syntax-*.jar" />
-                    <include name="**/substance-*.jar" />
+                    <include name="lib/jspresso-app-launch-core.jar" />
+                    <include name="lib/jspresso-app-launch-ulc.jar" />
+                    <include name="lib/jspresso-swing-components.jar" />
+                    <include name="lib/ulc-base-trusted.jar" />
+                    <include name="lib/ulc-base-client.jar" />
+                    <include name="lib/ulc-jnlp-client.jar" />
+                    <include name="lib/nachocalendar.jar" />
+                    <include name="lib/jedit-syntax.jar" />
+                    <include name="lib/substance.jar" />
                   </fileset>
                 </signjar>
               </tasks>

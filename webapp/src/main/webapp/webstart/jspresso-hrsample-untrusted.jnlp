@@ -7,12 +7,12 @@
   </information>
 
   <resources>
-    <jar href="../lib/jspresso-ulc-components-client-2.2-SNAPSHOT.jar"/>
-    <jar href="../lib/jspresso-ulc-components-shared-2.2-SNAPSHOT.jar"/>
-    <jar href="../lib/jspresso-util-2.2-SNAPSHOT.jar"/>
-    <jar href="../lib/ulc-servlet-client-6.0.5.jar"/>
-    <jar href="../lib/jedit-syntax-1.0.jar"/>
-    <jar href="../lib/joda-time-1.4.jar"/>
+    <jar href="../lib/jspresso-ulc-components-client.jar"/>
+    <jar href="../lib/jspresso-ulc-components-shared.jar"/>
+    <jar href="../lib/jspresso-util.jar"/>
+    <jar href="../lib/ulc-servlet-client.jar"/>
+    <jar href="../lib/jedit-syntax.jar"/>
+    <jar href="../lib/joda-time.jar"/>
   </resources>
 
   <component-desc/>

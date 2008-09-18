@@ -12,13 +12,14 @@
 
   <resources>
     <j2se version="1.5+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="../lib/jspresso-app-launch-2.2-SNAPSHOT.jar" main="true"/>
-    <jar href="../lib/jspresso-swing-components-2.2-SNAPSHOT.jar"/>
-    <jar href="../lib/ulc-base-client-6.0.5.jar"/>
-    <jar href="../lib/ulc-base-trusted-6.0.5.jar"/>
-    <jar href="../lib/ulc-jnlp-client-6.0.5.jar"/>
-    <jar href="../lib/nachocalendar-0.22.jar"/>
-    <jar href="../lib/substance-4.1.jar"/>
+    <jar href="../lib/jspresso-app-launch-ulc.jar" main="true"/>
+    <jar href="../lib/jspresso-app-launch-core.jar"/>
+    <jar href="../lib/jspresso-swing-components.jar"/>
+    <jar href="../lib/ulc-base-client.jar"/>
+    <jar href="../lib/ulc-base-trusted.jar"/>
+    <jar href="../lib/ulc-jnlp-client.jar"/>
+    <jar href="../lib/nachocalendar.jar"/>
+    <jar href="../lib/substance.jar"/>
     <property name="swing.defaultlaf" value="org.jvnet.substance.SubstanceLookAndFeel"/>
     <property name="sun.awt.noerasebackground" value="true"/>
     <extension name="untrusted jars" href="$$context/webstart/jspresso-hrsample-untrusted.jnlp"/>
