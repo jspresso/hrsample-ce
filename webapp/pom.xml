@@ -15,44 +15,12 @@
     </dependency>
     <dependency>
       <groupId>org.jspresso</groupId>
-      <artifactId>jspresso-ulc-application</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jspresso</groupId>
-      <artifactId>jspresso-security</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jspresso</groupId>
-      <artifactId>jspresso-ulc-components-server</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jspresso</groupId>
-      <artifactId>jspresso-ulc-components-shared</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jspresso</groupId>
-      <artifactId>jspresso-app-launch</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jspresso</groupId>
       <artifactId>jspresso-ulc-components-client</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.jspresso</groupId>
-      <artifactId>jspresso-ulc-components-shared</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>ulc</groupId>
-      <artifactId>ulc-base-server</artifactId>
-    </dependency>
-    <dependency>
       <groupId>ulc</groupId>
       <artifactId>ulc-deployment-key</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>ulc</groupId>
-      <artifactId>ulc-servlet-server</artifactId>
     </dependency>
     <dependency>
       <groupId>net.sf.ehcache</groupId>
@@ -71,51 +39,8 @@
       <artifactId>commons-dbcp</artifactId>
     </dependency>
     <dependency>
-      <groupId>jnlp-servlet</groupId>
-      <artifactId>jnlp-servlet</artifactId>
-    </dependency>
-    <dependency>
       <groupId>hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>nachocalendar</groupId>
-      <artifactId>nachocalendar</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>jedit</groupId>
-      <artifactId>jedit-syntax</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>ulc</groupId>
-      <artifactId>ulc-jnlp-client</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>ulc</groupId>
-      <artifactId>ulc-base-client</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>ulc</groupId>
-      <artifactId>ulc-base-trusted</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>ulc</groupId>
-      <artifactId>ulc-servlet-client</artifactId>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jvnet</groupId>
@@ -138,7 +63,7 @@
             <configuration>
               <outputDirectory>${project.build.directory}/${project.build.finalName}/lib</outputDirectory>
               <includeArtifactIds>
-                ulc-base-trusted,ulc-base-client,ulc-jnlp-client,ulc-servlet-client,nachocalendar,jedit-syntax,jspresso-util,jspresso-ulc-components-shared,jspresso-ulc-components-client,jspresso-swing-components,jspresso-app-launch,joda-time,substance
+                ulc-base-trusted,ulc-base-client,ulc-jnlp-client,ulc-servlet-client,nachocalendar,jedit-syntax,jspresso-util,jspresso-ulc-components-shared,jspresso-ulc-components-client,jspresso-swing-components,jspresso-app-launch-core,jspresso-app-launch-ulc,joda-time,substance
               </includeArtifactIds>
             </configuration>
           </execution>
