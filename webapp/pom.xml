@@ -14,7 +14,7 @@
   <dependencies>
     <dependency>
       <groupId>org.jspresso</groupId>
-      <artifactId>hrsample-core</artifactId>
+      <artifactId>hrsample-startup-wings</artifactId>
     </dependency>
     <dependency>
       <groupId>net.sf.ehcache</groupId>
@@ -54,6 +54,10 @@
     <profile>
       <id>ulc</id>
       <dependencies>
+        <dependency>
+          <groupId>org.jspresso</groupId>
+          <artifactId>hrsample-startup-ulc</artifactId>
+        </dependency>
         <dependency>
           <groupId>org.jspresso</groupId>
           <artifactId>jspresso-ulc-components-client</artifactId>

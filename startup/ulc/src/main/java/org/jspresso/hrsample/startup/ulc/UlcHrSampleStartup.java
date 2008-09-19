@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package org.jspresso.hrsample.startup;
+package org.jspresso.hrsample.startup.ulc;
 
-import org.jspresso.framework.application.startup.swing.SwingStartup;
+import org.jspresso.framework.application.startup.ulc.UlcStartup;
 
 /**
- * Swing HR sample startup class.
+ * ULC HR sample startup class.
  * <p>
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  * <p>
@@ -14,15 +14,15 @@ import org.jspresso.framework.application.startup.swing.SwingStartup;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-public class SwingHrSampleStartup extends SwingStartup {
+public class UlcHrSampleStartup extends UlcStartup {
 
   /**
-   * Returns the "hrsample-swing-context" value.
+   * Returns the "hrsample-ulc-context" value.
    * <p>
    * {@inheritDoc}
    */
   @Override
   protected String getApplicationContextKey() {
-    return "hrsample-swing-context";
+    return "hrsample-ulc-context";
   }
 }

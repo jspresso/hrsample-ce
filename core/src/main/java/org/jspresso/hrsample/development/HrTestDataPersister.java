@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package org.jspresso.hrsample.startup.development;
+package org.jspresso.hrsample.development;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

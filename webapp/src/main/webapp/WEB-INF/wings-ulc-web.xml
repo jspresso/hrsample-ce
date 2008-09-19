@@ -50,7 +50,7 @@
     <servlet-class>com.ulcjava.container.servlet.server.ServletContainerAdapter</servlet-class>
     <init-param>
       <param-name>application-class</param-name>
-      <param-value>org.jspresso.hrsample.startup.UlcHrSampleStartup</param-value>
+      <param-value>org.jspresso.hrsample.startup.ulc.UlcHrSampleStartup</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
@@ -78,7 +78,7 @@
     <servlet-class>org.wings.session.WingServlet</servlet-class>
     <init-param>
       <param-name>wings.mainclass</param-name>
-      <param-value>org.jspresso.hrsample.startup.WingsHrSampleStartup</param-value>
+      <param-value>org.jspresso.hrsample.startup.wings.WingsHrSampleStartup</param-value>
     </init-param>
     <!--
       <init-param>

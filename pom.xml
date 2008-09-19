@@ -29,6 +29,7 @@
   </distributionManagement>
   <modules>
     <module>core</module>
+    <module>startup</module>
     <module>webapp</module>
   </modules>
   <dependencyManagement>
@@ -36,6 +37,21 @@
       <dependency>
         <groupId>org.jspresso</groupId>
         <artifactId>hrsample-core</artifactId>
+        <version>1.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jspresso</groupId>
+        <artifactId>hrsample-startup-swing</artifactId>
+        <version>1.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jspresso</groupId>
+        <artifactId>hrsample-startup-ulc</artifactId>
+        <version>1.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jspresso</groupId>
+        <artifactId>hrsample-startup-wings</artifactId>
         <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>

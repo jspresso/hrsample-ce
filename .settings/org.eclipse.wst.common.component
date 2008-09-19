@@ -6,6 +6,12 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/webapp/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/webapp/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/swing/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/swing/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/ulc/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/ulc/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/wings/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/wings/src/main/resources"/>
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-framework/jspresso-framework">
             <dependency-type>uses</dependency-type>
         </dependent-module>

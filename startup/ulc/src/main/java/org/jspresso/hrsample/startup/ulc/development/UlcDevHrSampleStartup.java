@@ -1,12 +1,13 @@
 /*
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  */
-package org.jspresso.hrsample.startup.development;
+package org.jspresso.hrsample.startup.ulc.development;
 
-import org.jspresso.hrsample.startup.SwingHrSampleStartup;
+import org.jspresso.hrsample.development.HrTestDataPersister;
+import org.jspresso.hrsample.startup.ulc.UlcHrSampleStartup;
 
 /**
- * Swing development HR sample startup class.
+ * ULC development HR sample startup class.
  * <p>
  * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
  * <p>
@@ -14,7 +15,7 @@ import org.jspresso.hrsample.startup.SwingHrSampleStartup;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-public class SwingDevHrSampleStartup extends SwingHrSampleStartup {
+public class UlcDevHrSampleStartup extends UlcHrSampleStartup {
 
   /**
    * Sets up some test data before actually starting.

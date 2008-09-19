@@ -4,7 +4,7 @@
 package org.jspresso.hrsample.webapp;
 
 import org.jspresso.framework.application.startup.development.AbstractTestDataContextListener;
-import org.jspresso.hrsample.startup.development.HrTestDataPersister;
+import org.jspresso.hrsample.development.HrTestDataPersister;
 import org.springframework.beans.factory.BeanFactory;
 
 /**
