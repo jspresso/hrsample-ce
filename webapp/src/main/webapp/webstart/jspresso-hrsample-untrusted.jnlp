@@ -6,6 +6,8 @@
     <vendor>Jspresso</vendor>
   </information>
 
+  <update check="always" policy="always"/>
+
   <resources>
     <jar href="../lib/jspresso-ulc-components-client.jar"/>
     <jar href="../lib/jspresso-ulc-components-shared.jar"/>
