@@ -1,4 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jspresso</groupId>
@@ -12,15 +15,6 @@
     <dependency>
       <groupId>org.jspresso</groupId>
       <artifactId>hrsample-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jspresso</groupId>
-      <artifactId>jspresso-ulc-components-client</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>ulc</groupId>
-      <artifactId>ulc-deployment-key</artifactId>
     </dependency>
     <dependency>
       <groupId>net.sf.ehcache</groupId>
@@ -42,71 +36,105 @@
       <groupId>hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.jvnet</groupId>
-      <artifactId>substance</artifactId>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>copy-dependencies</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.build.directory}/${project.build.finalName}/lib</outputDirectory>
-              <includeArtifactIds>
-                ulc-base-trusted,ulc-base-client,ulc-jnlp-client,ulc-servlet-client,nachocalendar,jedit-syntax,jspresso-util,jspresso-ulc-components-shared,jspresso-ulc-components-client,jspresso-swing-components,jspresso-app-launch-core,jspresso-app-launch-ulc,joda-time,substance
-              </includeArtifactIds>
-              <stripVersion>true</stripVersion>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>sign-dependencies</id>
-            <phase>process-resources</phase>
-            <configuration>
-              <tasks>
-                <signjar alias="jspresso" keystore="jspresso.jks" storepass="jspresso" keypass="jspresso">
-                  <fileset dir="${project.build.directory}/${project.build.finalName}">
-                    <include name="lib/jspresso-app-launch-core.jar" />
-                    <include name="lib/jspresso-app-launch-ulc.jar" />
-                    <include name="lib/jspresso-swing-components.jar" />
-                    <include name="lib/ulc-base-trusted.jar" />
-                    <include name="lib/ulc-base-client.jar" />
-                    <include name="lib/ulc-jnlp-client.jar" />
-                    <include name="lib/nachocalendar.jar" />
-                    <include name="lib/jedit-syntax.jar" />
-                    <include name="lib/substance.jar" />
-                  </fileset>
-                </signjar>
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
-        <warName>${project.artifactId}</warName>
+          <warName>${project.artifactId}</warName>
         </configuration>
       </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>ulc</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.jspresso</groupId>
+          <artifactId>jspresso-ulc-components-client</artifactId>
+          <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>ulc</groupId>
+          <artifactId>ulc-deployment-key</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.jvnet</groupId>
+          <artifactId>substance</artifactId>
+          <scope>provided</scope>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>copy-dependencies</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>copy-dependencies</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>${project.build.directory}/${project.build.finalName}/lib</outputDirectory>
+                  <includeArtifactIds>
+                    ulc-base-trusted,ulc-base-client,ulc-jnlp-client,ulc-servlet-client,nachocalendar,jedit-syntax,jspresso-util,jspresso-ulc-components-shared,jspresso-ulc-components-client,jspresso-swing-components,jspresso-app-launch-core,jspresso-app-launch-ulc,joda-time,substance
+              </includeArtifactIds>
+                  <stripVersion>true</stripVersion>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-dependencies</id>
+                <phase>process-resources</phase>
+                <configuration>
+                  <tasks>
+                    <signjar
+                      alias="jspresso"
+                      keystore="jspresso.jks"
+                      storepass="jspresso"
+                      keypass="jspresso">
+                      <fileset
+                        dir="${project.build.directory}/${project.build.finalName}">
+                        <include
+                          name="lib/jspresso-app-launch-core.jar" />
+                        <include
+                          name="lib/jspresso-app-launch-ulc.jar" />
+                        <include
+                          name="lib/jspresso-swing-components.jar" />
+                        <include
+                          name="lib/ulc-base-trusted.jar" />
+                        <include
+                          name="lib/ulc-base-client.jar" />
+                        <include
+                          name="lib/ulc-jnlp-client.jar" />
+                        <include
+                          name="lib/nachocalendar.jar" />
+                        <include
+                          name="lib/jedit-syntax.jar" />
+                        <include
+                          name="lib/substance.jar" />
+                      </fileset>
+                    </signjar>
+                  </tasks>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
