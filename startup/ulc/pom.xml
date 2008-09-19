@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jspresso</groupId>
-    <artifactId>hrsample-startup</artifactId>
+    <artifactId>hrsample</artifactId>
     <version>1.1-SNAPSHOT</version>
   </parent>
   <artifactId>hrsample-startup-ulc</artifactId>

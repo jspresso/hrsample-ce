@@ -19,11 +19,6 @@
     </dependency>
     <dependency>
       <groupId>org.jspresso</groupId>
-      <artifactId>jspresso-app-template-ulc</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.jspresso</groupId>
       <artifactId>jspresso-app-template-wings</artifactId>
     </dependency>
   </dependencies>
