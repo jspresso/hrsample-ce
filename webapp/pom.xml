@@ -44,6 +44,8 @@
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <warName>${project.artifactId}</warName>
+          <webXml>${basedir}/src/main/webapp/WEB-INF/wings-only-web.xml</webXml>
+          <warSourceExcludes>**/webstart/**,**/*-web.xml</warSourceExcludes>
         </configuration>
       </plugin>
     </plugins>
@@ -69,6 +71,15 @@
       </dependencies>
       <build>
         <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <configuration>
+              <warName>${project.artifactId}</warName>
+              <webXml>${basedir}/src/main/webapp/WEB-INF/wings-ulc-web.xml</webXml>
+              <warSourceExcludes>**/*-web.xml</warSourceExcludes>
+            </configuration>
+          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>
