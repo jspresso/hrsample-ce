@@ -60,7 +60,7 @@
 
   <servlet>
     <servlet-name>JnlpDownloadServlet</servlet-name>
-    <servlet-class>com.sun.javaws.servlet.JnlpDownloadServlet</servlet-class>
+    <servlet-class>jnlp.sample.servlet.JnlpDownloadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>JnlpDownloadServlet</servlet-name>
