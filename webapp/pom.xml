@@ -68,7 +68,7 @@
           <artifactId>ulc-deployment-key</artifactId>
         </dependency>
         <dependency>
-          <groupId>org.jvnet</groupId>
+          <groupId>org.jvnet.substance</groupId>
           <artifactId>substance</artifactId>
           <scope>provided</scope>
         </dependency>
