@@ -19,7 +19,7 @@
       <include name="**/target/classes" />
     </dirset>
     <fileset dir="${m2.repo}">
-      <include name="**/jspresso/**/2.0/*.jar" />
+      <include name="**/jspresso/**/2.2/*.jar" />
       <include name="**/commons-cli-1.0.jar" />
       <include name="**/freemarker-2.3.3.jar" />
       <include name="**/spring-2.5.1.jar" />

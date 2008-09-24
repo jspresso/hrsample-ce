@@ -98,7 +98,7 @@
                   <outputDirectory>${project.build.directory}/${project.build.finalName}/lib</outputDirectory>
                   <includeArtifactIds>
                     ulc-base-trusted,ulc-base-client,ulc-jnlp-client,ulc-servlet-client,nachocalendar,jedit-syntax,jspresso-util,jspresso-ulc-components-shared,jspresso-ulc-components-client,jspresso-swing-components,jspresso-app-launch-core,jspresso-app-launch-ulc,joda-time,substance
-              </includeArtifactIds>
+                  </includeArtifactIds>
                   <stripVersion>true</stripVersion>
                 </configuration>
               </execution>
