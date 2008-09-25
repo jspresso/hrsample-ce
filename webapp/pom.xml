@@ -1,12 +1,9 @@
-<project
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jspresso</groupId>
     <artifactId>hrsample</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
   </parent>
   <artifactId>hrsample-webapp</artifactId>
   <packaging>war</packaging>
@@ -113,31 +110,17 @@
                 <phase>process-resources</phase>
                 <configuration>
                   <tasks>
-                    <signjar
-                      alias="jspresso"
-                      keystore="jspresso.jks"
-                      storepass="jspresso"
-                      keypass="jspresso">
-                      <fileset
-                        dir="${project.build.directory}/${project.build.finalName}">
-                        <include
-                          name="lib/jspresso-app-launch-core.jar" />
-                        <include
-                          name="lib/jspresso-app-launch-ulc.jar" />
-                        <include
-                          name="lib/jspresso-swing-components.jar" />
-                        <include
-                          name="lib/ulc-base-trusted.jar" />
-                        <include
-                          name="lib/ulc-base-client.jar" />
-                        <include
-                          name="lib/ulc-jnlp-client.jar" />
-                        <include
-                          name="lib/nachocalendar.jar" />
-                        <include
-                          name="lib/jedit-syntax.jar" />
-                        <include
-                          name="lib/substance.jar" />
+                    <signjar alias="jspresso" keystore="jspresso.jks" storepass="jspresso" keypass="jspresso">
+                      <fileset dir="${project.build.directory}/${project.build.finalName}">
+                        <include name="lib/jspresso-app-launch-core.jar" />
+                        <include name="lib/jspresso-app-launch-ulc.jar" />
+                        <include name="lib/jspresso-swing-components.jar" />
+                        <include name="lib/ulc-base-trusted.jar" />
+                        <include name="lib/ulc-base-client.jar" />
+                        <include name="lib/ulc-jnlp-client.jar" />
+                        <include name="lib/nachocalendar.jar" />
+                        <include name="lib/jedit-syntax.jar" />
+                        <include name="lib/substance.jar" />
                       </fileset>
                     </signjar>
                   </tasks>
