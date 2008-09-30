@@ -1,0 +1,13 @@
+1.1
+===
+
+Bugs fixed
+----------
+[ 2014954 ] Application fails to start
+
+Upgraded to Jspresso 2.2
+
+
+Known problems
+--------------
+Firefox 3 introduced a major performance problem in nested html tables. This impacts directly wings applications performance.
