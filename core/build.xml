@@ -7,6 +7,7 @@
   <property name="src.dir" value="${basedir}/src/main" />
   <property name="java.src.dir" value="${src.dir}/java" />
   <property name="resources.src.dir" value="${src.dir}/resources" />
+  <property name="reports.src.dir" value="${src.dir}/jasperreports" />
   <property name="ddl.dir" value="${src.dir}/ddl" />
 
   <property name="xdoclet.lib.dir" value="${xdoclet.home}/lib" />
@@ -25,7 +26,7 @@
       <include name="**/spring-2.5.1.jar" />
       <include name="**/commons-logging-1.1.jar" />
       <include name="**/xml-apis-2.0.2.jar" />
-      <include name="**/xerces-2.0.2.jar" />
+      <include name="**/xercesImpl-2.0.2.jar" />
       <include name="**/bsf-2.3.0.jar" />
       <include name="**/commons-beanutils-1.7.0.jar" />
     </fileset>
