@@ -10,18 +10,20 @@
   <moduleSets>
     <moduleSet>
       <sources>
-        <includeModuleDirectory>true</includeModuleDirectory><!--
+        <includeModuleDirectory>true</includeModuleDirectory>
+        <!--
         <fileSets>
           <fileSet>
             <directory>src/main/java</directory>
-            <outputDirectory>src</outputDirectory>
+            <outputDirectory>src/main/java</outputDirectory>
           </fileSet>
           <fileSet>
             <directory>src/main/resources</directory>
-            <outputDirectory>src</outputDirectory>
+            <outputDirectory>src/main/resources</outputDirectory>
           </fileSet>
         </fileSets>
-      --></sources>
+        -->
+      </sources>
     </moduleSet>
   </moduleSets>
 </assembly>
