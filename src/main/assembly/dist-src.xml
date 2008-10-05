@@ -10,7 +10,7 @@
   <moduleSets>
     <moduleSet>
       <sources>
-        <includeModuleDirectory>true</includeModuleDirectory>
+        <includeModuleDirectory>true</includeModuleDirectory><!--
         <fileSets>
           <fileSet>
             <directory>src/main/java</directory>
@@ -21,7 +21,7 @@
             <outputDirectory>src</outputDirectory>
           </fileSet>
         </fileSets>
-      </sources>
+      --></sources>
     </moduleSet>
   </moduleSets>
 </assembly>
