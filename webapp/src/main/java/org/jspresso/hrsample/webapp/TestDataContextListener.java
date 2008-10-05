@@ -4,7 +4,7 @@
 package org.jspresso.hrsample.webapp;
 
 import org.jspresso.framework.application.startup.development.AbstractTestDataContextListener;
-import org.jspresso.hrsample.development.HrTestDataPersister;
+import org.jspresso.hrsample.development.TestDataPersister;
 import org.springframework.beans.factory.BeanFactory;
 
 /**
@@ -23,7 +23,7 @@ public class TestDataContextListener extends AbstractTestDataContextListener {
    */
   @Override
   public void persistTestData(BeanFactory beanFactory) {
-    new HrTestDataPersister(beanFactory).persistTestData();
+    new TestDataPersister(beanFactory).persistTestData();
   }
 
 }

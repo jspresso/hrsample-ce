@@ -164,7 +164,7 @@
       value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
     <property
       name="loginContextName"
-      value="hrsample-app" />
+      value="hrsample" />
     <property
       name="forcedStartingLocale"
       value="en" />

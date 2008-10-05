@@ -24,15 +24,15 @@ import org.jspresso.hrsample.model.Team;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-public class HrTestDataPersister extends AbstractTestDataPersister {
+public class TestDataPersister extends AbstractTestDataPersister {
 
   /**
-   * Constructs a new <code>HrTestDataPersister</code> instance.
+   * Constructs a new <code>TestDataPersister</code> instance.
    * 
    * @param beanFactory
    *            the spring bean factory to use.
    */
-  public HrTestDataPersister(BeanFactory beanFactory) {
+  public TestDataPersister(BeanFactory beanFactory) {
     super(beanFactory);
   }
 

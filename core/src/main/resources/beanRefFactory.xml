@@ -13,7 +13,7 @@
       <list>
         <value>org/jspresso/framework/application/commons.xml</value>
         <value>org/jspresso/framework/tools/mock.xml</value>
-        <value>org/jspresso/hrsample/model/hrsample-model.xml</value>
+        <value>org/jspresso/hrsample/model/model.xml</value>
       </list>
     </constructor-arg>
   </bean>
@@ -26,10 +26,10 @@
       <list>
         <value>org/jspresso/framework/application/commons.xml</value>
         <value>org/jspresso/framework/tools/mock.xml</value>
-        <value>org/jspresso/hrsample/model/hrsample-model.xml</value>
+        <value>org/jspresso/hrsample/model/model.xml</value>
         <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
         <value>org/jspresso/framework/application/frontend/swing/commons-swing.xml</value>
-        <value>org/jspresso/hrsample/view/hrsample-view.xml</value>
+        <value>org/jspresso/hrsample/view/view.xml</value>
       </list>
     </constructor-arg>
   </bean>
@@ -44,10 +44,10 @@
         <value>org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
         <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
         <value>org/jspresso/framework/application/frontend/swing/commons-swing.xml</value>
-        <value>org/jspresso/hrsample/model/hrsample-model.xml</value>
-        <value>org/jspresso/hrsample/backend/hrsample-backend.xml</value>
-        <value>org/jspresso/hrsample/view/hrsample-view.xml</value>
-        <value>org/jspresso/hrsample/frontend/hrsample-frontend.xml</value>
+        <value>org/jspresso/hrsample/model/model.xml</value>
+        <value>org/jspresso/hrsample/backend/backend.xml</value>
+        <value>org/jspresso/hrsample/view/view.xml</value>
+        <value>org/jspresso/hrsample/frontend/frontend.xml</value>
         <value>org/jspresso/hrsample/config.xml</value>
       </list>
     </constructor-arg>
@@ -63,10 +63,10 @@
         <value>org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
         <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
         <value>org/jspresso/framework/application/frontend/ulc/commons-ulc.xml</value>
-        <value>org/jspresso/hrsample/model/hrsample-model.xml</value>
-        <value>org/jspresso/hrsample/backend/hrsample-backend.xml</value>
-        <value>org/jspresso/hrsample/view/hrsample-view.xml</value>
-        <value>org/jspresso/hrsample/frontend/hrsample-frontend.xml</value>
+        <value>org/jspresso/hrsample/model/model.xml</value>
+        <value>org/jspresso/hrsample/backend/backend.xml</value>
+        <value>org/jspresso/hrsample/view/view.xml</value>
+        <value>org/jspresso/hrsample/frontend/frontend.xml</value>
         <value>org/jspresso/hrsample/config.xml</value>
       </list>
     </constructor-arg>
@@ -82,10 +82,10 @@
         <value>org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
         <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
         <value>org/jspresso/framework/application/frontend/wings/commons-wings.xml</value>
-        <value>org/jspresso/hrsample/model/hrsample-model.xml</value>
-        <value>org/jspresso/hrsample/backend/hrsample-backend.xml</value>
-        <value>org/jspresso/hrsample/view/hrsample-view.xml</value>
-        <value>org/jspresso/hrsample/frontend/hrsample-frontend.xml</value>
+        <value>org/jspresso/hrsample/model/model.xml</value>
+        <value>org/jspresso/hrsample/backend/backend.xml</value>
+        <value>org/jspresso/hrsample/view/view.xml</value>
+        <value>org/jspresso/hrsample/frontend/frontend.xml</value>
         <value>org/jspresso/hrsample/config.xml</value>
       </list>
     </constructor-arg>
