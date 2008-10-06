@@ -11,18 +11,6 @@
     <moduleSet>
       <sources>
         <includeModuleDirectory>true</includeModuleDirectory>
-        <!--
-        <fileSets>
-          <fileSet>
-            <directory>src/main/java</directory>
-            <outputDirectory>src/main/java</outputDirectory>
-          </fileSet>
-          <fileSet>
-            <directory>src/main/resources</directory>
-            <outputDirectory>src/main/resources</outputDirectory>
-          </fileSet>
-        </fileSets>
-        -->
       </sources>
     </moduleSet>
   </moduleSets>
