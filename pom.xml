@@ -97,7 +97,8 @@
                     <mkdir dir="${project.reporting.outputDirectory}/beandocs/tmp" />
                     <copy todir="${project.reporting.outputDirectory}/beandocs/tmp" flatten="true">
                       <fileset dir="${basedir}/core/src/main/resources">
-                        <include name="**/hrsample-*.xml" />
+                         <include name="**/org/jspresso/hrsample/**/*.xml" />
+                         <exclude name="**/org/jspresso/hrsample/**/*.hbm.xml" />
                       </fileset>
                     </copy>
                     <beandoc outputDir="${project.reporting.outputDirectory}/beandocs" beandocProps="${basedir}/jspresso-app-hrsample-beandoc.properties">
