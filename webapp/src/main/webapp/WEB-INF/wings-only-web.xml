@@ -46,7 +46,7 @@
 
   <!-- WingS deployment section -->
   <servlet>
-    <servlet-name>HrSampleWingsServlet</servlet-name>
+    <servlet-name>ApplicationWingsServlet</servlet-name>
     <servlet-class>org.wings.session.WingServlet</servlet-class>
     <init-param>
       <param-name>wings.mainclass</param-name>
@@ -94,7 +94,7 @@
     -->
   </servlet>
   <servlet-mapping>
-    <servlet-name>HrSampleWingsServlet</servlet-name>
+    <servlet-name>ApplicationWingsServlet</servlet-name>
     <url-pattern>/hrsample-wings/*</url-pattern>
   </servlet-mapping>
 

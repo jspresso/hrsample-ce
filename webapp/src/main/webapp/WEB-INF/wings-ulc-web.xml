@@ -46,7 +46,7 @@
 
   <!-- ULC deployment section -->
   <servlet>
-    <servlet-name>HrSampleUlcServlet</servlet-name>
+    <servlet-name>ApplicationUlcServlet</servlet-name>
     <servlet-class>com.ulcjava.container.servlet.server.ServletContainerAdapter</servlet-class>
     <init-param>
       <param-name>application-class</param-name>
@@ -54,8 +54,8 @@
     </init-param>
   </servlet>
   <servlet-mapping>
-    <servlet-name>HrSampleUlcServlet</servlet-name>
-    <url-pattern>/jspresso-hrsample-ulc</url-pattern>
+    <servlet-name>ApplicationUlcServlet</servlet-name>
+    <url-pattern>/hrsample-ulc</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -74,7 +74,7 @@
 
   <!-- WingS deployment section -->
   <servlet>
-    <servlet-name>HrSampleWingsServlet</servlet-name>
+    <servlet-name>ApplicationWingsServlet</servlet-name>
     <servlet-class>org.wings.session.WingServlet</servlet-class>
     <init-param>
       <param-name>wings.mainclass</param-name>
@@ -122,8 +122,8 @@
     -->
   </servlet>
   <servlet-mapping>
-    <servlet-name>HrSampleWingsServlet</servlet-name>
-    <url-pattern>/jspresso-hrsample-wings/*</url-pattern>
+    <servlet-name>ApplicationWingsServlet</servlet-name>
+    <url-pattern>/hrsample-wings/*</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -174,7 +174,7 @@
     </init-param>
     <init-param>
       <param-name>success.redirect</param-name>
-      <param-value>/jspresso-hrsample-wings</param-value>
+      <param-value>/hrsample-wings</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
@@ -192,7 +192,7 @@
   </filter>
   <filter-mapping>
     <filter-name>AutenticationFilter</filter-name>
-    <url-pattern>/jspresso-hrsample-wings/*</url-pattern>
+    <url-pattern>/hrsample-wings/*</url-pattern>
   </filter-mapping>
   <!-- End WingS deployment section -->
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<jnlp spec="1.0+" codebase="$$context/webstart" href="jspresso-hrsample.jnlp">
+<jnlp spec="1.0+" codebase="$$context/webstart" href="application.jnlp">
 
   <information>
     <title>Jspresso HR Sample</title>
@@ -24,7 +24,7 @@
     <jar href="../lib/substance.jar"/>
     <property name="swing.defaultlaf" value="org.jvnet.substance.SubstanceLookAndFeel"/>
     <property name="sun.awt.noerasebackground" value="true"/>
-    <extension name="untrusted jars" href="$$context/webstart/jspresso-hrsample-untrusted.jnlp"/>
+    <extension name="untrusted jars" href="$$context/webstart/application-untrusted.jnlp"/>
   </resources>
 
   <security>
@@ -34,7 +34,7 @@
   <application-desc main-class="org.jspresso.framework.application.launch.ulc.jnlp.UlcJnlpLauncher">
     <argument>-splash</argument>
     <argument>$$context/webstart/jspresso.jpg</argument>
-    <argument>$$context/jspresso-hrsample-ulc</argument>
+    <argument>$$context/hrsample-ulc</argument>
     <argument>60</argument>
     <argument>WARNING</argument>
   </application-desc>

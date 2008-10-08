@@ -1,3 +1,11 @@
+1.2
+===
+
+New features
+------------
+[ 2147627 ] The sample app should match the archetype structure
+
+
 1.1
 ===
 
