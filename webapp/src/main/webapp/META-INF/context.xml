@@ -1,5 +1,5 @@
 <!--
-    Context configuration file for the HR sample WebApp
+    Context configuration file for the WebApp
 -->
 
 <Context antiResourceLocking="true" antiJARLocking="true" processTlds="false"/>
