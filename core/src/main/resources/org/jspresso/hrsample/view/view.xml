@@ -15,7 +15,7 @@
     class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
     <property
       name="labelsPosition"
-      ref="ABOVE" />
+      value="ABOVE" />
     <property
       name="columnCount"
       value="2" />
@@ -50,7 +50,7 @@
     class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
     <property
       name="labelsPosition"
-      ref="ASIDE" />
+      value="ASIDE" />
     <property
       name="columnCount"
       value="2" />
@@ -284,7 +284,7 @@
         class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
         <property
           name="orientation"
-          ref="HORIZONTAL" />
+          value="HORIZONTAL" />
         <property
           name="leftTopViewDescriptor"
           ref="Department-teams.table" />
@@ -397,7 +397,7 @@
         class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
         <property
           name="orientation"
-          ref="HORIZONTAL" />
+          value="HORIZONTAL" />
         <property
           name="cascadingModels"
           value="true" />
