@@ -41,6 +41,7 @@
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <warName>${project.artifactId}</warName>
+          <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
           <webXml>${basedir}/src/main/webapp/WEB-INF/wings-only-web.xml</webXml>
           <warSourceExcludes>**/webstart/**,**/*-web.xml</warSourceExcludes>
         </configuration>
@@ -77,6 +78,7 @@
             <artifactId>maven-war-plugin</artifactId>
             <configuration>
               <warName>${project.artifactId}</warName>
+              <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
               <webXml>${basedir}/src/main/webapp/WEB-INF/wings-ulc-web.xml</webXml>
               <warSourceExcludes>**/*-web.xml</warSourceExcludes>
             </configuration>
@@ -92,7 +94,7 @@
                   <goal>copy-dependencies</goal>
                 </goals>
                 <configuration>
-                  <outputDirectory>${project.build.directory}/${project.build.finalName}/lib</outputDirectory>
+                  <outputDirectory>${project.build.directory}/${project.artifactId}/lib</outputDirectory>
                   <includeArtifactIds>
                     ulc-base-trusted,ulc-base-client,ulc-jnlp-client,ulc-servlet-client,nachocalendar,jedit-syntax,jspresso-util,jspresso-ulc-components-shared,jspresso-ulc-components-client,jspresso-swing-components,jspresso-app-launch-core,jspresso-app-launch-ulc,joda-time,substance
                   </includeArtifactIds>
@@ -111,7 +113,7 @@
                 <configuration>
                   <tasks>
                     <signjar alias="jspresso" keystore="jspresso.jks" storepass="jspresso" keypass="jspresso">
-                      <fileset dir="${project.build.directory}/${project.build.finalName}">
+                      <fileset dir="${project.build.directory}/${project.artifactId}">
                         <include name="lib/jspresso-app-launch-core.jar" />
                         <include name="lib/jspresso-app-launch-ulc.jar" />
                         <include name="lib/jspresso-swing-components.jar" />
