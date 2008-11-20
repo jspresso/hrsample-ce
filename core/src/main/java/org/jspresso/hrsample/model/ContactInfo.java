@@ -38,7 +38,7 @@ public interface ContactInfo extends
    * Gets the city.
    *
    * @hibernate.many-to-one
-   *           cascade = "persist,merge,save-update,refresh,evict,replicate"
+   *           cascade = "none"
    * @hibernate.column
    *           name = "CITY_ID"
    * @return the city.

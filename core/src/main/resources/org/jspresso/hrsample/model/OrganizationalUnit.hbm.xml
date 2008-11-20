@@ -14,7 +14,7 @@
       <property name="address">
         <column name="CONTACT_ADDRESS" length="256"/>
       </property>
-      <many-to-one cascade="persist,merge,save-update,refresh,evict,replicate" name="city">
+      <many-to-one cascade="none" name="city">
         <column name="CONTACT_CITY_ID"/>
       </many-to-one>
       <property name="phone">
@@ -40,7 +40,7 @@
         <column name="COMPANY_ID" not-null="true"/>
       </many-to-one>
       <set inverse="true" cascade="persist,merge,save-update,refresh,evict,replicate,delete" name="teams">
-        <key column="DEPARTMENT_ID"/>
+        <key not-null="true" column="DEPARTMENT_ID"/>
         <one-to-many class="org.jspresso.hrsample.model.Team"/>
       </set>
     </joined-subclass>

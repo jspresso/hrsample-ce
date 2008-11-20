@@ -11,10 +11,13 @@
   <bean
     id="Nameable"
     class="org.jspresso.framework.model.descriptor.basic.BasicInterfaceDescriptor">
-    <constructor-arg value="org.jspresso.hrsample.model.Nameable" />
-    <property name="propertyDescriptors">
+    <constructor-arg
+      value="org.jspresso.hrsample.model.Nameable" />
+    <property
+      name="propertyDescriptors">
       <list>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="name" />
@@ -32,10 +35,13 @@
   <bean
     id="Traceable"
     class="org.jspresso.framework.model.descriptor.basic.BasicInterfaceDescriptor">
-    <constructor-arg value="org.jspresso.hrsample.model.Traceable" />
-    <property name="propertyDescriptors">
+    <constructor-arg
+      value="org.jspresso.hrsample.model.Traceable" />
+    <property
+      name="propertyDescriptors">
       <list>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
           <property
             name="name"
             value="createTimestamp" />
@@ -46,7 +52,8 @@
             name="readOnly"
             value="true" />
         </bean>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
           <property
             name="name"
             value="lastUpdateTimestamp" />
@@ -59,15 +66,18 @@
         </bean>
       </list>
     </property>
-    <property name="unclonedProperties">
+    <property
+      name="unclonedProperties">
       <list>
         <value>createTimestamp</value>
         <value>lastUpdateTimestamp</value>
       </list>
     </property>
-    <property name="lifecycleInterceptors">
+    <property
+      name="lifecycleInterceptors">
       <list>
-        <bean class="org.jspresso.hrsample.model.service.TraceableLifecycleInterceptor" />
+        <bean
+          class="org.jspresso.hrsample.model.service.TraceableLifecycleInterceptor" />
       </list>
     </property>
     <property
@@ -78,15 +88,20 @@
   <bean
     id="City"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="org.jspresso.hrsample.model.City" />
-    <property name="ancestorDescriptors">
+    <constructor-arg
+      value="org.jspresso.hrsample.model.City" />
+    <property
+      name="ancestorDescriptors">
       <list>
-        <ref local="Nameable" />
+        <ref
+          local="Nameable" />
       </list>
     </property>
-    <property name="propertyDescriptors">
+    <property
+      name="propertyDescriptors">
       <list>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="zip" />
@@ -104,10 +119,13 @@
   <bean
     id="ContactInfo"
     class="org.jspresso.framework.model.descriptor.basic.BasicComponentDescriptor">
-    <constructor-arg value="org.jspresso.hrsample.model.ContactInfo" />
-    <property name="propertyDescriptors">
+    <constructor-arg
+      value="org.jspresso.hrsample.model.ContactInfo" />
+    <property
+      name="propertyDescriptors">
       <list>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="address" />
@@ -115,7 +133,8 @@
             name="maxLength"
             value="256" />
         </bean>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="city" />
@@ -123,7 +142,8 @@
             name="referencedDescriptor"
             ref="City" />
         </bean>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="phone" />
@@ -131,7 +151,8 @@
             name="maxLength"
             value="32" />
         </bean>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="email" />
@@ -163,15 +184,20 @@
   <bean
     id="Event"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="org.jspresso.hrsample.model.Event" />
-    <property name="ancestorDescriptors">
+    <constructor-arg
+      value="org.jspresso.hrsample.model.Event" />
+    <property
+      name="ancestorDescriptors">
       <list>
-        <ref local="Traceable" />
+        <ref
+          local="Traceable" />
       </list>
     </property>
-    <property name="propertyDescriptors">
+    <property
+      name="propertyDescriptors">
       <list>
-        <ref bean="Event.text" />
+        <ref
+          bean="Event.text" />
       </list>
     </property>
   </bean>
@@ -192,29 +218,38 @@
   <bean
     id="Employee"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="org.jspresso.hrsample.model.Employee" />
-    <property name="ancestorDescriptors">
+    <constructor-arg
+      value="org.jspresso.hrsample.model.Employee" />
+    <property
+      name="ancestorDescriptors">
       <list>
-        <ref local="Nameable" />
-        <ref local="Traceable" />
+        <ref
+          local="Nameable" />
+        <ref
+          local="Traceable" />
       </list>
     </property>
-    <property name="propertyDescriptors">
+    <property
+      name="propertyDescriptors">
       <list>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="firstName" />
           <property
             name="maxLength"
             value="32" />
-          <property name="integrityProcessors">
+          <property
+            name="integrityProcessors">
             <list>
-              <bean class="org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$FirstNameProcessor" />
+              <bean
+                class="org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$FirstNameProcessor" />
             </list>
           </property>
         </bean>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="ssn" />
@@ -231,20 +266,24 @@
             name="unicityScope"
             value="empSsn" />
         </bean>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
           <property
             name="name"
             value="birthDate" />
           <property
             name="type"
             value="DATE" />
-          <property name="integrityProcessors">
+          <property
+            name="integrityProcessors">
             <list>
-              <bean class="org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$BirthDateProcessor" />
+              <bean
+                class="org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$BirthDateProcessor" />
             </list>
           </property>
         </bean>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicDatePropertyDescriptor">
           <property
             name="name"
             value="hireDate" />
@@ -252,7 +291,8 @@
             name="type"
             value="DATE" />
         </bean>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicEnumerationPropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicEnumerationPropertyDescriptor">
           <property
             name="name"
             value="gender" />
@@ -265,7 +305,8 @@
           <property
             name="mandatory"
             value="true" />
-          <property name="valuesAndIconImageUrls">
+          <property
+            name="valuesAndIconImageUrls">
             <map>
               <entry
                 key="M"
@@ -276,10 +317,14 @@
             </map>
           </property>
         </bean>
-        <ref bean="contact" />
-        <ref local="Employee-events" />
-        <ref local="Employee-teams" />
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+        <ref
+          bean="contact" />
+        <ref
+          local="Employee-events" />
+        <ref
+          local="Employee-teams" />
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="company" />
@@ -293,7 +338,8 @@
             name="mandatory"
             value="true" />
         </bean>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="managedOu" />
@@ -304,7 +350,8 @@
             name="reverseRelationEnd"
             ref="OrganizationalUnit-manager" />
         </bean>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicIntegerPropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicIntegerPropertyDescriptor">
           <property
             name="name"
             value="age" />
@@ -320,17 +367,21 @@
         </bean>
       </list>
     </property>
-    <property name="serviceDelegates">
+    <property
+      name="serviceDelegates">
       <map>
-        <entry key="org.jspresso.hrsample.model.service.EmployeeService">
-          <bean class="org.jspresso.hrsample.model.service.EmployeeServiceDelegate" />
+        <entry
+          key="org.jspresso.hrsample.model.service.EmployeeService">
+          <bean
+            class="org.jspresso.hrsample.model.service.EmployeeServiceDelegate" />
         </entry>
       </map>
     </property>
     <property
       name="iconImageURL"
       value="classpath:org/jspresso/hrsample/images/male-48x48.png" />
-    <property name="renderedProperties">
+    <property
+      name="renderedProperties">
       <list>
         <value>name</value>
         <value>firstName</value>
@@ -344,8 +395,10 @@
         <value>lastUpdateTimestamp</value>
       </list>
     </property>
-    <property name="unclonedProperties">
+    <property
+      name="unclonedProperties">
       <list>
+        <value>managedOu</value>
         <value>ssn</value>
       </list>
     </property>
@@ -357,8 +410,10 @@
     <property
       name="name"
       value="teams" />
-    <property name="referencedDescriptor">
-      <bean class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+    <property
+      name="referencedDescriptor">
+      <bean
+        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
           value="java.util.Set" />
@@ -375,8 +430,10 @@
     <property
       name="name"
       value="teamMembers" />
-    <property name="referencedDescriptor">
-      <bean class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+    <property
+      name="referencedDescriptor">
+      <bean
+        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
           value="java.util.Set" />
@@ -399,8 +456,10 @@
     <property
       name="composition"
       value="true" />
-    <property name="referencedDescriptor">
-      <bean class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+    <property
+      name="referencedDescriptor">
+      <bean
+        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
           value="java.util.List" />
@@ -422,8 +481,10 @@
     <property
       name="composition"
       value="true" />
-    <property name="referencedDescriptor">
-      <bean class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+    <property
+      name="referencedDescriptor">
+      <bean
+        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
           value="java.util.Set" />
@@ -443,8 +504,10 @@
     <property
       name="composition"
       value="true" />
-    <property name="referencedDescriptor">
-      <bean class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+    <property
+      name="referencedDescriptor">
+      <bean
+        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
           value="java.util.Set" />
@@ -458,24 +521,33 @@
   <bean
     id="Company"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="org.jspresso.hrsample.model.Company" />
-    <property name="ancestorDescriptors">
+    <constructor-arg
+      value="org.jspresso.hrsample.model.Company" />
+    <property
+      name="ancestorDescriptors">
       <list>
-        <ref local="Nameable" />
-        <ref local="Traceable" />
+        <ref
+          local="Nameable" />
+        <ref
+          local="Traceable" />
       </list>
     </property>
-    <property name="propertyDescriptors">
+    <property
+      name="propertyDescriptors">
       <list>
-        <ref bean="contact" />
-        <ref bean="Company-departments" />
-        <ref bean="Company-employees" />
+        <ref
+          bean="contact" />
+        <ref
+          bean="Company-departments" />
+        <ref
+          bean="Company-employees" />
       </list>
     </property>
     <property
       name="iconImageURL"
       value="classpath:org/jspresso/hrsample/images/company-48x48.png" />
-    <property name="renderedProperties">
+    <property
+      name="renderedProperties">
       <list>
         <value>name</value>
         <value>contact</value>
@@ -497,12 +569,15 @@
     <property
       name="mandatory"
       value="true" />
-    <property name="integrityProcessors">
+    <property
+      name="integrityProcessors">
       <list>
-        <bean class="org.jspresso.hrsample.model.processor.OrganizationalUnitPropertyProcessors$ManagerProcessor" />
+        <bean
+          class="org.jspresso.hrsample.model.processor.OrganizationalUnitPropertyProcessors$ManagerProcessor" />
       </list>
     </property>
-    <property name="initializationMapping">
+    <property
+      name="initializationMapping">
       <map>
         <entry
           key="company"
@@ -514,19 +589,25 @@
   <bean
     id="OrganizationalUnit"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="org.jspresso.hrsample.model.OrganizationalUnit" />
+    <constructor-arg
+      value="org.jspresso.hrsample.model.OrganizationalUnit" />
     <property
       name="purelyAbstract"
       value="true" />
-    <property name="ancestorDescriptors">
+    <property
+      name="ancestorDescriptors">
       <list>
-        <ref local="Nameable" />
-        <ref local="Traceable" />
+        <ref
+          local="Nameable" />
+        <ref
+          local="Traceable" />
       </list>
     </property>
-    <property name="propertyDescriptors">
+    <property
+      name="propertyDescriptors">
       <list>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
           <property
             name="name"
             value="ouId" />
@@ -543,9 +624,12 @@
             name="mandatory"
             value="true" />
         </bean>
-        <ref bean="contact" />
-        <ref bean="OrganizationalUnit-manager" />
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+        <ref
+          bean="contact" />
+        <ref
+          bean="OrganizationalUnit-manager" />
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="company" />
@@ -569,8 +653,10 @@
     <property
       name="composition"
       value="true" />
-    <property name="referencedDescriptor">
-      <bean class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
+    <property
+      name="referencedDescriptor">
+      <bean
+        class="org.jspresso.framework.model.descriptor.basic.BasicCollectionDescriptor">
         <property
           name="collectionInterface"
           value="java.util.Set" />
@@ -584,15 +670,20 @@
   <bean
     id="Department"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="org.jspresso.hrsample.model.Department" />
-    <property name="ancestorDescriptors">
+    <constructor-arg
+      value="org.jspresso.hrsample.model.Department" />
+    <property
+      name="ancestorDescriptors">
       <list>
-        <ref local="OrganizationalUnit" />
+        <ref
+          local="OrganizationalUnit" />
       </list>
     </property>
-    <property name="propertyDescriptors">
+    <property
+      name="propertyDescriptors">
       <list>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="company" />
@@ -606,13 +697,15 @@
             name="mandatory"
             value="true" />
         </bean>
-        <ref bean="Department-teams" />
+        <ref
+          bean="Department-teams" />
       </list>
     </property>
     <property
       name="iconImageURL"
       value="classpath:org/jspresso/hrsample/images/department-48x48.png" />
-    <property name="renderedProperties">
+    <property
+      name="renderedProperties">
       <list>
         <value>ouId</value>
         <value>name</value>
@@ -625,15 +718,20 @@
   <bean
     id="Team"
     class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
-    <constructor-arg value="org.jspresso.hrsample.model.Team" />
-    <property name="ancestorDescriptors">
+    <constructor-arg
+      value="org.jspresso.hrsample.model.Team" />
+    <property
+      name="ancestorDescriptors">
       <list>
-        <ref local="OrganizationalUnit" />
+        <ref
+          local="OrganizationalUnit" />
       </list>
     </property>
-    <property name="propertyDescriptors">
+    <property
+      name="propertyDescriptors">
       <list>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicReferencePropertyDescriptor">
           <property
             name="name"
             value="department" />
@@ -647,13 +745,15 @@
             name="mandatory"
             value="true" />
         </bean>
-        <ref local="Team-teamMembers" />
+        <ref
+          local="Team-teamMembers" />
       </list>
     </property>
     <property
       name="iconImageURL"
       value="classpath:org/jspresso/hrsample/images/team-48x48.png" />
-    <property name="renderedProperties">
+    <property
+      name="renderedProperties">
       <list>
         <value>ouId</value>
         <value>name</value>

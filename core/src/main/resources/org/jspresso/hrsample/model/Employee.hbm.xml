@@ -26,7 +26,7 @@
       <property name="address">
         <column name="CONTACT_ADDRESS" length="256"/>
       </property>
-      <many-to-one cascade="persist,merge,save-update,refresh,evict,replicate" name="city">
+      <many-to-one cascade="none" name="city">
         <column name="CONTACT_CITY_ID"/>
       </many-to-one>
       <property name="phone">
@@ -48,8 +48,8 @@
     <many-to-one cascade="persist,merge,save-update" name="company">
       <column name="COMPANY_ID" not-null="true"/>
     </many-to-one>
-    <many-to-one cascade="persist,merge,save-update,refresh,evict,replicate" name="managedOu">
-      <column name="MANAGED_OU_ID" unique="true"/>
+    <many-to-one unique="true" cascade="persist,merge,save-update,refresh,evict,replicate" name="managedOu">
+      <column name="MANAGED_OU_ID"/>
     </many-to-one>
     <property name="name">
       <column name="NAME" length="64" not-null="true"/>
