@@ -344,6 +344,11 @@
         <value>lastUpdateTimestamp</value>
       </list>
     </property>
+    <property name="unclonedProperties">
+      <list>
+        <value>ssn</value>
+      </list>
+    </property>
   </bean>
 
   <bean
