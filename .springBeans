@@ -24,10 +24,10 @@
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/core/src/main/resources/org/jspresso/framework/application/commons.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/swing/src/main/resources/org/jspresso/framework/application/frontend/swing/commons-swing.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/commons.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
+				<config>/jspresso-framework/app-template/swing/src/main/resources/org/jspresso/framework/application/frontend/swing/commons-swing.xml</config>
 			</configs>
 		</configSet>
 		<configSet>
@@ -40,10 +40,10 @@
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/core/src/main/resources/org/jspresso/framework/application/commons.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/ulc/src/main/resources/org/jspresso/framework/application/frontend/ulc/commons-ulc.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/commons.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
+				<config>/jspresso-framework/app-template/ulc/src/main/resources/org/jspresso/framework/application/frontend/ulc/commons-ulc.xml</config>
 			</configs>
 		</configSet>
 		<configSet>
@@ -56,10 +56,10 @@
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/core/src/main/resources/org/jspresso/framework/application/commons.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
-				<config>/jspresso-framework-2.2.x/app-template/wings/src/main/resources/org/jspresso/framework/application/frontend/wings/commons-wings.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/commons.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
+				<config>/jspresso-framework/app-template/wings/src/main/resources/org/jspresso/framework/application/frontend/wings/commons-wings.xml</config>
 			</configs>
 		</configSet>
 	</configSets>
