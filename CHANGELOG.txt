@@ -1,9 +1,18 @@
+1.3
+===
+Bugs fixed
+----------
+2320102  	 Various CRUD bugs
+
+Upgraded to Jspresso 2.2.2
+
+
 1.2
 ===
 
 New features
 ------------
-[ 2147627 ] The sample app should match the archetype structure
+2147627    The sample app should match the archetype structure
 
 
 1.1
@@ -11,7 +20,7 @@ New features
 
 Bugs fixed
 ----------
-[ 2014954 ] Application fails to start
+2014954    Application fails to start
 
 Upgraded to Jspresso 2.2
 

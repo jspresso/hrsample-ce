@@ -1,0 +1,5 @@
+1.3
+===
+- The HR sample application requires jspresso framework 2.2.2 or higher
+due to the replacement of constants by typesafe enums.
+see http://sourceforge.net/tracker2/index.php?func=detail&aid=2319923&group_id=231671&atid=1083851
