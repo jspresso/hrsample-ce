@@ -170,7 +170,7 @@
     <servlet-class>org.jspresso.framework.security.LoginServlet</servlet-class>
     <init-param>
       <param-name>jaas-application</param-name>
-      <param-value>hrsample-app</param-value>
+      <param-value>hrsample</param-value>
     </init-param>
     <init-param>
       <param-name>success.redirect</param-name>
