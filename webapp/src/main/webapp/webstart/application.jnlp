@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<jnlp spec="1.0+" codebase="$$context/webstart" href="application.jnlp">
+<jnlp spec="1.5" codebase="$$context/webstart" href="application.jnlp">
 
   <information>
     <title>Jspresso HR Sample</title>
@@ -14,6 +14,7 @@
 
   <resources>
     <java version="1.5+" href="http://java.sun.com/products/autodl/j2se"/>
+    <j2se version="1.5+" href="http://java.sun.com/products/autodl/j2se"/>
     <jar href="../lib/jspresso-app-launch-ulc.jar" main="true"/>
     <jar href="../lib/jspresso-app-launch-core.jar"/>
     <jar href="../lib/jspresso-swing-components.jar"/>
