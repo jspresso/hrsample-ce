@@ -36,6 +36,12 @@
         <column name="CONTACT_EMAIL" length="128"/>
       </property>
     </component>
+    <property name="preferredColor">
+      <column name="PREFERRED_COLOR" length="10"/>
+    </property>
+    <property name="married">
+      <column name="MARRIED"/>
+    </property>
     <list cascade="persist,merge,save-update,refresh,evict,replicate,delete" name="events">
       <key column="EVENTS_EMPLOYEE_ID"/>
       <list-index column="EVENTS_SEQ"/>

@@ -155,6 +155,43 @@ public interface Employee extends
   void setContact(org.jspresso.hrsample.model.ContactInfo contact);
 
   /**
+   * Gets the preferredColor.
+   *
+   * @hibernate.property
+   * @hibernate.column
+   *           name = "PREFERRED_COLOR"
+   *           length = "10"
+   * @return the preferredColor.
+   */
+  java.lang.String getPreferredColor();
+
+  /**
+   * Sets the preferredColor.
+   *
+   * @param preferredColor
+   *          the preferredColor to set.
+   */
+  void setPreferredColor(java.lang.String preferredColor);
+
+  /**
+   * Gets the married.
+   *
+   * @hibernate.property
+   * @hibernate.column
+   *           name = "MARRIED"
+   * @return the married.
+   */
+  boolean isMarried();
+
+  /**
+   * Sets the married.
+   *
+   * @param married
+   *          the married to set.
+   */
+  void setMarried(boolean married);
+
+  /**
    * Gets the events.
    *
    * @hibernate.list
