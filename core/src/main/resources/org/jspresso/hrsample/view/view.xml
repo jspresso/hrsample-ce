@@ -211,9 +211,6 @@
       name="actionMap"
       ref="masterDetailActionMap" />
     <property
-      name="selectionMode"
-      value="SINGLE_INTERVAL_SELECTION" />
-    <property
       name="columnViewDescriptors">
       <list>
         <bean
