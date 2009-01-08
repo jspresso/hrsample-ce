@@ -42,6 +42,9 @@
     <property name="married">
       <column name="MARRIED"/>
     </property>
+    <property name="salary">
+      <column name="SALARY" scale="10" precision="2"/>
+    </property>
     <list cascade="persist,merge,save-update,refresh,evict,replicate,delete" name="events">
       <key column="EVENTS_EMPLOYEE_ID"/>
       <list-index column="EVENTS_SEQ"/>
