@@ -81,6 +81,13 @@
         <include name="**/*.hbm.xml" />
       </fileset>
     </replaceregexp>
+    <replaceregexp byline="true">
+      <regexp pattern="&lt;composite-element class=&quot;(.*)&quot;&gt;" />
+      <substitution expression="&lt;composite-element class=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
+      <fileset dir="${resources.src.dir}">
+        <include name="**/*.hbm.xml" />
+      </fileset>
+    </replaceregexp>
   </target>
 
   <target name="all" depends="generate-entities, xdoclet-hibernate" />
