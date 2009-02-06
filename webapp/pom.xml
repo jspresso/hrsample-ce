@@ -14,6 +14,10 @@
       <artifactId>hrsample-startup-wings</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.jspresso</groupId>
+      <artifactId>hrsample-startup-remote</artifactId>
+    </dependency>
+    <dependency>
       <groupId>net.sf.ehcache</groupId>
       <artifactId>ehcache</artifactId>
     </dependency>

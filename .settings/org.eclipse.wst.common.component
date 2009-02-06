@@ -12,6 +12,8 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/ulc/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/wings/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/wings/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/remote/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/remote/src/main/resources"/>
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp/WEB-INF/lib/antlr-2.7.6.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -127,6 +129,12 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-framework/jspresso-framework">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp/WEB-INF/lib/hrsample-core-1.3-SNAPSHOT.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/hrsample-webapp/webapp/target/hrsample-webapp/WEB-INF/lib/hrsample-startup-remote-1.3-SNAPSHOT.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="build/classes"/>
