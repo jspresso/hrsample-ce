@@ -338,7 +338,7 @@
             value="salary" />
           <property
             name="minValue"
-            value="0"/>
+            value="0" />
           <property
             name="usingBigDecimal"
             value="true" />
@@ -393,6 +393,26 @@
             name="delegateClassName"
             value="org.jspresso.hrsample.model.extension.EmployeeExtension" />
         </bean>
+        <bean
+          class="org.jspresso.framework.model.descriptor.basic.BasicBinaryPropertyDescriptor">
+          <property
+            name="name"
+            value="photo" />
+          <property
+            name="maxLength"
+            value="1048576" />
+          <property
+            name="fileFilter">
+            <map>
+              <entry
+                key="images">
+                <list>
+                  <value>.jpg</value>
+                </list>
+              </entry>
+            </map>
+          </property>
+        </bean>
       </list>
     </property>
     <property
@@ -421,6 +441,7 @@
         <value>contact</value>
         <value>married</value>
         <value>preferredColor</value>
+        <value>photo</value>
         <value>company</value>
         <value>createTimestamp</value>
         <value>lastUpdateTimestamp</value>

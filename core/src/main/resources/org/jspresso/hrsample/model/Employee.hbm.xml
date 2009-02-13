@@ -60,6 +60,9 @@
     <many-to-one unique="true" cascade="persist,merge,save-update,refresh,evict,replicate" name="managedOu">
       <column name="MANAGED_OU_ID"/>
     </many-to-one>
+    <property name="photo">
+      <column name="PHOTO" length="1048576"/>
+    </property>
     <property name="name">
       <column name="NAME" length="64" not-null="true"/>
     </property>
