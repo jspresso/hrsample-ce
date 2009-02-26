@@ -33,6 +33,10 @@
     <servlet-name>ResourceProviderServlet</servlet-name>
     <url-pattern>/download</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResourceProviderServlet</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
 
   <listener>
     <listener-class>org.jspresso.hrsample.webapp.TestDataContextListener</listener-class>
