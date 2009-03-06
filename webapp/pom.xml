@@ -18,6 +18,19 @@
       <artifactId>hrsample-startup-remote</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.jspresso</groupId>
+      <artifactId>hrsample-startup-flex-config</artifactId>
+      <classifier>resources</classifier>
+      <type>zip</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jspresso</groupId>
+      <artifactId>hrsample-startup-flex-client</artifactId>
+      <type>swf</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>net.sf.ehcache</groupId>
       <artifactId>ehcache</artifactId>
     </dependency>
@@ -37,9 +50,59 @@
       <groupId>hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.adobe.blazeds</groupId>
+      <artifactId>blazeds-common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.adobe.blazeds</groupId>
+      <artifactId>blazeds-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.adobe.blazeds</groupId>
+      <artifactId>blazeds-remoting</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.adobe.blazeds</groupId>
+      <artifactId>blazeds-proxy</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.adobe.blazeds</groupId>
+      <artifactId>blazeds-opt</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack-flex-config</id>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/${project.artifactId}/WEB-INF/flex</outputDirectory>
+              <includeArtifactIds>hrsample-startup-flex-config</includeArtifactIds>
+              <includeClassifiers>resources</includeClassifiers>
+              <excludeTransitive>true</excludeTransitive>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-flex-dependencies</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/${project.artifactId}/flex</outputDirectory>
+              <includeTypes>swf</includeTypes>
+              <stripVersion>true</stripVersion>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
@@ -49,6 +112,37 @@
           <webXml>${basedir}/src/main/webapp/WEB-INF/wings-only-web.xml</webXml>
           <warSourceExcludes>**/webstart/**,**/*-web.xml</warSourceExcludes>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>info.flex-mojos</groupId>
+        <artifactId>html-wrapper-mojo</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>wrapper</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/${project.artifactId}/flex</outputDirectory>
+              <htmlName>${project.artifactId}-flex</htmlName>
+              <!--
+              <targetPlayer>9.0.124</targetPlayer>
+              <templateURI>folder:html-template</templateURI>
+              <parameters>
+                  <bgcolor>#ffffff</bgcolor>
+                  Version comes from 'targetPlayer' or '9.0.0' if no targetPlayer.
+                  <version_major>9</version_major>
+                  <version_minor>0</version_minor>
+                  <version_revision>0</version_revision>
+                  <swf>${project.build.finalName}</swf>
+                  <width>100%</height>
+                  <height>100%</height>
+                  <application>${project.artifactId}</application>
+                  <bgcolor>#869ca7</bgcolor>
+              </parameters>
+              -->
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
@@ -92,7 +186,7 @@
             <artifactId>maven-dependency-plugin</artifactId>
             <executions>
               <execution>
-                <id>copy-dependencies</id>
+                <id>copy-ulc-dependencies</id>
                 <phase>process-resources</phase>
                 <goals>
                   <goal>copy-dependencies</goal>

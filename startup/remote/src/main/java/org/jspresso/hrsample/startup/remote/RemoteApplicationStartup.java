@@ -14,7 +14,7 @@ import org.jspresso.framework.application.startup.remote.RemoteStartup;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-public class RemoteApplicationSampleStartup extends RemoteStartup {
+public class RemoteApplicationStartup extends RemoteStartup {
 
   /**
    * Returns the "hrsample-remote-context" value.

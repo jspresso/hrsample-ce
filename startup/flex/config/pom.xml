@@ -1,0 +1,59 @@
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jspresso</groupId>
+    <artifactId>hrsample</artifactId>
+    <version>1.3-SNAPSHOT</version>
+  </parent>
+  <artifactId>hrsample-startup-flex-config</artifactId>
+  <packaging>pom</packaging>
+  <name>Jspresso HR Sample - Startup - Flex - Config</name>
+
+  <repositories>
+    <repository>
+      <id>flex-mojos-repository</id>
+      <url>http://svn.sonatype.org/flexmojos/repository</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jspresso</groupId>
+      <artifactId>jspresso-flex</artifactId>
+      <version>2.3-SNAPSHOT</version>
+      <type>swc</type>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>make shared resources</id>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <descriptors>
+                <descriptor>src/main/assembly/resources.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

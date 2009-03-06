@@ -37,6 +37,11 @@
 			<location>D:/Dev/Jspresso/hrsample-webapp/webapp/target/hrsample-webapp/lib</location>
 		</link>
 		<link>
+			<name>webapp/src/main/webapp/WEB-INF/flex</name>
+			<type>2</type>
+			<location>D:/Dev/Jspresso/hrsample-webapp/startup/flex/config/src/main/flex</location>
+		</link>
+		<link>
 			<name>webapp/src/main/webapp/WEB-INF/web.xml</name>
 			<type>1</type>
 			<location>D:/Dev/Jspresso/hrsample-webapp/webapp/src/main/webapp/WEB-INF/wings-ulc-web.xml</location>
