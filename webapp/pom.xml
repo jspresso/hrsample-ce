@@ -70,6 +70,10 @@
       <groupId>com.adobe.blazeds</groupId>
       <artifactId>blazeds-opt</artifactId>
     </dependency>
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -109,7 +113,7 @@
         <configuration>
           <warName>${project.artifactId}</warName>
           <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
-          <webXml>${basedir}/src/main/webapp/WEB-INF/wings-only-web.xml</webXml>
+          <webXml>${basedir}/src/main/webapp/WEB-INF/noulc-web.xml</webXml>
           <warSourceExcludes>**/webstart/**,**/*-web.xml</warSourceExcludes>
         </configuration>
       </plugin>
@@ -124,6 +128,10 @@
             <configuration>
               <outputDirectory>${project.build.directory}/${project.artifactId}/flex</outputDirectory>
               <htmlName>${project.artifactId}-flex</htmlName>
+              <templateUri>folder:${basedir}/src/main/flex-template</templateUri>
+              <parameters>
+                <swf>hrsample-startup-flex-client.swf</swf>
+              </parameters>
               <!--
               <targetPlayer>9.0.124</targetPlayer>
               <templateURI>folder:html-template</templateURI>
@@ -177,7 +185,7 @@
             <configuration>
               <warName>${project.artifactId}</warName>
               <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
-              <webXml>${basedir}/src/main/webapp/WEB-INF/wings-ulc-web.xml</webXml>
+              <webXml>${basedir}/src/main/webapp/WEB-INF/ulc-web.xml</webXml>
               <warSourceExcludes>**/*-web.xml</warSourceExcludes>
             </configuration>
           </plugin>
