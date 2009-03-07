@@ -7,6 +7,11 @@
 	</projects>
 	<buildSpec>
 		<buildCommand>
+			<name>com.adobe.flexbuilder.project.flexbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
 			</arguments>
@@ -29,6 +34,8 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</nature>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
+		<nature>com.adobe.flexbuilder.project.flexnature</nature>
+		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
 	</natures>
 	<linkedResources>
 		<link>
