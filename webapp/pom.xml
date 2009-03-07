@@ -130,7 +130,7 @@
               <htmlName>${project.artifactId}-flex</htmlName>
               <templateUri>folder:${basedir}/src/main/flex-template</templateUri>
               <parameters>
-                <swf>hrsample-startup-flex-client.swf</swf>
+                <swf>hrsample-startup-flex-client</swf>
               </parameters>
               <!--
               <targetPlayer>9.0.124</targetPlayer>
