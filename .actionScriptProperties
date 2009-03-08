@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <actionScriptProperties mainApplicationPath="FlexApplicationStartup.mxml" version="3">
-  <compiler additionalCompilerArguments="-services &quot;D:/Dev/Jspresso/hrsample-webapp/startup/flex/config/src/main/resources/services-config.xml&quot; -locale+=fr_FR" copyDependentFiles="true" enableModuleDebug="true" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="true" htmlPlayerVersion="9.0.124" htmlPlayerVersionCheck="true" outputFolderPath="startup/flex/client/target" rootURL="http://localhost:8080/hrsample-webapp" sourceFolderPath="startup/flex/client/src/main/flex" strict="true" useApolloConfig="false" verifyDigests="true" warn="true">
+  <compiler additionalCompilerArguments="-services &quot;D:/Dev/Jspresso/hrsample-webapp/startup/flex/config/src/main/resources/services-config.xml&quot; -locale+=fr_FR" copyDependentFiles="true" enableModuleDebug="true" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersion="9.0.124" htmlPlayerVersionCheck="true" outputFolderPath="startup/flex/client/target" rootURL="http://localhost:8080/hrsample-webapp" sourceFolderPath="startup/flex/client/src/main/flex" strict="true" useApolloConfig="false" verifyDigests="true" warn="true">
     <compilerSourcePath/>
     <libraryPath defaultLinkType="1">
       <libraryPathEntry kind="4" path=""/>
