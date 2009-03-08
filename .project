@@ -11,11 +11,6 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-    <buildCommand>
-      <name>com.adobe.flexbuilder.project.flexbuilder</name>
-      <arguments>
-      </arguments>
-    </buildCommand>
 		<buildCommand>
 			<name>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</name>
 			<arguments>
@@ -23,6 +18,11 @@
 		</buildCommand>
 		<buildCommand>
 			<name>org.springframework.ide.eclipse.core.springbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.adobe.flexbuilder.project.flexbuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -46,7 +46,7 @@
 		<link>
 			<name>webapp/src/main/webapp/WEB-INF/flex</name>
 			<type>2</type>
-			<location>D:/Dev/Jspresso/hrsample-webapp/startup/flex/config/src/main/flex</location>
+			<location>D:/Dev/Jspresso/hrsample-webapp/startup/flex/config/src/main/resources</location>
 		</link>
 		<link>
 			<name>webapp/src/main/webapp/WEB-INF/web.xml</name>
