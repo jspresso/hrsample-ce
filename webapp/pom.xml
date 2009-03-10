@@ -127,7 +127,7 @@
             </goals>
             <configuration>
               <outputDirectory>${project.build.directory}/${project.artifactId}/flex</outputDirectory>
-              <htmlName>${project.artifactId}-flex</htmlName>
+              <htmlName>index</htmlName>
               <templateUri>folder:${basedir}/src/main/flex-template</templateUri>
               <parameters>
                 <swf>hrsample-startup-flex-client</swf>

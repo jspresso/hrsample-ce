@@ -12,28 +12,6 @@
   <packaging>pom</packaging>
   <name>Jspresso HR Sample - Startup - Flex - Config</name>
 
-  <repositories>
-    <repository>
-      <id>flex-mojos-repository</id>
-      <url>http://svn.sonatype.org/flexmojos/repository</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.jspresso</groupId>
-      <artifactId>jspresso-flex</artifactId>
-      <version>2.3-SNAPSHOT</version>
-      <type>swc</type>
-    </dependency>
-  </dependencies>
-  
   <build>
     <plugins>
       <plugin>
