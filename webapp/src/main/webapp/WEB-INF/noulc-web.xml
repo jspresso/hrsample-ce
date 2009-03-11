@@ -158,10 +158,14 @@
       <param-name>success.redirect</param-name>
       <param-value>/hrsample-wings</param-value>
     </init-param>
+    <init-param>
+      <param-name>error.redirect</param-name>
+      <param-value>/wings/login-error.html</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/login.do</url-pattern>
+    <url-pattern>/wings/login.do</url-pattern>
   </servlet-mapping>
 
   <filter>
@@ -169,7 +173,7 @@
     <filter-class>org.jspresso.framework.security.SecurityContextFilter</filter-class>
     <init-param>
       <param-name>login.redirect</param-name>
-      <param-value>/login.html</param-value>
+      <param-value>/wings/</param-value>
     </init-param>
   </filter>
   <filter-mapping>
