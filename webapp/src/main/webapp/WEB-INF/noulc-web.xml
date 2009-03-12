@@ -7,16 +7,14 @@
   xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
   <!-- Common web application configuration section -->
-  <!-- 
-    <welcome-file-list>
+  <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
-    </welcome-file-list>
-  -->
+  </welcome-file-list>
   <display-name>Jspresso HR sample</display-name>
   <description>Jspresso HR sample Application</description>
   <session-config>
@@ -207,14 +205,6 @@
     <servlet-name>MessageBrokerServlet</servlet-name>
     <url-pattern>/messagebroker/*</url-pattern>
   </servlet-mapping>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
 
   <!-- for WebSphere deployment, please uncomment -->
   <!--
