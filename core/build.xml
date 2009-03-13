@@ -23,7 +23,7 @@
       <include name="**/jspresso/**/2.3-SNAPSHOT/*.jar" />
       <include name="**/commons-cli-1.0.jar" />
       <include name="**/freemarker-2.3.3.jar" />
-      <include name="**/spring-2.5.1.jar" />
+      <include name="**/spring-2.5.6.jar" />
       <include name="**/commons-logging-1.1.jar" />
       <include name="**/xml-apis-2.0.2.jar" />
       <include name="**/xercesImpl-2.0.2.jar" />
