@@ -3,6 +3,7 @@
 	<name>hrsample-webapp</name>
 	<comment></comment>
 	<projects>
+		<project>jspresso-framework</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
