@@ -119,7 +119,7 @@
                          <exclude name="**/org/jspresso/hrsample/**/*.hbm.xml" />
                       </fileset>
                     </copy>
-                    <beandoc outputDir="${project.reporting.outputDirectory}/beandocs" beandocProps="${basedir}/jspresso-app-hrsample-beandoc.properties">
+                    <beandoc outputDir="${project.reporting.outputDirectory}/beandocs" beandocProps="${basedir}/beandoc.properties">
                       <fileset dir="${project.reporting.outputDirectory}/beandocs/tmp">
                         <include name="**/*.xml" />
                       </fileset>

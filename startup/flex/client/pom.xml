@@ -58,10 +58,10 @@
         <groupId>info.flex-mojos</groupId>
         <artifactId>asdoc-mojo</artifactId>
       </plugin>
-      <plugin>
+      <!--<plugin>
         <groupId>info.flex-mojos</groupId>
         <artifactId>flexbuilder-mojo</artifactId>
-      </plugin>
+      </plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>

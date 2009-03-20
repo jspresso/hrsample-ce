@@ -21,14 +21,14 @@
     </dirset>
     <fileset dir="${m2.repo}">
       <include name="**/jspresso/**/2.3-SNAPSHOT/*.jar" />
-      <include name="**/commons-cli-1.0.jar" />
-      <include name="**/freemarker-2.3.3.jar" />
-      <include name="**/spring-2.5.6.jar" />
-      <include name="**/commons-logging-1.1.jar" />
-      <include name="**/xml-apis-2.0.2.jar" />
-      <include name="**/xercesImpl-2.0.2.jar" />
-      <include name="**/bsf-2.3.0.jar" />
-      <include name="**/commons-beanutils-1.7.0.jar" />
+      <include name="**/commons-cli-${commons-cli.version}.jar" />
+      <include name="**/freemarker-${freemarker.version}.jar" />
+      <include name="**/spring-*-${spring.version}.jar" />
+      <include name="**/commons-logging-${commons-logging.version}.jar" />
+      <include name="**/xml-apis-${xml-apis.version}.jar" />
+      <include name="**/xercesImpl-${xercesImpl.version}.jar" />
+      <include name="**/bsf-${bsf.version}.jar" />
+      <include name="**/commons-beanutils-${commons-beanutils.version}.jar" />
     </fileset>
   </path>
 
