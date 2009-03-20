@@ -15,12 +15,13 @@
   </scm>
   <distributionManagement>
     <repository>
-      <id>local-repo</id>
-      <url>file:///tmp/jspresso/repo</url>
+      <id>jspresso-repository</id>
+      <url>scp://repository.jspresso.org/var/maven/repositories/maven2</url>
     </repository>
     <snapshotRepository>
-      <id>local-repo-snapshot</id>
-      <url>file:///tmp/jspresso/snapshot-repo</url>
+      <id>jspresso-snapshots-repository</id>
+      <url>scp://repository.jspresso.org/var/maven/repositories/maven2-snapshots</url>
+      <uniqueVersion>false</uniqueVersion>
     </snapshotRepository>
     <site>
       <id>local-site</id>
