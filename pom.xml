@@ -13,6 +13,21 @@
   <scm>
     <connection>scm:svn:https://svn.jspresso.org/jspresso/app-hrsample/trunk</connection>
   </scm>
+  <repositories>
+    <repository>
+      <id>jspresso-repository</id>
+      <url>http://repository.jspresso.org/maven2</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>jspresso-snapshots-repository</id>
+      <url>http://repository.jspresso.org/maven2-snapshots</url>
+      <snapshots>
+      </snapshots>
+    </repository>
+  </repositories>
   <distributionManagement>
     <repository>
       <id>jspresso-repository</id>
@@ -97,7 +112,7 @@
   </dependencyManagement>
   <build>
     <plugins>
-      <plugin>
+      <!--<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
@@ -152,8 +167,13 @@
             <artifactId>spring-beandoc</artifactId>
             <version>0.8.1</version>
           </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-nodeps</artifactId>
+            <version>1.7.1</version>
+          </dependency>
         </dependencies>
-      </plugin>
+      </plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
