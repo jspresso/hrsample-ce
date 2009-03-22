@@ -57,11 +57,11 @@
                       <classname>org.xdoclet.plugin.hibernate.HibernateMappingPlugin</classname>
                       <params>
                         <version>3.0</version>
-                        <destdir>${project.build.directory}/generated-resources</destdir>
+                        <destdir>${project.build.directory}/generated-resources/xdoclet</destdir>
                       </params>
                     </component>
                   </components>
-                  <includes>${project.build.directory}/generated-sources/**/model/**/*.java</includes>
+                  <includes>**/model/**/*.java</includes>
                 </config>
               </configs>
             </configuration>
@@ -80,15 +80,12 @@
             </goals>
             <configuration>
               <tasks>
-                <mkdir dir="${project.build.directory}/generated-resources"/>
                 <path id="spring.beans.classpath">
                   <dirset dir="${basedir}">
                     <include name="**/src/main/resources" />
                   </dirset>
                   <path refid="maven.plugin.classpath"/>
                 </path>
-                <!--<property name="plugin_classpath" refid="spring.beans.classpath"/>
-                <echo message="maven plugin classpath = ${plugin_classpath}"/>-->
                 <java classname="org.jspresso.framework.tools.entitygenerator.EntityGenerator"
                       classpathref="spring.beans.classpath">
                   <arg value="-applicationContextKey" />
@@ -98,7 +95,7 @@
                   <arg value="-templateName" />
                   <arg value="HibernateXdocletEntity.ftl" />
                   <arg value="-outputDir" />
-                  <arg value="${project.build.directory}/generated-sources" />
+                  <arg value="${project.build.directory}/generated-sources/entitygenerator" />
                   <arg value="-includePackages" />
                   <arg value="org.jspresso.hrsample.model" />
                 </java>
@@ -116,14 +113,14 @@
                 <replaceregexp byline="true">
                   <regexp pattern="&lt;component name=&quot;(.*)&quot;&gt;$" />
                   <substitution expression="&lt;component name=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
-                  <fileset dir="${project.build.directory}/generated-resources">
+                  <fileset dir="${project.build.directory}/generated-resources/xdoclet">
                     <include name="**/*.hbm.xml" />
                   </fileset>
                 </replaceregexp>
                 <replaceregexp byline="true">
                   <regexp pattern="&lt;composite-element class=&quot;(.*)&quot;&gt;$" />
                   <substitution expression="&lt;composite-element class=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
-                  <fileset dir="${project.build.directory}/generated-resources">
+                  <fileset dir="${project.build.directory}/generated-resources/xdoclet">
                     <include name="**/*.hbm.xml" />
                   </fileset>
                 </replaceregexp>
@@ -168,6 +165,25 @@
             <version>1.0.1</version>
           </dependency>
         </dependencies> 
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <id>add-generated-sources</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>target/generated-sources/entitygenerator</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

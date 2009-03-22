@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="core/target/classes" path="core/src/main/java"/>
+	<classpathentry kind="src" output="core/target/classes" path="core/target/generated-sources/entitygenerator"/>
+	<classpathentry kind="src" output="core/target/classes" path="core/target/generated-resources/xdoclet"/>
 	<classpathentry kind="src" output="core/target/classes" path="core/src/main/resources"/>
 	<classpathentry kind="src" output="startup/swing/target/classes" path="startup/swing/src/main/java"/>
 	<classpathentry kind="src" output="startup/swing/target/classes" path="startup/swing/src/main/resources"/>
