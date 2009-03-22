@@ -61,7 +61,7 @@
                       </params>
                     </component>
                   </components>
-                  <includes>**/model/**/*.java</includes>
+                  <includes>${project.build.directory}/generated-sources/**/model/**/*.java</includes>
                 </config>
               </configs>
             </configuration>
@@ -80,14 +80,15 @@
             </goals>
             <configuration>
               <tasks>
+                <mkdir dir="${project.build.directory}/generated-resources"/>
                 <path id="spring.beans.classpath">
                   <dirset dir="${basedir}">
                     <include name="**/src/main/resources" />
                   </dirset>
                   <path refid="maven.plugin.classpath"/>
                 </path>
-                <property name="plugin_classpath" refid="spring.beans.classpath"/>
-                <echo message="maven plugin classpath = ${plugin_classpath}"/>
+                <!--<property name="plugin_classpath" refid="spring.beans.classpath"/>
+                <echo message="maven plugin classpath = ${plugin_classpath}"/>-->
                 <java classname="org.jspresso.framework.tools.entitygenerator.EntityGenerator"
                       classpathref="spring.beans.classpath">
                   <arg value="-applicationContextKey" />
