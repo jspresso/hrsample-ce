@@ -18,6 +18,7 @@
         <wb-resource deploy-path="/" source-path="/startup/flex/client/src/main/flex"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-sources/entitygenerator"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-resources/xdoclet"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-resources/jasperreports"/>
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-framework/jspresso-framework">
             <dependency-type>uses</dependency-type>
         </dependent-module>
