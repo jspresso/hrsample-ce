@@ -238,17 +238,17 @@
                 </component>
               </components>
               <componentProperties>
-                <text>true</text>
+                <implementation>configuration</implementation>
                 <drop>false</drop>
                 <export>false</export>
+                <format>true</format>
                 <propertyfile>schema-export-mysql-innodb.properties</propertyfile>
                 <outputfilename>hrsample-schema-mysql-innodb.sql</outputfilename>
                 <scan-classes>true</scan-classes>
-                <jdk5>true</jdk5>
               </componentProperties>
             </configuration>
           </execution>
-          <!--<execution>
+          <execution>
             <id>generate-postgresql-schema</id>
             <phase>process-classes</phase>
             <goals>
@@ -261,17 +261,35 @@
                 </component>
               </components>
               <componentProperties>
-                <text>true</text>
+                <implementation>configuration</implementation>
                 <drop>false</drop>
                 <export>false</export>
+                <format>true</format>
                 <propertyfile>schema-export-postgresql.properties</propertyfile>
                 <outputfilename>hrsample-schema-postgresql.sql</outputfilename>
                 <scan-classes>true</scan-classes>
-                <jdk5>true</jdk5>
               </componentProperties>
             </configuration>
           </execution>
-        --></executions>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-ddl-scripts</id>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <descriptors>
+                <descriptor>src/main/assembly/ddl-scripts.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
