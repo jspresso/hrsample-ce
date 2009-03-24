@@ -112,7 +112,7 @@
   </dependencyManagement>
   <build>
     <plugins>
-      <!--<plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
@@ -150,30 +150,7 @@
             </goals>
           </execution>
         </executions>
-        <dependencies>
-          <dependency>
-            <groupId>ant-contrib</groupId>
-            <artifactId>ant-contrib</artifactId>
-            <version>1.0b3</version>
-            <exclusions>
-              <exclusion>
-                <groupId>ant</groupId>
-                <artifactId>ant</artifactId>
-              </exclusion>
-            </exclusions>
-          </dependency>
-          <dependency>
-            <groupId>org.springframework.beandoc</groupId>
-            <artifactId>spring-beandoc</artifactId>
-            <version>0.8.1</version>
-          </dependency>
-          <dependency>
-            <groupId>org.apache.ant</groupId>
-            <artifactId>ant-nodeps</artifactId>
-            <version>1.7.1</version>
-          </dependency>
-        </dependencies>
-      </plugin>-->
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
