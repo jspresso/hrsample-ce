@@ -110,6 +110,8 @@
                   </dirset>
                   <path refid="maven.plugin.classpath"/>
                 </path>
+                <property name="generator.dest" value="${project.build.directory}/generated-sources/entitygenerator"/>
+                <mkdir dir="${generator.dest}"/>
                 <java classname="org.jspresso.framework.tools.entitygenerator.EntityGenerator"
                       classpathref="spring.beans.classpath">
                   <arg value="-applicationContextKey" />
@@ -119,7 +121,7 @@
                   <arg value="-templateName" />
                   <arg value="HibernateXdocletEntity.ftl" />
                   <arg value="-outputDir" />
-                  <arg value="${project.build.directory}/generated-sources/entitygenerator" />
+                  <arg value="${generator.dest}" />
                   <arg value="-includePackages" />
                   <arg value="org.jspresso.hrsample.model" />
                 </java>
@@ -134,17 +136,19 @@
             </goals>
             <configuration>
               <tasks>
+                <property name="xdoclet.dest" value="${project.build.directory}/generated-resources/xdoclet"/>
+                <mkdir dir="${xdoclet.dest}"/>
                 <replaceregexp byline="true">
                   <regexp pattern="&lt;component name=&quot;(.*)&quot;&gt;$" />
                   <substitution expression="&lt;component name=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
-                  <fileset dir="${project.build.directory}/generated-resources/xdoclet">
+                  <fileset dir="${xdoclet.dest}">
                     <include name="**/*.hbm.xml" />
                   </fileset>
                 </replaceregexp>
                 <replaceregexp byline="true">
                   <regexp pattern="&lt;composite-element class=&quot;(.*)&quot;&gt;$" />
                   <substitution expression="&lt;composite-element class=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
-                  <fileset dir="${project.build.directory}/generated-resources/xdoclet">
+                  <fileset dir="${xdoclet.dest}">
                     <include name="**/*.hbm.xml" />
                   </fileset>
                 </replaceregexp>

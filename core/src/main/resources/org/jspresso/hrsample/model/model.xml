@@ -275,7 +275,7 @@
           <property
             name="integrityProcessorClassNames">
             <list>
-              <value>org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$BirthDateProcessor"</value>
+              <value>org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$BirthDateProcessor</value>
             </list>
           </property>
         </bean>
@@ -417,8 +417,7 @@
       <map>
         <entry
           key="org.jspresso.hrsample.model.service.EmployeeService"
-          value="org.jspresso.hrsample.model.service.EmployeeServiceDelegate">
-        </entry>
+          value="org.jspresso.hrsample.model.service.EmployeeServiceDelegate"/>
       </map>
     </property>
     <property

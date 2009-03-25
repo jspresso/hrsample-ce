@@ -186,7 +186,7 @@
     <url-pattern>/wings/login.do</url-pattern>
   </servlet-mapping>
 
-  <filter>
+  <!--<filter>
     <filter-name>AutenticationFilter</filter-name>
     <filter-class>org.jspresso.framework.security.SecurityContextFilter</filter-class>
     <init-param>
@@ -197,7 +197,7 @@
   <filter-mapping>
     <filter-name>AutenticationFilter</filter-name>
     <url-pattern>/hrsample-wings/*</url-pattern>
-  </filter-mapping>
+  </filter-mapping>-->
   <!-- End WingS deployment section -->
 
   <!-- Flex/BlazeDS deployment section -->
