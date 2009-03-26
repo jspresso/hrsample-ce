@@ -46,6 +46,8 @@
         <artifactId>flexmojos-maven-plugin</artifactId>
         <executions>
           <execution>
+            <id>generate-asdoc</id>
+            <phase>package</phase>
             <goals>
               <goal>asdoc</goal>
             </goals>
