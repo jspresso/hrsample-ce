@@ -23,7 +23,7 @@
             <goals>
               <goal>single</goal>
             </goals>
-            <phase>package</phase>
+            <phase>generate-resources</phase>
             <configuration>
               <descriptors>
                 <descriptor>src/main/assembly/resources.xml</descriptor>
