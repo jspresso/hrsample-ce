@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.jspresso</groupId>
+    <groupId>org.jspresso.hrsample</groupId>
     <artifactId>hrsample</artifactId>
     <version>3.0-SNAPSHOT</version>
   </parent>
@@ -10,22 +10,22 @@
   <name>Jspresso HR Sample - Webapp</name>
   <dependencies>
     <dependency>
-      <groupId>org.jspresso</groupId>
+      <groupId>org.jspresso.hrsample</groupId>
       <artifactId>hrsample-startup-wings</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.jspresso</groupId>
+      <groupId>org.jspresso.hrsample</groupId>
       <artifactId>hrsample-startup-remote</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.jspresso</groupId>
+      <groupId>org.jspresso.hrsample</groupId>
       <artifactId>hrsample-startup-flex-config</artifactId>
       <classifier>resources</classifier>
       <type>zip</type>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.jspresso</groupId>
+      <groupId>org.jspresso.hrsample</groupId>
       <artifactId>hrsample-startup-flex-client</artifactId>
       <type>swf</type>
       <scope>provided</scope>
@@ -184,11 +184,11 @@
       <id>ulc</id>
       <dependencies>
         <dependency>
-          <groupId>org.jspresso</groupId>
+          <groupId>org.jspresso.hrsample</groupId>
           <artifactId>hrsample-startup-ulc</artifactId>
         </dependency>
         <dependency>
-          <groupId>org.jspresso</groupId>
+          <groupId>org.jspresso.framework</groupId>
           <artifactId>jspresso-ulc-components-client</artifactId>
           <scope>provided</scope>
         </dependency>
