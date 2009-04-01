@@ -38,6 +38,12 @@
 		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
 	</natures>
 	<linkedResources>
+    <link>
+      <name>webapp/src/main/webapp/flex</name>
+      <type>2</type>
+      <location>D:/Dev/Jspresso/hrsample-webapp/webapp/target/hrsample-webapp/flex
+      </location>
+    </link>
 		<link>
 			<name>html-template</name>
 			<type>2</type>
