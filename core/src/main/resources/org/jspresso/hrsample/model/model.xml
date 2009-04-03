@@ -74,10 +74,9 @@
       </list>
     </property>
     <property
-      name="lifecycleInterceptors">
+      name="lifecycleInterceptorClassNames">
       <list>
-        <bean
-          class="org.jspresso.hrsample.model.service.TraceableLifecycleInterceptor" />
+        <value>org.jspresso.hrsample.model.service.TraceableLifecycleInterceptor</value>
       </list>
     </property>
     <property
@@ -241,10 +240,9 @@
             name="maxLength"
             value="32" />
           <property
-            name="integrityProcessors">
+            name="integrityProcessorClassNames">
             <list>
-              <bean
-                class="org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$FirstNameProcessor" />
+              <value>org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$FirstNameProcessor</value>
             </list>
           </property>
         </bean>
@@ -275,10 +273,9 @@
             name="type"
             value="DATE" />
           <property
-            name="integrityProcessors">
+            name="integrityProcessorClassNames">
             <list>
-              <bean
-                class="org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$BirthDateProcessor" />
+              <value>org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$BirthDateProcessor</value>
             </list>
           </property>
         </bean>
@@ -416,13 +413,11 @@
       </list>
     </property>
     <property
-      name="serviceDelegates">
+      name="serviceDelegateClassNames">
       <map>
         <entry
-          key="org.jspresso.hrsample.model.service.EmployeeService">
-          <bean
-            class="org.jspresso.hrsample.model.service.EmployeeServiceDelegate" />
-        </entry>
+          key="org.jspresso.hrsample.model.service.EmployeeService"
+          value="org.jspresso.hrsample.model.service.EmployeeServiceDelegate"/>
       </map>
     </property>
     <property
@@ -622,10 +617,9 @@
       name="mandatory"
       value="true" />
     <property
-      name="integrityProcessors">
+      name="integrityProcessorClassNames">
       <list>
-        <bean
-          class="org.jspresso.hrsample.model.processor.OrganizationalUnitPropertyProcessors$ManagerProcessor" />
+        <value>org.jspresso.hrsample.model.processor.OrganizationalUnitPropertyProcessors$ManagerProcessor</value>
       </list>
     </property>
     <property

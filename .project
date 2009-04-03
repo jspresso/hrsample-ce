@@ -3,6 +3,7 @@
 	<name>hrsample-webapp</name>
 	<comment></comment>
 	<projects>
+		<project>jspresso-framework</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -41,6 +42,11 @@
 			<name>html-template</name>
 			<type>2</type>
 			<location>D:/Dev/Jspresso/hrsample-webapp/webapp/src/main/flex-template</location>
+		</link>
+		<link>
+			<name>webapp/src/main/webapp/flex</name>
+			<type>2</type>
+			<location>D:/Dev/Jspresso/hrsample-webapp/webapp/target/hrsample-webapp/flex</location>
 		</link>
 		<link>
 			<name>webapp/src/main/webapp/lib</name>

@@ -11,7 +11,7 @@
         <login-command class="flex.messaging.security.TomcatLoginCommand" server="Tomcat"/>
         <!-- Uncomment the correct app server
         <login-command class="flex.messaging.security.TomcatLoginCommand" server="JBoss">
-		<login-command class="flex.messaging.security.JRunLoginCommand" server="JRun"/>        
+		    <login-command class="flex.messaging.security.JRunLoginCommand" server="JRun"/>        
         <login-command class="flex.messaging.security.WeblogicLoginCommand" server="Weblogic"/>
         <login-command class="flex.messaging.security.WebSphereLoginCommand" server="WebSphere"/>
         -->

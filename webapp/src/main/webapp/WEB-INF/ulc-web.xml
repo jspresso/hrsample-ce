@@ -123,7 +123,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ApplicationWingsServlet</servlet-name>
-    <url-pattern>/hrsample-wings/*</url-pattern>
+    <url-pattern>/wings/*</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -164,40 +164,6 @@
     <servlet-name>dwr-invoker</servlet-name>
     <url-pattern>/dwr/*</url-pattern>
   </servlet-mapping>
-
-  <servlet>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>org.jspresso.framework.security.LoginServlet</servlet-class>
-    <init-param>
-      <param-name>jaas-application</param-name>
-      <param-value>hrsample</param-value>
-    </init-param>
-    <init-param>
-      <param-name>success.redirect</param-name>
-      <param-value>/hrsample-wings</param-value>
-    </init-param>
-    <init-param>
-      <param-name>error.redirect</param-name>
-      <param-value>/wings/login-error.html</param-value>
-    </init-param>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/wings/login.do</url-pattern>
-  </servlet-mapping>
-
-  <filter>
-    <filter-name>AutenticationFilter</filter-name>
-    <filter-class>org.jspresso.framework.security.SecurityContextFilter</filter-class>
-    <init-param>
-      <param-name>login.redirect</param-name>
-      <param-value>/wings/</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>AutenticationFilter</filter-name>
-    <url-pattern>/hrsample-wings/*</url-pattern>
-  </filter-mapping>
   <!-- End WingS deployment section -->
 
   <!-- Flex/BlazeDS deployment section -->
