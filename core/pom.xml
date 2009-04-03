@@ -1,12 +1,9 @@
-<project
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jspresso.hrsample</groupId>
     <artifactId>hrsample</artifactId>
-    <version>3.0-SNAPSHOT</version>
+    <version>3.0.0</version>
   </parent>
   <artifactId>hrsample-core</artifactId>
   <packaging>jar</packaging>
@@ -109,13 +106,11 @@
                   <dirset dir="${basedir}">
                     <include name="**/src/main/resources" />
                   </dirset>
-                  <path refid="maven.plugin.classpath"/>
+                  <path refid="maven.plugin.classpath" />
                 </path>
-                <property name="generator.dest" value="${project.build.directory}/generated-sources/entitygenerator"/>
-                <mkdir dir="${generator.dest}"/>
-                <java classname="org.jspresso.framework.tools.entitygenerator.EntityGenerator"
-                      classpathref="spring.beans.classpath"
-                      failonerror="true">
+                <property name="generator.dest" value="${project.build.directory}/generated-sources/entitygenerator" />
+                <mkdir dir="${generator.dest}" />
+                <java classname="org.jspresso.framework.tools.entitygenerator.EntityGenerator" classpathref="spring.beans.classpath" failonerror="true">
                   <arg value="-applicationContextKey" />
                   <arg value="hrsample-model-context" />
                   <arg value="-templateResourcePath" />
@@ -138,8 +133,8 @@
             </goals>
             <configuration>
               <tasks>
-                <property name="xdoclet.dest" value="${project.build.directory}/generated-resources/xdoclet"/>
-                <mkdir dir="${xdoclet.dest}"/>
+                <property name="xdoclet.dest" value="${project.build.directory}/generated-resources/xdoclet" />
+                <mkdir dir="${xdoclet.dest}" />
                 <replaceregexp byline="true">
                   <regexp pattern="&lt;component name=&quot;(.*)&quot;&gt;$" />
                   <substitution expression="&lt;component name=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
