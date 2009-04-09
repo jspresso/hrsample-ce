@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans
-  xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
                       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
   default-lazy-init="true">
@@ -9,284 +7,148 @@
   <!--
     The views.
   -->
-  <bean
-    id="Traceable.pane"
-    parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
-    <property
-      name="labelsPosition"
-      value="ABOVE" />
-    <property
-      name="columnCount"
-      value="2" />
-    <property
-      name="modelDescriptor"
-      ref="Traceable" />
-    <property
-      name="propertyViewDescriptors">
+  <bean id="Traceable.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    <property name="labelsPosition" value="ABOVE" />
+    <property name="columnCount" value="2" />
+    <property name="modelDescriptor" ref="Traceable" />
+    <property name="propertyViewDescriptors">
       <list>
-        <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
-          <property
-            name="name"
-            value="createTimestamp" />
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property name="name" value="createTimestamp" />
         </bean>
-        <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
-          <property
-            name="name"
-            value="lastUpdateTimestamp" />
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property name="name" value="lastUpdateTimestamp" />
         </bean>
       </list>
     </property>
-    <property
-      name="description"
-      value="traceable.editing">
+    <property name="description" value="traceable.editing">
     </property>
   </bean>
 
-  <bean
-    id="Company.pane"
-    parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
-    <property
-      name="labelsPosition"
-      value="ASIDE" />
-    <property
-      name="columnCount"
-      value="2" />
-    <property
-      name="modelDescriptor"
-      ref="Company" />
-    <property
-      name="propertyViewDescriptors">
+  <bean id="Company.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    <property name="labelsPosition" value="ASIDE" />
+    <property name="columnCount" value="2" />
+    <property name="modelDescriptor" ref="Company" />
+    <property name="propertyViewDescriptors">
       <list>
-        <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
-          <property
-            name="name"
-            value="name" />
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property name="name" value="name" />
         </bean>
-        <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
-          <property
-            name="name"
-            value="contact.address" />
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property name="name" value="contact.address" />
         </bean>
-        <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
-          <property
-            name="name"
-            value="contact.city" />
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property name="name" value="contact.city" />
         </bean>
-        <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
-          <property
-            name="name"
-            value="contact.phone" />
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property name="name" value="contact.phone" />
         </bean>
-        <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
-          <property
-            name="name"
-            value="contact.email" />
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property name="name" value="contact.email" />
         </bean>
       </list>
     </property>
-    <property
-      name="propertyWidths">
+    <property name="propertyWidths">
       <map>
-        <entry
-          key="name"
-          value="2" />
+        <entry key="name" value="2" />
       </map>
     </property>
-    <property
-      name="description"
-      value="company.editing">
+    <property name="description" value="company.editing">
     </property>
   </bean>
 
-  <bean
-    id="Department-teams.subtree"
-    class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
-    <property
-      name="nodeGroupDescriptor">
-      <bean
-        class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
-        <property
-          name="modelDescriptor"
-          ref="Department-teams" />
-        <property
-          name="actionMap"
-          ref="masterDetailActionMap" />
-        <property
-          name="renderedProperty"
-          value="ouId" />
+  <bean id="Department-teams.subtree" class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
+    <property name="nodeGroupDescriptor">
+      <bean class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
+        <property name="modelDescriptor" ref="Department-teams" />
+        <property name="actionMap" ref="masterDetailActionMap" />
+        <property name="renderedProperty" value="ouId" />
       </bean>
     </property>
   </bean>
 
-  <bean
-    id="Company-departments.subtree"
-    class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
-    <property
-      name="nodeGroupDescriptor">
-      <bean
-        class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
-        <property
-          name="modelDescriptor"
-          ref="Company-departments" />
-        <property
-          name="actionMap"
-          ref="masterDetailActionMap" />
-        <property
-          name="renderedProperty"
-          value="ouId" />
+  <bean id="Company-departments.subtree" class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
+    <property name="nodeGroupDescriptor">
+      <bean class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
+        <property name="modelDescriptor" ref="Company-departments" />
+        <property name="actionMap" ref="masterDetailActionMap" />
+        <property name="renderedProperty" value="ouId" />
       </bean>
     </property>
-    <property
-      name="childDescriptor">
-      <ref
-        local="Department-teams.subtree" />
+    <property name="childDescriptor">
+      <ref local="Department-teams.subtree" />
     </property>
   </bean>
 
-  <bean
-    id="Company.tree"
-    class="org.jspresso.framework.view.descriptor.basic.BasicTreeViewDescriptor">
-    <property
-      name="modelDescriptor"
-      ref="Company" />
-    <property
-      name="renderedProperty"
-      value="name" />
-    <property
-      name="childDescriptor"
-      ref="Company-departments.subtree" />
-    <property
-      name="iconImageURL"
-      value="classpath:org/jspresso/hrsample/images/structure-48x48.png" />
+  <bean id="Company.tree" class="org.jspresso.framework.view.descriptor.basic.BasicTreeViewDescriptor">
+    <property name="modelDescriptor" ref="Company" />
+    <property name="renderedProperty" value="name" />
+    <property name="childDescriptor" ref="Company-departments.subtree" />
+    <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/structure-48x48.png" />
   </bean>
 
-  <bean
-    id="Company.tab.pane"
-    class="org.jspresso.framework.view.descriptor.basic.BasicTabViewDescriptor">
-    <property
-      name="modelDescriptor"
-      ref="Company" />
-    <property
-      name="viewDescriptors">
+  <bean id="Company.tab.pane" class="org.jspresso.framework.view.descriptor.basic.BasicTabViewDescriptor">
+    <property name="modelDescriptor" ref="Company" />
+    <property name="viewDescriptors">
       <list>
-        <ref
-          local="Company.pane" />
-        <ref
-          local="Company.tree" />
-        <ref
-          local="Traceable.pane" />
+        <ref local="Company.pane" />
+        <ref local="Company.tree" />
+        <ref local="Traceable.pane" />
       </list>
     </property>
   </bean>
 
-  <bean
-    id="Company-departments.table"
-    parent="decoratedView"
+  <bean id="Company-departments.table" parent="decoratedView"
     class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
-    <property
-      name="modelDescriptor"
-      ref="Company-departments" />
-    <property
-      name="actionMap"
-      ref="masterDetailActionMap" />
+    <property name="modelDescriptor" ref="Company-departments" />
+    <property name="actionMap" ref="masterDetailActionMap" />
   </bean>
 
-  <bean
-    id="Department-teams.table"
-    parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
-    <property
-      name="modelDescriptor"
-      ref="Department-teams" />
-    <property
-      name="actionMap"
-      ref="masterDetailActionMap" />
-    <property
-      name="columnViewDescriptors">
+  <bean id="Department-teams.table" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    <property name="modelDescriptor" ref="Department-teams" />
+    <property name="actionMap" ref="masterDetailActionMap" />
+    <property name="columnViewDescriptors">
       <list>
-        <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
-          <property
-            name="name"
-            value="ouId" />
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property name="name" value="ouId" />
         </bean>
-        <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
-          <property
-            name="name"
-            value="name" />
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property name="name" value="name" />
         </bean>
-        <bean
-          class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
-          <property
-            name="name"
-            value="manager" />
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+          <property name="name" value="manager" />
         </bean>
       </list>
     </property>
   </bean>
 
-  <bean
-    id="Team-teamMembers.table"
-    parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
-    <property
-      name="modelDescriptor"
-      ref="Team-teamMembers" />
-    <property
-      name="actionMap">
-      <bean
-        class="org.jspresso.framework.view.action.ActionMap">
-        <property
-          name="actionLists">
+  <bean id="Team-teamMembers.table" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    <property name="modelDescriptor" ref="Team-teamMembers" />
+    <property name="actionMap">
+      <bean class="org.jspresso.framework.view.action.ActionMap">
+        <property name="actionLists">
           <list>
-            <bean
-              class="org.jspresso.framework.view.action.ActionList">
-              <property
-                name="name"
-                value="EDIT" />
-              <property
-                name="actions">
+            <bean class="org.jspresso.framework.view.action.ActionList">
+              <property name="name" value="EDIT" />
+              <property name="actions">
                 <list>
-                  <bean
-                    parent="lovAction">
-                    <property
-                      name="autoquery"
-                      value="false" />
-                    <property
-                      name="entityDescriptor"
-                      ref="Employee" />
-                    <property
-                      name="initializationMapping">
+                  <bean parent="lovAction">
+                    <property name="autoquery" value="false" />
+                    <property name="entityDescriptor" ref="Employee" />
+                    <property name="initializationMapping">
                       <map>
-                        <entry
-                          key="company"
-                          value="company" />
+                        <entry key="company" value="company" />
                       </map>
                     </property>
-                    <property
-                      name="okAction">
-                      <bean
-                        parent="lovOkFrontAction">
-                        <property
-                          name="nextAction">
-                          <bean
-                            class="org.jspresso.framework.application.backend.action.AddAnyCollectionToMasterAction" />
+                    <property name="okAction">
+                      <bean parent="lovOkFrontAction">
+                        <property name="nextAction">
+                          <bean class="org.jspresso.framework.application.backend.action.AddAnyCollectionToMasterAction" />
                         </property>
                       </bean>
                     </property>
                   </bean>
-                  <ref
-                    bean="removeAnyCollectionFromMasterFrontAction" />
+                  <ref bean="removeAnyCollectionFromMasterFrontAction" />
                 </list>
               </property>
             </bean>
@@ -296,117 +158,56 @@
     </property>
   </bean>
 
-  <bean
-    id="Departments.and.teams.view"
-    class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
-    <property
-      name="leftTopViewDescriptor"
-      ref="Company-departments.table" />
-    <property
-      name="rightBottomViewDescriptor">
-      <bean
-        class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
-        <property
-          name="orientation"
-          value="HORIZONTAL" />
-        <property
-          name="leftTopViewDescriptor"
-          ref="Department-teams.table" />
-        <property
-          name="rightBottomViewDescriptor"
-          ref="Team-teamMembers.table" />
-        <property
-          name="cascadingModels"
-          value="true" />
+  <bean id="Departments.and.teams.view" class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+    <property name="leftTopViewDescriptor" ref="Company-departments.table" />
+    <property name="rightBottomViewDescriptor">
+      <bean class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+        <property name="orientation" value="HORIZONTAL" />
+        <property name="leftTopViewDescriptor" ref="Department-teams.table" />
+        <property name="rightBottomViewDescriptor" ref="Team-teamMembers.table" />
+        <property name="cascadingModels" value="true" />
       </bean>
     </property>
-    <property
-      name="cascadingModels"
-      value="true" />
+    <property name="cascadingModels" value="true" />
   </bean>
 
-  <bean
-    id="Company.organization.view"
-    class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
-    <property
-      name="modelDescriptor"
-      ref="Company" />
-    <property
-      name="leftTopViewDescriptor"
-      ref="Company.tab.pane" />
-    <property
-      name="rightBottomViewDescriptor"
-      ref="Departments.and.teams.view" />
+  <bean id="Company.organization.view" class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+    <property name="modelDescriptor" ref="Company" />
+    <property name="leftTopViewDescriptor" ref="Company.tab.pane" />
+    <property name="rightBottomViewDescriptor" ref="Departments.and.teams.view" />
   </bean>
 
-  <bean
-    id="Employee.pane"
-    parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
-    <property
-      name="modelDescriptor"
-      ref="Employee" />
-    <property
-      name="columnCount"
-      value="3" />
+  <bean id="Employee.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    <property name="modelDescriptor" ref="Employee" />
+    <property name="columnCount" value="3" />
   </bean>
 
-  <bean
-    id="Employee-events.table"
-    parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
-    <property
-      name="modelDescriptor"
-      ref="Employee-events" />
-    <property
-      name="actionMap"
-      ref="masterDetailActionMap" />
+  <bean id="Employee-events.table" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
+    <property name="modelDescriptor" ref="Employee-events" />
+    <property name="actionMap" ref="masterDetailActionMap" />
   </bean>
 
-  <bean
-    id="Event.text.pane"
-    parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-    <property
-      name="name"
-      value="text" />
-    <property
-      name="modelDescriptor"
-      ref="Event.text" />
-    <property
-      name="actionMap"
-      ref="binaryPropertyActionMap" />
+  <bean id="Event.text.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
+    <property name="name" value="text" />
+    <property name="modelDescriptor" ref="Event.text" />
+    <property name="actionMap" ref="binaryPropertyActionMap" />
   </bean>
 
   <!--
     Customized module views
   -->
-  <bean
-    id="City.module.view"
-    parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
-    <property
-      name="columnCount"
-      value="1" />
-    <property
-      name="actionMap">
-      <bean
-        class="org.jspresso.framework.view.action.ActionMap">
-        <property
-          name="actionLists">
+  <bean id="City.module.view" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
+    <property name="columnCount" value="1" />
+    <property name="actionMap">
+      <bean class="org.jspresso.framework.view.action.ActionMap">
+        <property name="actionLists">
           <list>
-            <bean
-              class="org.jspresso.framework.view.action.ActionList">
-              <property
-                name="name"
-                value="FILE" />
-              <property
-                name="actions">
+            <bean class="org.jspresso.framework.view.action.ActionList">
+              <property name="name" value="FILE" />
+              <property name="actions">
                 <list>
-                  <ref
-                    bean="saveModuleObjectFrontAction" />
-                  <ref
-                    bean="reloadModuleObjectFrontAction" />
+                  <ref bean="saveModuleObjectFrontAction" />
+                  <ref bean="reloadModuleObjectFrontAction" />
                 </list>
               </property>
             </bean>
@@ -416,50 +217,26 @@
     </property>
   </bean>
 
-  <bean
-    id="Employee.module.view"
-    parent="decoratedView"
-    class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
-    <property
-      name="leftTopViewDescriptor"
-      ref="Employee.pane" />
-    <property
-      name="rightBottomViewDescriptor">
-      <bean
-        class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
-        <property
-          name="orientation"
-          value="HORIZONTAL" />
-        <property
-          name="cascadingModels"
-          value="true" />
-        <property
-          name="leftTopViewDescriptor"
-          ref="Employee-events.table" />
-        <property
-          name="rightBottomViewDescriptor"
-          ref="Event.text.pane" />
+  <bean id="Employee.module.view" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+    <property name="leftTopViewDescriptor" ref="Employee.pane" />
+    <property name="rightBottomViewDescriptor">
+      <bean class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+        <property name="orientation" value="HORIZONTAL" />
+        <property name="cascadingModels" value="true" />
+        <property name="leftTopViewDescriptor" ref="Employee-events.table" />
+        <property name="rightBottomViewDescriptor" ref="Event.text.pane" />
       </bean>
     </property>
-    <property
-      name="actionMap">
-      <bean
-        class="org.jspresso.framework.view.action.ActionMap">
-        <property
-          name="actionLists">
+    <property name="actionMap">
+      <bean class="org.jspresso.framework.view.action.ActionMap">
+        <property name="actionLists">
           <list>
-            <bean
-              class="org.jspresso.framework.view.action.ActionList">
-              <property
-                name="name"
-                value="FILE" />
-              <property
-                name="actions">
+            <bean class="org.jspresso.framework.view.action.ActionList">
+              <property name="name" value="FILE" />
+              <property name="actions">
                 <list>
-                  <ref
-                    bean="saveModuleObjectFrontAction" />
-                  <ref
-                    bean="reloadModuleObjectFrontAction" />
+                  <ref bean="saveModuleObjectFrontAction" />
+                  <ref bean="reloadModuleObjectFrontAction" />
                 </list>
               </property>
             </bean>
@@ -469,28 +246,17 @@
     </property>
   </bean>
 
-  <bean
-    id="Company.module.view"
-    parent="Company.organization.view">
-    <property
-      name="actionMap">
-      <bean
-        class="org.jspresso.framework.view.action.ActionMap">
-        <property
-          name="actionLists">
+  <bean id="Company.module.view" parent="Company.organization.view">
+    <property name="actionMap">
+      <bean class="org.jspresso.framework.view.action.ActionMap">
+        <property name="actionLists">
           <list>
-            <bean
-              class="org.jspresso.framework.view.action.ActionList">
-              <property
-                name="name"
-                value="FILE" />
-              <property
-                name="actions">
+            <bean class="org.jspresso.framework.view.action.ActionList">
+              <property name="name" value="FILE" />
+              <property name="actions">
                 <list>
-                  <ref
-                    bean="saveModuleObjectFrontAction" />
-                  <ref
-                    bean="reloadModuleObjectFrontAction" />
+                  <ref bean="saveModuleObjectFrontAction" />
+                  <ref bean="reloadModuleObjectFrontAction" />
                 </list>
               </property>
             </bean>
@@ -503,22 +269,15 @@
   <!--
     The application I18N resources. 
   -->
-  <bean
-    id="applicationMessageSource"
-    class="org.springframework.context.support.ResourceBundleMessageSource">
-    <property
-      name="parentMessageSource"
-      ref="commonsMessageSource" />
-    <property
-      name="basenames">
+  <bean id="applicationMessageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="parentMessageSource" ref="commonsMessageSource" />
+    <property name="basenames">
       <list>
         <value>org.jspresso.hrsample.i18n.Messages</value>
       </list>
     </property>
   </bean>
 
-  <bean
-    id="testView"
-    parent="Company.organization.view" />
+  <bean id="testView" parent="Company.organization.view" />
 
 </beans>

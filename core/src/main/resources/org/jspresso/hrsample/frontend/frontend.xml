@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans
-  xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
                       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
   default-lazy-init="true">
@@ -9,50 +7,23 @@
   <!--
     The workspaces and modules
   -->
-  <bean
-    id="Masterdata.workspace"
-    parent="abstractWorkspace"
-    scope="prototype">
-    <property
-      name="name"
-      value="masterdata.workspace" />
-    <property
-      name="description"
-      value="masterdata.workspace.description" />
-    <property
-      name="iconImageURL"
-      value="classpath:org/jspresso/hrsample/images/masterdata-48x48.png" />
-    <property
-      name="modules">
+  <bean id="Masterdata.workspace" parent="abstractWorkspace" scope="prototype">
+    <property name="name" value="masterdata.workspace" />
+    <property name="description" value="masterdata.workspace.description" />
+    <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/masterdata-48x48.png" />
+    <property name="modules">
       <list>
-        <bean
-          parent="abstractSimpleModule">
-          <property
-            name="name"
-            value="masterdata.geography.module" />
-          <property
-            name="description"
-            value="masterdata.geography.module.description" />
-          <property
-            name="iconImageURL"
-            value="classpath:org/jspresso/hrsample/images/geography-48x48.png" />
-          <property
-            name="subModules">
+        <bean parent="abstractSimpleModule">
+          <property name="name" value="masterdata.geography.module" />
+          <property name="description" value="masterdata.geography.module.description" />
+          <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/geography-48x48.png" />
+          <property name="subModules">
             <list>
-              <bean
-                parent="abstractFilterableBeanCollectionModule">
-                <property
-                  name="name"
-                  value="masterdata.cities.module" />
-                <property
-                  name="description"
-                  value="masterdata.cities.module.description" />
-                <property
-                  name="elementComponentDescriptor"
-                  ref="City" />
-                <property
-                  name="elementViewDescriptor"
-                  ref="City.module.view" />
+              <bean parent="abstractFilterableBeanCollectionModule">
+                <property name="name" value="masterdata.cities.module" />
+                <property name="description" value="masterdata.cities.module.description" />
+                <property name="elementComponentDescriptor" ref="City" />
+                <property name="elementViewDescriptor" ref="City.module.view" />
               </bean>
             </list>
           </property>
@@ -60,88 +31,44 @@
       </list>
     </property>
   </bean>
-  <bean
-    id="Employees.workspace"
-    parent="abstractWorkspace"
-    scope="prototype">
-    <property
-      name="name"
-      value="employees.workspace" />
-    <property
-      name="description"
-      value="employees.workspace.description" />
-    <property
-      name="iconImageURL"
-      value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
-    <property
-      name="modules">
+  <bean id="Employees.workspace" parent="abstractWorkspace" scope="prototype">
+    <property name="name" value="employees.workspace" />
+    <property name="description" value="employees.workspace.description" />
+    <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
+    <property name="modules">
       <list>
-        <bean
-          parent="abstractFilterableBeanCollectionModule">
-          <property
-            name="name"
-            value="employees.module" />
-          <property
-            name="description"
-            value="employees.module.description" />
-          <property
-            name="iconImageURL"
-            value="classpath:org/jspresso/hrsample/images/employees-48x48.png" />
-          <property
-            name="elementComponentDescriptor"
-            ref="Employee" />
-          <property
-            name="elementViewDescriptor"
-            ref="Employee.module.view" />
+        <bean parent="abstractFilterableBeanCollectionModule">
+          <property name="name" value="employees.module" />
+          <property name="description" value="employees.module.description" />
+          <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/employees-48x48.png" />
+          <property name="elementComponentDescriptor" ref="Employee" />
+          <property name="elementViewDescriptor" ref="Employee.module.view" />
         </bean>
       </list>
     </property>
-    <property
-      name="grantedRoles">
+    <property name="grantedRoles">
       <list>
         <value>administrator</value>
         <value>staff-manager</value>
       </list>
     </property>
   </bean>
-  <bean
-    id="Organization.workspace"
-    parent="abstractWorkspace"
-    scope="prototype">
-    <property
-      name="name"
-      value="organization.workspace" />
-    <property
-      name="description"
-      value="organization.workspace.description" />
-    <property
-      name="iconImageURL"
-      value="classpath:org/jspresso/hrsample/images/structure-48x48.png" />
-    <property
-      name="modules">
+  <bean id="Organization.workspace" parent="abstractWorkspace" scope="prototype">
+    <property name="name" value="organization.workspace" />
+    <property name="description" value="organization.workspace.description" />
+    <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/structure-48x48.png" />
+    <property name="modules">
       <list>
-        <bean
-          parent="abstractFilterableBeanCollectionModule">
-          <property
-            name="name"
-            value="companies.module" />
-          <property
-            name="description"
-            value="companies.module.description" />
-          <property
-            name="iconImageURL"
-            value="classpath:org/jspresso/hrsample/images/company-48x48.png" />
-          <property
-            name="elementComponentDescriptor"
-            ref="Company" />
-          <property
-            name="elementViewDescriptor"
-            ref="Company.module.view" />
+        <bean parent="abstractFilterableBeanCollectionModule">
+          <property name="name" value="companies.module" />
+          <property name="description" value="companies.module.description" />
+          <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/company-48x48.png" />
+          <property name="elementComponentDescriptor" ref="Company" />
+          <property name="elementViewDescriptor" ref="Company.module.view" />
         </bean>
       </list>
     </property>
-    <property
-      name="grantedRoles">
+    <property name="grantedRoles">
       <list>
         <value>administrator</value>
         <value>organization-manager</value>
@@ -152,31 +79,16 @@
   <!--
     The controller.
   -->
-  <bean
-    id="applicationFrontController"
-    parent="frontController"
-    scope="prototype">
-    <property
-      name="name"
-      value="hrsample.name" />
-    <property
-      name="iconImageURL"
-      value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
-    <property
-      name="loginContextName"
-      value="hrsample" />
-    <property
-      name="forcedStartingLocale"
-      value="en" />
-    <property
-      name="workspaces">
+  <bean id="applicationFrontController" parent="frontController" scope="prototype">
+    <property name="name" value="hrsample.name" />
+    <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
+    <property name="loginContextName" value="hrsample" />
+    <property name="forcedStartingLocale" value="en" />
+    <property name="workspaces">
       <list>
-        <ref
-          bean="Masterdata.workspace" />
-        <ref
-          bean="Employees.workspace" />
-        <ref
-          bean="Organization.workspace" />
+        <ref bean="Masterdata.workspace" />
+        <ref bean="Employees.workspace" />
+        <ref bean="Organization.workspace" />
       </list>
     </property>
   </bean>
