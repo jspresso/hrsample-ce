@@ -43,8 +43,7 @@
     </property>
     <property name="lifecycleInterceptorClassNames">
       <list>
-        <value>org.jspresso.hrsample.model.service.TraceableLifecycleInterceptor
-        </value>
+        <value>org.jspresso.hrsample.model.service.TraceableLifecycleInterceptor</value>
       </list>
     </property>
     <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/traceable-48x48.png" />
@@ -135,8 +134,7 @@
           <property name="maxLength" value="32" />
           <property name="integrityProcessorClassNames">
             <list>
-              <value>org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$FirstNameProcessor
-              </value>
+              <value>org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$FirstNameProcessor</value>
             </list>
           </property>
         </bean>
@@ -152,8 +150,7 @@
           <property name="type" value="DATE" />
           <property name="integrityProcessorClassNames">
             <list>
-              <value>org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$BirthDateProcessor
-              </value>
+              <value>org.jspresso.hrsample.model.processor.EmployeePropertyProcessors$BirthDateProcessor</value>
             </list>
           </property>
         </bean>
@@ -343,8 +340,7 @@
     <property name="mandatory" value="true" />
     <property name="integrityProcessorClassNames">
       <list>
-        <value>org.jspresso.hrsample.model.processor.OrganizationalUnitPropertyProcessors$ManagerProcessor
-        </value>
+        <value>org.jspresso.hrsample.model.processor.OrganizationalUnitPropertyProcessors$ManagerProcessor</value>
       </list>
     </property>
     <property name="initializationMapping">
