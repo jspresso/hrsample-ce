@@ -13,10 +13,10 @@
     <property name="modelDescriptor" ref="Traceable" />
     <property name="propertyViewDescriptors">
       <list>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
           <property name="name" value="createTimestamp" />
         </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
           <property name="name" value="lastUpdateTimestamp" />
         </bean>
       </list>
@@ -31,19 +31,19 @@
     <property name="modelDescriptor" ref="Company" />
     <property name="propertyViewDescriptors">
       <list>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
           <property name="name" value="name" />
         </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
           <property name="name" value="contact.address" />
         </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
           <property name="name" value="contact.city" />
         </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
           <property name="name" value="contact.phone" />
         </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
           <property name="name" value="contact.email" />
         </bean>
       </list>
@@ -109,13 +109,13 @@
     <property name="actionMap" ref="masterDetailActionMap" />
     <property name="columnViewDescriptors">
       <list>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
           <property name="name" value="ouId" />
         </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
           <property name="name" value="name" />
         </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicSubviewDescriptor">
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
           <property name="name" value="manager" />
         </bean>
       </list>
