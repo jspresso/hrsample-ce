@@ -11,14 +11,10 @@
     <property name="labelsPosition" value="ABOVE" />
     <property name="columnCount" value="2" />
     <property name="modelDescriptor" ref="Traceable" />
-    <property name="propertyViewDescriptors">
+    <property name="renderedProperties">
       <list>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="createTimestamp" />
-        </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="lastUpdateTimestamp" />
-        </bean>
+        <value>createTimestamp</value>
+        <value>lastUpdateTimestamp</value>
       </list>
     </property>
     <property name="description" value="traceable.editing">
@@ -29,23 +25,13 @@
     <property name="labelsPosition" value="ASIDE" />
     <property name="columnCount" value="2" />
     <property name="modelDescriptor" ref="Company" />
-    <property name="propertyViewDescriptors">
+    <property name="renderedProperties">
       <list>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="name" />
-        </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="contact.address" />
-        </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="contact.city" />
-        </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="contact.phone" />
-        </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="contact.email" />
-        </bean>
+        <value>name</value>
+        <value>contact.address</value>
+        <value>contact.city</value>
+        <value>contact.phone</value>
+        <value>contact.email</value>
       </list>
     </property>
     <property name="propertyWidths">
@@ -107,17 +93,11 @@
   <bean id="Department-teams.table" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
     <property name="modelDescriptor" ref="Department-teams" />
     <property name="actionMap" ref="masterDetailActionMap" />
-    <property name="columnViewDescriptors">
+    <property name="renderedProperties">
       <list>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="ouId" />
-        </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="name" />
-        </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="manager" />
-        </bean>
+        <value>ouId</value>
+        <value>name</value>
+        <value>manager</value>
       </list>
     </property>
   </bean>

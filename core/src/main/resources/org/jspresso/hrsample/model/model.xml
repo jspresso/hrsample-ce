@@ -121,6 +121,7 @@
 
   <bean id="Employee" class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
     <constructor-arg value="org.jspresso.hrsample.model.Employee" />
+    <property name="pageSize" value="2"/>
     <property name="ancestorDescriptors">
       <list>
         <ref local="Nameable" />
