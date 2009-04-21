@@ -43,6 +43,7 @@
           <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/employees-48x48.png" />
           <property name="elementComponentDescriptor" ref="Employee" />
           <property name="elementViewDescriptor" ref="Employee.module.view" />
+          <property name="pageSize" value="4"/>
         </bean>
       </list>
     </property>
