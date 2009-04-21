@@ -75,7 +75,7 @@
 
   <bean id="Company.tab.pane" class="org.jspresso.framework.view.descriptor.basic.BasicTabViewDescriptor">
     <property name="modelDescriptor" ref="Company" />
-    <property name="viewDescriptors">
+    <property name="tabs">
       <list>
         <ref local="Company.pane" />
         <ref local="Company.tree" />
