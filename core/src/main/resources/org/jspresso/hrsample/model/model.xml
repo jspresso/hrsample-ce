@@ -203,6 +203,7 @@
           <property name="maxValue">
             <value type="java.lang.Integer">150</value>
           </property>
+          <property name="readOnly" value="true"/>
           <property name="delegateClassName" value="org.jspresso.hrsample.model.extension.EmployeeExtension" />
         </bean>
         <bean class="org.jspresso.framework.model.descriptor.basic.BasicBinaryPropertyDescriptor">
