@@ -251,6 +251,11 @@
         <value>ssn</value>
       </list>
     </property>
+    <property name="orderingProperties">
+      <map>
+        <entry key="name" value="ASCENDING"/>
+      </map>
+    </property>
   </bean>
 
   <bean id="Employee-teams" class="org.jspresso.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
