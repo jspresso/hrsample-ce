@@ -100,6 +100,24 @@
         <value>manager</value>
       </list>
     </property>
+    <!--
+    <property name="columnViewDescriptors">
+      <list>
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
+          <property name="name" value="ouId" />
+          <property name="readOnly" value="true" />
+        </bean>
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
+          <property name="name" value="name" />
+          <property name="readOnly" value="true" />
+        </bean>
+        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
+          <property name="name" value="contact" />
+          <property name="readOnly" value="true" />
+        </bean>
+      </list>
+    </property>
+    -->
   </bean>
 
   <bean id="Team-teamMembers.table" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
