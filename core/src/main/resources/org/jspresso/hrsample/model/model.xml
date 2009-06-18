@@ -119,6 +119,20 @@
 
   <!-- Employees model  -->
 
+  <bean id="Employee-photo" class="org.jspresso.framework.model.descriptor.basic.BasicBinaryPropertyDescriptor">
+    <property name="name" value="photo" />
+    <property name="maxLength" value="1048576" />
+    <property name="fileFilter">
+      <map>
+        <entry key="images">
+          <list>
+            <value>.jpg</value>
+          </list>
+        </entry>
+      </map>
+    </property>
+  </bean>
+  
   <bean id="Employee" class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
     <constructor-arg value="org.jspresso.hrsample.model.Employee" />
     <property name="ancestorDescriptors">
@@ -206,19 +220,7 @@
           <property name="readOnly" value="true"/>
           <property name="delegateClassName" value="org.jspresso.hrsample.model.extension.EmployeeExtension" />
         </bean>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicBinaryPropertyDescriptor">
-          <property name="name" value="photo" />
-          <property name="maxLength" value="1048576" />
-          <property name="fileFilter">
-            <map>
-              <entry key="images">
-                <list>
-                  <value>.jpg</value>
-                </list>
-              </entry>
-            </map>
-          </property>
-        </bean>
+        <ref bean="Employee-photo"/>
       </list>
     </property>
     <property name="serviceDelegateClassNames">

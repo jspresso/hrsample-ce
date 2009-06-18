@@ -175,9 +175,21 @@
     <property name="rightBottomViewDescriptor" ref="Departments.and.teams.view" />
   </bean>
 
-  <bean id="Employee.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
-    <property name="modelDescriptor" ref="Employee" />
+  <bean id="Employee.photo.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicImageViewDescriptor">
+    <property name="modelDescriptor" ref="Employee-photo"/>
+    <property
+      name="actionMap"
+      ref="binaryPropertyActionMap" />
+  </bean>
+  <bean id="Employee.component.pane" class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
     <property name="columnCount" value="3" />
+  </bean>
+
+  <bean id="Employee.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+    <property name="modelDescriptor" ref="Employee" />
+    <property name="orientation" value="HORIZONTAL"/>
+    <property name="leftTopViewDescriptor" ref="Employee.component.pane" />
+    <property name="rightBottomViewDescriptor" ref="Employee.photo.pane" />
   </bean>
 
   <bean id="Employee-events.table" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
