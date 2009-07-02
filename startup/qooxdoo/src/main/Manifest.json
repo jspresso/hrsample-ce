@@ -1,0 +1,34 @@
+{
+  "info" : 
+  {
+    "name" : "jspresso-hrsample",
+
+    "summary" : "Jspresso HR sample application",
+    "description" : "This is the Jspresso HR sample application",
+    
+    "homepage" : "http://www.jspresso.org/",
+
+    "license" : "LGPL V3",
+    "authors" : 
+    [
+      {
+        "name" : "Vincent Vandenschrick (vvandens)",
+        "email" : "vvandens@jspresso.org"
+      }
+    ],
+
+    "version" : "trunk",
+    "qooxdoo-versions": ["0.8.2"]
+  },
+  
+  "provides" : 
+  {
+    "namespace"   : "org.jspresso.hrsample",
+    "encoding"    : "utf-8",
+    "class"       : "js",
+    "resource"    : "resources",
+    "translation" : "translations",
+    "type"        : "application"
+  }
+}
+
