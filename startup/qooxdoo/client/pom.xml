@@ -74,7 +74,7 @@
           <workingDirectory>src/main/py</workingDirectory>
           <arguments>
             <argument>${basedir}/target/qooxdoo-sdk/tool/bin/generator.py</argument>
-            <argument>build</argument>
+            <argument>source-all,build</argument>
           </arguments>
         </configuration>
       </plugin>
