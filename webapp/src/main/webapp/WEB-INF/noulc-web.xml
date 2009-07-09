@@ -58,7 +58,7 @@
     <servlet-class>org.wings.session.WingServlet</servlet-class>
     <init-param>
       <param-name>wings.mainclass</param-name>
-      <param-value>org.jspresso.hrsample.startup.wings.WingsApplicationSampleStartup</param-value>
+      <param-value>org.jspresso.hrsample.startup.wings.WingsApplicationStartup</param-value>
     </init-param>
     <!--
       <init-param>
@@ -188,5 +188,26 @@
     <servlet-name>MessageBrokerServlet</servlet-name>
   </filter-mapping>
   <!--End Flex/BlazeDS deployment section -->
+
+  <!-- Qooxdoo RPC section -->
+  <servlet>
+    <servlet-name>QooxdooRpcServlet</servlet-name>
+    <servlet-class>org.jspresso.framework.qooxdoo.rpc.RpcServlet</servlet-class>
+    <init-param>
+      <param-name>referrerCheck</param-name>
+      <param-value>public</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>QooxdooRpcServlet</servlet-name>
+    <url-pattern>*.qxrpc</url-pattern>
+  </servlet-mapping>
+
+  <filter-mapping>
+    <filter-name>HttpRequestHolder</filter-name>
+    <servlet-name>QooxdooRpcServlet</servlet-name>
+  </filter-mapping>
+  <!-- End Qooxdoo RPC section -->
 
 </web-app>

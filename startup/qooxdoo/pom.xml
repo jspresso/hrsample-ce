@@ -3,118 +3,18 @@
 
   <groupId>org.jspresso.hrsample</groupId>
   <version>3.0.1-SNAPSHOT</version>
-  <!-- 
   <parent>
     <groupId>org.jspresso.hrsample</groupId>
     <artifactId>hrsample</artifactId>
     <version>3.0.1-SNAPSHOT</version>
   </parent>
-  -->
+
   <artifactId>hrsample-startup-qooxdoo</artifactId>
   <packaging>pom</packaging>
   <name>Jspresso HR Sample - Startup - Qooxdoo</name>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.jspresso.framework</groupId>
-      <artifactId>jspresso-qooxdoo</artifactId>
-      <classifier>sources</classifier>
-      <type>zip</type>
-      <scope>provided</scope>
-      <!-- TODO put version in root pom -->
-      <version>3.0.1-SNAPSHOT</version>
-    </dependency>
-  </dependencies>
-  
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>unpack-jspresso-qooxdoo</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>unpack-dependencies</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.build.directory}/jspresso-qooxdoo</outputDirectory>
-              <includeArtifactIds>jspresso-qooxdoo</includeArtifactIds>
-            </configuration>
-          </execution>
-          <execution>
-            <id>unpack-qooxdoo-sdk</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>unpack</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>org.qooxdoo</groupId>
-                  <artifactId>qooxdoo-sdk</artifactId>
-                  <version>0.8.2</version>
-                  <type>zip</type>
-                  <outputDirectory>${project.build.directory}/qooxdoo-sdk</outputDirectory>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.1.1</version>
-        <executions>
-          <execution>
-            <id>compile-qooxdoo</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>generate-resources</phase>
-          </execution>
-        </executions>
-        <configuration>
-          <executable>python</executable>
-          <workingDirectory>src/main/py</workingDirectory>
-          <arguments>
-            <argument>${basedir}/target/qooxdoo-sdk/tool/bin/generator.py</argument>
-            <argument>build</argument>
-          </arguments>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-qooxdoo-web-resources</id>
-            <goals>
-              <goal>single</goal>
-            </goals>
-            <phase>generate-resources</phase>
-            <configuration>
-              <descriptors>
-                <descriptor>${basedir}/src/main/assembly/web-resources.xml</descriptor>
-              </descriptors>
-            </configuration>
-          </execution>
-          <execution>
-            <id>attach-qooxdoo-sources</id>
-            <goals>
-              <goal>single</goal>
-            </goals>
-            <phase>generate-resources</phase>
-            <configuration>
-              <descriptors>
-                <descriptor>${basedir}/src/main/assembly/sources.xml</descriptor>
-              </descriptors>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+  <modules>
+    <module>client</module>
+    <module>server</module>
+  </modules>
 </project>

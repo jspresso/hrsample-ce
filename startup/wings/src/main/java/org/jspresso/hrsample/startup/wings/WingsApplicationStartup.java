@@ -14,7 +14,7 @@ import org.jspresso.framework.application.startup.wings.WingsStartup;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-public class WingsApplicationSampleStartup extends WingsStartup {
+public class WingsApplicationStartup extends WingsStartup {
 
   /**
    * Returns the "hrsample-wings-context" value.

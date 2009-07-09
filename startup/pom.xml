@@ -13,6 +13,7 @@
     <module>wings</module>
     <module>remote</module>
     <module>flex</module>
+    <module>qooxdoo</module>
   </modules>
   <profiles>
     <profile>

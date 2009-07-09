@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.jspresso.hrsample</groupId>
+  <version>3.0.1-SNAPSHOT</version>
+  <parent>
+    <groupId>org.jspresso.hrsample</groupId>
+    <artifactId>hrsample</artifactId>
+    <version>3.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>hrsample-startup-qooxdoo-server</artifactId>
+  <packaging>jar</packaging>
+  <name>Jspresso HR Sample - Startup - Qooxdoo - Server</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jspresso.hrsample</groupId>
+      <artifactId>hrsample-startup-remote</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.qooxdoo</groupId>
+      <artifactId>qooxdoo-java-rpc</artifactId>
+    </dependency>
+  </dependencies>
+</project>

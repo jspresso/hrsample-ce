@@ -147,6 +147,33 @@
                     </property>
                   </bean>
                   <ref bean="removeAnyCollectionFromMasterFrontAction" />
+<!--
+                  <bean
+                    parent="abstractCollectionAction">
+                    <property
+                      name="name"
+                      value="action.name" />
+                    <property
+                      name="description"
+                      value="action.description" />
+                    <property
+                      name="iconImageURL"
+                      value="classpath:org/jspresso/framework/application/images/view-48x48.png" />
+                    <property
+                      name="nextAction">
+                      <bean
+                        parent="editComponentAction">
+                        <property name="viewDescriptor">
+                          <bean parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+                            <property name="leftTopViewDescriptor" ref="Employee.pane" />
+                            <property name="rightBottomViewDescriptor" ref="Employee-events.table" />
+                            <property name="modelDescriptor" ref="Employee"/>
+                          </bean>
+                        </property>
+                      </bean>
+                    </property>
+                  </bean>
+-->
                 </list>
               </property>
             </bean>

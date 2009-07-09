@@ -124,7 +124,7 @@ qx.Class.define("org.jspresso.hrsample.startup.qooxdoo.Application",
     test : function() {
       var remoteController = new qx.io.remote.Rpc(
           "http://localhost:8080/hrsample-webapp/.qxrpc",
-          "qooxdoo.QooxdooApplicationStartup"
+          "org.jspresso.hrsample.startup.qooxdoo.QooxdooApplicationStartup"
       );
       remoteController.setCrossDomain(true);
       remoteController.setTimeout(600000);
