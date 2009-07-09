@@ -114,18 +114,6 @@
             </configuration>
           </execution>
           <execution>
-            <id>copy-flex-dependencies</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.build.directory}/${project.artifactId}/flex</outputDirectory>
-              <includeTypes>swf</includeTypes>
-              <stripVersion>true</stripVersion>
-            </configuration>
-          </execution>
-          <execution>
             <id>unpack-qooxdoo-dependencies</id>
             <goals>
               <goal>unpack-dependencies</goal>
@@ -136,6 +124,18 @@
               <includeArtifactIds>hrsample-startup-qooxdoo-client</includeArtifactIds>
               <includeClassifiers>web-resources</includeClassifiers>
               <excludeTransitive>true</excludeTransitive>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-flex-dependencies</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/${project.artifactId}/flex</outputDirectory>
+              <includeTypes>swf</includeTypes>
+              <stripVersion>true</stripVersion>
             </configuration>
           </execution>
         </executions>

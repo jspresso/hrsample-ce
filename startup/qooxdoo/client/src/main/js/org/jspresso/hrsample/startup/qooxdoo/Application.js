@@ -117,11 +117,10 @@ qx.Class.define("org.jspresso.hrsample.startup.qooxdoo.Application",
         // support additional cross-browser console. Press F7 to toggle visibility
         qx.log.appender.Console;
       }
-      this.test();
-      //this.testDesktop();
+      this.start();
     },
     
-    test : function() {
+    start : function() {
       var remoteController;
       if (qx.core.Variant.isSet("qx.debug", "on")) {
         remoteController = new qx.io.remote.Rpc(
