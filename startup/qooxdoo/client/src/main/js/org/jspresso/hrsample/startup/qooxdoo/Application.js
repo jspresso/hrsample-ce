@@ -122,11 +122,19 @@ qx.Class.define("org.jspresso.hrsample.startup.qooxdoo.Application",
     },
     
     test : function() {
-      var remoteController = new qx.io.remote.Rpc(
-          "http://localhost:8080/hrsample-webapp/.qxrpc",
-          "org.jspresso.hrsample.startup.qooxdoo.QooxdooApplicationStartup"
-      );
-      remoteController.setCrossDomain(true);
+      var remoteController;
+      if (qx.core.Variant.isSet("qx.debug", "on")) {
+        remoteController = new qx.io.remote.Rpc(
+            "http://localhost:8080/hrsample-webapp/.qxrpc",
+            "org.jspresso.hrsample.startup.qooxdoo.QooxdooApplicationStartup"
+        );
+        remoteController.setCrossDomain(true);
+      } else {
+        remoteController = new qx.io.remote.Rpc(
+            qx.io.remote.Rpc.makeServerURL(),
+            "org.jspresso.hrsample.startup.qooxdoo.QooxdooApplicationStartup"
+        );
+      }
       remoteController.setTimeout(600000);
       
       var qxController = new org.jspresso.framework.application.frontend.controller.qx.DefaultQxController(this, remoteController, "en");
