@@ -55,9 +55,6 @@
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/hibernate-ehcache/3.3.1.GA/hibernate-ehcache-3.3.1.GA.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/envdev/gwt-windows-1.6.4/gwt-servlet.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="java-output-path" value="build/classes"/>
         <property name="context-root" value="hrsample-webapp"/>
     </wb-module>
