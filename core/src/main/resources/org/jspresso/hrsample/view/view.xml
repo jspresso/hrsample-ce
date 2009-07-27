@@ -306,7 +306,7 @@
   <!--
     The application I18N resources. 
   -->
-  <bean id="applicationMessageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+  <bean id="applicationMessageSource" parent="abstractApplicationMessageSource">
     <property name="parentMessageSource" ref="commonsMessageSource" />
     <property name="basenames">
       <list>
