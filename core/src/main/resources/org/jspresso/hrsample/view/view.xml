@@ -98,6 +98,7 @@
         <value>ouId</value>
         <value>name</value>
         <value>manager</value>
+        <!--<value>manager.contact.city</value>-->
       </list>
     </property>
     <!--
