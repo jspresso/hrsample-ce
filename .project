@@ -45,11 +45,6 @@
 			<location>D:/Dev/Jspresso/hrsample-webapp/webapp/src/main/flex-template</location>
 		</link>
 		<link>
-			<name>webapp/src/main/webapp/flex</name>
-			<type>2</type>
-			<location>D:/Dev/Jspresso/hrsample-webapp/webapp/target/hrsample-webapp/flex</location>
-		</link>
-		<link>
 			<name>webapp/src/main/webapp/lib</name>
 			<type>2</type>
 			<location>D:/Dev/Jspresso/hrsample-webapp/webapp/target/hrsample-webapp/lib</location>
