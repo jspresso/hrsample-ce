@@ -258,6 +258,15 @@
         <entry key="name" value="ASCENDING"/>
       </map>
     </property>
+    <!-- 
+    <property name="writabilityGates">
+      <bean class="org.jspresso.framework.binding.model.BooleanPropertyModelGate">
+        <property name="accessorFactory" ref="accessorFactory"/>
+        <property name="booleanPropertyName" value="persistent"/>
+        <property name="openOnTrue" value="false"/>
+      </bean>
+    </property>
+     -->
   </bean>
 
   <bean id="Employee-teams" class="org.jspresso.framework.model.descriptor.basic.BasicCollectionPropertyDescriptor">
