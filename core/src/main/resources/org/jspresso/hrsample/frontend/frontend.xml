@@ -37,13 +37,21 @@
     <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
     <property name="modules">
       <list>
+        <!--
+        <bean parent="abstractFilterableBeanCollectionModule">
+          <property name="name" value="masterdata.cities.module" />
+          <property name="description" value="masterdata.cities.module.description" />
+          <property name="elementComponentDescriptor" ref="City" />
+          <property name="elementViewDescriptor" ref="City.module.view" />
+        </bean>
+        -->
         <bean parent="abstractFilterableBeanCollectionModule">
           <property name="name" value="employees.module" />
           <property name="description" value="employees.module.description" />
           <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/employees-48x48.png" />
           <property name="elementComponentDescriptor" ref="Employee" />
           <property name="elementViewDescriptor" ref="Employee.module.view" />
-          <property name="pageSize" value="4"/>
+          <property name="pageSize" value="4" />
         </bean>
       </list>
     </property>
