@@ -132,7 +132,7 @@
       </map>
     </property>
   </bean>
-  
+
   <bean id="Employee" class="org.jspresso.framework.model.descriptor.entity.basic.BasicEntityDescriptor">
     <constructor-arg value="org.jspresso.hrsample.model.Employee" />
     <property name="ancestorDescriptors">
@@ -217,10 +217,10 @@
           <property name="maxValue">
             <value type="java.lang.Integer">150</value>
           </property>
-          <property name="readOnly" value="true"/>
+          <property name="readOnly" value="true" />
           <property name="delegateClassName" value="org.jspresso.hrsample.model.extension.EmployeeExtension" />
         </bean>
-        <ref bean="Employee-photo"/>
+        <ref bean="Employee-photo" />
       </list>
     </property>
     <property name="serviceDelegateClassNames">
@@ -255,21 +255,25 @@
     </property>
     <property name="orderingProperties">
       <map>
-        <entry key="name" value="ASCENDING"/>
+        <entry key="name" value="ASCENDING" />
       </map>
     </property>
-    <!-- 
+    <!--
     <property name="writabilityGates">
-      <bean class="org.jspresso.framework.binding.model.BooleanPropertyModelGate">
-        <property name="accessorFactory" ref="accessorFactory"/>
-        <property name="booleanPropertyName" value="persistent"/>
-        <property name="openOnTrue" value="false"/>
-        <property name="grantedRoles">
-          <list>
-            <value>administrator</value>
-          </list>
-        </property>
-      </bean>
+      <list>
+        <bean class="org.jspresso.framework.security.GrantedRolesGate">
+          <property name="grantedRoles">
+            <list>
+              <value>administrator</value>
+            </list>
+          </property>
+        </bean>
+        <bean class="org.jspresso.framework.binding.model.BooleanPropertyModelGate">
+          <property name="accessorFactory" ref="accessorFactory" />
+          <property name="booleanPropertyName" value="persistent" />
+          <property name="openOnTrue" value="false" />
+        </bean>
+      </list>
     </property>
     -->
   </bean>
