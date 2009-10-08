@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[2.2.1.v200811281800]]></pluginVersion>
+	<pluginVersion><![CDATA[2.2.6.200908051215-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
@@ -12,22 +12,41 @@
 		<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
 		<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
 		<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
+		<config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
 	</configs>
 	<configSets>
+		<configSet>
+			<name><![CDATA[hrsample-remote]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/commons.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
+				<config>/jspresso-framework/app-template/remote/src/main/resources/org/jspresso/framework/application/frontend/remote/commons-remote.xml</config>
+				<config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
+			</configs>
+		</configSet>
 		<configSet>
 			<name><![CDATA[hrsample-swing]]></name>
 			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
 			<incomplete>false</incomplete>
 			<configs>
-				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
-				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
 				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/commons.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
 				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
 				<config>/jspresso-framework/app-template/swing/src/main/resources/org/jspresso/framework/application/frontend/swing/commons-swing.xml</config>
+				<config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
 			</configs>
 		</configSet>
 		<configSet>
@@ -35,15 +54,16 @@
 			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
 			<incomplete>false</incomplete>
 			<configs>
-				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
-				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
 				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/commons.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
 				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
 				<config>/jspresso-framework/app-template/ulc/src/main/resources/org/jspresso/framework/application/frontend/ulc/commons-ulc.xml</config>
+				<config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
 			</configs>
 		</configSet>
 		<configSet>
@@ -51,31 +71,16 @@
 			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
 			<incomplete>false</incomplete>
 			<configs>
-				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
-				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
 				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/commons.xml</config>
+				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
 				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
 				<config>/jspresso-framework/app-template/wings/src/main/resources/org/jspresso/framework/application/frontend/wings/commons-wings.xml</config>
-			</configs>
-		</configSet>
-		<configSet>
-			<name><![CDATA[hrsample-remote]]></name>
-			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
-			<incomplete>false</incomplete>
-			<configs>
-				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</config>
-				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/commons.xml</config>
-				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
-				<config>/jspresso-framework/app-template/remote/src/main/resources/org/jspresso/framework/application/frontend/remote/commons-remote.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
+				<config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
 			</configs>
 		</configSet>
 	</configSets>

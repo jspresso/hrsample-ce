@@ -22,6 +22,8 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/qooxdoo/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/qooxdoo/server/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/qooxdoo/server/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-resources/sjs"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-resources/dsl"/>
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-framework/jspresso-framework">
             <dependency-type>uses</dependency-type>
         </dependent-module>

@@ -13,6 +13,7 @@
       <list>
         <value>org/jspresso/framework/application/commons.xml</value>
         <value>org/jspresso/framework/tools/mock.xml</value>
+        <value>org/jspresso/hrsample/model/dsl-model.xml</value>
         <value>org/jspresso/hrsample/model/model.xml</value>
       </list>
     </constructor-arg>
@@ -26,6 +27,7 @@
       <list>
         <value>org/jspresso/framework/application/commons.xml</value>
         <value>org/jspresso/framework/tools/mock.xml</value>
+        <value>org/jspresso/hrsample/model/dsl-model.xml</value>
         <value>org/jspresso/hrsample/model/model.xml</value>
         <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
         <value>org/jspresso/framework/application/frontend/swing/commons-swing.xml</value>
@@ -44,6 +46,7 @@
         <value>org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
         <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
         <value>org/jspresso/framework/application/frontend/swing/commons-swing.xml</value>
+        <value>org/jspresso/hrsample/model/dsl-model.xml</value>
         <value>org/jspresso/hrsample/model/model.xml</value>
         <value>org/jspresso/hrsample/backend/backend.xml</value>
         <value>org/jspresso/hrsample/view/view.xml</value>
@@ -63,6 +66,7 @@
         <value>org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
         <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
         <value>org/jspresso/framework/application/frontend/ulc/commons-ulc.xml</value>
+        <value>org/jspresso/hrsample/model/dsl-model.xml</value>
         <value>org/jspresso/hrsample/model/model.xml</value>
         <value>org/jspresso/hrsample/backend/backend.xml</value>
         <value>org/jspresso/hrsample/view/view.xml</value>
@@ -82,6 +86,7 @@
         <value>org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
         <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
         <value>org/jspresso/framework/application/frontend/wings/commons-wings.xml</value>
+        <value>org/jspresso/hrsample/model/dsl-model.xml</value>
         <value>org/jspresso/hrsample/model/model.xml</value>
         <value>org/jspresso/hrsample/backend/backend.xml</value>
         <value>org/jspresso/hrsample/view/view.xml</value>
@@ -101,6 +106,7 @@
         <value>org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
         <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
         <value>org/jspresso/framework/application/frontend/remote/commons-remote.xml</value>
+        <value>org/jspresso/hrsample/model/dsl-model.xml</value>
         <value>org/jspresso/hrsample/model/model.xml</value>
         <value>org/jspresso/hrsample/backend/backend.xml</value>
         <value>org/jspresso/hrsample/view/view.xml</value>

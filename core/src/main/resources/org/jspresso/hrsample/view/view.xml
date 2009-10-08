@@ -227,7 +227,7 @@
 
   <bean id="Event.text.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
     <property name="name" value="text" />
-    <property name="modelDescriptor" ref="Event.text" />
+    <property name="modelDescriptor" ref="Event-text" />
     <property name="actionMap" ref="binaryPropertyActionMap" />
   </bean>
 
