@@ -102,22 +102,13 @@
       </list>
     </property>
     <!--
-    <property name="columnViewDescriptors">
-      <list>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="ouId" />
-          <property name="readOnly" value="true" />
-        </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="name" />
-          <property name="readOnly" value="true" />
-        </bean>
-        <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
-          <property name="name" value="contact" />
-          <property name="readOnly" value="true" />
-        </bean>
-      </list>
-    </property>
+      <property name="columnViewDescriptors"> <list> <bean
+      class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor"> <property name="name"
+      value="ouId" /> <property name="readOnly" value="true" /> </bean> <bean
+      class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor"> <property name="name"
+      value="name" /> <property name="readOnly" value="true" /> </bean> <bean
+      class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor"> <property name="name"
+      value="contact" /> <property name="readOnly" value="true" /> </bean> </list> </property>
     -->
   </bean>
 
@@ -148,33 +139,17 @@
                     </property>
                   </bean>
                   <ref bean="removeAnyCollectionFromMasterFrontAction" />
-<!--
-                  <bean
-                    parent="abstractCollectionAction">
-                    <property
-                      name="name"
-                      value="action.name" />
-                    <property
-                      name="description"
-                      value="action.description" />
-                    <property
-                      name="iconImageURL"
-                      value="classpath:org/jspresso/framework/application/images/view-48x48.png" />
-                    <property
-                      name="nextAction">
-                      <bean
-                        parent="editComponentAction">
-                        <property name="viewDescriptor">
-                          <bean parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
-                            <property name="leftTopViewDescriptor" ref="Employee.pane" />
-                            <property name="rightBottomViewDescriptor" ref="Employee-events.table" />
-                            <property name="modelDescriptor" ref="Employee"/>
-                          </bean>
-                        </property>
-                      </bean>
-                    </property>
-                  </bean>
--->
+                  <!--
+                    <bean parent="abstractCollectionAction"> <property name="name" value="action.name" /> <property
+                    name="description" value="action.description" /> <property name="iconImageURL"
+                    value="classpath:org/jspresso/framework/application/images/view-48x48.png" /> <property
+                    name="nextAction"> <bean parent="editComponentAction"> <property name="viewDescriptor"> <bean
+                    parent="decoratedView"
+                    class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor"> <property
+                    name="leftTopViewDescriptor" ref="Employee.pane" /> <property name="rightBottomViewDescriptor"
+                    ref="Employee-events.table" /> <property name="modelDescriptor" ref="Employee"/> </bean> </property>
+                    </bean> </property> </bean>
+                  -->
                 </list>
               </property>
             </bean>
@@ -204,10 +179,8 @@
   </bean>
 
   <bean id="Employee.photo.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicImageViewDescriptor">
-    <property name="modelDescriptor" ref="Employee-photo"/>
-    <property
-      name="actionMap"
-      ref="binaryPropertyActionMap" />
+    <property name="modelDescriptor" ref="Employee-photo" />
+    <property name="actionMap" ref="binaryPropertyActionMap" />
   </bean>
   <bean id="Employee.component.pane" class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
     <property name="columnCount" value="3" />
@@ -215,7 +188,7 @@
 
   <bean id="Employee.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
     <property name="modelDescriptor" ref="Employee" />
-    <property name="orientation" value="HORIZONTAL"/>
+    <property name="orientation" value="HORIZONTAL" />
     <property name="leftTopViewDescriptor" ref="Employee.component.pane" />
     <property name="rightBottomViewDescriptor" ref="Employee.photo.pane" />
   </bean>
@@ -295,6 +268,27 @@
                 <list>
                   <ref bean="saveModuleObjectFrontAction" />
                   <ref bean="reloadModuleObjectFrontAction" />
+                </list>
+              </property>
+            </bean>
+            <bean class="org.jspresso.framework.view.action.ActionList">
+              <property name="name" value="REPORT" />
+              <property name="actions">
+                <list>
+                  <bean parent="staticReportAction">
+                    <property name="reportDescriptor">
+                      <bean parent="abstractReportDescriptor">
+                        <property name="reportDesignUrl" value="classpath:org/jspresso/hrsample/report/Company.jasper" />
+                        <property name="propertyDescriptors">
+                          <list>
+                            <bean class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
+                              <property name="name" value="title" />
+                            </bean>
+                          </list>
+                        </property>
+                      </bean>
+                    </property>
+                  </bean>
                 </list>
               </property>
             </bean>

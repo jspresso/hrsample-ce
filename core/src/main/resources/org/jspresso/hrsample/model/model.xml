@@ -4,8 +4,6 @@
                       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
   default-lazy-init="true">
 
-  <!--
-
   <bean id="Nameable" class="org.jspresso.framework.model.descriptor.basic.BasicInterfaceDescriptor">
     <constructor-arg value="org.jspresso.hrsample.model.Nameable" />
     <property name="propertyDescriptors">
@@ -467,5 +465,5 @@
       </list>
     </property>
   </bean>
--->
+
 </beans>
