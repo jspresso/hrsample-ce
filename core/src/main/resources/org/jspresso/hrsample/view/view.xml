@@ -296,8 +296,13 @@
                   <bean parent="staticReportAction">
                     <property name="reportDescriptor" ref="company.report" />
                   </bean>
-                  <bean class="org.jspresso.framework.application.charting.frontend.action.server.DisplayChartAction">
-                    <property name="iconImageURL" value="classpath:org/jspresso/framework/application/images/execute-48x48.png" />
+                  <bean parent="chartAction">
+                    <property name="chartDescriptor">
+                      <bean class="org.jspresso.hrsample.chart.CompanyChart">
+                        <property name="url" value="classpath:com/fusioncharts/FCF_Column3D.swf" />
+                        <property name="title" value="company.chart"/>
+                      </bean>
+                    </property>
                   </bean>
                 </list>
               </property>
