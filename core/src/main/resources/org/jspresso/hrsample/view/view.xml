@@ -303,6 +303,7 @@
                         <property name="title" value="company.chart"/>
                       </bean>
                     </property>
+                    <property name="description" value="company.chart"/>
                   </bean>
                 </list>
               </property>
