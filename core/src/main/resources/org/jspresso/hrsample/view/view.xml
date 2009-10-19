@@ -53,7 +53,17 @@
     </property>
   </bean>
 
-  <bean id="Company-departments.subtree" class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
+  <bean id="Department-employees.subtree" class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
+    <property name="nodeGroupDescriptor">
+      <bean class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
+        <property name="modelDescriptor" ref="Department-employees" />
+        <property name="actionMap" ref="masterDetailActionMap" />
+        <property name="renderedProperty" value="name" />
+      </bean>
+    </property>
+  </bean>
+
+  <bean id="Company-departments.subtree" class="org.jspresso.framework.view.descriptor.basic.BasicCompositeTreeLevelDescriptor">
     <property name="nodeGroupDescriptor">
       <bean class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
         <property name="modelDescriptor" ref="Company-departments" />
@@ -61,8 +71,11 @@
         <property name="renderedProperty" value="ouId" />
       </bean>
     </property>
-    <property name="childDescriptor">
-      <ref local="Department-teams.subtree" />
+    <property name="childrenDescriptors">
+      <list>
+        <ref local="Department-teams.subtree" />
+        <ref local="Department-employees.subtree" />
+      </list>
     </property>
   </bean>
 
@@ -281,7 +294,10 @@
                   <ref bean="saveModuleObjectFrontAction" />
                   <ref bean="reloadModuleObjectFrontAction" />
                   <bean parent="staticReportAction">
-                    <property name="reportDescriptor" ref="company.report"/>
+                    <property name="reportDescriptor" ref="company.report" />
+                  </bean>
+                  <bean class="org.jspresso.framework.application.charting.frontend.action.server.DisplayChartAction">
+                    <property name="iconImageURL" value="classpath:org/jspresso/framework/application/images/execute-48x48.png" />
                   </bean>
                 </list>
               </property>

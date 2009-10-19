@@ -100,11 +100,13 @@ domainBuilder.Project('hrsample') {
       
       Entity('Department',
           extend:'OrganizationalUnit',
+          extension :'DepartmentExtension',
           icon:'department-48x48.png',
           rendered:['ouId','name','manager','contact','createTimestamp','lastUpdateTimestamp']) {
         properties {
           reference 'company', ref:'Company', reverse:'Company-departments', mandatory:true
           set 'teams', composition:true, ref:'Team'
+          set 'employees', ref:'Employee', useExtension:true
         }
       }
       
