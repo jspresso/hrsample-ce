@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
+ * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
  */
 package org.jspresso.hrsample.model.processor;
 
@@ -12,7 +12,7 @@ import org.jspresso.hrsample.model.OrganizationalUnit;
 /**
  * OrganizationalUnit property processors.
  * <p>
- * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
+ * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
  * <p>
  * 
  * @version $LastChangedRevision$
@@ -23,7 +23,7 @@ public class OrganizationalUnitPropertyProcessors {
   /**
    * Manager property processor.
    * <p>
-   * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
+   * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
    * <p>
    * 
    * @version $LastChangedRevision$

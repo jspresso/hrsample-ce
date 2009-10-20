@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
+ * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
  */
 package org.jspresso.hrsample.model.extension;
 
@@ -13,7 +13,7 @@ import org.jspresso.hrsample.model.Team;
 /**
  * Helper class computing extended properties for OrganizationalUnit entity.
  * <p>
- * Copyright (c) 2005-2008 Vincent Vandenschrick. All rights reserved.
+ * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
  * <p>
  * 
  * @version $LastChangedRevision$
