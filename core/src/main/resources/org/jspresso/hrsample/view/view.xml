@@ -53,6 +53,16 @@
     </property>
   </bean>
 
+  <bean id="Company-employees.subtree" class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
+    <property name="nodeGroupDescriptor">
+      <bean class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
+        <property name="modelDescriptor" ref="Company-employees" />
+        <property name="actionMap" ref="masterDetailActionMap" />
+        <property name="renderedProperty" value="name" />
+      </bean>
+    </property>
+  </bean>
+
   <bean id="Department-employees.subtree" class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
     <property name="nodeGroupDescriptor">
       <bean class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
@@ -74,7 +84,7 @@
     <property name="childrenDescriptors">
       <list>
         <ref local="Department-teams.subtree" />
-        <ref local="Department-employees.subtree" />
+        <!--<ref local="Department-employees.subtree" />-->
       </list>
     </property>
   </bean>
@@ -82,7 +92,12 @@
   <bean id="Company.tree" class="org.jspresso.framework.view.descriptor.basic.BasicTreeViewDescriptor">
     <property name="modelDescriptor" ref="Company" />
     <property name="renderedProperty" value="name" />
-    <property name="childDescriptor" ref="Company-departments.subtree" />
+    <property name="childrenDescriptors">
+    <list>
+      <ref bean="Company-employees.subtree"/>
+      <ref bean="Company-departments.subtree"/>
+    </list>
+    </property>
     <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/structure-48x48.png" />
   </bean>
 
