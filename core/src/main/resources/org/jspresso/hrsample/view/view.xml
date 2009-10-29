@@ -161,7 +161,7 @@
                     <property name="okAction">
                       <bean parent="lovOkFrontAction">
                         <property name="nextAction">
-                          <bean class="org.jspresso.framework.application.backend.action.AddAnyCollectionToMasterAction" />
+                          <ref bean="addAnyToMasterFrontAction" />
                         </property>
                       </bean>
                     </property>
