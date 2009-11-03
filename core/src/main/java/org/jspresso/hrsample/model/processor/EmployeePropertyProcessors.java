@@ -12,9 +12,6 @@ import org.jspresso.hrsample.model.Employee;
 
 /**
  * Employee property processors.
- * <p>
- * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
- * <p>
  * 
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
@@ -23,9 +20,6 @@ public class EmployeePropertyProcessors {
 
   /**
    * Birth date property processor.
-   * <p>
-   * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
-   * <p>
    * 
    * @version $LastChangedRevision$
    * @author Vincent Vandenschrick
@@ -49,9 +43,6 @@ public class EmployeePropertyProcessors {
 
   /**
    * First name property processor.
-   * <p>
-   * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
-   * <p>
    * 
    * @version $LastChangedRevision$
    * @author Vincent Vandenschrick

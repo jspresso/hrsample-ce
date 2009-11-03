@@ -8,9 +8,6 @@ import org.jspresso.hrsample.startup.ulc.UlcApplicationStartup;
 
 /**
  * ULC development HR sample startup class.
- * <p>
- * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
- * <p>
  * 
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick

@@ -29,9 +29,6 @@ import org.jspresso.hrsample.model.Employee;
 
 /**
  * The company sample chart.
- * <p>
- * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
- * <p>
  * 
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick

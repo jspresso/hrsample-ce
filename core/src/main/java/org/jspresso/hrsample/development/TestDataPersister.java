@@ -18,9 +18,6 @@ import org.jspresso.hrsample.model.Team;
 
 /**
  * Persists some test data for the HR sample application.
- * <p>
- * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
- * <p>
  * 
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick

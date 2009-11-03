@@ -11,9 +11,6 @@ import org.jspresso.hrsample.model.OrganizationalUnit;
 
 /**
  * OrganizationalUnit property processors.
- * <p>
- * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
- * <p>
  * 
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
@@ -22,9 +19,6 @@ public class OrganizationalUnitPropertyProcessors {
 
   /**
    * Manager property processor.
-   * <p>
-   * Copyright (c) 2005-2009 Vincent Vandenschrick. All rights reserved.
-   * <p>
    * 
    * @version $LastChangedRevision$
    * @author Vincent Vandenschrick
