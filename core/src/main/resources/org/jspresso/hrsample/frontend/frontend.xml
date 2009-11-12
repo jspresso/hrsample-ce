@@ -74,6 +74,21 @@
           <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/company-48x48.png" />
           <property name="elementComponentDescriptor" ref="Company" />
           <property name="elementViewDescriptor" ref="Company.module.view" />
+          <!--
+          <property name="projectedViewDescriptor">
+            <bean class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+              <property name="orientation" value="HORIZONTAL"/>
+              <property name="leftTopViewDescriptor">
+                <bean parent="filterableBeanCollectionModuleView">
+                </bean>
+              </property>
+              <property name="rightBottomViewDescriptor">
+                <ref bean="Company.tree"/>
+              </property>
+              <property name="cascadingModels" value="true"/>
+            </bean>
+          </property>
+          -->
         </bean>
       </list>
     </property>
