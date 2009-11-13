@@ -6,7 +6,7 @@ def domainBuilder = new Domain()
 domainBuilder.Project('hrsample', mute:true) {
   namespace('org.jspresso.hrsample') {
     Domain {
-      include('src/main/dsl/model.groovy')
+      include(project.properties['srcDir']+'/model.groovy')
     }
   }
 }
@@ -15,8 +15,8 @@ if(!domainBuilder.isOK()) return -1;
 def frontendBuilder = new Front(domainBuilder.getReferenceDomain())
 frontendBuilder.Front(){
   namespace('org.jspresso.hrsample'){
-    include('src/main/dsl/view.groovy')
-    include('src/main/dsl/frontend.groovy')
+    include(project.properties['srcDir']+'/view.groovy')
+    include(project.properties['srcDir']+'/frontend.groovy')
   }
 }
 if(frontendBuilder.getNbrError() != 0) {
