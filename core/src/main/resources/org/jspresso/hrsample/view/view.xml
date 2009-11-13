@@ -7,6 +7,7 @@
   <!--
     The views.
   -->
+<!--
   <bean id="Traceable.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
     <property name="labelsPosition" value="ABOVE" />
     <property name="columnCount" value="2" />
@@ -17,10 +18,11 @@
         <value>lastUpdateTimestamp</value>
       </list>
     </property>
-    <property name="description" value="traceable.editing">
-    </property>
+    <property name="description" value="traceable.editing"/>
   </bean>
+-->
 
+<!--
   <bean id="Company.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
     <property name="labelsPosition" value="ASIDE" />
     <property name="columnCount" value="2" />
@@ -39,10 +41,11 @@
         <entry key="name" value="2" />
       </map>
     </property>
-    <property name="description" value="company.editing">
-    </property>
+    <property name="description" value="company.editing" />
   </bean>
+-->
 
+<!--
   <bean id="Department-teams.subtree" class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
     <property name="nodeGroupDescriptor">
       <bean class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
@@ -52,7 +55,9 @@
       </bean>
     </property>
   </bean>
+-->
 
+<!--
   <bean id="Company-employees.subtree" class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
     <property name="nodeGroupDescriptor">
       <bean class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
@@ -62,7 +67,9 @@
       </bean>
     </property>
   </bean>
+-->
 
+<!--
   <bean id="Department-employees.subtree" class="org.jspresso.framework.view.descriptor.basic.BasicSimpleTreeLevelDescriptor">
     <property name="nodeGroupDescriptor">
       <bean class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
@@ -72,7 +79,9 @@
       </bean>
     </property>
   </bean>
+-->
 
+<!--
   <bean id="Company-departments.subtree" class="org.jspresso.framework.view.descriptor.basic.BasicCompositeTreeLevelDescriptor">
     <property name="nodeGroupDescriptor">
       <bean class="org.jspresso.framework.view.descriptor.basic.BasicListViewDescriptor">
@@ -84,23 +93,27 @@
     <property name="childrenDescriptors">
       <list>
         <ref local="Department-teams.subtree" />
-        <!--<ref local="Department-employees.subtree" />-->
+        <ref local="Department-employees.subtree" />
       </list>
     </property>
   </bean>
+-->
 
+<!--
   <bean id="Company.tree" class="org.jspresso.framework.view.descriptor.basic.BasicTreeViewDescriptor">
     <property name="modelDescriptor" ref="Company" />
     <property name="renderedProperty" value="name" />
     <property name="childrenDescriptors">
-    <list>
-      <ref bean="Company-employees.subtree"/>
-      <ref bean="Company-departments.subtree"/>
-    </list>
+      <list>
+        <ref bean="Company-employees.subtree" />
+        <ref bean="Company-departments.subtree" />
+      </list>
     </property>
     <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/structure-48x48.png" />
   </bean>
+-->
 
+<!--
   <bean id="Company.tab.pane" class="org.jspresso.framework.view.descriptor.basic.BasicTabViewDescriptor">
     <property name="modelDescriptor" ref="Company" />
     <property name="tabs">
@@ -111,13 +124,17 @@
       </list>
     </property>
   </bean>
+-->
 
+<!--
   <bean id="Company-departments.table" parent="decoratedView"
     class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
     <property name="modelDescriptor" ref="Company-departments" />
     <property name="actionMap" ref="masterDetailActionMap" />
   </bean>
+-->
 
+<!--
   <bean id="Department-teams.table" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
     <property name="modelDescriptor" ref="Department-teams" />
     <property name="actionMap" ref="masterDetailActionMap" />
@@ -126,9 +143,12 @@
         <value>ouId</value>
         <value>name</value>
         <value>manager</value>
+-->
         <!--<value>manager.contact.city</value>-->
+<!--
       </list>
     </property>
+-->
     <!--
       <property name="columnViewDescriptors"> <list> <bean
       class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor"> <property name="name"
@@ -138,8 +158,11 @@
       class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor"> <property name="name"
       value="contact" /> <property name="readOnly" value="true" /> </bean> </list> </property>
     -->
+<!--
   </bean>
+-->
 
+<!--
   <bean id="Team-teamMembers.table" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
     <property name="modelDescriptor" ref="Team-teamMembers" />
     <property name="actionMap">
@@ -167,6 +190,7 @@
                     </property>
                   </bean>
                   <ref bean="removeAnyCollectionFromMasterFrontAction" />
+-->
                   <!--
                     <bean parent="abstractCollectionAction"> <property name="name" value="action.name" /> <property
                     name="description" value="action.description" /> <property name="iconImageURL"
@@ -178,6 +202,7 @@
                     ref="Employee-events.table" /> <property name="modelDescriptor" ref="Employee"/> </bean> </property>
                     </bean> </property> </bean>
                   -->
+<!--
                 </list>
               </property>
             </bean>
@@ -186,7 +211,9 @@
       </bean>
     </property>
   </bean>
+-->
 
+<!--
   <bean id="Departments.and.teams.view" class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
     <property name="leftTopViewDescriptor" ref="Company-departments.table" />
     <property name="rightBottomViewDescriptor">
@@ -199,12 +226,15 @@
     </property>
     <property name="cascadingModels" value="true" />
   </bean>
+-->
 
+<!--
   <bean id="Company.organization.view" class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
     <property name="modelDescriptor" ref="Company" />
     <property name="leftTopViewDescriptor" ref="Company.tab.pane" />
     <property name="rightBottomViewDescriptor" ref="Departments.and.teams.view" />
   </bean>
+-->
 
   <bean id="Employee.photo.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicImageViewDescriptor">
     <property name="modelDescriptor" ref="Employee-photo" />
@@ -221,20 +251,25 @@
     <property name="rightBottomViewDescriptor" ref="Employee.photo.pane" />
   </bean>
 
+<!--
   <bean id="Employee-events.table" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicTableViewDescriptor">
     <property name="modelDescriptor" ref="Employee-events" />
     <property name="actionMap" ref="masterDetailActionMap" />
   </bean>
+-->
 
-  <bean id="Event.text.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
+<!--
+  <bean id="Event-text.pane" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
     <property name="name" value="text" />
     <property name="modelDescriptor" ref="Event-text" />
     <property name="actionMap" ref="binaryPropertyActionMap" />
   </bean>
+-->
 
   <!--
     Customized module views
   -->
+<!--
   <bean id="City.module.view" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor">
     <property name="columnCount" value="1" />
     <property name="actionMap">
@@ -255,15 +290,18 @@
       </bean>
     </property>
   </bean>
+-->
 
+<!--
   <bean id="Employee.module.view" parent="decoratedView" class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
+    <property name="orientation" value="VERTICAL" />
     <property name="leftTopViewDescriptor" ref="Employee.pane" />
     <property name="rightBottomViewDescriptor">
       <bean class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
         <property name="orientation" value="HORIZONTAL" />
         <property name="cascadingModels" value="true" />
         <property name="leftTopViewDescriptor" ref="Employee-events.table" />
-        <property name="rightBottomViewDescriptor" ref="Event.text.pane" />
+        <property name="rightBottomViewDescriptor" ref="Event-text.pane" />
       </bean>
     </property>
     <property name="actionMap">
@@ -284,19 +322,9 @@
       </bean>
     </property>
   </bean>
+-->
 
-
-  <bean id="company.report" parent="abstractReportDescriptor">
-    <property name="reportDesignUrl" value="classpath:org/jspresso/hrsample/report/Company.jasper" />
-    <property name="propertyDescriptors">
-      <list>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
-          <property name="name" value="title" />
-        </bean>
-      </list>
-    </property>
-  </bean>
-
+<!--
   <bean id="Company.module.view" parent="Company.organization.view">
     <property name="actionMap">
       <bean class="org.jspresso.framework.view.action.ActionMap">
@@ -309,16 +337,11 @@
                   <ref bean="saveModuleObjectFrontAction" />
                   <ref bean="reloadModuleObjectFrontAction" />
                   <bean parent="staticReportAction">
-                    <property name="reportDescriptor" ref="company.report" />
+                    <property name="reportDescriptor" ref="Company.report" />
                   </bean>
                   <bean parent="chartAction">
-                    <property name="chartDescriptor">
-                      <bean class="org.jspresso.hrsample.chart.CompanyChart">
-                        <property name="url" value="classpath:com/fusioncharts/FCF_Column3D.swf" />
-                        <property name="title" value="company.chart"/>
-                      </bean>
-                    </property>
-                    <property name="description" value="company.chart"/>
+                    <property name="chartDescriptor" ref="Company.chart"/>
+                    <property name="description" value="company.chart" />
                   </bean>
                 </list>
               </property>
@@ -328,10 +351,12 @@
       </bean>
     </property>
   </bean>
+-->
 
   <!--
     The application I18N resources. 
   -->
+<!--
   <bean id="applicationMessageSource" parent="abstractApplicationMessageSource">
     <property name="parentMessageSource" ref="commonsMessageSource" />
     <property name="basenames">
@@ -340,6 +365,7 @@
       </list>
     </property>
   </bean>
+-->
 
   <bean id="testView" parent="Company.organization.view" />
 

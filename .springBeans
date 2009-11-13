@@ -12,7 +12,9 @@
 		<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
 		<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
 		<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
-		<config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
+    <config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
+    <config>core/target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
+    <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 	</configs>
 	<configSets>
 		<configSet>
@@ -26,8 +28,10 @@
 				<config>/jspresso-framework/app-template/remote/src/main/resources/org/jspresso/framework/application/frontend/remote/commons-remote.xml</config>
 				<config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
 			</configs>
@@ -43,8 +47,10 @@
 				<config>/jspresso-framework/app-template/swing/src/main/resources/org/jspresso/framework/application/frontend/swing/commons-swing.xml</config>
 				<config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
 			</configs>
@@ -60,8 +66,10 @@
 				<config>/jspresso-framework/app-template/ulc/src/main/resources/org/jspresso/framework/application/frontend/ulc/commons-ulc.xml</config>
 				<config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
 			</configs>
@@ -76,9 +84,11 @@
 				<config>/jspresso-framework/app-template/core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
 				<config>/jspresso-framework/app-template/wings/src/main/resources/org/jspresso/framework/application/frontend/wings/commons-wings.xml</config>
 				<config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
+        <config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
 			</configs>

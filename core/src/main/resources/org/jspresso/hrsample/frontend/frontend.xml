@@ -7,6 +7,7 @@
   <!--
     The workspaces and modules
   -->
+<!--
   <bean id="Masterdata.workspace" parent="abstractWorkspace" scope="prototype">
     <property name="name" value="masterdata.workspace" />
     <property name="description" value="masterdata.workspace.description" />
@@ -31,20 +32,23 @@
       </list>
     </property>
   </bean>
+-->
+  
+<!--
   <bean id="Employees.workspace" parent="abstractWorkspace" scope="prototype">
     <property name="name" value="employees.workspace" />
     <property name="description" value="employees.workspace.description" />
     <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
     <property name="modules">
       <list>
+-->
         <!--
-        <bean parent="abstractFilterableBeanCollectionModule">
-          <property name="name" value="masterdata.cities.module" />
-          <property name="description" value="masterdata.cities.module.description" />
-          <property name="elementComponentDescriptor" ref="City" />
-          <property name="elementViewDescriptor" ref="City.module.view" />
-        </bean>
+          <bean parent="abstractFilterableBeanCollectionModule"> <property name="name" value="masterdata.cities.module"
+          /> <property name="description" value="masterdata.cities.module.description" /> <property
+          name="elementComponentDescriptor" ref="City" /> <property name="elementViewDescriptor" ref="City.module.view"
+          /> </bean>
         -->
+<!--
         <bean parent="abstractFilterableBeanCollectionModule">
           <property name="name" value="employees.module" />
           <property name="description" value="employees.module.description" />
@@ -62,6 +66,9 @@
       </list>
     </property>
   </bean>
+-->
+  
+<!--
   <bean id="Organization.workspace" parent="abstractWorkspace" scope="prototype">
     <property name="name" value="organization.workspace" />
     <property name="description" value="organization.workspace.description" />
@@ -74,21 +81,15 @@
           <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/company-48x48.png" />
           <property name="elementComponentDescriptor" ref="Company" />
           <property name="elementViewDescriptor" ref="Company.module.view" />
+-->
           <!--
-          <property name="projectedViewDescriptor">
-            <bean class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor">
-              <property name="orientation" value="HORIZONTAL"/>
-              <property name="leftTopViewDescriptor">
-                <bean parent="filterableBeanCollectionModuleView">
-                </bean>
-              </property>
-              <property name="rightBottomViewDescriptor">
-                <ref bean="Company.tree"/>
-              </property>
-              <property name="cascadingModels" value="true"/>
-            </bean>
-          </property>
+            <property name="projectedViewDescriptor"> <bean
+            class="org.jspresso.framework.view.descriptor.basic.BasicSplitViewDescriptor"> <property name="orientation"
+            value="HORIZONTAL"/> <property name="leftTopViewDescriptor"> <bean
+            parent="filterableBeanCollectionModuleView"> </bean> </property> <property name="rightBottomViewDescriptor">
+            <ref bean="Company.tree"/> </property> <property name="cascadingModels" value="true"/> </bean> </property>
           -->
+<!--
         </bean>
       </list>
     </property>
@@ -99,10 +100,12 @@
       </list>
     </property>
   </bean>
+-->
 
   <!--
     The controller.
   -->
+<!--
   <bean id="applicationFrontController" parent="frontController" scope="prototype">
     <property name="name" value="hrsample.name" />
     <property name="iconImageURL" value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
@@ -116,4 +119,5 @@
       </list>
     </property>
   </bean>
+-->
 </beans>
