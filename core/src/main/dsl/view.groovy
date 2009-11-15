@@ -91,30 +91,59 @@ split_Vertical 'Company.organization.view',
   top:'Company.tab.pane',
   bottom:'Departments.and.teams.view'
 
-form 'Employee.pane',
+image 'Employee-photo.pane',
+  parent:'decoratedView',
+//  model:'Employee-photo',
+  actionMap:'binaryPropertyActionMap'
+
+form 'Employee.component.pane',
   columnCount:3
+    
+split_Horizontal 'Employee.pane',
+  left:'Employee.component.pane',
+  right:'Employee-photo.pane'
 
 table 'Employee-events.table',
   actionMap:'masterDetail'
 
-propertyView('Event-text.pane',
+propertyView 'Event-text.pane',
   name:'text',
   parent:'decoratedView',
-  actionMap:'binaryPropertyActionMap')
+  actionMap:'binaryPropertyActionMap'
 
-actionMap('save-reload-module-am'){
+actionMap('save-reload-module-am') {
   actionList('FILE',
     actions:[
-      'saveModuleObjectFrontAction',
-      'reloadModuleObjectFrontAction'
+      'saveModule',
+      'reloadModule'
     ]
   )
 }
 
-actionMap('company-module-am'){
+bean('Company.report',
+  parent:'abstractReportDescriptor',
+  custom:[
+    reportDesignUrl:'classpath:org/jspresso/hrsample/report/Company.jasper'
+  ]) {
+  list('propertyDescriptors') {
+    bean(class:'org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor',
+      name:'title'
+    )             
+  }
+}
+
+bean('Company.chart',
+  class:'org.jspresso.hrsample.chart.CompanyChart',
+  custom:[
+    url:'classpath:com/fusioncharts/FCF_Column3D.swf',
+    title:'company.chart'
+  ]
+)
+
+actionMap('Company-module-am'){
   actionList('FILE'){
-    action(ref:'saveModuleObjectFrontAction')
-    action(ref:'reloadModuleObjectFrontAction')
+    action(ref:'saveModule')
+    action(ref:'reloadModule')
     action(parent:'staticReportAction',
       custom:[
         reportDescriptor_ref:'Company.report'
@@ -147,7 +176,7 @@ split_Vertical('Employee.module.view',
 
 split_Vertical 'Company.module.view',
   parent:'Company.organization.view',
-  actionMap:'company-module-am'
+  actionMap:'Company-module-am'
   
 messageSource(basenames:'org.jspresso.hrsample.i18n.Messages')
   

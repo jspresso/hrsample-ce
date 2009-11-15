@@ -2,28 +2,29 @@ workspace('Masterdata.workspace',
   icon:'masterdata-48x48.png') {
   nodeModule('masterdata.geography.module',
     icon:'geography-48x48.png') {
-    module('masterdata.cities.module',
+    filterModule('masterdata.cities.module',
       component:'City',
-      view:'City.module.view')
+      detailView:'City.module.view')
   }
 }
 
 workspace('Employees.workspace',
   icon:'people-48x48.png',
   grantedRoles:['administrator','staff-manager']) {
-  module('employees.module',
+  filterModule('employees.module',
     icon:'employees-48x48.png',
     component:'Employee',
-    view:'Employee.module.view',
+    detailView:'Employee.module.view',
     pageSize:4)
 }
 
 workspace('Organization.workspace',
   icon:'structure-48x48.png',
   grantedRoles:['administrator','organization-manager']) {
-  module('companies.module',icon:'company-48x48.png',
-  component:'Company',
-  view:'Company.module.view')
+  filterModule('companies.module',
+    icon:'company-48x48.png',
+    component:'Company',
+    detailView:'Company.module.view')
 }
 
 controller('hrsample.name',

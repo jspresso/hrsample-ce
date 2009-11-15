@@ -5,20 +5,4 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
   default-lazy-init="true">
 
-  <bean id="Company.chart" class="org.jspresso.hrsample.chart.CompanyChart">
-    <property name="url" value="classpath:com/fusioncharts/FCF_Column3D.swf" />
-    <property name="title" value="company.chart" />
-  </bean>
-
-  <bean id="Company.report" parent="abstractReportDescriptor">
-    <property name="reportDesignUrl" value="classpath:org/jspresso/hrsample/report/Company.jasper" />
-    <property name="propertyDescriptors">
-      <list>
-        <bean class="org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor">
-          <property name="name" value="title" />
-        </bean>
-      </list>
-    </property>
-  </bean>
-
 </beans>

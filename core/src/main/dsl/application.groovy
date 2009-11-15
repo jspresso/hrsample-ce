@@ -3,11 +3,9 @@ import org.jspresso.contrib.sjs.front.Front;
 
 def domainBuilder = new Domain()
 
-domainBuilder.Project('hrsample', mute:true) {
+domainBuilder.Domain(projectName:'hrsample', mute:true) {
   namespace('org.jspresso.hrsample') {
-    Domain {
-      include(project.properties['srcDir']+'/model.groovy')
-    }
+    include(project.properties['srcDir']+'/model.groovy')
   }
 }
 if(!domainBuilder.isOK()) return -1;
@@ -29,4 +27,4 @@ if(frontendBuilder.getNbrError() != 0) {
 
 domainBuilder.writeDomainFile(project.properties['outputDir'],project.properties['modelOutputFileName'])
 frontendBuilder.writeViewFile(project.properties['outputDir'],project.properties['viewOutputFileName'])
-frontendBuilder.writeFrontEndFile(project.properties['outputDir'],project.properties['frontOutputFileName'])
+frontendBuilder.writeFrontendFile(project.properties['outputDir'],project.properties['frontOutputFileName'])
