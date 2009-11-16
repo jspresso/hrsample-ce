@@ -74,11 +74,11 @@ table('Team-teamMembers.table') {
   }
 }
 
-split_Vertical('Departments.and.teams.view',
+split_vertical('Departments.and.teams.view',
   cascadingModels:true,
   top:'Company-departments.table') {
   bottom {
-    split_Horizontal (
+    split_horizontal (
       left:'Department-teams.table',
       right:'Team-teamMembers.table',
       cascadingModels:true
@@ -86,7 +86,7 @@ split_Vertical('Departments.and.teams.view',
   }
 }
 
-split_Vertical 'Company.organization.view',
+split_vertical 'Company.organization.view',
   model:'Company',
   top:'Company.tab.pane',
   bottom:'Departments.and.teams.view'
@@ -99,7 +99,7 @@ image 'Employee-photo.pane',
 form 'Employee.component.pane',
   columnCount:3
     
-split_Horizontal 'Employee.pane',
+split_horizontal 'Employee.pane',
   left:'Employee.component.pane',
   right:'Employee-photo.pane'
 
@@ -163,18 +163,18 @@ form 'City.module.view',
   actionMap:'save-reload-module-am',
   columnCount:1
 
-split_Vertical('Employee.module.view',
+split_vertical('Employee.module.view',
   actionMap:'save-reload-module-am',
   top:'Employee.pane') {
   bottom {
-    split_Horizontal(
+    split_horizontal(
       left:'Employee-events.table',
       right:'Event-text.pane',
       cascadingModels:true)
   }
 }
 
-split_Vertical 'Company.module.view',
+split_vertical 'Company.module.view',
   parent:'Company.organization.view',
   actionMap:'Company-module-am'
   
