@@ -50,7 +50,7 @@ table 'Company-departments.table',
   actionMap:'masterDetail'
 
 table 'Department-teams.table',
-  column:['ouId','name','manager'],
+  columns:['ouId','name','manager'],
   actionMap:'masterDetail'
 
 action('addFromList',
@@ -93,7 +93,6 @@ split_vertical 'Company.organization.view',
 
 image 'Employee-photo.pane',
   parent:'decoratedView',
-//  model:'Employee-photo',
   actionMap:'binaryPropertyActionMap'
 
 form 'Employee.component.pane',
@@ -150,7 +149,7 @@ actionMap('Company-module-am'){
       ]
     )
     action(parent:'chartAction',
-      //description:'company.chart',
+      description:'company.chart',
       custom:[
         chartDescriptor_ref:'Company.chart'
       ]

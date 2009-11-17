@@ -27,8 +27,8 @@ workspace('Organization.workspace',
     detailView:'Company.module.view')
 }
 
-controller('hrsample.name',
+controller 'hrsample.name',
   icon:'people-48x48.png',
   context:'hrsample',
-  language  :'en',
-  workspaces:['Masterdata.workspace','Employees.workspace','Organization.workspace'])
+  language:'en',
+  workspaces:['Masterdata.workspace','Employees.workspace','Organization.workspace']
