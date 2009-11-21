@@ -14,7 +14,7 @@ form 'Traceable.pane',
 form 'Company.pane',
   labelsPosition:'ASIDE',
   fields:['name','contact.address','contact.city','contact.phone','contact.email'],
-  width:[name:2],
+  widths:[name:2],
   description:'company.editing'
 
 treeNode 'Department-teams.treeNode',

@@ -13,6 +13,7 @@
 		<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
 		<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
     <config>core/target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
+    <config>core/target/generated-resources/dsl/org/jspresso/hrsample/backend/dsl-backend.xml</config>
     <config>core/target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
     <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 	</configs>
@@ -30,6 +31,7 @@
 				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/backend/dsl-backend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
@@ -49,6 +51,7 @@
 				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/backend/dsl-backend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
@@ -68,6 +71,7 @@
 				<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/backend/dsl-backend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
@@ -87,6 +91,7 @@
         <config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/view/view.xml</config>
+        <config>core/target/generated-resources/dsl/org/jspresso/hrsample/backend/dsl-backend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
