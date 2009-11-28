@@ -392,6 +392,59 @@
   </bean>
 -->
 
-  <bean id="testView" parent="Company.organization.view" />
-
+<!--
+  <bean id="Company.pane" class="org.jspresso.framework.view.descriptor.basic.BasicBorderViewDescriptor">
+    <property name="centerViewDescriptor">
+      <bean
+        parent="decoratedView"
+        class="org.jspresso.framework.view.descriptor.basic.BasicComponentViewDescriptor" >
+        <property name="propertyViewDescriptors">
+          <list>
+            <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
+              <property name="name" value="name"/>
+            </bean>
+            <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
+              <property name="name" value="contact.address"/>
+            </bean>
+            <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
+              <property name="name" value="contact.city"/>
+            </bean>
+            <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
+              <property name="name" value="contact.phone"/>
+              <property name="actionMap" ref="masterDetailActionMap"/>
+            </bean>
+            <bean class="org.jspresso.framework.view.descriptor.basic.BasicPropertyViewDescriptor">
+              <property name="name" value="contact.email"/>
+            </bean>
+          </list>
+        </property>
+        <property
+          name="labelsPosition"
+          value="ASIDE" />
+        <property
+          name="description"
+          value="company.editing" />
+        <property
+          name="columnCount"
+          value="2" />
+        <property
+          name="modelDescriptor"
+          ref="Company" />
+      </bean>
+    </property>
+    <property name="southViewDescriptor">
+      <bean class="org.jspresso.framework.view.descriptor.basic.BasicActionViewDescriptor">
+        <property name="action" ref="saveModuleObjectFrontAction"/>
+        <property name="dimension">
+          <bean class="org.jspresso.framework.util.gui.Dimension">
+            <property name="width" value="48"/>
+            <property name="height" value="48"/>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+ -->
+ 
+   <bean id="testView" parent="Company.organization.view" />
 </beans>
