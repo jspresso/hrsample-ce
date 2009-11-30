@@ -36,6 +36,7 @@ if(frontendBuilder.getNbrError() != 0) {
 //println frontendBuilder.getResultFront()
 
 domainBuilder.writeDomainFile(project.properties['outputDir'],project.properties['modelOutputFileName'])
-frontendBuilder.writeBackendFile(project.properties['outputDir'],project.properties['backOutputFileName'])
-frontendBuilder.writeViewFile(project.properties['outputDir'],project.properties['viewOutputFileName'])
-frontendBuilder.writeFrontendFile(project.properties['outputDir'],project.properties['frontOutputFileName'])
+
+frontendBuilder.writeOutputFile('backend',project.properties['outputDir'],project.properties['backOutputFileName'])
+frontendBuilder.writeOutputFile('view',project.properties['outputDir'],project.properties['viewOutputFileName'])
+frontendBuilder.writeOutputFile('frontend',project.properties['outputDir'],project.properties['frontOutputFileName'])
