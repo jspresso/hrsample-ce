@@ -113,8 +113,8 @@ propertyView 'Event-text.pane',
 actionMap('save-reload-module-am') {
   actionList('FILE',
     actions:[
-      'saveModule',
-      'reloadModule'
+      'front.module.save',
+      'front.module.reload'
     ]
   )
 }
@@ -141,8 +141,8 @@ bean('Company.chart',
 
 actionMap('Company-module-am'){
   actionList('FILE'){
-    action(ref:'saveModule')
-    action(ref:'reloadModule')
+    action(ref:'front.module.save')
+    action(ref:'front.module.reload')
     action(parent:'staticReportAction',
       custom:[
         reportDescriptor_ref:'Company.report'
