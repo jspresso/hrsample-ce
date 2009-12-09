@@ -141,7 +141,7 @@ bean('Company.chart',
 
 actionMap('Company-module-am'){
   actionList('FILE'){
-    action(ref:'front.module.save')
+    action(ref:'front.module.save.back')
     action(ref:'front.module.reload')
     action(parent:'staticReportAction',
       custom:[
