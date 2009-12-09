@@ -110,14 +110,14 @@ propertyView 'Event-text.pane',
   parent:'decoratedView',
   actionMap:'binaryPropertyActionMap'
 
-actionMap('save-reload-module-am') {
-  actionList('FILE',
-    actions:[
-      'front.module.save',
-      'front.module.reload'
-    ]
-  )
-}
+//actionMap('save-reload-module-am') {
+//  actionList('FILE',
+//    actions:[
+//      'front.module.save',
+//      'front.module.reload'
+//    ]
+//  )
+//}
 
 bean('Company.report',
   parent:'abstractReportDescriptor',
@@ -159,11 +159,11 @@ actionMap('Company-module-am'){
 
 form 'City.module.view',
   labelsPosition:'ABOVE',
-  actionMap:'save-reload-module-am',
+  actionMap:'beanModuleActionMap',
   columnCount:1
 
 split_vertical('Employee.module.view',
-  actionMap:'save-reload-module-am',
+  actionMap:'beanModuleActionMap',
   top:'Employee.pane') {
   bottom {
     split_horizontal(
