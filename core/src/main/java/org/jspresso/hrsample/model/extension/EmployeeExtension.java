@@ -8,7 +8,6 @@ import java.beans.PropertyChangeListener;
 
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.framework.util.bean.IPropertyChangeCapable;
-
 import org.jspresso.hrsample.model.Employee;
 
 /**
@@ -25,15 +24,15 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
    * Constructs a new <code>EmployeeExtension</code> instance.
    * 
    * @param extendedEmployee
-   *            The extended Employee instance.
+   *          The extended Employee instance.
    */
   public EmployeeExtension(Employee extendedEmployee) {
     super(extendedEmployee);
     extendedEmployee.addPropertyChangeListener("birthDate",
         new PropertyChangeListener() {
 
-          public void propertyChange(@SuppressWarnings("unused")
-          PropertyChangeEvent evt) {
+          public void propertyChange(
+              @SuppressWarnings("unused") PropertyChangeEvent evt) {
             Integer oldAge = age;
             age = null;
             getComponent().firePropertyChange("age", oldAge,
@@ -53,5 +52,20 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
     }
     age = getComponent().computeAge(getComponent().getBirthDate());
     return age;
+  }
+
+  /**
+   * Returns the gender image url.
+   * 
+   * @return the gender image url.
+   */
+  public String getGenderImageUrl() {
+    if ("F".equals(getComponent().getGender())) {
+      return "classpath:org/jspresso/hrsample/images/female-48x48.png";
+    } else if ("M".equals(getComponent().getGender())) {
+      return "classpath:org/jspresso/hrsample/images/male-48x48.png";
+    } else {
+      return null;
+    }
   }
 }

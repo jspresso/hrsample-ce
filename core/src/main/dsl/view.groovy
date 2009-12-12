@@ -95,11 +95,19 @@ image 'Employee-photo.pane',
   parent:'decoratedView',
   actionMap:'binaryPropertyActionMap'
 
+  
 form 'Employee.component.pane',
   columnCount:3
+  
+border('Employee.border.pane',
+  center:'Employee.component.pane') {
+  north {
+    image model:'Employee-genderImageUrl'
+  }
+}
     
 split_horizontal 'Employee.pane',
-  left:'Employee.component.pane',
+  left:'Employee.border.pane',
   right:'Employee-photo.pane'
 
 table 'Employee-events.table',
