@@ -64,7 +64,7 @@ table('Team-teamMembers.table') {
       action(parent:'lovAction',
         custom:[
           autoquery:false,
-          entity:'Employee',
+          entityDescriptor_ref:'Employee',
           initializationMapping:['company':'company'],
           okAction_ref:'addFromList'
         ]
