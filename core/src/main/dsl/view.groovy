@@ -102,7 +102,7 @@ form 'Employee.component.pane',
 border('Employee.border.pane',
   center:'Employee.component.pane') {
   north {
-    image model:'Employee-genderImageUrl'
+    image model:'Employee-genderImageUrl', scrollable:false
   }
 }
     
@@ -117,15 +117,6 @@ propertyView 'Event-text.pane',
   name:'text',
   parent:'decoratedView',
   actionMap:'binaryPropertyActionMap'
-
-//actionMap('save-reload-module-am') {
-//  actionList('FILE',
-//    actions:[
-//      'front.module.save',
-//      'front.module.reload'
-//    ]
-//  )
-//}
 
 bean('Company.report',
   parent:'abstractReportDescriptor',
