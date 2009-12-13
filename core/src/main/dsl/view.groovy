@@ -102,7 +102,8 @@ form 'Employee.component.pane',
 border('Employee.border.pane',
   center:'Employee.component.pane') {
   north {
-    image model:'Employee-genderImageUrl', scrollable:false
+    image model:'Employee-genderImageUrl',
+      scrollable:false
   }
 }
     
