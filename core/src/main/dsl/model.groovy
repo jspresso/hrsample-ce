@@ -29,6 +29,7 @@ Entity('Event',extend:'Traceable'){
 
 Entity ('Employee',
     extend:['Nameable','Traceable'],
+    interceptors:'EmployeeLifecycleInterceptor',
     extension :'EmployeeExtension',
     processor:'EmployeePropertyProcessors',
     services:[EmployeeService:'EmployeeServiceDelegate'],
