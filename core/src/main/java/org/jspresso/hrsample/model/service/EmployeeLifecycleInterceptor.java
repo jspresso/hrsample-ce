@@ -39,9 +39,16 @@ public class EmployeeLifecycleInterceptor extends
   @SuppressWarnings("unused")
   public boolean onUpdate(Employee employee, IEntityFactory entityFactory,
       UserPrincipal principal, IEntityLifecycleHandler entityLifecycleHandler) {
+    // List<Event> events = employee.getEvents();
+    // if (!events.isEmpty()) {
+    // Event delEvent = events.get(0);
+    // employee.removeFromEvents(delEvent);
+    // entityLifecycleHandler.registerForDeletion(delEvent);
+    // }
     Event event = entityFactory.createEntityInstance(Event.class);
     event.setText("Employee " + employee.getName() + " has been updated.");
     employee.addToEvents(event);
+
     return true;
   }
 }
