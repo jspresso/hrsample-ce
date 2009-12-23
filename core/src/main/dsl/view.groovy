@@ -58,7 +58,7 @@ action('addFromList',
   next(parent:'addAnyToMasterFrontAction')
 }
 
-table('Team-teamMembers.table') {
+listView('Team-teamMembers.list', preferredWidth:300, preferredHeight:300) {
   actionMap {
     actionList('EDIT'){
       action(parent:'lovAction',
@@ -78,9 +78,9 @@ split_vertical('Departments.and.teams.view',
   cascadingModels:true,
   top:'Company-departments.table') {
   bottom {
-    split_horizontal (
-      left:'Department-teams.table',
-      right:'Team-teamMembers.table',
+    border (
+      center:'Department-teams.table',
+      east:'Team-teamMembers.list',
       cascadingModels:true
     )
   }
