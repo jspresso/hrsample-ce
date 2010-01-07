@@ -52,9 +52,9 @@ Entity ('Employee',
   set 'teams', ref:'Team'
   reference 'company', ref:'Company', mandatory:true, reverse:'Company-employees'
   reference 'managedOu', ref:'OrganizationalUnit', reverse:'OrganizationalUnit-manager'
-  integer 'age', minValue:0, maxValue:150, readOnly:true, useExtension:true
+  integer 'age', minValue:0, maxValue:150, readOnly:true, computed:true
   binary 'photo', maxLength:1048576, id:'Employee-photo', fileFilter:['images':['.jpg','.bmp']]
-  string_512 'genderImageUrl', id:'Employee-genderImageUrl', readOnly:true, useExtension:true
+  string_512 'genderImageUrl', id:'Employee-genderImageUrl', readOnly:true, computed:true
 }
 
 Entity('Company',
@@ -74,7 +74,7 @@ Entity('OrganizationalUnit',
   string_6 'ouId', regex:"[A-Z]{2}-[\\d]{3}", regexSample:'AB-123', mandatory:true
   refId 'contact', id:'contact'
   reference 'manager', id:'OrganizationalUnit-manager', ref:'Employee', mandatory:true, processors:['ManagerProcessor'], initializationMapping:['company':'company']
-  reference 'company', ref:'Company', useExtension:true
+  reference 'company', ref:'Company', computed:true
 }
 
 Entity('Department',
@@ -84,7 +84,7 @@ Entity('Department',
     rendered:['ouId','name','manager','contact','createTimestamp','lastUpdateTimestamp']) {
   reference 'company', ref:'Company', reverse:'Company-departments', mandatory:true
   set 'teams', composition:true, ref:'Team'
-  set 'employees', ref:'Employee', useExtension:true
+  set 'employees', ref:'Employee', computed:true
 }
 
 Entity('Team',
