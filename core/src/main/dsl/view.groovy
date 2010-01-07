@@ -18,23 +18,23 @@ form 'Company.pane',
   description:'company.editing'
 
 treeNode 'Department-teams.treeNode',
-  render:'ouId',
+  rendered:'ouId',
   actionMap:'masterDetail'
   
 treeNode 'Department-employees.treeNode',
-  render:'name',
+  rendered:'name',
   actionMap:'masterDetail'
       
 treeNode 'Company-employees.treeNode',
-  render:'name',
+  rendered:'name',
   actionMap:'masterDetail'
             
 treeNode 'Company-departments.treeNode',
-  render:'ouId',
+  rendered:'ouId',
   actionMap:'masterDetail'
 
 tree('Company.tree',
-  render:'name',
+  rendered:'name',
   icon:'structure-48x48.png') {
   subTree('Company-employees.treeNode')
   subTree('Company-departments.treeNode') {

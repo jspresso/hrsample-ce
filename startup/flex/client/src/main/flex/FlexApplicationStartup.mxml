@@ -4,7 +4,9 @@
   initialize="init()"
   creationComplete="start()">
   
-	<mx:Script>
+  <mx:Style source="/skins/yflexskin/yflexskin.css"/>
+	
+  <mx:Script>
 		<![CDATA[
 		  import mx.resources.Locale;
 		  import org.jspresso.framework.application.frontend.controller.flex.DefaultFlexController;
