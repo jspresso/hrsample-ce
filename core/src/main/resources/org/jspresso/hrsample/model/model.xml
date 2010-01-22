@@ -6,4 +6,12 @@
 
   <!-- Put here model customizations that are not available through DSL -->
 
+  <bean id="applicationMessageSource" parent="abstractApplicationMessageSource">
+    <property name="parentMessageSource" ref="commonsMessageSource" />
+    <property name="basenames">
+      <list>
+        <value>org.jspresso.hrsample.i18n.Messages</value>
+      </list>
+    </property>
+  </bean>
 </beans>
