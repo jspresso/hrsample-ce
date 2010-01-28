@@ -24,7 +24,7 @@ Component('ContactInfo') {
 }
 
 Entity('Event',extend:'Traceable'){
-  text 'text', maxLength:2048 , id:'Event-text'
+  html 'text', maxLength:2048 , id:'Event-text'
 }
 
 Entity ('Employee',
