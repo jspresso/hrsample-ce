@@ -27,7 +27,8 @@ public class EmployeeLifecycleInterceptor extends
   public boolean onPersist(Employee employee, IEntityFactory entityFactory,
       UserPrincipal principal, IEntityLifecycleHandler entityLifecycleHandler) {
     Event event = entityFactory.createEntityInstance(Event.class);
-    event.setText("Employee " + employee.getName() + " has been updated.");
+    event.setText("<html>Employee <b>" + employee.getName()
+        + "</b> has been created.</html>");
     employee.addToEvents(event);
     return true;
   }
@@ -46,7 +47,8 @@ public class EmployeeLifecycleInterceptor extends
     // entityLifecycleHandler.registerForDeletion(delEvent);
     // }
     Event event = entityFactory.createEntityInstance(Event.class);
-    event.setText("Employee " + employee.getName() + " has been updated.");
+    event.setText("<html>Employee <b>" + employee.getName()
+        + "</b> has been updated.</html>");
     employee.addToEvents(event);
 
     return true;
