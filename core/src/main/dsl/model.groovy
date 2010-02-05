@@ -55,6 +55,7 @@ Entity ('Employee',
   reference 'managedOu', ref:'OrganizationalUnit', reverse:'OrganizationalUnit-manager'
   integer 'age', minValue:0, maxValue:150, readOnly:true, computed:true
   binary 'photo', maxLength:1048576, id:'Employee-photo', fileFilter:['images':['.jpg','.bmp']]
+  password 'password', maxLength:32
   string_512 'genderImageUrl', id:'Employee-genderImageUrl', readOnly:true, computed:true
 }
 

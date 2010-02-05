@@ -8,13 +8,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import org.jspresso.framework.application.startup.development.AbstractTestDataPersister;
-import org.springframework.beans.factory.BeanFactory;
-
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Team;
+import org.springframework.beans.factory.BeanFactory;
 
 /**
  * Persists some test data for the HR sample application.
@@ -51,32 +50,32 @@ public class TestDataPersister extends AbstractTestDataPersister {
         "+33 123 456 000");
 
     // Employees
-    Employee johnDoe = createEmployee("M", "Doe", "John",
+    Employee johnDoe = createEmployee("M", "Doe", "John", "doepass",
         "12 allée du Chien qui Fume", evry, "john.doe@design2see.com",
         "+33 1 152 368 984", "02/05/1972", "03/08/2005", "1523698754", true,
         "0xFF449911", "100000", design2see);
 
-    Employee mikeDen = createEmployee("M", "Den", "Mike",
+    Employee mikeDen = createEmployee("M", "Den", "Mike", "denpass",
         "26 rue de la Pie qui Chante", suresnes, "mike.den@design2see.com",
         "+33 1 968 846 398", "05/07/1970", "01/03/2004", "1859637461", false,
         "0xFFCC1255", "80000", design2see);
 
-    Employee evaGreen = createEmployee("F", "Green", "Eva",
+    Employee evaGreen = createEmployee("F", "Green", "Eva", null,
         "68 rue de l'Eléphant Vert", suresnes, "eva.green@design2see.com",
         "+33 1 958 536 972", "10/08/1977", "06/04/2002", "2856752387", true,
         "0xFFAA4411", "85000", design2see);
 
-    Employee gloriaSan = createEmployee("F", "San", "Gloria",
+    Employee gloriaSan = createEmployee("F", "San", "Gloria", null,
         "13 avenue du Poisson Enragé", evry, "gloria.san@design2see.com",
         "+33 1 956 367 412", "09/01/1969", "03/01/2006", "2597853274", false,
         "0xFF001276", "75000", design2see);
 
-    Employee mariaTrulli = createEmployee("F", "Trulli", "Maria",
+    Employee mariaTrulli = createEmployee("F", "Trulli", "Maria", null,
         "20 avenue du Crocodile Marteau", evry, "maria.trulli@design2see.com",
         "+33 1 868 745 369", "01/02/1976", "03/10/2006", "2325985423", true,
         "0xFF9489AB", "110000", design2see);
 
-    Employee isabelleMartin = createEmployee("F", "Martin", "Isabelle",
+    Employee isabelleMartin = createEmployee("F", "Martin", "Isabelle", null,
         "20 allée de la Gazelle Sauteuse", evry,
         "isabelle.martin@design2see.com", "+33 1 698 256 365", "04/07/1970",
         "12/06/2001", "2652398751", false, "0xFFAA6512", "95000", design2see);
@@ -165,15 +164,16 @@ public class TestDataPersister extends AbstractTestDataPersister {
   }
 
   private Employee createEmployee(String gender, String name, String firstName,
-      String address, City city, String email, String phone, String birthDate,
-      String hireDate, String ssn, boolean married, String preferredColor, String salary,
-      Company company) {
+      String password, String address, City city, String email, String phone,
+      String birthDate, String hireDate, String ssn, boolean married,
+      String preferredColor, String salary, Company company) {
     SimpleDateFormat df = new SimpleDateFormat("DD/MM/yyyy");
 
     Employee employee = createEntityInstance(Employee.class);
     employee.setGender(gender);
     employee.setName(name);
     employee.setFirstName(firstName);
+    employee.setPassword(password);
     employee.getContact().setAddress(address);
     employee.getContact().setCity(city);
     employee.getContact().setEmail(email);
