@@ -1,3 +1,5 @@
+external id:['abstractFrontController','remotePeerRegistry','guidGenerator']
+
 workspace('Masterdata.workspace',
   icon:'masterdata-48x48.png') {
   nodeModule('masterdata.geography.module',
@@ -32,3 +34,15 @@ controller 'hrsample.name',
   context:'hrsample',
   language:'en',
   workspaces:['Masterdata.workspace','Employees.workspace','Organization.workspace']
+
+spec('remote-recording') {
+  bean('frontController',
+    class:'org.jspresso.framework.application.frontend.controller.remote.RecordingRemoteController',
+    parent:'abstractFrontController',
+    custom:[
+      remotePeerRegistry_ref:'remotePeerRegistry',
+      guidGenerator_ref:'guidGenerator',
+      commandsFileName:'/tmp/commands.xml'
+    ]
+  )
+}
