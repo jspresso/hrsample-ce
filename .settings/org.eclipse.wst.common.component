@@ -14,7 +14,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/wings/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/remote/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/remote/src/main/resources"/>
-        <wb-resource deploy-path="/" source-path="/startup/flex/client/target"/>
+        <wb-resource deploy-path="/" source-path="/startup/flex/client/target/flex"/>
         <wb-resource deploy-path="/" source-path="/startup/flex/client/src/main/flex"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-sources/entitygenerator"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-resources/xdoclet"/>
@@ -25,7 +25,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-resources/sjs"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-resources/dsl"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/src/main/groovy"/>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-framework/jspresso-framework">
+        <dependent-module archiveName="jspresso-framework.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-framework/jspresso-framework">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/adobe/blazeds/blazeds-common/3.2.0.3978/blazeds-common-3.2.0.3978.jar">
