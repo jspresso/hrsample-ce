@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<flexProperties enableServiceManager="false" flexServerFeatures="4" flexServerType="8" flexWarLocation="C:/envdev/blazeds_bin_3-0-0-544/blazeds.war" serverContextRoot="/webapp/src/main/webapp" serverRoot="D:/Dev/Jspresso/hrsample-webapp/webapp/src/main/webapp" serverRootURL="http://localhost:8080/hrsample-webapp" toolCompile="true" useServerFlexSDK="false" version="1"/>
+<flexProperties enableServiceManager="false" flexServerFeatures="4" flexServerType="8" flexWarLocation="C:/envdev/blazeds_bin_3-0-0-544/blazeds.war" serverContextRoot="hrsample-webapp" serverRoot="D:/Dev/Jspresso/hrsample-webapp/webapp/src/main/webapp" serverRootURL="http://localhost:8080" toolCompile="true" useServerFlexSDK="false" version="1"/>
