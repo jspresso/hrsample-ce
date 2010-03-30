@@ -2,6 +2,9 @@
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="hrsample-webapp">
         <wb-resource deploy-path="/" source-path="/webapp/src/main/webapp"/>
+        <wb-resource deploy-path="/flex" source-path="/webapp/target/hrsample-webapp/flex"/>
+        <wb-resource deploy-path="/" source-path="/startup/flex/client/src/main/flex"/>
+        <wb-resource deploy-path="/" source-path="/startup/flex/client/target/flex"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/webapp/src/main/java"/>
@@ -14,8 +17,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/wings/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/remote/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/startup/remote/src/main/resources"/>
-        <wb-resource deploy-path="/" source-path="/startup/flex/client/target/flex"/>
-        <wb-resource deploy-path="/" source-path="/startup/flex/client/src/main/flex"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-sources/entitygenerator"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-resources/xdoclet"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-resources/jasperreports"/>
