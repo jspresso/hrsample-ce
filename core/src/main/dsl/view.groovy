@@ -115,8 +115,14 @@ split_horizontal 'Employee.pane',
   left:'Employee.border.pane',
   right:'Employee-photo.pane'
 
-table 'Employee-events.table',
-  actionMap:'masterDetail'
+table('Employee-events.table') {
+  actionMap(parents:['masterDetail']) {
+    actionList('ORGANIZE') {
+      action ref:'moveDownFrontAction'
+      action ref:'moveUpFrontAction'
+    }
+  }
+}
 
 propertyView 'Event-text.pane',
   name:'text',
