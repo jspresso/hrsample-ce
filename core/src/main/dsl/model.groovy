@@ -1,5 +1,5 @@
 Interface ('Nameable') {
-  string_64 'name',mandatory:true
+  string_64 'name', mandatory:true
 }
 
 Interface('Traceable',
@@ -21,7 +21,7 @@ Component('ContactInfo') {
   string_256 'address'
   reference  'city', ref:'City'
   string_32  'phone'
-  string_128 'email', regex:"[\\w\\-\\.]*@[\\w\\-\\.]*", regexSample:'contact@acme.com'
+  string_128 'email', regex:'[\\w\\-\\.]*@[\\w\\-\\.]*', regexSample:'contact@acme.com'
 }
 
 Entity('Event',extend:'Traceable'){
@@ -45,17 +45,17 @@ Entity ('Employee',
   enumeration 'gender', enumName:'GENDER', mandatory:true, valuesAndIcons:[
       'M':'male-48x48.png',
       'F':'female-48x48.png']
-  reference 'contact', ref:'ContactInfo', id:'contact'
   color 'preferredColor'
   bool 'married'
   decimal 'salary', minValue:0, usingBigDecimal:true
+  binary 'photo', maxLength:1048576, id:'Employee-photo', fileFilter:['images':['.jpg','.bmp']]
+  password 'password', maxLength:32
+  reference 'contact', ref:'ContactInfo', id:'contact'
   list 'events', composition:true, ref:'Event'
   set 'teams', ref:'Team'
   reference 'company', ref:'Company', mandatory:true, reverse:'Company-employees'
   reference 'managedOu', ref:'OrganizationalUnit', reverse:'OrganizationalUnit-manager'
   integer 'age', minValue:0, maxValue:150, readOnly:true, computed:true
-  binary 'photo', maxLength:1048576, id:'Employee-photo', fileFilter:['images':['.jpg','.bmp']]
-  password 'password', maxLength:32
   string_512 'genderImageUrl', id:'Employee-genderImageUrl', readOnly:true, computed:true
 }
 
