@@ -1,13 +1,14 @@
 external id:['abstractFrontController',
              'remotePeerRegistry',
              'guidGenerator',
-             'connectorFactory',
+             /*'connectorFactory',
              'modelConnectorFactory',
              'mvcBinder',
              'translationProvider',
              'modelCascadingBinder',
              'iconFactory',
-             'actionFactory'
+             'actionFactory',*/
+             'abstractViewFactory'
              ]
 
 workspace('masterdata.workspace',
@@ -50,21 +51,10 @@ controller 'hrsample.name',
   startup:'startupHrsampleAction',
   workspaces:['organization.workspace','employees.workspace','masterdata.workspace']
 
-bean 'abstractViewFactory', class:'org.jspresso.framework.view.AbstractViewFactory',
+bean 'viewFactoryBase', parent:'abstractViewFactory',
   custom: [
-    connectorFactory_ref:'connectorFactory',
-    modelConnectorFactory_ref:'modelConnectorFactory',
-    mvcBinder_ref:'mvcBinder',
-    translationProvider_ref:'translationProvider',
-    modelCascadingBinder_ref:'modelCascadingBinder',
-    iconFactory_ref:'iconFactory',
-    actionFactory_ref:'actionFactory',
-    lovAction_ref:'lovAction',
-    openFileAsBinaryPropertyAction_ref:'openFileAsBinaryPropertyAction',
-    saveBinaryPropertyAsFileAction_ref:'saveBinaryPropertyAsFileAction',
-    resetPropertyAction_ref:'resetPropertyFrontAction',
-    binaryPropertyInfoAction_ref:'binaryPropertyInfoAction',
-    defaultActionMapRenderingOptions:'LABEL_ICON']
+    defaultActionMapRenderingOptions:'LABEL_ICON'
+  ]
               
 spec('remote-recording') {
   bean('frontController',

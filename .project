@@ -37,6 +37,7 @@
 		<nature>com.adobe.flexbuilder.project.flexnature</nature>
 		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
 		<nature>net.sf.eclipsecs.core.CheckstyleNature</nature>
+    <nature>org.jspresso.sjsnature</nature>
 	</natures>
 	<linkedResources>
 		<link>
