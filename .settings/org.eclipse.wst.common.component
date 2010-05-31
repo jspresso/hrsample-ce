@@ -26,6 +26,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-resources/sjs"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/target/generated-resources/dsl"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/src/main/groovy"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/core/src/main/dsl"/>
         <dependent-module archiveName="jspresso-framework.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-framework/jspresso-framework">
             <dependency-type>uses</dependency-type>
         </dependent-module>
