@@ -17,8 +17,8 @@ public interface EmployeeService {
    * Computes the employee age.
    * 
    * @param birthDate
-   *            the employee birth date.
-   * @return the computed age based on the birth date or null if the birt date
+   *          the employee birth date.
+   * @return the computed age based on the birth date or null if the birth date
    *         is not available.
    */
   Integer computeAge(Date birthDate);
