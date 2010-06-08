@@ -60,13 +60,13 @@ listView('Team-teamMembers.list', preferredWidth:300, preferredHeight:300) {
   actionMap {
     actionList('EDIT'){
       action(parent:'lovAction',
-      custom:[
-      autoquery:false,
-      entityDescriptor_ref:'Employee',
-      initializationMapping:['company':'company'],
-      okAction_ref:'addFromList'
-      ]
-      )
+        custom:[
+        autoquery:false,
+        entityDescriptor_ref:'Employee',
+        initializationMapping:['company':'company'],
+        okAction_ref:'addFromList'
+        ]
+        )
       action(ref:'removeAnyCollectionFromMasterFrontAction')
     }
   }
@@ -77,10 +77,10 @@ split_vertical('Departments.and.teams.view',
   top:'Company-departments.table') {
     bottom {
       border (
-      center:'Department-teams.table',
-      east:'Team-teamMembers.list',
-      cascadingModels:true
-      )
+        center:'Department-teams.table',
+        east:'Team-teamMembers.list',
+        cascadingModels:true
+        )
     }
   }
 
@@ -103,7 +103,7 @@ border('Employee.border.pane',
       border {
         east {
           image model:'Employee-genderImageUrl',
-          scrollable:false
+            scrollable:false
         }
       }
     }
@@ -134,8 +134,8 @@ bean('Company.report',
   ]) {
     list('propertyDescriptors') {
       bean(class:'org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor',
-      name:'title'
-      )
+        name:'title'
+        )
     }
   }
 
@@ -175,9 +175,9 @@ split_vertical('Employee.module.view',
   top:'Employee.pane') {
     bottom {
       split_horizontal(
-      left:'Employee-events.table',
-      right:'Event-text.pane',
-      cascadingModels:true)
+        left:'Employee-events.table',
+        right:'Event-text.pane',
+        cascadingModels:true)
     }
   }
 
