@@ -35,6 +35,8 @@ treeNode 'Company-departments.treeNode',
 
 tree('Company.tree',
   rendered:'name',
+  preferredWidth:200,
+  preferredHeight:200,
   icon:'structure-48x48.png') {
     subTree('Company-employees.treeNode')
     subTree('Company-departments.treeNode') { subTree('Department-teams.treeNode') //subTree('Department-employees.treeNode')
