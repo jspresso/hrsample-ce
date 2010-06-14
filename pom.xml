@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.jspresso.framework</groupId>
     <artifactId>jspresso-root</artifactId>
-    <version>3.5.0</version>
+    <version>3.5-SNAPSHOT</version>
   </parent>
   <groupId>org.jspresso.hrsample</groupId>
   <artifactId>hrsample</artifactId>
@@ -150,6 +150,7 @@
           <descriptors>
             <descriptor>${basedir}/src/main/assembly/dist-bin.xml</descriptor>
             <descriptor>${basedir}/src/main/assembly/dist-src.xml</descriptor>
+            <descriptor>${basedir}/src/main/assembly/project-dist-src.xml</descriptor>
           </descriptors>
         </configuration>
       </plugin>
@@ -158,6 +159,7 @@
         <artifactId>maven-release-plugin</artifactId>
         <configuration>
           <autoVersionSubmodules>true</autoVersionSubmodules>
+          <goals>deploy site-deploy assembly:assembly</goals>
         </configuration>
       </plugin>
       <plugin>
