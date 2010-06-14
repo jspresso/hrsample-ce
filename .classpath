@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="core/target/classes" path="core/src/main/java"/>
+	<classpathentry excluding="application.groovy" kind="src" output="core/target/classes" path="core/src/main/dsl"/>
 	<classpathentry kind="src" output="core/target/classes" path="core/src/main/groovy"/>
 	<classpathentry kind="src" output="core/target/classes" path="core/src/main/resources"/>
 	<classpathentry kind="src" output="core/target/classes" path="core/target/generated-resources/dsl"/>
