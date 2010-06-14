@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jspresso.hrsample</groupId>
     <artifactId>hrsample</artifactId>
-    <version>3.0.1-SNAPSHOT</version>
+    <version>3.5.0</version>
   </parent>
 
   <artifactId>hrsample-startup-qooxdoo-client</artifactId>
@@ -116,16 +116,16 @@
                   </fileset>
                 </copy>
                 <replace dir="${web-debug.dir}" token="../../../../target" value="file:///${project.build.directory}">
-                  <include name="**/*.js"/>
+                  <include name="**/*.js" />
                 </replace>
                 <replace dir="${web-debug.dir}" token="../../" value="file:///${basedir}/src/main/">
-                  <include name="**/*.js"/>
+                  <include name="**/*.js" />
                 </replace>
                 <replace dir="${web-debug.dir}" token="\" value="/">
-                  <include name="**/*.js"/>
+                  <include name="**/*.js" />
                 </replace>
                 <replace dir="${web-debug.dir}" token="//(" value="\/(">
-                  <include name="**/*.js"/>
+                  <include name="**/*.js" />
                 </replace>
                 <delete dir="${js.source.dir}" />
               </tasks>

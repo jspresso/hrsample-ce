@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.jspresso.hrsample</groupId>
     <artifactId>hrsample</artifactId>
-    <version>3.0.1-SNAPSHOT</version>
+    <version>3.5.0</version>
   </parent>
   <artifactId>hrsample-core</artifactId>
   <packaging>jar</packaging>
@@ -260,8 +260,8 @@
                   </fileset>
                 </replaceregexp>
                 <replaceregexp byline="false" flags="mg">
-                  <regexp pattern="table=&quot;(.*)&quot;&gt;(\r?\n)(.*)&lt;key column=&quot;ID&quot;/&gt;"/>
-                  <substitution expression="table=&quot;\1&quot;&gt;\2\3&lt;key column=&quot;ID&quot; foreign-key=&quot;\1_SUPER_FK&quot;/&gt;"/>
+                  <regexp pattern="table=&quot;(.*)&quot;&gt;(\r?\n)(.*)&lt;key column=&quot;ID&quot;/&gt;" />
+                  <substitution expression="table=&quot;\1&quot;&gt;\2\3&lt;key column=&quot;ID&quot; foreign-key=&quot;\1_SUPER_FK&quot;/&gt;" />
                   <fileset dir="${xdoclet.dest}">
                     <include name="**/*.hbm.xml" />
                   </fileset>
