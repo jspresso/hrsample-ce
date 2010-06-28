@@ -1,13 +1,6 @@
 external id:['abstractFrontController',
   'remotePeerRegistry',
   'guidGenerator',
-  /*'connectorFactory',
- 'modelConnectorFactory',
- 'mvcBinder',
- 'translationProvider',
- 'modelCascadingBinder',
- 'iconFactory',
- 'actionFactory',*/
   'abstractViewFactory'
   ]
 
@@ -17,7 +10,8 @@ workspace('masterdata.workspace',
     icon:'geography-48x48.png') {
       filterModule('masterdata.cities.module',
       component:'City',
-      detailView:'City.module.view')
+      detailView:'City.module.view',
+      startup:'filterModuleStartup')
     }
   }
 
@@ -28,6 +22,7 @@ workspace('employees.workspace',
     icon:'employees-48x48.png',
     component:'Employee',
     detailView:'Employee.module.view',
+    startup:'filterModuleStartup',
     pageSize:4)
   }
 
@@ -37,12 +32,18 @@ workspace('organization.workspace',
     filterModule('companies.module',
     icon:'company-48x48.png',
     component:'Company',
-    detailView:'Company.module.view')
+    detailView:'Company.module.view',
+    startup:'filterModuleStartup')
   }
 
 action 'startupHrsampleAction',
   class:'org.jspresso.framework.application.frontend.action.module.ModuleSelectionAction',
   custom:[workspaceName:'organization.workspace', moduleName:'companies.module']
+  
+action 'filterModuleStartup',
+  class:'org.jspresso.framework.application.frontend.action.FrontendAction',
+  wrapped:'initModuleFilterAction',
+  next:'queryModuleFilterAction'
 
 controller 'hrsample.name',
   icon:'people-48x48.png',
