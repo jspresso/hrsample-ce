@@ -4,7 +4,7 @@
   initialize="init()"
   creationComplete="start()">
   
-  <mx:Style source="/skins/yflexskin/yflexskin.css"/>
+  <!--<mx:Style source="/skins/yflexskin/yflexskin.css"/>-->
 	
   <mx:Script>
 		<![CDATA[
