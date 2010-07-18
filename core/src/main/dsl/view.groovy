@@ -91,7 +91,8 @@ border 'Company.organization.view',
 
 image 'Employee-photo.pane',
   parent:'decoratedView',
-  actionMap:'binaryPropertyActionMap'
+  actionMap:'binaryPropertyActionMap',
+  preferredWidth:400
 
 
 form 'Employee.component.pane',
