@@ -22,5 +22,65 @@
       <groupId>org.jspresso.framework</groupId>
       <artifactId>jspresso-app-launch-swing</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-ehcache</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-pool</groupId>
+      <artifactId>commons-pool</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+    </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>appassembler-maven-plugin</artifactId>
+        <version>1.0</version>
+        <executions>
+          <execution>
+            <id>assemble-swing-distribution</id>
+            <phase>package</phase>
+            <goals>
+              <goal>assemble</goal>
+            </goals>
+            <configuration>
+              <programs>
+                <program>
+                  <mainClass>org.jspresso.framework.application.launch.swing.SwingLauncher -applicationClass org.jspresso.hrsample.startup.swing.SwingApplicationStartup -splash classpath:org/jspresso/hrsample/images/logo-small.png</mainClass>
+                  <name>hrsample</name>
+                </program>
+                <program>
+                  <mainClass>org.jspresso.framework.application.launch.swing.SwingLauncher -applicationClass org.jspresso.hrsample.startup.swing.development.SwingDevApplicationStartup -splash classpath:org/jspresso/hrsample/images/logo-small.png</mainClass>
+                  <name>hrsample-with-testdata</name>
+                </program>
+              </programs>
+              <assembleDirectory>${project.build.directory}/dist</assembleDirectory>
+              <extraJvmArguments>-Djava.security.auth.login.config=conf/jaas.config -Dswing.defaultlaf=org.jvnet.substance.SubstanceLookAndFeel -Dsubstancelaf.watermark.tobleed</extraJvmArguments>
+              <repositoryLayout>flat</repositoryLayout>
+              <repositoryName>lib</repositoryName>
+              <showConsoleWindow>true</showConsoleWindow>
+              <includeConfigurationDirectoryInClasspath>false</includeConfigurationDirectoryInClasspath>
+              <platforms>
+                <platform>windows</platform>
+                <platform>unix</platform>
+              </platforms>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
