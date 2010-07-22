@@ -42,76 +42,71 @@
       <groupId>hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.codehaus.mojo.appassembler</groupId>
-      <artifactId>appassembler-booter</artifactId>
-      <version>1.0</version>
-    </dependency>
   </dependencies>
   <build>
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>appassembler-maven-plugin</artifactId>
-        <version>1.0</version>
         <configuration>
+          <programs>
+            <program>
+              <mainClass>org.jspresso.framework.application.launch.swing.SwingLauncher -applicationClass org.jspresso.hrsample.startup.swing.SwingApplicationStartup -splash classpath:org/jspresso/hrsample/images/logo-small.png</mainClass>
+              <name>hrsample</name>
+            </program>
+            <program>
+              <mainClass>org.jspresso.framework.application.launch.swing.SwingLauncher -applicationClass org.jspresso.hrsample.startup.swing.development.SwingDevApplicationStartup -splash classpath:org/jspresso/hrsample/images/logo-small.png</mainClass>
+              <name>hrsample-with-testdata</name>
+            </program>
+          </programs>
           <assembleDirectory>${project.build.directory}/dist</assembleDirectory>
-          <target>${project.build.directory}/dist</target>
           <repositoryLayout>flat</repositoryLayout>
-          <repoPath>lib</repoPath>
-          <defaultJvmSettings>
-            <initialMemorySize>32M</initialMemorySize>
-            <maxMemorySize>128M</maxMemorySize>
-            <systemProperties>
-              <systemProperty>java.security.auth.login.config=conf/jaas.config</systemProperty>
-              <systemProperty>swing.defaultlaf=org.jvnet.substance.SubstanceLookAndFeel</systemProperty>
-              <systemProperty>substancelaf.watermark.tobleed</systemProperty>
-            </systemProperties>
-          </defaultJvmSettings> 
-          <daemons>
-            <daemon>
-              <id>hrsample</id>
-              <mainClass>org.jspresso.framework.application.launch.swing.SwingLauncher</mainClass>
-              <commandLineArguments>
-                <commandLineArgument>-applicationClass</commandLineArgument>
-                <commandLineArgument>org.jspresso.hrsample.startup.swing.SwingApplicationStartup</commandLineArgument>
-                <commandLineArgument>-splash</commandLineArgument>
-                <commandLineArgument>classpath:org/jspresso/hrsample/images/logo-small.png</commandLineArgument>
-              </commandLineArguments>
-              <platforms>
-                <platform>booter-windows</platform>
-                <platform>booter-unix</platform>
-              </platforms>              
-              <generatorConfigurations>
-                <generatorConfiguration>
-                  <generator>booter-windows</generator>
-                  <configuration>
-                    <property>
-                      <name>win-test</name>
-                      <value>TRUE</value>
-                    </property>
-                  </configuration>
-                </generatorConfiguration>
-                <generatorConfiguration>
-                  <generator>booter-unix</generator>
-                  <configuration>
-                    <property>
-                      <name>unx-test</name>
-                      <value>TRUE</value>
-                    </property>
-                  </configuration>
-                </generatorConfiguration>
-              </generatorConfigurations>
-            </daemon>
-          </daemons>          
+          <repositoryName>lib</repositoryName>
+          <showConsoleWindow>true</showConsoleWindow>
+          <includeConfigurationDirectoryInClasspath>false</includeConfigurationDirectoryInClasspath>
         </configuration>
         <executions>
           <execution>
-            <id>assemble-swing-distribution</id>
+            <id>assemble-swing-distribution-windows</id>
             <phase>package</phase>
             <goals>
-              <goal>generate-daemons</goal>
-              <goal>create-repository</goal>
+              <goal>assemble</goal>
+            </goals>
+            <configuration>
+              <extraJvmArguments>-Djava.security.auth.login.config="%BASEDIR%"/conf/jaas.config -Dswing.defaultlaf=org.jvnet.substance.SubstanceLookAndFeel -Dsubstancelaf.watermark.tobleed</extraJvmArguments>
+              <platforms>
+                <platform>windows</platform>
+              </platforms>
+            </configuration>
+          </execution>
+          <execution>
+            <id>assemble-swing-distribution-linux</id>
+            <phase>package</phase>
+            <goals>
+              <goal>assemble</goal>
+            </goals>
+            <configuration>
+              <extraJvmArguments>-Djava.security.auth.login.config="$BASEDIR"/conf/jaas.config -Dswing.defaultlaf=org.jvnet.substance.SubstanceLookAndFeel -Dsubstancelaf.watermark.tobleed</extraJvmArguments>
+              <platforms>
+                <platform>unix</platform>
+              </platforms>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>dist-conf</id>
+            <phase>package</phase>
+            <configuration>
+              <tasks>
+                <copy todir="${project.build.directory}/dist/conf" file="${basedir}/../../conf/jaas.config"/>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
             </goals>
           </execution>
         </executions>
