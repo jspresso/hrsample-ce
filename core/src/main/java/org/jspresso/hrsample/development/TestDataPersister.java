@@ -80,6 +80,11 @@ public class TestDataPersister extends AbstractTestDataPersister {
         "isabelle.martin@design2see.com", "+33 1 698 256 365", "04/07/1970",
         "12/06/2001", "2652398751", false, "0xFFAA6512", "95000", design2see);
 
+    Employee graziellaBerlutti = createEmployee("F", "Berlutti", "Graziella",
+        null, "104 square des Bégonias", suresnes,
+        "graziella.berlutti@design2see.com", "+33 1 698 234 986", "17/03/1971",
+        "12/06/2003", "2256725396", false, "0xFFAA1133", "100000", design2see);
+
     // Departments and teams.
     Department hrDepartment = createDepartment("Human Resources", "HR-000",
         "124 avenue de la Liberté", paris, "hr@design2see.com",
@@ -96,6 +101,11 @@ public class TestDataPersister extends AbstractTestDataPersister {
         "+33 123 456 102", hrDepartment, evaGreen);
     hr002Team.addToTeamMembers(johnDoe);
     hr002Team.addToTeamMembers(evaGreen);
+
+    Team hr003Team = createTeam("HR 003 Team", "HR-003",
+        "124 avenue de la Liberté", paris, "hr003@design2see.com",
+        "+33 123 456 103", hrDepartment, graziellaBerlutti);
+    hr003Team.addToTeamMembers(graziellaBerlutti);
 
     Department itDepartment = createDepartment("Information Technology",
         "IT-000", "125 avenue de la Liberté", paris, "it@design2see.com",
