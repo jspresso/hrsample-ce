@@ -51,7 +51,7 @@ Entity ('Employee',
     set 'teams', ref:'Team'
     reference 'company', ref:'Company', mandatory:true, reverse:'Company-employees'
     reference 'managedOu', ref:'OrganizationalUnit', reverse:'OrganizationalUnit-manager'
-    integer 'age', minValue:0, maxValue:150, readOnly:true, computed:true
+    integer 'age', minValue:0, maxValue:150, readOnly:true, sqlName:'YEAR(BIRTH_DATE)', computed:true
     string_512 'genderImageUrl', id:'Employee-genderImageUrl', readOnly:true, computed:true
   }
 
