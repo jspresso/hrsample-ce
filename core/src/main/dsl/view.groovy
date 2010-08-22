@@ -72,7 +72,7 @@ listView('Team-teamMembers.list', preferredWidth:300, preferredHeight:300) {
   }
 }
 
-split_vertical('Departments.and.teams.view',
+split_vertical('Company.departments.and.teams.view',
   cascadingModels:true,
   top:'Company-departments.table') {
     bottom {
@@ -87,7 +87,7 @@ split_vertical('Departments.and.teams.view',
 border 'Company.organization.view',
   model:'Company',
   north:'Company.tab.pane',
-  center:'Departments.and.teams.view'
+  center:'Company.departments.and.teams.view'
 
 image 'Employee-photo.pane',
   parent:'decoratedView',
