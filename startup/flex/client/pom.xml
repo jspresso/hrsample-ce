@@ -47,7 +47,6 @@
         <groupId>org.sonatype.flexmojos</groupId>
         <artifactId>flexmojos-maven-plugin</artifactId>
         <executions>
-          <!-- for m2eclipse compatibility -->
           <execution>
             <id>default-compile-swf</id>
             <phase>prepare-package</phase>
@@ -86,9 +85,7 @@
             <goals>
               <goal>unpack-dependencies</goal>
             </goals>
-            <!-- for m2eclipse compatibility -->
             <phase>prepare-package</phase>
-            <!--<phase>generate-resources</phase>-->
             <configuration>
               <outputDirectory>${project.build.directory}/generated-resources</outputDirectory>
               <includeArtifactIds>hrsample-startup-flex-config</includeArtifactIds>
