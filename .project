@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>jspresso-framework</project>
+		<project>hrsample-webapp</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -26,8 +27,14 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>org.maven.ide.eclipse.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.maven.ide.eclipse.maven2Nature</nature>
 		<nature>org.eclipse.jdt.groovy.core.groovyNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.springframework.ide.eclipse.core.springnature</nature>
@@ -37,7 +44,7 @@
 		<nature>com.adobe.flexbuilder.project.flexnature</nature>
 		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
 		<nature>net.sf.eclipsecs.core.CheckstyleNature</nature>
-    <nature>org.jspresso.contrib.sjsplugin.nature</nature>
+		<nature>org.jspresso.contrib.sjsplugin.nature</nature>
 	</natures>
 	<linkedResources>
 		<link>

@@ -46,8 +46,16 @@
       <plugin>
         <groupId>org.sonatype.flexmojos</groupId>
         <artifactId>flexmojos-maven-plugin</artifactId>
-        <!--
         <executions>
+          <!-- for m2eclipse compatibility -->
+          <execution>
+            <id>default-compile-swf</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>compile-swf</goal>
+            </goals>
+          </execution>
+          <!--
           <execution>
             <id>generate-asdoc</id>
             <phase>package</phase>
@@ -55,8 +63,8 @@
               <goal>asdoc</goal>
             </goals>
           </execution>
+          -->
         </executions>
-        -->
         <configuration>
           <locales>
             <locale>en_US</locale>
@@ -78,7 +86,9 @@
             <goals>
               <goal>unpack-dependencies</goal>
             </goals>
-            <phase>generate-resources</phase>
+            <!-- for m2eclipse compatibility -->
+            <phase>prepare-package</phase>
+            <!--<phase>generate-resources</phase>-->
             <configuration>
               <outputDirectory>${project.build.directory}/generated-resources</outputDirectory>
               <includeArtifactIds>hrsample-startup-flex-config</includeArtifactIds>

@@ -37,7 +37,7 @@
             <executions>
               <execution>
                 <id>generate-mysql-schema</id>
-                <phase>process-classes</phase>
+                <phase>prepare-package</phase>
                 <goals>
                   <goal>hbm2ddl</goal>
                 </goals>
@@ -60,7 +60,7 @@
               </execution>
               <execution>
                 <id>generate-postgresql-schema</id>
-                <phase>process-classes</phase>
+                <phase>prepare-package</phase>
                 <goals>
                   <goal>hbm2ddl</goal>
                 </goals>

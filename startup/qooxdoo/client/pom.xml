@@ -34,7 +34,7 @@
         <executions>
           <execution>
             <id>unpack-jspresso-qooxdoo</id>
-            <phase>compile</phase>
+            <phase>prepare-package</phase>
             <goals>
               <goal>unpack-dependencies</goal>
             </goals>
@@ -45,7 +45,7 @@
           </execution>
           <execution>
             <id>unpack-qooxdoo-sdk</id>
-            <phase>compile</phase>
+            <phase>prepare-package</phase>
             <goals>
               <goal>unpack-dependencies</goal>
             </goals>
@@ -56,7 +56,7 @@
           </execution>
           <execution>
             <id>unpack-qooxdoo-contribs</id>
-            <phase>compile</phase>
+            <phase>prepare-package</phase>
             <goals>
               <goal>unpack-dependencies</goal>
             </goals>
@@ -79,7 +79,7 @@
             <goals>
               <goal>exec</goal>
             </goals>
-            <phase>compile</phase>
+            <phase>prepare-package</phase>
           </execution>
         </executions>
         <configuration>
@@ -100,7 +100,7 @@
             <goals>
               <goal>run</goal>
             </goals>
-            <phase>compile</phase>
+            <phase>prepare-package</phase>
             <configuration>
               <tasks>
                 <property name="web-debug.dir" value="${project.build.directory}/web-debug" />
@@ -142,7 +142,7 @@
             <goals>
               <goal>single</goal>
             </goals>
-            <phase>compile</phase>
+            <phase>prepare-package</phase>
             <configuration>
               <descriptors>
                 <descriptor>${basedir}/src/main/assembly/web-resources.xml</descriptor>
@@ -154,7 +154,7 @@
             <goals>
               <goal>single</goal>
             </goals>
-            <phase>compile</phase>
+            <phase>prepare-package</phase>
             <configuration>
               <descriptors>
                 <descriptor>${basedir}/src/main/assembly/sources.xml</descriptor>
