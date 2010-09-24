@@ -40,6 +40,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="GROOVY_SUPPORT"/>
 	<classpathentry excluding="application.groovy" kind="src" path="core/src/main/dsl"/>
-	<classpathentry excluding="application.groovy" kind="src" path="core/target/generated-resources/dsl"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
