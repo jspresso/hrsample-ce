@@ -49,7 +49,7 @@
         <executions>
           <execution>
             <id>default-compile-swf</id>
-            <phase>prepare-package</phase>
+            <phase>package</phase>
             <goals>
               <goal>compile-swf</goal>
             </goals>
