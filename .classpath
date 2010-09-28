@@ -7,6 +7,7 @@
 	<classpathentry kind="src" output="core/target/classes" path="core/target/generated-resources/xdoclet"/>
 	<classpathentry excluding="**" kind="src" output="core/target/classes" path="core/src/main/resources"/>
 	<classpathentry excluding="**" kind="src" output="core/target/classes" path="core/target/generated-resources/jasperreports"/>
+	<classpathentry excluding="**" kind="src" output="core/target/classes" path="core/target/generated-resources/dsl"/>
 	<classpathentry kind="src" output="startup/swing/target/classes" path="startup/swing/src/main/java"/>
 	<classpathentry excluding="**" kind="src" output="startup/swing/target/classes" path="startup/swing/src/main/resources"/>
 	<classpathentry kind="src" output="startup/wings/target/classes" path="startup/wings/src/main/java"/>
@@ -25,6 +26,8 @@
 	<classpathentry excluding="**" kind="src" output="startup/qooxdoo/server/target/classes" path="startup/qooxdoo/server/src/main/resources"/>
 	<classpathentry kind="src" output="startup/qooxdoo/server/target/test-classes" path="startup/qooxdoo/server/src/test/java"/>
 	<classpathentry excluding="**" kind="src" output="startup/qooxdoo/server/target/test-classes" path="startup/qooxdoo/server/src/test/resources"/>
+	<classpathentry kind="src" output="startup/ulc/target/classes" path="startup/ulc/src/main/java"/>
+	<classpathentry excluding="**" kind="src" output="startup/ulc/target/classes" path="startup/ulc/src/main/resources"/>
 	<classpathentry kind="src" output="webapp/target/classes" path="webapp/src/main/java"/>
 	<classpathentry excluding="**" kind="src" output="webapp/target/classes" path="webapp/src/main/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
