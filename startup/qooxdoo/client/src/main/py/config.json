@@ -37,8 +37,8 @@
     "TARGET"       : "../../../target",
     "APPLICATION"  : "org.jspresso.hrsample.startup.qooxdoo",
     "QOOXDOO_PATH" : "../../../target/qooxdoo-sdk",
-    "QXTHEME"      : "org.jspresso.hrsample.startup.qooxdoo.theme.Theme",
-    "QXICONTHEME"  : ["Oxygen"],
+    "QXTHEME"      : "darktheme.DarkTheme",
+    //"QXICONTHEME"  : ["Oxygen"],
     "API_EXCLUDE"  : ["qx.legacy.*","qx.test.*"],
     "LOCALES"      : ["en","fr"],
     "ROOT"         : "..",
@@ -66,6 +66,9 @@
       [
         {
           "manifest" : "${TARGET}/jspresso-qooxdoo/Manifest.json"
+        },
+        {
+          "manifest" : "${TARGET}/qooxdoo-dark-theme-zip/Manifest.json"
         }
       ]
     },

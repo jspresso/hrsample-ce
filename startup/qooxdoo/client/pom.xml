@@ -24,6 +24,12 @@
       <type>zip</type>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.qooxdoo</groupId>
+      <artifactId>qooxdoo-dark-theme</artifactId>
+      <type>zip</type>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   
   <build>
