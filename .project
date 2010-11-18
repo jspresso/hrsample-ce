@@ -50,22 +50,22 @@
 		<link>
 			<name>webapp/src/main/webapp/lib</name>
 			<type>2</type>
-			<location>/Applications/eclipse/Eclipse.app/Contents/MacOS/D::/Dev/Jspresso/hrsample-webapp/webapp/target/hrsample-webapp/lib</location>
+			<locationURI>$%7BWORKSPACE_ABSOLUTE_PATH%7D/hrsample-webapp/webapp/target/hrsample-webapp/lib</locationURI>
 		</link>
 		<link>
 			<name>webapp/src/main/webapp/qooxdoo</name>
 			<type>2</type>
-			<location>/Applications/eclipse/Eclipse.app/Contents/MacOS/D::/Dev/Jspresso/hrsample-webapp/webapp/target/hrsample-webapp/qooxdoo</location>
+			<locationURI>$%7BWORKSPACE_ABSOLUTE_PATH%7D/hrsample-webapp/webapp/target/hrsample-webapp/qooxdoo</locationURI>
 		</link>
 		<link>
 			<name>webapp/src/main/webapp/WEB-INF/flex</name>
 			<type>2</type>
-			<location>/Applications/eclipse/Eclipse.app/Contents/MacOS/D::/Dev/Jspresso/hrsample-webapp/startup/flex/config/src/main/resources</location>
+			<locationURI>$%7BWORKSPACE_ABSOLUTE_PATH%7D/hrsample-webapp/startup/flex/config/src/main/resources</locationURI>
 		</link>
 		<link>
 			<name>webapp/src/main/webapp/WEB-INF/web.xml</name>
 			<type>1</type>
-			<location>/Applications/eclipse/Eclipse.app/Contents/MacOS/D::/Dev/Jspresso/hrsample-webapp/webapp/src/main/webapp/WEB-INF/ulc-web.xml</location>
+			<locationURI>$%7BWORKSPACE_ABSOLUTE_PATH%7D/hrsample-webapp/webapp/src/main/webapp/WEB-INF/ulc-web.xml</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
