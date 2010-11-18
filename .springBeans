@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
+		<config>core/src/main/resources/org/jspresso/hrsample/core-config.xml</config>
 		<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
 		<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
 		<config>core/src/main/resources/org/jspresso/hrsample/model/model.xml</config>
@@ -35,7 +35,7 @@
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/core-config.xml</config>
 			</configs>
 		</configSet>
 		<configSet>
@@ -55,7 +55,7 @@
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/core-config.xml</config>
 			</configs>
 		</configSet>
 		<configSet>
@@ -75,7 +75,7 @@
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/core-config.xml</config>
 			</configs>
 		</configSet>
 		<configSet>
@@ -95,7 +95,7 @@
 				<config>core/src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
         <config>core/target/generated-resources/dsl/org/jspresso/hrsample/frontend/dsl-frontend.xml</config>
 				<config>core/src/main/resources/org/jspresso/hrsample/frontend/frontend.xml</config>
-				<config>core/src/main/resources/org/jspresso/hrsample/config.xml</config>
+				<config>core/src/main/resources/org/jspresso/hrsample/core-config.xml</config>
 			</configs>
 		</configSet>
 	</configSets>
