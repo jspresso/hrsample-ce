@@ -49,12 +49,17 @@
 		<link>
 			<name>src/main/webapp/flex</name>
 			<type>2</type>
+			<locationURI>WORKSPACE_ABSOLUTE_PATH/hrsample/webapp/target/hrsample-webapp/flex</locationURI>
+		</link>
+		<link>
+			<name>src/main/webapp/flex-debug</name>
+			<type>2</type>
 			<locationURI>WORKSPACE_ABSOLUTE_PATH/hrsample/startup/flex/client/target/flex</locationURI>
 		</link>
 		<link>
 			<name>src/main/webapp/lib</name>
 			<type>2</type>
-			<locationURI>$%7BWORKSPACE_ABSOLUTE_PATH%7D/hrsample/webapp/target/hrsample-webapp/lib</locationURI>
+			<locationURI>WORKSPACE_ABSOLUTE_PATH/hrsample/webapp/target/hrsample-webapp/lib</locationURI>
 		</link>
 		<link>
 			<name>src/main/webapp/WEB-INF/flex</name>
@@ -64,7 +69,7 @@
 		<link>
 			<name>src/main/webapp/WEB-INF/web.xml</name>
 			<type>1</type>
-			<locationURI>$%7BWORKSPACE_ABSOLUTE_PATH%7D/hrsample/webapp/src/main/webapp/WEB-INF/ulc-web.xml</locationURI>
+			<locationURI>WORKSPACE_ABSOLUTE_PATH/hrsample/webapp/src/main/webapp/WEB-INF/ulc-web.xml</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
