@@ -4,6 +4,7 @@
     <groupId>org.jspresso.hrsample</groupId>
     <artifactId>hrsample</artifactId>
     <version>3.5-SNAPSHOT</version>
+    <relativePath></relativePath>
   </parent>
   <groupId>org.jspresso.hrsample</groupId>
   <artifactId>hrsample-startup-flex-client</artifactId>

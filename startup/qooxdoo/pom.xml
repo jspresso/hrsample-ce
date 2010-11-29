@@ -5,6 +5,7 @@
     <groupId>org.jspresso.hrsample</groupId>
     <artifactId>hrsample</artifactId>
     <version>3.5-SNAPSHOT</version>
+    <relativePath></relativePath>
   </parent>
 
   <artifactId>hrsample-startup-qooxdoo</artifactId>
