@@ -1,8 +1,7 @@
-#Mon Sep 27 23:23:05 CEST 2010
+#Thu Nov 25 11:59:59 CET 2010
 activeProfiles=ulc
 eclipse.preferences.version=1
 fullBuildGoals=process-test-resources
-includeModules=true
 resolveWorkspaceProjects=true
 resourceFilterGoals=process-resources resources\:testResources
 skipCompilerPlugin=true
