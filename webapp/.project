@@ -64,7 +64,7 @@
 		<link>
 			<name>src/main/webapp/WEB-INF/web.xml</name>
 			<type>1</type>
-			<location>/Users/vvandens/Documents/Jspresso/hrsample/webapp/src/main/webapp/WEB-INF/ulc-web.xml</location>
+			<locationURI>$%7BWORKSPACE_ABSOLUTE_PATH%7D/hrsample/webapp/src/main/webapp/WEB-INF/ulc-web.xml</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
