@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.chromium.debug.ui.LaunchType$Chromium">
+<booleanAttribute key="add_network_console" value="false"/>
+<stringAttribute key="bad_container_name" value="/hr/launches"/>
+<stringAttribute key="breakpoint_startup_sync_direction" value="MERGE"/>
+<intAttribute key="debug_port" value="9222"/>
+</launchConfiguration>
