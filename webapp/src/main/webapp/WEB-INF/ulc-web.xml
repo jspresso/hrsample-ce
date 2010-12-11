@@ -7,7 +7,7 @@
   <display-name>Jspresso HR sample</display-name>
   <description>Jspresso HR sample Application</description>
   <session-config>
-    <session-timeout>5</session-timeout>
+    <session-timeout>60</session-timeout>
   </session-config>
   <!-- End common web application configuration section -->
 
