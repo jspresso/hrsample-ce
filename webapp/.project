@@ -51,6 +51,11 @@
 			<locationURI>WORKSPACE_ABSOLUTE_PATH/hrsample/webapp/target/hrsample-webapp/lib</locationURI>
 		</link>
 		<link>
+			<name>src/main/webapp/qooxdoo</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_ABSOLUTE_PATH/hrsample/webapp/target/hrsample-webapp/qooxdoo</locationURI>
+		</link>
+		<link>
 			<name>src/main/webapp/WEB-INF/flex</name>
 			<type>2</type>
 			<locationURI>WORKSPACE_ABSOLUTE_PATH/hrsample/startup/flex/config/src/main/resources</locationURI>
