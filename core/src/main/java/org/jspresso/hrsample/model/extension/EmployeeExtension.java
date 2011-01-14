@@ -65,4 +65,23 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
         .getComponentDescriptor(Employee.class).getPropertyDescriptor("gender");
     return genderDescriptor.getIconImageURL(getComponent().getGender());
   }
+
+  /**
+   * Computes the concatenation of last name and first name.
+   * 
+   * @return the concatenation of last name and first name.
+   */
+  public String getFullName() {
+    StringBuffer buff = new StringBuffer();
+    if (getComponent().getName() != null) {
+      buff.append(getComponent().getName());
+      if (getComponent().getFirstName() != null) {
+        buff.append(" ");
+      }
+    }
+    if (getComponent().getFirstName() != null) {
+      buff.append(getComponent().getFirstName());
+    }
+    return buff.toString();
+  }
 }
