@@ -32,7 +32,8 @@ Entity ('Employee',
   interceptors:'EmployeeLifecycleInterceptor',
   extension :'EmployeeExtension',
   processor:'EmployeePropertyProcessors',
-  services:[EmployeeService:'EmployeeServiceDelegate'],
+  //services:[EmployeeService:'EmployeeServiceDelegate'],
+  serviceBeans:['EmployeeService':'EmployeeServiceDelegateBean'],
   icon:'male-48x48.png',
   uncloned:['managedOu', 'ssn'],
   ordering:['name':'ASCENDING'],
@@ -84,6 +85,11 @@ Entity('Company',
     'contact',
     'createTimestamp',
     'lastUpdateTimestamp'
+  ],
+  queryable:[
+    'name',
+    'contact.city',
+    'contact.city.zip'
   ]) {
     refId 'contact', id:'contact'
     set 'departments', composition:true, ref:'Department'
