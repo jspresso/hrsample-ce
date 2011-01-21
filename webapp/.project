@@ -60,10 +60,5 @@
 			<type>2</type>
 			<locationURI>WORKSPACE_ABSOLUTE_PATH/hrsample/startup/flex/config/src/main/resources</locationURI>
 		</link>
-		<link>
-			<name>src/main/webapp/WEB-INF/web.xml</name>
-			<type>1</type>
-			<locationURI>WORKSPACE_ABSOLUTE_PATH/hrsample/webapp/src/main/webapp/WEB-INF/ulc-web.xml</locationURI>
-		</link>
 	</linkedResources>
 </projectDescription>
