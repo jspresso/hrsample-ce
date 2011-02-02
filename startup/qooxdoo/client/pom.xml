@@ -122,10 +122,10 @@
                     <include name="**/*.html" />
                   </fileset>
                 </copy>
-                <replace dir="${web-debug.dir}" token="../../../../target" value="${project.build.directory}">
+                <replace dir="${web-debug.dir}" token="../../../../target" value="file:///${project.build.directory}">
                   <include name="**/*.js" />
                 </replace>
-                <replace dir="${web-debug.dir}" token="../../" value="${basedir}/src/main/">
+                <replace dir="${web-debug.dir}" token="../../" value="file:///${basedir}/src/main/">
                   <include name="**/*.js" />
                 </replace>
                 <replace dir="${web-debug.dir}" token="\" value="/">
