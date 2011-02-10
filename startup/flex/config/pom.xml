@@ -4,7 +4,7 @@
     <groupId>org.jspresso.hrsample</groupId>
     <artifactId>hrsample</artifactId>
     <version>3.5-SNAPSHOT</version>
-    <relativePath></relativePath>
+    <relativePath>../../../pom.xml</relativePath>
   </parent>
   <artifactId>hrsample-startup-flex-config</artifactId>
   <packaging>pom</packaging>
