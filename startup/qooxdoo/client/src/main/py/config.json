@@ -8,8 +8,13 @@
     }
     ,
     {
-      "path" : "${TARGET}/jspresso-qooxdoo/py/library.json",
+      "path" : "${TARGET}/jspresso-qooxdoo-client-zip/py/library.json",
       "as"   : "jspresso-qooxdoo"
+    }
+    ,
+    {
+      "path" : "${TARGET}/jspresso-ext-qooxdoo-theme-zip/py/library.json",
+      "as"   : "jspresso-ext-qooxdoo-theme"
     }
   ],
 
@@ -59,15 +64,15 @@
     },
     "libraries" : 
     {
-      "extend" : ["jspresso-qooxdoo::libraries"],
+      "extend" : ["jspresso-qooxdoo::libraries","jspresso-ext-qooxdoo-theme::libraries"],
       
       "library" :
       [
         {
-          "manifest" : "${TARGET}/jspresso-qooxdoo/Manifest.json"
+          "manifest" : "${TARGET}/jspresso-qooxdoo-client-zip/Manifest.json"
         },
         {
-          "manifest" : "${TARGET}/qooxdoo-dark-theme-zip/Manifest.json"
+          "manifest" : "${TARGET}/jspresso-ext-qooxdoo-theme-zip/Manifest.json"
         }
       ]
     },

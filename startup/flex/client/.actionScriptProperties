@@ -40,6 +40,8 @@
         </excludedEntries>
       </libraryPathEntry>
       <libraryPathEntry kind="3" linkType="1" path="/jspresso-flex/target/jspresso-flex.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/jspresso-ext-flex/target/jspresso-ext-flex.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/jspresso-ext-flex-theme/target/jspresso-ext-flex-theme.swc" useDefaultLinkType="false"/>
     </libraryPath>
     <sourceAttachmentPath>
       <sourceAttachmentPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/flex/3.4.0.9271/flex-3.4.0.9271.swc" sourcepath="${PROJECT_FRAMEWORKS}/projects/flex/src" useDefaultLinkType="false"/>

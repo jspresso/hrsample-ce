@@ -4,17 +4,15 @@
   initialize="init()"
   creationComplete="start()">
   
-  <!--<mx:Style source="/skins/yflexskin/yflexskin.css"/>-->
-	
   <mx:Script>
 		<![CDATA[
 		  import mx.resources.Locale;
-		  import org.jspresso.framework.application.frontend.controller.flex.DefaultFlexController;
+		  import org.jspresso.framework.application.frontend.controller.flex.EnhancedFlexController;
 		  
-		  private var flexController:DefaultFlexController;
+		  private var flexController:EnhancedFlexController;
 		  
 			private function init():void {
-        flexController = new DefaultFlexController(remoteController,
+        flexController = new EnhancedFlexController(remoteController,
                                                    new Locale(resourceManager.localeChain[0]).language);
 			}
 			

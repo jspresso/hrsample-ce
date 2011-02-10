@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jspresso.framework</groupId>
-    <artifactId>jspresso-root</artifactId>
+    <artifactId>jspresso-ext-root</artifactId>
     <version>3.5-SNAPSHOT</version>
   </parent>
   <groupId>org.jspresso.hrsample</groupId>
@@ -24,6 +24,19 @@
     <repository>
       <id>jspresso-snapshots-repository</id>
       <url>http://repository.jspresso.org/maven2-snapshots</url>
+      <snapshots>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>jspresso-private-repository</id>
+      <url>http://repository.jspresso.org/maven2-private</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>jspresso-private-snapshots-repository</id>
+      <url>http://repository.jspresso.org/maven2-snapshots-private</url>
       <snapshots>
       </snapshots>
     </repository>
