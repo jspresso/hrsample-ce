@@ -43,6 +43,10 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>org.jspresso.hrsample</groupId>
+      <artifactId>hrsample-webservices</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.jspresso.framework</groupId>
       <artifactId>jspresso-qooxdoo-server</artifactId>
     </dependency>
@@ -90,6 +94,10 @@
       <groupId>commons-httpclient</groupId>
       <artifactId>commons-httpclient</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-jaxrs</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -130,8 +138,6 @@
         <configuration>
           <warName>${project.artifactId}</warName>
           <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
-          <webXml>${basedir}/src/main/webapp/WEB-INF/noulc-web.xml</webXml>
-          <warSourceExcludes>**/webstart/**,**/*-web.xml</warSourceExcludes>
         </configuration>
       </plugin>
       <plugin>
@@ -224,16 +230,6 @@
       </dependencies>
       <build>
         <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <configuration>
-              <warName>${project.artifactId}</warName>
-              <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
-              <webXml>${basedir}/src/main/webapp/WEB-INF/ulc-web.xml</webXml>
-              <warSourceExcludes>**/*-web.xml</warSourceExcludes>
-            </configuration>
-          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>

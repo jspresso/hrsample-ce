@@ -59,6 +59,7 @@
   <modules>
     <module>core</module>
     <module>startup</module>
+    <module>webservices</module>
     <module>webapp</module>
   </modules>
   <dependencyManagement>
@@ -112,6 +113,11 @@
         <version>${project.version}</version>
         <classifier>web-resources</classifier>
         <type>zip</type>
+      </dependency>
+      <dependency>
+        <groupId>org.jspresso.hrsample</groupId>
+        <artifactId>hrsample-webservices</artifactId>
+        <version>${project.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

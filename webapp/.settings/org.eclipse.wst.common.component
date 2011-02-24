@@ -88,6 +88,9 @@
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-qooxdoo-server/hrsample-startup-qooxdoo-server">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-webservices/hrsample-webservices">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-qooxdoo-server/jspresso-qooxdoo-server">
             <dependency-type>uses</dependency-type>
         </dependent-module>
