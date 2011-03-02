@@ -137,3 +137,8 @@ Entity('Team',
     reference 'department', ref:'Department', mandatory:true, reverse:'Department-teams'
     set 'teamMembers', ref:'Employee', reverse:'Employee-teams'
   }
+  
+Entity('Preference', sqlName:'PREFERENCES') {
+  string_2048 'preferenceValue';
+  string_128 'preferencePath';
+}

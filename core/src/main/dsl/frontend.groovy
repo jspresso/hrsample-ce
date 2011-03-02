@@ -1,7 +1,9 @@
-external id:['abstractFrontController',
+external id:[
+  'abstractFrontControllerBase',
   'remotePeerRegistry',
   'guidGenerator',
-  'abstractViewFactory'
+  'abstractViewFactory',
+  'dataSource'
   ]
 
 workspace('masterdata.workspace',
@@ -44,6 +46,13 @@ action 'filterModuleStartup',
   class:'org.jspresso.framework.application.frontend.action.FrontendAction',
   wrapped:'initModuleFilterAction',
   next:'queryModuleFilterAction'
+
+bean('abstractFrontController',
+  parent:'abstractFrontControllerBase') {
+    bean('userPreferenceStore',
+      class:'org.jspresso.framework.util.preferences.JdbcPreferenceStore',
+      custom:[keyColumnName:'ID',dataSource_ref:'dataSource', 'defaultRestrictions':[VERSION:'0']])
+  }
 
 controller 'hrsample.name',
   icon:'people-48x48.png',
