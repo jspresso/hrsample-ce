@@ -25,6 +25,7 @@ Component('ContactInfo') {
 
 Entity('Event',extend:'Traceable'){
   html 'text', maxLength:2048 , id:'Event-text'
+  reference 'employee', ref:'Employee', reverse:'Employee-events'
 }
 
 Entity ('Employee',
