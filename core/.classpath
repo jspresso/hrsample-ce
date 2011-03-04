@@ -4,10 +4,10 @@
 	<classpathentry kind="src" output="target/classes" path="target/generated-sources/groovy-stubs/main"/>
 	<classpathentry kind="src" output="target/classes" path="src/main/groovy"/>
 	<classpathentry kind="src" output="target/classes" path="target/generated-sources/entitygenerator"/>
+	<classpathentry including="**/*.java" kind="src" output="target/classes" path="target/generated-resources/xdoclet"/>
 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources"/>
 	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/jasperreports"/>
 	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/dsl"/>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/xdoclet"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
@@ -15,11 +15,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry excluding="application.groovy" kind="src" path="src/main/dsl"/>
 	<classpathentry kind="con" path="GROOVY_SUPPORT">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
+	<classpathentry excluding="application.groovy" kind="src" path="src/main/dsl"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
