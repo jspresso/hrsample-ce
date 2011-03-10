@@ -2,8 +2,7 @@ external id:[
   'abstractFrontController',
   'remotePeerRegistry',
   'guidGenerator',
-  'abstractViewFactory',
-  'dataSource'
+  'abstractViewFactory'
   ]
 
 workspace('masterdata.workspace',
