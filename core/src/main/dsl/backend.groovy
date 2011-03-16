@@ -8,6 +8,6 @@ bean('EmployeeServiceDelegateBean',
   class:'org.jspresso.hrsample.model.service.EmployeeServiceDelegate',
   custom:[translationProvider_ref:'translationProvider'])
 
-bean('userPreferenceStore',
-  class:'org.jspresso.framework.util.preferences.JdbcPreferenceStore',
+bean('userPreferencesStore',
+  class:'org.jspresso.framework.util.preferences.JdbcPreferencesStore',
   custom:[keyColumnName:'ID',dataSource_ref:'dataSource', 'defaultRestrictions':[VERSION:'0']])
