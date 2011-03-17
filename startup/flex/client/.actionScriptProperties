@@ -12,7 +12,6 @@
       <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/rpc/3.4.0.9271/rpc-3.4.0.9271.swc" sourcepath="${PROJECT_FRAMEWORKS}/projects/rpc/src" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/utilities/3.4.0.9271/utilities-3.4.0.9271.swc" sourcepath="${PROJECT_FRAMEWORKS}/projects/utilities/src" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flexunit/flexunit/0.90/flexunit-0.90.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/datetimelibrary/datetimelibrary/1.0.2/datetimelibrary-1.0.2.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/flexlib/flexlib/2.5/flexlib-2.5-flex3.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/resizecontainers/resizecontainers/1.0/resizecontainers-1.0.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/framework/3.4.0.9271/framework-3.4.0.9271-en_US.rb.swc" useDefaultLinkType="false"/>
@@ -50,7 +49,6 @@
       <sourceAttachmentPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/utilities/3.4.0.9271/utilities-3.4.0.9271.swc" sourcepath="${PROJECT_FRAMEWORKS}/projects/utilities/src" useDefaultLinkType="false"/>
     </sourceAttachmentPath>
   </compiler>
-  <theme themeIsDefault="false" themeIsSDK="false" themeLocation="${EXTERNAL_THEME_DIR}/Jspresso_flex_theme"/>
   <applications>
     <application path="FlexApplicationStartup.mxml"/>
   </applications>
