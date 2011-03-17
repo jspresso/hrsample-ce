@@ -61,7 +61,7 @@ listView('Team-teamMembers.list', preferredWidth:300, preferredHeight:300) {
     actionList('EDIT'){
       action(parent:'lovAction',
         custom:[
-        autoquery:false,
+        autoquery:true,
         entityDescriptor_ref:'Employee',
         initializationMapping:['company':'company'],
         okAction_ref:'addFromList'
