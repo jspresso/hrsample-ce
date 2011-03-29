@@ -25,8 +25,8 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import org.jspresso.framework.application.security.ISecurityPlugin;
 import org.jspresso.framework.security.ISecurable;
-import org.jspresso.framework.security.ISecurityPlugin;
 import org.jspresso.framework.util.automation.IPermIdSource;
 
 /**
