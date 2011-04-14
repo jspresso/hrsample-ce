@@ -262,7 +262,7 @@
   </servlet-mapping>
   
   <context-param>
-    <param-name>resteasy.scan</param-name>
+    <param-name>resteasy.scan.resources</param-name>
     <param-value>true</param-value>
   </context-param>
   <context-param>

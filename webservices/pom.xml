@@ -11,20 +11,12 @@
   <name>Jspresso HR Sample - Webservices</name>
   <dependencies>
     <dependency>
+      <groupId>org.jspresso.framework</groupId>
+      <artifactId>jspresso-ext-resteasy</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.jspresso.hrsample</groupId>
       <artifactId>hrsample-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.resteasy</groupId>
-      <artifactId>resteasy-jaxrs</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.resteasy</groupId>
-      <artifactId>resteasy-jaxb-provider</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.resteasy</groupId>
-      <artifactId>resteasy-jettison-provider</artifactId>
     </dependency>
   </dependencies>
   <build>

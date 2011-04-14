@@ -49,7 +49,7 @@ import org.jspresso.hrsample.model.Event;
  * @author Vincent Vandenschrick
  */
 @Path("/employees")
-public class EmployeeService extends AbstractService {
+public class EmployeeRestService extends AbstractService {
 
   /**
    * Retrieves an employee by its name.
@@ -60,9 +60,7 @@ public class EmployeeService extends AbstractService {
    */
   @GET
   @Path("/employee/{name}")
-  @Produces({
-      MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML
-  })
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
   public EmployeeDto getEmployee(@PathParam("name") String name) {
     DetachedCriteria crit = EnhancedDetachedCriteria.forClass(Employee.class);
     crit.add(Restrictions.eq("name", name));
@@ -81,18 +79,33 @@ public class EmployeeService extends AbstractService {
   /**
    * Employee DTO.
    */
-  @SuppressWarnings("unused")
   @XmlRootElement(name = "employee")
   @XmlAccessorType(XmlAccessType.FIELD)
   public static class EmployeeDto {
 
-    private String         name;
-    private String         firstName;
-    private Integer        age;
-    private AddressDto     address;
+    /**
+     * <code>name</code>.
+     */
+    public String         name;
+    /**
+     * <code>firstName</code>.
+     */
+    public String         firstName;
+    /**
+     * <code>age</code>.
+     */
+    public Integer        age;
+    /**
+     * <code>address</code>.
+     */
+    public AddressDto     address;
+
+    /**
+     * <code>events</code>.
+     */
     @XmlElementWrapper
     @XmlElement(name = "event")
-    private List<EventDto> events;
+    public List<EventDto> events;
 
     /**
      * Default required constructor.
@@ -104,7 +117,8 @@ public class EmployeeService extends AbstractService {
     /**
      * Constructs a new <code>EmployeeDto</code> instance.
      * 
-     * @param employee the employee to create the DTO for.
+     * @param employee
+     *          the employee to create the DTO for.
      */
     public EmployeeDto(Employee employee) {
       this.name = employee.getName();
@@ -121,14 +135,22 @@ public class EmployeeService extends AbstractService {
   /**
    * Address DTO.
    */
-  @SuppressWarnings("unused")
   @XmlRootElement(name = "address")
   @XmlAccessorType(XmlAccessType.FIELD)
   public static class AddressDto {
 
-    private String address;
-    private String zip;
-    private String city;
+    /**
+     * <code>address</code>.
+     */
+    public String address;
+    /**
+     * <code>zip</code>.
+     */
+    public String zip;
+    /**
+     * <code>city</code>.
+     */
+    public String city;
 
     /**
      * Default required constructor.
@@ -140,7 +162,8 @@ public class EmployeeService extends AbstractService {
     /**
      * Constructs a new <code>AddressDto</code> instance.
      * 
-     * @param contact  the contact to create the DTO for.
+     * @param contact
+     *          the contact to create the DTO for.
      */
     public AddressDto(ContactInfo contact) {
       this.address = contact.getAddress();
@@ -152,13 +175,15 @@ public class EmployeeService extends AbstractService {
   /**
    * Event DTO.
    */
-  @SuppressWarnings("unused")
   @XmlRootElement(name = "event")
   @XmlAccessorType(XmlAccessType.FIELD)
   public static class EventDto {
 
+    /**
+     * <code>text</code>.
+     */
     @XmlAttribute
-    private String text;
+    public String text;
 
     /**
      * Default required constructor.
@@ -170,7 +195,8 @@ public class EmployeeService extends AbstractService {
     /**
      * Constructs a new <code>EventDto</code> instance.
      * 
-     * @param event  the event to create the DTO for.
+     * @param event
+     *          the event to create the DTO for.
      */
     public EventDto(Event event) {
       this.text = event.getText();
