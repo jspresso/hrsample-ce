@@ -1,5 +1,6 @@
 import org.jspresso.contrib.sjs.domain.Domain;
 import org.jspresso.contrib.sjs.front.Front;
+import org.jspresso.contrib.sjs.common.ManageModule;
 
 def domainBuilder = new Domain()
 
@@ -42,3 +43,6 @@ frontendBuilder.writeOutputFile('view',project.properties['outputDir'],project.p
 frontendBuilder.writeOutputFile('frontend',project.properties['outputDir'],project.properties['frontOutputFileName'])
 
 frontendBuilder.writeOutputFile('remote-recording',project.properties['outputDir'],'remote-recording-'+project.properties['frontOutputFileName'])
+
+ManageModule manageModule = new ManageModule()
+manageModule.exportModule('hrsample',domainBuilder,frontendBuilder,project.properties['outputDir'])
