@@ -46,6 +46,5 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
-		<nature>com.eviware.soapui.soapuiNature</nature>
 	</natures>
 </projectDescription>
