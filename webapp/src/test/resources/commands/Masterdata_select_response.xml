@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0_22" class="java.beans.XMLDecoder"> 
+ <object class="java.util.ArrayList"> 
+  <void method="add"> 
+   <object class="org.jspresso.framework.application.frontend.command.remote.RemoteChildrenCommand"> 
+    <void property="children"> 
+     <object class="java.util.ArrayList"> 
+      <void method="add"> 
+       <object id="RemoteCompositeValueState0" class="org.jspresso.framework.state.remote.RemoteCompositeValueState"> 
+        <void property="children"> 
+         <object class="java.util.ArrayList"/> 
+        </void> 
+        <void property="description"> 
+         <string></string> 
+        </void> 
+        <void property="iconImageUrl"> 
+         <string>http://localhost:8080/hrsample-webapp/download?imageUrl=classpath:org/jspresso/hrsample/images/city-48x48.png&amp;width=24&amp;height=24</string> 
+        </void> 
+        <void property="leadingIndex"> 
+         <int>-1</int> 
+        </void> 
+        <void property="permId"> 
+         <string>subModules[0]</string> 
+        </void> 
+        <void property="readable"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="value"> 
+         <string>Villes</string> 
+        </void> 
+        <void property="writable"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="org.jspresso.framework.application.frontend.command.remote.RemoteChildrenCommand"> 
+    <void property="children"> 
+     <object class="java.util.ArrayList"> 
+      <void method="add"> 
+       <object id="RemoteCompositeValueState1" class="org.jspresso.framework.state.remote.RemoteCompositeValueState"> 
+        <void property="children"> 
+         <object class="java.util.ArrayList"> 
+          <void method="add"> 
+           <object idref="RemoteCompositeValueState0"/> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="description"> 
+         <string></string> 
+        </void> 
+        <void property="iconImageUrl"> 
+         <string>http://localhost:8080/hrsample-webapp/download?imageUrl=classpath:org/jspresso/hrsample/images/geography-48x48.png&amp;width=24&amp;height=24</string> 
+        </void> 
+        <void property="leadingIndex"> 
+         <int>-1</int> 
+        </void> 
+        <void property="permId"> 
+         <string>modules[0]#1</string> 
+        </void> 
+        <void property="readable"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="value"> 
+         <string>Géographie</string> 
+        </void> 
+        <void property="writable"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="org.jspresso.framework.application.frontend.command.remote.RemoteValueCommand"> 
+    <void property="description"> 
+     <string>Gestion du référentiel</string> 
+    </void> 
+    <void property="iconImageUrl"> 
+     <string>http://localhost:8080/hrsample-webapp/download?imageUrl=classpath:org/jspresso/hrsample/images/masterdata-48x48.png&amp;width=24&amp;height=24</string> 
+    </void> 
+    <void property="value"> 
+     <string>Référentiel</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="org.jspresso.framework.application.frontend.command.remote.RemoteValueCommand"> 
+    <void property="description"> 
+     <string></string> 
+    </void> 
+    <void property="iconImageUrl"> 
+     <string>http://localhost:8080/hrsample-webapp/download?imageUrl=classpath:org/jspresso/hrsample/images/geography-48x48.png&amp;width=24&amp;height=24</string> 
+    </void> 
+    <void property="value"> 
+     <string>Géographie</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="org.jspresso.framework.application.frontend.command.remote.RemoteValueCommand"> 
+    <void property="description"> 
+     <string></string> 
+    </void> 
+    <void property="iconImageUrl"> 
+     <string>http://localhost:8080/hrsample-webapp/download?imageUrl=classpath:org/jspresso/hrsample/images/city-48x48.png&amp;width=24&amp;height=24</string> 
+    </void> 
+    <void property="value"> 
+     <string>Villes</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="org.jspresso.framework.application.frontend.command.remote.RemoteWorkspaceDisplayCommand"> 
+    <void property="workspaceName"> 
+     <string>masterdata.workspace</string> 
+    </void> 
+    <void property="workspaceView"> 
+     <object class="org.jspresso.framework.gui.remote.RSplitContainer"> 
+      <void property="leftTop"> 
+       <object class="org.jspresso.framework.gui.remote.RTree"> 
+        <void property="borderType"> 
+         <string>NONE</string> 
+        </void> 
+        <void property="expanded"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="icon"> 
+         <object class="org.jspresso.framework.gui.remote.RIcon"> 
+          <void property="dimension"> 
+           <object class="org.jspresso.framework.util.gui.Dimension"> 
+            <void property="height"> 
+             <int>24</int> 
+            </void> 
+            <void property="width"> 
+             <int>24</int> 
+            </void> 
+           </object> 
+          </void> 
+          <void property="imageUrlSpec"> 
+           <string>http://localhost:8080/hrsample-webapp/download?imageUrl=classpath:org/jspresso/hrsample/images/masterdata-48x48.png&amp;width=24&amp;height=24</string> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="label"> 
+         <string>Référentiel</string> 
+        </void> 
+        <void property="permId"> 
+         <string>masterdata.workspace</string> 
+        </void> 
+        <void property="state"> 
+         <object class="org.jspresso.framework.state.remote.RemoteCompositeValueState"> 
+          <void property="children"> 
+           <object class="java.util.ArrayList"> 
+            <void method="add"> 
+             <object idref="RemoteCompositeValueState1"/> 
+            </void> 
+           </object> 
+          </void> 
+          <void property="description"> 
+           <string>Gestion du référentiel</string> 
+          </void> 
+          <void property="iconImageUrl"> 
+           <string>http://localhost:8080/hrsample-webapp/download?imageUrl=classpath:org/jspresso/hrsample/images/masterdata-48x48.png&amp;width=24&amp;height=24</string> 
+          </void> 
+          <void property="leadingIndex"> 
+           <int>-1</int> 
+          </void> 
+          <void property="permId"> 
+           <string>masterdata.workspace#1</string> 
+          </void> 
+          <void property="readable"> 
+           <boolean>true</boolean> 
+          </void> 
+          <void property="value"> 
+           <string>Référentiel</string> 
+          </void> 
+          <void property="writable"> 
+           <boolean>true</boolean> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="tooltip"> 
+         <string>Gestion du référentiel</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void property="orientation"> 
+       <string>HORIZONTAL</string> 
+      </void> 
+      <void property="rightBottom"> 
+       <object class="org.jspresso.framework.gui.remote.RCardContainer"> 
+        <void property="borderType"> 
+         <string>NONE</string> 
+        </void> 
+        <void property="cardNames"> 
+         <array class="java.lang.String" length="2"> 
+          <void index="0"> 
+           <string>DEFAULT_CARD</string> 
+          </void> 
+          <void index="1"> 
+           <string>SECURITY_CARD</string> 
+          </void> 
+         </array> 
+        </void> 
+        <void property="cards"> 
+         <array class="org.jspresso.framework.gui.remote.RComponent" length="2"> 
+          <void index="0"> 
+           <object class="org.jspresso.framework.gui.remote.RBorderContainer"> 
+            <void property="state"> 
+             <object class="org.jspresso.framework.state.remote.RemoteCompositeValueState"> 
+              <void property="leadingIndex"> 
+               <int>-1</int> 
+              </void> 
+             </object> 
+            </void> 
+           </object> 
+          </void> 
+          <void index="1"> 
+           <object class="org.jspresso.framework.gui.remote.RSecurityComponent"> 
+            <void property="state"> 
+             <object class="org.jspresso.framework.state.remote.RemoteValueState"/> 
+            </void> 
+           </object> 
+          </void> 
+         </array> 
+        </void> 
+        <void property="label"> 
+         <string></string> 
+        </void> 
+        <void property="state"> 
+         <object class="org.jspresso.framework.state.remote.RemoteValueState"> 
+          <void property="permId"> 
+           <string>generic#3</string> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+   </object> 
+  </void> 
+ </object> 
+</java> 

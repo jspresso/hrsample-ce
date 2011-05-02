@@ -76,6 +76,9 @@
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-security/jspresso-security">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-remote-testing/jspresso-ext-remote-testing">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-template-remote/jspresso-app-template-remote">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -89,6 +92,9 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-webservices/hrsample-webservices">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-resteasy/jspresso-ext-resteasy">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-qooxdoo-server/jspresso-qooxdoo-server">

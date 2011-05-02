@@ -73,7 +73,7 @@ spec('remote-recording') {
   bean ('remotePeerRegistry', parent:'remotePeerRegistryBase', custom:[automationEnabled:true])
 
   bean('remoteFrontController',
-    class:'org.jspresso.framework.application.frontend.controller.remote.RecordingRemoteController',
+    class:'org.jspresso.framework.application.testing.RecordingRemoteController',
     parent:'abstractFrontController', custom:[
       captureDirectory:'/tmp/commands'
     ])
