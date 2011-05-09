@@ -10,5 +10,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+  <classpathentry kind="lib" path="/Applications/soapUI-3.6.1.app/Contents/Resources/app/bin/soapui-3.6.1.jar" sourcepath="/Applications/soapUI-3.6.1.app/Contents/Resources/app/source/java"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

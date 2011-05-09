@@ -42,6 +42,7 @@ frontendBuilder.writeOutputFile('backend',project.properties['outputDir'],projec
 frontendBuilder.writeOutputFile('view',project.properties['outputDir'],project.properties['viewOutputFileName'])
 frontendBuilder.writeOutputFile('frontend',project.properties['outputDir'],project.properties['frontOutputFileName'])
 
+frontendBuilder.writeOutputFile('remote',project.properties['outputDir'],'remote-'+project.properties['frontOutputFileName'])
 frontendBuilder.writeOutputFile('remote-recording',project.properties['outputDir'],'remote-recording-'+project.properties['frontOutputFileName'])
 
 ManageModule manageModule = new ManageModule()

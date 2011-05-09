@@ -141,6 +141,7 @@
         <value>org/jspresso/hrsample/view/dsl-view.xml</value>
         <value>org/jspresso/hrsample/view/view.xml</value>
         <value>org/jspresso/hrsample/frontend/dsl-frontend.xml</value>
+        <value>org/jspresso/hrsample/spec/remote-dsl-frontend.xml</value>
         <value>org/jspresso/hrsample/frontend/frontend.xml</value>
         <value>org/jspresso/hrsample/config.xml</value>
       </list>

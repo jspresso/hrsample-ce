@@ -119,7 +119,6 @@ table('Employee-events.table') {
     actionList('ORGANIZE') {
       action ref:'moveDownFrontAction'
       action ref:'moveUpFrontAction'
-      action ref:'removeAnyCollectionFromMasterFrontAction'
     }
   }
 }
