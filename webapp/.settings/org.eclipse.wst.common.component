@@ -4,124 +4,85 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-wings/hrsample-startup-wings">
+        <dependent-module archiveName="hrsample-startup-remote-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-remote/hrsample-startup-remote">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-core/hrsample-core">
+        <dependent-module archiveName="hrsample-core-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-core/hrsample-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-template-core/jspresso-app-template-core">
+        <dependent-module archiveName="jspresso-app-template-core-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-template-core/jspresso-app-template-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-hibernate/jspresso-hibernate">
+        <dependent-module archiveName="jspresso-hibernate-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-hibernate/jspresso-hibernate">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-fusioncharts/jspresso-fusioncharts">
+        <dependent-module archiveName="jspresso-fusioncharts-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-fusioncharts/jspresso-fusioncharts">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-jasper-core/jspresso-jasper-core">
+        <dependent-module archiveName="jspresso-jasper-core-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-jasper-core/jspresso-jasper-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-launch-core/jspresso-app-launch-core">
+        <dependent-module archiveName="jspresso-app-launch-core-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-launch-core/jspresso-app-launch-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-application/jspresso-application">
+        <dependent-module archiveName="jspresso-application-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-application/jspresso-application">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-view/jspresso-ext-view">
+        <dependent-module archiveName="jspresso-util-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-util/jspresso-util">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-view/jspresso-view">
+        <dependent-module archiveName="jspresso-ext-view-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-view/jspresso-ext-view">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-action/jspresso-action">
+        <dependent-module archiveName="jspresso-view-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-view/jspresso-view">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-model/jspresso-model">
+        <dependent-module archiveName="jspresso-action-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-action/jspresso-action">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-template-wings/jspresso-app-template-wings">
+        <dependent-module archiveName="jspresso-model-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-model/jspresso-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-jasper-wings/jspresso-jasper-wings">
+        <dependent-module archiveName="jspresso-ext-remote-application-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-remote-application/jspresso-ext-remote-application">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-wings-application/jspresso-wings-application">
+        <dependent-module archiveName="jspresso-remote-components-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-remote-components/jspresso-remote-components">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-wings-components/jspresso-wings-components">
+        <dependent-module archiveName="jspresso-ext-remote-components-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-remote-components/jspresso-ext-remote-components">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-launch-wings/jspresso-app-launch-wings">
+        <dependent-module archiveName="jspresso-remote-application-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-remote-application/jspresso-remote-application">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-remote/hrsample-startup-remote">
+        <dependent-module archiveName="jspresso-binding-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-binding/jspresso-binding">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-remote-application/jspresso-ext-remote-application">
+        <dependent-module archiveName="jspresso-security-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-security/jspresso-security">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-remote-components/jspresso-remote-components">
+        <dependent-module archiveName="jspresso-ext-remote-testing-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-remote-testing/jspresso-ext-remote-testing">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-remote-components/jspresso-ext-remote-components">
+        <dependent-module archiveName="jspresso-app-template-remote-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-template-remote/jspresso-app-template-remote">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-remote-application/jspresso-remote-application">
+        <dependent-module archiveName="jspresso-jasper-remote-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-jasper-remote/jspresso-jasper-remote">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-binding/jspresso-binding">
+        <dependent-module archiveName="jspresso-app-launch-remote-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-launch-remote/jspresso-app-launch-remote">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-security/jspresso-security">
+        <dependent-module archiveName="hrsample-startup-qooxdoo-server-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-qooxdoo-server/hrsample-startup-qooxdoo-server">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-remote-testing/jspresso-ext-remote-testing">
+        <dependent-module archiveName="hrsample-webservices-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-webservices/hrsample-webservices">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-template-remote/jspresso-app-template-remote">
+        <dependent-module archiveName="jspresso-ext-resteasy-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-resteasy/jspresso-ext-resteasy">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-jasper-remote/jspresso-jasper-remote">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-launch-remote/jspresso-app-launch-remote">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-qooxdoo-server/hrsample-startup-qooxdoo-server">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-webservices/hrsample-webservices">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ext-resteasy/jspresso-ext-resteasy">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-qooxdoo-server/jspresso-qooxdoo-server">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-ulc/hrsample-startup-ulc">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-template-ulc/jspresso-app-template-ulc">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-jasper-ulc/jspresso-jasper-ulc">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ulc-application/jspresso-ulc-application">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ulc-components-server/jspresso-ulc-components-server">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-launch-ulc/jspresso-app-launch-ulc">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-ulc-components-shared/jspresso-ulc-components-shared">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-util/jspresso-util">
+        <dependent-module archiveName="jspresso-qooxdoo-server-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-qooxdoo-server/jspresso-qooxdoo-server">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="hrsample-webapp"/>

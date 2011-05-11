@@ -18,8 +18,6 @@
  */
 package org.jspresso.hrsample.webservices;
 
-import java.util.Locale;
-
 import org.jspresso.framework.application.startup.AbstractBackendStartup;
 
 
@@ -42,24 +40,9 @@ public abstract class AbstractService extends AbstractBackendStartup {
   /**
    * {@inheritDoc}
    */
-  public void start() {
-    startController();
-  }
-
-  /**
-   * {@inheritDoc}
-   */
   @Override
   protected String getApplicationContextKey() {
     return "hrsample-backend-context";
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  protected Locale getStartupLocale() {
-    return Locale.ENGLISH;
   }
 
 }

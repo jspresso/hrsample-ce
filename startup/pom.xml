@@ -11,17 +11,8 @@
   <name>Jspresso HR Sample - Startup</name>
   <modules>
     <module>swing</module>
-    <module>wings</module>
     <module>remote</module>
     <module>flex</module>
     <module>qooxdoo</module>
   </modules>
-  <profiles>
-    <profile>
-      <id>ulc</id>
-      <modules>
-        <module>ulc</module>
-      </modules>
-    </profile>
-  </profiles>
 </project>

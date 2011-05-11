@@ -7,14 +7,18 @@ Interface('Traceable',
     'createTimestamp',
     'lastUpdateTimestamp'
   ]) {
-    date_time 'createTimestamp', readOnly:true
-    date_time 'lastUpdateTimestamp', readOnly:true
+    date_time 'createTimestamp', timeZoneAware:true, readOnly:true
+    date_time 'lastUpdateTimestamp', timeZoneAware:true, readOnly:true
   }
 
 Entity('City',
   extend:'Nameable',
   icon:'city-48x48.png'/*,
- pageSize:2*/) { string_10 'zip' }
+ pageSize:2*/) {
+   string_10 'zip'
+   date_time 'dateTime'
+   time 'time'
+ }
 
 Component('ContactInfo') {
   string_256 'address'
