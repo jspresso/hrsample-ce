@@ -97,7 +97,7 @@ qx.Class.define("org.jspresso.hrsample.startup.qooxdoo.Application",
   {
     start : function() {
       var remoteController;
-      if (qx.core.Variant.isSet("qx.debug", "on")) {
+      if (qx.core.Environment.get("qx.debug") == "on") {
         remoteController = new qx.io.remote.Rpc(
             "http://localhost:8080/hrsample-webapp/.qxrpc",
             "org.jspresso.hrsample.startup.qooxdoo.QooxdooApplicationStartup"
