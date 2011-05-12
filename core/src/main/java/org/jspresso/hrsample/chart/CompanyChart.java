@@ -38,6 +38,7 @@ public class CompanyChart extends AbstractChartDescriptor {
   /**
    * {@inheritDoc}
    */
+  @Override
   public String getData(Object model,
       @SuppressWarnings("unused") Connection jdbcConnection,
       ITranslationProvider translationProvider, Locale locale) {

@@ -44,6 +44,7 @@ public class SnifferSecurityPlugin implements ISecurityPlugin {
    * <p>
    * {@inheritDoc}
    */
+  @Override
   public boolean isAccessGranted(ISecurable securable,
       Map<String, Object> context) {
     try {

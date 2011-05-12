@@ -32,6 +32,7 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
     extendedEmployee.addPropertyChangeListener("birthDate",
         new PropertyChangeListener() {
 
+          @Override
           public void propertyChange(
               @SuppressWarnings("unused") PropertyChangeEvent evt) {
             Integer oldAge = age;
