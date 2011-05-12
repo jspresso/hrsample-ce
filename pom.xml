@@ -76,16 +76,6 @@
       </dependency>
       <dependency>
         <groupId>org.jspresso.hrsample</groupId>
-        <artifactId>hrsample-startup-ulc</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jspresso.hrsample</groupId>
-        <artifactId>hrsample-startup-wings</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jspresso.hrsample</groupId>
         <artifactId>hrsample-startup-remote</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -178,7 +168,7 @@
         <artifactId>maven-release-plugin</artifactId>
         <configuration>
           <autoVersionSubmodules>true</autoVersionSubmodules>
-          <goals>deploy site-deploy assembly:assembly</goals>
+          <goals>deploy site-deploy assembly:single</goals>
         </configuration>
       </plugin>
     </plugins>
