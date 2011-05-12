@@ -14,11 +14,7 @@ Interface('Traceable',
 Entity('City',
   extend:'Nameable',
   icon:'city-48x48.png'/*,
- pageSize:2*/) {
-   string_10 'zip'
-   date_time 'dateTime'
-   time 'time'
- }
+ pageSize:2*/) { string_10 'zip' }
 
 Component('ContactInfo') {
   string_256 'address'
@@ -141,7 +137,7 @@ Entity('Team',
     reference 'department', ref:'Department', mandatory:true, reverse:'Department-teams'
     set 'teamMembers', ref:'Employee', reverse:'Employee-teams'
   }
-  
+
 Entity('Preference', sqlName:'PREFERENCES') {
   string_2048 'preferenceValue';
   string_128 'preferencePath';

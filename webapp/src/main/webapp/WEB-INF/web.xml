@@ -148,5 +148,14 @@
     <param-value> en : en-US, es : es, fr : fr</param-value>
   </context-param>
   
+  <servlet>
+   <servlet-name>RESTEasy JSAPI</servlet-name>
+   <servlet-class>org.jboss.resteasy.jsapi.JSAPIServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>RESTEasy JSAPI</servlet-name>
+   <url-pattern>/rest-js</url-pattern>
+  </servlet-mapping>
+
   <!-- End Resteasy -->
 </web-app>
