@@ -19,19 +19,19 @@ form 'Company.pane',
 
 treeNode 'Department-teams.treeNode',
   rendered:'ouId',
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 treeNode 'Department-employees.treeNode',
   rendered:'name',
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 treeNode 'Company-employees.treeNode',
   rendered:'name',
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 treeNode 'Company-departments.treeNode',
   rendered:'ouId',
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 tree('Company.tree',
   rendered:'name',
@@ -47,11 +47,11 @@ tabs 'Company.tab.pane',
   views:['Company.pane','Company.tree','Traceable.pane']
 
 table 'Company-departments.table',
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 table 'Department-teams.table',
   columns:['ouId','name','manager'],
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 action('addFromList',
   parent:'lovOkFrontAction') { next(parent:'addAnyToMasterFrontAction') }
@@ -89,14 +89,39 @@ border 'Company.organization.view',
   north:'Company.tab.pane',
   center:'Company.departments.and.teams.view'
 
-image 'Employee-photo.pane',
+image('Employee-photo.pane',
   parent:'decoratedView',
-  actionMap:'binaryPropertyActionMap',
-  preferredWidth:400
+  preferredWidth:400) {
+    actionMap {
+      actionList("TOTO") {
+        action(parent:'openFileAsBinaryPropertyAction', booleanActionabilityGates:['married':false])
+      }
+    }
+  }
 
-
-form 'Employee.component.pane',
-  columnCount:3
+action('openCompany', parent:'addAsChildModuleFrontAction'/*, collectionBased:false*/) {
+  wrapped class:'org.jspresso.framework.application.backend.action.module.AddBeanAsSubModuleAction'
+}
+  
+form('Employee.component.pane',
+  columnCount:3) {
+  fields {
+      propertyView name:'name'
+      propertyView name:'firstName'
+      propertyView name:'gender'
+      propertyView name:'birthDate'
+      propertyView name:'age'
+      propertyView name:'ssn'
+      propertyView name:'salary'
+      propertyView name:'contact'
+      propertyView name:'married'
+      propertyView name:'preferredColor'
+      propertyView name:'photo'
+      propertyView name:'company', action:'openCompany'
+      propertyView name:'createTimestamp'
+      propertyView name:'lastUpdateTimestamp'
+    }
+  }
 
 border('Employee.border.pane',
   center:'Employee.component.pane') {
@@ -115,7 +140,7 @@ split_horizontal 'Employee.pane',
   right:'Employee-photo.pane'
 
 table('Employee-events.table') {
-  actionMap(parents:['masterDetail']) {
+  actionMap(parents:['masterDetailActionMap']) {
     actionList('ORGANIZE') {
       action ref:'moveDownFrontAction'
       action ref:'moveUpFrontAction'
@@ -152,8 +177,8 @@ bean('Company.chart',
 
 actionMap('Company-module-am'){
   actionList('FILE'){
-    action(ref:'front.module.save')
-    action(ref:'front.module.reload')
+    action(ref:'saveModuleObjectFrontAction')
+    action(ref:'reloadModuleObjectFrontAction')
     action(parent:'staticReportAction',
       custom:[
       reportDescriptor_ref:'Company.report'
@@ -176,12 +201,12 @@ form 'City.module.view',
 split_vertical('Employee.module.view',
   actionMap:'beanModuleActionMap',
   top:'Employee.pane') {
-    bottom {
+    /*bottom {
       split_horizontal(
         left:'Employee-events.table',
         right:'Event-text.pane',
         cascadingModels:true)
-    }
+    }*/
   }
 
 border 'Company.module.view',
