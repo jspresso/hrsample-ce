@@ -19,19 +19,19 @@ form 'Company.pane',
 
 treeNode 'Department-teams.treeNode',
   rendered:'ouId',
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 treeNode 'Department-employees.treeNode',
   rendered:'name',
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 treeNode 'Company-employees.treeNode',
   rendered:'name',
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 treeNode 'Company-departments.treeNode',
   rendered:'ouId',
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 tree('Company.tree',
   rendered:'name',
@@ -47,11 +47,11 @@ tabs 'Company.tab.pane',
   views:['Company.pane','Company.tree','Traceable.pane']
 
 table 'Company-departments.table',
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 table 'Department-teams.table',
   columns:['ouId','name','manager'],
-  actionMap:'masterDetail'
+  actionMap:'masterDetailActionMap'
 
 action('addFromList',
   parent:'lovOkFrontAction') { next(parent:'addAnyToMasterFrontAction') }
@@ -115,7 +115,7 @@ split_horizontal 'Employee.pane',
   right:'Employee-photo.pane'
 
 table('Employee-events.table') {
-  actionMap(parents:['masterDetail']) {
+  actionMap(parents:['masterDetailActionMap']) {
     actionList('ORGANIZE') {
       action ref:'moveDownFrontAction'
       action ref:'moveUpFrontAction'
