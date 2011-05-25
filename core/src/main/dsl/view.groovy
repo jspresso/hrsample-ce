@@ -152,14 +152,14 @@ bean('Company.chart',
 
 actionMap('Company-module-am'){
   actionList('FILE'){
-    action(ref:'front.module.save')
-    action(ref:'front.module.reload')
+    action(ref:'saveModuleObjectFrontAction')
+    action(ref:'reloadModuleObjectFrontAction')
     action(parent:'staticReportAction',
       custom:[
       reportDescriptor_ref:'Company.report'
       ]
       )
-    action(parent:'chartAction',
+    action(parent:'chartAction', 
       description:'company.chart',
       custom:[
       chartDescriptor_ref:'Company.chart'
