@@ -1,9 +1,3 @@
-external id:[
-  'abstractFrontController',
-  'guidGenerator',
-  'abstractViewFactory'
-]
-
 workspace('masterdata.workspace',
     icon:'masterdata-48x48.png') {
       nodeModule('masterdata.geography.module',
