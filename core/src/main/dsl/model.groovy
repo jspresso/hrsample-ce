@@ -104,7 +104,7 @@ Entity('OrganizationalUnit',
   extension :'OrganizationalUnitExtension') {
     string_6 'ouId', regex:"[A-Z]{2}-[\\d]{3}", regexSample:'AB-123', mandatory:true
     refId 'contact', id:'contact'
-    reference 'manager', id:'OrganizationalUnit-manager', ref:'Employee', mandatory:true, processors:['ManagerProcessor'], initializationMapping:['company':'company']
+    reference 'manager', id:'OrganizationalUnit-manager', ref:'Employee', mandatory:false, processors:['ManagerProcessor'], initializationMapping:['company':'company']
     reference 'company', ref:'Company', computed:true
   }
 
