@@ -4,10 +4,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/target/generated-resources/dsl"/>
-        <wb-resource deploy-path="/" source-path="/target/generated-sources/groovy-stubs/main"/>
-        <wb-resource deploy-path="/" source-path="/src/main/groovy"/>
-        <wb-resource deploy-path="/" source-path="/target/generated-sources/entitygenerator"/>
-        <wb-resource deploy-path="/" source-path="/target/generated-resources/xdoclet"/>
         <wb-resource deploy-path="/" source-path="/src/main/dsl"/>
+        <wb-resource deploy-path="/" source-path="/target/generated-sources/entitygenerator"/>
     </wb-module>
 </project-modules>

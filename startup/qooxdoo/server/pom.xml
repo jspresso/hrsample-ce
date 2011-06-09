@@ -16,7 +16,6 @@
     <dependency>
       <groupId>org.jspresso.hrsample</groupId>
       <artifactId>hrsample-startup-remote</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jspresso.framework</groupId>

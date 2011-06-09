@@ -6,7 +6,6 @@
     <version>3.5-SNAPSHOT</version>
     <relativePath>../../../pom.xml</relativePath>
   </parent>
-  <groupId>org.jspresso.hrsample</groupId>
   <artifactId>hrsample-startup-flex-client</artifactId>
   <packaging>swf</packaging>
   <name>Jspresso HR Sample - Startup - Flex - Client</name>
