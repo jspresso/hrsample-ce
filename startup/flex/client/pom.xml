@@ -44,10 +44,6 @@
       <resource>
         <directory>${basedir}/src/main/resources</directory>
       </resource>
-      <resource>
-        <directory>${project.build.directory}/generated-resources</directory>
-        <filtering>true</filtering>
-      </resource>
     </resources>
     <plugins>
       <plugin>
@@ -77,29 +73,10 @@
             <locale>fr_FR</locale>
           </locales>
           <mergeResourceBundle>true</mergeResourceBundle>
-          <contextRoot>hrsample-webapp</contextRoot>
           <parameters>
             <swf>${project.artifactId}</swf>
           </parameters>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>unpack-flex-config</id>
-            <goals>
-              <goal>unpack-dependencies</goal>
-            </goals>
-            <phase>prepare-package</phase>
-            <configuration>
-              <outputDirectory>${project.build.directory}/generated-resources</outputDirectory>
-              <includeArtifactIds>hrsample-startup-flex-config</includeArtifactIds>
-              <excludeTransitive>true</excludeTransitive>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
