@@ -6,5 +6,6 @@
         <wb-resource deploy-path="/" source-path="/target/generated-resources/dsl"/>
         <wb-resource deploy-path="/" source-path="/src/main/dsl"/>
         <wb-resource deploy-path="/" source-path="/target/generated-sources/entitygenerator"/>
+        <wb-resource deploy-path="/" source-path="/target/generated-resources/xdoclet"/>
     </wb-module>
 </project-modules>
