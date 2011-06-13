@@ -127,6 +127,9 @@
         <directory>${project.build.directory}/generated-resources/jasperreports</directory>
       </resource>
       <resource>
+        <directory>${project.build.directory}/generated-resources/xdoclet</directory>
+      </resource>
+      <resource>
         <directory>${project.build.directory}/generated-resources/dsl</directory>
       </resource>
     </resources>
