@@ -14,7 +14,7 @@ Interface('Traceable',
 Entity('City',
     extend:'Nameable',
     icon:'city-48x48.png'/*,
- pageSize:2*/) { string_10 'zip' }
+ pageSize:2*/) { string_10 'zip', upperCase:true}
 
 Component('ContactInfo') {
   string_256 'address'
