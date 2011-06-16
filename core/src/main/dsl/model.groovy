@@ -66,7 +66,7 @@ Entity ('Employee',
       color 'preferredColor'
       bool 'married'
       decimal 'salary', minValue:0, usingBigDecimal:true
-      binary 'photo', maxLength:1048576, id:'Employee-photo', fileFilter:['images':['.jpg', '.bmp']]
+      binary 'photo', maxLength:1048576, id:'Employee-photo', fileFilter:['images':['.jpg']], fileName:'photo.jpg'
       password 'password', maxLength:32
       reference 'contact', ref:'ContactInfo', id:'contact'
       list 'events', composition:true, ref:'Event'
