@@ -18,6 +18,7 @@
   </bean>
 
   <bean id="hibernateSessionFactory" parent="abstractHibernateSessionFactory">
+    <!--class="org.jspresso.framework.model.persistence.hibernate.DynamicAnnotationSessionFactoryBean"-->
     <property name="hibernateProperties">
       <props>
         <prop key="hibernate.query.substitutions">true 1, false 0, yes 'Y', no 'N'</prop>
@@ -38,5 +39,12 @@
         <value>classpath*:org/jspresso/hrsample/**/*.hbm.xml</value>
       </list>
     </property>
+    <!--
+    <property name="packagesToScan">
+      <list>
+        <value>org.jspresso.hrsample</value>
+      </list>
+    </property>
+    -->
   </bean>
 </beans>
