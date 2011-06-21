@@ -122,7 +122,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-              <outputFile>${project.build.directory}/${artifactId}-uberjar-${version}.${packaging}</outputFile>
+              <outputFile>${project.build.directory}/${project.artifactId}-uberjar-${project.version}.${project.packaging}</outputFile>
               <!-- <shadedArtifactAttached>true</shadedArtifactAttached> -->
             </configuration>
           </execution>
