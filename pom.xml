@@ -49,7 +49,6 @@
     <snapshotRepository>
       <id>jspresso-snapshots-repository</id>
       <url>dav:http://repository.jspresso.org/maven2-snapshots</url>
-      <uniqueVersion>false</uniqueVersion>
     </snapshotRepository>
     <site>
       <id>local-site</id>
