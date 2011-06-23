@@ -228,6 +228,8 @@
                 <property name="generator.dest" value="${project.build.directory}/generated-sources/entitygenerator" />
                 <mkdir dir="${generator.dest}" />
                 <java classname="org.jspresso.framework.tools.entitygenerator.EntityGenerator" classpathref="spring.beans.classpath" failonerror="true">
+                  <arg value="-beanFactorySelector" />
+                  <arg value="org/jspresso/hrsample/beanRefFactory.xml" />
                   <arg value="-applicationContextKey" />
                   <arg value="hrsample-model-context" />
                   <arg value="-templateResourcePath" />

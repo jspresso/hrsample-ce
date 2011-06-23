@@ -21,6 +21,16 @@ public class RemoteApplicationStartup extends RemoteStartup {
   @Override
   protected String getApplicationContextKey() {
     return "hrsample-remote-context";
-    //return "hrsample-remote-recording-context";
+    // return "hrsample-remote-recording-context";
+  }
+
+  /**
+   * Returns "org/jspresso/hrsample/beanRefFactory.xml".
+   * <p>
+   * {@inheritDoc}
+   */
+  @Override
+  protected String getBeanFactorySelector() {
+    return "org/jspresso/hrsample/beanRefFactory.xml";
   }
 }

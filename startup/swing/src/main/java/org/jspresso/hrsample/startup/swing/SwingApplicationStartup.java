@@ -22,4 +22,14 @@ public class SwingApplicationStartup extends SwingStartup {
   protected String getApplicationContextKey() {
     return "hrsample-swing-context";
   }
+
+  /**
+   * Returns "org/jspresso/hrsample/beanRefFactory.xml".
+   * <p>
+   * {@inheritDoc}
+   */
+  @Override
+  protected String getBeanFactorySelector() {
+    return "org/jspresso/hrsample/beanRefFactory.xml";
+  }
 }

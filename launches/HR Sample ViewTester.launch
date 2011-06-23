@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/hrsample-startup-swing"/>
+<listEntry value="/jspresso-tools/src/main/java/org/jspresso/framework/tools/viewtester/ViewTester.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
-<listEntry value="4"/>
+<listEntry value="1"/>
 </listAttribute>
 <booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.jspresso.framework.tools.viewtester.ViewTester"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-applicationContextKey hrsample-viewtester-context -language en -viewId testView"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-beanFactorySelector org/jspresso/hrsample/beanRefFactory.xml -applicationContextKey hrsample-viewtester-context -language en -viewId testView"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="hrsample-startup-swing"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dswing.defaultlaf=org.jvnet.substance.SubstanceLookAndFeel -Dsun.awt.noerasebackground=true -Dsubstancelaf.watermark.tobleed"/>
