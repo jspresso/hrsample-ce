@@ -6,6 +6,4 @@
 
   <!-- Put here frontend customizations that are not available through DSL -->
 
-  <bean id="remoteViewFactory" abstract="true" parent="viewFactoryBase"
-    class="org.jspresso.framework.view.remote.EnhancedRemoteViewFactory" />
 </beans>

@@ -60,15 +60,3 @@ bean 'viewFactoryBase', parent:'abstractViewFactory',
     custom: [
       defaultActionMapRenderingOptions:'LABEL_ICON'
     ]
-
-spec('remote') {
-  bean ('remotePeerRegistryBase', class:'org.jspresso.framework.util.remote.registry.BasicRemotePeerRegistry', custom:[automationEnabled:true])
-}
-
-spec('remote-recording') {
-  bean('remoteFrontController',
-      class:'org.jspresso.framework.application.testing.RecordingRemoteController',
-      parent:'abstractFrontController', custom:[
-        captureDirectory:'/tmp/commands'
-      ])
-}

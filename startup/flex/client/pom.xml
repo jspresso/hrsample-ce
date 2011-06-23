@@ -18,21 +18,8 @@
     </dependency>
     <dependency>
       <groupId>org.jspresso.framework</groupId>
-      <artifactId>jspresso-ext-flex</artifactId>
+      <artifactId>jspresso-flex</artifactId>
       <type>swc</type>
-    </dependency>
-    <dependency>
-      <groupId>org.jspresso.framework</groupId>
-      <artifactId>jspresso-ext-flex-theme</artifactId>
-      <type>swc</type>
-      <scope>theme</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jspresso.hrsample</groupId>
-      <artifactId>hrsample-startup-flex-config</artifactId>
-      <classifier>resources</classifier>
-      <type>zip</type>
-      <scope>provided</scope>
     </dependency>
   </dependencies>
 

@@ -32,18 +32,12 @@ if(frontendBuilder.getNbrError() != 0) {
   println frontendBuilder.getError()
   fail('SJS defined frontend / views is invalid.')
 }
-//println domainBuilder.getResultDomain()
-//println frontendBuilder.getResultView()
-//println frontendBuilder.getResultFront()
 
 domainBuilder.writeDomainFile(project.properties['outputDir'],project.properties['modelOutputFileName'])
-
 frontendBuilder.writeOutputFile('backend',project.properties['outputDir'],project.properties['backOutputFileName'])
 frontendBuilder.writeOutputFile('view',project.properties['outputDir'],project.properties['viewOutputFileName'])
 frontendBuilder.writeOutputFile('frontend',project.properties['outputDir'],project.properties['frontOutputFileName'])
 
-frontendBuilder.writeOutputFile('remote',project.properties['outputDir'],'remote-'+project.properties['frontOutputFileName'])
-frontendBuilder.writeOutputFile('remote-recording',project.properties['outputDir'],'remote-recording-'+project.properties['frontOutputFileName'])
-
+//Export as module
 ManageModule manageModule = new ManageModule()
 manageModule.exportModule('hrsample',domainBuilder,frontendBuilder,project.properties['outputDir'])

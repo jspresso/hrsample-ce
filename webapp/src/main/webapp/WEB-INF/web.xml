@@ -118,48 +118,4 @@
   </filter-mapping>
   <!-- End Qooxdoo RPC section -->
 
-  <!-- Resteasy -->
-  <listener>
-    <listener-class>
-       org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
-    </listener-class>
-  </listener>
-  <servlet>
-    <servlet-name>ResteasyServlet</servlet-name>
-    <servlet-class>
-       org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
-    </servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ResteasyServlet</servlet-name>
-    <url-pattern>/rest/*</url-pattern>
-  </servlet-mapping>
-  
-  <context-param>
-    <param-name>resteasy.scan.resources</param-name>
-    <param-value>true</param-value>
-  </context-param>
-  <context-param>
-    <param-name>resteasy.servlet.mapping.prefix</param-name>
-    <param-value>/rest</param-value>
-  </context-param>
-  <context-param>
-    <param-name>resteasy.media.type.mappings</param-name>
-    <param-value>html : text/html, json : application/json, xml : application/xml</param-value>
-  </context-param>
-  <context-param>
-    <param-name>resteasy.language.mappings</param-name>
-    <param-value> en : en-US, es : es, fr : fr</param-value>
-  </context-param>
-  
-  <servlet>
-   <servlet-name>RESTEasy JSAPI</servlet-name>
-   <servlet-class>org.jboss.resteasy.jsapi.JSAPIServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-   <servlet-name>RESTEasy JSAPI</servlet-name>
-   <url-pattern>/rest-js</url-pattern>
-  </servlet-mapping>
-
-  <!-- End Resteasy -->
 </web-app>

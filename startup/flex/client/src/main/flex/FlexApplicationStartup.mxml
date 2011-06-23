@@ -10,9 +10,9 @@
       import mx.messaging.channels.AMFChannel;
       import mx.resources.Locale;
       
-      import org.jspresso.framework.application.frontend.controller.flex.EnhancedFlexController;
+      import org.jspresso.framework.application.frontend.controller.flex.DefaultFlexController;
       
-      private var flexController:EnhancedFlexController;
+      private var flexController:DefaultFlexController;
       
       private function init():void {
         var rootURL:String = ExternalInterface.call("getRootURL");
@@ -22,7 +22,7 @@
           channelSet.addChannel(amfChannel);
           remoteController.channelSet = channelSet;
         }
-        flexController = new EnhancedFlexController(remoteController,
+        flexController = new DefaultFlexController(remoteController,
                                                    new Locale(resourceManager.localeChain[0]).language);
       }
       
