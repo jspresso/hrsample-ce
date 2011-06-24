@@ -11,11 +11,6 @@
       "path" : "${TARGET}/jspresso-qooxdoo-client-zip/py/library.json",
       "as"   : "jspresso-qooxdoo"
     }
-    ,
-    {
-      "path" : "${TARGET}/jspresso-ext-qooxdoo-theme-zip/py/library.json",
-      "as"   : "jspresso-ext-qooxdoo-theme"
-    }
   ],
 
   "export" :
@@ -64,15 +59,12 @@
     },
     "libraries" : 
     {
-      "extend" : ["jspresso-qooxdoo::libraries","jspresso-ext-qooxdoo-theme::libraries"],
+      "extend" : ["jspresso-qooxdoo::libraries"],
       
       "library" :
       [
         {
           "manifest" : "${TARGET}/jspresso-qooxdoo-client-zip/Manifest.json"
-        },
-        {
-          "manifest" : "${TARGET}/jspresso-ext-qooxdoo-theme-zip/Manifest.json"
         }
       ]
     },
