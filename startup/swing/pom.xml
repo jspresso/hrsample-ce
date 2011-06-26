@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jspresso.hrsample</groupId>
     <artifactId>hrsample</artifactId>
-    <version>3.5-SNAPSHOT</version>
+    <version>3.5.5</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <artifactId>hrsample-startup-swing</artifactId>
@@ -111,7 +111,7 @@
             <phase>package</phase>
             <configuration>
               <tasks>
-                <copy todir="${project.build.directory}/dist/conf" file="${basedir}/../../conf/jaas.config"/>
+                <copy todir="${project.build.directory}/dist/conf" file="${basedir}/../../conf/jaas.config" />
               </tasks>
             </configuration>
             <goals>

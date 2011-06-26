@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.jspresso.hrsample</groupId>
     <artifactId>hrsample</artifactId>
-    <version>3.5-SNAPSHOT</version>
+    <version>3.5.5</version>
     <relativePath>../../../pom.xml</relativePath>
   </parent>
   <artifactId>hrsample-startup-flex-config</artifactId>
