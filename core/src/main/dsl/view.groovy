@@ -127,7 +127,8 @@ split_horizontal 'Employee.pane',
     left:'Employee.border.pane',
     right:'Employee-photo.pane'
 
-table('Employee-events.table') {
+table('Employee-events.table',
+    selectionMode:'SINGLE_INTERVAL_CUMULATIVE_SELECTION') {
   actionMap(parents:['masterDetailActionMap']) {
     actionList('ORGANIZE') {
       action ref:'moveDownFrontAction'
