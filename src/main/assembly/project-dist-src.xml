@@ -9,7 +9,8 @@
       <useDefaultExcludes>true</useDefaultExcludes>
       <excludes>
         <exclude>**/target/**</exclude>
-        <exclude>**/.*/**</exclude>
+        <exclude>**/.settings/**</exclude>
+        <exclude>**/.springBeans</exclude>
         <exclude>**/*.bat</exclude>
       </excludes>
     </fileSet>
