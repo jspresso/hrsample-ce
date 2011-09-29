@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="src/main/java"/>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources"/>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/jasperreports"/>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/xdoclet"/>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/dsl"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
 		<attributes>
-			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="GROOVY_SUPPORT"/>
-	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
+	<classpathentry excluding="**" including="**/*.java" kind="src" output="target/classes" path="src/main/resources"/>
+	<classpathentry excluding="**" including="**/*.java" kind="src" output="target/classes" path="target/generated-resources/jasperreports"/>
+	<classpathentry excluding="**" including="**/*.java" kind="src" output="target/classes" path="target/generated-resources/xdoclet"/>
+	<classpathentry excluding="**" including="**/*.java" kind="src" output="target/classes" path="target/generated-resources/dsl"/>
+	<classpathentry kind="con" path="GROOVY_SUPPORT">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" output="target/classes" path="target/generated-sources/entitygenerator">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -23,6 +29,17 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="application.groovy" kind="src" path="src/main/dsl"/>
+	<classpathentry excluding="application.groovy" including="**/*.java" kind="src" path="src/main/dsl"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
