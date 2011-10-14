@@ -12,7 +12,6 @@
 		<config>src/main/resources/org/jspresso/hrsample/view/view.xml</config>
 		<config>target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
 		<config>src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
-		<config>target/generated-resources/dsl/org/jspresso/hrsample/backend/dsl-backend.xml</config>
 		<config>src/main/resources/org/jspresso/hrsample/model/model.xml</config>
 		<config>target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
 	</configs>
@@ -27,7 +26,6 @@
 				<config>src/main/resources/org/jspresso/hrsample/view/view.xml</config>
 				<config>target/generated-resources/dsl/org/jspresso/hrsample/view/dsl-view.xml</config>
 				<config>src/main/resources/org/jspresso/hrsample/backend/backend.xml</config>
-				<config>target/generated-resources/dsl/org/jspresso/hrsample/backend/dsl-backend.xml</config>
 				<config>src/main/resources/org/jspresso/hrsample/model/model.xml</config>
 				<config>target/generated-resources/dsl/org/jspresso/hrsample/model/dsl-model.xml</config>
 				<config>/jspresso-app-template-core/src/main/resources/org/jspresso/framework/application/frontend/commons-frontend.xml</config>
