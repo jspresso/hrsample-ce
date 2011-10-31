@@ -20,11 +20,8 @@ package org.jspresso.hrsample.backend;
 
 import java.util.Map;
 
-import org.hibernate.criterion.CriteriaSpecification;
-import org.hibernate.criterion.Order;
 import org.jspresso.framework.application.backend.action.persistence.hibernate.ICriteriaRefiner;
 import org.jspresso.framework.model.component.IQueryComponent;
-import org.jspresso.framework.model.component.query.QueryComponent;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 import org.jspresso.hrsample.model.Employee;
 
@@ -41,15 +38,16 @@ public class GlobalCriteriaRefiner implements ICriteriaRefiner {
    * <p>
    * {@inheritDoc}
    */
+  @SuppressWarnings("unused")
   @Override
   public void refineCriteria(EnhancedDetachedCriteria criteria,
       IQueryComponent queryComponent, Map<String, Object> context) {
-//    if (Employee.class.isAssignableFrom(queryComponent.getQueryContract())) {
-//      ((QueryComponent) queryComponent).setDistinctEnforced(true);
-//      //criteria.createCriteria("company", CriteriaSpecification.LEFT_JOIN);
-//      criteria.getSubCriteriaFor(criteria, "company", "company");
-//      criteria.addOrder(Order.desc("company.name"));
-//    }
+    if (Employee.class.isAssignableFrom(queryComponent.getQueryContract())) {
+      // ((QueryComponent) queryComponent).setDistinctEnforced(true);
+      // criteria.createCriteria("company", CriteriaSpecification.LEFT_JOIN);
+      // criteria.getSubCriteriaFor(criteria, "company", "company");
+      // criteria.addOrder(Order.desc("company.name"));
+    }
   }
 
 }
