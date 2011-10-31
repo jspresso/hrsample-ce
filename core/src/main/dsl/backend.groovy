@@ -9,3 +9,5 @@ bean_proto('userPreferencesStore',
 //bean('customSecurityPlugin',
 //  class:'org.jspresso.hrsample.development.SnifferSecurityPlugin',
 //  custom:[fileName:'D:/tmp/security_dump.txt'])
+
+bean('applicationCriteriaRefiner', class:'org.jspresso.hrsample.backend.GlobalCriteriaRefiner')
