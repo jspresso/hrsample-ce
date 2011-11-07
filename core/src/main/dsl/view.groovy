@@ -137,8 +137,6 @@ table('Employee-events.table',
   }
 }
 
-table('test', model:'Department-company.Company-employees')
-
 propertyView 'Event-text.pane',
     name:'text',
     parent:'decoratedView',
