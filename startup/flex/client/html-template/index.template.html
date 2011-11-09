@@ -43,7 +43,7 @@ var requiredRevision = ${version_revision};
 </script>
 </head>
 
-<body scroll="no" onunload="stop()" onLoad="window.document.${application}.focus()">
+<body scroll="no" onunload="stop()" onLoad="window.document['${application}'].focus()">
 <script language="JavaScript" type="text/javascript">
 <!--
 // Version check for the Flash Player that has the ability to start Player Product Install (6.0r65)
@@ -97,6 +97,19 @@ if ( hasProductInstall && !hasRequestedVersion ) {
     document.write(alternateContent);  // insert non-flash content
   }
 // -->
+</script>
+<script langugage='javascript' type="text/javascript">
+  function getRootURL()
+  {
+      return location.href.substring(0,location.href.indexOf("/flex")); ;
+  }
+  
+  function stop()
+  {
+      // Here you'll need to provide the id of your Flex swf
+      document.getElementById("${application}").stop();
+      //alert("Disconnected!");
+  }
 </script>
 <noscript>
   	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
