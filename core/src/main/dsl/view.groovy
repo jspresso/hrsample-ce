@@ -145,7 +145,8 @@ propertyView 'Event-text.pane',
 bean('Company.report',
     parent:'abstractReportDescriptor',
     custom:[
-      reportDesignUrl:'classpath:org/jspresso/hrsample/report/Company.jasper'
+      reportDesignUrl:'classpath:org/jspresso/hrsample/report/Company.jasper',
+      renderedProperties:['title']
     ]) {
       list('propertyDescriptors') {
         bean(class:'org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor',
