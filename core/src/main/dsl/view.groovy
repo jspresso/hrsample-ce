@@ -109,7 +109,8 @@ image 'Employee-photo.pane',
 
 
 form 'Employee.component.pane',
-    columnCount:3
+    columnCount:3,
+    description:'htmlDescription'
 
 border('Employee.border.pane',
     center:'Employee.component.pane') {
