@@ -40,6 +40,7 @@ Entity ('Employee',
         uncloned:['managedOu', 'ssn'],
         ordering:['name':'ASCENDING'],
         toString:'fullName',
+        toHtml:'htmlDescription',
         autoComplete:'name',
         rendered:[
             'name',
@@ -77,6 +78,7 @@ Entity ('Employee',
             integer 'age', minValue:0, maxValue:150, readOnly:true, sqlName:'YEAR(BIRTH_DATE)', computed:true
             imageUrl 'genderImageUrl', maxLength:512, id:'Employee-genderImageUrl', readOnly:true, computed:true
             string_512 'fullName', computed:true
+            string_512 'htmlDescription', computed:true
         }
 
 Entity('Company',

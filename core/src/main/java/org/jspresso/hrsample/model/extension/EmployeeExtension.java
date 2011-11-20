@@ -33,8 +33,8 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
         new PropertyChangeListener() {
 
           @Override
-          public void propertyChange(
-              @SuppressWarnings("unused") PropertyChangeEvent evt) {
+          public void propertyChange(@SuppressWarnings("unused")
+          PropertyChangeEvent evt) {
             Integer oldAge = age;
             age = null;
             getComponent().firePropertyChange("age", oldAge,
@@ -84,5 +84,16 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
       buff.append(getComponent().getFirstName());
     }
     return buff.toString();
+  }
+
+  /**
+   * Computes the HTML description of an employee.
+   * 
+   * @return the HTML description of an employee.
+   */
+  public String getHtmlDescription() {
+    return "<html><b>" + getFullName() + "</b><br>" + "  Age: " + getAge()
+        + "</html>";
+
   }
 }
