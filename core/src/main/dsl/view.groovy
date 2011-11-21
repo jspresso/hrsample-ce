@@ -59,8 +59,8 @@ tabs 'Company.tab.pane',
       'Traceable.pane'
     ]
 
-table 'Company-departments.table',
-    actionMap:'masterDetailActionMap'
+table('Company-departments.table',
+    actionMap:'masterDetailActionMap')
 
 table 'Department-teams.table',
     columns:['ouId', 'name', 'manager'],
@@ -130,13 +130,13 @@ split_horizontal 'Employee.pane',
 
 table('Employee-events.table',
     selectionMode:'SINGLE_INTERVAL_CUMULATIVE_SELECTION') {
-  actionMap(parents:['masterDetailActionMap']) {
-    actionList('ORGANIZE') {
-      action ref:'moveDownFrontAction'
-      action ref:'moveUpFrontAction'
+      actionMap(parents:['masterDetailActionMap']) {
+        actionList('ORGANIZE') {
+          action ref:'moveDownFrontAction'
+          action ref:'moveUpFrontAction'
+        }
+      }
     }
-  }
-}
 
 propertyView 'Event-text.pane',
     name:'text',
@@ -147,8 +147,7 @@ bean('Company.report',
     parent:'abstractReportDescriptor',
     custom:[
       reportDesignUrl:'classpath:org/jspresso/hrsample/report/Company.jasper',
-      renderedProperties:['title']
-    ]) {
+      renderedProperties:['title']]) {
       list('propertyDescriptors') {
         bean(class:'org.jspresso.framework.model.descriptor.basic.BasicStringPropertyDescriptor',
             name:'title'

@@ -78,7 +78,7 @@ Entity ('Employee',
             integer 'age', minValue:0, maxValue:150, readOnly:true, sqlName:'YEAR(BIRTH_DATE)', computed:true
             imageUrl 'genderImageUrl', maxLength:512, id:'Employee-genderImageUrl', readOnly:true, computed:true
             string_512 'fullName', computed:true
-            string_512 'htmlDescription', computed:true
+            html 'htmlDescription', computed:true
         }
 
 Entity('Company',
@@ -109,12 +109,14 @@ Entity('OrganizationalUnit',
             refId 'contact', id:'contact'
             reference 'manager', ref:'Employee', mandatory:false, processors:['ManagerProcessor'], initializationMapping:['company':'company']
             reference 'company', ref:'Company', computed:true
+            html 'htmlDescription', computed:true
         }
 
 Entity('Department',
         extend:'OrganizationalUnit',
         extension :'DepartmentExtension',
         icon:'department-48x48.png',
+        toHtml:'htmlDescription',
         rendered:[
             'ouId',
             'name',
@@ -131,6 +133,7 @@ Entity('Department',
 Entity('Team',
         extend:['OrganizationalUnit'],
         icon:'team-48x48.png',
+        toHtml:'htmlDescription',
         rendered:[
             'ouId',
             'name',
