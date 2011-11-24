@@ -60,7 +60,16 @@ tabs('Company.tab.pane',
     ])
 
 table('Company-departments.table',
-    actionMap:'masterDetailActionMap')
+    actionMap:'masterDetailActionMap') {
+    columns {
+        propertyView name:'ouId', action:'saveModuleObjectFrontAction'
+        propertyView name:'name'
+        propertyView name:'manager'
+        propertyView name:'contact'
+        propertyView name:'createTimestamp'
+        propertyView name:'lastUpdateTimestamp'
+      }
+    }
 
 table('Department-teams.table',
     columns:['ouId', 'name', 'manager'],
@@ -110,7 +119,24 @@ image('Employee-photo.pane',
 
 form('Employee.component.pane',
     columnCount:3,
-    description:'htmlDescription')
+    description:'htmlDescription') {
+    fields {
+        propertyView name:'name'
+        propertyView name:'firstName', action:'saveModuleObjectFrontAction'
+        propertyView name:'gender'
+        propertyView name:'birthDate'
+        propertyView name:'age'
+        propertyView name:'ssn'
+        propertyView name:'salary'
+        propertyView name:'contact'
+        propertyView name:'married'
+        propertyView name:'preferredColor'
+        propertyView name:'photo'
+        propertyView name:'company'
+        propertyView name:'createTimestamp'
+        propertyView name:'lastUpdateTimestamp'
+      }
+    }
 
 border('Employee.border.pane',
     center:'Employee.component.pane') {
