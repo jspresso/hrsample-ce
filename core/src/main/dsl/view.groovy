@@ -62,7 +62,7 @@ tabs('Company.tab.pane',
 table('Company-departments.table',
     actionMap:'masterDetailActionMap') {
     columns {
-        propertyView name:'ouId', action:'saveModuleObjectFrontAction'
+        propertyView name:'ouId'
         propertyView name:'name'
         propertyView name:'manager'
         propertyView name:'contact'
@@ -122,7 +122,7 @@ form('Employee.component.pane',
     description:'htmlDescription') {
     fields {
         propertyView name:'name'
-        propertyView name:'firstName', action:'saveModuleObjectFrontAction'
+        propertyView name:'firstName'
         propertyView name:'gender'
         propertyView name:'birthDate'
         propertyView name:'age'
