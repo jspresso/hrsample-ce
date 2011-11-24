@@ -6,15 +6,15 @@ template 'form',
 template 'table',
     parent:'decoratedView'
 
-form 'Traceable.pane',
+form('Traceable.pane',
     model:'Traceable',
     description:'traceable.editing',
     fields:[
       'createTimestamp',
       'lastUpdateTimestamp'
-    ]
+    ])
 
-form 'Company.pane',
+form('Company.pane',
     labelsPosition:'ASIDE',
     fields:[
       'name',
@@ -24,23 +24,23 @@ form 'Company.pane',
       'contact.email'
     ],
     widths:[name:2],
-    description:'company.editing'
+    description:'company.editing')
 
-treeNode 'Department-teams.treeNode',
+treeNode('Department-teams.treeNode',
     rendered:'ouId',
-    actionMap:'masterDetailActionMap'
+    actionMap:'masterDetailActionMap')
 
-treeNode 'Department-employees.treeNode',
+treeNode('Department-employees.treeNode',
     rendered:'name',
-    actionMap:'masterDetailActionMap'
+    actionMap:'masterDetailActionMap')
 
-treeNode 'Company-employees.treeNode',
+treeNode('Company-employees.treeNode',
     rendered:'name',
-    actionMap:'masterDetailActionMap'
+    actionMap:'masterDetailActionMap')
 
-treeNode 'Company-departments.treeNode',
+treeNode('Company-departments.treeNode',
     rendered:'ouId',
-    actionMap:'masterDetailActionMap'
+    actionMap:'masterDetailActionMap')
 
 tree('Company.tree',
     rendered:'name',
@@ -52,19 +52,19 @@ tree('Company.tree',
       }
     }
 
-tabs 'Company.tab.pane',
+tabs('Company.tab.pane',
     views:[
       'Company.pane',
       'Company.tree',
       'Traceable.pane'
-    ]
+    ])
 
 table('Company-departments.table',
     actionMap:'masterDetailActionMap')
 
-table 'Department-teams.table',
+table('Department-teams.table',
     columns:['ouId', 'name', 'manager'],
-    actionMap:'masterDetailActionMap'
+    actionMap:'masterDetailActionMap')
 
 action('addFromList',
     parent:'lovOkFrontAction') { next(parent:'addAnyToMasterFrontAction') }
@@ -97,20 +97,20 @@ split_vertical('Company.departments.and.teams.view',
       }
     }
 
-border 'Company.organization.view',
+border('Company.organization.view',
     model:'Company',
     north:'Company.tab.pane',
-    center:'Company.departments.and.teams.view'
+    center:'Company.departments.and.teams.view')
 
-image 'Employee-photo.pane',
+image('Employee-photo.pane',
     parent:'decoratedView',
     actionMap:'binaryPropertyActionMap',
-    preferredWidth:400
+    preferredWidth:400)
 
 
-form 'Employee.component.pane',
+form('Employee.component.pane',
     columnCount:3,
-    description:'htmlDescription'
+    description:'htmlDescription')
 
 border('Employee.border.pane',
     center:'Employee.component.pane') {
@@ -124,9 +124,9 @@ border('Employee.border.pane',
       }
     }
 
-split_horizontal 'Employee.pane',
+split_horizontal('Employee.pane',
     left:'Employee.border.pane',
-    right:'Employee-photo.pane'
+    right:'Employee-photo.pane')
 
 table('Employee-events.table',
     selectionMode:'SINGLE_INTERVAL_CUMULATIVE_SELECTION') {
@@ -138,10 +138,10 @@ table('Employee-events.table',
       }
     }
 
-propertyView 'Event-text.pane',
+propertyView('Event-text.pane',
     name:'text',
     parent:'decoratedView',
-    actionMap:'binaryPropertyActionMap'
+    actionMap:'binaryPropertyActionMap')
 
 bean('Company.report',
     parent:'abstractReportDescriptor',
@@ -181,10 +181,10 @@ actionMap('Company-module-am'){
   }
 }
 
-form 'City.module.view',
+form('City.module.view',
     labelsPosition:'ABOVE',
     actionMap:'beanModuleActionMap',
-    columnCount:1
+    columnCount:1)
 
 split_vertical('Employee.module.view',
     actionMap:'beanModuleActionMap',
@@ -197,8 +197,8 @@ split_vertical('Employee.module.view',
       }
     }
 
-border 'Company.module.view',
+border('Company.module.view',
     parent:'Company.organization.view',
-    actionMap:'Company-module-am'
+    actionMap:'Company-module-am')
 
 messageSource(basenames:'org.jspresso.hrsample.i18n.Messages')
