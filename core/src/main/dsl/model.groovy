@@ -42,6 +42,7 @@ Entity ('Employee',
         toString:'fullName',
         toHtml:'htmlDescription',
         autoComplete:'name',
+        pageSize:3,
         rendered:[
             'name',
             'firstName',
