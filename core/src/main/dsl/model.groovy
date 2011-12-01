@@ -13,7 +13,8 @@ Interface('Traceable',
 
 Entity('City',
         extend:'Nameable',
-        icon:'city-48x48.png') {
+        icon:'city-48x48.png',
+        pageSize:4) {
     string_10 'zip', upperCase:true
 }
 
