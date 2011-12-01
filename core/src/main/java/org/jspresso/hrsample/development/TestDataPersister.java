@@ -47,6 +47,12 @@ public class TestDataPersister extends AbstractTestDataPersister {
         City paris = createCity("Paris I", "75001");
         City suresnes = createCity("Suresnes", "92150");
         City evry = createCity("Evry", "91000");
+        createCity("Versailles", "78000");
+        createCity("Marseille", "13000");
+        createCity("Alençon", "61000");
+        createCity("Ambleny", "02290");
+        createCity("Nantes", "44000");
+        createCity("Bourg-en-Bresse", "01000");
 
         // Company
         Company design2see = createCompany("Design2See",
@@ -92,11 +98,11 @@ public class TestDataPersister extends AbstractTestDataPersister {
             "17/03/1971", "12/06/2003", "2256725396", false, "0xFFAA1133",
             "100000", design2see);
 
-        @SuppressWarnings("unused") Employee frankWurst = createEmployee("M",
-            "Wurst", "Frank", null, "120 rue des Pétoncles", evry,
-            "frank.wurst@design2see.com", "+33 1 708 544 985", "23/05/1969",
-            "17/11/2002", "1256725235", false, "0xFF14ADFE", "110000",
-            design2see);
+        @SuppressWarnings("unused")
+        Employee frankWurst = createEmployee("M", "Wurst", "Frank", null,
+            "120 rue des Pétoncles", evry, "frank.wurst@design2see.com",
+            "+33 1 708 544 985", "23/05/1969", "17/11/2002", "1256725235",
+            false, "0xFF14ADFE", "110000", design2see);
 
         // Departments and teams.
         Department hrDepartment = createDepartment("Human Resources", "HR-000",
