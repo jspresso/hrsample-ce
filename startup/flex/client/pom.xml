@@ -42,6 +42,9 @@
             <goals>
               <goal>compile-swf</goal>
             </goals>
+            <configuration>
+             <targetPlayer>10.0.0</targetPlayer>
+            </configuration>
           </execution>
           <!--
           <execution>
