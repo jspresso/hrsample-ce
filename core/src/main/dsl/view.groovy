@@ -138,6 +138,12 @@ form('Employee.component.pane',
       }
     }
 
+bean('employeeCardSelector', class:'org.jspresso.hrsample.view.EmployeeCardSelector')
+
+form('Employee.married.pane', fields:['name','firstName'])
+
+form('Employee.notmarried.pane', columnCount:3, fields:['firstName','name', 'age'])
+
 border('Employee.border.pane',
     center:'Employee.component.pane') {
       north {
@@ -148,6 +154,10 @@ border('Employee.border.pane',
           }
         }
       }
+//      south {
+//        basicCardView(selector:'employeeCardSelector',
+//           views:['MARRIED':'Employee.married.pane','NOT_MARRIED':'Employee.notmarried.pane'])
+//      }
     }
 
 split_horizontal('Employee.pane',
