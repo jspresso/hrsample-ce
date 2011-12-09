@@ -23,13 +23,20 @@ import javax.security.auth.Subject;
 import org.jspresso.framework.view.descriptor.ICardNameSelector;
 import org.jspresso.hrsample.model.Employee;
 
+/**
+ * A demo card name selector.
+ * 
+ * @version $LastChangedRevision$
+ * @author Vincent Vandenschrick
+ */
 public class EmployeeCardSelector implements ICardNameSelector {
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public String getCardNameForModel(Object model, Subject subject) {
+  public String getCardNameForModel(Object model, @SuppressWarnings("unused")
+  Subject subject) {
     if (model == null) {
       return null;
     } else if (((Employee) model).isMarried()) {
