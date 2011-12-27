@@ -5,67 +5,13 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-        <dependent-module archiveName="hrsample-startup-remote-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-remote/hrsample-startup-remote">
+        <dependent-module archiveName="hrsample-startup-remote-3.5.10.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-remote/hrsample-startup-remote">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="hrsample-core-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-core/hrsample-core">
+        <dependent-module archiveName="hrsample-core-3.5.10.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-core/hrsample-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jspresso-app-template-core-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-template-core/jspresso-app-template-core">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-hibernate-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-hibernate/jspresso-hibernate">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-model-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-model/jspresso-model">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-fusioncharts-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-fusioncharts/jspresso-fusioncharts">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-jasper-core-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-jasper-core/jspresso-jasper-core">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-app-launch-core-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-launch-core/jspresso-app-launch-core">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-application-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-application/jspresso-application">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-util-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-util/jspresso-util">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-app-template-remote-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-template-remote/jspresso-app-template-remote">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-jasper-remote-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-jasper-remote/jspresso-jasper-remote">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-remote-application-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-remote-application/jspresso-remote-application">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-binding-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-binding/jspresso-binding">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-security-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-security/jspresso-security">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-view-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-view/jspresso-view">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-action-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-action/jspresso-action">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-app-launch-remote-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-app-launch-remote/jspresso-app-launch-remote">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-remote-components-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-remote-components/jspresso-remote-components">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="hrsample-startup-qooxdoo-server-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-qooxdoo-server/hrsample-startup-qooxdoo-server">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jspresso-qooxdoo-server-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-qooxdoo-server/jspresso-qooxdoo-server">
+        <dependent-module archiveName="hrsample-startup-qooxdoo-server-3.5.10.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-qooxdoo-server/hrsample-startup-qooxdoo-server">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="hrsample-webapp"/>
