@@ -14,4 +14,11 @@
       </list>
     </property>
   </bean>
+  
+  <bean id="entityGUIDGenerator" parent="binaryGUIDGenerator"/>
+  <bean id="rootEntityId" class="org.jspresso.framework.model.descriptor.basic.BasicBinaryPropertyDescriptor">
+    <property name="name" value="id" />
+    <property name="maxLength" value="18" />
+  </bean>
+  
 </beans>

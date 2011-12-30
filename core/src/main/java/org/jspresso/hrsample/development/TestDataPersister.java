@@ -145,6 +145,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
         saveOrUpdate(design2see);
       }
     } catch (Throwable ex) {
+      ex.printStackTrace();
       // In no way the test data persister should make the application
       // startup fail.
     }
