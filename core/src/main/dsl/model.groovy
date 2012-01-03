@@ -147,6 +147,7 @@ Entity('Team',
         }
 
 Entity('Preference', sqlName:'PREFERENCES') {
+    string_64 'id'
     string_2048 'preferenceValue';
     string_128 'preferencePath';
 }
