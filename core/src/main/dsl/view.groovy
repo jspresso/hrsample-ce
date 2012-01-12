@@ -44,7 +44,6 @@ treeNode('Company-departments.treeNode',
 
 tree('Company.tree',
     rendered:'name',
-    preferredWidth:200,
     preferredHeight:200,
     icon:'structure-48x48.png') {
       subTree('Company-employees.treeNode')
@@ -78,7 +77,7 @@ table('Department-teams.table',
 action('addFromList',
     parent:'lovOkFrontAction') { next(parent:'addAnyToMasterFrontAction') }
 
-listView('Team-teamMembers.list', preferredWidth:300, preferredHeight:300) {
+listView('Team-teamMembers.list', preferredWidth:300) {
   actionMap {
     actionList('EDIT'){
       action(parent:'lovAction',
