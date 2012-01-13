@@ -213,8 +213,11 @@ actionMap('Company-module-am'){
           chartDescriptor_ref:'Company.chart'
         ]
         )
+    action(parent:'editSelectedComponentAction', custom:[viewDescriptor_ref:'Company.dialog.view'])
   }
 }
+
+tabs('Company.dialog.view', parent:'Company.tab.pane')
 
 form('City.module.view',
     labelsPosition:'ABOVE',
