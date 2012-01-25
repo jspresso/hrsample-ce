@@ -62,6 +62,7 @@ table('Company-departments.table',
     actionMap:'masterDetailActionMap') {
     columns {
         propertyView name:'ouId'
+        propertyView name:'teamCount'
         propertyView name:'name'
         propertyView name:'manager'
         propertyView name:'contact'

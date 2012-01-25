@@ -6,6 +6,7 @@ package org.jspresso.hrsample.model.extension;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.hibernate.Hibernate;
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
@@ -49,5 +50,23 @@ public class DepartmentExtension extends AbstractComponentExtension<Department> 
       }
     }
     return employees;
+  }
+
+  /**
+   * Retrieves the department team count.
+   * 
+   * @return the department team count, either by looking into the entity
+   *         properties that have been hydrated by the SQL formula or counting
+   *         the teams in the set.
+   */
+  @SuppressWarnings("unchecked")
+  public Integer getTeamCount() {
+    // to avoid initialization of optimized proxy.
+    Set<Team> teams = (Set<Team>) getComponent().straightGetProperty(
+        Department.TEAMS);
+    if (teams != null && Hibernate.isInitialized(teams)) {
+      return new Integer(teams.size());
+    }
+    return (Integer) getComponent().straightGetProperty(Department.TEAM_COUNT);
   }
 }

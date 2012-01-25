@@ -130,6 +130,7 @@ Entity('Department',
             reference 'company', ref:'Company', reverse:'Company-departments', mandatory:true
             set 'teams', composition:true, ref:'Team'
             set 'employees', ref:'Employee', computed:true
+            integer 'teamCount', computed:true, sqlName:'(SELECT COUNT(T.ID) FROM TEAM T WHERE T.DEPARTMENT_ID=ID)'
         }
 
 Entity('Team',
