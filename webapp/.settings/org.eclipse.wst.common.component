@@ -62,9 +62,6 @@
         <dependent-module archiveName="jspresso-remote-components-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-remote-components/jspresso-remote-components">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="hrsample-startup-qooxdoo-server-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-qooxdoo-server/hrsample-startup-qooxdoo-server">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="jspresso-qooxdoo-server-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jspresso-qooxdoo-server/jspresso-qooxdoo-server">
             <dependency-type>uses</dependency-type>
         </dependent-module>

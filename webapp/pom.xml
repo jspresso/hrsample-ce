@@ -29,10 +29,6 @@
     </dependency>
     <dependency>
       <groupId>org.jspresso.hrsample</groupId>
-      <artifactId>hrsample-startup-qooxdoo-server</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jspresso.hrsample</groupId>
       <artifactId>hrsample-startup-qooxdoo-client</artifactId>
       <classifier>web-resources</classifier>
       <type>zip</type>

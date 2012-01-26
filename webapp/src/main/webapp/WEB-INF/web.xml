@@ -118,4 +118,9 @@
   </filter-mapping>
   <!-- End Qooxdoo RPC section -->
 
+  <filter-mapping>
+    <filter-name>HttpRequestHolder</filter-name>
+    <url-pattern>*.html</url-pattern>
+  </filter-mapping>
+
 </web-app>

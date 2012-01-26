@@ -93,11 +93,6 @@
       </dependency>
       <dependency>
         <groupId>org.jspresso.hrsample</groupId>
-        <artifactId>hrsample-startup-qooxdoo-server</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jspresso.hrsample</groupId>
         <artifactId>hrsample-startup-qooxdoo-client</artifactId>
         <version>${project.version}</version>
         <classifier>web-resources</classifier>
