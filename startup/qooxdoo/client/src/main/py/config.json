@@ -39,7 +39,7 @@
     "QOOXDOO_PATH" : "../../../target/qooxdoo-sdk",
     "QXTHEME"      : "org.jspresso.hrsample.startup.qooxdoo.theme.Theme",
     "API_EXCLUDE"  : ["qx.legacy.*","qx.test.*"],
-    "LOCALES"      : ["en","fr","es","pt"],
+    "LOCALES"      : ["en","fr","es","pt","de"],
     "ROOT"         : "..",
     "BUILD_PATH"   : "${TARGET}/web"
   },
