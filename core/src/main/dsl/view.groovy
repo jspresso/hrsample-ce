@@ -123,7 +123,7 @@ form('Employee.component.pane',
     fields {
         propertyView name:'name'
         propertyView name:'firstName'
-        propertyView name:'gender'
+        enumerationPropertyView name:'gender', radio:true, orientation:'HORIZONTAL'
         propertyView name:'birthDate'
         propertyView name:'age'
         propertyView name:'ssn'
