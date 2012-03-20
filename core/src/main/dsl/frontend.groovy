@@ -50,6 +50,8 @@ controller 'hrsample.name',
     context:'hrsample',
     language:'en',
     startup:'startupHrsampleAction',
+    width:800,
+    height:600,
     workspaces:[
       'organization.workspace',
       'employees.workspace',
