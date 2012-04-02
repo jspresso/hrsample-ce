@@ -6,10 +6,26 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**" including="**/*.java" kind="src" output="target/classes" path="src/main/resources"/>
-	<classpathentry excluding="**" including="**/*.java" kind="src" output="target/classes" path="target/generated-resources/jasperreports"/>
-	<classpathentry excluding="**" including="**/*.java" kind="src" output="target/classes" path="target/generated-resources/xdoclet"/>
-	<classpathentry excluding="**" including="**/*.java" kind="src" output="target/classes" path="target/generated-resources/dsl"/>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/jasperreports">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/xdoclet">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/dsl">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" output="target/classes" path="target/generated-sources/entitygenerator">
 		<attributes>
 			<attribute name="optional" value="true"/>
