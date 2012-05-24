@@ -16,7 +16,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with Jspresso.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.jspresso.framework;
+package org.jspresso.hrsample.backend;
 
 import static org.junit.Assert.assertEquals;
 
@@ -28,7 +28,7 @@ import org.junit.Test;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-public class JspressoUnitOfWorkTests extends TestStartup {
+public class JspressoUnitOfWorkTests extends BackTestStartup {
 
   @Test
   public void test1() {

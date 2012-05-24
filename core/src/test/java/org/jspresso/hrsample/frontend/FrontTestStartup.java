@@ -16,13 +16,21 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with Jspresso.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.jspresso.framework;
+package org.jspresso.hrsample.frontend;
+
+import java.security.acl.Group;
+
+import javax.security.auth.Subject;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.jboss.security.SimpleGroup;
+import org.jboss.security.SimplePrincipal;
 import org.jboss.util.NestedRuntimeException;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
-import org.jspresso.framework.application.startup.AbstractBackendStartup;
+import org.jspresso.framework.application.startup.remote.RemoteStartup;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
+import org.jspresso.framework.security.SecurityHelper;
+import org.jspresso.framework.security.UserPrincipal;
 import org.jspresso.hrsample.development.TestDataPersister;
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
@@ -39,7 +47,7 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-public class TestStartup extends AbstractBackendStartup {
+public class FrontTestStartup extends RemoteStartup {
 
   /**
    * Performs DB initialization and test data creation.
@@ -48,7 +56,7 @@ public class TestStartup extends AbstractBackendStartup {
    */
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
-    TestStartup startup = new TestStartup();
+    FrontTestStartup startup = new FrontTestStartup();
     new TestDataPersister(startup.getApplicationContext()).persistTestData();
   }
 
@@ -59,10 +67,10 @@ public class TestStartup extends AbstractBackendStartup {
    */
   @AfterClass
   public static void tearDownAfterClass() throws Exception {
-    TestStartup startup = new TestStartup();
+    FrontTestStartup startup = new FrontTestStartup();
     startup.start();
     final HibernateBackendController bc = (HibernateBackendController) startup
-        .getBackendController();
+        .getFrontendController().getBackendController();
     bc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
       @Override
@@ -93,7 +101,18 @@ public class TestStartup extends AbstractBackendStartup {
   @Before
   public void setUp() throws Exception {
     start();
-    configureApplicationSession(createSubject("test"), getStartupLocale());
+    getFrontendController().loggedIn(createTestSubject());
+  }
+
+  private Subject createTestSubject() {
+    Subject testSubject = new Subject();
+    UserPrincipal p = new UserPrincipal("demo");
+    testSubject.getPrincipals().add(p);
+    p.putCustomProperty(UserPrincipal.LANGUAGE_PROPERTY, "en");
+    Group rolesGroup = new SimpleGroup(SecurityHelper.ROLES_GROUP_NAME);
+    rolesGroup.addMember(new SimplePrincipal("administrator"));
+    testSubject.getPrincipals().add(rolesGroup);
+    return testSubject;
   }
 
   /**
@@ -103,8 +122,8 @@ public class TestStartup extends AbstractBackendStartup {
    */
   @After
   public void tearDown() throws Exception {
-    getBackendController().cleanupRequestResources();
-    getBackendController().stop();
+    getFrontendController().getBackendController().cleanupRequestResources();
+    getFrontendController().stop();
   }
 
   /**
@@ -114,7 +133,7 @@ public class TestStartup extends AbstractBackendStartup {
    */
   @Override
   protected String getApplicationContextKey() {
-    return "hrsample-backend-context";
+    return "hrsample-remote-context";
   }
 
   /**
