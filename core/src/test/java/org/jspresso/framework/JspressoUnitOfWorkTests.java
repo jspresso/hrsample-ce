@@ -20,15 +20,6 @@ package org.jspresso.framework;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Locale;
-import java.util.TimeZone;
-
-import org.jspresso.framework.application.startup.AbstractBackendStartup;
-import org.jspresso.hrsample.development.TestDataPersister;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -37,56 +28,7 @@ import org.junit.Test;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-public class JspressoUnitOfWorkTests extends AbstractBackendStartup {
-
-  /**
-   * Constructs a new <code>JspressoUnitOfWorkTests</code> instance.
-   */
-  public JspressoUnitOfWorkTests() {
-    setClientTimeZone(TimeZone.getDefault());
-    setStartupLocale(Locale.ENGLISH);
-    new TestDataPersister(getApplicationContext()).persistTestData();
-  }
-
-  /**
-   * TODO Comment needed.
-   * 
-   * @throws java.lang.Exception
-   */
-  @BeforeClass
-  public static void setUpBeforeClass() throws Exception {
-  }
-
-  /**
-   * TODO Comment needed.
-   * 
-   * @throws java.lang.Exception
-   */
-  @AfterClass
-  public static void tearDownAfterClass() throws Exception {
-  }
-
-  /**
-   * TODO Comment needed.
-   * 
-   * @throws java.lang.Exception
-   */
-  @Before
-  public void setUp() throws Exception {
-    start();
-    configureApplicationSession(createSubject("test"), Locale.ENGLISH);
-  }
-
-  /**
-   * TODO Comment needed.
-   * 
-   * @throws java.lang.Exception
-   */
-  @After
-  public void tearDown() throws Exception {
-    getBackendController().cleanupRequestResources();
-    getBackendController().stop();
-  }
+public class JspressoUnitOfWorkTests extends TestStartup {
 
   @Test
   public void test1() {
@@ -98,26 +40,6 @@ public class JspressoUnitOfWorkTests extends AbstractBackendStartup {
   public void test2() {
     System.out.println(getBackendController());
     assertEquals(1, 1);
-  }
-
-  /**
-   * Returns the "hrsample-remote-context" value.
-   * <p>
-   * {@inheritDoc}
-   */
-  @Override
-  protected String getApplicationContextKey() {
-    return "hrsample-backend-context";
-  }
-
-  /**
-   * Returns "org/jspresso/hrsample/beanRefFactory.xml".
-   * <p>
-   * {@inheritDoc}
-   */
-  @Override
-  protected String getBeanFactorySelector() {
-    return "org/jspresso/hrsample/beanRefFactory.xml";
   }
 
 }

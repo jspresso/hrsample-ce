@@ -8,7 +8,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import org.jspresso.framework.application.startup.development.AbstractTestDataPersister;
-import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
@@ -41,8 +40,10 @@ public class TestDataPersister extends AbstractTestDataPersister {
   public void persistTestData() {
 
     try {
-      if (findByCriteria(EnhancedDetachedCriteria.forClass(Company.class))
-          .isEmpty()) {
+      if (/*
+           * findByCriteria(EnhancedDetachedCriteria.forClass(Company.class))
+           * .isEmpty()
+           */true) {
         // Cities
         City paris = createCity("Paris I", "75001");
         City suresnes = createCity("Suresnes", "92150");
