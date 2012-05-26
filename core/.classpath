@@ -38,7 +38,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="application.groovy" including="**/*.java" kind="src" path="src/main/dsl"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -61,5 +60,7 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
+	<classpathentry excluding="application.groovy" including="**/*.groovy|**/*.java" kind="src" path="src/main/dsl"/>
+	<classpathentry exported="true" kind="con" path="GROOVY_SUPPORT"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
