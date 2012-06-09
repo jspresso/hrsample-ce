@@ -21,7 +21,7 @@ package test;
 import java.util.Map;
 
 import org.jspresso.framework.action.IActionHandler;
-import org.jspresso.framework.application.backend.BackendControllerHolder;
+import org.jspresso.framework.application.backend.action.Asynchronous;
 import org.jspresso.framework.application.backend.action.BackendAction;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.hrsample.model.City;
@@ -34,6 +34,7 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
+@Asynchronous
 public class TestBackAction extends BackendAction {
 
   /**
@@ -42,12 +43,10 @@ public class TestBackAction extends BackendAction {
   @Override
   public boolean execute(IActionHandler actionHandler, Map<String, Object> context) {
     try {
-      System.out.println("########## Async action begin");
-      System.out.println(">> ActionHandler : " + actionHandler);
-      System.out.println(">> Controller    : " + getController(context));
-      System.out.println(">> TxTemplate    : " + getTransactionTemplate(context).hashCode());
-      System.out.println(">> BcHolder c    : " + BackendControllerHolder.getCurrentBackendController());
-      Thread.sleep(10000);
+      for (int i = 0; i < 10; i++) {
+        Thread.sleep(1000);
+        setProgress(((double) i) / 10);
+      }
       final HibernateBackendController bc = (HibernateBackendController) getController(context);
       bc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
@@ -59,7 +58,6 @@ public class TestBackAction extends BackendAction {
           bc.registerForUpdate(test);
         }
       });
-      System.out.println("########## Async action end");
     } catch (InterruptedException ex) {
       ex.printStackTrace();
     }
