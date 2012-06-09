@@ -60,7 +60,7 @@ tabs('Company.tab.pane',
 
 table('Company-departments.table',
     actionMap:'masterDetailActionMap') {
-    columns {
+      columns {
         propertyView name:'ouId'
         propertyView name:'teamCount'
         propertyView name:'name'
@@ -120,7 +120,7 @@ image('Employee-photo.pane',
 form('Employee.component.pane',
     columnCount:3,
     description:'htmlDescription') {
-    fields {
+      fields {
         propertyView name:'name'
         propertyView name:'firstName'
         enumerationPropertyView name:'gender', radio:true, orientation:'HORIZONTAL'
@@ -140,9 +140,9 @@ form('Employee.component.pane',
 
 bean('employeeCardSelector', class:'org.jspresso.hrsample.view.EmployeeCardSelector')
 
-form('Employee.married.pane', fields:['name','firstName'])
+form('Employee.married.pane', fields:['name', 'firstName'])
 
-form('Employee.notmarried.pane', columnCount:3, fields:['firstName','name', 'age'])
+form('Employee.notmarried.pane', columnCount:3, fields:['firstName', 'name', 'age'])
 
 border('Employee.border.pane',
     center:'Employee.component.pane') {
@@ -154,10 +154,10 @@ border('Employee.border.pane',
           }
         }
       }
-//      south {
-//        basicCardView(selector:'employeeCardSelector',
-//           views:['MARRIED':'Employee.married.pane','NOT_MARRIED':'Employee.notmarried.pane'])
-//      }
+      //      south {
+      //        basicCardView(selector:'employeeCardSelector',
+      //           views:['MARRIED':'Employee.married.pane','NOT_MARRIED':'Employee.notmarried.pane'])
+      //      }
     }
 
 split_horizontal('Employee.pane',
@@ -215,6 +215,9 @@ actionMap('Company-module-am'){
         ]
         )
     action(parent:'editSelectedComponentAction', custom:[viewDescriptor_ref:'Company.dialog.view'])
+    //    action(class:'org.jspresso.framework.application.frontend.action.FrontendAction', icon:'company-48x48.png') {
+    //      wrapped(class:'test.TestBackAction')
+    //    }
   }
 }
 

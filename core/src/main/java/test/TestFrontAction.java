@@ -21,11 +21,7 @@ package test;
 import java.util.Map;
 
 import org.jspresso.framework.action.IActionHandler;
-import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.frontend.action.FrontendAction;
-import org.jspresso.hrsample.model.City;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
  * Test front action.
@@ -45,21 +41,7 @@ public class TestFrontAction<E, F, G> extends FrontendAction<E, F, G> {
    * {@inheritDoc}
    */
   @Override
-  public boolean execute(IActionHandler actionHandler,
-      Map<String, Object> context) {
-    final HibernateBackendController bc = (HibernateBackendController) getBackendController(context);
-    bc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
-
-      @Override
-      protected void doInTransactionWithoutResult(
-          @SuppressWarnings("unused") TransactionStatus status) {
-        City test = bc.getEntityFactory().createEntityInstance(City.class);
-        test.setName(Long.toString(System.currentTimeMillis()));
-        test.setZip("12345");
-        test.setZip(null);
-        bc.registerForUpdate(test);
-      }
-    });
+  public boolean execute(IActionHandler actionHandler, Map<String, Object> context) {
     return super.execute(actionHandler, context);
   }
 }
