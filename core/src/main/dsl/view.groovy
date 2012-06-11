@@ -215,7 +215,7 @@ actionMap('Company-module-am'){
         ]
         )
     action(parent:'editSelectedComponentAction', custom:[viewDescriptor_ref:'Company.dialog.view'])
-    //    action(class:'org.jspresso.framework.application.frontend.action.FrontendAction', icon:'company-48x48.png') { wrapped(class:'test.TestBackAction') }
+    //action(class:'org.jspresso.framework.application.frontend.action.FrontendAction', icon:'company-48x48.png') { wrapped(class:'test.TestBackAction') }
   }
 }
 

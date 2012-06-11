@@ -44,12 +44,19 @@ action 'filterModuleStartup',
     class:'org.jspresso.framework.application.frontend.action.FrontendAction',
     wrapped:'initModuleFilterAction',
     next:'queryModuleFilterAction'
+    
+actionMap('controllerActionMap') {
+  actionList {
+    action ref:'showRunningExecutorsAction'
+  }
+}
 
 controller 'hrsample.name',
     icon:'people-48x48.png',
     context:'hrsample',
     language:'en',
     startup:'startupHrsampleAction',
+    actionMap:'controllerActionMap',
     width:800,
     height:600,
     workspaces:[
