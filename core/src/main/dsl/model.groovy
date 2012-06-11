@@ -64,7 +64,7 @@ Entity ('Employee',
             string_10 'ssn', regex:"[\\d]{10}", regexSample:'0123456789', unicityScope:'empSsn'
             date 'birthDate', processors:'BirthDateProcessor'
             date 'hireDate'
-            enumeration 'gender', enumName:'GENDER', mandatory:true, valuesAndIcons:[
+            enumeration 'gender', enumName:'GENDER', mandatory:true, queryMultiselect:true, valuesAndIcons:[
                         'M':'male-48x48.png',
                         'F':'female-48x48.png']
             color 'preferredColor'
