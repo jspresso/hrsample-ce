@@ -18,6 +18,7 @@ workspace('employees.workspace',
       filterModule('employees.module',
           icon:'employees-48x48.png',
           component:'Employee',
+          //filterView:'Employee.filter.pane',
           detailView:'Employee.module.view',
           startup:'filterModuleStartup',
           pageSize:4)

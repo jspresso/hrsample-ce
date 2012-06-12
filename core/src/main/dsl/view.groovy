@@ -144,6 +144,8 @@ form('Employee.married.pane', fields:['name', 'firstName'])
 
 form('Employee.notmarried.pane', columnCount:3, fields:['firstName', 'name', 'age'])
 
+form('Employee.filter.pane', columnCount:3, fields:['firstName', 'name','gender'])
+
 border('Employee.border.pane',
     center:'Employee.component.pane') {
       north {
