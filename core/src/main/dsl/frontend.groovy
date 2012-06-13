@@ -59,7 +59,7 @@ controller 'hrsample.name',
     startup:'startupHrsampleAction',
     actionMap:'controllerActionMap',
     width:1200,
-    height:1000,
+    height:800,
     workspaces:[
       'organization.workspace',
       'employees.workspace',
