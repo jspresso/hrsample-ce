@@ -3,16 +3,16 @@
   <parent>
     <groupId>org.jspresso.framework</groupId>
     <artifactId>jspresso-root</artifactId>
-    <version>3.5-SNAPSHOT</version>
+    <version>3.5.13</version>
     <relativePath />
   </parent>
   <groupId>org.jspresso.hrsample</groupId>
   <artifactId>hrsample</artifactId>
   <packaging>pom</packaging>
-  <version>3.5-SNAPSHOT</version>
+  <version>3.5.13</version>
   <name>Jspresso HR Sample Application</name>
   <scm>
-    <connection>scm:svn:https://svn.jspresso.org/jspresso/app-hrsample/trunk</connection>
+    <connection>scm:svn:https://svn.jspresso.org/jspresso/app-hrsample/tags/hrsample-3.5.13</connection>
   </scm>
   <repositories>
     <repository>
