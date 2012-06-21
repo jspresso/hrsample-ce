@@ -144,7 +144,13 @@ form('Employee.married.pane', fields:['name', 'firstName'])
 
 form('Employee.notmarried.pane', columnCount:3, fields:['firstName', 'name', 'age'])
 
-form('Employee.filter.pane', columnCount:3, fields:['firstName', 'name','gender'])
+form('Employee.filter.pane', columnCount:8, fields:[
+  'firstName',
+  'name',
+  'gender',
+  'salary',
+  'birthDate'
+], widths:['firstName':4,'name':4,'gender':4,'salary':4,'birthDate':4])
 
 border('Employee.border.pane',
     center:'Employee.component.pane') {
