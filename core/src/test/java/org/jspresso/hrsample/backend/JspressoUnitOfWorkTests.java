@@ -30,12 +30,18 @@ import org.junit.Test;
  */
 public class JspressoUnitOfWorkTests extends BackTestStartup {
 
+  /**
+   * Test 1.
+   */
   @Test
   public void test1() {
     System.out.println(getBackendController());
     assertEquals(1, 1);
   }
 
+  /**
+   * Test 2.
+   */
   @Test
   public void test2() {
     System.out.println(getBackendController());

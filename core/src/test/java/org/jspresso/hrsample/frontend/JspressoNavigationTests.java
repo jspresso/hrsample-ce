@@ -23,19 +23,25 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- * Unit Of Work management integration tests.
+ * Navigation integration tests.
  * 
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class JspressoNavigationTests extends FrontTestStartup {
 
+  /**
+   * Test 1.
+   */
   @Test
   public void test1() {
     System.out.println(getFrontendController());
     assertEquals(1, 1);
   }
 
+  /**
+   * Test 2.
+   */
   @Test
   public void test2() {
     System.out.println(getFrontendController());
