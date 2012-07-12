@@ -4,6 +4,7 @@
 package org.jspresso.hrsample.model.extension;
 
 import org.jspresso.framework.model.component.AbstractComponentExtension;
+import org.jspresso.framework.model.descriptor.IEnumerationPropertyDescriptor;
 
 import org.jspresso.hrsample.model.Employee;
 
@@ -33,5 +34,47 @@ public class EmployeeExtensionSimple extends
    */
   public Integer getAge() {
     return getComponent().computeAge(getComponent().getBirthDate());
+  }
+
+
+  /**
+   * Returns the gender image url.
+   * 
+   * @return the gender image url.
+   */
+  public String getGenderImageUrl() {
+    IEnumerationPropertyDescriptor genderDescriptor = (IEnumerationPropertyDescriptor) getComponentFactory()
+        .getComponentDescriptor(Employee.class).getPropertyDescriptor("gender");
+    return genderDescriptor.getIconImageURL(getComponent().getGender());
+  }
+
+  /**
+   * Computes the concatenation of last name and first name.
+   * 
+   * @return the concatenation of last name and first name.
+   */
+  public String getFullName() {
+    StringBuffer buff = new StringBuffer();
+    if (getComponent().getName() != null) {
+      buff.append(getComponent().getName());
+      if (getComponent().getFirstName() != null) {
+        buff.append(" ");
+      }
+    }
+    if (getComponent().getFirstName() != null) {
+      buff.append(getComponent().getFirstName());
+    }
+    return buff.toString();
+  }
+
+  /**
+   * Computes the HTML description of an employee.
+   * 
+   * @return the HTML description of an employee.
+   */
+  public String getHtmlDescription() {
+    return "<html><b><i>" + getComponent().getFullName() + "</i></b><br>"
+        + "  Age: " + getAge() + "</html>";
+
   }
 }
