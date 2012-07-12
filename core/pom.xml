@@ -121,6 +121,29 @@
                   </componentProperties>
                 </configuration>
               </execution>
+              <execution>
+                <id>generate-oracle-schema</id>
+                <phase>prepare-package</phase>
+                <goals>
+                  <goal>hbm2ddl</goal>
+                </goals>
+                <configuration>
+                  <components>
+                    <component>
+                      <name>hbm2ddl</name>
+                    </component>
+                  </components>
+                  <componentProperties>
+                    <implementation>configuration</implementation>
+                    <drop>false</drop>
+                    <export>false</export>
+                    <format>true</format>
+                    <propertyfile>conf/schema-export-oracle.properties</propertyfile>
+                    <outputfilename>hrsample-schema-oracle.sql</outputfilename>
+                    <scan-classes>true</scan-classes>
+                  </componentProperties>
+                </configuration>
+              </execution>
             </executions>
           </plugin>
           <plugin>
