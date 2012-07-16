@@ -43,7 +43,7 @@ public class TestBackAction extends BackendAction {
   @Override
   public boolean execute(IActionHandler actionHandler, Map<String, Object> context) {
     try {
-      for (int i = 0; i < 10; i++) {
+      for (int i = 1; i <= 10; i++) {
         Thread.sleep(1000);
         setProgress(((double) i) / 10);
       }
