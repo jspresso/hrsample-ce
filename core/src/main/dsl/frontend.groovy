@@ -49,6 +49,7 @@ action 'filterModuleStartup',
 actionMap('controllerActionMap') {
   actionList {
     action ref:'showRunningExecutorsAction'
+    action ref:'changePasswordAction'
   }
 }
 
