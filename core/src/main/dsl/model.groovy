@@ -145,8 +145,7 @@ Entity('Team',
       set 'teamMembers', ref:'Employee', reverse:'Employee-teams'
     }
 
-Entity('Preference', sqlName:'PREFERENCES') {
-  string_64 'id'
+Entity('Preferences') {
   string_2048 'preferenceValue';
   string_128 'preferencePath';
 }
