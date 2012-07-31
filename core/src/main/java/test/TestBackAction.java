@@ -21,7 +21,12 @@ package test;
 import java.util.Map;
 
 import org.jspresso.framework.action.IActionHandler;
+import org.jspresso.framework.application.backend.action.Asynchronous;
 import org.jspresso.framework.application.backend.action.BackendAction;
+import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
+import org.jspresso.hrsample.model.City;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
  * Test back action.
@@ -29,33 +34,30 @@ import org.jspresso.framework.application.backend.action.BackendAction;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
+@Asynchronous
 public class TestBackAction extends BackendAction {
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public boolean execute(IActionHandler actionHandler,
-      Map<String, Object> context) {
+  public boolean execute(IActionHandler actionHandler, Map<String, Object> context) {
     try {
       for (int i = 1; i <= 10; i++) {
         Thread.sleep(1000);
         setProgress(((double) i) / 10);
       }
-      // final HibernateBackendController bc = (HibernateBackendController)
-      // getController(context);
-      // bc.getTransactionTemplate().execute(new
-      // TransactionCallbackWithoutResult() {
-      //
-      // @Override
-      // protected void doInTransactionWithoutResult(@SuppressWarnings("unused")
-      // TransactionStatus status) {
-      // City test = bc.getEntityFactory().createEntityInstance(City.class);
-      // test.setName(Long.toString(System.currentTimeMillis()));
-      // test.setZip("12345");
-      // bc.registerForUpdate(test);
-      // }
-      // });
+      final HibernateBackendController bc = (HibernateBackendController) getController(context);
+      bc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+
+        @Override
+        protected void doInTransactionWithoutResult(@SuppressWarnings("unused") TransactionStatus status) {
+          City test = bc.getEntityFactory().createEntityInstance(City.class);
+          test.setName(Long.toString(System.currentTimeMillis()));
+          test.setZip("12345");
+          bc.registerForUpdate(test);
+        }
+      });
     } catch (InterruptedException ex) {
       ex.printStackTrace();
     }
