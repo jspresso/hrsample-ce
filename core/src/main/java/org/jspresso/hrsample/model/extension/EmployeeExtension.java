@@ -3,10 +3,6 @@
  */
 package org.jspresso.hrsample.model.extension;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import org.jspresso.framework.util.bean.IPropertyChangeCapable;
 import org.jspresso.hrsample.model.Employee;
 
 /**
@@ -27,18 +23,19 @@ public class EmployeeExtension extends EmployeeExtensionSimple {
    */
   public EmployeeExtension(Employee extendedEmployee) {
     super(extendedEmployee);
-    extendedEmployee.addPropertyChangeListener("birthDate",
-        new PropertyChangeListener() {
-
-          @Override
-          public void propertyChange(
-              @SuppressWarnings("unused") PropertyChangeEvent evt) {
-            Integer oldAge = age;
-            age = null;
-            getComponent().firePropertyChange("age", oldAge,
-                IPropertyChangeCapable.UNKNOWN);
-          }
-        });
+//    extendedEmployee.addPropertyChangeListener("birthDate",
+//        new PropertyChangeListener() {
+//
+//          @Override
+//          public void propertyChange(
+//              @SuppressWarnings("unused") PropertyChangeEvent evt) {
+//            Integer oldAge = age;
+//            age = null;
+//            getComponent().firePropertyChange("age", oldAge,
+//                IPropertyChangeCapable.UNKNOWN);
+//          }
+//        });
+    registerNotificationForwarding(extendedEmployee, Employee.BIRTH_DATE, Employee.AGE);
   }
 
   /**
