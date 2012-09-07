@@ -18,6 +18,7 @@
  */
 package org.jspresso.hrsample.backend;
 
+import static org.junit.Assert.assertSame;
 import static org.mockito.Matchers.argThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.never;
@@ -35,10 +36,14 @@ import org.hamcrest.Description;
 import org.jspresso.framework.application.backend.entity.ControllerAwareEntityInvocationHandler;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
+import org.jspresso.framework.model.component.ComponentException;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 import org.jspresso.hrsample.model.Employee;
+import org.jspresso.hrsample.model.Event;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
  * Model integration tests.
@@ -139,5 +144,36 @@ public class JspressoModelTests extends BackTestStartup {
       super.describeTo(description);
       description.appendText("[" + propertyName + "]");
     }
+  }
+
+  /**
+   * Tests adding twice the same entity to a list property. See bug 758.
+   */
+  @Test(expected = ComponentException.class)
+  public void testAddToListTwice() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
+        .forClass(Employee.class);
+    final Employee emp = hbc.findByCriteria(employeeCriteria,
+        EMergeMode.MERGE_KEEP, Employee.class).get(0);
+
+    Event evt = emp.getEvents().get(0);
+    emp.addToEvents(evt);
+    assertSame(emp.getEvents().get(0), evt);
+    assertSame(emp.getEvents().get(emp.getEvents().size() - 1), evt);
+
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(
+              @SuppressWarnings("unused") TransactionStatus status) {
+            hbc.cloneInUnitOfWork(emp);
+          }
+        });
+    hbc.reload(emp);
+    assertSame(emp.getEvents().get(0), evt);
+    assertSame(emp.getEvents().get(emp.getEvents().size() - 1), evt);
   }
 }

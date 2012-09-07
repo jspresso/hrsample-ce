@@ -40,7 +40,6 @@ import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
 import org.junit.Test;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
@@ -111,7 +110,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
   }
 
   /**
-   * Clone/merge of entity lists with holes.
+   * Clone/merge of entity lists with holes. See bug 757.
    */
   @Test
   public void testCloneEntityListWithHoles() {
@@ -128,29 +127,29 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
     events.add(hbc.getEntityFactory().createEntityInstance(Event.class));
     emp.setEvents(events);
 
-    hbc.getTransactionTemplate().execute(new TransactionCallback<Employee>() {
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
 
-      @Override
-      public Employee doInTransaction(
-          @SuppressWarnings("unused") TransactionStatus status) {
-        Employee clone = hbc.cloneInUnitOfWork(emp);
-        return clone;
-      }
-    });
+          @Override
+          protected void doInTransactionWithoutResult(
+              @SuppressWarnings("unused") TransactionStatus status) {
+            hbc.cloneInUnitOfWork(emp);
+          }
+        });
     emp.addToEvents(null);
-    hbc.getTransactionTemplate().execute(new TransactionCallback<Employee>() {
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
 
-      @Override
-      public Employee doInTransaction(
-          @SuppressWarnings("unused") TransactionStatus status) {
-        Employee clone = hbc.cloneInUnitOfWork(emp);
-        return clone;
-      }
-    });
+          @Override
+          protected void doInTransactionWithoutResult(
+              @SuppressWarnings("unused") TransactionStatus status) {
+            hbc.cloneInUnitOfWork(emp);
+          }
+        });
   }
 
   /**
-   * Clone/merge of component lists with holes.
+   * Clone/merge of component lists with holes. See bug 757.
    */
   @Test
   public void testCloneComponentListWithHoles() {
@@ -169,24 +168,24 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         ContactInfo.class));
     emp.setAlternativeContacts(alternativeContacts);
 
-    hbc.getTransactionTemplate().execute(new TransactionCallback<Employee>() {
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
 
-      @Override
-      public Employee doInTransaction(
-          @SuppressWarnings("unused") TransactionStatus status) {
-        Employee clone = hbc.cloneInUnitOfWork(emp);
-        return clone;
-      }
-    });
+          @Override
+          protected void doInTransactionWithoutResult(
+              @SuppressWarnings("unused") TransactionStatus status) {
+            hbc.cloneInUnitOfWork(emp);
+          }
+        });
     emp.addToAlternativeContacts(null);
-    hbc.getTransactionTemplate().execute(new TransactionCallback<Employee>() {
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
 
-      @Override
-      public Employee doInTransaction(
-          @SuppressWarnings("unused") TransactionStatus status) {
-        Employee clone = hbc.cloneInUnitOfWork(emp);
-        return clone;
-      }
-    });
+          @Override
+          protected void doInTransactionWithoutResult(
+              @SuppressWarnings("unused") TransactionStatus status) {
+            hbc.cloneInUnitOfWork(emp);
+          }
+        });
   }
 }
