@@ -73,6 +73,7 @@ Entity ('Employee',
       reference 'contact', ref:'ContactInfo', id:'contact'
       list 'events', composition:true, ref:'Event'
       set 'teams', ref:'Team'
+      list 'alternativeContacts', ref:'ContactInfo'
       reference 'company', ref:'Company', mandatory:true, reverse:'Company-employees'
       reference 'managedOu', ref:'OrganizationalUnit', reverse:'OrganizationalUnit-manager'
       integer 'age', minValue:0, maxValue:150, sqlName:'YEAR(BIRTH_DATE)', computed:true, cacheable:true

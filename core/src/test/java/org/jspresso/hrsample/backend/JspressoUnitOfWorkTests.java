@@ -23,6 +23,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,9 +34,13 @@ import org.jspresso.framework.application.backend.persistence.hibernate.Hibernat
 import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 import org.jspresso.hrsample.model.Company;
+import org.jspresso.hrsample.model.ContactInfo;
 import org.jspresso.hrsample.model.Department;
+import org.jspresso.hrsample.model.Employee;
+import org.jspresso.hrsample.model.Event;
 import org.junit.Test;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
@@ -103,5 +108,85 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
             }
           }
         });
+  }
+
+  /**
+   * Clone/merge of entity lists with holes.
+   */
+  @Test
+  public void testCloneEntityListWithHoles() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
+        .forClass(Employee.class);
+    final Employee emp = hbc.findByCriteria(employeeCriteria,
+        EMergeMode.MERGE_KEEP, Employee.class).get(0);
+
+    List<Event> events = new ArrayList<Event>();
+    events.add(hbc.getEntityFactory().createEntityInstance(Event.class));
+    events.add(null);
+    events.add(hbc.getEntityFactory().createEntityInstance(Event.class));
+    emp.setEvents(events);
+
+    hbc.getTransactionTemplate().execute(new TransactionCallback<Employee>() {
+
+      @Override
+      public Employee doInTransaction(
+          @SuppressWarnings("unused") TransactionStatus status) {
+        Employee clone = hbc.cloneInUnitOfWork(emp);
+        return clone;
+      }
+    });
+    emp.addToEvents(null);
+    hbc.getTransactionTemplate().execute(new TransactionCallback<Employee>() {
+
+      @Override
+      public Employee doInTransaction(
+          @SuppressWarnings("unused") TransactionStatus status) {
+        Employee clone = hbc.cloneInUnitOfWork(emp);
+        return clone;
+      }
+    });
+  }
+
+  /**
+   * Clone/merge of component lists with holes.
+   */
+  @Test
+  public void testCloneComponentListWithHoles() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
+        .forClass(Employee.class);
+    final Employee emp = hbc.findByCriteria(employeeCriteria,
+        EMergeMode.MERGE_KEEP, Employee.class).get(0);
+
+    List<ContactInfo> alternativeContacts = new ArrayList<ContactInfo>();
+    alternativeContacts.add(hbc.getEntityFactory().createComponentInstance(
+        ContactInfo.class));
+    alternativeContacts.add(null);
+    alternativeContacts.add(hbc.getEntityFactory().createComponentInstance(
+        ContactInfo.class));
+    emp.setAlternativeContacts(alternativeContacts);
+
+    hbc.getTransactionTemplate().execute(new TransactionCallback<Employee>() {
+
+      @Override
+      public Employee doInTransaction(
+          @SuppressWarnings("unused") TransactionStatus status) {
+        Employee clone = hbc.cloneInUnitOfWork(emp);
+        return clone;
+      }
+    });
+    emp.addToAlternativeContacts(null);
+    hbc.getTransactionTemplate().execute(new TransactionCallback<Employee>() {
+
+      @Override
+      public Employee doInTransaction(
+          @SuppressWarnings("unused") TransactionStatus status) {
+        Employee clone = hbc.cloneInUnitOfWork(emp);
+        return clone;
+      }
+    });
   }
 }
