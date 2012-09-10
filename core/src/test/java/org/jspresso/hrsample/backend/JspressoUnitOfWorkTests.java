@@ -136,7 +136,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
             hbc.cloneInUnitOfWork(emp);
           }
         });
-    emp.addToEvents(null);
+    emp.addToEvents(hbc.getEntityFactory().createEntityInstance(Event.class));
     hbc.getTransactionTemplate().execute(
         new TransactionCallbackWithoutResult() {
 
@@ -177,7 +177,8 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
             hbc.cloneInUnitOfWork(emp);
           }
         });
-    emp.addToAlternativeContacts(null);
+    emp.addToAlternativeContacts(hbc.getEntityFactory().createComponentInstance(
+        ContactInfo.class));
     hbc.getTransactionTemplate().execute(
         new TransactionCallbackWithoutResult() {
 
