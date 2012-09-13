@@ -4,9 +4,9 @@
 package org.jspresso.hrsample.model.extension;
 
 import org.jspresso.framework.model.component.AbstractComponentExtension;
-
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
+import org.jspresso.hrsample.model.Nameable;
 import org.jspresso.hrsample.model.OrganizationalUnit;
 import org.jspresso.hrsample.model.Team;
 
@@ -23,10 +23,14 @@ public class OrganizationalUnitExtension extends
    * Constructs a new <code>OrganizationalUnitExtension</code> instance.
    * 
    * @param organizationalUnit
-   *            The extended OrganizationalUnit instance.
+   *          The extended OrganizationalUnit instance.
    */
   public OrganizationalUnitExtension(OrganizationalUnit organizationalUnit) {
     super(organizationalUnit);
+    registerNotificationForwarding(organizationalUnit,
+        OrganizationalUnit.OU_ID, OrganizationalUnit.HTML_DESCRIPTION);
+    registerNotificationForwarding(organizationalUnit,
+        Nameable.NAME, OrganizationalUnit.HTML_DESCRIPTION);
   }
 
   /**
@@ -53,6 +57,7 @@ public class OrganizationalUnitExtension extends
    * @return the HTML representation of an organisational unit.
    */
   public String getHtmlDescription() {
-    return "<html><b><i>" + getComponent().getName() + "</i></b><br>" + getComponent().getOuId() + "</html>";
+    return "<html><b><i>" + getComponent().getName() + "</i></b><br>"
+        + getComponent().getOuId() + "</html>";
   }
 }
