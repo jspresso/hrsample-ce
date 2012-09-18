@@ -67,8 +67,8 @@ public class JspressoModelTests extends BackTestStartup {
       hbc.setThrowExceptionOnBadUsage(false);
       EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
           .forClass(Employee.class);
-      Employee employee = hbc.findByCriteria(employeeCriteria,
-          EMergeMode.MERGE_KEEP, Employee.class).get(0);
+      Employee employee = hbc.findFirstByCriteria(employeeCriteria,
+          EMergeMode.MERGE_KEEP, Employee.class);
       ControllerAwareEntityInvocationHandler handlerSpy = (ControllerAwareEntityInvocationHandler) spy(Proxy
           .getInvocationHandler(employee));
       Employee employeeMock = (Employee) Proxy.newProxyInstance(getClass()
@@ -155,8 +155,8 @@ public class JspressoModelTests extends BackTestStartup {
 
     EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
         .forClass(Employee.class);
-    final Employee emp = hbc.findByCriteria(employeeCriteria,
-        EMergeMode.MERGE_KEEP, Employee.class).get(0);
+    final Employee emp = hbc.findFirstByCriteria(employeeCriteria,
+        EMergeMode.MERGE_KEEP, Employee.class);
 
     Event evt = emp.getEvents().get(0);
     emp.addToEvents(evt);

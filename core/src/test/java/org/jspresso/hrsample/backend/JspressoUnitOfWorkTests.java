@@ -118,8 +118,8 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
     EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
         .forClass(Employee.class);
-    final Employee emp = hbc.findByCriteria(employeeCriteria,
-        EMergeMode.MERGE_KEEP, Employee.class).get(0);
+    final Employee emp = hbc.findFirstByCriteria(employeeCriteria,
+        EMergeMode.MERGE_KEEP, Employee.class);
 
     List<Event> events = new ArrayList<Event>();
     events.add(hbc.getEntityFactory().createEntityInstance(Event.class));
@@ -157,8 +157,8 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
     EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
         .forClass(Employee.class);
-    final Employee emp = hbc.findByCriteria(employeeCriteria,
-        EMergeMode.MERGE_KEEP, Employee.class).get(0);
+    final Employee emp = hbc.findFirstByCriteria(employeeCriteria,
+        EMergeMode.MERGE_KEEP, Employee.class);
 
     List<ContactInfo> alternativeContacts = new ArrayList<ContactInfo>();
     alternativeContacts.add(hbc.getEntityFactory().createComponentInstance(
@@ -177,8 +177,8 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
             hbc.cloneInUnitOfWork(emp);
           }
         });
-    emp.addToAlternativeContacts(hbc.getEntityFactory().createComponentInstance(
-        ContactInfo.class));
+    emp.addToAlternativeContacts(hbc.getEntityFactory()
+        .createComponentInstance(ContactInfo.class));
     hbc.getTransactionTemplate().execute(
         new TransactionCallbackWithoutResult() {
 
