@@ -28,7 +28,7 @@ public class EmployeeExtension extends EmployeeExtensionSimple {
 //
 //          @Override
 //          public void propertyChange(
-//              @SuppressWarnings("unused") PropertyChangeEvent evt) {
+//               PropertyChangeEvent evt) {
 //            Integer oldAge = age;
 //            age = null;
 //            getComponent().firePropertyChange("age", oldAge,

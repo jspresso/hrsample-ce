@@ -51,7 +51,7 @@ public class TestBackAction extends BackendAction {
       bc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
         @Override
-        protected void doInTransactionWithoutResult(@SuppressWarnings("unused") TransactionStatus status) {
+        protected void doInTransactionWithoutResult(TransactionStatus status) {
           City test = bc.getEntityFactory().createEntityInstance(City.class);
           test.setName(Long.toString(System.currentTimeMillis()));
           test.setZip("12345");

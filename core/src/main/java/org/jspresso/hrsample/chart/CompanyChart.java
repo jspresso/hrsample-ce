@@ -40,7 +40,7 @@ public class CompanyChart extends AbstractChartDescriptor {
    */
   @Override
   public String getData(Object model,
-      @SuppressWarnings("unused") Connection jdbcConnection,
+      Connection jdbcConnection,
       ITranslationProvider translationProvider, Locale locale) {
     Company company = (Company) model;
     StringBuffer chartData = new StringBuffer("<graph caption='"

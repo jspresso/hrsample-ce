@@ -44,6 +44,7 @@ public class JspressoActionSanitizationTests extends FrontTestStartup {
 
     FrontendAction badAction = new FrontendAction() {
 
+      
       @SuppressWarnings("unused")
       private String state = "initial";
 

@@ -23,7 +23,6 @@ public class EmployeeLifecycleInterceptor extends
    * {@inheritDoc}
    */
   @Override
-  @SuppressWarnings("unused")
   public boolean onPersist(Employee employee, IEntityFactory entityFactory,
       UserPrincipal principal, IEntityLifecycleHandler entityLifecycleHandler) {
     Event event = entityFactory.createEntityInstance(Event.class);
@@ -37,7 +36,6 @@ public class EmployeeLifecycleInterceptor extends
    * {@inheritDoc}
    */
   @Override
-  @SuppressWarnings("unused")
   public boolean onUpdate(Employee employee, IEntityFactory entityFactory,
       UserPrincipal principal, IEntityLifecycleHandler entityLifecycleHandler) {
     // List<Event> events = employee.getEvents();

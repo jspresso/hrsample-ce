@@ -74,8 +74,7 @@ public class FrontTestStartup extends RemoteStartup {
     bc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
       @Override
-      protected void doInTransactionWithoutResult(@SuppressWarnings("unused")
-      TransactionStatus status) {
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
         DetachedCriteria crit = EnhancedDetachedCriteria
             .forClass(Company.class);
         for (Company company : bc.findByCriteria(crit, null, Company.class)) {

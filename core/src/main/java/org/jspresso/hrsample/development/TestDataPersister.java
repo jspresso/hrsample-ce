@@ -99,6 +99,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
             "17/03/1971", "12/06/2003", "2256725396", false, "0xFFAA1133",
             "100000", design2see);
 
+        
         @SuppressWarnings("unused")
         Employee frankWurst = createEmployee("M", "Wurst", "Frank", null,
             "120 rue des Pétoncles", evry, "frank.wurst@design2see.com",

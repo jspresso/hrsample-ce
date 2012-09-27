@@ -76,7 +76,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
           @Override
           protected void doInTransactionWithoutResult(
-              @SuppressWarnings("unused") TransactionStatus status) {
+              TransactionStatus status) {
             // Clone the company
             Company companyClone = hbc.cloneInUnitOfWork(company);
             // Check that the departments property is not initialized
@@ -132,7 +132,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
           @Override
           protected void doInTransactionWithoutResult(
-              @SuppressWarnings("unused") TransactionStatus status) {
+              TransactionStatus status) {
             hbc.cloneInUnitOfWork(emp);
           }
         });
@@ -142,7 +142,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
           @Override
           protected void doInTransactionWithoutResult(
-              @SuppressWarnings("unused") TransactionStatus status) {
+              TransactionStatus status) {
             hbc.cloneInUnitOfWork(emp);
           }
         });
@@ -173,7 +173,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
           @Override
           protected void doInTransactionWithoutResult(
-              @SuppressWarnings("unused") TransactionStatus status) {
+              TransactionStatus status) {
             hbc.cloneInUnitOfWork(emp);
           }
         });
@@ -184,7 +184,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
           @Override
           protected void doInTransactionWithoutResult(
-              @SuppressWarnings("unused") TransactionStatus status) {
+              TransactionStatus status) {
             hbc.cloneInUnitOfWork(emp);
           }
         });

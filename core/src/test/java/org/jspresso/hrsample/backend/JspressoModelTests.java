@@ -90,7 +90,7 @@ public class JspressoModelTests extends BackTestStartup {
 
         @Override
         public void propertyChange(
-            @SuppressWarnings("unused") PropertyChangeEvent evt) {
+            PropertyChangeEvent evt) {
           // NO-OP
         }
       };
@@ -168,7 +168,7 @@ public class JspressoModelTests extends BackTestStartup {
 
           @Override
           protected void doInTransactionWithoutResult(
-              @SuppressWarnings("unused") TransactionStatus status) {
+              TransactionStatus status) {
             hbc.cloneInUnitOfWork(emp);
           }
         });

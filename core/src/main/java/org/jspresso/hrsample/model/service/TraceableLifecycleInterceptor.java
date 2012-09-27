@@ -27,7 +27,6 @@ public class TraceableLifecycleInterceptor extends
    * {@inheritDoc}
    */
   @Override
-  @SuppressWarnings("unused")
   public boolean onPersist(Traceable traceable, IEntityFactory entityFactory,
       UserPrincipal principal, IEntityLifecycleHandler entityLifecycleHandler) {
     traceable.setCreateTimestamp(new Date());
@@ -40,7 +39,6 @@ public class TraceableLifecycleInterceptor extends
    * {@inheritDoc}
    */
   @Override
-  @SuppressWarnings("unused")
   public boolean onUpdate(Traceable traceable, IEntityFactory entityFactory,
       UserPrincipal principal, IEntityLifecycleHandler entityLifecycleHandler) {
     traceable.setLastUpdateTimestamp(new Date());

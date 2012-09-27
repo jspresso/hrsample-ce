@@ -35,8 +35,7 @@ public class EmployeeCardSelector implements ICardNameSelector {
    * {@inheritDoc}
    */
   @Override
-  public String getCardNameForModel(Object model, @SuppressWarnings("unused")
-  Subject subject) {
+  public String getCardNameForModel(Object model, Subject subject) {
     if (model == null) {
       return null;
     } else if (((Employee) model).isMarried()) {
