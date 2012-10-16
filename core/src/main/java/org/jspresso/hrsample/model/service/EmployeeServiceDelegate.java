@@ -31,7 +31,7 @@ public class EmployeeServiceDelegate implements IComponentService {
    */
   public Integer computeAge(Employee employee, Date birthDate) {
     if (birthDate != null) {
-      return new Integer(
+      return Integer.valueOf(
           (int) ((new Date().getTime() - birthDate.getTime()) / (1000L * 60 * 60 * 24 * 365)));
     }
     return null;

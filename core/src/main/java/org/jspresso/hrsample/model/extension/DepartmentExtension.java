@@ -65,7 +65,7 @@ public class DepartmentExtension extends AbstractComponentExtension<Department> 
     Set<Team> teams = (Set<Team>) getComponent().straightGetProperty(
         Department.TEAMS);
     if (teams != null && Hibernate.isInitialized(teams)) {
-      return new Integer(teams.size());
+      return Integer.valueOf(teams.size());
     }
     return (Integer) getComponent().straightGetProperty(Department.TEAM_COUNT);
   }
