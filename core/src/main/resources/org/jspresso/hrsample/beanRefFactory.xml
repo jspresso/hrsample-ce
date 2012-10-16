@@ -73,6 +73,7 @@
         <value>org/jspresso/hrsample/frontend/dsl-frontend.xml</value>
         <value>org/jspresso/hrsample/frontend/frontend.xml</value>
         <value>org/jspresso/hrsample/core-config.xml</value>
+        <value>org/jspresso/hrsample/config.xml</value>
       </list>
     </constructor-arg>
   </bean>
@@ -95,6 +96,7 @@
         <value>org/jspresso/hrsample/view/view.xml</value>
         <value>org/jspresso/hrsample/frontend/dsl-frontend.xml</value>
         <value>org/jspresso/hrsample/frontend/frontend.xml</value>
+        <value>org/jspresso/hrsample/core-config.xml</value>
         <value>org/jspresso/hrsample/config.xml</value>
       </list>
     </constructor-arg>
