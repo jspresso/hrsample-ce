@@ -18,9 +18,7 @@
  */
 package org.jspresso.hrsample.backend;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,8 +28,11 @@ import java.util.Map;
 import java.util.Set;
 
 import org.hibernate.Hibernate;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
+import org.jspresso.framework.model.entity.IEntity;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.ContactInfo;
@@ -39,8 +40,11 @@ import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
 import org.junit.Test;
+import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+import org.springframework.transaction.support.TransactionTemplate;
 
 /**
  * Unit Of Work management integration tests.
@@ -75,8 +79,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         new TransactionCallbackWithoutResult() {
 
           @Override
-          protected void doInTransactionWithoutResult(
-              TransactionStatus status) {
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
             // Clone the company
             Company companyClone = hbc.cloneInUnitOfWork(company);
             // Check that the departments property is not initialized
@@ -131,8 +134,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         new TransactionCallbackWithoutResult() {
 
           @Override
-          protected void doInTransactionWithoutResult(
-              TransactionStatus status) {
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
             hbc.cloneInUnitOfWork(emp);
           }
         });
@@ -141,8 +143,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         new TransactionCallbackWithoutResult() {
 
           @Override
-          protected void doInTransactionWithoutResult(
-              TransactionStatus status) {
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
             hbc.cloneInUnitOfWork(emp);
           }
         });
@@ -172,8 +173,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         new TransactionCallbackWithoutResult() {
 
           @Override
-          protected void doInTransactionWithoutResult(
-              TransactionStatus status) {
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
             hbc.cloneInUnitOfWork(emp);
           }
         });
@@ -183,10 +183,86 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         new TransactionCallbackWithoutResult() {
 
           @Override
-          protected void doInTransactionWithoutResult(
-              TransactionStatus status) {
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
             hbc.cloneInUnitOfWork(emp);
           }
         });
+  }
+
+  /**
+   * Tests the use of nested transactions.
+   */
+  @Test
+  public void testNestedTransactions() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    final TransactionTemplate tt = hbc.getTransactionTemplate();
+
+    Serializable empId = tt.execute(new TransactionCallback<Serializable>() {
+
+      @Override
+      public Serializable doInTransaction(TransactionStatus status) {
+        TransactionTemplate nestedTT = new TransactionTemplate(tt
+            .getTransactionManager());
+        nestedTT
+            .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+        Serializable id = nestedTT
+            .execute(new TransactionCallback<Serializable>() {
+
+              @Override
+              public Serializable doInTransaction(TransactionStatus nestedStatus) {
+                DetachedCriteria empCrit = DetachedCriteria
+                    .forClass(Employee.class);
+                Employee emp = (Employee) empCrit
+                    .getExecutableCriteria(hbc.getHibernateSession()).list()
+                    .iterator().next();
+                emp.setFirstName("Committed");
+                return emp.getId();
+              }
+            });
+        // forces rollback of outer TX.
+        status.setRollbackOnly();
+        return id;
+      }
+    });
+    DetachedCriteria empById = DetachedCriteria.forClass(Employee.class);
+    empById.add(Restrictions.eq(IEntity.ID, empId));
+    Employee emp = hbc.findFirstByCriteria(empById,
+        EMergeMode.MERGE_CLEAN_EAGER, Employee.class);
+    assertTrue("Inner transaction should have been committed",
+        "Committed".equals(emp.getFirstName()));
+
+    Serializable emp2Id = tt.execute(new TransactionCallback<Serializable>() {
+
+      @Override
+      public Serializable doInTransaction(TransactionStatus status) {
+        TransactionTemplate nestedTT = new TransactionTemplate(tt
+            .getTransactionManager());
+        nestedTT
+            .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+        Serializable id = nestedTT
+            .execute(new TransactionCallback<Serializable>() {
+
+              @Override
+              public Serializable doInTransaction(TransactionStatus nestedStatus) {
+                DetachedCriteria empCrit = DetachedCriteria
+                    .forClass(Employee.class);
+                Employee emp2 = (Employee) empCrit
+                    .getExecutableCriteria(hbc.getHibernateSession()).list()
+                    .iterator().next();
+                emp2.setFirstName("Rollbacked");
+                return emp2.getId();
+              }
+            });
+        // forces rollback of outer TX.
+        status.setRollbackOnly();
+        return id;
+      }
+    });
+    DetachedCriteria emp2ById = DetachedCriteria.forClass(Employee.class);
+    emp2ById.add(Restrictions.eq(IEntity.ID, emp2Id));
+    Employee emp2 = hbc.findFirstByCriteria(empById,
+        EMergeMode.MERGE_CLEAN_EAGER, Employee.class);
+    assertFalse("Inner transaction should have been rollbacked",
+        "Rollbacked".equals(emp2.getFirstName()));
   }
 }
