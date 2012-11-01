@@ -30,10 +30,12 @@ import java.util.Set;
 import org.hibernate.Hibernate;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.jspresso.framework.application.backend.ControllerAwareTransactionTemplate;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.model.entity.IEntity;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
+import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.ContactInfo;
 import org.jspresso.hrsample.model.Department;
@@ -264,5 +266,28 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         EMergeMode.MERGE_CLEAN_EAGER, Employee.class);
     assertFalse("Inner transaction should have been rollbacked",
         "Rollbacked".equals(emp2.getFirstName()));
+
+    tt.execute(new TransactionCallbackWithoutResult() {
+
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        City newCity = hbc.getEntityFactory().createEntityInstance(City.class);
+        newCity.setName("Test City");
+
+        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(
+            tt.getTransactionManager());
+        nestedTT
+            .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+        String testZip = nestedTT.execute(new TransactionCallback<String>() {
+
+          @Override
+          public String doInTransaction(TransactionStatus nestedStatus) {
+            return "12345";
+          }
+        });
+        newCity.setZip(testZip);
+        hbc.registerForUpdate(newCity);
+      }
+    });
   }
 }
