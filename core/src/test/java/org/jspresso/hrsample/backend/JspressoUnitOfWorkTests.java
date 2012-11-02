@@ -203,7 +203,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
       @Override
       public Serializable doInTransaction(TransactionStatus status) {
-        TransactionTemplate nestedTT = new TransactionTemplate(tt
+        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(tt
             .getTransactionManager());
         nestedTT
             .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
@@ -237,7 +237,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
       @Override
       public Serializable doInTransaction(TransactionStatus status) {
-        TransactionTemplate nestedTT = new TransactionTemplate(tt
+        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(tt
             .getTransactionManager());
         nestedTT
             .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
