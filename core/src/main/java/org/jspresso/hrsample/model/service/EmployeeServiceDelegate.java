@@ -17,7 +17,7 @@ import org.jspresso.hrsample.model.Employee;
  * @author Vincent Vandenschrick
  */
 public class EmployeeServiceDelegate extends
-    AbstractComponentServiceDelegate<Employee> implements EmployeeService, IComponentService {
+    AbstractComponentServiceDelegate<Employee> implements EmployeeService {
 
   private ITranslationProvider translationProvider;
 
