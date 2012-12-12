@@ -59,7 +59,6 @@ public class DepartmentExtension extends AbstractComponentExtension<Department> 
    *         properties that have been hydrated by the SQL formula or counting
    *         the teams in the set.
    */
-  @SuppressWarnings("unchecked")
   public Integer getTeamCount() {
     // to avoid initialization of optimized proxy.
     Set<Team> teams = (Set<Team>) getComponent().straightGetProperty(

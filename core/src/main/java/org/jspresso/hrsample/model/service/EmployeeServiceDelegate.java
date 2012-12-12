@@ -6,7 +6,6 @@ package org.jspresso.hrsample.model.service;
 import java.util.Date;
 
 import org.jspresso.framework.model.component.service.AbstractComponentServiceDelegate;
-import org.jspresso.framework.model.component.service.IComponentService;
 import org.jspresso.framework.util.i18n.ITranslationProvider;
 import org.jspresso.hrsample.model.Employee;
 
