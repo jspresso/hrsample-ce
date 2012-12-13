@@ -7,7 +7,7 @@
 <stringAttribute key="COMPILER_TECHNOLOGY" value="Flex SDK"/>
 <booleanAttribute key="DISABLE_COMPILE_PROCESS" value="false"/>
 <booleanAttribute key="KILL_PREVIOUS_VIEWER" value="true"/>
-<stringAttribute key="LAUNCHER_DEPENDENCIES" value="jspresso-flex&#10;[Self]"/>
+<stringAttribute key="LAUNCHER_DEPENDENCIES" value="[Self]"/>
 <stringAttribute key="MAIN_CLASS" value="src/main/flex/FlexApplicationStartup.mxml"/>
 <stringAttribute key="MOBILE_PRESET" value=""/>
 <stringAttribute key="OUTPUT" value="target/flex/FlexApplicationStartup.swf"/>
