@@ -31,13 +31,17 @@ import java.beans.PropertyChangeListener;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Date;
+import java.util.List;
 
 import org.hamcrest.Description;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.jspresso.framework.application.backend.entity.ControllerAwareEntityInvocationHandler;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.model.component.ComponentException;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
+import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
 import org.junit.Test;
@@ -175,5 +179,21 @@ public class JspressoModelTests extends BackTestStartup {
     hbc.reload(emp);
     assertSame(emp.getEvents().get(0), evt);
     assertSame(emp.getEvents().get(emp.getEvents().size() - 1), evt);
+  }
+  
+  /**
+   * Tests 1st level cache.
+   */
+  @Test
+  public void testCache() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    Session hibernateSession = hbc.getHibernateSession();
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(City.class);
+    List<City> cities = hbc.findByCriteria(crit, EMergeMode.MERGE_KEEP, City.class);
+    crit.add(Restrictions.idEq(cities.get(0).getId()));
+    //City firstCity = hbc.findByCriteria(crit, EMergeMode.MERGE_KEEP, City.class).get(0);
+    //City firstCity = (City) crit.getExecutableCriteria(hibernateSession).list().get(0);
+    City firstCity = (City) hibernateSession.get(City.class, cities.get(0).getId());
+    assertSame(cities.get(0), firstCity);
   }
 }
