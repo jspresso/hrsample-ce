@@ -42,11 +42,14 @@ import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.model.component.ComponentException;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 import org.jspresso.hrsample.model.City;
+import org.jspresso.hrsample.model.Company;
+import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
@@ -93,8 +96,7 @@ public class JspressoModelTests extends BackTestStartup {
       PropertyChangeListener fakeListener = new PropertyChangeListener() {
 
         @Override
-        public void propertyChange(
-            PropertyChangeEvent evt) {
+        public void propertyChange(PropertyChangeEvent evt) {
           // NO-OP
         }
       };
@@ -171,8 +173,7 @@ public class JspressoModelTests extends BackTestStartup {
         new TransactionCallbackWithoutResult() {
 
           @Override
-          protected void doInTransactionWithoutResult(
-              TransactionStatus status) {
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
             hbc.cloneInUnitOfWork(emp);
           }
         });
@@ -180,7 +181,7 @@ public class JspressoModelTests extends BackTestStartup {
     assertSame(emp.getEvents().get(0), evt);
     assertSame(emp.getEvents().get(emp.getEvents().size() - 1), evt);
   }
-  
+
   /**
    * Tests 1st level cache.
    */
@@ -188,12 +189,75 @@ public class JspressoModelTests extends BackTestStartup {
   public void testCache() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
     Session hibernateSession = hbc.getHibernateSession();
-    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(City.class);
-    List<City> cities = hbc.findByCriteria(crit, EMergeMode.MERGE_KEEP, City.class);
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
+        .forClass(City.class);
+    List<City> cities = hbc.findByCriteria(crit, EMergeMode.MERGE_KEEP,
+        City.class);
     crit.add(Restrictions.idEq(cities.get(0).getId()));
-    //City firstCity = hbc.findByCriteria(crit, EMergeMode.MERGE_KEEP, City.class).get(0);
-    //City firstCity = (City) crit.getExecutableCriteria(hibernateSession).list().get(0);
-    City firstCity = (City) hibernateSession.get(City.class, cities.get(0).getId());
+    // City firstCity = hbc.findByCriteria(crit, EMergeMode.MERGE_KEEP,
+    // City.class).get(0);
+    // City firstCity = (City)
+    // crit.getExecutableCriteria(hibernateSession).list().get(0);
+    City firstCity = (City) hibernateSession.get(City.class, cities.get(0)
+        .getId());
     assertSame(cities.get(0), firstCity);
+  }
+
+  /**
+   * Tests EAGER uninitialized merge on null value.
+   */
+  @Test
+  public void testUninitializedMerge() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
+        .forClass(Department.class);
+    final Department d1 = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY,
+        Department.class);
+    // d1.getCompany().getName();
+    d1.straightSetProperty("company", null);
+
+    EnhancedDetachedCriteria crit2 = EnhancedDetachedCriteria
+        .forClass(Company.class);
+    Company c = hbc.findFirstByCriteria(crit2, EMergeMode.MERGE_KEEP,
+        Company.class);
+
+    // final HibernateBackendController hbc2 = (HibernateBackendController)
+    // getApplicationContext()
+    // .getBean("backendControllerFactory", IBackendControllerFactory.class)
+    // .createBackendController();
+    // try {
+    // BackendControllerHolder.setSessionBackendController(hbc2);
+    // hbc2.getTransactionTemplate().execute(new
+    // TransactionCallbackWithoutResult() {
+    //
+    // @Override
+    // protected void doInTransactionWithoutResult(TransactionStatus status) {
+    // Department d1Clone = hbc2.cloneInUnitOfWork(d1);
+    // d1Clone.setName("test");
+    // d1Clone.getCompany().setName("test");
+    // }
+    // });
+    // } finally {
+    // hbc2.cleanupRequestResources();
+    // BackendControllerHolder.setSessionBackendController(hbc);
+    // }
+
+    Department d2 = hbc.getTransactionTemplate().execute(
+        new TransactionCallback<Department>() {
+
+          @Override
+          public Department doInTransaction(TransactionStatus status) {
+            Department d = (Department) hbc.getHibernateSession().get(
+                Department.class, d1.getId());
+            // d.getCompany().setName("test2");
+            status.setRollbackOnly();
+            return d;
+          }
+        });
+    d2 = hbc.merge(d2, EMergeMode.MERGE_EAGER);
+    // crit.add(Restrictions.idEq(d1.getId()));
+    // Department d2 = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_EAGER,
+    // Department.class);
+    assertSame(d1, d2);
   }
 }
