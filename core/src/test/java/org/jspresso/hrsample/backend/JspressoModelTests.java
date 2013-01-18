@@ -40,6 +40,7 @@ import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.model.component.ComponentException;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 import org.jspresso.hrsample.model.City;
+import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
@@ -219,5 +220,32 @@ public class JspressoModelTests extends BackTestStartup {
         });
     d2 = hbc.merge(d2, EMergeMode.MERGE_EAGER);
     assertSame(d1, d2);
+  }
+
+  /**
+   * Component backref initialization.
+   */
+  @Test
+  public void testComponentBackRef() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    Company c = hbc.getEntityFactory().createEntityInstance(Company.class);
+    assertSame(c, c.getContact().getOwningComponent());
+
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
+        .forClass(Department.class);
+    final Department d = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY,
+        Department.class);
+    assertSame(d, d.getContact().getOwningComponent());
+
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
+            Department dClone = hbc.cloneInUnitOfWork(d);
+            assertSame(dClone, dClone.getContact().getOwningComponent());
+            status.setRollbackOnly();
+          }
+        });
   }
 }
