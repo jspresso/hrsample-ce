@@ -18,6 +18,7 @@
  */
 package org.jspresso.hrsample.backend;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.mockito.Matchers.argThat;
 import static org.mockito.Matchers.eq;
@@ -34,11 +35,13 @@ import java.util.Date;
 import java.util.List;
 
 import org.hamcrest.Description;
+import org.hibernate.SQLQuery;
 import org.jspresso.framework.application.backend.entity.ControllerAwareEntityInvocationHandler;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.model.component.ComponentException;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
+import org.jspresso.framework.util.uid.ByteArray;
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
@@ -247,5 +250,27 @@ public class JspressoModelTests extends BackTestStartup {
             status.setRollbackOnly();
           }
         });
+  }
+
+  /**
+   * Creates a SQL select and use ID.
+   */
+  @Test
+  public void testSelectById() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
+        .forClass(Department.class);
+    final Department d = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY,
+        Department.class);
+
+    SQLQuery query = hbc.getHibernateSession().createSQLQuery(
+        "UPDATE ORGANIZATIONAL_UNIT SET NAME = 'Test' WHERE ID = :ID_PARAM");
+    Object depId = d.getId();
+    if (depId instanceof ByteArray) {
+      depId = ((ByteArray) depId).getBytes();
+    }
+    query.setParameter("ID_PARAM", depId);
+    assertEquals(1, query.executeUpdate());
   }
 }
