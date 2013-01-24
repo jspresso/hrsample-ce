@@ -18,7 +18,10 @@
  */
 package org.jspresso.hrsample.backend;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,6 +33,7 @@ import java.util.Set;
 import org.hibernate.Hibernate;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.jspresso.framework.application.backend.BackendException;
 import org.jspresso.framework.application.backend.ControllerAwareTransactionTemplate;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
@@ -203,8 +207,8 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
       @Override
       public Serializable doInTransaction(TransactionStatus status) {
-        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(tt
-            .getTransactionManager());
+        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(
+            tt.getTransactionManager());
         nestedTT
             .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
         Serializable id = nestedTT
@@ -237,8 +241,8 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
       @Override
       public Serializable doInTransaction(TransactionStatus status) {
-        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(tt
-            .getTransactionManager());
+        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(
+            tt.getTransactionManager());
         nestedTT
             .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
         Serializable id = nestedTT
@@ -289,5 +293,33 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         hbc.registerForUpdate(newCity);
       }
     });
+  }
+
+  /**
+   * Tests sanity check on linked components. See bug #846.
+   */
+  @Test(expected = BackendException.class)
+  public void testSanityChecksOnComponents() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    final TransactionTemplate tt = hbc.getTransactionTemplate();
+
+    Employee emp = tt.execute(new TransactionCallback<Employee>() {
+
+      /**
+       * {@inheritDoc}
+       */
+      @Override
+      public Employee doInTransaction(TransactionStatus status) {
+        DetachedCriteria empCrit = DetachedCriteria.forClass(Employee.class);
+        return (Employee) empCrit
+            .getExecutableCriteria(hbc.getHibernateSession()).list().iterator()
+            .next();
+      }
+    });
+    // From here, any modification on employee should result in an exception
+    // since this instance of employee is not merged in session.
+    // The exception should also occur on component (contact) properties
+    // modification.
+    emp.getContact().setAddress("test");
   }
 }
