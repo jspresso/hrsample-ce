@@ -176,8 +176,10 @@ table('Employee-events.table',
     selectionMode:'SINGLE_INTERVAL_CUMULATIVE_SELECTION') {
       actionMap(parents:['masterDetailActionMap']) {
         actionList('ORGANIZE') {
+          action ref:'moveBottomFrontAction'
           action ref:'moveDownFrontAction'
           action ref:'moveUpFrontAction'
+          action ref:'moveTopFrontAction'
         }
       }
     }
