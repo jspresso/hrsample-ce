@@ -43,7 +43,7 @@ public class CompanyChart extends AbstractChartDescriptor {
       Connection jdbcConnection,
       ITranslationProvider translationProvider, Locale locale) {
     Company company = (Company) model;
-    StringBuffer chartData = new StringBuffer("<graph caption='"
+    StringBuilder chartData = new StringBuilder("<graph caption='"
         + translationProvider.getTranslation(getTitle(), locale)
         + "' xAxisName='"
         + translationProvider.getTranslation(Employee.class.getName(), locale)

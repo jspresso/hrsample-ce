@@ -54,7 +54,7 @@ public class EmployeeExtensionSimple extends
    * @return the concatenation of last name and first name.
    */
   public String getFullName() {
-    StringBuffer buff = new StringBuffer();
+    StringBuilder buff = new StringBuilder();
     if (getComponent().getName() != null) {
       buff.append(getComponent().getName());
       if (getComponent().getFirstName() != null) {

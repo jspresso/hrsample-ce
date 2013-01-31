@@ -60,7 +60,7 @@ public class EmployeePropertyProcessors {
     @Override
     public String interceptSetter(Employee employee, String newFirstName) {
       if (newFirstName != null && newFirstName.length() > 0) {
-        StringBuffer formattedName = new StringBuffer();
+        StringBuilder formattedName = new StringBuilder();
         formattedName.append(newFirstName.substring(0, 1).toUpperCase());
         formattedName.append(newFirstName.substring(1).toLowerCase());
         return formattedName.toString();
