@@ -8,5 +8,4 @@ encoding//src/test/resources=UTF-8
 encoding//target/generated-resources/dsl=UTF-8
 encoding//target/generated-resources/jasperreports=UTF-8
 encoding//target/generated-resources/xdoclet=UTF-8
-encoding//target/generated-sources/entitygenerator=UTF-8
 encoding/<project>=UTF-8

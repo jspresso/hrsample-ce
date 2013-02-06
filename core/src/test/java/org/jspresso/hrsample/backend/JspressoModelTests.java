@@ -32,7 +32,9 @@ import java.beans.PropertyChangeListener;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hamcrest.Description;
 import org.hibernate.SQLQuery;
@@ -272,5 +274,32 @@ public class JspressoModelTests extends BackTestStartup {
     }
     query.setParameter("ID_PARAM", depId);
     assertEquals(1, query.executeUpdate());
+  }
+
+  /**
+   * Tests the performance of adder when the collection is big.
+   */
+  @Test(timeout = 15000)
+  public void testCollectionSetterPerf() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    Company company = hbc.getEntityFactory()
+        .createEntityInstance(Company.class);
+    // for (int i = 0; i < 5000; i++) {
+    // Employee emp = hbc.getEntityFactory()
+    // .createEntityInstance(Employee.class);
+    // // The employee collection should be sorted by name
+    // emp.setName(Integer.toHexString(emp.hashCode()));
+    // company.addToEmployees(emp);
+    // }
+    Set<Employee> employees = new HashSet<Employee>();
+    for (int i = 0; i < 5000; i++) {
+      Employee emp = hbc.getEntityFactory()
+          .createEntityInstance(Employee.class);
+      // The employee collection should be sorted by name
+      emp.setName(Integer.toHexString(emp.hashCode()));
+      employees.add(emp);
+    }
+    company.setEmployees(employees);
   }
 }
