@@ -31,6 +31,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -301,5 +302,24 @@ public class JspressoModelTests extends BackTestStartup {
       employees.add(emp);
     }
     company.setEmployees(employees);
+  }
+
+  /**
+   * Tests fix for bug #787.
+   */
+  @Test
+  public void testBigDecimalScale() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    Employee e1 = hbc.getEntityFactory().createEntityInstance(Employee.class);
+    Employee e2 = hbc.getEntityFactory().createEntityInstance(Employee.class);
+
+    e1.setSalary(new BigDecimal("4"));
+    e2.setSalary(new BigDecimal("4.00"));
+    assertEquals(e1.getSalary(), e2.getSalary());
+
+    e1.setSalary(new BigDecimal("4.12352"));
+    e2.setSalary(new BigDecimal("4.12437"));
+    assertEquals(e1.getSalary(), e2.getSalary());
   }
 }
