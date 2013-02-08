@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<actionScriptProperties analytics="false" mainApplicationPath="FlexApplicationStartup.mxml" projectUUID="ada30588-28fc-4135-befb-d7ae05008f07" version="10">
-  <compiler additionalCompilerArguments="-locale=en_US,fr_FR,es_ES,pt_BR,de_DE -services &quot;${WORKSPACE_ABSOLUTE_PATH}/hrsample/startup/flex/config/src/main/resources/services-config.xml&quot; -context-root hrsample-webapp" autoRSLOrdering="false" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="target/flex" removeUnusedRSL="true" rootURL="http://localhost:8080/hrsample-webapp/flex-debug" sourceFolderPath="src/main/flex" strict="true" targetPlayerVersion="10.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
+<actionScriptProperties analytics="false" mainApplicationPath="FlexApplicationStartup.mxml" projectUUID="ada30588-28fc-4135-befb-d7ae05008f07" version="11">
+  <compiler additionalCompilerArguments="-locale=en_US,fr_FR,es_ES,pt_BR,de_DE,it_IT,pl_PL,cs_CZ,sk_SK -services &quot;${WORKSPACE_ABSOLUTE_PATH}/hrsample/startup/flex/config/src/main/resources/services-config.xml&quot; -context-root hrsample-webapp" autoRSLOrdering="false" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="target/flex" removeUnusedRSL="true" rootURL="http://localhost:8080/hrsample-webapp/flex-debug" sourceFolderPath="src/main/flex" strict="true" targetPlayerVersion="10.0.0" useApolloConfig="false" useDebugRSLSwfs="true" useFlashSDK="false" verifyDigests="true" warn="true">
     <compilerSourcePath>
       <compilerSourcePathEntry kind="1" linkType="1" path="src/main/flex"/>
       <compilerSourcePathEntry kind="1" linkType="1" path="src/main/resources"/>
@@ -55,6 +55,7 @@
     <application path="FlexApplicationStartup.mxml"/>
   </applications>
   <modules/>
+  <workers/>
   <buildCSSFiles/>
   <flashCatalyst validateFlashCatalystCompatibility="false"/>
 </actionScriptProperties>
