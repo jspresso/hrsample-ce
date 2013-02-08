@@ -20,6 +20,7 @@ package org.jspresso.hrsample.backend;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.argThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.never;
@@ -34,22 +35,33 @@ import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.hamcrest.Description;
 import org.hibernate.SQLQuery;
+import org.hibernate.collection.PersistentSet;
+import org.hibernate.criterion.CriteriaSpecification;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.jspresso.framework.application.backend.entity.ControllerAwareEntityInvocationHandler;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.model.component.ComponentException;
+import org.jspresso.framework.model.entity.IEntity;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
+import org.jspresso.framework.util.reflect.ReflectHelper;
 import org.jspresso.framework.util.uid.ByteArray;
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
+import org.jspresso.hrsample.model.Nameable;
+import org.jspresso.hrsample.model.OrganizationalUnit;
+import org.jspresso.hrsample.model.Team;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
 import org.springframework.transaction.TransactionStatus;
@@ -321,5 +333,41 @@ public class JspressoModelTests extends BackTestStartup {
     e1.setSalary(new BigDecimal("4.12352"));
     e2.setSalary(new BigDecimal("4.12437"));
     assertEquals(e1.getSalary(), e2.getSalary());
+  }
+
+  /**
+   * Tests fix for bug #928.
+   */
+  @Test
+  public void testJoinOrderBy() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
+        .forClass(Department.class);
+
+    DetachedCriteria companyCrit = crit.getSubCriteriaFor(crit,
+        Department.COMPANY, CriteriaSpecification.INNER_JOIN);
+    companyCrit.add(Restrictions.eq(Nameable.NAME, "Design2See"));
+
+    DetachedCriteria teamsCrit = crit.getSubCriteriaFor(crit, Department.TEAMS,
+        CriteriaSpecification.LEFT_JOIN);
+    teamsCrit.add(Restrictions.eq(OrganizationalUnit.OU_ID, "HR-001"));
+
+    crit.addOrder(Order.desc(Nameable.NAME));
+    crit.addOrder(Order.asc(IEntity.ID));
+
+    List<Department> depts = hbc.findByCriteria(crit, null, Department.class);
+    for (Department d : depts) {
+      // force collection sorting.
+      Set<Team> teams = d.getTeams();
+      Set<?> innerSet;
+      try {
+        innerSet = (Set<?>) ReflectHelper.getPrivateFieldValue(
+            PersistentSet.class, "set", teams);
+      } catch (Exception ex) {
+        throw new RuntimeException(ex);
+      }
+      assertTrue("innerSet is a LinkedHashSet",
+          LinkedHashSet.class.isInstance(innerSet));
+    }
   }
 }
