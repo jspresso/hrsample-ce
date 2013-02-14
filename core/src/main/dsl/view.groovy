@@ -252,4 +252,23 @@ border('Company.module.view',
     parent:'Company.organization.view',
     actionMap:'Company-module-am')
 
+table('Employee.table.view', parent:'filterableBeanCollectionModuleView') {
+  columns {
+    propertyView name:'name'
+    propertyView name:'firstName'
+    propertyView name:'gender'
+    propertyView name:'birthDate'
+    propertyView name:'age'
+    propertyView name:'ssn'
+    propertyView name:'salary'
+    propertyView name:'contact'
+    propertyView name:'married'
+    propertyView name:'preferredColor'
+    propertyView name:'photo'
+    propertyView name:'company'
+    propertyView name:'createTimestamp'
+    propertyView name:'lastUpdateTimestamp'
+  }
+}
+
 messageSource(basenames:'org.jspresso.hrsample.i18n.Messages')
