@@ -49,7 +49,6 @@ import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
 import org.junit.Test;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.TransactionDefinition;
@@ -335,7 +334,6 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
   @Test
   public void testMergeModes() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
-    final TransactionTemplate tt = hbc.getTransactionTemplate();
 
     EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
         .forClass(City.class);
