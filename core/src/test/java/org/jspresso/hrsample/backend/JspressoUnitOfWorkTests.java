@@ -24,6 +24,9 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,6 +49,9 @@ import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
 import org.junit.Test;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.ConnectionCallback;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
@@ -321,5 +327,68 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
     // The exception should also occur on component (contact) properties
     // modification.
     emp.getContact().setAddress("test");
+  }
+
+  /**
+   * Tests merge modes.
+   */
+  @Test
+  public void testMergeModes() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    final TransactionTemplate tt = hbc.getTransactionTemplate();
+
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
+        .forClass(City.class);
+    final City c1 = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_CLEAN_EAGER,
+        City.class);
+    String name = c1.getName();
+
+    JdbcTemplate jdbcTemplate = getApplicationContext().getBean("jdbcTemplate",
+        JdbcTemplate.class);
+    jdbcTemplate.execute(new ConnectionCallback<Object>() {
+
+      @Override
+      public Object doInConnection(Connection con) throws SQLException {
+        PreparedStatement ps = con
+            .prepareStatement("UPDATE CITY SET NAME = ? WHERE ID = ?");
+        ps.setString(1, "test");
+        ps.setObject(2, c1.getId());
+        assertEquals(1, ps.executeUpdate());
+        return null;
+      }
+    });
+    final City c2 = hbc.findById(c1.getId(), EMergeMode.MERGE_CLEAN_LAZY,
+        City.class);
+
+    assertSame(c1, c2);
+    assertEquals(name, c2.getName());
+
+    final City c3 = hbc.findById(c1.getId(), EMergeMode.MERGE_CLEAN_EAGER,
+        City.class);
+    assertSame(c1, c3);
+    assertEquals("test", c3.getName());
+
+    jdbcTemplate.execute(new ConnectionCallback<Object>() {
+
+      @Override
+      public Object doInConnection(Connection con) throws SQLException {
+        PreparedStatement ps = con
+            .prepareStatement("UPDATE CITY SET NAME = ?, VERSION = VERSION+1 WHERE ID = ?");
+        ps.setString(1, "test2");
+        ps.setObject(2, c1.getId());
+        assertEquals(1, ps.executeUpdate());
+        return null;
+      }
+    });
+
+    final City c4 = hbc.findById(c1.getId(), EMergeMode.MERGE_KEEP,
+        City.class);
+    assertSame(c1, c4);
+    assertEquals("test", c4.getName());
+
+    final City c5 = hbc.findById(c1.getId(), EMergeMode.MERGE_CLEAN_LAZY,
+        City.class);
+    assertSame(c1, c5);
+    assertEquals("test2", c5.getName());
   }
 }
