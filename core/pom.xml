@@ -376,6 +376,7 @@
           <version>1.0.0</version>
           <configuration>
             <lifecycleMappingMetadata>
+            
               <pluginExecutions>
                 <pluginExecution>
                   <pluginExecutionFilter>
@@ -390,13 +391,9 @@
                     <configurator>
 	                    <id>org.jspresso.contrib.sjsplugin.m2e.entitygenerator</id>
 	                </configurator>
-                    <!-- 
-                    <execute>
-                      <runOnIncremental>true</runOnIncremental>
-                    </execute>
-                     -->
                   </action>
                 </pluginExecution>
+                               
                 <pluginExecution>
                   <pluginExecutionFilter>
                     <groupId>org.jspresso.maven</groupId>
@@ -410,13 +407,25 @@
                     <configurator>
 	                    <id>org.jspresso.contrib.sjsplugin.m2e.sugarforjspresso</id>
 	                </configurator>
-                    <!-- 
-                    <execute>
-                      <runOnIncremental>true</runOnIncremental>
-                    </execute>
-                     -->
                   </action>
                 </pluginExecution>
+                
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.codehaus.xdoclet</groupId>
+                    <artifactId>maven2-xdoclet2-plugin</artifactId>
+                    <versionRange>[1.0-SNAPSHOT,)</versionRange>
+                    <goals>
+                      <goal>xdoclet</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <configurator>
+	                    <id>org.jspresso.contrib.sjsplugin.m2e.xdoclet</id>
+	                </configurator>
+                  </action>
+                </pluginExecution>                
+                
               </pluginExecutions>
             </lifecycleMappingMetadata>
           </configuration>
