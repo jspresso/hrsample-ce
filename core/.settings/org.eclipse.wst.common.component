@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="1.5.0">
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="hrsample-core">
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/target/generated-resources/dsl"/>
         <wb-resource deploy-path="/" source-path="/src/main/dsl"/>
-        <wb-resource deploy-path="/" source-path="/target/generated-sources/entitygenerator"/>
         <wb-resource deploy-path="/" source-path="/target/generated-resources/xdoclet"/>
         <wb-resource deploy-path="/" source-path="/src/main/groovy"/>
         <wb-resource deploy-path="/" source-path="/target/generated-resources/jasperreports"/>
+        <wb-resource deploy-path="/" source-path="/target/generated-sources/entitygenerator"/>
     </wb-module>
 </project-modules>
