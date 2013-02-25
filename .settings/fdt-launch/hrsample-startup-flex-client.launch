@@ -26,6 +26,7 @@
 <booleanAttribute key="START_SWF_ENABLED" value="true"/>
 <stringAttribute key="START_SWF_LOCATION" value="target/flex/FlexApplicationStartup.swf"/>
 <stringAttribute key="START_SWF_WITH" value="External SWF Viewer"/>
+<booleanAttribute key="SUPPRESS_EXCEPTION_POPUP" value="true"/>
 <booleanAttribute key="USE_PROJECT_COMPILER_ARGUMENTS" value="true"/>
 <stringAttribute key="bad_container_name" value="/hrsample/.settings/fdtlaunch"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
