@@ -342,7 +342,9 @@
             </goals>
             <configuration>
               <sources>
+              <!-- 
                 <source>${project.build.directory}/generated-sources/entitygenerator</source>
+               -->  
                 <source>${basedir}/src/main/groovy</source>
               </sources>
             </configuration>
@@ -368,7 +370,6 @@
     </plugins>
     <pluginManagement>
       <plugins>
-        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
         <plugin>
           <groupId>org.eclipse.m2e</groupId>
           <artifactId>lifecycle-mapping</artifactId>
@@ -386,9 +387,14 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
+                    <configurator>
+	                    <id>org.jspresso.contrib.sjsplugin.m2e.entitygenerator</id>
+	                </configurator>
+                    <!-- 
                     <execute>
                       <runOnIncremental>true</runOnIncremental>
                     </execute>
+                     -->
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -401,9 +407,14 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
+                    <configurator>
+	                    <id>org.jspresso.contrib.sjsplugin.m2e.sugarforjspresso</id>
+	                </configurator>
+                    <!-- 
                     <execute>
                       <runOnIncremental>true</runOnIncremental>
                     </execute>
+                     -->
                   </action>
                 </pluginExecution>
               </pluginExecutions>
@@ -412,5 +423,6 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    
   </build>
 </project>
