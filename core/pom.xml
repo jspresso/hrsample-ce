@@ -271,6 +271,8 @@
           </execution>
         </executions>
       </plugin>
+      
+       
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -321,6 +323,8 @@
           </execution>
         </executions>
       </plugin>
+       
+      
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -333,18 +337,20 @@
             </goals>
             <configuration>
               <sources>
+                <source>${project.build.directory}/generated-sources/entitygenerator</source>
                 <source>${basedir}/src/main/groovy</source>
               </sources>
             </configuration>
           </execution>
         </executions>
       </plugin>
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jasperreports-maven-plugin</artifactId>
         <configuration>
           <outputDirectory>${project.build.directory}/generated-resources/jasperreports</outputDirectory>
-        </configuration>
+        </configuration>  
         <executions>
           <execution>
             <id>compile-jasper-reports</id>
@@ -355,7 +361,11 @@
           </execution>
         </executions>
       </plugin>
+       
     </plugins>
+    
+    
+    
     <pluginManagement>
       <plugins>
         <plugin>
@@ -412,7 +422,23 @@
 	                    <id>org.jspresso.contrib.sjsplugin.m2e.xdoclet</id>
 	                </configurator>
                   </action>
-                </pluginExecution>                
+                </pluginExecution>      
+                
+                <pluginExecution>
+		            <pluginExecutionFilter>
+		                <groupId>org.codehaus.mojo</groupId>
+		                <artifactId>jasperreports-maven-plugin</artifactId>
+		                <versionRange>[1.0-SNAPSHOT,)</versionRange>
+		                <goals>
+		                    <goal>compile-reports</goal>
+		                </goals>
+		            </pluginExecutionFilter>
+		            <action>
+		                <configurator>
+		                    <id>org.jspresso.contrib.sjsplugin.m2e.jasperreport</id>
+		                </configurator>
+		            </action>
+		        </pluginExecution>           
                 
               </pluginExecutions>
             </lifecycleMappingMetadata>
@@ -420,5 +446,6 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    
   </build>
 </project>
