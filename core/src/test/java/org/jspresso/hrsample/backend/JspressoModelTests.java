@@ -370,4 +370,46 @@ public class JspressoModelTests extends BackTestStartup {
           LinkedHashSet.class.isInstance(innerSet));
     }
   }
+  
+  /**
+   * Tests fix for bug #920.
+   */
+  @Test
+  public void testRemovedEntityIsClean() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    final City c = hbc.getEntityFactory().createEntityInstance(City.class);
+    c.setName("Remove");
+    c.setZip("00000");
+    
+    assertTrue(!c.isPersistent());
+    assertTrue(hbc.isDirty(c));
+
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.cloneInUnitOfWork(c);
+        hbc.registerForUpdate(c);
+      }
+    });
+    
+    assertTrue(c.isPersistent());
+    assertTrue(!hbc.isDirty(c));
+
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        City c1 = hbc.cloneInUnitOfWork(c);
+        try {
+          hbc.cleanRelationshipsOnDeletion(c1, false);
+        } catch (Exception ex) {
+          throw new RuntimeException(ex);
+        }
+      }
+    });
+
+    assertTrue("Entity is transient since it has been deleted", !c.isPersistent());
+    assertTrue("Entity is clean since there is nothing much we can do with it", !hbc.isDirty(c));
+  }
 }
