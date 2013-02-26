@@ -111,7 +111,7 @@
             <phase>pre-site</phase>
             <inherited>false</inherited>
             <configuration>
-              <tasks>
+              <target>
                 <taskdef name="beandoc" classname="org.springframework.beandoc.client.AntTask" />
                 <taskdef resource="net/sf/antcontrib/antlib.xml" />
                 <if>
@@ -133,7 +133,7 @@
                     <delete dir="${project.reporting.outputDirectory}/beandocs/tmp" />
                   </then>
                 </if>
-              </tasks>
+              </target>
             </configuration>
             <goals>
               <goal>run</goal>
