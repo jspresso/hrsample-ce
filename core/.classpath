@@ -11,19 +11,19 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" output="target/classes" path="target/generated-resources/jasperreports">
+	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/jasperreports">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" output="target/classes" path="target/generated-resources/xdoclet">
+	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/xdoclet">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" output="target/classes" path="target/generated-resources/dsl">
+	<classpathentry excluding="**" kind="src" output="target/classes" path="target/generated-resources/dsl">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>

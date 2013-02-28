@@ -175,14 +175,6 @@
     </profile>
   </profiles>
   <build>
-    <resources>
-      <resource>
-        <directory>${basedir}/src/main/resources</directory>
-      </resource>
-      <resource>
-        <directory>${project.build.directory}/generated-resources/jasperreports</directory>
-      </resource>
-    </resources>
     <plugins>
       <plugin>
         <groupId>org.jspresso.maven</groupId>
@@ -239,18 +231,6 @@
         </executions>
       </plugin>
       <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>pre-process-resources</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>resources</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.jspresso.maven</groupId>
         <artifactId>entitygenerator-maven-plugin</artifactId>
         <executions>
@@ -271,7 +251,6 @@
           </execution>
         </executions>
       </plugin>
-
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
