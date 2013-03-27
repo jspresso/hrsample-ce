@@ -50,6 +50,7 @@
         <value>org/jspresso/hrsample/backend/dsl-backend.xml</value>
         <value>org/jspresso/hrsample/backend/backend.xml</value>
         <value>org/jspresso/hrsample/core-config.xml</value>
+        <value>org/jspresso/hrsample/config.xml</value>
       </list>
     </constructor-arg>
   </bean>

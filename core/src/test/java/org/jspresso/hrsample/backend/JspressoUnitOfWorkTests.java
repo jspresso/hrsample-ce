@@ -29,13 +29,20 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.hibernate.Hibernate;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.jspresso.framework.application.backend.BackendControllerHolder;
 import org.jspresso.framework.application.backend.BackendException;
 import org.jspresso.framework.application.backend.ControllerAwareTransactionTemplate;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
@@ -49,6 +56,7 @@ import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
 import org.junit.Test;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.TransactionDefinition;
@@ -379,8 +387,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
       }
     });
 
-    final City c4 = hbc.findById(c1.getId(), EMergeMode.MERGE_KEEP,
-        City.class);
+    final City c4 = hbc.findById(c1.getId(), EMergeMode.MERGE_KEEP, City.class);
     assertSame(c1, c4);
     assertEquals("test", c4.getName());
 
@@ -388,5 +395,107 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         City.class);
     assertSame(c1, c5);
     assertEquals("test2", c5.getName());
+  }
+
+  /**
+   * Tests in TX collection element update with // optimistick locking.
+   */
+  @Test
+  public void testInTXCollectionElementUpdate() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    final AtomicInteger countDown = new AtomicInteger(10);
+    ExecutorService es = Executors.newFixedThreadPool(countDown.get());
+    List<Future<Set<String>>> futures = new ArrayList<Future<Set<String>>>();
+    for (int t = countDown.intValue(); t > 0; t--) {
+      futures.add(es.submit(new Callable<Set<String>>() {
+
+        @Override
+        public Set<String> call() throws Exception {
+          final HibernateBackendController threadHbc = getApplicationContext()
+              .getBean("applicationBackController",
+                  HibernateBackendController.class);
+          final TransactionTemplate threadTT = threadHbc
+              .getTransactionTemplate();
+          threadHbc.start(hbc.getLocale(), hbc.getClientTimeZone());
+          threadHbc.setApplicationSession(hbc.getApplicationSession());
+          BackendControllerHolder.setThreadBackendController(threadHbc);
+          return threadTT.execute(new TransactionCallback<Set<String>>() {
+
+            /**
+             * {@inheritDoc}
+             */
+            @Override
+            public Set<String> doInTransaction(TransactionStatus status) {
+              DetachedCriteria compCrit = DetachedCriteria
+                  .forClass(Company.class);
+              Set<String> names = new HashSet<String>();
+              Company c = (Company) compCrit
+                  .getExecutableCriteria(threadHbc.getHibernateSession())
+                  .list().iterator().next();
+
+              synchronized (countDown) {
+                countDown.decrementAndGet();
+                // wait for all threads to arrive here so that we are sure they
+                // have all read the same data.
+                try {
+                  countDown.wait();
+                } catch (InterruptedException ex) {
+                  throw new BackendException("Test has been interrupted");
+                }
+              }
+
+              if (c.getName().startsWith("TX_")) {
+                throw new BackendException("Wrong data read from DB");
+              }
+              c.setName("TX_" + Long.toHexString(System.currentTimeMillis()));
+              names.add(c.getName());
+              for (Department d : c.getDepartments()) {
+                d.setName(Long.toHexString(System.currentTimeMillis()));
+                names.add(d.getName());
+              }
+              return names;
+            }
+          });
+        }
+      }));
+    }
+    while (countDown.get() > 0) {
+      try {
+        Thread.sleep(200);
+      } catch (InterruptedException ex) {
+        throw new BackendException("Test has been interrupted");
+      }
+    }
+    synchronized (countDown) {
+      countDown.notifyAll();
+    }
+    int successfullTxCount = 0;
+    Set<String> names = new HashSet<String>();
+    for (Future<Set<String>> f : futures) {
+      try {
+        names = f.get();
+        successfullTxCount++;
+      } catch (Exception ex) {
+        if (ex.getCause() instanceof OptimisticLockingFailureException) {
+          // safely ignore since this is what we are testing.
+        } else {
+          throw new BackendException(ex);
+        }
+      }
+    }
+    es.shutdown();
+    assertTrue("Only 1 TX succeeded", successfullTxCount == 1);
+
+    DetachedCriteria compCrit = DetachedCriteria.forClass(Company.class);
+    Company c = hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_LAZY,
+        Company.class);
+    assertTrue("the company name is the one of the successfull TX",
+        names.contains(c.getName()));
+    for (Department d : c.getDepartments()) {
+      assertTrue("the department name is the one of the successfull TX",
+          names.contains(d.getName()));
+    }
+
   }
 }
