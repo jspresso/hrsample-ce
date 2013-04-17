@@ -119,7 +119,8 @@ image('Employee-photo.pane',
 
 form('Employee.component.pane',
     columnCount:3,
-    description:'htmlDescription') {
+    description:'htmlDescription',
+    labelsPosition:'ASIDE') {
       fields {
         propertyView name:'name'
         propertyView name:'firstName'
