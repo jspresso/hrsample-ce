@@ -1,0 +1,604 @@
+format 48
+"hr-sample"
+  revision 5
+  modified_by 7 "Vincent"
+
+
+  
+  // class settings
+  default_attribute_visibility private default_relation_visibility public default_operation_visibility public
+  //class diagram settings
+  draw_all_relations yes hide_attributes no hide_operations no show_members_full_definition no show_members_visibility no show_members_stereotype no show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes show_infonote no shadow yes
+  //use case diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  //sequence diagram settings
+  show_full_operations_definition no write_horizontally yes class_drawing_mode natural drawing_language uml draw_all_relations yes shadow yes
+  //collaboration diagram settings
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes drawing_language uml package_name_in_tab no show_context no draw_all_relations yes shadow yes
+  //object diagram settings
+   write_horizontally yes package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  //component diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no
+  //deployment diagram settings
+  package_name_in_tab no show_context no write_horizontally yes auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no
+  //state diagram settings
+  package_name_in_tab no show_context no auto_label_position yes write_trans_label_horizontally yes show_trans_definition no draw_all_relations yes shadow yes
+  show_activities yes region_horizontally yes drawing_language uml
+  //activity diagram settings
+  package_name_in_tab no show_context no show_opaque_action_definition no auto_label_position yes write_flow_label_horizontally no draw_all_relations yes shadow yes
+  show_infonote yes drawing_language uml
+  
+  class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activityaction_color transparent parameterpin_color white 
+  font_size 10
+  diagram_format A4
+
+  mark_for_import
+  
+  classview 129241 "hr-management"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    default_attribute_visibility private default_relation_visibility public default_operation_visibility public
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default
+    classdiagram 129241 "organization"
+      draw_all_relations no hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      size A4
+    end
+
+    classdiagram 128064 "employees"
+      draw_all_relations no hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      size A4
+    end
+
+    class 129241 "Company"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129881 // departments (companyDepartments)
+	relation 129881 o--- name "companyDepartments"
+	  stereotype "set"
+	  a role_name "departments" multiplicity "*" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype} ${name}${value};
+"
+	    classrelation_ref 129881 // departments (companyDepartments)
+	  b role_name "company" multiplicity "1" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130009 // company (companyDepartments)
+      end
+
+      classrelation 132032 // employees (companyEmployees)
+	relation 131648 o--- name "companyEmployees"
+	  stereotype "set"
+	  a role_name "employees" multiplicity "1..*" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132032 // employees (companyEmployees)
+	  b role_name "company" multiplicity "1" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132160 // company (companyEmployees)
+      end
+
+      classrelation 128017 // <realization>
+	relation 128017 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128017 // <realization>
+	  b parent class_ref 129625 // Traceable
+      end
+
+      classrelation 128145 // <realization>
+	relation 128145 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128145 // <realization>
+	  b parent class_ref 128012 // Nameable
+      end
+
+      classrelation 128263 // contact (<directional aggregation by value>)
+	relation 128263 *-->
+	  a role_name "contact" multiplicity "1" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128263 // contact (<directional aggregation by value>)
+	  b parent class_ref 129216 // ContactInfo
+      end
+    end
+
+    class 129369 "Department"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129625 // <generalisation>
+	relation 129625 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129625 // <generalisation>
+	  b parent class_ref 129753 // OrganizationalUnit
+      end
+
+      classrelation 130009 // company (companyDepartments)
+	relation_ref 129881 // companyDepartments
+      end
+
+      classrelation 130137 // teams (departmentTeams)
+	relation 130009 o--- name "departmentTeams"
+	  stereotype "set"
+	  a role_name "teams" multiplicity "*" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype} ${name}${value};
+"
+	    classrelation_ref 130137 // teams (departmentTeams)
+	  b role_name "department" multiplicity "1" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130265 // department (departmentTeams)
+      end
+    end
+
+    class 129497 "Team"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129753 // <generalisation>
+	relation 129753 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129753 // <generalisation>
+	  b parent class_ref 129753 // OrganizationalUnit
+      end
+
+      classrelation 130265 // department (departmentTeams)
+	relation_ref 130009 // departmentTeams
+      end
+
+      classrelation 131648 // <association>
+	relation_ref 131392 // <association>
+      end
+    end
+
+    class 129753 "OrganizationalUnit"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128064 "ouId"
+	private type class_ref 128064 // String
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 130624 // <realization>
+	relation 130496 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130624 // <realization>
+	  b parent class_ref 129625 // Traceable
+      end
+
+      classrelation 130752 // <realization>
+	relation 130624 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130752 // <realization>
+	  b parent class_ref 128012 // Nameable
+      end
+
+      classrelation 131392 // manager (<association>)
+	relation 131264 ----
+	  a role_name "manager" multiplicity "1" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype} ${name}${value};
+"
+	    classrelation_ref 131392 // manager (<association>)
+	  b role_name "managedOu" multiplicity "0..1" public
+	    classrelation_ref 128401 // managedOu (<association>)
+      end
+
+      classrelation 128135 // contact (<directional aggregation by value>)
+	relation 128135 *-->
+	  a role_name "contact" multiplicity "1" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128135 // contact (<directional aggregation by value>)
+	  b parent class_ref 129216 // ContactInfo
+      end
+    end
+
+    class 129472 "Employee"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128832 "firstName"
+	private type class_ref 128064 // String
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 128960 "ssn"
+	private type class_ref 128064 // String
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 129088 "birthDate"
+	private type class_ref 128064 // String
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 130112 "hireDate"
+	private type class_ref 128064 // String
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 130368 "gender"
+	private type class_ref 128064 // String
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      operation 139712 "getAge"
+	public return_type class_ref 129600 // Integer
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+      end
+
+      classrelation 131008 // <realization>
+	relation 130880 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 131008 // <realization>
+	  b parent class_ref 129625 // Traceable
+      end
+
+      classrelation 131136 // <realization>
+	relation 131008 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 131136 // <realization>
+	  b parent class_ref 128012 // Nameable
+      end
+
+      classrelation 131520 // teams (<association>)
+	relation 131392 ----
+	  stereotype "set"
+	  a role_name "teams" multiplicity "*" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 131520 // teams (<association>)
+	  b role_name "teamMembers" multiplicity "1..*" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 131648 // <association>
+      end
+
+      classrelation 132160 // company (companyEmployees)
+	relation_ref 131648 // companyEmployees
+      end
+
+      classrelation 132672 // events (<directional aggregation>)
+	relation 132160 o-->
+	  stereotype "list"
+	  a role_name "events" multiplicity "*" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132672 // events (<directional aggregation>)
+	  b parent class_ref 130240 // Event
+      end
+
+      classrelation 128401 // managedOu (<association>)
+	relation_ref 131264 // <association>
+      end
+
+      classrelation 128007 // contact (<directional aggregation by value>)
+	relation 128007 *-->
+	  a role_name "contact" multiplicity "1" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128007 // contact (<directional aggregation by value>)
+	  b parent class_ref 129216 // ContactInfo
+      end
+
+      operation 129287 "computeAge"
+	public return_type class_ref 129600 // Integer
+	nparams 1
+	  param in name "birthDate" type class_ref 128103 // Date
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+      end
+    end
+  end
+
+  classview 129369 "commons"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    default_attribute_visibility private default_relation_visibility public default_operation_visibility public
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default
+    classdiagram 128012 "commons"
+      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      size A4
+    end
+
+    class 129625 "Traceable"
+      visibility public stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      attribute 129241 "createTimestamp"
+	private type class_ref 128103 // Date
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 128103 "lastUpdateTimestamp"
+	private type class_ref 128103 // Date
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 128012 "Nameable"
+      visibility public stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      attribute 128012 "name"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 129415 // <realization>
+	relation 129415 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129415 // <realization>
+	  b parent class_ref 128007 // NameableService
+      end
+    end
+
+    class 129216 "ContactInfo"
+      visibility public stereotype "component"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      attribute 128192 "address"
+	private type class_ref 128064 // String
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 128576 "phone"
+	private type class_ref 128064 // String
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 128704 "email"
+	private type class_ref 128064 // String
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 129728 // city (<unidirectional association>)
+	relation 129728 --->
+	  a role_name "city" multiplicity "1" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129728 // city (<unidirectional association>)
+	  b parent class_ref 129344 // City
+      end
+    end
+
+    class 129344 "City"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128320 "zip"
+	private type class_ref 128064 // String
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 132544 // <realization>
+	relation 132032 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132544 // <realization>
+	  b parent class_ref 128012 // Nameable
+      end
+    end
+
+    class 130240 "Event"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 130240 "text"
+	private type class_ref 128064 // String
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 132416 // <realization>
+	relation 131904 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132416 // <realization>
+	  b parent class_ref 129625 // Traceable
+      end
+    end
+
+    class 128007 "NameableService"
+      visibility public stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 128135 "formatName"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+      end
+    end
+  end
+
+  package_ref 128103 // java
+end

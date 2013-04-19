@@ -1,0 +1,119 @@
+{
+  "name"    : "jspresso-hrsample",
+
+  "include" :
+  [
+    {
+      "path" : "${QOOXDOO_PATH}/tool/data/config/application.json"
+    }
+    ,
+    {
+      "path" : "${TARGET}/jspresso-qooxdoo-client-zip/py/library.json",
+      "as"   : "jspresso-qooxdoo"
+    }
+  ],
+
+  "export" :
+  [
+    "api",
+    "build",
+    "clean",
+    "distclean",
+    "fix",
+    "inspector",
+    "lint",
+    "migration",
+    "pretty",
+    "profiling",
+    "source",
+    "source-all",
+    "test",
+    "test-source",
+    "translation"
+  ],
+
+  "let" :
+  {
+    "TARGET"       : "../../../target",
+    "APPLICATION"  : "org.jspresso.hrsample.startup.qooxdoo",
+    "QOOXDOO_PATH" : "../../../target/qooxdoo-sdk",
+    "QXTHEME"      : "org.jspresso.hrsample.startup.qooxdoo.theme.Theme",
+    "API_EXCLUDE"  : ["qx.legacy.*","qx.test.*"],
+    "LOCALES"      : ["en","fr","es","pt","de","it","pl","cs","sk","ru","bg","tr"],
+    "ROOT"         : "..",
+    "BUILD_PATH"   : "${TARGET}/web"
+  },
+
+  // You only need to edit the remainder of this file, if you want to customize
+  // specific jobs, or add own job definitions.
+
+  "jobs" :
+  {
+    "common" : 
+    {
+      "cache" :
+      {
+        "compile"     : "${TARGET}/cache",
+        "downloads"   : "${TARGET}/cache/downloads"
+      }
+    },
+    "libraries" : 
+    {
+      "extend" : ["jspresso-qooxdoo::libraries"],
+      
+      "library" :
+      [
+        {
+          "manifest" : "${TARGET}/jspresso-qooxdoo-client-zip/Manifest.json"
+        }
+      ]
+    },
+    "build-files" :
+    {
+      "copy-files" :
+      {
+        "source" : "${ROOT}/html"
+      }
+    },
+    "source-script" :
+    {
+      "copy-files" :
+      {
+        "files" : ["*.html"],
+        "source" : "${ROOT}/html",
+        "target" : "${TARGET}/web-debug"
+      },
+      "compile-options" :
+      {
+			  "paths" :
+			  {
+			    "file" : "${TARGET}/web-debug/script/${APPLICATION}.js"
+			  },
+        "uris" : 
+        {
+          "add-nocache-param" : false
+        }
+      }
+    },
+    "source-all-script" :
+    {
+      "copy-files" :
+      {
+        "files" : ["*.html"],
+        "source" : "${ROOT}/html",
+        "target" : "${TARGET}/web-debug"
+      },
+      "compile-options" :
+      {
+        "paths" :
+        {
+          "file" : "${TARGET}/web-debug/script/${APPLICATION}.js"
+        },
+        "uris" : 
+        {
+          "add-nocache-param" : false
+        }
+      }
+    }
+  }
+}

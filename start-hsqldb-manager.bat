@@ -1,0 +1,1 @@
+java -classpath C:/"Documents and Settings"/Vincent/.m2/repository/hsqldb/hsqldb/1.8.0.1/hsqldb-1.8.0.1.jar org.hsqldb.util.DatabaseManagerSwing

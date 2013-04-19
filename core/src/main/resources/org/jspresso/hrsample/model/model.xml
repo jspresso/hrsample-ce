@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+                      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+  default-lazy-init="true">
+
+  <!-- Put here model customizations that are not available through DSL -->
+
+  <bean id="applicationMessageSource" parent="abstractApplicationMessageSource">
+    <property name="parentMessageSource" ref="commonsMessageSource" />
+    <property name="basenames">
+      <list>
+        <value>org.jspresso.hrsample.i18n.Messages</value>
+      </list>
+    </property>
+  </bean>
+  
+  <!-- 
+  Switch to binary entity keys 
+  <bean id="entityGUIDGenerator" parent="binaryGUIDGenerator"/>
+  
+  <bean id="rootEntityId" class="org.jspresso.framework.model.descriptor.basic.BasicBinaryPropertyDescriptor">
+    <property name="name" value="id" />
+    <property name="maxLength" value="18" />
+  </bean>
+  -->
+
+</beans>

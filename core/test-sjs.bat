@@ -1,0 +1,1 @@
+java -classpath "C:\Users\vincent\.m2\repository\org\codehaus\groovy\groovy-all\1.6.0\groovy-all-1.6.0.jar;C:\Users\vincent\.m2\repository\org\jspresso\contrib\jspresso-sjs\1.0-SNAPSHOT\jspresso-sjs-1.0-SNAPSHOT.jar" groovy.lang.GroovyShell src/main/groovy/model.groovy target/generated-resources/sjs sjs-model.xml

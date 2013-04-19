@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jspresso.hrsample</groupId>
+    <artifactId>hrsample</artifactId>
+    <version>3.6-SNAPSHOT</version>
+    <relativePath>../../../pom.xml</relativePath>
+  </parent>
+  <artifactId>hrsample-startup-flex-config</artifactId>
+  <packaging>pom</packaging>
+  <name>Jspresso HR Sample - Startup - Flex - Config</name>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>make shared resources</id>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <descriptors>
+                <descriptor>${basedir}/src/main/assembly/resources.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

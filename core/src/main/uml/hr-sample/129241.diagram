@@ -1,0 +1,101 @@
+format 48
+
+classcanvas 128064 class_ref 128012 // Nameable
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 313 78 2000
+  end
+classcanvas 128089 class_ref 129241 // Company
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 2 287 2000
+  end
+classcanvas 128217 class_ref 129369 // Department
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 248 510 2000
+  end
+classcanvas 128345 class_ref 129497 // Team
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 530 474 2000
+  end
+classcanvas 128473 class_ref 129625 // Traceable
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 151 60 2000
+  end
+classcanvas 128601 class_ref 129753 // OrganizationalUnit
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 226 281 2000
+  end
+classcanvas 128832 class_ref 129216 // ContactInfo
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 125 395 2000
+  end
+classcanvas 129472 class_ref 129472 // Employee
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 509 230 2004
+  end
+relationcanvas 128007 relation_ref 128135 // <directional aggregation by value>
+  from ref 128601 z 1999 to ref 128832
+  role_a_pos 236 373 3000 no_role_b
+  multiplicity_a_pos 209 373 3000 no_multiplicity_b
+relationcanvas 128017 relation_ref 128017 // <realization>
+  from ref 128089 z 1999 to ref 128473
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128135 relation_ref 128263 // <directional aggregation by value>
+  from ref 128089 z 1999 to ref 128832
+  role_a_pos 127 373 3000 no_role_b
+  multiplicity_a_pos 100 373 3000 no_multiplicity_b
+relationcanvas 128145 relation_ref 128145 // <realization>
+  from ref 128089 z 1999 to ref 128064
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128263 relation_ref 130880 // <realization>
+  from ref 129472 z 1999 to ref 128473
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128391 relation_ref 131008 // <realization>
+  from ref 129472 z 1999 to ref 128064
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128985 relation_ref 129625 // <generalisation>
+  from ref 128217 z 1999 to ref 128601
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129088 relation_ref 130496 // <realization>
+  from ref 128601 z 1999 to ref 128473
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129113 relation_ref 129753 // <generalisation>
+  from ref 128345 z 1999 to ref 128601
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129216 relation_ref 130624 // <realization>
+  from ref 128601 z 1999 to ref 128064
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129241 relation_ref 129881 // companyDepartments
+  geometry VH
+  from ref 128089 z 1999 to point 36 528
+  line 131136 z 1999 label "companyDepartments" italic xyz 40 513 1999 stereotype "<<set>>" xyz 125 531 3000 to ref 128217
+  role_a_pos 176 514 3000 role_b_pos 48 335 3000
+  multiplicity_a_pos 232 538 3000 multiplicity_b_pos 21 335 3000
+relationcanvas 129497 relation_ref 130009 // departmentTeams
+  geometry HV
+  from ref 128217 z 1999 label "departmentTeams" italic xyz 420 513 1999 stereotype "<<set>>" xyz 451 529 3000 to point 552 528
+  line 131264 z 1999 to ref 128345
+  role_a_pos 564 522 3000 role_b_pos 344 509 3000
+  multiplicity_a_pos 539 522 3000 multiplicity_b_pos 344 538 3000
+relationcanvas 129600 relation_ref 131264 // <association>
+  from ref 128601 z 1999 to ref 129472
+  role_a_pos 448 286 3000 role_b_pos 366 286 3000
+  multiplicity_a_pos 491 315 3000 multiplicity_b_pos 366 315 3000
+relationcanvas 129728 relation_ref 131392 // <association>
+  from ref 129472 z 1999 stereotype "<<set>>" xyz 529 425 3000 to ref 128345
+  role_a_pos 564 452 3000 role_b_pos 564 392 3000
+  multiplicity_a_pos 539 452 3000 multiplicity_b_pos 524 392 3000
+relationcanvas 130368 relation_ref 131648 // companyEmployees
+  from ref 128089 z 1999 to point 35 18
+  line 130624 z 1999 label "companyEmployees" italic xyz 236 4 1999 stereotype "<<set>>" xyz 270 20 3000 to point 552 18
+  line 130496 z 1999 to ref 129472
+  role_a_pos 564 208 3000 role_b_pos 47 265 3000
+  multiplicity_a_pos 524 208 3000 multiplicity_b_pos 20 265 3000
+end

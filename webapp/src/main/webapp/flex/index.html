@@ -1,0 +1,123 @@
+<!-- saved from url=(0014)about:internet -->
+<html lang="en">
+
+<!-- 
+Smart developers always View Source. 
+
+This application was built using Adobe Flex, an open source framework
+for building rich Internet applications that get delivered via the
+Flash Player or to desktops via Adobe AIR. 
+
+Learn more about Flex at http://flex.org 
+// -->
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!--  BEGIN Browser History required section -->
+<link rel="stylesheet" type="text/css" href="history/history.css" />
+<!--  END Browser History required section -->
+
+<title>HRSample Web Application</title>
+<script src="AC_OETags.js" language="javascript"></script>
+
+<!--  BEGIN Browser History required section -->
+<script src="history/history.js" language="javascript"></script>
+<!--  END Browser History required section -->
+
+<style>
+body { margin: 0px; overflow:hidden }
+</style>
+<script language="JavaScript" type="text/javascript">
+<!--
+// -----------------------------------------------------------------------------
+// Globals
+// Major version of Flash required
+var requiredMajorVersion = 10;
+// Minor version of Flash required
+var requiredMinorVersion = 0;
+// Minor version of Flash required
+var requiredRevision = 0;
+// -----------------------------------------------------------------------------
+// -->
+</script>
+</head>
+
+<body scroll="no" onBeforeUnload="stop()" onLoad="focusFlex()">
+<script language="JavaScript" type="text/javascript">
+<!--
+// Version check based upon the values entered above in "Globals"
+var hasRequestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+
+
+// Check to see if the version meets the requirements for playback
+if (hasRequestedVersion) {  // if we've detected an acceptable version
+    	// if we've detected an acceptable version
+		// embed the Flash Content SWF when all tests are passed
+		AC_FL_RunContent(
+					"src", "hrsample-startup-flex-client",
+					"width", "100%",
+					"height", "100%",
+					"align", "middle",
+					"id", "hrsample-startup-flex-client",
+					"quality", "high",
+					"bgcolor", "#869ca7",
+					"name", "hrsample-startup-flex-client",
+					"allowScriptAccess","sameDomain",
+					"type", "application/x-shockwave-flash",
+					"pluginspage", "http://www.adobe.com/go/getflashplayer"
+	);
+  } else {  // flash is too old or we can't detect the plugin
+    var alternateContent = 'Alternate HTML content should be placed here. '
+  	+ 'This content requires the Adobe Flash Player. '
+   	+ '<a href=http://www.adobe.com/go/getflash/>Get Flash</a>';
+    document.write(alternateContent);  // insert non-flash content
+  }
+// -->
+</script>
+<script langugage='javascript' type="text/javascript">
+  function getRootURL() {
+    return location.href.substring(0,location.href.indexOf("/flex"));
+  }
+
+  function stop() {
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+      var xmlhttp = new XMLHttpRequest();
+    } else {// code for IE6, IE5
+      var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.open("GET", getRootURL()+"/util/stop",false);
+    xmlhttp.onreadystatechange = function() {
+    };
+    xmlhttp.send();
+  }
+  
+  function focusFlex() {
+    var flexApp = document.getElementById("hrsample-startup-flex-client");
+    if(flexApp) {
+      flexApp.tabIndex = 0;
+      flexApp.focus();
+    }
+  }
+</script>
+<noscript>
+  	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+			id="hrsample-startup-flex-client" width="100%" height="100%"
+			codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+			<param name="movie" value="hrsample-startup-flex-client.swf" />
+			<param name="quality" value="high" />
+			<param name="bgcolor" value="#869ca7" />
+			<param name="allowScriptAccess" value="sameDomain" />
+			<embed src="hrsample-startup-flex-client.swf" quality="high" bgcolor="#869ca7"
+				width="100%" height="100%" name="hrsample-startup-flex-client" align="middle"
+				play="true"
+				loop="false"
+				quality="high"
+				allowScriptAccess="sameDomain"
+				type="application/x-shockwave-flash"
+				pluginspage="http://www.adobe.com/go/getflashplayer">
+			</embed>
+	</object>
+</noscript>
+</body>
+</html>

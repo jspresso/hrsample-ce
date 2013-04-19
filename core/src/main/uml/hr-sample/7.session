@@ -1,0 +1,12 @@
+window_sizes 1228 970 300 900 682 82
+diagrams
+  active  classdiagram_ref 129241 // organization
+    922 811 100 4 0 0
+end
+show_stereotypes
+selected classdiagram_ref 129241 // organization
+open
+  classview_ref 129241 // hr-management
+  classview_ref 129369 // commons
+end
+end
