@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jspresso.hrsample</groupId>
@@ -274,21 +275,24 @@
                 </replaceregexp>
                 <replaceregexp byline="true" preserveLastModified="true">
                   <regexp pattern="&lt;component name=&quot;(.*)&quot;&gt;$" />
-                  <substitution expression="&lt;component name=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
+                  <substitution
+                    expression="&lt;component name=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
                   <fileset dir="${xdoclet.dest}">
                     <include name="**/*.hbm.xml" />
                   </fileset>
                 </replaceregexp>
                 <replaceregexp byline="true" preserveLastModified="true">
                   <regexp pattern="&lt;composite-element class=&quot;(.*)&quot;&gt;$" />
-                  <substitution expression="&lt;composite-element class=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
+                  <substitution
+                    expression="&lt;composite-element class=&quot;\1&quot;&gt;&lt;tuplizer entity-mode=&quot;pojo&quot; class=&quot;org.jspresso.framework.model.persistence.hibernate.entity.tuplizer.ProxyPojoComponentTuplizer&quot; /&gt;" />
                   <fileset dir="${xdoclet.dest}">
                     <include name="**/*.hbm.xml" />
                   </fileset>
                 </replaceregexp>
                 <replaceregexp byline="false" flags="mg" preserveLastModified="true">
                   <regexp pattern="table=&quot;(.*)&quot;&gt;(\r?\n)(.*)&lt;key column=&quot;ID&quot;/&gt;" />
-                  <substitution expression="table=&quot;\1&quot;&gt;\2\3&lt;key column=&quot;ID&quot; foreign-key=&quot;\1_SUPER_FK&quot;/&gt;" />
+                  <substitution
+                    expression="table=&quot;\1&quot;&gt;\2\3&lt;key column=&quot;ID&quot; foreign-key=&quot;\1_SUPER_FK&quot;/&gt;" />
                   <fileset dir="${xdoclet.dest}">
                     <include name="**/*.hbm.xml" />
                   </fileset>
