@@ -7,9 +7,6 @@
         <dependent-module archiveName="hrsample-startup-remote-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-startup-remote/hrsample-startup-remote">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="hrsample-core-3.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hrsample-core/hrsample-core">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="hrsample-webapp"/>
         <property name="java-output-path" value="/hrsample-webapp/target/classes"/>
     </wb-module>
