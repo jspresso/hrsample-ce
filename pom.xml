@@ -9,7 +9,7 @@
   <groupId>org.jspresso.hrsample</groupId>
   <artifactId>hrsample</artifactId>
   <packaging>pom</packaging>
-  <version>3.6</version>
+  <version>3.7-SNAPSHOT</version>
   <name>Jspresso HR Sample Application</name>
   <scm>
     <connection>scm:svn:https://svn.jspresso.org/jspresso/app-hrsample/tags/hrsample-3.6</connection>
