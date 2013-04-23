@@ -246,7 +246,7 @@
               <includePackages>
                 <param>org.jspresso.hrsample.model</param>
               </includePackages>
-              <!-- <maxSqlNameSize>10</maxSqlNameSize> -->
+              <maxSqlNameSize>30</maxSqlNameSize>
             </configuration>
           </execution>
         </executions>
