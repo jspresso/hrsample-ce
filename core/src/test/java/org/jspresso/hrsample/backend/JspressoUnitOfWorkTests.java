@@ -55,6 +55,7 @@ import org.jspresso.hrsample.model.ContactInfo;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
+import org.jspresso.hrsample.model.Nameable;
 import org.junit.Test;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.jdbc.core.ConnectionCallback;
@@ -82,12 +83,8 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
     EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria
         .forClass(Department.class);
-    final String updatedName = "testUpdatedName";
     final List<Department> departments = hbc.findByCriteria(departmentCriteria,
         EMergeMode.MERGE_KEEP, Department.class);
-    for (Department d : departments) {
-      d.setName(updatedName);
-    }
 
     EnhancedDetachedCriteria companyCriteria = EnhancedDetachedCriteria
         .forClass(Company.class);
@@ -109,9 +106,9 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
             Set<Department> hibernateSessionDepartments = companyClone
                 .getDepartments();
 
-            Map<Serializable, Department> sessionDepartmentsById = new HashMap<Serializable, Department>();
+            Map<Serializable, Department> hibernateSessionDepartmentsById = new HashMap<Serializable, Department>();
             for (Department d : hibernateSessionDepartments) {
-              sessionDepartmentsById.put(d.getId(), d);
+              hibernateSessionDepartmentsById.put(d.getId(), d);
             }
 
             // Now clone each of the Jspresso session department and verify that
@@ -120,11 +117,10 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
             List<Department> departmentClones = hbc
                 .cloneInUnitOfWork(departments);
             for (Department d : departmentClones) {
-              Department sessionDepartment = sessionDepartmentsById.get(d
+              Department hibernateSessionDepartment = hibernateSessionDepartmentsById.get(d
                   .getId());
-              if (sessionDepartment != null) {
-                assertSame(sessionDepartment, d);
-                assertEquals(updatedName, sessionDepartment.getName());
+              if (hibernateSessionDepartment != null) {
+                assertSame(hibernateSessionDepartment, d);
               }
             }
           }
@@ -496,6 +492,42 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
       assertTrue("the department name is the one of the successfull TX",
           names.contains(d.getName()));
     }
+  }
 
+  /**
+   * Test dirty properties in UOW. See bug 1018.
+   */
+  @Test
+  public void testDirtyPropertiesInUOW() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    
+    EnhancedDetachedCriteria companyCriteria = EnhancedDetachedCriteria
+        .forClass(Company.class);
+    final Company comp = hbc.findFirstByCriteria(companyCriteria, EMergeMode.MERGE_KEEP, Company.class);
+    assertTrue("Dirty properties are not initialized", hbc.getDirtyProperties(comp) != null);
+    assertTrue("Dirty properties are not empty", hbc.getDirtyProperties(comp).isEmpty());
+    comp.setName("Updated");
+    assertTrue("Company name is not dirty", hbc.getDirtyProperties(comp).containsKey(Nameable.NAME));
+
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
+            EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria
+                .forClass(Department.class);
+            final Department dep = hbc.findFirstByCriteria(departmentCriteria,
+                EMergeMode.MERGE_KEEP, Department.class);
+            assertFalse("Company property is already initialized", Hibernate.isInitialized(dep.straightGetProperty("company")));
+            // Should be initialized now
+            Company uowComp = dep.getCompany();
+            assertTrue("Dirty properties are not initialized", hbc.getDirtyProperties(uowComp) != null);
+            assertTrue("Dirty properties are not empty", hbc.getDirtyProperties(uowComp).isEmpty());
+            assertFalse("Company is not fresh from DB", comp.getName().equals(uowComp.getName()));
+            uowComp.setName("UpdatedUow");
+            assertTrue("Company name is not dirty", hbc.getDirtyProperties(uowComp).containsKey(Nameable.NAME));
+          }
+        });
+    assertEquals("Company name has not been correctly committed", "UpdatedUow", comp.getName());
   }
 }
