@@ -56,6 +56,7 @@ import org.jspresso.framework.util.reflect.ReflectHelper;
 import org.jspresso.framework.util.uid.ByteArray;
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
+import org.jspresso.hrsample.model.ContactInfo;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
@@ -370,7 +371,7 @@ public class JspressoModelTests extends BackTestStartup {
           LinkedHashSet.class.isInstance(innerSet));
     }
   }
-  
+
   /**
    * Tests fix for bug #920.
    */
@@ -380,36 +381,64 @@ public class JspressoModelTests extends BackTestStartup {
     final City c = hbc.getEntityFactory().createEntityInstance(City.class);
     c.setName("Remove");
     c.setZip("00000");
-    
+
     assertTrue(!c.isPersistent());
     assertTrue(hbc.isDirty(c));
 
-    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
-      
-      @Override
-      protected void doInTransactionWithoutResult(TransactionStatus status) {
-        hbc.cloneInUnitOfWork(c);
-        hbc.registerForUpdate(c);
-      }
-    });
-    
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
+            hbc.cloneInUnitOfWork(c);
+            hbc.registerForUpdate(c);
+          }
+        });
+
     assertTrue(c.isPersistent());
     assertTrue(!hbc.isDirty(c));
 
-    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
-      
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
+            City c1 = hbc.cloneInUnitOfWork(c);
+            try {
+              hbc.cleanRelationshipsOnDeletion(c1, false);
+            } catch (Exception ex) {
+              throw new RuntimeException(ex);
+            }
+          }
+        });
+
+    assertTrue("Entity is transient since it has been deleted",
+        !c.isPersistent());
+    assertTrue("Entity is clean since there is nothing much we can do with it",
+        !hbc.isDirty(c));
+  }
+
+  /**
+   * Tests that 3+ level nested property changes get notified.
+   */
+  @Test
+  public void testSubNestedPropertyChange() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
+        .forClass(Department.class);
+    final Department d = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY,
+        Department.class);
+    final StringBuilder buff = new StringBuilder();
+    d.addPropertyChangeListener(OrganizationalUnit.MANAGER + "." + Employee.CONTACT + "."
+        + ContactInfo.CITY + "." + Nameable.NAME, new PropertyChangeListener() {
+
       @Override
-      protected void doInTransactionWithoutResult(TransactionStatus status) {
-        City c1 = hbc.cloneInUnitOfWork(c);
-        try {
-          hbc.cleanRelationshipsOnDeletion(c1, false);
-        } catch (Exception ex) {
-          throw new RuntimeException(ex);
-        }
+      public void propertyChange(PropertyChangeEvent evt) {
+        buff.append("arrived");
       }
     });
-
-    assertTrue("Entity is transient since it has been deleted", !c.isPersistent());
-    assertTrue("Entity is clean since there is nothing much we can do with it", !hbc.isDirty(c));
+    d.getManager().getContact().getCity().setName("testSubNotif");
+    assertTrue("Sub-nested notification arrived correctly", buff.length() > 0);
   }
 }
