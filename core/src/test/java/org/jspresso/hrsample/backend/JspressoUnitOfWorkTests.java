@@ -117,8 +117,8 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
             List<Department> departmentClones = hbc
                 .cloneInUnitOfWork(departments);
             for (Department d : departmentClones) {
-              Department hibernateSessionDepartment = hibernateSessionDepartmentsById.get(d
-                  .getId());
+              Department hibernateSessionDepartment = hibernateSessionDepartmentsById
+                  .get(d.getId());
               if (hibernateSessionDepartment != null) {
                 assertSame(hibernateSessionDepartment, d);
               }
@@ -495,19 +495,23 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
   }
 
   /**
-   * Test dirty properties in UOW. See bug 1018.
+   * Test dirty properties in UOW. See bug #1018.
    */
   @Test
   public void testDirtyPropertiesInUOW() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
-    
+
     EnhancedDetachedCriteria companyCriteria = EnhancedDetachedCriteria
         .forClass(Company.class);
-    final Company comp = hbc.findFirstByCriteria(companyCriteria, EMergeMode.MERGE_KEEP, Company.class);
-    assertTrue("Dirty properties are not initialized", hbc.getDirtyProperties(comp) != null);
-    assertTrue("Dirty properties are not empty", hbc.getDirtyProperties(comp).isEmpty());
+    final Company comp = hbc.findFirstByCriteria(companyCriteria,
+        EMergeMode.MERGE_KEEP, Company.class);
+    assertTrue("Dirty properties are not initialized",
+        hbc.getDirtyProperties(comp) != null);
+    assertTrue("Dirty properties are not empty", hbc.getDirtyProperties(comp)
+        .isEmpty());
     comp.setName("Updated");
-    assertTrue("Company name is not dirty", hbc.getDirtyProperties(comp).containsKey(Nameable.NAME));
+    assertTrue("Company name is not dirty", hbc.getDirtyProperties(comp)
+        .containsKey(Nameable.NAME));
 
     hbc.getTransactionTemplate().execute(
         new TransactionCallbackWithoutResult() {
@@ -516,18 +520,75 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
           protected void doInTransactionWithoutResult(TransactionStatus status) {
             EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria
                 .forClass(Department.class);
-            final Department dep = hbc.findFirstByCriteria(departmentCriteria,
+            Department dep = hbc.findFirstByCriteria(departmentCriteria,
                 EMergeMode.MERGE_KEEP, Department.class);
-            assertFalse("Company property is already initialized", Hibernate.isInitialized(dep.straightGetProperty("company")));
+            assertFalse("Company property is already initialized",
+                Hibernate.isInitialized(dep.straightGetProperty("company")));
             // Should be initialized now
             Company uowComp = dep.getCompany();
-            assertTrue("Dirty properties are not initialized", hbc.getDirtyProperties(uowComp) != null);
-            assertTrue("Dirty properties are not empty", hbc.getDirtyProperties(uowComp).isEmpty());
-            assertFalse("Company is not fresh from DB", comp.getName().equals(uowComp.getName()));
+            assertTrue("Dirty properties are not initialized",
+                hbc.getDirtyProperties(uowComp) != null);
+            assertTrue("Dirty properties are not empty", hbc
+                .getDirtyProperties(uowComp).isEmpty());
+            assertFalse("Company is not fresh from DB",
+                comp.getName().equals(uowComp.getName()));
             uowComp.setName("UpdatedUow");
-            assertTrue("Company name is not dirty", hbc.getDirtyProperties(uowComp).containsKey(Nameable.NAME));
+            assertTrue("Company name is not dirty",
+                hbc.getDirtyProperties(uowComp).containsKey(Nameable.NAME));
           }
         });
-    assertEquals("Company name has not been correctly committed", "UpdatedUow", comp.getName());
+    assertEquals("Company name has not been correctly committed", "UpdatedUow",
+        comp.getName());
+  }
+
+  /**
+   * Test uninitialized reference properties merge on commit. See bug #1023.
+   */
+  @Test
+  public void testUnititializedPropertiesMerge() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria
+        .forClass(Department.class);
+    final Department department = hbc.findFirstByCriteria(departmentCriteria,
+        EMergeMode.MERGE_KEEP, Department.class);
+    final Company existingCompany = (Company) department
+        .straightGetProperty(Department.COMPANY);
+    assertFalse("Company property is already initialized",
+        Hibernate.isInitialized(existingCompany));
+
+    Serializable newCompanyId = hbc.getTransactionTemplate().execute(
+        new TransactionCallback<Serializable>() {
+
+          @Override
+          public Serializable doInTransaction(TransactionStatus status) {
+            Department departmentClone = hbc.cloneInUnitOfWork(department);
+            Company newCompany = hbc.getEntityFactory().createEntityInstance(
+                Company.class);
+            newCompany.setName("NewCompany");
+            departmentClone.setCompany(newCompany);
+            return newCompany.getId();
+          }
+        });
+    assertEquals("New company reference is not correctly merged", newCompanyId,
+        department.getCompany().getId());
+    assertEquals("New company name is not correctly merged", "NewCompany",
+        department.getCompany().getName());
+
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          public void doInTransactionWithoutResult(TransactionStatus status) {
+            Company existingCompanyClone = hbc
+                .cloneInUnitOfWork(existingCompany);
+            assertFalse("Company clone is already initialized",
+                Hibernate.isInitialized(existingCompanyClone));
+            Department departmentClone = hbc.cloneInUnitOfWork(department);
+            departmentClone.setCompany(existingCompanyClone);
+          }
+        });
+    assertEquals("New company reference is not correctly merged", existingCompany.getId(),
+        department.getCompany().getId());
   }
 }
