@@ -18,10 +18,7 @@
  */
 package org.jspresso.hrsample.backend;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -588,7 +585,41 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
             departmentClone.setCompany(existingCompanyClone);
           }
         });
-    assertEquals("New company reference is not correctly merged", existingCompany.getId(),
-        department.getCompany().getId());
+    assertEquals("New company reference is not correctly merged",
+        existingCompany.getId(), department.getCompany().getId());
+  }
+
+  /**
+   * Test update / delete in TX. See bug #1009.
+   */
+  @Test
+  public void testUpdateDeleteInTx() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    final City c1 = hbc.getEntityFactory().createEntityInstance(City.class);
+    c1.setName("ToUpdate");
+    c1.setZip("12345");
+    hbc.registerForUpdate(c1);
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
+            hbc.performPendingOperations();
+          }
+        });
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
+            City c1Clone = hbc.cloneInUnitOfWork(c1);
+            c1Clone.setName("ToDelete");
+            hbc.registerForUpdate(c1Clone);
+            hbc.registerForDeletion(c1Clone);
+          }
+        });
+    City c2 = hbc.findById(c1.getId(), EMergeMode.MERGE_KEEP, City.class);
+    assertNull("City has not been deleted correctly.", c2);
   }
 }
