@@ -435,10 +435,23 @@ public class JspressoModelTests extends BackTestStartup {
 
       @Override
       public void propertyChange(PropertyChangeEvent evt) {
-        buff.append("arrived");
+        buff.append(evt.getNewValue());
       }
     });
-    d.getManager().getContact().getCity().setName("testSubNotif");
-    assertTrue("Sub-nested notification arrived correctly", buff.length() > 0);
+    City currentCity = d.getManager().getContact().getCity();
+    currentCity.setName("testSubNotif");
+    assertEquals("Sub-nested notification did not arrive correctly", "testSubNotif", buff.toString());
+    
+    City newCity = hbc.getEntityFactory().createEntityInstance(City.class);
+    newCity.setName("newSubNotif");
+    newCity.setZip("12345");
+    d.getManager().getContact().setCity(newCity);
+    assertEquals("Sub-nested notification did not arrive correctly", "testSubNotifnewSubNotif", buff.toString());
+    
+    newCity.setName("anotherOne");
+    assertEquals("Sub-nested notification did not arrive correctly", "testSubNotifnewSubNotifanotherOne", buff.toString());
+    
+    currentCity.setName("noNotifExpected");
+    assertEquals("Sub-nested notification did not arrive correctly", "testSubNotifnewSubNotifanotherOne", buff.toString());
   }
 }
