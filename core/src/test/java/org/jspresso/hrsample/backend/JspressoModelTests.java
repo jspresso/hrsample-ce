@@ -33,6 +33,7 @@ import java.beans.PropertyChangeListener;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -430,28 +431,73 @@ public class JspressoModelTests extends BackTestStartup {
     final Department d = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY,
         Department.class);
     final StringBuilder buff = new StringBuilder();
-    d.addPropertyChangeListener(OrganizationalUnit.MANAGER + "." + Employee.CONTACT + "."
-        + ContactInfo.CITY + "." + Nameable.NAME, new PropertyChangeListener() {
+    d.addPropertyChangeListener(OrganizationalUnit.MANAGER + "."
+        + Employee.CONTACT + "." + ContactInfo.CITY + "." + Nameable.NAME,
+        new PropertyChangeListener() {
+
+          @Override
+          public void propertyChange(PropertyChangeEvent evt) {
+            buff.append(evt.getNewValue());
+          }
+        });
+    City currentCity = d.getManager().getContact().getCity();
+    currentCity.setName("testSubNotif");
+    assertEquals("Sub-nested notification did not arrive correctly",
+        "testSubNotif", buff.toString());
+
+    City newCity = hbc.getEntityFactory().createEntityInstance(City.class);
+    newCity.setName("newSubNotif");
+    newCity.setZip("12345");
+    d.getManager().getContact().setCity(newCity);
+    assertEquals("Sub-nested notification did not arrive correctly",
+        "testSubNotifnewSubNotif", buff.toString());
+
+    newCity.setName("anotherOne");
+    assertEquals("Sub-nested notification did not arrive correctly",
+        "testSubNotifnewSubNotifanotherOne", buff.toString());
+
+    currentCity.setName("noNotifExpected");
+    assertEquals("Sub-nested notification did not arrive correctly",
+        "testSubNotifnewSubNotifanotherOne", buff.toString());
+  }
+
+  /**
+   * Tests that property cache gets correctly reset when there is no listener
+   * (bug #852) and that the property change events are correctly fired when the
+   * computed property is supposed to change (bug #1025).
+   */
+  @Test
+  public void testComputedPropertyCacheResetAndNotif() {
+    Employee emp = getBackendController().getEntityFactory()
+        .createEntityInstance(Employee.class);
+    Calendar c = Calendar.getInstance();
+    c.set(Calendar.YEAR, 1973);
+
+    emp.setBirthDate(c.getTime());
+    assertEquals("Age is not correctly computed.",
+        emp.computeAge(emp.getBirthDate()), emp.getAge());
+
+    c.add(Calendar.YEAR, -3);
+    emp.setBirthDate(c.getTime());
+    assertEquals(
+        "Age is not correctly computed after birth date modification.",
+        emp.computeAge(emp.getBirthDate()), emp.getAge());
+
+    final StringBuilder buff = new StringBuilder();
+    emp.addPropertyChangeListener(Employee.AGE, new PropertyChangeListener() {
 
       @Override
       public void propertyChange(PropertyChangeEvent evt) {
         buff.append(evt.getNewValue());
       }
     });
-    City currentCity = d.getManager().getContact().getCity();
-    currentCity.setName("testSubNotif");
-    assertEquals("Sub-nested notification did not arrive correctly", "testSubNotif", buff.toString());
-    
-    City newCity = hbc.getEntityFactory().createEntityInstance(City.class);
-    newCity.setName("newSubNotif");
-    newCity.setZip("12345");
-    d.getManager().getContact().setCity(newCity);
-    assertEquals("Sub-nested notification did not arrive correctly", "testSubNotifnewSubNotif", buff.toString());
-    
-    newCity.setName("anotherOne");
-    assertEquals("Sub-nested notification did not arrive correctly", "testSubNotifnewSubNotifanotherOne", buff.toString());
-    
-    currentCity.setName("noNotifExpected");
-    assertEquals("Sub-nested notification did not arrive correctly", "testSubNotifnewSubNotifanotherOne", buff.toString());
+    c.add(Calendar.YEAR, -5);
+    emp.setBirthDate(c.getTime());
+    assertEquals(
+        "Age is not correctly computedafter 2nd birth date modification.",
+        emp.computeAge(emp.getBirthDate()), emp.getAge());
+    assertTrue("Age notification failed.", buff.length() > 0);
+    assertEquals("Age notification contains bad value.",
+        emp.computeAge(emp.getBirthDate()).toString(), buff.toString());
   }
 }

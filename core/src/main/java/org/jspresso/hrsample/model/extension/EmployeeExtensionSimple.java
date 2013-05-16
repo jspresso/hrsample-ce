@@ -74,7 +74,7 @@ public class EmployeeExtensionSimple extends
    */
   public String getHtmlDescription() {
     return "<html><b><i>" + getComponent().getFullName() + "</i></b><br>"
-        + "  Age: " + getAge() + "</html>";
+        + "  Age: " + getComponent().getAge() + "</html>";
 
   }
 }
