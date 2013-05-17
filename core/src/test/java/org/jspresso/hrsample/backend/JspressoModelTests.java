@@ -443,22 +443,43 @@ public class JspressoModelTests extends BackTestStartup {
     City currentCity = d.getManager().getContact().getCity();
     currentCity.setName("testSubNotif");
     assertEquals("Sub-nested notification did not arrive correctly",
-        "testSubNotif", buff.toString());
+        currentCity.getName(), buff.toString());
+    buff.delete(0, buff.length());
 
     City newCity = hbc.getEntityFactory().createEntityInstance(City.class);
     newCity.setName("newSubNotif");
     newCity.setZip("12345");
     d.getManager().getContact().setCity(newCity);
     assertEquals("Sub-nested notification did not arrive correctly",
-        "testSubNotifnewSubNotif", buff.toString());
+        newCity.getName(), buff.toString());
+    buff.delete(0, buff.length());
 
     newCity.setName("anotherOne");
     assertEquals("Sub-nested notification did not arrive correctly",
-        "testSubNotifnewSubNotifanotherOne", buff.toString());
+        newCity.getName(), buff.toString());
+    buff.delete(0, buff.length());
 
     currentCity.setName("noNotifExpected");
+    assertEquals("Sub-nested notification arrived whereas is shouldn't",
+        "", buff.toString());
+    buff.delete(0, buff.length());
+    
+    City anotherNewCity = hbc.getEntityFactory().createEntityInstance(City.class);
+    anotherNewCity.setName("anotherNewCity");
+    anotherNewCity.setZip("12345");
+
+    Employee newManager = hbc.getEntityFactory().createEntityInstance(Employee.class);
+    newManager.getContact().setCity(anotherNewCity);
+    newManager.setCompany(d.getCompany());
+    d.setManager(newManager);
     assertEquals("Sub-nested notification did not arrive correctly",
-        "testSubNotifnewSubNotifanotherOne", buff.toString());
+        anotherNewCity.getName(), buff.toString());
+    buff.delete(0, buff.length());
+    
+    anotherNewCity.setName("anotherNewNotif");
+    assertEquals("Sub-nested notification did not arrive correctly",
+        anotherNewCity.getName(), buff.toString());
+    buff.delete(0, buff.length());
   }
 
   /**
