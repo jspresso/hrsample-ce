@@ -5,7 +5,6 @@ package org.jspresso.hrsample.model.processor;
 
 import org.jspresso.framework.util.bean.integrity.EmptyPropertyProcessor;
 import org.jspresso.framework.util.bean.integrity.IntegrityException;
-
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.OrganizationalUnit;
 

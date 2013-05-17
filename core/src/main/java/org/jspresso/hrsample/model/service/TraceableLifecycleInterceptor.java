@@ -9,7 +9,6 @@ import org.jspresso.framework.model.component.service.EmptyLifecycleInterceptor;
 import org.jspresso.framework.model.entity.IEntityFactory;
 import org.jspresso.framework.model.entity.IEntityLifecycleHandler;
 import org.jspresso.framework.security.UserPrincipal;
-
 import org.jspresso.hrsample.model.Traceable;
 
 /**

@@ -5,7 +5,6 @@ package org.jspresso.hrsample.model.extension;
 
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.framework.model.descriptor.IEnumerationPropertyDescriptor;
-
 import org.jspresso.hrsample.model.Employee;
 
 /**
