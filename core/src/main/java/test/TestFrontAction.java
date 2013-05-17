@@ -41,7 +41,8 @@ public class TestFrontAction<E, F, G> extends FrontendAction<E, F, G> {
    * {@inheritDoc}
    */
   @Override
-  public boolean execute(IActionHandler actionHandler, Map<String, Object> context) {
+  public boolean execute(IActionHandler actionHandler,
+      Map<String, Object> context) {
     return super.execute(actionHandler, context);
   }
 }

@@ -41,23 +41,26 @@ public class TestBackAction extends BackendAction {
    * {@inheritDoc}
    */
   @Override
-  public boolean execute(IActionHandler actionHandler, Map<String, Object> context) {
+  public boolean execute(IActionHandler actionHandler,
+      Map<String, Object> context) {
     try {
       for (int i = 1; i <= 10; i++) {
         Thread.sleep(1000);
         setProgress(((double) i) / 10);
       }
       final HibernateBackendController bc = (HibernateBackendController) getController(context);
-      bc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      bc.getTransactionTemplate().execute(
+          new TransactionCallbackWithoutResult() {
 
-        @Override
-        protected void doInTransactionWithoutResult(TransactionStatus status) {
-          City test = bc.getEntityFactory().createEntityInstance(City.class);
-          test.setName(Long.toString(System.currentTimeMillis()));
-          test.setZip("12345");
-          bc.registerForUpdate(test);
-        }
-      });
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus status) {
+              City test = bc.getEntityFactory()
+                  .createEntityInstance(City.class);
+              test.setName(Long.toString(System.currentTimeMillis()));
+              test.setZip("12345");
+              bc.registerForUpdate(test);
+            }
+          });
     } catch (InterruptedException ex) {
       ex.printStackTrace();
     }

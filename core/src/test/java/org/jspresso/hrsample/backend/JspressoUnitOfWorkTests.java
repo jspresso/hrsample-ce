@@ -25,6 +25,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -547,8 +548,9 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
     EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria
         .forClass(Department.class);
-    final Department department = hbc.findFirstByCriteria(departmentCriteria,
+    List<Department> departments = hbc.findByCriteria(departmentCriteria,
         EMergeMode.MERGE_KEEP, Department.class);
+    final Department department = departments.get(0);
     final Company existingCompany = (Company) department
         .straightGetProperty(Department.COMPANY);
     assertFalse("Company property is already initialized",
@@ -577,16 +579,32 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
           @Override
           public void doInTransactionWithoutResult(TransactionStatus status) {
-            Company existingCompanyClone = hbc
-                .cloneInUnitOfWork(existingCompany);
+            List<IEntity> clonedEntities = hbc.cloneInUnitOfWork(Arrays.asList(
+                (IEntity) existingCompany, department));
+            Company existingCompanyClone = (Company) clonedEntities.get(0);
             assertFalse("Company clone is already initialized",
                 Hibernate.isInitialized(existingCompanyClone));
-            Department departmentClone = hbc.cloneInUnitOfWork(department);
+            Department departmentClone = (Department) clonedEntities.get(1);
             departmentClone.setCompany(existingCompanyClone);
           }
         });
     assertEquals("New company reference is not correctly merged",
         existingCompany.getId(), department.getCompany().getId());
+
+    final Department otherDepartment = departments.get(1);
+    Department deptFromUow = hbc.getTransactionTemplate().execute(
+        new TransactionCallback<Department>() {
+
+          @Override
+          public Department doInTransaction(TransactionStatus status) {
+            Department d = hbc.findById(otherDepartment.getId(), null,
+                Department.class);
+            return d;
+          }
+        });
+    assertFalse("Department Company property from UOW is initialized",
+        Hibernate.isInitialized(deptFromUow.straightGetProperty("company")));
+    hbc.merge(deptFromUow, EMergeMode.MERGE_EAGER);
   }
 
   /**

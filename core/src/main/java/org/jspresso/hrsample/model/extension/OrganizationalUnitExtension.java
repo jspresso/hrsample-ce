@@ -29,8 +29,8 @@ public class OrganizationalUnitExtension extends
     super(organizationalUnit);
     registerNotificationForwarding(organizationalUnit,
         OrganizationalUnit.OU_ID, OrganizationalUnit.HTML_DESCRIPTION);
-    registerNotificationForwarding(organizationalUnit,
-        Nameable.NAME, OrganizationalUnit.HTML_DESCRIPTION);
+    registerNotificationForwarding(organizationalUnit, Nameable.NAME,
+        OrganizationalUnit.HTML_DESCRIPTION);
   }
 
   /**

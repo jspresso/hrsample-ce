@@ -460,22 +460,24 @@ public class JspressoModelTests extends BackTestStartup {
     buff.delete(0, buff.length());
 
     currentCity.setName("noNotifExpected");
-    assertEquals("Sub-nested notification arrived whereas is shouldn't",
-        "", buff.toString());
+    assertEquals("Sub-nested notification arrived whereas is shouldn't", "",
+        buff.toString());
     buff.delete(0, buff.length());
-    
-    City anotherNewCity = hbc.getEntityFactory().createEntityInstance(City.class);
+
+    City anotherNewCity = hbc.getEntityFactory().createEntityInstance(
+        City.class);
     anotherNewCity.setName("anotherNewCity");
     anotherNewCity.setZip("12345");
 
-    Employee newManager = hbc.getEntityFactory().createEntityInstance(Employee.class);
+    Employee newManager = hbc.getEntityFactory().createEntityInstance(
+        Employee.class);
     newManager.getContact().setCity(anotherNewCity);
     newManager.setCompany(d.getCompany());
     d.setManager(newManager);
     assertEquals("Sub-nested notification did not arrive correctly",
         anotherNewCity.getName(), buff.toString());
     buff.delete(0, buff.length());
-    
+
     anotherNewCity.setName("anotherNewNotif");
     assertEquals("Sub-nested notification did not arrive correctly",
         anotherNewCity.getName(), buff.toString());

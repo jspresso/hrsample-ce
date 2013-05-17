@@ -21,6 +21,7 @@ public class EmployeeExtension extends EmployeeExtensionSimple {
    */
   public EmployeeExtension(Employee extendedEmployee) {
     super(extendedEmployee);
-    registerNotificationForwarding(extendedEmployee, Employee.BIRTH_DATE, Employee.AGE);
+    registerNotificationForwarding(extendedEmployee, Employee.BIRTH_DATE,
+        Employee.AGE);
   }
 }

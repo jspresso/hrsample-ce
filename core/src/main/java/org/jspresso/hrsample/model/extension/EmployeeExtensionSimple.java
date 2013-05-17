@@ -20,7 +20,7 @@ public class EmployeeExtensionSimple extends
    * Constructs a new <code>EmployeeExtension</code> instance.
    * 
    * @param extendedEmployee
-   *            The extended Employee instance.
+   *          The extended Employee instance.
    */
   public EmployeeExtensionSimple(Employee extendedEmployee) {
     super(extendedEmployee);
@@ -34,7 +34,6 @@ public class EmployeeExtensionSimple extends
   public Integer getAge() {
     return getComponent().computeAge(getComponent().getBirthDate());
   }
-
 
   /**
    * Returns the gender image url.

@@ -50,9 +50,8 @@ public class EmployeePropertyProcessors {
       EmptyPropertyProcessor<Employee, String> {
 
     /**
-     * Formats the new first name. The formatting is :
-     * <li>Capitalize the 1st letter
-     * <li>Lower case all the other letters
+     * Formats the new first name. The formatting is : <li>Capitalize the 1st
+     * letter <li>Lower case all the other letters
      * <p>
      * {@inheritDoc}
      */

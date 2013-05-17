@@ -34,8 +34,9 @@ public class OrganizationalUnitPropertyProcessors {
     @Override
     public void preprocessSetter(OrganizationalUnit organizationalUnit,
         Employee newManager) {
-      if (newManager != null && (newManager.getCompany() == null
-          || !newManager.getCompany().equals(organizationalUnit.getCompany()))) {
+      if (newManager != null
+          && (newManager.getCompany() == null || !newManager.getCompany()
+              .equals(organizationalUnit.getCompany()))) {
         throw new IntegrityException(
             "A manager must belong to the same company as its managed organizational unit.",
             "manager.company.invalid");

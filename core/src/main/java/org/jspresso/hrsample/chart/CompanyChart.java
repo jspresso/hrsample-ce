@@ -39,8 +39,7 @@ public class CompanyChart extends AbstractChartDescriptor {
    * {@inheritDoc}
    */
   @Override
-  public String getData(Object model,
-      Connection jdbcConnection,
+  public String getData(Object model, Connection jdbcConnection,
       ITranslationProvider translationProvider, Locale locale) {
     Company company = (Company) model;
     StringBuilder chartData = new StringBuilder("<graph caption='"
