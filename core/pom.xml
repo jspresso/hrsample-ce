@@ -23,6 +23,16 @@
       <artifactId>jspresso-tools</artifactId>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy-all</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>bsf</groupId>
+          <artifactId>bsf</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
 
     <!-- Tests dependencies -->
     <dependency>
