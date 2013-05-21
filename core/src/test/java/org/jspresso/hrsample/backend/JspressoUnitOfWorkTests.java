@@ -520,8 +520,8 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
                 .forClass(Department.class);
             Department dep = hbc.findFirstByCriteria(departmentCriteria,
                 EMergeMode.MERGE_KEEP, Department.class);
-            assertFalse("Company property is already initialized",
-                Hibernate.isInitialized(dep.straightGetProperty("company")));
+            assertFalse("Company property is already initialized", Hibernate
+                .isInitialized(dep.straightGetProperty(Department.COMPANY)));
             // Should be initialized now
             Company uowComp = dep.getCompany();
             assertTrue("Dirty properties are not initialized",
@@ -603,7 +603,8 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
           }
         });
     assertFalse("Department Company property from UOW is initialized",
-        Hibernate.isInitialized(deptFromUow.straightGetProperty("company")));
+        Hibernate.isInitialized(deptFromUow
+            .straightGetProperty(Department.COMPANY)));
     hbc.merge(deptFromUow, EMergeMode.MERGE_EAGER);
   }
 
@@ -639,5 +640,99 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         });
     City c2 = hbc.findById(c1.getId(), EMergeMode.MERGE_KEEP, City.class);
     assertNull("City has not been deleted correctly.", c2);
+  }
+
+  /**
+   * Test clone in UOW of just initialized collection properties (recorded
+   * original value might be UNKNOWN).
+   */
+  @Test
+  public void testJustInitializedCollectionPropertyClone() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    final EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria
+        .forClass(Department.class);
+    final List<Department> departments = hbc.findByCriteria(departmentCriteria,
+        EMergeMode.MERGE_KEEP, Department.class);
+    final Department department = departments.get(0);
+    assertFalse("Department teams property from is initialized",
+        Hibernate.isInitialized(department
+            .straightGetProperty(Department.TEAMS)));
+
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
+            Department departmentInTx = hbc.findById(department.getId(),
+                EMergeMode.MERGE_KEEP, Department.class);
+
+            assertFalse("TX department teams property is initialized",
+                Hibernate.isInitialized(departmentInTx
+                    .straightGetProperty(Department.TEAMS)));
+
+            departmentInTx.getTeams();
+            Map<String, Object> inTxDirtyProperties = hbc
+                .getDirtyProperties(departmentInTx);
+            assertFalse("teams property is dirty whereas is shouldn't",
+                inTxDirtyProperties.containsKey(Department.TEAMS));
+          }
+        });
+
+    department.getTeams();
+
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
+            Department departmentInTx = hbc.cloneInUnitOfWork(department);
+
+            departmentInTx.getTeams();
+            Map<String, Object> inTxDirtyProperties = hbc
+                .getDirtyProperties(departmentInTx);
+            assertFalse("teams property is dirty whereas is shouldn't",
+                inTxDirtyProperties.containsKey(Department.TEAMS));
+          }
+        });
+    Map<String, Object> dirtyProperties = hbc.getDirtyProperties(department);
+    assertFalse("teams property is dirty whereas is shouldn't",
+        dirtyProperties.containsKey(Department.TEAMS));
+
+    final Department anotherDepartment = departments.get(1);
+    assertFalse("Other department teams property is initialized",
+        Hibernate.isInitialized(anotherDepartment
+            .straightGetProperty(Department.TEAMS)));
+    final Department anotherDepartmentClone = hbc.getTransactionTemplate()
+        .execute(new TransactionCallback<Department>() {
+
+          @Override
+          public Department doInTransaction(TransactionStatus status) {
+            Department anotherDeptClone = hbc.cloneInUnitOfWork(
+                anotherDepartment, true);
+
+            assertFalse("Other department clone teams property is initialized",
+                Hibernate.isInitialized(anotherDeptClone
+                    .straightGetProperty(Department.TEAMS)));
+
+            anotherDeptClone.getTeams();
+            return anotherDeptClone;
+          }
+        });
+    hbc.merge(anotherDepartmentClone, EMergeMode.MERGE_EAGER);
+    Map<String, Object> anotherDirtyProperties = hbc.getDirtyProperties(anotherDepartment);
+    assertFalse(
+        "Other department teams property is dirty whereas is shouldn't",
+        anotherDirtyProperties.containsKey(Department.TEAMS));
+
+    hbc.getTransactionTemplate().execute(new TransactionCallback<Department>() {
+
+      @Override
+      public Department doInTransaction(TransactionStatus status) {
+        Department yetAnotherDeptClone = hbc.cloneInUnitOfWork(
+            anotherDepartmentClone, false);
+        return yetAnotherDeptClone;
+      }
+    });
   }
 }
