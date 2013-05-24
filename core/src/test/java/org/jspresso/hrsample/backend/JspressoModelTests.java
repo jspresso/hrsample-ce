@@ -42,11 +42,11 @@ import java.util.Set;
 
 import org.hamcrest.Description;
 import org.hibernate.SQLQuery;
-import org.hibernate.collection.PersistentSet;
-import org.hibernate.criterion.CriteriaSpecification;
+import org.hibernate.collection.internal.PersistentSet;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import org.jspresso.framework.application.backend.entity.ControllerAwareEntityInvocationHandler;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
@@ -347,11 +347,11 @@ public class JspressoModelTests extends BackTestStartup {
         .forClass(Department.class);
 
     DetachedCriteria companyCrit = crit.getSubCriteriaFor(crit,
-        Department.COMPANY, CriteriaSpecification.INNER_JOIN);
+        Department.COMPANY, JoinType.INNER_JOIN);
     companyCrit.add(Restrictions.eq(Nameable.NAME, "Design2See"));
 
     DetachedCriteria teamsCrit = crit.getSubCriteriaFor(crit, Department.TEAMS,
-        CriteriaSpecification.LEFT_JOIN);
+        JoinType.LEFT_OUTER_JOIN);
     teamsCrit.add(Restrictions.eq(OrganizationalUnit.OU_ID, "HR-001"));
 
     crit.addOrder(Order.desc(Nameable.NAME));
