@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <actionScriptProperties analytics="false" mainApplicationPath="FlexApplicationStartup.mxml" projectUUID="ada30588-28fc-4135-befb-d7ae05008f07" version="11">
-  <compiler additionalCompilerArguments="-locale=en_US,fr_FR,es_ES,pt_BR,de_DE,it_IT,pl_PL,cs_CZ,sk_SK -services &quot;${WORKSPACE_ABSOLUTE_PATH}/hrsample/startup/flex/config/src/main/resources/services-config.xml&quot; -context-root hrsample-webapp" autoRSLOrdering="false" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="target/flex" removeUnusedRSL="true" rootURL="http://localhost:8080/hrsample-webapp/flex-debug" sourceFolderPath="src/main/flex" strict="true" targetPlayerVersion="10.0.0" useApolloConfig="false" useDebugRSLSwfs="true" useFlashSDK="false" verifyDigests="true" warn="true">
+  <compiler additionalCompilerArguments="-services &quot;${WORKSPACE_ABSOLUTE_PATH}/hrsample/startup/flex/config/src/main/resources/services-config.xml&quot; -context-root hrsample-webapp" autoRSLOrdering="false" copyDependentFiles="true" flex3CompatMode="false" flexSDK="Flex 4.6.0" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="target/flex" removeUnusedRSL="true" rootURL="http://localhost:8080/hrsample-webapp/flex-debug" sourceFolderPath="src/main/flex" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" useFlashSDK="false" verifyDigests="true" warn="true">
     <compilerSourcePath>
       <compilerSourcePathEntry kind="1" linkType="1" path="src/main/flex"/>
       <compilerSourcePathEntry kind="1" linkType="1" path="src/main/resources"/>
@@ -9,46 +9,17 @@
     <libraryPath defaultLinkType="1">
       <libraryPathEntry kind="4" path="">
         <excludedEntries>
-          <libraryPathEntry kind="1" linkType="1" path="${PROJECT_FRAMEWORKS}/locale/{locale}"/>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/flex.swc" useDefaultLinkType="false"/>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/qtp.swc" useDefaultLinkType="false"/>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/rpc.swc" useDefaultLinkType="false"/>
-          <libraryPathEntry applicationDomain="default" forceLoad="false" kind="3" linkType="4" path="${PROJECT_FRAMEWORKS}/libs/framework.swc" useDefaultLinkType="true">
-            <crossDomainRsls>
-              <crossDomainRslEntry autoExtract="true" policyFileUrl="" rslUrl="framework_3.1.0.2710.swz"/>
-              <crossDomainRslEntry autoExtract="true" policyFileUrl="" rslUrl="framework_3.1.0.2710.swf"/>
-            </crossDomainRsls>
-          </libraryPathEntry>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/datavisualization.swc" useDefaultLinkType="false"/>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation.swc" useDefaultLinkType="false"/>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_dmv.swc" useDefaultLinkType="false"/>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_flashflexkit.swc" useDefaultLinkType="false"/>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/utilities.swc" useDefaultLinkType="false"/>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_agent.swc" useDefaultLinkType="false"/>
+          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/core.swc" useDefaultLinkType="false"/>
         </excludedEntries>
       </libraryPathEntry>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/framework/3.6.0.16995/framework-3.6.0.16995.swc" sourcepath="${PROJECT_FRAMEWORKS}/projects/framework/src" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/rpc/3.6.0.16995/rpc-3.6.0.16995.swc" sourcepath="${PROJECT_FRAMEWORKS}/projects/rpc/src" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/utilities/3.6.0.16995/utilities-3.6.0.16995.swc" sourcepath="${PROJECT_FRAMEWORKS}/projects/utilities/src" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flexunit/flexunit/0.90/flexunit-0.90.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/flexlib/flexlib/2.5/flexlib-2.5-flex3.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/resizecontainers/resizecontainers/1.0/resizecontainers-1.0.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/framework/3.6.0.16995/framework-3.6.0.16995-en_US.rb.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/framework/3.6.0.16995/framework-3.6.0.16995-fr_FR.rb.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/framework/3.6.0.16995/framework-3.6.0.16995-es_ES.rb.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/framework/3.6.0.16995/framework-3.6.0.16995-pt_BR.rb.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/framework/3.6.0.16995/framework-3.6.0.16995-de_DE.rb.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/rpc/3.6.0.16995/rpc-3.6.0.16995-en_US.rb.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/rpc/3.6.0.16995/rpc-3.6.0.16995-fr_FR.rb.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/rpc/3.6.0.16995/rpc-3.6.0.16995-es_ES.rb.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/rpc/3.6.0.16995/rpc-3.6.0.16995-pt_BR.rb.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/rpc/3.6.0.16995/rpc-3.6.0.16995-de_DE.rb.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="/jspresso-flex/target/jspresso-flex.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/jspresso-flex/target/jspresso-flex.swc" useDefaultLinkType="true"/>
+      <libraryPathEntry kind="3" linkType="2" path="${M2_REPO}/sephiroth/checkbox3state/1.0/checkbox3state-1.0.swc" sourcepath="/Applications/envdev/flex3libs/checkbox3state/sources" useDefaultLinkType="true"/>
+      <libraryPathEntry kind="3" linkType="2" path="${M2_REPO}/flexlib/flexlib/2.5/flexlib-2.5-flex3.swc" useDefaultLinkType="true"/>
+      <libraryPathEntry kind="3" linkType="2" path="${M2_REPO}/resizecontainers/resizecontainers/1.0/resizecontainers-1.0.swc" useDefaultLinkType="true"/>
     </libraryPath>
     <sourceAttachmentPath>
-      <sourceAttachmentPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/framework/3.6.0.16995/framework-3.6.0.16995.swc" sourcepath="${PROJECT_FRAMEWORKS}/projects/framework/src" useDefaultLinkType="false"/>
-      <sourceAttachmentPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/rpc/3.6.0.16995/rpc-3.6.0.16995.swc" sourcepath="${PROJECT_FRAMEWORKS}/projects/rpc/src" useDefaultLinkType="false"/>
-      <sourceAttachmentPathEntry kind="3" linkType="1" path="${M2_REPO}/com/adobe/flex/framework/utilities/3.6.0.16995/utilities-3.6.0.16995.swc" sourcepath="${PROJECT_FRAMEWORKS}/projects/utilities/src" useDefaultLinkType="false"/>
+      <sourceAttachmentPathEntry kind="3" linkType="2" path="${M2_REPO}/sephiroth/checkbox3state/1.0/checkbox3state-1.0.swc" sourcepath="/Applications/envdev/flex3libs/checkbox3state/sources" useDefaultLinkType="true"/>
     </sourceAttachmentPath>
   </compiler>
   <applications>

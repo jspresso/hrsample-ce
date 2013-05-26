@@ -4,7 +4,7 @@
   initialize="init()"
   creationComplete="start()">
   
-  <mx:Style source="/org/jspresso/hrsample/theme.css" />
+  <mx:Style source="../resources/org/jspresso/hrsample/theme.css" />
   <mx:Script>
     <![CDATA[
       import mx.messaging.ChannelSet;
