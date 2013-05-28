@@ -27,6 +27,28 @@
 		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
 		<nature>com.powerflasher.fdt.core.FlashNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>lib/checkbox3state-1.0.swc</name>
+			<type>1</type>
+			<locationURI>M2_REPO/sephiroth/checkbox3state/1.0/checkbox3state-1.0.swc</locationURI>
+		</link>
+		<link>
+			<name>lib/flexlib-2.5-flex3.swc</name>
+			<type>1</type>
+			<locationURI>M2_REPO/flexlib/flexlib/2.5/flexlib-2.5-flex3.swc</locationURI>
+		</link>
+		<link>
+			<name>lib/resizecontainers-1.0.swc</name>
+			<type>1</type>
+			<locationURI>M2_REPO/resizecontainers/resizecontainers/1.0/resizecontainers-1.0.swc</locationURI>
+		</link>
+		<link>
+			<name>lib/reusable-fx-1.0.swc</name>
+			<type>1</type>
+			<locationURI>M2_REPO/com/iwobanas/reusable-fx/1.0/reusable-fx-1.0.swc</locationURI>
+		</link>
+	</linkedResources>
 	<filteredResources>
 		<filter>
 			<id>1333693741950</id>
