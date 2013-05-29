@@ -22,6 +22,7 @@
       <sourceAttachmentPathEntry kind="3" linkType="2" path="${M2_REPO}/sephiroth/checkbox3state/1.0/checkbox3state-1.0.swc" sourcepath="/Applications/envdev/flex3libs/checkbox3state/sources" useDefaultLinkType="true"/>
     </sourceAttachmentPath>
   </compiler>
+  <theme themeIsDefault="false" themeIsSDK="true" themeLocation="${SDK_THEMES_DIR}/frameworks/themes/Wireframe"/>
   <applications>
     <application path="FlexApplicationStartup.mxml"/>
   </applications>
