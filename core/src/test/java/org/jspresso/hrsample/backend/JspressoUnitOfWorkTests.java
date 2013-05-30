@@ -735,4 +735,30 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
       }
     });
   }
+  
+  /**
+   * Tests that an in-memory TX preserves entities unicity in the UOW even if 
+   * multiple requests are spanned (see bug #1043).
+   */
+  @Test
+  public void testInMemoryTxEntityUnicity() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    EnhancedDetachedCriteria compCrit = EnhancedDetachedCriteria.forClass(Company.class);
+    Company company = hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_KEEP, Company.class);
+    
+    // Simulates a new request
+    hbc.cleanupRequestResources();
+    
+    hbc.beginUnitOfWork();
+    Company companyClone = hbc.cloneInUnitOfWork(company);
+    assertNotSame("The company clone is the same instance as the original", companyClone, company);
+    
+    hbc.cleanupRequestResources();
+    
+    Company c = (Company) hbc.getHibernateSession().byId(Company.class).load(company.getId());
+    assertSame("Both company instances should have been the same in UOW", c, companyClone);
+    
+    hbc.rollbackUnitOfWork();
+  }
 }

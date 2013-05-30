@@ -253,7 +253,7 @@ border('Company.module.view',
     parent:'Company.organization.view',
     actionMap:'Company-module-am')
 
-table('Employee.table.view', parent:'filterableBeanCollectionModuleView') {
+table('Employee.table.view', parent:'filterableBeanCollectionModuleView', selectionMode:'MULTIPLE_INTERVAL_CUMULATIVE_SELECTION') {
   columns {
     propertyView name:'name'
     propertyView name:'firstName'
