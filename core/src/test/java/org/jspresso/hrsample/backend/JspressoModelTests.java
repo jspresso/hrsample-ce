@@ -18,9 +18,7 @@
  */
 package org.jspresso.hrsample.backend;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.argThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.never;
@@ -523,4 +521,37 @@ public class JspressoModelTests extends BackTestStartup {
     assertEquals("Age notification contains bad value.",
         emp.computeAge(emp.getBirthDate()).toString(), buff.toString());
   }
+
+  /**
+   * Tests Hibernate null components handling.
+   * See bug #1041 
+   */
+  @Test
+  public void testNullComponentHandling() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    final Company companyWithNullContact = hbc.getEntityFactory()
+        .createEntityInstance(Company.class);
+    companyWithNullContact.setName("CompanyWithNullContact");
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
+            Company cClone = hbc.cloneInUnitOfWork(companyWithNullContact);
+            hbc.registerForUpdate(cClone);
+          }
+        });
+
+    EnhancedDetachedCriteria companyCrit = EnhancedDetachedCriteria
+        .forClass(Company.class);
+    List<Company> companies = hbc.findByCriteria(companyCrit,
+        EMergeMode.MERGE_KEEP, Company.class);
+    for (Company c : companies) {
+      assertNotNull(
+          "Company has a null contact (embedded component) instead of an empty one.",
+          c.getContact());
+      assertFalse("Company is dirty whereas it shouldn't", hbc.isDirty(c));
+    }
+  }
+
 }
