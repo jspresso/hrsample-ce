@@ -756,9 +756,25 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
     
     hbc.cleanupRequestResources();
     
-    Company c = (Company) hbc.getHibernateSession().byId(Company.class).load(company.getId());
-    assertSame("Both company instances should have been the same in UOW", c, companyClone);
+    Company c1 = (Company) hbc.getHibernateSession().byId(Company.class).load(company.getId());
+    assertSame("Both company instances should have been the same in UOW", c1, companyClone);
     
+    hbc.rollbackUnitOfWork();
+
+    hbc.beginUnitOfWork();
+    Company c2 = (Company) hbc.getHibernateSession().byId(Company.class).load(company.getId());
+
+    hbc.cleanupRequestResources();
+    Company c3 = (Company) hbc.getHibernateSession().byId(Company.class).load(company.getId());
+    
+    hbc.cleanupRequestResources();
+    companyClone = hbc.cloneInUnitOfWork(company);
+    
+    assertSame("Both company instances should have been the same in UOW", c2, c3);
+    assertSame("Both company instances should have been the same in UOW", c2, companyClone);
+    assertNotSame("The company clone is the same instance as the original", companyClone, company);
+    assertNotSame("The company clone is the same instance as the first UOW clone", c1, c2);
+
     hbc.rollbackUnitOfWork();
   }
 }
