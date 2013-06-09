@@ -95,17 +95,6 @@
     <orderEntry type="library" name="Maven: jfree:jfreechart:1.0.13" level="project" />
     <orderEntry type="library" name="Maven: eclipse:jdtcore:3.1.0" level="project" />
     <orderEntry type="module" module-name="jspresso-app-launch-core" />
-    <orderEntry type="module" module-name="jspresso-tools" />
-    <orderEntry type="module" module-name="jspresso-swing-components" />
-    <orderEntry type="library" name="Maven: net.sf.nachocalendar:nachocalendar:0.23" level="project" />
-    <orderEntry type="library" name="Maven: net.sf.jedit-syntax:jedit-syntax:2.2.2" level="project" />
-    <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.9" level="project" />
-    <orderEntry type="library" name="Maven: foxtrot:foxtrot:2.0" level="project" />
-    <orderEntry type="library" name="Maven: chrriis:dj-nativeswing:1.0.2.20120308" level="project" />
-    <orderEntry type="library" name="Maven: chrriis:dj-nativeswing-swt:1.0.2.20120308" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse:swt:3.7.2" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.swt:org.eclipse.swt.cocoa.macosx.x86_64:3.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-all:2.0.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hibernate:hibernate-ehcache:4.2.1.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.sf.ehcache:ehcache-core:2.4.3" level="project" />
