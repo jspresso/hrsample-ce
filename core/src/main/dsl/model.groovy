@@ -17,7 +17,8 @@ icon:'city-48x48.png',
 pageSize:4,
 toString:'name') { string_10 'zip', upperCase:true }
 
-Component('ContactInfo') {
+Component('ContactInfo',
+    interceptors:'ContactInfoLifecycleInterceptor') {
   string_256 'address'
   reference  'city', ref:'City'
   string_32  'phone'
