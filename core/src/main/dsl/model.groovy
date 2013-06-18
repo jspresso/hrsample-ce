@@ -17,8 +17,7 @@ icon:'city-48x48.png',
 pageSize:4,
 toString:'name') { string_10 'zip', upperCase:true }
 
-Component('ContactInfo',
-    interceptors:'ContactInfoLifecycleInterceptor') {
+Component('ContactInfo') {
   string_256 'address'
   reference  'city', ref:'City'
   string_32  'phone'
@@ -35,7 +34,7 @@ extend:['Nameable', 'Traceable'],
 interceptors:'EmployeeLifecycleInterceptor',
 extension :'EmployeeExtension',
 processor:'EmployeePropertyProcessors',
-//services:[EmployeeService:'EmployeeServiceDelegate'],
+services:[EmployeeService:'EmployeeServiceDelegate'],
 serviceBeans:['EmployeeService':'EmployeeServiceDelegateBean'],
 icon:'male-48x48.png',
 uncloned:['managedOu', 'ssn'],
@@ -86,6 +85,7 @@ rendered:[
 
 Entity('Company',
 extend:['Nameable', 'Traceable'],
+extension:'CompanyExtension',
 icon:'company-48x48.png',
 rendered:[
   'name',
@@ -101,6 +101,8 @@ queryable:[
   refId 'contact', id:'contact'
   set 'departments', composition:true, ref:'Department'
   set 'employees', composition:true, ref:'Employee'
+  
+  integer 'workforce', computed:true
 }
 
 Entity('OrganizationalUnit',

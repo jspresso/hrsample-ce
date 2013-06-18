@@ -24,4 +24,5 @@ public class EmployeeExtension extends EmployeeExtensionSimple {
     registerNotificationForwarding(extendedEmployee, Employee.BIRTH_DATE,
         Employee.AGE);
   }
+
 }
