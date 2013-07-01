@@ -225,13 +225,13 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
               public Serializable doInTransaction(TransactionStatus nestedStatus) {
                 DetachedCriteria empCrit = DetachedCriteria
                     .forClass(Employee.class);
-                Employee emp = (Employee) empCrit
-                    .getExecutableCriteria(hbc.getHibernateSession()).list()
-                    .iterator().next();
+                Employee emp = hbc.findFirstByCriteria(empCrit, null, Employee.class);
                 emp.setFirstName("Committed");
                 return emp.getId();
               }
             });
+        // asserts that UOW is still active after the end of the nested transaction.
+        assertTrue("UOW should still be active since outer TX is ongoing.", hbc.isUnitOfWorkActive());
         // forces rollback of outer TX.
         status.setRollbackOnly();
         return id;
@@ -259,9 +259,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
               public Serializable doInTransaction(TransactionStatus nestedStatus) {
                 DetachedCriteria empCrit = DetachedCriteria
                     .forClass(Employee.class);
-                Employee emp2 = (Employee) empCrit
-                    .getExecutableCriteria(hbc.getHibernateSession()).list()
-                    .iterator().next();
+                Employee emp2 = hbc.findFirstByCriteria(empCrit, null, Employee.class);
                 emp2.setFirstName("Rollbacked");
                 return emp2.getId();
               }
