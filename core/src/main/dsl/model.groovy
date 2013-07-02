@@ -22,6 +22,7 @@ Component('ContactInfo') {
   reference  'city', ref:'City'
   string_32  'phone'
   string_128 'email', regex:'[\\w\\-\\.]*@[\\w\\-\\.]*', regexSample:'contact@acme.com'
+  any 'test', class:'test.TestBackAction'
 }
 
 Entity('Event',extend:'Traceable'){
