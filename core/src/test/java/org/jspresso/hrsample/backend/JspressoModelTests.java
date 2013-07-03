@@ -19,12 +19,7 @@
 package org.jspresso.hrsample.backend;
 
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.argThat;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -36,6 +31,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.hamcrest.Description;
@@ -45,6 +41,12 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
+import org.junit.Test;
+import org.mockito.ArgumentMatcher;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+
 import org.jspresso.framework.application.backend.entity.ControllerAwareEntityInvocationHandler;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
@@ -53,6 +55,7 @@ import org.jspresso.framework.model.entity.IEntity;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 import org.jspresso.framework.util.reflect.ReflectHelper;
 import org.jspresso.framework.util.uid.ByteArray;
+
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.ContactInfo;
@@ -62,25 +65,20 @@ import org.jspresso.hrsample.model.Event;
 import org.jspresso.hrsample.model.Nameable;
 import org.jspresso.hrsample.model.OrganizationalUnit;
 import org.jspresso.hrsample.model.Team;
-import org.junit.Test;
-import org.mockito.ArgumentMatcher;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallback;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
  * Model integration tests.
- * 
- * @version $LastChangedRevision$
+ *
  * @author Vincent Vandenschrick
+ * @version $LastChangedRevision$
  */
 public class JspressoModelTests extends BackTestStartup {
 
   /**
    * Tests computed fire property change. See bug 708.
-   * 
+   *
    * @throws Throwable
-   *           whenever an unexpected error occurs.
+   *     whenever an unexpected error occurs.
    */
   @Test
   public void testComputedFirePropertyChange() throws Throwable {
@@ -88,26 +86,19 @@ public class JspressoModelTests extends BackTestStartup {
     boolean wasThrowExceptionOnBadUsage = hbc.isThrowExceptionOnBadUsage();
     try {
       hbc.setThrowExceptionOnBadUsage(false);
-      EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
-          .forClass(Employee.class);
-      Employee employee = hbc.findFirstByCriteria(employeeCriteria,
-          EMergeMode.MERGE_KEEP, Employee.class);
-      ControllerAwareEntityInvocationHandler handlerSpy = (ControllerAwareEntityInvocationHandler) spy(Proxy
-          .getInvocationHandler(employee));
-      Employee employeeMock = (Employee) Proxy.newProxyInstance(getClass()
-          .getClassLoader(), new Class<?>[] {
-        Employee.class
-      }, handlerSpy);
+      EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria.forClass(Employee.class);
+      Employee employee = hbc.findFirstByCriteria(employeeCriteria, EMergeMode.MERGE_KEEP, Employee.class);
+      ControllerAwareEntityInvocationHandler handlerSpy = (ControllerAwareEntityInvocationHandler) spy(
+          Proxy.getInvocationHandler(employee));
+      Employee employeeMock = (Employee) Proxy.newProxyInstance(getClass().getClassLoader(),
+          new Class<?>[]{Employee.class}, handlerSpy);
 
-      Method firePropertyChangeMethod = Employee.class.getMethod(
-          "firePropertyChange", new Class<?>[] {
-              String.class, Object.class, Object.class
-          });
+      Method firePropertyChangeMethod = Employee.class.getMethod("firePropertyChange",
+          String.class, Object.class, Object.class);
 
       employeeMock.setBirthDate(new Date(0));
-      verify(handlerSpy, never()).invoke(eq(employeeMock),
-          eq(firePropertyChangeMethod),
-          argThat(new PropertyMatcher(Employee.AGE)));
+      verify(handlerSpy, never()).invoke(eq(employeeMock), eq(firePropertyChangeMethod), argThat(new PropertyMatcher(
+          Employee.AGE)));
 
       PropertyChangeListener fakeListener = new PropertyChangeListener() {
 
@@ -119,52 +110,20 @@ public class JspressoModelTests extends BackTestStartup {
 
       employeeMock.addPropertyChangeListener(fakeListener);
       employeeMock.setBirthDate(new Date(1));
-      verify(handlerSpy, times(1)).invoke(eq(employeeMock),
-          eq(firePropertyChangeMethod),
-          argThat(new PropertyMatcher(Employee.AGE)));
+      verify(handlerSpy, times(1)).invoke(eq(employeeMock), eq(firePropertyChangeMethod), argThat(new PropertyMatcher(
+          Employee.AGE)));
 
       employeeMock.removePropertyChangeListener(fakeListener);
       employeeMock.setBirthDate(new Date(2));
-      verify(handlerSpy, times(1)).invoke(eq(employeeMock),
-          eq(firePropertyChangeMethod),
-          argThat(new PropertyMatcher(Employee.AGE)));
+      verify(handlerSpy, times(1)).invoke(eq(employeeMock), eq(firePropertyChangeMethod), argThat(new PropertyMatcher(
+          Employee.AGE)));
 
       employeeMock.addPropertyChangeListener(Employee.AGE, fakeListener);
       employeeMock.setBirthDate(new Date(3));
-      verify(handlerSpy, times(2)).invoke(eq(employeeMock),
-          eq(firePropertyChangeMethod),
-          argThat(new PropertyMatcher(Employee.AGE)));
+      verify(handlerSpy, times(2)).invoke(eq(employeeMock), eq(firePropertyChangeMethod), argThat(new PropertyMatcher(
+          Employee.AGE)));
     } finally {
       hbc.setThrowExceptionOnBadUsage(wasThrowExceptionOnBadUsage);
-    }
-  }
-
-  static class PropertyMatcher extends ArgumentMatcher<Object[]> {
-
-    private String propertyName;
-
-    /**
-     * Constructs a new <code>PropertyMatcher</code> instance.
-     * 
-     * @param propertyName
-     */
-    public PropertyMatcher(String propertyName) {
-      this.propertyName = propertyName;
-    }
-
-    @Override
-    public boolean matches(Object param) {
-      Object[] args = (Object[]) param;
-      return args != null && args.length > 0 && propertyName.equals(args[0]);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void describeTo(Description description) {
-      super.describeTo(description);
-      description.appendText("[" + propertyName + "]");
     }
   }
 
@@ -175,24 +134,21 @@ public class JspressoModelTests extends BackTestStartup {
   public void testAddToListTwice() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
-    EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
-        .forClass(Employee.class);
-    final Employee emp = hbc.findFirstByCriteria(employeeCriteria,
-        EMergeMode.MERGE_KEEP, Employee.class);
+    EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria.forClass(Employee.class);
+    final Employee emp = hbc.findFirstByCriteria(employeeCriteria, EMergeMode.MERGE_KEEP, Employee.class);
 
     Event evt = emp.getEvents().get(0);
     emp.addToEvents(evt);
     assertSame(emp.getEvents().get(0), evt);
     assertSame(emp.getEvents().get(emp.getEvents().size() - 1), evt);
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            hbc.cloneInUnitOfWork(emp);
-          }
-        });
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.cloneInUnitOfWork(emp);
+      }
+    });
     hbc.reload(emp);
     assertSame(emp.getEvents().get(0), evt);
     assertSame(emp.getEvents().get(emp.getEvents().size() - 1), evt);
@@ -204,12 +160,9 @@ public class JspressoModelTests extends BackTestStartup {
   @Test
   public void testCache() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
-    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
-        .forClass(City.class);
-    List<City> cities = hbc.findByCriteria(crit, EMergeMode.MERGE_KEEP,
-        City.class);
-    City firstCity = hbc.findById(cities.get(0).getId(), EMergeMode.MERGE_KEEP,
-        City.class);
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(City.class);
+    List<City> cities = hbc.findByCriteria(crit, EMergeMode.MERGE_KEEP, City.class);
+    City firstCity = hbc.findById(cities.get(0).getId(), EMergeMode.MERGE_KEEP, City.class);
     assertSame(cities.get(0), firstCity);
   }
 
@@ -219,23 +172,19 @@ public class JspressoModelTests extends BackTestStartup {
   @Test
   public void testUninitializedMerge() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
-    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
-        .forClass(Department.class);
-    final Department d1 = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY,
-        Department.class);
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(Department.class);
+    final Department d1 = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY, Department.class);
     d1.straightSetProperty("company", null);
 
-    Department d2 = hbc.getTransactionTemplate().execute(
-        new TransactionCallback<Department>() {
+    Department d2 = hbc.getTransactionTemplate().execute(new TransactionCallback<Department>() {
 
-          @Override
-          public Department doInTransaction(TransactionStatus status) {
-            Department d = (Department) hbc.getHibernateSession().get(
-                Department.class, d1.getId());
-            status.setRollbackOnly();
-            return d;
-          }
-        });
+      @Override
+      public Department doInTransaction(TransactionStatus status) {
+        Department d = (Department) hbc.getHibernateSession().get(Department.class, d1.getId());
+        status.setRollbackOnly();
+        return d;
+      }
+    });
     d2 = hbc.merge(d2, EMergeMode.MERGE_EAGER);
     assertSame(d1, d2);
   }
@@ -249,22 +198,19 @@ public class JspressoModelTests extends BackTestStartup {
     Company c = hbc.getEntityFactory().createEntityInstance(Company.class);
     assertSame(c, c.getContact().getOwningComponent());
 
-    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
-        .forClass(Department.class);
-    final Department d = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY,
-        Department.class);
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(Department.class);
+    final Department d = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY, Department.class);
     assertSame(d, d.getContact().getOwningComponent());
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            Department dClone = hbc.cloneInUnitOfWork(d);
-            assertSame(dClone, dClone.getContact().getOwningComponent());
-            status.setRollbackOnly();
-          }
-        });
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        Department dClone = hbc.cloneInUnitOfWork(d);
+        assertSame(dClone, dClone.getContact().getOwningComponent());
+        status.setRollbackOnly();
+      }
+    });
   }
 
   /**
@@ -274,10 +220,8 @@ public class JspressoModelTests extends BackTestStartup {
   public void testSelectById() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
-    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
-        .forClass(Department.class);
-    final Department d = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY,
-        Department.class);
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(Department.class);
+    final Department d = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY, Department.class);
 
     SQLQuery query = hbc.getHibernateSession().createSQLQuery(
         "UPDATE ORGANIZATIONAL_UNIT SET NAME = 'Test' WHERE ID = :ID_PARAM");
@@ -296,8 +240,7 @@ public class JspressoModelTests extends BackTestStartup {
   public void testCollectionSetterPerf() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
-    Company company = hbc.getEntityFactory()
-        .createEntityInstance(Company.class);
+    Company company = hbc.getEntityFactory().createEntityInstance(Company.class);
     // for (int i = 0; i < 5000; i++) {
     // Employee emp = hbc.getEntityFactory()
     // .createEntityInstance(Employee.class);
@@ -307,8 +250,7 @@ public class JspressoModelTests extends BackTestStartup {
     // }
     Set<Employee> employees = new HashSet<Employee>();
     for (int i = 0; i < 5000; i++) {
-      Employee emp = hbc.getEntityFactory()
-          .createEntityInstance(Employee.class);
+      Employee emp = hbc.getEntityFactory().createEntityInstance(Employee.class);
       // The employee collection should be sorted by name
       emp.setName(Integer.toHexString(emp.hashCode()));
       employees.add(emp);
@@ -341,15 +283,12 @@ public class JspressoModelTests extends BackTestStartup {
   @Test
   public void testJoinOrderBy() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
-    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
-        .forClass(Department.class);
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(Department.class);
 
-    DetachedCriteria companyCrit = crit.getSubCriteriaFor(crit,
-        Department.COMPANY, JoinType.INNER_JOIN);
+    DetachedCriteria companyCrit = crit.getSubCriteriaFor(crit, Department.COMPANY, JoinType.INNER_JOIN);
     companyCrit.add(Restrictions.eq(Nameable.NAME, "Design2See"));
 
-    DetachedCriteria teamsCrit = crit.getSubCriteriaFor(crit, Department.TEAMS,
-        JoinType.LEFT_OUTER_JOIN);
+    DetachedCriteria teamsCrit = crit.getSubCriteriaFor(crit, Department.TEAMS, JoinType.LEFT_OUTER_JOIN);
     teamsCrit.add(Restrictions.eq(OrganizationalUnit.OU_ID, "HR-001"));
 
     crit.addOrder(Order.desc(Nameable.NAME));
@@ -361,13 +300,11 @@ public class JspressoModelTests extends BackTestStartup {
       Set<Team> teams = d.getTeams();
       Set<?> innerSet;
       try {
-        innerSet = (Set<?>) ReflectHelper.getPrivateFieldValue(
-            PersistentSet.class, "set", teams);
+        innerSet = (Set<?>) ReflectHelper.getPrivateFieldValue(PersistentSet.class, "set", teams);
       } catch (Exception ex) {
         throw new RuntimeException(ex);
       }
-      assertTrue("innerSet is a LinkedHashSet",
-          LinkedHashSet.class.isInstance(innerSet));
+      assertTrue("innerSet is a LinkedHashSet", LinkedHashSet.class.isInstance(innerSet));
     }
   }
 
@@ -384,37 +321,33 @@ public class JspressoModelTests extends BackTestStartup {
     assertTrue(!c.isPersistent());
     assertTrue(hbc.isDirty(c));
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            hbc.cloneInUnitOfWork(c);
-            hbc.registerForUpdate(c);
-          }
-        });
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.cloneInUnitOfWork(c);
+        hbc.registerForUpdate(c);
+      }
+    });
 
     assertTrue(c.isPersistent());
     assertTrue(!hbc.isDirty(c));
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            City c1 = hbc.cloneInUnitOfWork(c);
-            try {
-              hbc.cleanRelationshipsOnDeletion(c1, false);
-            } catch (Exception ex) {
-              throw new RuntimeException(ex);
-            }
-          }
-        });
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        City c1 = hbc.cloneInUnitOfWork(c);
+        try {
+          hbc.cleanRelationshipsOnDeletion(c1, false);
+        } catch (Exception ex) {
+          throw new RuntimeException(ex);
+        }
+      }
+    });
 
-    assertTrue("Entity is transient since it has been deleted",
-        !c.isPersistent());
-    assertTrue("Entity is clean since there is nothing much we can do with it",
-        !hbc.isDirty(c));
+    assertTrue("Entity is transient since it has been deleted", !c.isPersistent());
+    assertTrue("Entity is clean since there is nothing much we can do with it", !hbc.isDirty(c));
   }
 
   /**
@@ -424,13 +357,11 @@ public class JspressoModelTests extends BackTestStartup {
   public void testSubNestedPropertyChange() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
-    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
-        .forClass(Department.class);
-    final Department d = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY,
-        Department.class);
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(Department.class);
+    final Department d = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY, Department.class);
     final StringBuilder buff = new StringBuilder();
-    d.addPropertyChangeListener(OrganizationalUnit.MANAGER + "."
-        + Employee.CONTACT + "." + ContactInfo.CITY + "." + Nameable.NAME,
+    d.addPropertyChangeListener(
+        OrganizationalUnit.MANAGER + "." + Employee.CONTACT + "." + ContactInfo.CITY + "." + Nameable.NAME,
         new PropertyChangeListener() {
 
           @Override
@@ -440,45 +371,37 @@ public class JspressoModelTests extends BackTestStartup {
         });
     City currentCity = d.getManager().getContact().getCity();
     currentCity.setName("testSubNotif");
-    assertEquals("Sub-nested notification did not arrive correctly",
-        currentCity.getName(), buff.toString());
+    assertEquals("Sub-nested notification did not arrive correctly", currentCity.getName(), buff.toString());
     buff.delete(0, buff.length());
 
     City newCity = hbc.getEntityFactory().createEntityInstance(City.class);
     newCity.setName("newSubNotif");
     newCity.setZip("12345");
     d.getManager().getContact().setCity(newCity);
-    assertEquals("Sub-nested notification did not arrive correctly",
-        newCity.getName(), buff.toString());
+    assertEquals("Sub-nested notification did not arrive correctly", newCity.getName(), buff.toString());
     buff.delete(0, buff.length());
 
     newCity.setName("anotherOne");
-    assertEquals("Sub-nested notification did not arrive correctly",
-        newCity.getName(), buff.toString());
+    assertEquals("Sub-nested notification did not arrive correctly", newCity.getName(), buff.toString());
     buff.delete(0, buff.length());
 
     currentCity.setName("noNotifExpected");
-    assertEquals("Sub-nested notification arrived whereas is shouldn't", "",
-        buff.toString());
+    assertEquals("Sub-nested notification arrived whereas is shouldn't", "", buff.toString());
     buff.delete(0, buff.length());
 
-    City anotherNewCity = hbc.getEntityFactory().createEntityInstance(
-        City.class);
+    City anotherNewCity = hbc.getEntityFactory().createEntityInstance(City.class);
     anotherNewCity.setName("anotherNewCity");
     anotherNewCity.setZip("12345");
 
-    Employee newManager = hbc.getEntityFactory().createEntityInstance(
-        Employee.class);
+    Employee newManager = hbc.getEntityFactory().createEntityInstance(Employee.class);
     newManager.getContact().setCity(anotherNewCity);
     newManager.setCompany(d.getCompany());
     d.setManager(newManager);
-    assertEquals("Sub-nested notification did not arrive correctly",
-        anotherNewCity.getName(), buff.toString());
+    assertEquals("Sub-nested notification did not arrive correctly", anotherNewCity.getName(), buff.toString());
     buff.delete(0, buff.length());
 
     anotherNewCity.setName("anotherNewNotif");
-    assertEquals("Sub-nested notification did not arrive correctly",
-        anotherNewCity.getName(), buff.toString());
+    assertEquals("Sub-nested notification did not arrive correctly", anotherNewCity.getName(), buff.toString());
     buff.delete(0, buff.length());
   }
 
@@ -489,20 +412,17 @@ public class JspressoModelTests extends BackTestStartup {
    */
   @Test
   public void testComputedPropertyCacheResetAndNotif() {
-    Employee emp = getBackendController().getEntityFactory()
-        .createEntityInstance(Employee.class);
+    Employee emp = getBackendController().getEntityFactory().createEntityInstance(Employee.class);
     Calendar c = Calendar.getInstance();
     c.set(Calendar.YEAR, 1973);
 
     emp.setBirthDate(c.getTime());
-    assertEquals("Age is not correctly computed.",
-        emp.computeAge(emp.getBirthDate()), emp.getAge());
+    assertEquals("Age is not correctly computed.", emp.computeAge(emp.getBirthDate()), emp.getAge());
 
     c.add(Calendar.YEAR, -3);
     emp.setBirthDate(c.getTime());
-    assertEquals(
-        "Age is not correctly computed after birth date modification.",
-        emp.computeAge(emp.getBirthDate()), emp.getAge());
+    assertEquals("Age is not correctly computed after birth date modification.", emp.computeAge(emp.getBirthDate()),
+        emp.getAge());
 
     final StringBuilder buff = new StringBuilder();
     emp.addPropertyChangeListener(Employee.AGE, new PropertyChangeListener() {
@@ -514,44 +434,81 @@ public class JspressoModelTests extends BackTestStartup {
     });
     c.add(Calendar.YEAR, -5);
     emp.setBirthDate(c.getTime());
-    assertEquals(
-        "Age is not correctly computedafter 2nd birth date modification.",
-        emp.computeAge(emp.getBirthDate()), emp.getAge());
+    assertEquals("Age is not correctly computedafter 2nd birth date modification.", emp.computeAge(emp.getBirthDate()),
+        emp.getAge());
     assertTrue("Age notification failed.", buff.length() > 0);
-    assertEquals("Age notification contains bad value.",
-        emp.computeAge(emp.getBirthDate()).toString(), buff.toString());
+    assertEquals("Age notification contains bad value.", emp.computeAge(emp.getBirthDate()).toString(),
+        buff.toString());
   }
 
   /**
    * Tests Hibernate null components handling.
-   * See bug #1041 
+   * See bug #1041
    */
   @Test
   public void testNullComponentHandling() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
-    final Company companyWithNullContact = hbc.getEntityFactory()
-        .createEntityInstance(Company.class);
+    final Company companyWithNullContact = hbc.getEntityFactory().createEntityInstance(Company.class);
     companyWithNullContact.setName("CompanyWithNullContact");
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            Company cClone = hbc.cloneInUnitOfWork(companyWithNullContact);
-            hbc.registerForUpdate(cClone);
-          }
-        });
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        Company cClone = hbc.cloneInUnitOfWork(companyWithNullContact);
+        hbc.registerForUpdate(cClone);
+      }
+    });
 
-    EnhancedDetachedCriteria companyCrit = EnhancedDetachedCriteria
-        .forClass(Company.class);
-    List<Company> companies = hbc.findByCriteria(companyCrit,
-        EMergeMode.MERGE_KEEP, Company.class);
+    EnhancedDetachedCriteria companyCrit = EnhancedDetachedCriteria.forClass(Company.class);
+    List<Company> companies = hbc.findByCriteria(companyCrit, EMergeMode.MERGE_KEEP, Company.class);
     for (Company c : companies) {
-      assertNotNull(
-          "Company has a null contact (embedded component) instead of an empty one.",
-          c.getContact());
+      assertNotNull("Company has a null contact (embedded component) instead of an empty one.", c.getContact());
       assertFalse("Company is dirty whereas it shouldn't", hbc.isDirty(c));
     }
   }
 
+  /**
+   * Test component dirty properties. See bug #1038
+   */
+  @Test
+  public void testComponentDirtyProperties() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(Company.class);
+    Company c = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_CLEAN_EAGER, Company.class);
+    String oldAddress = c.getContact().getAddress();
+    c.getContact().setAddress("dirty");
+    Map<String, Object> dirtyProperties = hbc.getDirtyProperties(c);
+    assertNotNull("Contact old value is null", dirtyProperties.get(Company.CONTACT));
+    assertEquals("Old contact address does not have the correct oldValue", oldAddress,
+        ((ContactInfo) dirtyProperties.get(Company.CONTACT)).getAddress());
+  }
+
+  static class PropertyMatcher extends ArgumentMatcher<Object[]> {
+
+    private String propertyName;
+
+    /**
+     * Constructs a new {@code PropertyMatcher} instance.
+     *
+     * @param propertyName the property name
+     */
+    public PropertyMatcher(String propertyName) {
+      this.propertyName = propertyName;
+    }
+
+    @Override
+    public boolean matches(Object param) {
+      Object[] args = (Object[]) param;
+      return args != null && args.length > 0 && propertyName.equals(args[0]);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void describeTo(Description description) {
+      super.describeTo(description);
+      description.appendText("[" + propertyName + "]");
+    }
+  }
 }
