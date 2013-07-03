@@ -59,7 +59,7 @@ tabs('Company.tab.pane',
     ])
 
 table('Company-departments.table',
-    actionMap:'masterDetailActionMap') {
+    actionMap:'masterDetailActionMap', columnReordering:false) {
       columns {
         propertyView name:'ouId'
         propertyView name:'teamCount'
