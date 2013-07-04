@@ -21,8 +21,18 @@ public class EmployeeExtension extends EmployeeExtensionSimple {
    */
   public EmployeeExtension(Employee extendedEmployee) {
     super(extendedEmployee);
-    registerNotificationForwarding(extendedEmployee, Employee.BIRTH_DATE,
-        Employee.AGE);
   }
 
+  @Override
+  public void postCreate() {
+    Employee extendedEmployee = getComponent();
+    registerNotificationForwarding(extendedEmployee, Employee.BIRTH_DATE,
+        Employee.AGE);
+    registerNotificationForwarding(extendedEmployee, Employee.FIRST_NAME,
+        Employee.FULL_NAME);
+    registerNotificationForwarding(extendedEmployee, Employee.NAME,
+        Employee.FULL_NAME);
+    registerNotificationForwarding(extendedEmployee, Employee.FULL_NAME, Employee.HTML_DESCRIPTION);
+    registerNotificationForwarding(extendedEmployee, Employee.AGE, Employee.HTML_DESCRIPTION);
+  }
 }
