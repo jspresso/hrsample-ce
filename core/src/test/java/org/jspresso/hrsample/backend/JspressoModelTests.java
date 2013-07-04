@@ -51,6 +51,7 @@ import org.jspresso.framework.application.backend.entity.ControllerAwareEntityIn
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.model.component.ComponentException;
+import org.jspresso.framework.model.descriptor.MandatoryPropertyException;
 import org.jspresso.framework.model.entity.IEntity;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 import org.jspresso.framework.util.reflect.ReflectHelper;
@@ -499,6 +500,25 @@ public class JspressoModelTests extends BackTestStartup {
     assertEquals("contact toString() should be address when the holding entity is null.", "toString test",
         orphanContact.toString());
   }
+
+  /**
+   * Test Collection null elements. See bug #643
+   */
+  @Test(expected = MandatoryPropertyException.class)
+  public void testNullElementAllowed() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(Employee.class);
+    Employee e = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_CLEAN_EAGER, Employee.class);
+    e.addToEvents(null);
+    hbc.registerForUpdate(e);
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.performPendingOperations();
+      }
+    });
+  }
+
 
 
   static class PropertyMatcher extends ArgumentMatcher<Object[]> {
