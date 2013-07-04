@@ -483,6 +483,24 @@ public class JspressoModelTests extends BackTestStartup {
         ((ContactInfo) dirtyProperties.get(Company.CONTACT)).getAddress());
   }
 
+  /**
+   * Test component toString. See bug #1042
+   */
+  @Test
+  public void testComponentToString() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(Company.class);
+    Company c = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_CLEAN_EAGER, Company.class);
+    ContactInfo companyContact = c.getContact();
+    assertEquals("contact toString() should be the holding entity one when not null.", c.toString(),
+        companyContact.toString());
+    ContactInfo orphanContact = hbc.getEntityFactory().createComponentInstance(ContactInfo.class);
+    orphanContact.setAddress("toString test");
+    assertEquals("contact toString() should be address when the holding entity is null.", "toString test",
+        orphanContact.toString());
+  }
+
+
   static class PropertyMatcher extends ArgumentMatcher<Object[]> {
 
     private String propertyName;
