@@ -81,12 +81,10 @@ action('addFromList',
 listView('Team-teamMembers.list', preferredWidth:300) {
   actionMap {
     actionList('EDIT'){
-      action(parent:'lovAction',
+      action(parent:'pickupAndAddAnyFrontAction',
           custom:[
-            autoquery:true,
             entityDescriptor_ref:'Employee',
             initializationMapping:['company':'company'],
-            okAction_ref:'addFromList'
           ]
           )
       action(ref:'removeAnyCollectionFromMasterFrontAction')
