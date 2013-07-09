@@ -54,6 +54,7 @@ import org.jspresso.framework.model.component.ComponentException;
 import org.jspresso.framework.model.descriptor.MandatoryPropertyException;
 import org.jspresso.framework.model.entity.IEntity;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
+import org.jspresso.framework.util.bean.integrity.IntegrityException;
 import org.jspresso.framework.util.reflect.ReflectHelper;
 import org.jspresso.framework.util.uid.ByteArray;
 
@@ -519,6 +520,15 @@ public class JspressoModelTests extends BackTestStartup {
     });
   }
 
+  /**
+   * Test Enumeration value rejection. See bug #841
+   */
+  @Test(expected = IntegrityException.class)
+  public void testEnumValueRejection() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    Employee emp = hbc.getEntityFactory().createEntityInstance(Employee.class);
+    emp.setGender("C");
+  }
 
 
   static class PropertyMatcher extends ArgumentMatcher<Object[]> {
