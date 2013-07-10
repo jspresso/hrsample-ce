@@ -141,7 +141,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
     events.add(hbc.getEntityFactory().createEntityInstance(Event.class));
     events.add(null);
     events.add(hbc.getEntityFactory().createEntityInstance(Event.class));
-    emp.setEvents(events);
+    emp.setAlternativeEvents(events);
 
     hbc.getTransactionTemplate().execute(
         new TransactionCallbackWithoutResult() {
@@ -151,7 +151,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
             hbc.cloneInUnitOfWork(emp);
           }
         });
-    emp.addToEvents(hbc.getEntityFactory().createEntityInstance(Event.class));
+    emp.addToAlternativeEvents(hbc.getEntityFactory().createEntityInstance(Event.class));
     hbc.getTransactionTemplate().execute(
         new TransactionCallbackWithoutResult() {
 

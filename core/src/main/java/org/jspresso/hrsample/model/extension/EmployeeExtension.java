@@ -33,6 +33,7 @@ public class EmployeeExtension extends EmployeeExtensionSimple {
     registerNotificationForwarding(extendedEmployee, Employee.NAME,
         Employee.FULL_NAME);
     registerNotificationForwarding(extendedEmployee, Employee.FULL_NAME, Employee.HTML_DESCRIPTION);
-    registerNotificationForwarding(extendedEmployee, Employee.AGE, Employee.HTML_DESCRIPTION);
+    // Breaks test on computed property changes
+    // registerNotificationForwarding(extendedEmployee, Employee.AGE, Employee.HTML_DESCRIPTION);
   }
 }
