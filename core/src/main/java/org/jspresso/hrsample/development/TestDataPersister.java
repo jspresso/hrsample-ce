@@ -154,7 +154,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
 
   private City createCity(String name, String zip) {
     City city = createEntityInstance(City.class);
-    city.setName(name);
+    city.setNameRaw(name);
     city.setZip(zip);
     saveOrUpdate(city);
     return city;
@@ -163,7 +163,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
   private Company createCompany(String name, String address, City city,
       String email, String phone) {
     Company company = createEntityInstance(Company.class);
-    company.setName(name);
+    company.setNameRaw(name);
     company.getContact().setAddress(address);
     company.getContact().setCity(city);
     company.getContact().setEmail(email);
@@ -174,7 +174,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
   private Department createDepartment(String name, String ouId, String address,
       City city, String email, String phone, Company company, Employee manager) {
     Department department = createEntityInstance(Department.class);
-    department.setName(name);
+    department.setNameRaw(name);
     department.setOuId(ouId);
     department.getContact().setAddress(address);
     department.getContact().setCity(city);
@@ -188,7 +188,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
   private Team createTeam(String name, String ouId, String address, City city,
       String email, String phone, Department department, Employee manager) {
     Team team = createEntityInstance(Team.class);
-    team.setName(name);
+    team.setNameRaw(name);
     team.setOuId(ouId);
     team.getContact().setAddress(address);
     team.getContact().setCity(city);
@@ -207,8 +207,8 @@ public class TestDataPersister extends AbstractTestDataPersister {
 
     Employee employee = createEntityInstance(Employee.class);
     employee.setGender(gender);
-    employee.setName(name);
-    employee.setFirstName(firstName);
+    employee.setNameRaw(name);
+    employee.setFirstNameRaw(firstName);
     employee.setPassword(password);
     employee.getContact().setAddress(address);
     employee.getContact().setCity(city);
@@ -229,6 +229,12 @@ public class TestDataPersister extends AbstractTestDataPersister {
     employee.setPreferredColor(preferredColor);
     employee.setSalary(new BigDecimal(salary));
     employee.setCompany(company);
+
+    Employee.Translation t = getEntityFactory().createComponentInstance(Employee.Translation.class);
+    t.setLanguage("de");
+    t.setPropertyName("firstName");
+    t.setTranslatedValue(new StringBuilder(employee.getFirstNameRaw()).reverse().toString());
+    employee.addToPropertyTranslations(t);
     return employee;
   }
 }

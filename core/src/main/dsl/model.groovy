@@ -1,4 +1,4 @@
-Interface ('Nameable') { string_64 'name', mandatory:true }
+Interface ('Nameable') { string_64 'name', mandatory:true, translatable: true }
 
 Interface('Traceable',
 interceptors:'TraceableLifecycleInterceptor',
@@ -59,7 +59,7 @@ rendered:[
   'createTimestamp',
   'lastUpdateTimestamp'
 ]) {
-  string_32 'firstName', mandatory:true, processors:'FirstNameProcessor'
+  string_32 'firstName', mandatory:true, processors:'FirstNameProcessor', translatable:true
   string_10 'ssn', regex:"[\\d]{10}", regexSample:'0123456789', unicityScope:'empSsn'
   date 'birthDate', processors:'BirthDateProcessor'
   date 'hireDate'
