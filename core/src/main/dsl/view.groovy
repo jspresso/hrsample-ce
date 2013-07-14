@@ -55,7 +55,8 @@ tabs('Company.tab.pane',
     views:[
       'Company.pane',
       'Company.tree',
-      'Traceable.pane'
+      'Traceable.pane',
+      'translations.table'
     ])
 
 table('Company-departments.table',

@@ -23,6 +23,7 @@ import static org.mockito.Mockito.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
@@ -226,7 +227,7 @@ public class JspressoModelTests extends BackTestStartup {
     final Department d = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_LAZY, Department.class);
 
     SQLQuery query = hbc.getHibernateSession().createSQLQuery(
-        "UPDATE ORGANIZATIONAL_UNIT SET NAME = 'Test' WHERE ID = :ID_PARAM");
+        "UPDATE DEPARTMENT SET NAME = 'Test' WHERE ID = :ID_PARAM");
     Object depId = d.getId();
     if (depId instanceof ByteArray) {
       depId = ((ByteArray) depId).getBytes();
@@ -528,6 +529,26 @@ public class JspressoModelTests extends BackTestStartup {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
     Employee emp = hbc.getEntityFactory().createEntityInstance(Employee.class);
     emp.setGender("C");
+  }
+
+  /**
+   * Test translated name.
+   */
+  @Test
+  public void testPropertyTranslation() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    Serializable cityId = hbc.getTransactionTemplate().execute(new TransactionCallback<Serializable>() {
+      @Override
+      public Serializable doInTransaction(TransactionStatus status) {
+        City c = hbc.getEntityFactory().createEntityInstance(City.class);
+        c.setNameRaw("raw");
+        c.setName("test");
+        hbc.registerForUpdate(c);
+        return c.getId();
+      }
+    });
+    City c = hbc.findById(cityId, EMergeMode.MERGE_KEEP, City.class);
+    assertEquals("A message translation should have been created", 1, c.getPropertyTranslations().size());
   }
 
 

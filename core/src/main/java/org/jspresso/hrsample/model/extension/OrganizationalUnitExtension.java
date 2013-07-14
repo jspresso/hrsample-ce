@@ -57,7 +57,7 @@ public class OrganizationalUnitExtension extends
    * @return the HTML representation of an organisational unit.
    */
   public String getHtmlDescription() {
-    return "<html><b><i>" + getComponent().getName() + "</i></b><br>"
+    return "<html><b><i>" + ((Nameable) getComponent()).getName() + "</i></b><br>"
         + getComponent().getOuId() + "</html>";
   }
 }

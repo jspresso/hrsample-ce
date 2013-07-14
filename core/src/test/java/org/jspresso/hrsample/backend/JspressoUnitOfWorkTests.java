@@ -364,7 +364,7 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
     final City c3 = hbc.findById(c1.getId(), EMergeMode.MERGE_CLEAN_EAGER,
         City.class);
     assertSame(c1, c3);
-    assertEquals("test", c3.getName());
+    assertEquals("test", c3.getNameRaw());
 
     jdbcTemplate.execute(new ConnectionCallback<Object>() {
 
@@ -381,12 +381,12 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
     final City c4 = hbc.findById(c1.getId(), EMergeMode.MERGE_KEEP, City.class);
     assertSame(c1, c4);
-    assertEquals("test", c4.getName());
+    assertEquals("test", c4.getNameRaw());
 
     final City c5 = hbc.findById(c1.getId(), EMergeMode.MERGE_CLEAN_LAZY,
         City.class);
     assertSame(c1, c5);
-    assertEquals("test2", c5.getName());
+    assertEquals("test2", c5.getNameRaw());
   }
 
   /**
@@ -528,13 +528,13 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
                 .getDirtyProperties(uowComp).isEmpty());
             assertFalse("Company is not fresh from DB",
                 comp.getName().equals(uowComp.getName()));
-            uowComp.setName("UpdatedUow");
+            uowComp.setNameRaw("UpdatedUow");
             assertTrue("Company name is not dirty",
-                hbc.getDirtyProperties(uowComp).containsKey(Nameable.NAME));
+                hbc.getDirtyProperties(uowComp).containsKey(Nameable.NAME_RAW));
           }
         });
     assertEquals("Company name has not been correctly committed", "UpdatedUow",
-        comp.getName());
+        comp.getNameRaw());
   }
 
   /**

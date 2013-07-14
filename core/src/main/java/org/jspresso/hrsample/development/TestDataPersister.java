@@ -154,8 +154,13 @@ public class TestDataPersister extends AbstractTestDataPersister {
 
   private City createCity(String name, String zip) {
     City city = createEntityInstance(City.class);
-    city.setNameRaw(name);
+    city.setName(name);
     city.setZip(zip);
+    City.Translation t = getEntityFactory().createComponentInstance(City.Translation.class);
+    t.setLanguage("de");
+    t.setPropertyName("name");
+    t.setTranslatedValue(new StringBuilder(city.getNameRaw()).reverse().toString());
+    city.addToPropertyTranslations(t);
     saveOrUpdate(city);
     return city;
   }
@@ -163,7 +168,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
   private Company createCompany(String name, String address, City city,
       String email, String phone) {
     Company company = createEntityInstance(Company.class);
-    company.setNameRaw(name);
+    company.setName(name);
     company.getContact().setAddress(address);
     company.getContact().setCity(city);
     company.getContact().setEmail(email);
@@ -174,7 +179,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
   private Department createDepartment(String name, String ouId, String address,
       City city, String email, String phone, Company company, Employee manager) {
     Department department = createEntityInstance(Department.class);
-    department.setNameRaw(name);
+    department.setName(name);
     department.setOuId(ouId);
     department.getContact().setAddress(address);
     department.getContact().setCity(city);
@@ -188,7 +193,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
   private Team createTeam(String name, String ouId, String address, City city,
       String email, String phone, Department department, Employee manager) {
     Team team = createEntityInstance(Team.class);
-    team.setNameRaw(name);
+    team.setName(name);
     team.setOuId(ouId);
     team.getContact().setAddress(address);
     team.getContact().setCity(city);
@@ -207,8 +212,8 @@ public class TestDataPersister extends AbstractTestDataPersister {
 
     Employee employee = createEntityInstance(Employee.class);
     employee.setGender(gender);
-    employee.setNameRaw(name);
-    employee.setFirstNameRaw(firstName);
+    employee.setName(name);
+    employee.setFirstName(firstName);
     employee.setPassword(password);
     employee.getContact().setAddress(address);
     employee.getContact().setCity(city);

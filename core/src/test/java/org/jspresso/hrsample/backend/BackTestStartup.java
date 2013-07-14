@@ -27,6 +27,7 @@ import org.jboss.security.SimpleGroup;
 import org.jboss.security.SimplePrincipal;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.startup.AbstractBackendStartup;
+import org.jspresso.framework.model.entity.IEntity;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 import org.jspresso.framework.security.SecurityHelper;
 import org.jspresso.framework.security.UserPrincipal;
@@ -75,20 +76,24 @@ public class BackTestStartup extends AbstractBackendStartup {
 
       @Override
       protected void doInTransactionWithoutResult(TransactionStatus status) {
-        DetachedCriteria crit = EnhancedDetachedCriteria
-            .forClass(Company.class);
-        for (Company company : bc.findByCriteria(crit, null, Company.class)) {
-          try {
-            bc.cleanRelationshipsOnDeletion(company, false);
-          } catch (Exception ex) {
-            throw new NestedRuntimeException(ex);
-          }
-        }
-        bc.getHibernateSession().flush();
-        bc.getHibernateSession()
-            .createQuery("delete from " + City.class.getName()).executeUpdate();
+        deleteAllInstances(bc, Company.class);
+        deleteAllInstances(bc, City.class);
       }
     });
+  }
+
+  private static <E extends IEntity> void deleteAllInstances(HibernateBackendController bc, Class<E> clazz) {
+    DetachedCriteria crit;
+    crit = EnhancedDetachedCriteria
+        .forClass(clazz);
+    for (E entity : bc.findByCriteria(crit, null, clazz)) {
+      try {
+        bc.cleanRelationshipsOnDeletion(entity, false);
+      } catch (Exception ex) {
+        throw new NestedRuntimeException(ex);
+      }
+    }
+    bc.getHibernateSession().flush();
   }
 
   /**

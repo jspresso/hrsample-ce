@@ -107,7 +107,7 @@ queryable:[
 }
 
 Entity('OrganizationalUnit',
-extend:['Nameable', 'Traceable'],
+extend:['Traceable'],
 purelyAbstract:true,
 processor :'OrganizationalUnitPropertyProcessors',
 extension :'OrganizationalUnitExtension') {
@@ -119,7 +119,7 @@ extension :'OrganizationalUnitExtension') {
 }
 
 Entity('Department',
-extend:'OrganizationalUnit',
+extend:['Nameable','OrganizationalUnit'],
 extension :'DepartmentExtension',
 icon:'department-48x48.png',
 toHtml:'htmlDescription',ordering:['name':'ASCENDING'],
@@ -138,7 +138,7 @@ rendered:[
 }
 
 Entity('Team',
-extend:['OrganizationalUnit'],
+extend:['Nameable', 'OrganizationalUnit'],
 icon:'team-48x48.png',
 toHtml:'htmlDescription',ordering:['name':'ASCENDING'],
 rendered:[
