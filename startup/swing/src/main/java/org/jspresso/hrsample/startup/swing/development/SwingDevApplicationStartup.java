@@ -23,6 +23,6 @@ public class SwingDevApplicationStartup extends SwingApplicationStartup {
   public void start() {
     new TestDataPersister(getApplicationContext()).persistTestData();
     super.start();
-    org.hsqldb.util.DatabaseManagerSwing.main(new String[0]);
+    //org.hsqldb.util.DatabaseManagerSwing.main(new String[0]);
   }
 }
