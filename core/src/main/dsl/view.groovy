@@ -119,7 +119,7 @@ image('Employee-photo.pane',
 form('Employee.component.pane',
     columnCount:3,
     description:'htmlDescription',
-    labelsPosition:'ASIDE') {
+    labelsPosition:'ASIDE', labelsHorizontalPosition: 'RIGHT') {
       fields {
         propertyView name:'name'
         propertyView name:'firstName'
@@ -127,7 +127,7 @@ form('Employee.component.pane',
         propertyView name:'birthDate'
         propertyView name:'age'
         propertyView name:'ssn'
-        propertyView name:'salary'
+        propertyView name:'salary', labelHorizontalPosition: 'LEFT'
         propertyView name:'contact'
         propertyView name:'married'
         propertyView name:'preferredColor'
