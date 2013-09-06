@@ -1,3 +1,7 @@
+paramSet 'toto', enumName:'GENDER', mandatory:true, valuesAndIcons:[
+'M':'male-48x48.png',
+'F':'female-48x48.png'], defaultValue:'M'
+
 Interface ('Nameable') { string_64 'name', mandatory:true, translatable: true }
 
 Interface('Traceable',
@@ -63,9 +67,7 @@ rendered:[
   string_10 'ssn', regex:"[\\d]{10}", regexSample:'0123456789', unicityScope:'empSsn'
   date 'birthDate', processors:'BirthDateProcessor'
   date 'hireDate'
-  enumeration 'gender', enumName:'GENDER', mandatory:true, valuesAndIcons:[
-    'M':'male-48x48.png',
-    'F':'female-48x48.png']
+  enumeration 'gender', paramSets:'toto'
   color 'preferredColor'
   bool 'married'
   decimal 'salary', minValue:0, maxValue:10000000, usingBigDecimal:true
