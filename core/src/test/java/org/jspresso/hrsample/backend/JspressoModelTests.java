@@ -38,6 +38,7 @@ import java.util.Set;
 import org.hamcrest.Description;
 import org.hibernate.SQLQuery;
 import org.hibernate.collection.internal.PersistentSet;
+import org.hibernate.collection.spi.PersistentCollection;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -529,6 +530,34 @@ public class JspressoModelTests extends BackTestStartup {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
     Employee emp = hbc.getEntityFactory().createEntityInstance(Employee.class);
     emp.setGender("C");
+  }
+
+  /**
+   * Persistent collection substitution on save. See bug #1114
+   */
+  @Test
+  public void testPersistentCollectionSubstitution() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    Company comp = hbc.getEntityFactory().createEntityInstance(Company.class);
+    comp.setName("testC");
+
+    Department dept = hbc.getEntityFactory().createEntityInstance(Department.class);
+    dept.setName("testD");
+    dept.setOuId("TE-001");
+
+    comp.addToDepartments(dept);
+
+    hbc.registerForUpdate(comp);
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.performPendingOperations();
+      }
+    });
+
+    assertTrue("Persistent entity collection is not instance of PersistentCollection",
+        comp.straightGetProperty(Company.DEPARTMENTS) instanceof PersistentCollection);
+    assertTrue("Entity is transient after save", comp.isPersistent());
   }
 
   /**
