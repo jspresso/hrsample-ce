@@ -18,8 +18,17 @@
  */
 package org.jspresso.hrsample.backend;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.argThat;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -43,12 +52,6 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
-import org.junit.Test;
-import org.mockito.ArgumentMatcher;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallback;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
-
 import org.jspresso.framework.application.backend.entity.ControllerAwareEntityInvocationHandler;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
@@ -59,7 +62,6 @@ import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDeta
 import org.jspresso.framework.util.bean.integrity.IntegrityException;
 import org.jspresso.framework.util.reflect.ReflectHelper;
 import org.jspresso.framework.util.uid.ByteArray;
-
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.ContactInfo;
@@ -69,6 +71,11 @@ import org.jspresso.hrsample.model.Event;
 import org.jspresso.hrsample.model.Nameable;
 import org.jspresso.hrsample.model.OrganizationalUnit;
 import org.jspresso.hrsample.model.Team;
+import org.junit.Test;
+import org.mockito.ArgumentMatcher;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
  * Model integration tests.
@@ -576,14 +583,23 @@ public class JspressoModelTests extends BackTestStartup {
         return c.getId();
       }
     });
-    City c = hbc.findById(cityId, EMergeMode.MERGE_KEEP, City.class);
+    final City c = hbc.findById(cityId, EMergeMode.MERGE_KEEP, City.class);
     assertEquals("A message translation should have been created", 1, c.getPropertyTranslations().size());
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        City cClone = hbc.cloneInUnitOfWork(c);
+        cClone.setName("modified");
+      }
+    });
+    hbc.reload(c);
+    assertEquals("The message translation should have been updated", "modified", c.getName());
   }
 
 
   static class PropertyMatcher extends ArgumentMatcher<Object[]> {
 
-    private String propertyName;
+    private final String propertyName;
 
     /**
      * Constructs a new {@code PropertyMatcher} instance.
