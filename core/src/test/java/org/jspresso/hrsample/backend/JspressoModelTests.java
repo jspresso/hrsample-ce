@@ -18,11 +18,7 @@
  */
 package org.jspresso.hrsample.backend;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.argThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.never;
@@ -68,6 +64,7 @@ import org.jspresso.hrsample.model.ContactInfo;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Event;
+import org.jspresso.hrsample.model.Link;
 import org.jspresso.hrsample.model.Nameable;
 import org.jspresso.hrsample.model.OrganizationalUnit;
 import org.jspresso.hrsample.model.Team;
@@ -596,6 +593,21 @@ public class JspressoModelTests extends BackTestStartup {
     assertEquals("The message translation should have been updated", "modified", c.getName());
   }
 
+  /**
+   * Tests fix for bug #1115.
+   */
+  @Test
+  public void testRecursiveComponentHashCodeEquals() {
+    Link head = getBackendController().getEntityFactory().createComponentInstance(Link.class);
+    Link tail = getBackendController().getEntityFactory().createComponentInstance(Link.class);
+    head.setName("head");
+    tail.setName("tail");
+    head.addToChildren(tail);
+    tail.setParent(head);
+    int hc = head.hashCode();
+    assertTrue("The hash code is not correctly computed", hc != 0);
+    assertNotEquals("Equality is not correctly computed", head, tail);
+  }
 
   static class PropertyMatcher extends ArgumentMatcher<Object[]> {
 
