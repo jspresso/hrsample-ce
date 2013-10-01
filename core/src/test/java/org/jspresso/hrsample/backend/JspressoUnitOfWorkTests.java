@@ -298,6 +298,30 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         hbc.registerForUpdate(newCity);
       }
     });
+
+    tt.execute(new TransactionCallbackWithoutResult() {
+
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        final City randomCity = hbc.findFirstByCriteria(DetachedCriteria.forClass(City.class), EMergeMode.MERGE_KEEP,
+            City.class);
+        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(
+            tt.getTransactionManager());
+        nestedTT
+            .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+        nestedTT.execute(new TransactionCallbackWithoutResult() {
+
+          @Override
+          public void doInTransactionWithoutResult(TransactionStatus nestedStatus) {
+            DetachedCriteria cityById = DetachedCriteria.forClass(City.class);
+            cityById.add(Restrictions.eq(IEntity.ID, randomCity.getId()));
+            City innerRandomCity = (City) cityById.getExecutableCriteria(hbc.getHibernateSession()).uniqueResult();
+            // If we reach this point without exception, there is no mix between the inner TX and the outer UOW.
+            // See bug #1118
+          }
+        });
+      }
+    });
   }
 
   /**
