@@ -799,4 +799,25 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
     hbc.rollbackUnitOfWork();
   }
+
+  /**
+   * Tests that an exception is thrown if we detect a flush of an entity that was not previously cloned.
+   */
+  @Test(expected = BackendException.class)
+  public void testExceptionIfNotCloned() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    final City newCity = hbc.getEntityFactory().createEntityInstance(City.class);
+    newCity.setName("New");
+
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
+            hbc.registerForUpdate(newCity);
+          }
+        });
+  }
+
 }
