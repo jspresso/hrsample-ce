@@ -824,12 +824,14 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
          @Override
          protected void doInTransactionWithoutResult(TransactionStatus status) {
            Company companyCloneClone = hbc.cloneInUnitOfWork(companyClone);
-           assertSame("The clone cloneInUnitOfWork produced an other reference. It is not idempotent. ", companyClone,
-               companyCloneClone);
+           assertSame("Cloning is not idempotent", companyClone, companyCloneClone);
          }
        });
 
     assertFalse(hbc.isUnitOfWorkActive());
+
+    company = hbc.findById(company.getId(), EMergeMode.MERGE_CLEAN_EAGER, Company.class);
+    assertEquals("Company has not been correctly merged", modifiedInUOW, company.getName());
 
     company = hbc.findById(company.getId(), EMergeMode.MERGE_CLEAN_EAGER, Company.class);
     assertEquals("Company has not been correctly persisted", modifiedInUOW, company.getName());
