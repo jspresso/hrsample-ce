@@ -801,6 +801,39 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
   }
 
   /**
+   * Test in memory tx entity update.
+   */
+  @Test
+  public void testInMemoryTxEntityUpdate() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    EnhancedDetachedCriteria compCrit = EnhancedDetachedCriteria.forClass(Company.class);
+
+    Company company = hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_KEEP, Company.class);
+
+    // Simulates a new request
+    hbc.cleanupRequestResources();
+
+    hbc.beginUnitOfWork();
+    final Company companyClone = hbc.cloneInUnitOfWork(company);
+    String modifiedInUOW = "modifiedInUOW";
+    companyClone.setName(modifiedInUOW);
+
+    hbc.getTransactionTemplate()
+       .execute(new TransactionCallbackWithoutResult() {
+
+         @Override
+         protected void doInTransactionWithoutResult(TransactionStatus status) {
+           hbc.cloneInUnitOfWork(companyClone);
+         }
+       });
+
+    assertFalse(hbc.isUnitOfWorkActive());
+
+    company = hbc.findById(company.getId(), EMergeMode.MERGE_CLEAN_EAGER, Company.class);
+    assertEquals("Company has not been correctly persisted", modifiedInUOW, company.getName());
+  }
+
+  /**
    * Tests that an exception is thrown if we detect a flush of an entity that was not previously cloned.
    */
   @Test(expected = BackendException.class)
