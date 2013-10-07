@@ -823,7 +823,9 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
 
          @Override
          protected void doInTransactionWithoutResult(TransactionStatus status) {
-           hbc.cloneInUnitOfWork(companyClone);
+           Company companyCloneClone = hbc.cloneInUnitOfWork(companyClone);
+           assertSame("The clone cloneInUnitOfWork produced an other reference. It is not idempotent. ", companyClone,
+               companyCloneClone);
          }
        });
 
