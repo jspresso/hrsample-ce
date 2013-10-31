@@ -857,4 +857,25 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
         });
   }
 
+
+  /**
+   * Tests fix for bug #1127.
+   */
+  @Test
+  public void testInMemoryTxDirtyCollectionProperty() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    EnhancedDetachedCriteria compCrit = EnhancedDetachedCriteria.forClass(Company.class);
+    Company company = hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_KEEP, Company.class);
+
+    hbc.beginUnitOfWork();
+
+    Company companyClone = hbc.cloneInUnitOfWork(company);
+    companyClone.addToDepartments(hbc.getEntityFactory().createEntityInstance(Department.class));
+
+    hbc.cleanupRequestResources();
+
+    compCrit.getExecutableCriteria(hbc.getHibernateSession()).list();
+  }
+
 }
