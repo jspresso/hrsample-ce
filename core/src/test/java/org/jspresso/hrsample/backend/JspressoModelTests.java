@@ -608,6 +608,23 @@ public class JspressoModelTests extends BackTestStartup {
     int hc = head.hashCode();
     assertTrue("The hash code is not correctly computed", hc != 0);
     assertNotEquals("Equality is not correctly computed", head, tail);
+
+    Link left = getBackendController().getEntityFactory().createComponentInstance(Link.class);
+    Link right = getBackendController().getEntityFactory().createComponentInstance(Link.class);
+
+    assertEquals("Equality is not correctly computed", left, right);
+
+    left.addToChildren(right);
+    right.addToChildren(left);
+    left.setParent(right);
+    right.setParent(left);
+
+    assertNotEquals("Equality is not correctly computed", left, right);
+
+    left.setName("left");
+    right.setName("right");
+
+    assertNotEquals("Equality is not correctly computed", left, right);
   }
 
   /**

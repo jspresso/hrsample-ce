@@ -158,7 +158,7 @@ Entity('Preferences') {
   string_128 'preferencePath';
 }
 
-Component('Link', extend: 'Nameable') {
+Component('Link', extend: 'Nameable', rendered: 'name') {
   reference 'parent', ref: 'Link', mandatory: false
   set 'children', ref: 'Link'
 }
