@@ -41,6 +41,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.hamcrest.Description;
+import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.collection.internal.PersistentSet;
 import org.hibernate.collection.spi.PersistentCollection;
@@ -608,6 +609,20 @@ public class JspressoModelTests extends BackTestStartup {
     assertTrue("The hash code is not correctly computed", hc != 0);
     assertNotEquals("Equality is not correctly computed", head, tail);
   }
+
+  /**
+   * Tests fix for bug #1126.
+   */
+  @Test
+  public void testResetUninitializedReference() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(Employee.class);
+    final Employee e = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_KEEP, Employee.class);
+    assertFalse(Hibernate.isInitialized(e.straightGetProperty(Employee.COMPANY)));
+    e.straightSetProperty(Employee.COMPANY, null);
+    e.getCompany();
+  }
+
 
   static class PropertyMatcher extends ArgumentMatcher<Object[]> {
 
