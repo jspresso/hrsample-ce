@@ -878,4 +878,48 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
     compCrit.getExecutableCriteria(hbc.getHibernateSession()).list();
   }
 
+  /**
+   * Tests fix for bug #1130.
+   */
+  @Test
+  public void testDetachedEntitiesManagement() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    final Company company = hbc.getEntityFactory().createEntityInstance(Company.class);
+    company.setName("TestCompany");
+
+    final Department department = hbc.getEntityFactory().createEntityInstance(Department.class);
+    department.setName("TestDepartment");
+    department.setOuId("TE-001");
+
+    company.addToDepartments(department);
+    company.removeFromDepartments(department);
+
+    Set<?> detachedEntities = (Set<?>) company.straightGetProperty("detachedEntities");
+    assertTrue("DetachedEntities is empty and should not be.",
+        detachedEntities != null && !detachedEntities.isEmpty());
+
+    hbc.getTransactionTemplate().execute(
+        new TransactionCallbackWithoutResult() {
+
+          @Override
+          protected void doInTransactionWithoutResult(TransactionStatus status) {
+            Company companyClone = hbc.cloneInUnitOfWork(company);
+            Department departmentClone = hbc.cloneInUnitOfWork(department);
+
+            Set<?> detachedEntities = (Set<?>) companyClone.straightGetProperty("detachedEntities");
+            assertTrue("DetachedEntities is empty and should not be.",
+                detachedEntities != null && !detachedEntities.isEmpty());
+
+            assertSame("DetachedEntities have not been cloned correctly.", departmentClone,
+                detachedEntities.iterator().next());
+
+            hbc.registerForUpdate(companyClone);
+          }
+        });
+
+    detachedEntities = (Set<?>) company.straightGetProperty("detachedEntities");
+    assertNull("DetachedEntities should have been reset.", detachedEntities);
+  }
+
 }
