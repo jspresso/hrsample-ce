@@ -152,6 +152,12 @@ form('Employee.filter.pane', columnCount:8, fields:[
   'birthDate'
 ], widths:['firstName':4,'name':4,'gender':4,'salary':4,'birthDate':4])
 
+form('Department.filter.pane', columnCount:8, fields:[
+    'ouId',
+    'name',
+    'manager.gender'
+], widths:['firstName':4,'name':4,'gender':4,'salary':4,'birthDate':4])
+
 border('Employee.border.pane',
     center:'Employee.component.pane') {
       north {

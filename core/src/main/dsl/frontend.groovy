@@ -38,6 +38,14 @@ workspace('organization.workspace',
           startup:'filterModuleStartup')
     }
 
+workspace('departments.workspace',
+    icon:'department-48x48.png') {
+  filterModule('departments.module',
+      icon:'department-48x48.png',
+      component:'Department',
+      filterView:'Department.filter.pane')
+}
+
 action 'startupHrsampleAction',
     class:'org.jspresso.framework.application.frontend.action.module.ModuleSelectionAction',
     custom:[workspaceName:'organization.workspace', moduleName:'companies.module']
@@ -65,7 +73,8 @@ controller 'hrsample.name',
     workspaces:[
       'organization.workspace',
       'employees.workspace',
-      'masterdata.workspace'
+      'masterdata.workspace',
+      /'departments.workspace',
     ]
 
 bean 'viewFactoryBase', parent:'abstractViewFactory',
