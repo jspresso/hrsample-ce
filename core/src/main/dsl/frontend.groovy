@@ -74,7 +74,7 @@ controller 'hrsample.name',
       'organization.workspace',
       'employees.workspace',
       'masterdata.workspace',
-      /'departments.workspace',
+      //'departments.workspace',
     ]
 
 bean 'viewFactoryBase', parent:'abstractViewFactory',
