@@ -22,15 +22,17 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+
 import org.jspresso.framework.action.IActionHandler;
 import org.jspresso.framework.application.backend.action.Asynchronous;
 import org.jspresso.framework.application.backend.action.BackendAction;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
+import org.jspresso.framework.application.frontend.action.FrontendAction;
 import org.jspresso.framework.application.frontend.action.flow.InfoAction;
 
 import org.jspresso.hrsample.model.City;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
  * Test back action.
@@ -65,8 +67,23 @@ public class TestBackAction extends BackendAction {
           bc.registerForUpdate(test);
         }
       });
+      if (System.currentTimeMillis() % 2 == 0) {
+        throw new NullPointerException(
+            "This is a test for an unhandled exception on thread " + Thread.currentThread().getName());
+      }
     } catch (InterruptedException ex) {
       ex.printStackTrace();
+    } catch (RuntimeException ex) {
+      final Map<String, Object> exceptionContext = new HashMap<>();
+      exceptionContext.put("exception", ex);
+      actionHandler.executeLater(new FrontendAction() {
+        @Override
+        public boolean execute(IActionHandler actionHandler, Map<String, Object> context) {
+          actionHandler.handleException((Throwable) exceptionContext.get("exception"), exceptionContext);
+          return super.execute(actionHandler, context);
+        }
+      }, exceptionContext);
+      throw ex;
     }
     Date end = new Date();
     Map<String, Object> completionContext = new HashMap<>();
