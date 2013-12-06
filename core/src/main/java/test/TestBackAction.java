@@ -40,7 +40,7 @@ import org.jspresso.hrsample.model.City;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-@Asynchronous
+@Asynchronous(pushRuntimeExceptions = true)
 public class TestBackAction extends BackendAction {
 
   private InfoAction completionAction = new InfoAction();
@@ -73,17 +73,6 @@ public class TestBackAction extends BackendAction {
       }
     } catch (InterruptedException ex) {
       ex.printStackTrace();
-    } catch (RuntimeException ex) {
-      final Map<String, Object> exceptionContext = new HashMap<>();
-      exceptionContext.put("exception", ex);
-      actionHandler.executeLater(new FrontendAction() {
-        @Override
-        public boolean execute(IActionHandler actionHandler, Map<String, Object> context) {
-          actionHandler.handleException((Throwable) exceptionContext.get("exception"), exceptionContext);
-          return super.execute(actionHandler, context);
-        }
-      }, exceptionContext);
-      throw ex;
     }
     Date end = new Date();
     Map<String, Object> completionContext = new HashMap<>();
