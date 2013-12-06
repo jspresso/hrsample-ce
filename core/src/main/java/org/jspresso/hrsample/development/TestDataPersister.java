@@ -54,6 +54,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
         createCity("Ambleny", "02290");
         createCity("Nantes", "44000");
         createCity("Bourg-en-Bresse", "01000");
+        createCity("Lyon", "69000");
 
         // Company
         Company design2see = createCompany("Design2See",

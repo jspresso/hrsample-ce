@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
@@ -29,8 +30,10 @@ import org.jspresso.framework.action.IActionHandler;
 import org.jspresso.framework.application.backend.action.Asynchronous;
 import org.jspresso.framework.application.backend.action.BackendAction;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
+import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.application.frontend.action.FrontendAction;
 import org.jspresso.framework.application.frontend.action.flow.InfoAction;
+import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 
 import org.jspresso.hrsample.model.City;
 
@@ -40,7 +43,7 @@ import org.jspresso.hrsample.model.City;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-@Asynchronous(pushRuntimeExceptions = true)
+@Asynchronous(pushRuntimeExceptions = true, autoMergeBackEntities = true)
 public class TestBackAction extends BackendAction {
 
   private InfoAction completionAction = new InfoAction();
@@ -61,16 +64,16 @@ public class TestBackAction extends BackendAction {
 
         @Override
         protected void doInTransactionWithoutResult(TransactionStatus status) {
-          City test = bc.getEntityFactory().createEntityInstance(City.class);
-          test.setName(Long.toString(System.currentTimeMillis()));
-          test.setZip("12345");
-          bc.registerForUpdate(test);
+          EnhancedDetachedCriteria cityCrit = EnhancedDetachedCriteria.forClass(City.class);
+          cityCrit.add(Restrictions.eq(City.ZIP, "69000"));
+          City lyon = bc.findFirstByCriteria(cityCrit, EMergeMode.MERGE_KEEP, City.class);
+          lyon.setName(Long.toString(System.currentTimeMillis()));
         }
       });
-      if (System.currentTimeMillis() % 2 == 0) {
-        throw new NullPointerException(
-            "This is a test for an unhandled exception on thread " + Thread.currentThread().getName());
-      }
+//      if (System.currentTimeMillis() % 2 == 0) {
+//        throw new NullPointerException(
+//            "This is a test for an unhandled exception on thread " + Thread.currentThread().getName());
+//      }
     } catch (InterruptedException ex) {
       ex.printStackTrace();
     }
