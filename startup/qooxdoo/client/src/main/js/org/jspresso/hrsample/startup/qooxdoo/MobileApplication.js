@@ -17,11 +17,11 @@
  *  along with Jspresso.  If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * This is the main application class
+ * This is the main mobile application class
  */
-qx.Class.define("org.jspresso.hrsample.startup.qooxdoo.Application",
+qx.Class.define("org.jspresso.hrsample.startup.qooxdoo.MobileApplication",
 {
-  extend : org.jspresso.framework.application.frontend.Application,
+  extend : org.jspresso.framework.application.frontend.MobileApplication,
 
 
 

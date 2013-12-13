@@ -13,35 +13,35 @@
     }
   ],
 
-  "export" :
-  [
-    "api",
-    "build",
-    "clean",
-    "distclean",
-    "fix",
-    "inspector",
-    "lint",
-    "migration",
-    "pretty",
-    "profiling",
-    "source",
-    "source-all",
-    "test",
-    "test-source",
-    "translation"
-  ],
+  "config-warnings" :
+  {
+    "job-shadowing" :
+    [
+      "common",
+      "libraries",
+      "build-files",
+      "source-script",
+      "source",
+      "build-script",
+      "build"
+    ]
+  },
 
   "let" :
   {
-    "TARGET"       : "../../../target",
-    "APPLICATION"  : "org.jspresso.hrsample.startup.qooxdoo",
-    "QOOXDOO_PATH" : "../../../target/qooxdoo-sdk",
-    "QXTHEME"      : "org.jspresso.hrsample.startup.qooxdoo.theme.Theme",
-    "API_EXCLUDE"  : ["qx.legacy.*","qx.test.*"],
-    "LOCALES"      : ["en"],
-    "ROOT"         : "..",
-    "BUILD_PATH"   : "${TARGET}/web"
+    "ROOT"              : "..",
+    "TARGET"            : "../../../target",
+    "RESOURCES"         : "${ROOT}/resources",
+    "BUILD_PATH"        : "${TARGET}/web",
+    "APPLICATION"       : "org.jspresso.hrsample.startup.qooxdoo",
+    "APPLICATION_PATH"  : "org/jspresso/hrsample/startup/qooxdoo",
+    "APPLICATION_CSS"   : "${APPLICATION_PATH}/css/styles.css",
+    "QOOXDOO_PATH"      : "${TARGET}/qooxdoo-sdk",
+    "QXTHEME"           : "qx.theme.Indigo",
+    "QXICONTHEME"       : ["Oxygen", "Tango"],
+    "MOBILE_THEME"      : "indigo",  // possible values: "indigo","flat"
+    "API_EXCLUDE"       : ["qx.legacy.*","qx.test.*"],
+    "LOCALES"           : ["en"]
   },
 
   // You only need to edit the remainder of this file, if you want to customize
@@ -57,7 +57,7 @@
         "downloads"   : "${TARGET}/cache/downloads"
       }
     },
-    "libraries" : 
+    "libraries" :
     {
       "extend" : ["jspresso-qooxdoo::libraries"],
       
@@ -68,52 +68,117 @@
         }
       ]
     },
+
+
     "build-files" :
     {
       "copy-files" :
       {
+        "files" : ["*.html"],
         "source" : "${ROOT}/html"
       }
     },
-    "source-script" :
+    "source-files" :
     {
+      "extend"     : ["build-files"],
       "copy-files" :
       {
-        "files" : ["*.html"],
-        "source" : "${ROOT}/html",
         "target" : "${TARGET}/web-debug"
-      },
-      "compile-options" :
-      {
-			  "paths" :
-			  {
-			    "file" : "${TARGET}/web-debug/script/${APPLICATION}.js"
-			  },
-        "uris" : 
-        {
-          "add-nocache-param" : false
-        }
       }
     },
-    "source-all-script" :
-    {
-      "copy-files" :
-      {
-        "files" : ["*.html"],
-        "source" : "${ROOT}/html",
-        "target" : "${TARGET}/web-debug"
-      },
+    
+    "common-mobile" : {
       "compile-options" :
       {
         "paths" :
         {
-          "file" : "${TARGET}/web-debug/script/${APPLICATION}.js"
-        },
-        "uris" : 
+          "loader-template" : "${QOOXDOO_PATH}/tool/data/generator/mobile.loader.tmpl.js"
+        }
+      },
+      "environment" :
+      {
+        "qx.mobile.emulatetouch" : true,
+        "qx.mobile.nativescroll" : false
+      }
+    },
+
+    "source-script" :
+    {
+      "extend" : ["source-files"],
+      "compile-options" :
+      {
+			  "paths" :
+			  {
+			    "file" : "${TARGET}/web-debug/script/${APPLICATION}.js",
+          "scripts-add-hash" : false
+			  },
+        "uris" :
         {
           "add-nocache-param" : false
         }
       }
+    },
+    "source-script-mobile" :
+    {
+      "extend" : ["source-script", "common-mobile"],
+      "compile-options" :
+      {
+        "paths" :
+        {
+          "file" : "${TARGET}/web-debug/script/${APPLICATION}-mobile.js"
+        }
+      },
+      "add-css" : [
+        { "uri" : "${QOOXDOO_PATH}/framework/source/resource/qx/mobile/css/${MOBILE_THEME}.css" },
+        { "uri" : "${RESOURCES}/${APPLICATION_CSS}" }
+      ]
+    },
+
+    "build-script" :
+    {
+      "extend" : ["build-files"]
+    },
+    "build-script-mobile" :
+    {
+      "extend" : ["build-script", "common-mobile"],
+      "compile-options" :
+      {
+        "paths" : {
+          "file" : "${BUILD_PATH}/script/${APPLICATION}-mobile.js"
+        }
+      },
+      "add-css" : [
+        { "uri" : "./resource/qx/mobile/css/${MOBILE_THEME}.css" },
+        { "uri" : "./resource/${APPLICATION_CSS}" }
+      ]
+    },
+
+    "source" : {
+    },
+    "source-mobile" :
+    {
+      "extend" : ["source"],
+      "let" :
+      {
+        "APPLICATION_MAIN_CLASS" : "${APPLICATION}.MobileApplication",
+        "QXTHEME"      : "",
+        "QXICONTHEME"  : []
+      },
+      "=run" : ["source-script-mobile"]
+    },
+
+    "build" : {
+    },
+    "build-mobile" :
+    {
+      "extend" : ["build"],
+      "let" :
+      {
+        "APPLICATION_MAIN_CLASS" : "${APPLICATION}.MobileApplication",
+        "QXTHEME"      : "",
+        "QXICONTHEME"  : []
+      },
+      "=run" : ["build-resources","build-script-mobile","build-files"]
     }
   }
 }

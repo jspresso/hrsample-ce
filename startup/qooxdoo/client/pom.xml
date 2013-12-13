@@ -90,7 +90,7 @@
           <workingDirectory>src/main/py</workingDirectory>
           <arguments>
             <argument>${project.build.directory}/qooxdoo-sdk/tool/bin/generator.py</argument>
-            <argument>source-all,build</argument>
+            <argument>source,build,source-mobile,build-mobile</argument>
           </arguments>
         </configuration>
       </plugin>
@@ -111,7 +111,13 @@
                 <replace dir="${web-debug.dir}" token="../../../../target" value="file:///${project.build.directory}">
                   <include name="**/*.js" />
                 </replace>
+                <replace dir="${web-debug.dir}" token="../../../target" value="file:///${project.build.directory}">
+                  <include name="**/*.js" />
+                </replace>
                 <replace dir="${web-debug.dir}" token="../../" value="file:///${basedir}/src/main/">
+                  <include name="**/*.js" />
+                </replace>
+                <replace dir="${web-debug.dir}" token="../" value="file:///${basedir}/src/main/">
                   <include name="**/*.js" />
                 </replace>
                 <replace dir="${web-debug.dir}" token="\" value="/">
