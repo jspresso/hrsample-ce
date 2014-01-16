@@ -38,13 +38,13 @@ qx.Class.define("org.jspresso.hrsample.startup.qooxdoo.MobileApplication",
       if (qx.core.Environment.get("qx.debug")) {
         remoteController = new qx.io.remote.Rpc(
             "http://localhost:8080/hrsample-webapp/.qxrpc",
-            "org.jspresso.hrsample.startup.remote.RemoteApplicationStartup"
+            "org.jspresso.hrsample.startup.remote.RemoteMobileApplicationStartup"
         );
         remoteController.setCrossDomain(true);
       } else {
         remoteController = new qx.io.remote.Rpc(
             qx.io.remote.Rpc.makeServerURL(),
-            "org.jspresso.hrsample.startup.remote.RemoteApplicationStartup"
+            "org.jspresso.hrsample.startup.remote.RemoteMobileApplicationStartup"
         );
       }
       remoteController.setTimeout(600000);
