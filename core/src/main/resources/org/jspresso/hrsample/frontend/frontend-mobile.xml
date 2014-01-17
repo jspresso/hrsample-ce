@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2005-2014 Vincent Vandenschrick. All rights reserved.
+  ~
+  ~  This file is part of the Jspresso framework.
+  ~
+  ~  Jspresso is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU Lesser General Public License as published by
+  ~  the Free Software Foundation, either version 3 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  Jspresso is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU Lesser General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU Lesser General Public License
+  ~  along with Jspresso.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+                      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+  default-lazy-init="true">
+
+  <bean
+      id="applicationFrontController"
+      parent="frontController"
+      scope="prototype">
+    <property
+        name="iconImageURL"
+        value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
+    <property
+        name="loginContextName"
+        value="hrsample" />
+    <property
+        name="forcedStartingLocale"
+        value="en" />
+    <property
+        name="actionMap"
+        ref="controllerActionMap" />
+    <property
+        name="frameWidth"
+        value="1200" />
+    <property
+        name="frameHeight"
+        value="800" />
+    <property
+        name="workspaces">
+      <list>
+        <ref bean="organization.workspace"/>
+        <ref bean="employees.workspace"/>
+        <ref bean="masterdata.workspace"/>
+      </list>
+    </property>
+    <property
+        name="name"
+        value="hrsample.name" />
+  </bean>
+
+
+</beans>
