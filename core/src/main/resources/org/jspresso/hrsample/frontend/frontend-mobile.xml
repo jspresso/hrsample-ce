@@ -47,8 +47,8 @@
     <property
         name="workspaces">
       <list>
-        <ref bean="organization.workspace"/>
-        <ref bean="employees.workspace"/>
+        <!--<ref bean="organization.workspace"/>-->
+        <!--<ref bean="employees.workspace"/>-->
         <ref bean="masterdata.workspace"/>
       </list>
     </property>
@@ -57,5 +57,19 @@
         value="hrsample.name" />
   </bean>
 
+  <bean
+      id="City.module.view"
+      parent="decoratedView"
+      class="org.jspresso.framework.view.descriptor.mobile.MobileComponentViewDescriptor" >
+    <property
+        name="actionMap"
+        ref="beanModuleActionMap" />
+    <property
+        name="permId"
+        value="City.module.view" />
+    <property
+        name="modelDescriptor"
+        ref="City" />
+  </bean>
 
 </beans>
