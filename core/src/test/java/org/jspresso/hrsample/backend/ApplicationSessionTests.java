@@ -18,7 +18,7 @@
  */
 package org.jspresso.hrsample.backend;
 
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -26,11 +26,20 @@ import java.util.List;
 import java.util.Map;
 
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
+import org.jspresso.framework.application.backend.persistence.hibernate.HibernateHelper;
 import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
+
+import org.jspresso.hrsample.model.Company;
+import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.OrganizationalUnit;
+import org.jspresso.hrsample.model.Team;
+
+import org.hibernate.Hibernate;
 import org.junit.Test;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
 
 /**
  * Application session integration tests.
@@ -67,6 +76,47 @@ public class ApplicationSessionTests extends BackTestStartup {
       if (managedOu != null) {
         assertSame(managedOu, ousById.get(managedOu.getId()));
       }
+    }
+  }
+
+  /**
+   * Tests that uninitialized reference property are correctly loaded and registered to the session
+   * when actually loaded. see bug #1150.
+   */
+  @Test
+  public void testUninitializedPropertyRegisteredWhenLoaded() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    OrganizationalUnit ou = hbc.getTransactionTemplate().execute(new TransactionCallback<OrganizationalUnit>() {
+      @Override
+      public OrganizationalUnit doInTransaction(TransactionStatus status) {
+        EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
+            .forClass(Employee.class);
+        List<Employee> employees = hbc.findByCriteria(employeeCriteria,
+            null, Employee.class);
+        for (Employee emp : employees) {
+          OrganizationalUnit managedOu = (OrganizationalUnit) emp
+              .straightGetProperty(Employee.MANAGED_OU);
+          if (!Hibernate.isInitialized(managedOu)) {
+            EnhancedDetachedCriteria companyCriteria = EnhancedDetachedCriteria
+                .forClass(Company.class);
+            Company company = hbc.findFirstByCriteria(companyCriteria, EMergeMode.MERGE_KEEP, Company.class);
+            emp = hbc.merge(emp, EMergeMode.MERGE_LAZY);
+            for (Department department :company.getDepartments()) {
+              for (Team team : department.getTeams()) {
+                team.getName();
+              }
+            }
+            // Will initialize
+            return emp.getManagedOu();
+          }
+        }
+        return null;
+      }
+    });
+    if(ou != null) {
+      assertTrue("Loaded lazy reference has not correctly been merged to the application session",
+          HibernateHelper.objectEquals(ou, hbc.getRegisteredEntity(OrganizationalUnit.class, ou.getId())));
     }
   }
 }
