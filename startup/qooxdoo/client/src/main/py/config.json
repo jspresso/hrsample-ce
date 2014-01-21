@@ -147,6 +147,11 @@
           "file" : "${BUILD_PATH}/script/${APPLICATION}-mobile.js"
         }
       },
+      "copy-files" : {
+        "files" : ["${APPLICATION_CSS}"],
+        "source" : "${RESOURCES}",
+        "target" : "${BUILD_PATH}/resource"
+      },
       "add-css" : [
         { "uri" : "./resource/qx/mobile/css/${MOBILE_THEME}.css" },
         { "uri" : "./resource/${APPLICATION_CSS}" }
