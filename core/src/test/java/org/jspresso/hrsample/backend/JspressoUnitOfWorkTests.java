@@ -40,20 +40,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.hibernate.Hibernate;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.jspresso.framework.application.backend.BackendControllerHolder;
-import org.jspresso.framework.application.backend.BackendException;
-import org.jspresso.framework.application.backend.ControllerAwareTransactionTemplate;
-import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
-import org.jspresso.framework.application.backend.session.EMergeMode;
-import org.jspresso.framework.model.entity.IEntity;
-import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
-import org.jspresso.hrsample.model.City;
-import org.jspresso.hrsample.model.Company;
-import org.jspresso.hrsample.model.ContactInfo;
-import org.jspresso.hrsample.model.Department;
-import org.jspresso.hrsample.model.Employee;
-import org.jspresso.hrsample.model.Event;
-import org.jspresso.hrsample.model.Nameable;
 import org.junit.Test;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.jdbc.core.ConnectionCallback;
@@ -63,6 +49,23 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
+
+import org.jspresso.framework.application.backend.BackendControllerHolder;
+import org.jspresso.framework.application.backend.BackendException;
+import org.jspresso.framework.application.backend.ControllerAwareTransactionTemplate;
+import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
+import org.jspresso.framework.application.backend.persistence.hibernate.HibernateHelper;
+import org.jspresso.framework.application.backend.session.EMergeMode;
+import org.jspresso.framework.model.entity.IEntity;
+import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
+
+import org.jspresso.hrsample.model.City;
+import org.jspresso.hrsample.model.Company;
+import org.jspresso.hrsample.model.ContactInfo;
+import org.jspresso.hrsample.model.Department;
+import org.jspresso.hrsample.model.Employee;
+import org.jspresso.hrsample.model.Event;
+import org.jspresso.hrsample.model.Nameable;
 
 /**
  * Unit Of Work management integration tests.
@@ -922,4 +925,26 @@ public class JspressoUnitOfWorkTests extends BackTestStartup {
     assertNull("DetachedEntities should have been reset.", detachedEntities);
   }
 
+  /**
+   * Tests fix for bug #1153.
+   */
+  @Test
+  public void testAfterTxInitializationKeepsIsolation() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    EnhancedDetachedCriteria compCrit = EnhancedDetachedCriteria.forClass(Company.class);
+    Company company = hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_KEEP, Company.class);
+
+    Department uowDepartment = hbc.getTransactionTemplate().execute(new TransactionCallback<Department>() {
+      @Override
+      public Department doInTransaction(TransactionStatus status) {
+        EnhancedDetachedCriteria deptCrit = EnhancedDetachedCriteria.forClass(Department.class);
+        return hbc.findFirstByCriteria(deptCrit, null, Department.class);
+      }
+    });
+    assertTrue("UOW dept company is initialized",
+        !Hibernate.isInitialized(uowDepartment.straightGetProperty(Department.COMPANY)));
+    Company uowCompany = uowDepartment.getCompany();
+    assertFalse("Session company has been assigned to UOW department",
+        HibernateHelper.objectEquals(company, uowCompany));
+  }
 }
