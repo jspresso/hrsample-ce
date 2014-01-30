@@ -48,7 +48,7 @@
         name="workspaces">
       <list>
         <!--<ref bean="organization.workspace"/>-->
-        <!--<ref bean="employees.workspace"/>-->
+        <ref bean="employees.workspace"/>
         <ref bean="masterdata.workspace"/>
       </list>
     </property>
@@ -59,17 +59,22 @@
 
   <bean
       id="City.module.view"
-      parent="decoratedView"
       class="org.jspresso.framework.view.descriptor.mobile.MobileComponentViewDescriptor" >
-    <property
-        name="actionMap"
-        ref="beanModuleActionMap" />
-    <property
-        name="permId"
-        value="City.module.view" />
     <property
         name="modelDescriptor"
         ref="City" />
+  </bean>
+
+  <bean
+      id="Employee.table.view"
+      class="org.jspresso.framework.view.descriptor.mobile.MobileListViewDescriptor"/>
+
+  <bean
+      id="Employee.module.view"
+      class="org.jspresso.framework.view.descriptor.mobile.MobileComponentViewDescriptor">
+    <property
+        name="modelDescriptor"
+        ref="Employee" />
   </bean>
 
 </beans>
