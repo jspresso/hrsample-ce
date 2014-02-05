@@ -271,7 +271,7 @@ public class JspressoModelTests extends BackTestStartup {
    * Tests entities memory consumption.
    */
   @Test
-  public void testEnytitiesMemoryConsumption() {
+  public void testEntytitiesMemoryConsumption() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
     System.gc();
     long start = Runtime.getRuntime().freeMemory();
