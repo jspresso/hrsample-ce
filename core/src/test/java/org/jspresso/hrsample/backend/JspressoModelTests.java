@@ -32,6 +32,7 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -271,20 +272,24 @@ public class JspressoModelTests extends BackTestStartup {
    * Tests entities memory consumption.
    */
   @Test
-  public void testEntytitiesMemoryConsumption() {
+  public void testEntytitiesMemoryConsumption() throws InterruptedException {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
     System.gc();
-    long start = Runtime.getRuntime().freeMemory();
-    Set<Employee> employees = new HashSet<>();
+    //Thread.sleep(2000);
+    long start = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    List<Employee> employees = new ArrayList<>();
     for (int i = 0; i < 5000; i++) {
       Employee emp = hbc.getEntityFactory().createEntityInstance(Employee.class);
       // The employee collection should be sorted by name
-      emp.setName(Integer.toHexString(emp.hashCode()));
+      //emp.setName(Integer.toHexString(emp.hashCode()));
+      emp.straightSetProperty(IEntity.ID, null);
       employees.add(emp);
     }
     System.gc();
-    long end = Runtime.getRuntime().freeMemory();
-    System.out.println((end - start) / 1024 / 1024 + " MB used memory.");
+    //Thread.sleep(2000);
+    long end = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    System.out.println((end - start) / 1024 / 1024 + " MB used memory for " + employees.size() + " entities. This " +
+        "means " + (end - start) / employees.size() + " B per entity.");
   }
 
   /**
