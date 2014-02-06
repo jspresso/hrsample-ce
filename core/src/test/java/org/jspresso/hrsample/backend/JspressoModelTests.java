@@ -272,7 +272,7 @@ public class JspressoModelTests extends BackTestStartup {
    * Tests entities memory consumption.
    */
   @Test
-  public void testEntytitiesMemoryConsumption() throws InterruptedException {
+  public void testEntitiesMemoryConsumption() throws InterruptedException {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
     System.gc();
     //Thread.sleep(2000);
