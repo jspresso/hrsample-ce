@@ -3,6 +3,8 @@
  */
 package org.jspresso.hrsample.startup.swing.development;
 
+import javax.swing.SwingUtilities;
+
 import org.jspresso.hrsample.development.TestDataPersister;
 import org.jspresso.hrsample.startup.swing.SwingApplicationStartup;
 
@@ -23,6 +25,11 @@ public class SwingDevApplicationStartup extends SwingApplicationStartup {
   public void start() {
     new TestDataPersister(getApplicationContext()).persistTestData();
     super.start();
-    //org.hsqldb.util.DatabaseManagerSwing.main(new String[0]);
+//    SwingUtilities.invokeLater(new Runnable() {
+//      @Override
+//      public void run() {
+//        org.hsqldb.util.DatabaseManagerSwing.main(new String[0]);
+//      }
+//    });
   }
 }
