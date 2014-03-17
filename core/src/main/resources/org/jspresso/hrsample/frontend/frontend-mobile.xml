@@ -90,6 +90,17 @@
           <property name="selectionView">
             <bean class="org.jspresso.framework.view.descriptor.mobile.MobileListViewDescriptor">
               <property name="modelDescriptor" ref="Company-departments" />
+              <property name="actionMap">
+                <bean class="org.jspresso.framework.view.action.ActionMap">
+                  <property name="actionLists">
+                    <bean class="org.jspresso.framework.view.action.ActionList">
+                      <property name="actions">
+                        <ref bean="addToMasterFrontAction" />
+                      </property>
+                    </bean>
+                  </property>
+                </bean>
+              </property>
             </bean>
           </property>
           <property name="nextPage">
