@@ -95,7 +95,12 @@
                   <property name="actionLists">
                     <bean class="org.jspresso.framework.view.action.ActionList">
                       <property name="actions">
-                        <ref bean="addToMasterFrontAction" />
+                        <bean parent="addToMasterFrontAction">
+                          <property name="nextAction">
+                            <bean
+                                class="org.jspresso.framework.application.frontend.action.remote.mobile.EditCurrentPageAction"/>
+                          </property>
+                        </bean>
                       </property>
                     </bean>
                   </property>
