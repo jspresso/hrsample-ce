@@ -250,8 +250,11 @@
               <templateResourcePath>${generator.templateResourcePath}</templateResourcePath>
               <templateName>${generator.templateName}</templateName>
               <includePackages>
-                <param>org.jspresso.hrsample.model</param>
+                <includePackage>org.jspresso.hrsample.model</includePackage>
               </includePackages>
+              <excludePatterns>
+                <excludePattern>.*\.bean\..*</excludePattern>
+              </excludePatterns>
               <maxSqlNameSize>30</maxSqlNameSize>
             </configuration>
           </execution>
