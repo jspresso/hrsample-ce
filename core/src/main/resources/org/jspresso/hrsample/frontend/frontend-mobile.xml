@@ -90,19 +90,7 @@
           <property name="selectionView">
             <bean class="org.jspresso.framework.view.descriptor.mobile.MobileListViewDescriptor">
               <property name="modelDescriptor" ref="Company-departments" />
-              <property name="actionMap">
-                <bean class="org.jspresso.framework.view.action.ActionMap">
-                  <property name="actionLists">
-                    <bean class="org.jspresso.framework.view.action.ActionList">
-                      <property name="actions">
-                        <bean parent="addToMasterFrontAction">
-                          <property name="nextAction" ref="editPageAction" />
-                        </bean>
-                      </property>
-                    </bean>
-                  </property>
-                </bean>
-              </property>
+              <property name="actionMap" ref="masterActionMap"/>
             </bean>
           </property>
           <property name="nextPage">
@@ -139,25 +127,13 @@
                             </bean>
                           </list>
                         </property>
+                        <property name="actionMap" ref="detailActionMap" />
                       </bean>
                     </property>
                   </bean>
                 </list>
               </property>
-              <property name="actionMap">
-                <bean class="org.jspresso.framework.view.action.ActionMap">
-                  <property name="actionLists">
-                    <bean class="org.jspresso.framework.view.action.ActionList">
-                      <property name="actions">
-                        <list>
-                          <ref bean="deleteAndSaveComponentFrontAction"/>
-                          <ref bean="cloneComponentFrontAction" />
-                        </list>
-                      </property>
-                    </bean>
-                  </property>
-                </bean>
-              </property>
+              <property name="actionMap" ref="detailActionMap" />
             </bean>
           </property>
         </bean>
@@ -174,6 +150,7 @@
                   <bean class="org.jspresso.framework.view.descriptor.mobile.MobileComponentViewDescriptor"/>
                 </list>
               </property>
+              <property name="actionMap" ref="detailActionMap" />
             </bean>
           </property>
         </bean>
