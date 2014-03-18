@@ -147,6 +147,27 @@
                   </bean>
                 </list>
               </property>
+              <property name="actionMap">
+                <bean class="org.jspresso.framework.view.action.ActionMap">
+                  <property name="actionLists">
+                    <bean class="org.jspresso.framework.view.action.ActionList">
+                      <property name="actions">
+                        <list>
+                          <bean parent="removeEntityCollectionFromMasterFrontAction">
+                            <property name="nextAction" ref="saveModuleObjectFrontAction"/>
+                          </bean>
+                          <bean parent="cloneEntityCollectionFrontAction">
+                            <property name="nextAction">
+                              <bean
+                                  class="org.jspresso.framework.application.frontend.action.remote.mobile.EditCurrentPageAction"/>
+                            </property>
+                          </bean>
+                        </list>
+                      </property>
+                    </bean>
+                  </property>
+                </bean>
+              </property>
             </bean>
           </property>
         </bean>
