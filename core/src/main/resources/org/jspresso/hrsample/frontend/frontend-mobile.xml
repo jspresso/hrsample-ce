@@ -96,10 +96,7 @@
                     <bean class="org.jspresso.framework.view.action.ActionList">
                       <property name="actions">
                         <bean parent="addToMasterFrontAction">
-                          <property name="nextAction">
-                            <bean
-                                class="org.jspresso.framework.application.frontend.action.remote.mobile.EditCurrentPageAction"/>
-                          </property>
+                          <property name="nextAction" ref="editPageAction" />
                         </bean>
                       </property>
                     </bean>
@@ -153,15 +150,8 @@
                     <bean class="org.jspresso.framework.view.action.ActionList">
                       <property name="actions">
                         <list>
-                          <bean parent="removeEntityCollectionFromMasterFrontAction">
-                            <property name="nextAction" ref="saveModuleObjectFrontAction"/>
-                          </bean>
-                          <bean parent="cloneEntityCollectionFrontAction">
-                            <property name="nextAction">
-                              <bean
-                                  class="org.jspresso.framework.application.frontend.action.remote.mobile.EditCurrentPageAction"/>
-                            </property>
-                          </bean>
+                          <ref bean="deleteAndSaveComponentFrontAction"/>
+                          <ref bean="cloneComponentFrontAction" />
                         </list>
                       </property>
                     </bean>
