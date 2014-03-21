@@ -118,11 +118,16 @@
         <value>org/jspresso/hrsample/model/model.xml</value>
         <value>org/jspresso/hrsample/backend/dsl-backend.xml</value>
         <value>org/jspresso/hrsample/backend/backend.xml</value>
+        <value>org/jspresso/hrsample/spec/mobile-dsl-backend.xml</value>
+        <value>org/jspresso/hrsample/backend/mobile-backend.xml</value>
         <value>org/jspresso/hrsample/view/dsl-view.xml</value>
         <value>org/jspresso/hrsample/view/view.xml</value>
+        <value>org/jspresso/hrsample/spec/mobile-dsl-view.xml</value>
+        <value>org/jspresso/hrsample/view/mobile-view.xml</value>
         <value>org/jspresso/hrsample/frontend/dsl-frontend.xml</value>
         <value>org/jspresso/hrsample/frontend/frontend.xml</value>
-        <value>org/jspresso/hrsample/frontend/frontend-mobile.xml</value>
+        <value>org/jspresso/hrsample/spec/mobile-dsl-frontend.xml</value>
+        <value>org/jspresso/hrsample/frontend/mobile-frontend.xml</value>
         <value>org/jspresso/hrsample/core-config.xml</value>
         <value>org/jspresso/hrsample/config.xml</value>
       </list>

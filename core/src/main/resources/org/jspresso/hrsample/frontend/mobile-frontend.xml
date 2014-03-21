@@ -23,61 +23,6 @@
   default-lazy-init="true">
 
   <bean
-      id="applicationFrontController"
-      parent="frontController"
-      scope="prototype">
-    <property
-        name="iconImageURL"
-        value="classpath:org/jspresso/hrsample/images/people-48x48.png" />
-    <property
-        name="loginContextName"
-        value="hrsample" />
-    <property
-        name="forcedStartingLocale"
-        value="en" />
-    <property
-        name="actionMap"
-        ref="controllerActionMap" />
-    <property
-        name="frameWidth"
-        value="1200" />
-    <property
-        name="frameHeight"
-        value="800" />
-    <property
-        name="workspaces">
-      <list>
-        <ref bean="organization.workspace"/>
-        <ref bean="employees.workspace"/>
-        <ref bean="masterdata.workspace"/>
-      </list>
-    </property>
-    <property
-        name="name"
-        value="hrsample.name" />
-  </bean>
-
-  <bean
-      id="City.module.view"
-      class="org.jspresso.framework.view.descriptor.mobile.MobileComponentViewDescriptor" >
-    <property
-        name="modelDescriptor"
-        ref="City" />
-  </bean>
-
-  <bean
-      id="Employee.table.view"
-      class="org.jspresso.framework.view.descriptor.mobile.MobileListViewDescriptor"/>
-
-  <bean
-      id="Employee.module.view"
-      class="org.jspresso.framework.view.descriptor.mobile.MobileComponentViewDescriptor">
-    <property
-        name="modelDescriptor"
-        ref="Employee" />
-  </bean>
-
-  <bean
       id="Company.module.view"
       class="org.jspresso.framework.view.descriptor.mobile.MobileCompositePageViewDescriptor">
     <property
