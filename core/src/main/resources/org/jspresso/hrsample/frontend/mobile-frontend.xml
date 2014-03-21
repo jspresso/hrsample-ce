@@ -28,42 +28,42 @@
     <property
         name="modelDescriptor"
         ref="Company" />
-    <property name="pageSections">
+    <property name="pageSectionDescriptors">
       <list>
         <bean class="org.jspresso.framework.view.descriptor.mobile.MobileComponentViewDescriptor"/>
         <bean class="org.jspresso.framework.view.descriptor.mobile.MobileNavPageViewDescriptor">
-          <property name="selectionView">
+          <property name="selectionViewDescriptor">
             <bean class="org.jspresso.framework.view.descriptor.mobile.MobileListViewDescriptor">
               <property name="modelDescriptor" ref="Company-departments" />
               <property name="actionMap" ref="masterActionMap"/>
             </bean>
           </property>
-          <property name="nextPage">
+          <property name="nextPageViewDescriptor">
             <bean class="org.jspresso.framework.view.descriptor.mobile.MobileCompositePageViewDescriptor">
-              <property name="pageSections">
+              <property name="pageSectionDescriptors">
                 <list>
                   <bean class="org.jspresso.framework.view.descriptor.mobile.MobileComponentViewDescriptor"/>
                   <bean class="org.jspresso.framework.view.descriptor.mobile.MobileNavPageViewDescriptor">
-                    <property name="selectionView">
+                    <property name="selectionViewDescriptor">
                       <bean class="org.jspresso.framework.view.descriptor.mobile.MobileListViewDescriptor">
                         <property name="modelDescriptor" ref="Department-teams" />
                         <property name="actionMap" ref="masterActionMap"/>
                       </bean>
                     </property>
-                    <property name="nextPage">
+                    <property name="nextPageViewDescriptor">
                       <bean class="org.jspresso.framework.view.descriptor.mobile.MobileCompositePageViewDescriptor">
-                        <property name="pageSections">
+                        <property name="pageSectionDescriptors">
                           <list>
                             <bean class="org.jspresso.framework.view.descriptor.mobile.MobileComponentViewDescriptor"/>
                             <bean class="org.jspresso.framework.view.descriptor.mobile.MobileNavPageViewDescriptor">
-                              <property name="selectionView">
+                              <property name="selectionViewDescriptor">
                                 <bean class="org.jspresso.framework.view.descriptor.mobile.MobileListViewDescriptor">
                                   <property name="modelDescriptor" ref="Team-teamMembers" />
                                 </bean>
                               </property>
-                              <property name="nextPage">
+                              <property name="nextPageViewDescriptor">
                                 <bean class="org.jspresso.framework.view.descriptor.mobile.MobileCompositePageViewDescriptor">
-                                  <property name="pageSections">
+                                  <property name="pageSectionDescriptors">
                                     <list>
                                       <bean class="org.jspresso.framework.view.descriptor.mobile.MobileComponentViewDescriptor" />
                                     </list>
@@ -84,15 +84,15 @@
           </property>
         </bean>
         <bean class="org.jspresso.framework.view.descriptor.mobile.MobileNavPageViewDescriptor">
-          <property name="selectionView">
+          <property name="selectionViewDescriptor">
             <bean class="org.jspresso.framework.view.descriptor.mobile.MobileListViewDescriptor">
               <property name="modelDescriptor" ref="Company-employees" />
               <property name="actionMap" ref="masterActionMap"/>
             </bean>
           </property>
-          <property name="nextPage">
+          <property name="nextPageViewDescriptor">
             <bean class="org.jspresso.framework.view.descriptor.mobile.MobileCompositePageViewDescriptor">
-              <property name="pageSections">
+              <property name="pageSectionDescriptors">
                 <list>
                   <bean class="org.jspresso.framework.view.descriptor.mobile.MobileComponentViewDescriptor"/>
                 </list>
