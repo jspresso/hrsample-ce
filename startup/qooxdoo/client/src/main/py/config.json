@@ -29,23 +29,33 @@
 
   "let" :
   {
-    "ROOT"              : "..",
-    "TARGET"            : "../../../target",
-    "RESOURCES"         : "${ROOT}/resources",
-    "BUILD_PATH"        : "${TARGET}/web",
-    "APPLICATION"       : "org.jspresso.hrsample.startup.qooxdoo",
-    "APPLICATION_PATH"  : "org/jspresso/hrsample/startup/qooxdoo",
-    "APPLICATION_CSS"   : "${APPLICATION_PATH}/css/styles.css",
-    "QOOXDOO_PATH"      : "${TARGET}/qooxdoo-sdk",
-    "QXTHEME"           : "qx.theme.Indigo",
-    "QXICONTHEME"       : ["Oxygen", "Tango"],
-    "MOBILE_THEME"      : "indigo",  // possible values: "indigo","flat"
-    "API_EXCLUDE"       : ["qx.legacy.*","qx.test.*"],
-    "LOCALES"           : ["en"]
+    "ROOT"                 : "..",
+    "TARGET"               : "../../../target",
+    "RESOURCES"            : "${ROOT}/resources",
+    "QX_RESOURCES"         : "${QOOXDOO_PATH}/framework/source/resource",
+    "BUILD_PATH"           : "${TARGET}/web",
+    "BUILD_PATH_CSS"       : "${TARGET}/css",
+    "APPLICATION"          : "org.jspresso.hrsample.startup.qooxdoo",
+    "APPLICATION_PATH"     : "org/jspresso/hrsample/startup/qooxdoo",
+    "APPLICATION_CSS"      : "${APPLICATION_PATH}/css/styles.css",
+    "QOOXDOO_PATH"         : "${TARGET}/qooxdoo-sdk",
+    "QXTHEME"              : "qx.theme.Indigo",
+    "QXICONTHEME"          : ["Oxygen", "Tango"],
+    "MOBILE_THEME"         : "flat",  // possible values: "indigo","flat","custom"
+    "MOBILE_CSS_DIR"       : "${APPLICATION_PATH}/css",
+    "MOBILE_CSS_PATH"      : "${MOBILE_CSS_DIR}/${MOBILE_THEME}.css",
+    "MOBILE_SCSS_DIR"      : "${APPLICATION_PATH}/scss",
+    "MOBILE_SCSS_PATH"     : "${MOBILE_SCSS_DIR}/${MOBILE_THEME}.scss",
+    "QX_MOBILE_SCSS_DIR"   : "${QX_RESOURCES}/qx/mobile/scss",
+    "QX_SHARED_SCSS_DIR"   : "${QX_RESOURCES}/qx/scss",
+    "QX_MOBILE_CSS_PATH"   : "qx/mobile/css/${MOBILE_THEME}.css",
+    "API_EXCLUDE"          : ["qx.legacy.*","qx.test.*"],
+    "LOCALES"              : ["en"],
+    "MKDIRCMD"             : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/mkdir.py",
+    "CATCMD"               : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/cat.py",
+    "CSSMIN_CMD"           : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/cssmin.py",
+    "SCSS_CMD"             : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/scss.py"
   },
-
-  // You only need to edit the remainder of this file, if you want to customize
-  // specific jobs, or add own job definitions.
 
   "jobs" :
   {
@@ -98,7 +108,8 @@
       "environment" :
       {
         "qx.mobile.emulatetouch" : true,
-        "qx.mobile.nativescroll" : false
+        "qx.mobile.nativescroll" : false,
+        "qx.theme"               : "${MOBILE_THEME}"
       }
     },
 
@@ -129,7 +140,7 @@
         }
       },
       "add-css" : [
-        { "uri" : "${QOOXDOO_PATH}/framework/source/resource/qx/mobile/css/${MOBILE_THEME}.css" },
+        { "uri" : "${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}" },
         { "uri" : "${RESOURCES}/${APPLICATION_CSS}" }
       ]
     },
@@ -147,13 +158,7 @@
           "file" : "${BUILD_PATH}/script/${APPLICATION}-mobile.js"
         }
       },
-      "copy-files" : {
-        "files" : ["${APPLICATION_CSS}"],
-        "source" : "${RESOURCES}",
-        "target" : "${BUILD_PATH}/resource"
-      },
       "add-css" : [
-        { "uri" : "./resource/qx/mobile/css/${MOBILE_THEME}.css" },
         { "uri" : "./resource/${APPLICATION_CSS}" }
       ]
     },
@@ -183,7 +188,51 @@
         "QXTHEME"      : "",
         "QXICONTHEME"  : []
       },
-      "=run" : ["build-resources","build-script-mobile","build-files"]
+      "=run" : ["build-resources","build-script-mobile","build-files","compile-scss","minify-css"]
+    },
+
+    "minify-css" :
+    {
+      "extend" : ["cache"],
+      "shell" :
+      {
+        "command" :
+            [
+              "${MKDIRCMD} ${BUILD_PATH}/resource/${MOBILE_CSS_DIR}",
+              "${CATCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} ${RESOURCES}/${APPLICATION_CSS} | ${CSSMIN_CMD} > ${BUILD_PATH}/resource/${APPLICATION_CSS}"
+            ]
+      }
+    },
+
+
+    "compile-scss" :
+    {
+      "desc"   : "Compile mobile theme scss",
+      "extend" : ["cache"],
+      "shell" :
+      {
+        "command" :
+            [
+              "${MKDIRCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_DIR}",
+              "${SCSS_CMD} ${RESOURCES}/${MOBILE_SCSS_PATH} -o ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} --load-path=${RESOURCES}/${MOBILE_SCSS_DIR},${QX_MOBILE_SCSS_DIR},${QX_SHARED_SCSS_DIR}"
+            ]
+      }
+    },
+
+    "watch-scss" :
+    {
+      "desc"   : "Watch and compile mobile theme scss",
+      "extend" : ["cache"],
+      "watch-files" :
+      {
+        "paths"    : ["${RESOURCES}/${MOBILE_SCSS_DIR}"],
+        "command" :
+        {
+          "line"  : "${SCSS_CMD} ${RESOURCES}/${MOBILE_SCSS_PATH} -o ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} --load-path=${RESOURCES}/${MOBILE_SCSS_DIR},${QX_MOBILE_SCSS_DIR},${QX_SHARED_SCSS_DIR}",
+          "exec-on-startup" : true,
+          "per-file" : false
+        }
+      }
     }
   }
 }
