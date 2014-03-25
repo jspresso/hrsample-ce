@@ -39,9 +39,9 @@
     "APPLICATION_PATH"     : "org/jspresso/hrsample/startup/qooxdoo",
     "APPLICATION_CSS"      : "${APPLICATION_PATH}/css/styles.css",
     "QOOXDOO_PATH"         : "${TARGET}/qooxdoo-sdk",
-    "QXTHEME"              : "qx.theme.Indigo",
+    "QXTHEME"              : "org.jspresso.hrsample.startup.qooxdoo.theme.Theme", // possible values: "qx.theme.Indigo","qx.theme.Classic","qx.theme.Simple","qx.theme.Modern"
     "QXICONTHEME"          : ["Oxygen", "Tango"],
-    "MOBILE_THEME"         : "custom",  // possible values: "indigo","flat","custom"
+    "MOBILE_THEME"         : "custom", // possible values: "indigo","flat","custom"
     "MOBILE_CSS_DIR"       : "${APPLICATION_PATH}/css",
     "MOBILE_CSS_PATH"      : "${MOBILE_CSS_DIR}/${MOBILE_THEME}.css",
     "MOBILE_SCSS_DIR"      : "${APPLICATION_PATH}/scss",
@@ -49,7 +49,6 @@
     "QX_MOBILE_SCSS_DIR"   : "${QX_RESOURCES}/qx/mobile/scss",
     "QX_SHARED_SCSS_DIR"   : "${QX_RESOURCES}/qx/scss",
     "QX_MOBILE_CSS_PATH"   : "qx/mobile/css/${MOBILE_THEME}.css",
-    "API_EXCLUDE"          : ["qx.legacy.*","qx.test.*"],
     "LOCALES"              : ["en"],
     "MKDIRCMD"             : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/mkdir.py",
     "CATCMD"               : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/cat.py",
