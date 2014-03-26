@@ -42,7 +42,7 @@
     "QXTHEME"              : "org.jspresso.hrsample.startup.qooxdoo.theme.Theme", // possible values: "qx.theme.Indigo","qx.theme.Classic","qx.theme.Simple","qx.theme.Modern"
     "QXICONTHEME"          : ["Oxygen", "Tango"],
     "JSPRESSO_QX_DIR"      : "${TARGET}/jspresso-qooxdoo-client-zip",
-    "JSPRESSO_QX_SCSS_DIR" : "${JSPRESSO_QX_DIR}/org/jspresso/framework/mobile/scss",
+    "JSPRESSO_QX_SCSS_DIR" : "${JSPRESSO_QX_DIR}/resources/org/jspresso/framework/mobile/scss",
     "MOBILE_THEME"         : "custom", // possible values: "indigo","flat","custom"
     "MOBILE_CSS_DIR"       : "${APPLICATION_PATH}/css",
     "MOBILE_CSS_PATH"      : "${MOBILE_CSS_DIR}/${MOBILE_THEME}.css",
