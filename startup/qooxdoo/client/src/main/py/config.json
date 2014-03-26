@@ -41,6 +41,8 @@
     "QOOXDOO_PATH"         : "${TARGET}/qooxdoo-sdk",
     "QXTHEME"              : "org.jspresso.hrsample.startup.qooxdoo.theme.Theme", // possible values: "qx.theme.Indigo","qx.theme.Classic","qx.theme.Simple","qx.theme.Modern"
     "QXICONTHEME"          : ["Oxygen", "Tango"],
+    "JSPRESSO_QX_DIR"      : "${TARGET}/jspresso-qooxdoo-client-zip",
+    "JSPRESSO_QX_SCSS_DIR" : "${JSPRESSO_QX_DIR}/org/jspresso/framework/mobile/scss",
     "MOBILE_THEME"         : "custom", // possible values: "indigo","flat","custom"
     "MOBILE_CSS_DIR"       : "${APPLICATION_PATH}/css",
     "MOBILE_CSS_PATH"      : "${MOBILE_CSS_DIR}/${MOBILE_THEME}.css",
@@ -73,7 +75,7 @@
       "library" :
       [
         {
-          "manifest" : "${TARGET}/jspresso-qooxdoo-client-zip/Manifest.json"
+          "manifest" : "${JSPRESSO_QX_DIR}/Manifest.json"
         }
       ]
     },
@@ -213,7 +215,7 @@
         "command" :
             [
               "${MKDIRCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_DIR}",
-              "${SCSS_CMD} ${RESOURCES}/${MOBILE_SCSS_PATH} -o ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} --load-path=${RESOURCES}/${MOBILE_SCSS_DIR},${QX_MOBILE_SCSS_DIR},${QX_SHARED_SCSS_DIR}"
+              "${SCSS_CMD} ${RESOURCES}/${MOBILE_SCSS_PATH} -o ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} --load-path=${RESOURCES}/${MOBILE_SCSS_DIR},${QX_MOBILE_SCSS_DIR},${QX_SHARED_SCSS_DIR},${JSPRESSO_QX_SCSS_DIR}"
             ]
       }
     },
@@ -227,7 +229,7 @@
         "paths"    : ["${RESOURCES}/${MOBILE_SCSS_DIR}"],
         "command" :
         {
-          "line"  : "${SCSS_CMD} ${RESOURCES}/${MOBILE_SCSS_PATH} -o ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} --load-path=${RESOURCES}/${MOBILE_SCSS_DIR},${QX_MOBILE_SCSS_DIR},${QX_SHARED_SCSS_DIR}",
+          "line"  : "${SCSS_CMD} ${RESOURCES}/${MOBILE_SCSS_PATH} -o ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} --load-path=${RESOURCES}/${MOBILE_SCSS_DIR},${QX_MOBILE_SCSS_DIR},${QX_SHARED_SCSS_DIR},${JSPRESSO_QX_SCSS_DIR}",
           "exec-on-startup" : true,
           "per-file" : false
         }
