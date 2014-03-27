@@ -1,3 +1,26 @@
+mobileCompositePage('Employee.module.view') {
+  sections {
+    mobileForm(model: 'Employee') {
+      fields {
+        propertyView name: 'name'
+        propertyView name: 'firstName'
+        enumerationPropertyView name: 'gender', radio: true
+        propertyView name: 'birthDate'
+        propertyView name: 'age'
+        propertyView name: 'ssn'
+        propertyView name: 'salary'
+        propertyView name: 'contact'
+        propertyView name: 'married'
+        propertyView name: 'preferredColor'
+        propertyView name: 'photo'
+        propertyView name: 'company'
+        propertyView name: 'createTimestamp'
+        propertyView name: 'lastUpdateTimestamp'
+      }
+    }
+  }
+}
+
 mobileCompositePage('Company.module.view') {
   sections {
     mobileForm()
