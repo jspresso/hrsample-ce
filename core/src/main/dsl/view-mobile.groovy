@@ -1,5 +1,10 @@
 mobileCompositePage('Employee.module.view') {
   sections {
+    mobileForm(model: 'Employee', labelsPosition:'NONE') {
+      fields {
+        propertyView name: 'genderImageUrl'
+      }
+    }
     mobileForm(model: 'Employee') {
       fields {
         propertyView name: 'name'
