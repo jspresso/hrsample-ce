@@ -1,11 +1,29 @@
+mobileForm('Employee.filter.view') {
+  fields {
+    propertyView name: 'name'
+  }
+}
+
+mobileForm('City.filter.view') {
+  fields {
+    propertyView name: 'name'
+  }
+}
+
+mobileForm('Company.filter.view') {
+  fields {
+    propertyView name: 'name'
+  }
+}
+
 mobileCompositePage('Employee.page.view') {
   sections {
-    mobileForm(model: 'Employee', labelsPosition:'NONE') {
+    mobileForm(labelsPosition:'NONE') {
       fields {
         propertyView name: 'genderImageUrl'
       }
     }
-    mobileForm(model: 'Employee') {
+    mobileForm() {
       fields {
         propertyView name: 'name'
         propertyView name: 'firstName'

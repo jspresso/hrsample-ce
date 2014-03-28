@@ -4,6 +4,7 @@ workspace('masterdata.workspace',
       icon:'geography-48x48.png') {
     filterModule('masterdata.cities.module',
         component:'City',
+        filterView: 'City.filter.view',
         startup:'filterModuleStartup')
   }
 }
@@ -17,6 +18,7 @@ workspace('employees.workspace',
   filterModule('employees.module',
       icon:'employees-48x48.png',
       component:'Employee',
+      filterView: 'Employee.filter.view',
       detailView:'Employee.page.view',
       startup:'filterModuleStartup',
       pageSize:4)
@@ -31,6 +33,7 @@ workspace('organization.workspace',
   filterModule('companies.module',
       icon:'company-48x48.png',
       component:'Company',
+      filterView: 'Company.filter.view',
       detailView:'Company.page.view',
       startup:'filterModuleStartup')
 }
