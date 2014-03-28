@@ -1,4 +1,4 @@
-mobileCompositePage('Employee.module.view') {
+mobileCompositePage('Employee.page.view') {
   sections {
     mobileForm(model: 'Employee', labelsPosition:'NONE') {
       fields {
@@ -26,7 +26,7 @@ mobileCompositePage('Employee.module.view') {
   }
 }
 
-mobileCompositePage('Company.module.view') {
+mobileCompositePage('Company.page.view') {
   sections {
     mobileForm()
     mobileNavPage {
@@ -45,18 +45,13 @@ mobileCompositePage('Company.module.view') {
                 mobileCompositePage(actionMap:'detailActionMap') {
                   sections {
                     mobileForm()
-                    mobileNavPage {
+                    mobileNavPage{
                       selection {
                         mobileListView(model: 'Team-teamMembers', actionMap: 'masterActionMap')
                       }
                       nextPage {
-                        mobileCompositePage {
-                          sections {
-                            mobileForm()
-                          }
-                        }
+                        mobileCompositePage (parent:'Employee.page.view')
                       }
-
                     }
                   }
                 }
@@ -71,11 +66,7 @@ mobileCompositePage('Company.module.view') {
         mobileListView(model: 'Company-employees', actionMap: 'masterActionMap')
       }
       nextPage {
-        mobileCompositePage(actionMap: 'detailActionMap') {
-          sections {
-            mobileForm()
-          }
-        }
+        mobileCompositePage (parent: 'Employee.page.view', actionMap: 'detailActionMap')
       }
     }
   }

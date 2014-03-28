@@ -17,7 +17,7 @@ workspace('employees.workspace',
   filterModule('employees.module',
       icon:'employees-48x48.png',
       component:'Employee',
-      detailView:'Employee.module.view',
+      detailView:'Employee.page.view',
       startup:'filterModuleStartup',
       pageSize:4)
 }
@@ -31,7 +31,7 @@ workspace('organization.workspace',
   filterModule('companies.module',
       icon:'company-48x48.png',
       component:'Company',
-      detailView:'Company.module.view',
+      detailView:'Company.page.view',
       startup:'filterModuleStartup')
 }
 
