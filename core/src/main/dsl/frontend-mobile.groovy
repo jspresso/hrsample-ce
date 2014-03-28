@@ -5,6 +5,7 @@ workspace('masterdata.workspace',
     filterModule('masterdata.cities.module',
         component:'City',
         filterView: 'City.filter.view',
+        pageSize: 10,
         startup:'filterModuleStartup')
   }
 }
@@ -20,8 +21,8 @@ workspace('employees.workspace',
       component:'Employee',
       filterView: 'Employee.filter.view',
       detailView:'Employee.page.view',
-      startup:'filterModuleStartup',
-      pageSize:4)
+      pageSize: 10,
+      startup:'filterModuleStartup')
 }
 
 workspace('organization.workspace',
@@ -35,6 +36,7 @@ workspace('organization.workspace',
       component:'Company',
       filterView: 'Company.filter.view',
       detailView:'Company.page.view',
+      pageSize: 10,
       startup:'filterModuleStartup')
 }
 
