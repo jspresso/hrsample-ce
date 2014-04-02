@@ -45,16 +45,16 @@ public class TestDataPersister extends AbstractTestDataPersister {
            * .isEmpty()
            */true) {
         // Cities
-        City paris = createCity("Paris I", "75001");
-        City suresnes = createCity("Suresnes", "92150");
-        City evry = createCity("Evry", "91000");
-        createCity("Versailles", "78000");
-        createCity("Marseille", "13000");
-        createCity("Alençon", "61000");
-        createCity("Ambleny", "02290");
-        createCity("Nantes", "44000");
-        createCity("Bourg-en-Bresse", "01000");
-        createCity("Lyon", "69000");
+        City paris = createCity("Paris I", "75001", 2.3470, 48.8590);
+        City suresnes = createCity("Suresnes", "92150", 2.2292, 48.8714);
+        City evry = createCity("Evry", "91000", 2.4500, 48.6333);
+        createCity("Versailles", "78000", 2.2069, 48.7379);
+        createCity("Marseille", "13000", 5.3811, 43.2970);
+        createCity("Alençon", "61000", 0.0834, 48.4334);
+        createCity("Ambleny", "02290", 3.1845, 49.3808);
+        createCity("Nantes", "44000", -1.5534, 47.2172);
+        createCity("Bourg-en-Bresse", "01000", 5.2281, 46.2047);
+        createCity("Lyon", "69000", 4.8467, 45.7485);
 
         // Company
         Company design2see = createCompany("Design2See",
@@ -153,10 +153,12 @@ public class TestDataPersister extends AbstractTestDataPersister {
     }
   }
 
-  private City createCity(String name, String zip) {
+  private City createCity(String name, String zip, Double longitude, Double latitude) {
     City city = createEntityInstance(City.class);
     city.setName(name);
     city.setZip(zip);
+    city.setLongitude(longitude);
+    city.setLatitude(latitude);
     City.Translation t = getEntityFactory().createComponentInstance(City.Translation.class);
     t.setLanguage("de");
     t.setPropertyName("name");

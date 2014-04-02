@@ -21,7 +21,11 @@ Entity('City',
 extend:'Nameable',
 icon:'city-48x48.png',
 pageSize:4,
-toString:'name') { string_10 'zip', upperCase:true }
+toString:'name') {
+  string_10 'zip', upperCase:true
+  decimal 'longitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
+  decimal 'latitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
+}
 
 Component('ContactInfo') {
   string_256 'address'

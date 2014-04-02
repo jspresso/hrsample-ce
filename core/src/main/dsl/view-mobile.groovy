@@ -23,6 +23,7 @@ mobileCompositePage('Employee.page.view') {
         propertyView name: 'genderImageUrl'
       }
     }
+    mobileMap(model: 'contact', longitude: 'city.longitude', latitude: 'city.latitude')
     mobileForm() {
       fields {
         propertyView name: 'name'
@@ -47,6 +48,7 @@ mobileCompositePage('Employee.page.view') {
 mobileCompositePage('Company.page.view') {
   sections {
     mobileForm()
+    mobileMap(model:'contact', longitude: 'city.longitude', latitude: 'city.latitude')
     mobileNavPage {
       selection {
         mobileListView(model:'Company-departments', actionMap:'masterActionMap')
