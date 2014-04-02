@@ -16,6 +16,13 @@ mobileForm('Company.filter.view') {
   }
 }
 
+mobileCompositePage('City.page.view') {
+  sections {
+    mobileForm()
+    mobileMap(name: 'map', longitude: 'longitude', latitude: 'latitude')
+  }
+}
+
 mobileCompositePage('Employee.page.view') {
   sections {
     mobileForm(labelsPosition:'NONE') {
@@ -23,7 +30,6 @@ mobileCompositePage('Employee.page.view') {
         propertyView name: 'genderImageUrl'
       }
     }
-    mobileMap(model: 'contact', longitude: 'city.longitude', latitude: 'city.latitude')
     mobileForm() {
       fields {
         propertyView name: 'name'
@@ -42,13 +48,13 @@ mobileCompositePage('Employee.page.view') {
         propertyView name: 'lastUpdateTimestamp'
       }
     }
+    mobileMap(model: 'contact', name: 'map',  longitude: 'city.longitude', latitude: 'city.latitude')
   }
 }
 
 mobileCompositePage('Company.page.view') {
   sections {
     mobileForm()
-    mobileMap(model:'contact', longitude: 'city.longitude', latitude: 'city.latitude')
     mobileNavPage {
       selection {
         mobileListView(model:'Company-departments', actionMap:'masterActionMap')
@@ -89,5 +95,6 @@ mobileCompositePage('Company.page.view') {
         mobileCompositePage (parent: 'Employee.page.view', actionMap: 'detailActionMap')
       }
     }
+    mobileMap(model: 'contact', name: 'map', longitude: 'city.longitude', latitude: 'city.latitude')
   }
 }

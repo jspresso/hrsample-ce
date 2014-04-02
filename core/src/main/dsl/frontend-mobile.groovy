@@ -5,6 +5,7 @@ workspace('masterdata.workspace',
     filterModule('masterdata.cities.module',
         component:'City',
         filterView: 'City.filter.view',
+        detailView: 'City.page.view',
         pageSize: 10,
         startup:'filterModuleStartup')
   }
