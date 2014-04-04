@@ -4,7 +4,7 @@ workspace('masterdata.workspace',
           icon:'geography-48x48.png') {
             filterModule('masterdata.cities.module',
                 component:'City',
-//                detailView:'City.module.view',
+                detailView:'City.module.view',
                 startup:'filterModuleStartup')
           }
     }

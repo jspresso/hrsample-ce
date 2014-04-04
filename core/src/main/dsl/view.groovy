@@ -238,10 +238,14 @@ actionMap('Company-module-am'){
 
 tabs('Company.dialog.view', parent:'Company.tab.pane')
 
-form('City.module.view',
-labelsPosition:'ABOVE',
-actionMap:'beanModuleActionMap',
-columnCount:1)
+tabs('City.module.view') {
+  views {
+    form(labelsPosition: 'ABOVE',
+        actionMap: 'beanModuleActionMap',
+        columnCount: 1)
+    mapView(name: 'map', longitude:'longitude', latitude:'latitude')
+  }
+}
 
 split_vertical('Employee.module.view',
 actionMap:'beanModuleActionMap',

@@ -27,6 +27,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
    * Constructs a new <code>TestDataPersister</code> instance.
    * 
    * @param beanFactory
+   *
    *          the spring bean factory to use.
    */
   public TestDataPersister(BeanFactory beanFactory) {
