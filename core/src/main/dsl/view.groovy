@@ -251,10 +251,12 @@ split_vertical('Employee.module.view',
 actionMap:'beanModuleActionMap',
 top:'Employee.pane') {
   bottom {
-    split_horizontal(
-        left:'Employee-events.table',
-        right:'Event-text.pane',
-        cascadingModels:true)
+    tabs {
+      views {
+        mapView(model: 'contact', name: 'map', longitude: 'city.longitude', latitude: 'city.latitude')
+        split_horizontal(name: 'events', left: 'Employee-events.table', right: 'Event-text.pane', cascadingModels: true)
+      }
+    }
   }
 }
 
