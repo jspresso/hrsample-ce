@@ -25,9 +25,14 @@ mobileCompositePage('City.page.view') {
 
 mobileCompositePage('Employee.page.view') {
   sections {
-    mobileForm(labelsPosition:'NONE') {
+    mobileForm(labelsPosition: 'NONE') {
       fields {
         propertyView name: 'genderImageUrl'
+      }
+    }
+    mobileForm(labelsPosition: 'NONE') {
+      fields {
+        image name: 'photo'
       }
     }
     mobileForm() {
@@ -42,7 +47,6 @@ mobileCompositePage('Employee.page.view') {
         propertyView name: 'contact'
         propertyView name: 'married'
         propertyView name: 'preferredColor'
-        propertyView name: 'photo'
         propertyView name: 'company'
         propertyView name: 'createTimestamp'
         propertyView name: 'lastUpdateTimestamp'
