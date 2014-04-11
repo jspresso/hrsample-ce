@@ -88,7 +88,7 @@ rendered:[
   reference 'company', ref:'Company', mandatory:true, reverse:'Company-employees'
   reference 'managedOu', ref:'OrganizationalUnit', reverse:'OrganizationalUnit-manager'
   integer 'age', minValue:0, maxValue:150, sqlName:'YEAR(BIRTH_DATE)', computed:true, cacheable:true
-  imageUrl 'genderImageUrl', maxLength:512, id:'Employee-genderImageUrl', computed:true
+  imageUrl 'genderImageUrl', maxLength:512, id:'Employee-genderImageUrl', computed:true, scaledHeight:100
   string_512 'fullName', computed:true
   html 'htmlDescription', computed:true
 }

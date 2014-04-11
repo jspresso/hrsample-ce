@@ -3,38 +3,34 @@
  */
 package org.jspresso.hrsample.model.processor;
 
-import java.io.IOException;
 import java.util.Date;
 
 import org.jspresso.framework.util.bean.integrity.EmptyPropertyProcessor;
 import org.jspresso.framework.util.bean.integrity.IntegrityException;
-import org.jspresso.framework.util.image.ImageHelper;
 
 import org.jspresso.hrsample.model.Employee;
 
 /**
  * Employee property processors.
- * 
- * @version $LastChangedRevision$
+ *
  * @author Vincent Vandenschrick
+ * @version $LastChangedRevision$
  */
 public class EmployeePropertyProcessors {
 
   /**
    * Birth date property processor.
    */
-  public static class BirthDateProcessor extends
-      EmptyPropertyProcessor<Employee, Date> {
+  public static class BirthDateProcessor extends EmptyPropertyProcessor<Employee, Date> {
 
     /**
      * Checks that the employee age is at least 18.
-     * <p>
+     * <p/>
      * {@inheritDoc}
      */
     @Override
     public void preprocessSetter(Employee employee, Date newBirthDate) {
-      if (newBirthDate == null
-          || employee.computeAge(newBirthDate) < 18) {
+      if (newBirthDate == null || employee.computeAge(newBirthDate) < 18) {
         throw new IntegrityException("Age is below 18", "age.below.18");
       }
     }
@@ -43,13 +39,12 @@ public class EmployeePropertyProcessors {
   /**
    * First name property processor.
    */
-  public static class FirstNameProcessor extends
-      EmptyPropertyProcessor<Employee, String> {
+  public static class FirstNameProcessor extends EmptyPropertyProcessor<Employee, String> {
 
     /**
      * Formats the new first name. The formatting is : <li>Capitalize the 1st
      * letter <li>Lower case all the other letters
-     * <p>
+     * <p/>
      * {@inheritDoc}
      */
     @Override
@@ -76,11 +71,12 @@ public class EmployeePropertyProcessors {
      */
     @Override
     public byte[] interceptSetter(Employee employee, byte[] newPhoto) {
-      try {
-        return ImageHelper.scaleImage(newPhoto, 100, -1);
-      } catch (IOException ioe) {
-        return super.interceptSetter(employee, newPhoto);
-      }
+//      try {
+//        return ImageHelper.scaleImage(newPhoto, 100, -1);
+//      } catch (IOException ioe) {
+//        return super.interceptSetter(employee, newPhoto);
+//      }, scaledWidth:150
+      return super.interceptSetter(employee, newPhoto);
     }
   }
 }

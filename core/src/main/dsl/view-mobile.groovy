@@ -32,7 +32,7 @@ mobileCompositePage('Employee.page.view') {
     }
     mobileForm(labelsPosition: 'NONE') {
       fields {
-        image name: 'photo'
+        image name: 'photo', scaledWidth: 150
       }
     }
     mobileForm() {
