@@ -55,7 +55,7 @@
     "MKDIRCMD"             : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/mkdir.py",
     "CATCMD"               : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/cat.py",
     "CSSMIN_CMD"           : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/cssmin.py",
-    "SCSS_CMD"             : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/scss.py"
+    "SCSS_CMD"             : "sass"
   },
 
   "jobs" :
@@ -215,7 +215,7 @@
         "command" :
             [
               "${MKDIRCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_DIR}",
-              "${SCSS_CMD} ${RESOURCES}/${MOBILE_SCSS_PATH} -o ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} --load-path=${RESOURCES}/${MOBILE_SCSS_DIR},${QX_MOBILE_SCSS_DIR},${QX_SHARED_SCSS_DIR},${JSPRESSO_QX_SCSS_DIR}"
+              "${SCSS_CMD} --cache-location ${TARGET}/cache-sass --load-path ${RESOURCES}/${MOBILE_SCSS_DIR} --load-path ${QX_MOBILE_SCSS_DIR} --load-path ${QX_SHARED_SCSS_DIR} --load-path ${JSPRESSO_QX_SCSS_DIR} ${RESOURCES}/${MOBILE_SCSS_PATH} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}"
             ]
       }
     },
@@ -229,7 +229,7 @@
         "paths"    : ["${RESOURCES}/${MOBILE_SCSS_DIR}"],
         "command" :
         {
-          "line"  : "${SCSS_CMD} ${RESOURCES}/${MOBILE_SCSS_PATH} -o ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} --load-path=${RESOURCES}/${MOBILE_SCSS_DIR},${QX_MOBILE_SCSS_DIR},${QX_SHARED_SCSS_DIR},${JSPRESSO_QX_SCSS_DIR}",
+          "line"  : "${SCSS_CMD} --cache-location ${TARGET}/cache-sass --load-path ${RESOURCES}/${MOBILE_SCSS_DIR} --load-path ${QX_MOBILE_SCSS_DIR} --load-path ${QX_SHARED_SCSS_DIR} --load-path ${JSPRESSO_QX_SCSS_DIR} ${RESOURCES}/${MOBILE_SCSS_PATH} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}",
           "exec-on-startup" : true,
           "per-file" : false
         }
