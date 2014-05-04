@@ -52,7 +52,7 @@ controller 'hrsample.name',
     icon:'people-48x48.png',
     context:'hrsample',
     language:'en',
-    startup:'startupHrsampleAction',
+    //startup:'startupHrsampleAction',
     workspaces:[
         'organization.workspace',
         'employees.workspace',
