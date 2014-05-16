@@ -16,14 +16,21 @@ mobileForm('Company.filter.view') {
   }
 }
 
-mobileCompositePage('City.page.view') {
+mobileCompositePage('City.page.editor') {
   sections {
     mobileForm()
     mobileMapView(name: 'map', longitude: 'longitude', latitude: 'latitude')
   }
 }
 
-mobileCompositePage('Employee.page.view') {
+mobileCompositePage('City.page.view', actionMap: 'beanModuleActionMap', editorPage: 'City.page.editor') {
+  sections {
+    mobileForm()
+    mobileMapView(name: 'map', longitude: 'longitude', latitude: 'latitude')
+  }
+}
+
+mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap') {
   sections {
     mobileForm(labelsPosition: 'NONE') {
       fields {
@@ -56,28 +63,28 @@ mobileCompositePage('Employee.page.view') {
   }
 }
 
-mobileCompositePage('Company.page.view') {
+mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
   sections {
     mobileForm()
-    mobileNavPage {
+    mobileNavPage(actionMap: 'masterActionMap') {
       selection {
-        mobileListView(model:'Company-departments', actionMap:'masterActionMap')
+        mobileListView(model:'Company-departments')
       }
       nextPage {
         mobileCompositePage(actionMap:'detailActionMap') {
           sections {
             mobileForm()
-            mobileNavPage {
+            mobileNavPage(actionMap: 'masterActionMap') {
               selection {
-                mobileListView(model:'Department-teams', actionMap:'masterActionMap')
+                mobileListView(model:'Department-teams')
               }
               nextPage {
                 mobileCompositePage(actionMap:'detailActionMap') {
                   sections {
                     mobileForm()
-                    mobileNavPage{
+                    mobileNavPage(actionMap: 'masterActionMap') {
                       selection {
-                        mobileListView(model: 'Team-teamMembers', actionMap: 'masterActionMap')
+                        mobileListView(model: 'Team-teamMembers')
                       }
                       nextPage {
                         mobileCompositePage (parent:'Employee.page.view')
@@ -91,9 +98,9 @@ mobileCompositePage('Company.page.view') {
         }
       }
     }
-    mobileNavPage {
+    mobileNavPage(actionMap: 'masterActionMap') {
       selection {
-        mobileListView(model: 'Company-employees', actionMap: 'masterActionMap')
+        mobileListView(model: 'Company-employees')
       }
       nextPage {
         mobileCompositePage (parent: 'Employee.page.view', actionMap: 'detailActionMap')
