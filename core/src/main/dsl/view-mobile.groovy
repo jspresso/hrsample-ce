@@ -19,7 +19,6 @@ mobileForm('Company.filter.view') {
 mobileCompositePage('City.page.editor') {
   sections {
     mobileForm()
-    mobileMapView(name: 'map', longitude: 'longitude', latitude: 'latitude')
   }
 }
 
@@ -66,25 +65,25 @@ mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap') {
 mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
   sections {
     mobileForm()
-    mobileNavPage(actionMap: 'masterActionMap') {
+    mobileNavPage() {
       selection {
-        mobileListView(model:'Company-departments')
+        mobileListView(model:'Company-departments', actionMap: 'masterActionMap')
       }
       nextPage {
         mobileCompositePage(actionMap:'detailActionMap') {
           sections {
             mobileForm()
-            mobileNavPage(actionMap: 'masterActionMap') {
+            mobileNavPage() {
               selection {
-                mobileListView(model:'Department-teams')
+                mobileListView(model:'Department-teams', actionMap: 'masterActionMap')
               }
               nextPage {
                 mobileCompositePage(actionMap:'detailActionMap') {
                   sections {
                     mobileForm()
-                    mobileNavPage(actionMap: 'masterActionMap') {
+                    mobileNavPage() {
                       selection {
-                        mobileListView(model: 'Team-teamMembers')
+                        mobileListView(model: 'Team-teamMembers', actionMap: 'masterActionMap')
                       }
                       nextPage {
                         mobileCompositePage (parent:'Employee.page.view')
@@ -98,9 +97,9 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
         }
       }
     }
-    mobileNavPage(actionMap: 'masterActionMap') {
+    mobileNavPage() {
       selection {
-        mobileListView(model: 'Company-employees')
+        mobileListView(model: 'Company-employees', actionMap: 'masterActionMap')
       }
       nextPage {
         mobileCompositePage (parent: 'Employee.page.view', actionMap: 'detailActionMap')
