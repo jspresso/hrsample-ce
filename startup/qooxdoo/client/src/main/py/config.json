@@ -108,8 +108,6 @@
       },
       "environment" :
       {
-        "qx.mobile.emulatetouch" : true,
-        "qx.mobile.nativescroll" : false,
         "qx.theme"               : "${MOBILE_THEME}"
       }
     },
