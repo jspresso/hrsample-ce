@@ -41,6 +41,11 @@ mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap') {
         image name: 'photo', scaledWidth: 150
       }
     }
+    mobileForm(labelsPosition: 'NONE') {
+      fields {
+        image name: 'signature', drawable:true, scaledWidth: 300
+      }
+    }
     mobileForm() {
       fields {
         propertyView name: 'name'
