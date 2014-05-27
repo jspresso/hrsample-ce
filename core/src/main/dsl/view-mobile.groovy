@@ -43,7 +43,7 @@ mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap') {
     }
     mobileForm(labelsPosition: 'NONE') {
       fields {
-        image name: 'signature', drawable:true, scaledWidth: 300
+        image name: 'signature', drawable:true, scaledWidth: 300, scaledHeight: 200
       }
     }
     mobileForm() {
