@@ -46,7 +46,7 @@ mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap') {
         image name: 'signature', drawable:true, scaledWidth: 300, scaledHeight: 200
       }
     }
-    mobileForm() {
+    mobileForm(excludedReading:['company'], excludedWriting:['createTimestamp', 'lastUpdateTimestamp']) {
       fields {
         propertyView name: 'name'
         propertyView name: 'firstName'
