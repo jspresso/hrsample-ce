@@ -1,5 +1,5 @@
 workspace('masterdata.workspace',
-    icon:'masterdata-48x48.png') {
+    icon:'masterdata-48x48.png', headerDescription:'masterdata.workspace.header') {
   nodeModule('masterdata.geography.module',
       icon:'geography-48x48.png') {
     filterModule('masterdata.cities.module',
