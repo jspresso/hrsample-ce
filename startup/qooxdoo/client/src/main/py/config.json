@@ -200,7 +200,8 @@
         "command" :
             [
               "${MKDIRCMD} ${BUILD_PATH}/resource/${MOBILE_CSS_DIR}",
-              "${CATCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} ${RESOURCES}/${APPLICATION_CSS} | ${CSSMIN_CMD} > ${BUILD_PATH}/resource/${APPLICATION_CSS}"
+              "${CATCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} ${RESOURCES}/${APPLICATION_CSS} > ${TARGET}/cache-sass/tmp.css",
+              "${CSSMIN_CMD} < ${TARGET}/cache-sass/tmp.css > ${BUILD_PATH}/resource/${APPLICATION_CSS}"
             ]
       }
     },
