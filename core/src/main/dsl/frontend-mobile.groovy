@@ -49,6 +49,7 @@ workspace('departments.workspace',
 }
 
 controller 'hrsample.name',
+    description: 'hrsample.description',
     icon:'people-48x48.png',
     context:'hrsample',
     language:'en',
