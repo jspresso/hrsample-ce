@@ -25,6 +25,7 @@ toString:'name') {
   string_10 'zip', upperCase:true
   decimal 'longitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   decimal 'latitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
+  set 'neighbours', ref: 'City', reverse: 'City-neighbours'
 }
 
 Component('ContactInfo') {
