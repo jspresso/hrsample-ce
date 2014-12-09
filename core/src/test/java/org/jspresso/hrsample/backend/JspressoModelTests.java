@@ -359,8 +359,7 @@ public class JspressoModelTests extends BackTestStartup {
 
       @Override
       protected void doInTransactionWithoutResult(TransactionStatus status) {
-        hbc.cloneInUnitOfWork(c);
-        hbc.registerForUpdate(c);
+        hbc.registerForUpdate(hbc.cloneInUnitOfWork(c));
       }
     });
 
@@ -380,8 +379,8 @@ public class JspressoModelTests extends BackTestStartup {
       }
     });
 
-    assertTrue("Entity is transient since it has been deleted", !c.isPersistent());
-    assertTrue("Entity is clean since there is nothing much we can do with it", !hbc.isDirty(c));
+    assertTrue("Entity is still considered persistent after deletion", !c.isPersistent());
+    assertTrue("Entity is still considered dirty, although we can't do much with it", !hbc.isDirty(c));
   }
 
   /**
