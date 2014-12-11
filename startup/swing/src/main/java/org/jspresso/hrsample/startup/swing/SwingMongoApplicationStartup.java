@@ -35,7 +35,7 @@ public class SwingMongoApplicationStartup extends SwingStartup {
    */
   @Override
   protected String getApplicationContextKey() {
-    return "hrsample-swing-context-mongo";
+    return "hrsample-swing-mongo-context";
   }
 
   /**

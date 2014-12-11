@@ -38,13 +38,31 @@
   </bean>
 
   <bean
-    id="hrsample-backend-context"
-    class="org.springframework.context.support.ClassPathXmlApplicationContext"
-    lazy-init="true">
+      id="hrsample-backend-context"
+      class="org.springframework.context.support.ClassPathXmlApplicationContext"
+      lazy-init="true">
     <constructor-arg>
       <list>
         <value>org/jspresso/framework/application/commons.xml</value>
         <value>org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
+        <value>org/jspresso/hrsample/model/dsl-model.xml</value>
+        <value>org/jspresso/hrsample/model/model.xml</value>
+        <value>org/jspresso/hrsample/backend/dsl-backend.xml</value>
+        <value>org/jspresso/hrsample/backend/backend.xml</value>
+        <value>org/jspresso/hrsample/core-config.xml</value>
+        <value>org/jspresso/hrsample/config.xml</value>
+      </list>
+    </constructor-arg>
+  </bean>
+
+  <bean
+      id="hrsample-backend-mongo-context"
+      class="org.springframework.context.support.ClassPathXmlApplicationContext"
+      lazy-init="true">
+    <constructor-arg>
+      <list>
+        <value>org/jspresso/framework/application/commons.xml</value>
+        <value>org/jspresso/framework/application/backend/persistence/mongo/commons-mongo.xml</value>
         <value>org/jspresso/hrsample/model/dsl-model.xml</value>
         <value>org/jspresso/hrsample/model/model.xml</value>
         <value>org/jspresso/hrsample/backend/dsl-backend.xml</value>
@@ -80,7 +98,7 @@
   </bean>
 
   <bean
-      id="hrsample-swing-context-mongo"
+      id="hrsample-swing-mongo-context"
       class="org.springframework.context.support.ClassPathXmlApplicationContext"
       lazy-init="true">
     <constructor-arg>
@@ -127,6 +145,30 @@
   </bean>
 
   <bean
+      id="hrsample-remote-mongo-context"
+      class="org.springframework.context.support.ClassPathXmlApplicationContext"
+      lazy-init="true">
+    <constructor-arg>
+      <list>
+        <value>org/jspresso/framework/application/commons.xml</value>
+        <value>org/jspresso/framework/application/backend/persistence/mongo/commons-mongo.xml</value>
+        <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
+        <value>org/jspresso/framework/application/frontend/remote/commons-remote.xml</value>
+        <value>org/jspresso/hrsample/model/dsl-model.xml</value>
+        <value>org/jspresso/hrsample/model/model.xml</value>
+        <value>org/jspresso/hrsample/backend/dsl-backend.xml</value>
+        <value>org/jspresso/hrsample/backend/backend.xml</value>
+        <value>org/jspresso/hrsample/view/dsl-view.xml</value>
+        <value>org/jspresso/hrsample/view/view.xml</value>
+        <value>org/jspresso/hrsample/frontend/dsl-frontend.xml</value>
+        <value>org/jspresso/hrsample/frontend/frontend.xml</value>
+        <value>org/jspresso/hrsample/core-config.xml</value>
+        <value>org/jspresso/hrsample/config.xml</value>
+      </list>
+    </constructor-arg>
+  </bean>
+
+  <bean
       id="hrsample-remote-mobile-context"
       class="org.springframework.context.support.ClassPathXmlApplicationContext"
       lazy-init="true">
@@ -134,6 +176,37 @@
       <list>
         <value>org/jspresso/framework/application/commons.xml</value>
         <value>org/jspresso/framework/application/backend/persistence/hibernate/commons-hibernate.xml</value>
+        <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
+        <value>org/jspresso/framework/application/frontend/remote/commons-remote.xml</value>
+        <value>org/jspresso/framework/application/frontend/remote/commons-remote-mobile.xml</value>
+        <value>org/jspresso/hrsample/model/dsl-model.xml</value>
+        <value>org/jspresso/hrsample/model/model.xml</value>
+        <value>org/jspresso/hrsample/backend/dsl-backend.xml</value>
+        <value>org/jspresso/hrsample/backend/backend.xml</value>
+        <value>org/jspresso/hrsample/spec/mobile-dsl-backend.xml</value>
+        <value>org/jspresso/hrsample/backend/mobile-backend.xml</value>
+        <value>org/jspresso/hrsample/view/dsl-view.xml</value>
+        <value>org/jspresso/hrsample/view/view.xml</value>
+        <value>org/jspresso/hrsample/spec/mobile-dsl-view.xml</value>
+        <value>org/jspresso/hrsample/view/mobile-view.xml</value>
+        <value>org/jspresso/hrsample/frontend/dsl-frontend.xml</value>
+        <value>org/jspresso/hrsample/frontend/frontend.xml</value>
+        <value>org/jspresso/hrsample/spec/mobile-dsl-frontend.xml</value>
+        <value>org/jspresso/hrsample/frontend/mobile-frontend.xml</value>
+        <value>org/jspresso/hrsample/core-config.xml</value>
+        <value>org/jspresso/hrsample/config.xml</value>
+      </list>
+    </constructor-arg>
+  </bean>
+
+  <bean
+      id="hrsample-remote-mobile-mongo-context"
+      class="org.springframework.context.support.ClassPathXmlApplicationContext"
+      lazy-init="true">
+    <constructor-arg>
+      <list>
+        <value>org/jspresso/framework/application/commons.xml</value>
+        <value>org/jspresso/framework/application/backend/persistence/mongo/commons-mongo.xml</value>
         <value>org/jspresso/framework/application/frontend/commons-frontend.xml</value>
         <value>org/jspresso/framework/application/frontend/remote/commons-remote.xml</value>
         <value>org/jspresso/framework/application/frontend/remote/commons-remote-mobile.xml</value>
