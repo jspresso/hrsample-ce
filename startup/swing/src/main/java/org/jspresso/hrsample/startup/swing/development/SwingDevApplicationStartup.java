@@ -3,9 +3,7 @@
  */
 package org.jspresso.hrsample.startup.swing.development;
 
-import javax.swing.SwingUtilities;
-
-import org.jspresso.hrsample.development.TestDataPersister;
+import org.jspresso.hrsample.development.HibernateTestDataPersister;
 import org.jspresso.hrsample.startup.swing.SwingApplicationStartup;
 
 /**
@@ -23,7 +21,7 @@ public class SwingDevApplicationStartup extends SwingApplicationStartup {
    */
   @Override
   public void start() {
-    new TestDataPersister(getApplicationContext()).persistTestData();
+    new HibernateTestDataPersister(getApplicationContext()).persistTestData();
     super.start();
 //    SwingUtilities.invokeLater(new Runnable() {
 //      @Override

@@ -32,7 +32,7 @@ import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDeta
 import org.jspresso.framework.security.SecurityHelper;
 import org.jspresso.framework.security.UserPrincipal;
 import org.jspresso.framework.util.exception.NestedRuntimeException;
-import org.jspresso.hrsample.development.TestDataPersister;
+import org.jspresso.hrsample.development.HibernateTestDataPersister;
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.junit.After;
@@ -58,7 +58,7 @@ public class BackTestStartup extends AbstractBackendStartup {
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
     BackTestStartup startup = new BackTestStartup();
-    new TestDataPersister(startup.getApplicationContext()).persistTestData();
+    new HibernateTestDataPersister(startup.getApplicationContext()).persistTestData();
   }
 
   /**

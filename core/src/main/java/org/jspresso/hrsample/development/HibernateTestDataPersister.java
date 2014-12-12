@@ -7,13 +7,15 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.jspresso.framework.application.startup.development.AbstractTestDataPersister;
+import org.springframework.beans.factory.BeanFactory;
+
+import org.jspresso.framework.application.startup.development.AbstractHibernateTestDataPersister;
+
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Team;
-import org.springframework.beans.factory.BeanFactory;
 
 /**
  * Persists some test data for the HR sample application.
@@ -21,16 +23,16 @@ import org.springframework.beans.factory.BeanFactory;
  * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
-public class TestDataPersister extends AbstractTestDataPersister {
+public class HibernateTestDataPersister extends AbstractHibernateTestDataPersister {
 
   /**
-   * Constructs a new <code>TestDataPersister</code> instance.
+   * Constructs a new {@code HibernateTestDataPersister} instance.
    * 
    * @param beanFactory
    *
    *          the spring bean factory to use.
    */
-  public TestDataPersister(BeanFactory beanFactory) {
+  public HibernateTestDataPersister(BeanFactory beanFactory) {
     super(beanFactory);
   }
 
@@ -148,7 +150,7 @@ public class TestDataPersister extends AbstractTestDataPersister {
         saveOrUpdate(design2see);
       }
     } catch (Throwable ex) {
-      ex.printStackTrace();
+      ex.printStackTrace(System.err);
       // In no way the test data persister should make the application
       // startup fail.
     }
