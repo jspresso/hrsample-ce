@@ -4,7 +4,7 @@ paramSet 'gender', enumName:'GENDER', mandatory:true, queryMultiselect:true,
       'F':'female-48x48.png'],
     defaultValue:'M'
 
-Interface ('Nameable') { string_64 'name', mandatory:true, translatable: true }
+Interface ('Nameable') { string_64 'name', mandatory:true, translatable: true, sqlName: 'nameRaw' }
 
 Interface('Traceable',
 interceptors:'TraceableLifecycleInterceptor',
@@ -21,8 +21,8 @@ Entity('City',
 extend:'Nameable',
 icon:'city-48x48.png',
 pageSize:4,
-toString:'name') {
-  string_10 'zip', upperCase:true
+toString:'name', sqlName: 'toto') {
+  string_10 'zip', upperCase:true, sqlName: 'zop'
   decimal 'longitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   decimal 'latitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   set 'neighbours', ref: 'City', reverse: 'City-neighbours'
