@@ -54,7 +54,6 @@
     "LOCALES"              : ["en"],
     "MKDIRCMD"             : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/mkdir.py",
     "CATCMD"               : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/cat.py",
-    "CSSMIN_CMD"           : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/cssmin.py",
     "SCSS_CMD"             : "sass"
   },
 
@@ -189,10 +188,10 @@
         "QXTHEME"      : "",
         "QXICONTHEME"  : []
       },
-      "=run" : ["build-resources","build-script-mobile","build-files","compile-scss","minify-css"]
+      "=run" : ["build-resources","build-script-mobile","build-files","compile-scss","combine-css"]
     },
 
-    "minify-css" :
+    "combine-css" :
     {
       "extend" : ["cache"],
       "shell" :
@@ -200,8 +199,7 @@
         "command" :
             [
               "${MKDIRCMD} ${BUILD_PATH}/resource/${MOBILE_CSS_DIR}",
-              "${CATCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} ${RESOURCES}/${APPLICATION_CSS} > ${TARGET}/cache-sass/tmp.css",
-              "${CSSMIN_CMD} < ${TARGET}/cache-sass/tmp.css > ${BUILD_PATH}/resource/${APPLICATION_CSS}"
+              "${CATCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} ${RESOURCES}/${APPLICATION_CSS} > ${BUILD_PATH}/resource/${APPLICATION_CSS}"
             ]
       }
     },
@@ -216,7 +214,7 @@
         "command" :
             [
               "${MKDIRCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_DIR}",
-              "${SCSS_CMD} --cache-location ${TARGET}/cache-sass --load-path ${RESOURCES}/${MOBILE_SCSS_DIR} --load-path ${QX_MOBILE_SCSS_DIR} --load-path ${QX_SHARED_SCSS_DIR} --load-path ${JSPRESSO_QX_SCSS_DIR} ${RESOURCES}/${MOBILE_SCSS_PATH} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}"
+              "${SCSS_CMD} --style compressed --cache-location ${TARGET}/cache-sass --load-path ${RESOURCES}/${MOBILE_SCSS_DIR} --load-path ${QX_MOBILE_SCSS_DIR} --load-path ${QX_SHARED_SCSS_DIR} --load-path ${JSPRESSO_QX_SCSS_DIR} ${RESOURCES}/${MOBILE_SCSS_PATH} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}"
             ]
       }
     },
@@ -230,7 +228,7 @@
         "paths"    : ["${RESOURCES}/${MOBILE_SCSS_DIR}"],
         "command" :
         {
-          "line"  : "${SCSS_CMD} --cache-location ${TARGET}/cache-sass --load-path ${RESOURCES}/${MOBILE_SCSS_DIR} --load-path ${QX_MOBILE_SCSS_DIR} --load-path ${QX_SHARED_SCSS_DIR} --load-path ${JSPRESSO_QX_SCSS_DIR} ${RESOURCES}/${MOBILE_SCSS_PATH} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}",
+          "line"  : "${SCSS_CMD} --style compressed --cache-location ${TARGET}/cache-sass --load-path ${RESOURCES}/${MOBILE_SCSS_DIR} --load-path ${QX_MOBILE_SCSS_DIR} --load-path ${QX_SHARED_SCSS_DIR} --load-path ${JSPRESSO_QX_SCSS_DIR} ${RESOURCES}/${MOBILE_SCSS_PATH} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}",
           "exec-on-startup" : true,
           "per-file" : false
         }

@@ -4,7 +4,7 @@ paramSet 'gender', enumName:'GENDER', mandatory:true, queryMultiselect:true,
       'F':'female-48x48.png'],
     defaultValue:'M'
 
-Interface ('Nameable') { string_64 'name', mandatory:true, translatable: true, sqlName: 'nameRaw' }
+Interface ('Nameable') { string_64 'name', mandatory:true, translatable: true}
 
 Interface('Traceable',
 interceptors:'TraceableLifecycleInterceptor',
