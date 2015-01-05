@@ -194,18 +194,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.gmaven</groupId>
-        <artifactId>gmaven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>compile-groovy-classes</id>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.codehaus.xdoclet</groupId>
         <artifactId>maven2-xdoclet2-plugin</artifactId>
         <executions>
@@ -310,27 +298,6 @@
         </executions>
       </plugin>
 
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>add-generated-sources</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${project.build.directory}/generated-sources/entitygenerator</source>
-                <source>${basedir}/src/main/groovy</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jasperreports-maven-plugin</artifactId>
@@ -348,87 +315,5 @@
         </executions>
       </plugin>
     </plugins>
-
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.eclipse.m2e</groupId>
-          <artifactId>lifecycle-mapping</artifactId>
-          <version>1.0.0</version>
-          <configuration>
-            <lifecycleMappingMetadata>
-
-              <pluginExecutions>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.jspresso.maven</groupId>
-                    <artifactId>entitygenerator-maven-plugin</artifactId>
-                    <versionRange>[1.0-SNAPSHOT,)</versionRange>
-                    <goals>
-                      <goal>generate-entities</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <configurator>
-                      <id>org.jspresso.contrib.sjsplugin.m2e.entitygenerator</id>
-                    </configurator>
-                  </action>
-                </pluginExecution>
-
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.jspresso.maven</groupId>
-                    <artifactId>sjs-maven-plugin</artifactId>
-                    <versionRange>[1.0-SNAPSHOT,)</versionRange>
-                    <goals>
-                      <goal>compile-sjs</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <configurator>
-                      <id>org.jspresso.contrib.sjsplugin.m2e.sugarforjspresso</id>
-                    </configurator>
-                  </action>
-                </pluginExecution>
-
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.codehaus.xdoclet</groupId>
-                    <artifactId>maven2-xdoclet2-plugin</artifactId>
-                    <versionRange>[2.0.7,)</versionRange>
-                    <goals>
-                      <goal>xdoclet</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <configurator>
-                      <id>org.jspresso.contrib.sjsplugin.m2e.xdoclet</id>
-                    </configurator>
-                  </action>
-                </pluginExecution>
-
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>jasperreports-maven-plugin</artifactId>
-                    <versionRange>[1.0-beta-2,)</versionRange>
-                    <goals>
-                      <goal>compile-reports</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <configurator>
-                      <id>org.jspresso.contrib.sjsplugin.m2e.jasperreport</id>
-                    </configurator>
-                  </action>
-                </pluginExecution>
-
-              </pluginExecutions>
-            </lifecycleMappingMetadata>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
   </build>
 </project>
