@@ -180,6 +180,11 @@
     </profile>
   </profiles>
   <build>
+    <resources>
+      <resource>
+        <directory>${project.build.directory}/generated-resources/jasperreports</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.jspresso.maven</groupId>
