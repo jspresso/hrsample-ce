@@ -30,6 +30,7 @@ import org.jspresso.framework.application.backend.persistence.hibernate.Hibernat
 import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 
+import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
@@ -118,5 +119,27 @@ public class ApplicationSessionTests extends BackTestStartup {
       assertTrue("Loaded lazy reference has not correctly been merged to the application session",
           HibernateHelper.objectEquals(ou, hbc.getRegisteredEntity(OrganizationalUnit.class, ou.getId())));
     }
+  }
+
+  /**
+   * Tests bug #1244. findById should return null for transient instances.
+   */
+  @Test
+  public void testTransientGetReturnsNull() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    final City city = hbc.getEntityFactory().createEntityInstance(City.class);
+
+    City c1 = hbc.findById(city.getId(), EMergeMode.MERGE_KEEP, City.class);
+    assertNull("findById should never return transient instances", c1);
+
+    City c2 = hbc.getTransactionTemplate().execute(new TransactionCallback<City>() {
+      @Override
+      public City doInTransaction(TransactionStatus status) {
+        hbc.cloneInUnitOfWork(city);
+        return hbc.findById(city.getId(), EMergeMode.MERGE_KEEP, City.class);
+      }
+    });
+    assertNull("findById should never return transient instances", c2);
   }
 }
