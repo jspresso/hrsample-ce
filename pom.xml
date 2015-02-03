@@ -12,7 +12,7 @@
   <version>4.1-SNAPSHOT</version>
   <name>Jspresso HR Sample Application</name>
   <scm>
-    <connection>scm:svn:https://svn.jspresso.org/jspresso/app-hrsample/trunk</connection>
+    <connection>scm:git:https://github.com/jspresso/hrsample-ce.git</connection>
   </scm>
   <repositories>
     <repository>
