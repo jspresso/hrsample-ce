@@ -42,7 +42,6 @@ import org.jspresso.hrsample.model.Team;
  * Persists some test data for the HR sample application.
  *
  * @author Vincent Vandenschrick
- * @version $LastChangedRevision: 9334 $
  */
 public class MongoTestDataPersister extends AbstractMongoTestDataPersister {
 

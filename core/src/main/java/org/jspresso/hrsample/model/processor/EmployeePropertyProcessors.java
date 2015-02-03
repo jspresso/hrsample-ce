@@ -14,7 +14,6 @@ import org.jspresso.hrsample.model.Employee;
  * Employee property processors.
  *
  * @author Vincent Vandenschrick
- * @version $LastChangedRevision$
  */
 public class EmployeePropertyProcessors {
 

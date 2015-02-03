@@ -12,7 +12,6 @@ import org.jspresso.hrsample.model.Employee;
 /**
  * Helper class computing extended properties for Employee entity.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class EmployeeExtension extends AbstractComponentExtension<Employee> {

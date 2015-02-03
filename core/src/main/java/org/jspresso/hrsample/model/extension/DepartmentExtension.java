@@ -15,7 +15,6 @@ import org.jspresso.hrsample.model.Team;
 /**
  * Helper class computing extended properties for Department entity.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class DepartmentExtension extends AbstractComponentExtension<Department> {

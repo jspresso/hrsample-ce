@@ -10,7 +10,6 @@ import org.springframework.beans.factory.BeanFactory;
 /**
  * A simple listener to hook in webapp startup and persist sample data.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class TestDataContextListener extends AbstractTestDataContextListener {

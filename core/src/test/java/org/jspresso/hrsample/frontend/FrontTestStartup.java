@@ -45,7 +45,6 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 /**
  * Base class for integration tests.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class FrontTestStartup extends RemoteStartup {

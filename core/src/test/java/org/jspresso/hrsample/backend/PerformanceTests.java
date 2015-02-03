@@ -45,7 +45,6 @@ import org.jspresso.hrsample.model.Team;
 /**
  * Performance tests.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class PerformanceTests extends FrontTestStartup {

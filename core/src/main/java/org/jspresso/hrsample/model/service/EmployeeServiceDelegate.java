@@ -12,7 +12,6 @@ import org.jspresso.hrsample.model.Employee;
 /**
  * The services delegate of the Employee entity.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class EmployeeServiceDelegate extends

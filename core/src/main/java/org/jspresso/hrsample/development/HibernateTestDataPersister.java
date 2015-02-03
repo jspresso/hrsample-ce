@@ -20,7 +20,6 @@ import org.jspresso.hrsample.model.Team;
 /**
  * Persists some test data for the HR sample application.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class HibernateTestDataPersister extends AbstractHibernateTestDataPersister {

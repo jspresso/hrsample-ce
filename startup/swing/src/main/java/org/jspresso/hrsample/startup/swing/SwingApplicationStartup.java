@@ -8,7 +8,6 @@ import org.jspresso.framework.application.startup.swing.SwingStartup;
 /**
  * Swing HR sample startup class.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class SwingApplicationStartup extends SwingStartup {

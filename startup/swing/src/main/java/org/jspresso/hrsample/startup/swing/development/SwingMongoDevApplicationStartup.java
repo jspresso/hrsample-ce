@@ -24,7 +24,6 @@ import org.jspresso.hrsample.startup.swing.SwingMongoApplicationStartup;
 /**
  * Swing development HR sample startup class.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class SwingMongoDevApplicationStartup extends SwingMongoApplicationStartup {

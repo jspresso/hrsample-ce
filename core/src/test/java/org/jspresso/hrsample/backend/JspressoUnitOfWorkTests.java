@@ -70,7 +70,6 @@ import org.jspresso.hrsample.model.Nameable;
 /**
  * Unit Of Work management integration tests.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class JspressoUnitOfWorkTests extends BackTestStartup {

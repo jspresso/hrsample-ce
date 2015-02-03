@@ -30,7 +30,6 @@ import org.jspresso.hrsample.model.Employee;
 /**
  * The company sample chart.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class CompanyChart extends AbstractChartDescriptor {

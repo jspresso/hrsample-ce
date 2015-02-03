@@ -26,7 +26,6 @@ import org.jspresso.framework.application.frontend.action.FrontendAction;
 /**
  * Test front action.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  * @param <E>
  *          the actual gui component type used.

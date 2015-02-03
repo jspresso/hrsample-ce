@@ -10,7 +10,6 @@ import org.jspresso.framework.util.i18n.ITranslationProvider;
 /**
  * Services offered by the Employee entity.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public interface EmployeeService {

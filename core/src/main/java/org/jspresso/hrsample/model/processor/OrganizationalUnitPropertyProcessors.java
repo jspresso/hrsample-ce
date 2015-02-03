@@ -11,7 +11,6 @@ import org.jspresso.hrsample.model.OrganizationalUnit;
 /**
  * OrganizationalUnit property processors.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class OrganizationalUnitPropertyProcessors {
@@ -19,8 +18,7 @@ public class OrganizationalUnitPropertyProcessors {
   /**
    * Manager property processor.
    * 
-   * @version $LastChangedRevision$
-   * @author Vincent Vandenschrick
+     * @author Vincent Vandenschrick
    */
   public static class ManagerProcessor extends
       EmptyPropertyProcessor<OrganizationalUnit, Employee> {

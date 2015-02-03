@@ -80,7 +80,6 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult;
  * Model integration tests.
  *
  * @author Vincent Vandenschrick
- * @version $LastChangedRevision$
  */
 public class JspressoModelTests extends BackTestStartup {
 

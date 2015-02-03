@@ -29,7 +29,6 @@ import org.junit.Test;
 /**
  * Actions sanitization integration tests.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class JspressoActionSanitizationTests extends FrontTestStartup {

@@ -9,7 +9,6 @@ import org.jspresso.hrsample.startup.swing.SwingApplicationStartup;
 /**
  * Swing development HR sample startup class.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class SwingDevApplicationStartup extends SwingApplicationStartup {

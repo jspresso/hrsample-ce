@@ -32,7 +32,6 @@ import org.jspresso.framework.util.automation.IPermIdSource;
 /**
  * A custom security plugin to dump security requests.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class SnifferSecurityPlugin implements ISecurityPlugin {

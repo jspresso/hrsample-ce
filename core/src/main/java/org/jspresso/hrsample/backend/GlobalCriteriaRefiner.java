@@ -28,7 +28,6 @@ import org.jspresso.hrsample.model.Employee;
 /**
  * Application global criteria refiner.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class GlobalCriteriaRefiner implements ICriteriaRefiner {

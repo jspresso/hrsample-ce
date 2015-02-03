@@ -14,7 +14,6 @@ import org.jspresso.hrsample.model.Traceable;
 /**
  * Default lifecycle service for tracing.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class TraceableLifecycleInterceptor extends

@@ -13,7 +13,6 @@ import org.jspresso.hrsample.model.Event;
 /**
  * Default lifecycle service for employee.
  * 
- * @version $LastChangedRevision: 2097 $
  * @author Vincent Vandenschrick
  */
 public class EmployeeLifecycleInterceptor extends

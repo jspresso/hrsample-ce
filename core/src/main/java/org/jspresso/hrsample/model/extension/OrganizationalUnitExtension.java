@@ -13,7 +13,6 @@ import org.jspresso.hrsample.model.Team;
 /**
  * Helper class computing extended properties for OrganizationalUnit entity.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class OrganizationalUnitExtension extends

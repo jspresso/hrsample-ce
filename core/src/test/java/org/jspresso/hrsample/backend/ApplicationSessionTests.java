@@ -45,7 +45,6 @@ import org.springframework.transaction.support.TransactionCallback;
 /**
  * Application session integration tests.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class ApplicationSessionTests extends BackTestStartup {

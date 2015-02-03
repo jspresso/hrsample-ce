@@ -26,7 +26,6 @@ import org.jspresso.hrsample.model.Employee;
 /**
  * A demo card name selector.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class EmployeeCardSelector implements ICardNameSelector {

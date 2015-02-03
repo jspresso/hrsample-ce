@@ -23,7 +23,6 @@ import org.jspresso.framework.application.startup.swing.SwingStartup;
 /**
  * Swing HR sample startup class using MongoDB.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 public class SwingMongoApplicationStartup extends SwingStartup {

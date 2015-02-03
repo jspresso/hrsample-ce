@@ -40,7 +40,6 @@ import org.jspresso.hrsample.model.City;
 /**
  * Test back action.
  * 
- * @version $LastChangedRevision$
  * @author Vincent Vandenschrick
  */
 @Asynchronous(pushRuntimeExceptions = true, autoMergeBackEntities = true)
