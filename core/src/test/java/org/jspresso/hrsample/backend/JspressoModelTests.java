@@ -42,11 +42,13 @@ import java.util.Map;
 import java.util.Set;
 
 import org.hamcrest.Description;
+import org.hibernate.FetchMode;
 import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.collection.internal.PersistentSet;
 import org.hibernate.collection.spi.PersistentCollection;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
@@ -661,6 +663,34 @@ public class JspressoModelTests extends BackTestStartup {
     assertFalse(Hibernate.isInitialized(e.straightGetProperty(Employee.COMPANY)));
     e.straightSetProperty(Employee.COMPANY, null);
     e.getCompany();
+  }
+
+  /**
+   * Test one to one dB access.
+   */
+  @Test
+  public void testOneToOneDBAccess() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        EnhancedDetachedCriteria critDept = EnhancedDetachedCriteria.forClass(Department.class);
+        critDept.add(Restrictions.like(Department.OU_ID, "HR", MatchMode.START));
+        Department dept = hbc.findFirstByCriteria(critDept, EMergeMode.MERGE_KEEP, Department.class);
+        assertTrue("OneToOne has not been initialized when querying", Hibernate.isInitialized(dept.straightGetProperty(
+            Department.MANAGER)));
+      }
+    });
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        EnhancedDetachedCriteria critEmp = EnhancedDetachedCriteria.forClass(Employee.class);
+        critEmp.add(Restrictions.like(Employee.FIRST_NAME, "Gloria", MatchMode.START));
+        Employee emp = hbc.findFirstByCriteria(critEmp, EMergeMode.MERGE_KEEP, Employee.class);
+        assertFalse("ManyToOne has not been initialized when querying", Hibernate.isInitialized(emp.straightGetProperty(
+            Employee.MANAGED_OU)));
+      }
+    });
   }
 
 
