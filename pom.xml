@@ -82,8 +82,6 @@
         <groupId>org.jspresso.hrsample</groupId>
         <artifactId>hrsample-startup-flex-config</artifactId>
         <version>${project.version}</version>
-        <classifier>resources</classifier>
-        <type>zip</type>
       </dependency>
       <dependency>
         <groupId>org.jspresso.hrsample</groupId>
@@ -95,8 +93,6 @@
         <groupId>org.jspresso.hrsample</groupId>
         <artifactId>hrsample-startup-qooxdoo-client</artifactId>
         <version>${project.version}</version>
-        <classifier>web-resources</classifier>
-        <type>zip</type>
       </dependency>
     </dependencies>
   </dependencyManagement>

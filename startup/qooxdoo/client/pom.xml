@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>hrsample-startup-qooxdoo-client</artifactId>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
   <name>Jspresso HR Sample - Startup - Qooxdoo - Client</name>
 
   <dependencies>
@@ -28,6 +28,11 @@
   </dependencies>
   
   <build>
+    <resources>
+      <resource>
+        <directory>target/web</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -134,31 +139,14 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
+        <artifactId>maven-resources-plugin</artifactId>
         <executions>
           <execution>
-            <id>attach-qooxdoo-web-resources</id>
-            <goals>
-              <goal>single</goal>
-            </goals>
+            <id>package webapp resources</id>
             <phase>prepare-package</phase>
-            <configuration>
-              <descriptors>
-                <descriptor>${basedir}/src/main/assembly/web-resources.xml</descriptor>
-              </descriptors>
-            </configuration>
-          </execution>
-          <execution>
-            <id>attach-qooxdoo-sources</id>
             <goals>
-              <goal>single</goal>
+              <goal>resources</goal>
             </goals>
-            <phase>prepare-package</phase>
-            <configuration>
-              <descriptors>
-                <descriptor>${basedir}/src/main/assembly/sources.xml</descriptor>
-              </descriptors>
-            </configuration>
           </execution>
         </executions>
       </plugin>

@@ -17,8 +17,6 @@
     <dependency>
       <groupId>org.jspresso.hrsample</groupId>
       <artifactId>hrsample-startup-flex-config</artifactId>
-      <classifier>resources</classifier>
-      <type>zip</type>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -29,8 +27,6 @@
     <dependency>
       <groupId>org.jspresso.hrsample</groupId>
       <artifactId>hrsample-startup-qooxdoo-client</artifactId>
-      <classifier>web-resources</classifier>
-      <type>zip</type>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -91,19 +87,20 @@
         <configuration>
           <warName>${project.artifactId}</warName>
           <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
+          <webResources>
+            <resource>
+              <directory>${project.build.directory}/flex-client</directory>
+            </resource>
+          </webResources>
           <overlays>
             <overlay>
               <groupId>org.jspresso.hrsample</groupId>
               <artifactId>hrsample-startup-flex-config</artifactId>
-              <type>zip</type>
-              <classifier>resources</classifier>
               <targetPath>WEB-INF/flex</targetPath>
             </overlay>
             <overlay>
               <groupId>org.jspresso.hrsample</groupId>
               <artifactId>hrsample-startup-qooxdoo-client</artifactId>
-              <type>zip</type>
-              <classifier>web-resources</classifier>
               <targetPath>html5</targetPath>
             </overlay>
           </overlays>
@@ -121,7 +118,7 @@
             <configuration>
               <stripVersion>true</stripVersion>
               <includeTypes>swf</includeTypes>
-              <outputDirectory>${project.build.directory}/${project.artifactId}/flex</outputDirectory>
+              <outputDirectory>${project.build.directory}/flex-client/flex</outputDirectory>
             </configuration>
           </execution>
         </executions>
