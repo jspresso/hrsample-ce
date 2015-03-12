@@ -112,7 +112,7 @@
             <configuration>
               <target>
                 <property name="web-debug.dir" value="${project.build.directory}/web-debug" />
-                <mkdir dir="" />
+                <mkdir dir="${web-debug.dir}" />
                 <replace dir="${web-debug.dir}" token="../../../../target" value="file:///${project.build.directory}">
                   <include name="**/*.js" />
                 </replace>
