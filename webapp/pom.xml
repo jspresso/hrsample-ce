@@ -96,19 +96,13 @@
             <overlay>
               <groupId>org.jspresso.hrsample</groupId>
               <artifactId>hrsample-startup-flex-config</artifactId>
-<<<<<<< HEAD
               <type>jar</type>
-=======
->>>>>>> branch 'master' of https://github.com/jspresso/hrsample-ce.git
               <targetPath>WEB-INF/flex</targetPath>
             </overlay>
             <overlay>
               <groupId>org.jspresso.hrsample</groupId>
               <artifactId>hrsample-startup-qooxdoo-client</artifactId>
-<<<<<<< HEAD
               <type>jar</type>
-=======
->>>>>>> branch 'master' of https://github.com/jspresso/hrsample-ce.git
               <targetPath>html5</targetPath>
             </overlay>
           </overlays>
