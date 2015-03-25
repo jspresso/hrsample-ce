@@ -83,7 +83,7 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult;
  *
  * @author Vincent Vandenschrick
  */
-public class JspressoModelTests extends BackTestStartup {
+public class JspressoModelTest extends BackTestStartup {
 
   /**
    * Tests computed fire property change. See bug 708.

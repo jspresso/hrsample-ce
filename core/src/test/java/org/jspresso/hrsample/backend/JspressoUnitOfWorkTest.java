@@ -72,7 +72,7 @@ import org.jspresso.hrsample.model.Nameable;
  * 
  * @author Vincent Vandenschrick
  */
-public class JspressoUnitOfWorkTests extends BackTestStartup {
+public class JspressoUnitOfWorkTest extends BackTestStartup {
 
   /**
    * Test retrieve UOW cloned instance from session. See bug 746.

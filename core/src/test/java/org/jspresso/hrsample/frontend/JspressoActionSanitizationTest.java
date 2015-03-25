@@ -31,7 +31,7 @@ import org.junit.Test;
  * 
  * @author Vincent Vandenschrick
  */
-public class JspressoActionSanitizationTests extends FrontTestStartup {
+public class JspressoActionSanitizationTest extends FrontTestStartup {
 
   /**
    * Tests action thread-safety sanity check. On own through attribute

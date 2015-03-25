@@ -47,7 +47,7 @@ import org.springframework.transaction.support.TransactionCallback;
  * 
  * @author Vincent Vandenschrick
  */
-public class ApplicationSessionTests extends BackTestStartup {
+public class ApplicationSessionTest extends BackTestStartup {
 
   /**
    * Tests that uninitialized reference property are correctly deduped when

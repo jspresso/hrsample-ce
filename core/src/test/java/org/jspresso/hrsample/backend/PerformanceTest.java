@@ -47,7 +47,7 @@ import org.jspresso.hrsample.model.Team;
  * 
  * @author Vincent Vandenschrick
  */
-public class PerformanceTests extends FrontTestStartup {
+public class PerformanceTest extends FrontTestStartup {
 
   /**
    * Test performance of obtaining controller instance
