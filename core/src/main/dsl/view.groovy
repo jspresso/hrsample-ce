@@ -59,8 +59,8 @@ table('decorated.translations.table', parent: 'translations.table', borderType: 
 tabs('Company.tab.pane',
     views: ['Company.pane',
             'Company.tree',
-            'Traceable.pane',
-            'decorated.translations.table'])
+            'Traceable.pane'/*,
+            'decorated.translations.table'*/])
 
 table('Company-departments.table',
     actionMap: 'masterDetailActionMap', columnReordering: false) {
@@ -153,6 +153,7 @@ form('Department.filter.pane', columnCount: 8, fields: ['ouId',
                                                         'name',
                                                         'manager.gender'])
 
+/*
 border('Employee.border.pane',
     center: 'Employee.component.pane') {
   north {
@@ -168,9 +169,10 @@ border('Employee.border.pane',
   //           views:['MARRIED':'Employee.married.pane','NOT_MARRIED':'Employee.notmarried.pane'])
   //      }
 }
+*/
 
 split_horizontal('Employee.pane',
-    left: 'Employee.border.pane',
+    left: 'Employee.component.pane',
     right: 'Employee-photo.pane')
 
 table('Employee-events.table',

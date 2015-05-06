@@ -1,28 +1,25 @@
-paramSet 'gender', enumName:'GENDER', mandatory:true, queryMultiselect:true,
-    valuesAndIcons:[
-      'M':'male-48x48.png',
-      'F':'female-48x48.png'],
-    defaultValue:'M'
+paramSet 'gender', enumName: 'GENDER', mandatory: true, queryMultiselect: true,
+    valuesAndIcons: ['M': 'male-48x48.png',
+                     'F': 'female-48x48.png'],
+    defaultValue: 'M'
 
-Interface ('Nameable') { string_64 'name', mandatory:true, translatable: true}
+Interface('Nameable') { string_64 'name', mandatory: true, translatable: true }
 
 Interface('Traceable',
-interceptors:'TraceableLifecycleInterceptor',
-icon:'traceable-48x48.png',
-uncloned:[
-  'createTimestamp',
-  'lastUpdateTimestamp'
-]) {
-  date_time 'createTimestamp', timeZoneAware:true, readOnly:true
-  date_time 'lastUpdateTimestamp', timeZoneAware:true, readOnly:true
+    interceptors: 'TraceableLifecycleInterceptor',
+    icon: 'traceable-48x48.png',
+    uncloned: ['createTimestamp',
+               'lastUpdateTimestamp']) {
+  date_time 'createTimestamp', timeZoneAware: true, readOnly: true
+  date_time 'lastUpdateTimestamp', timeZoneAware: true, readOnly: true
 }
 
 Entity('City',
-extend:'Nameable',
-icon:'city-48x48.png',
-pageSize:4,
-toString:'name') {
-  string_10 'zip', upperCase:true
+    extend: 'Nameable',
+    icon: 'city-48x48.png',
+    pageSize: 4,
+    toString: 'name') {
+  string_10 'zip', upperCase: true
   decimal 'longitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   decimal 'latitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   set 'neighbours', ref: 'City', reverse: 'City-neighbours'
@@ -30,137 +27,133 @@ toString:'name') {
 
 Component('ContactInfo') {
   string_256 'address'
-  reference  'city', ref:'City'
-  string_32  'phone'
-  string_128 'email', regex:'[\\w\\-\\.]*@[\\w\\-\\.]*', regexSample:'contact@acme.com'
+  reference 'city', ref: 'City'
+  string_32 'phone'
+  string_128 'email', regex: '[\\w\\-\\.]*@[\\w\\-\\.]*', regexSample: 'contact@acme.com'
 }
 
-Entity('Event',extend:'Traceable'){
-  html 'text', maxLength:2048 , id:'Event-text'
-  reference 'employee', ref:'Employee', reverse:'Employee-events'
+Entity('Event', extend: 'Traceable') {
+  html 'text', maxLength: 2048, id: 'Event-text'
+  reference 'employee', ref: 'Employee', reverse: 'Employee-events'
 }
 
-Entity ('Employee',
-extend:['Nameable', 'Traceable'],
-interceptors:'EmployeeLifecycleInterceptor',
-extension :'EmployeeExtension',
-processor:'EmployeePropertyProcessors',
-services:[EmployeeService:'EmployeeServiceDelegate'],
-serviceBeans:['EmployeeService':'EmployeeServiceDelegateBean'],
-icon:'male-48x48.png',
-uncloned:['managedOu', 'ssn'],
-ordering:['name':'ASCENDING'],
-toString:'fullName',
-toHtml:'htmlDescription',
-autoComplete:'name',
-pageSize:3,
-rendered:[
-  'name',
-  'firstName',
-  'gender',
-  'birthDate',
-  'age',
-  'ssn',
-  'salary',
-  'contact',
-  'married',
-  'preferredColor',
-  'photo',
-  'company',
-  'createTimestamp',
-  'lastUpdateTimestamp'
-]) {
-  string_32 'firstName', mandatory:true, processors:'FirstNameProcessor', translatable:true
-  string_10 'ssn', regex:"[\\d]{10}", regexSample:'0123456789', unicityScope:'empSsn'
-  date 'birthDate', processors:'BirthDateProcessor'
+Entity('Employee',
+    extend: ['Nameable', 'Traceable'],
+    interceptors: 'EmployeeLifecycleInterceptor',
+    extension: 'EmployeeExtension',
+    processor: 'EmployeePropertyProcessors',
+    services: [EmployeeService: 'EmployeeServiceDelegate'],
+    serviceBeans: ['EmployeeService': 'EmployeeServiceDelegateBean'],
+    icon: 'male-48x48.png',
+    uncloned: ['managedOu', 'ssn'],
+    ordering: ['name': 'ASCENDING'],
+    toString: 'fullName',
+    toHtml: 'htmlDescription',
+    autoComplete: 'name',
+    pageSize: 3,
+    rendered: ['name',
+               'firstName',
+               'gender',
+               'birthDate',
+               'age',
+               'ssn',
+               'salary',
+               'contact',
+               'married',
+               'preferredColor',
+               'photo',
+               'company',
+               'createTimestamp',
+               'lastUpdateTimestamp'],
+    queryable: ['name',
+                'firstName',
+                'gender',
+                'birthDate',
+                'company']) {
+  string_32 'firstName', mandatory: true, processors: 'FirstNameProcessor', translatable: true
+  string_10 'ssn', regex: "[\\d]{10}", regexSample: '0123456789', unicityScope: 'empSsn'
+  date 'birthDate', processors: 'BirthDateProcessor'
   date 'hireDate'
-  enumeration 'gender', paramSets:'gender'
+  enumeration 'gender', paramSets: 'gender'
   color 'preferredColor'
   bool 'married'
-  decimal 'salary', minValue:0, maxValue:10000000, usingBigDecimal:true
+  decimal 'salary', minValue: 0, maxValue: 10000000, usingBigDecimal: true
   image 'photo', maxLength: 1048576, id: 'Employee-photo', fileFilter: ['images': ['.jpg']], fileName: 'photo.jpg',
       processors: 'PhotoProcessor', scaledHeight: 200
   image 'signature', maxLength: 1048576, id: 'Employee-signature', fileFilter: ['images': ['.png']],
       fileName: 'signature.png'
-  password 'password', maxLength:32
-  reference 'contact', ref:'ContactInfo', id:'contact'
-  list 'events', composition:true, ref:'Event'
-  list 'alternativeEvents', composition:true, ref:'Event', nullElement:true
-  set 'teams', ref:'Team'
-  list 'alternativeContacts', ref:'ContactInfo', nullElement:true
-  reference 'company', ref:'Company', mandatory:true, reverse:'Company-employees'
-  reference 'managedOu', ref:'OrganizationalUnit', reverse:'OrganizationalUnit-manager'
-  integer 'age', minValue:0, maxValue:150, sqlName:'YEAR(BIRTH_DATE)', computed:true, cacheable:true
-  imageUrl 'genderImageUrl', maxLength:512, id:'Employee-genderImageUrl', computed:true, scaledHeight:100
-  string_512 'fullName', computed:true
-  html 'htmlDescription', computed:true
+  password 'password', maxLength: 32
+  reference 'contact', ref: 'ContactInfo', id: 'contact'
+  list 'events', composition: true, ref: 'Event'
+  list 'alternativeEvents', composition: true, ref: 'Event', nullElement: true
+  set 'teams', ref: 'Team'
+  list 'alternativeContacts', ref: 'ContactInfo', nullElement: true
+  reference 'company', ref: 'Company', mandatory: true, reverse: 'Company-employees'
+  reference 'managedOu', ref: 'OrganizationalUnit', reverse: 'OrganizationalUnit-manager'
+  integer 'age', minValue: 0, maxValue: 150, sqlName: 'YEAR(BIRTH_DATE)', computed: true, cacheable: true
+  imageUrl 'genderImageUrl', maxLength: 512, id: 'Employee-genderImageUrl', computed: true, scaledHeight: 100
+  string_512 'fullName', computed: true
+  html 'htmlDescription', computed: true
 }
 
 Entity('Company',
-extend:['Nameable', 'Traceable'],
-extension:'CompanyExtension',
-icon:'company-48x48.png',
-rendered:[
-  'name',
-  'contact',
-  'createTimestamp',
-  'lastUpdateTimestamp'
-],
-queryable:[
-  'name',
-  'contact.city',
-  'contact.city.zip'
-]) {
-  refId 'contact', id:'contact'
-  set 'departments', composition:true, ref:'Department'
-  set 'employees', composition:true, ref:'Employee'
-  
-  integer 'workforce', computed:true
+    extend: ['Nameable', 'Traceable'],
+    extension: 'CompanyExtension',
+    icon: 'company-48x48.png',
+    rendered: ['name',
+               'contact',
+               'createTimestamp',
+               'lastUpdateTimestamp'],
+    queryable: ['name',
+                'contact.city',
+                'contact.city.zip']) {
+  refId 'contact', id: 'contact'
+  set 'departments', composition: true, ref: 'Department'
+  set 'employees', composition: true, ref: 'Employee'
+
+  integer 'workforce', computed: true
 }
 
 Entity('OrganizationalUnit',
-extend:['Traceable'],
-purelyAbstract:true,
-processor :'OrganizationalUnitPropertyProcessors',
-extension :'OrganizationalUnitExtension') {
-  string_6 'ouId', regex:"[A-Z]{2}-[\\d]{3}", regexSample:'AB-123', mandatory:true
-  refId 'contact', id:'contact'
-  reference 'manager', ref:'Employee', mandatory:false, processors:['ManagerProcessor'], initializationMapping:['company':'company']
-  reference 'company', ref:'Company', computed:true
-  html 'htmlDescription', computed:true
+    extend: ['Traceable'],
+    purelyAbstract: true,
+    processor: 'OrganizationalUnitPropertyProcessors',
+    extension: 'OrganizationalUnitExtension') {
+  string_6 'ouId', regex: "[A-Z]{2}-[\\d]{3}", regexSample: 'AB-123', mandatory: true
+  refId 'contact', id: 'contact'
+  reference 'manager', ref: 'Employee', mandatory: false, processors: ['ManagerProcessor'],
+      initializationMapping: ['company': 'company']
+  reference 'company', ref: 'Company', computed: true
+  html 'htmlDescription', computed: true
 }
 
 Entity('Department',
-extend:['Nameable','OrganizationalUnit'],
-extension :'DepartmentExtension',
-icon:'department-48x48.png',
-toHtml:'htmlDescription',ordering:['name':'ASCENDING'],
-rendered:[
-  'ouId',
-  'name',
-  'manager',
-  'contact',
-  'createTimestamp',
-  'lastUpdateTimestamp'
-]) {
-  reference 'company', ref:'Company', reverse:'Company-departments', mandatory:true
-  set 'teams', composition:true, ref:'Team'
-  set 'employees', ref:'Employee', computed:true
-  integer 'teamCount', computed:true, sqlName:'(SELECT COUNT(T.ID) FROM TEAM T WHERE T.DEPARTMENT_ID=ID)'
+    extend: ['Nameable', 'OrganizationalUnit'],
+    extension: 'DepartmentExtension',
+    icon: 'department-48x48.png',
+    toHtml: 'htmlDescription', ordering: ['name': 'ASCENDING'],
+    rendered: ['ouId',
+               'name',
+               'manager',
+               'contact',
+               'createTimestamp',
+               'lastUpdateTimestamp']) {
+  reference 'company', ref: 'Company', reverse: 'Company-departments', mandatory: true
+  set 'teams', composition: true, ref: 'Team'
+  set 'employees', ref: 'Employee', computed: true
+  integer 'teamCount', computed: true, sqlName: '(SELECT COUNT(T.ID) FROM TEAM T WHERE T.DEPARTMENT_ID=ID)'
 }
 
 Entity('Team',
-extend:['Nameable', 'OrganizationalUnit'],
-icon:'team-48x48.png',
-toHtml:'htmlDescription',ordering:['name':'ASCENDING'],
-rendered:[
-  'ouId',
-  'name',
-  'manager',
-  'contact'
-]){
-  reference 'department', ref:'Department', mandatory:true, reverse:'Department-teams'
-  set 'teamMembers', ref:'Employee', reverse:'Employee-teams'
+    extend: ['Nameable', 'OrganizationalUnit'],
+    icon: 'team-48x48.png',
+    toHtml: 'htmlDescription', ordering: ['name': 'ASCENDING'],
+    rendered: ['ouId',
+               'name',
+               'manager',
+               'contact']) {
+  reference 'department', ref: 'Department', mandatory: true, reverse: 'Department-teams'
+  set 'teamMembers', ref: 'Employee', reverse: 'Employee-teams'
 }
 
 Entity('Preferences') {
