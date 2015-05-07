@@ -60,7 +60,8 @@ tabs('Company.tab.pane',
     views: ['Company.pane',
             'Company.tree',
             'Traceable.pane'/*,
-            'decorated.translations.table'*/])
+            'decorated.translations.table'*/],
+    preferredHeight: 150)
 
 table('Company-departments.table',
     actionMap: 'masterDetailActionMap', columnReordering: false) {
@@ -111,7 +112,7 @@ border('Company.organization.view',
 image('Employee-photo.pane',
     parent: 'decoratedView',
     actionMap: 'binaryPropertyActionMap',
-    preferredWidth: 400)
+    preferredWidth: 300)
 
 
 form('Employee.component.pane',
@@ -173,7 +174,8 @@ border('Employee.border.pane',
 
 split_horizontal('Employee.pane',
     left: 'Employee.component.pane',
-    right: 'Employee-photo.pane')
+    right: 'Employee-photo.pane',
+    preferredHeight: 200)
 
 table('Employee-events.table',
     selectionMode: 'SINGLE_INTERVAL_CUMULATIVE_SELECTION') {
@@ -239,7 +241,7 @@ split_vertical('Employee.module.view',
     actionMap: 'beanModuleActionMap',
     top: 'Employee.pane') {
   bottom {
-    tabs {
+    tabs (preferredHeight: 400) {
       views {
         mapView(model: 'contact', name: 'map', longitude: 'city.longitude', latitude: 'city.latitude')
         split_horizontal(name: 'events', left: 'Employee-events.table', right: 'Event-text.pane', cascadingModels: true)
