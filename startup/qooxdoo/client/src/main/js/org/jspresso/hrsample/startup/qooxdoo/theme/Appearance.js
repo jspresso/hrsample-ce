@@ -32,7 +32,7 @@ qx.Theme.define("org.jspresso.hrsample.startup.qooxdoo.theme.Appearance",
           show: "label"
         };
       }
-    },
+    }
 
   }
 });
