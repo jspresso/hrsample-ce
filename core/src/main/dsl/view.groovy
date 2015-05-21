@@ -83,7 +83,7 @@ table('Department-teams.table',
 action('addFromList',
     parent: 'lovOkFrontAction') { next(parent: 'addAnyToMasterFrontAction') }
 
-listView('Team-teamMembers.list', preferredWidth: 300) {
+listView('Team-teamMembers.list', preferredWidth: 300, displayIcon:false) {
   actionMap {
     actionList('EDIT') {
       action(parent: 'pickupAndAddAnyFrontAction',
