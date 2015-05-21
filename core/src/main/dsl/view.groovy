@@ -215,14 +215,14 @@ actionMap('Company-module-am') {
     action(ref: 'reloadModuleObjectFrontAction')
     action(parent: 'staticReportAction',
         custom: [reportDescriptor_ref: 'Company.report'])
-    action(parent: 'chartAction',
-        description: 'company.chart',
-        custom: [chartDescriptor_ref: 'Company.chart'])
-    action(parent: 'editSelectedComponentAction', custom: [viewDescriptor_ref: 'Company.dialog.view'])
-    //action(class:'test.TestFrontAction', icon:'company-48x48.png')
-    action(class: 'org.jspresso.framework.application.frontend.action.FrontendAction', icon: 'company-48x48.png') {
-      wrapped(class: 'test.TestBackAction')
-    }
+//    action(parent: 'chartAction',
+//        description: 'company.chart',
+//        custom: [chartDescriptor_ref: 'Company.chart'])
+//    action(parent: 'editSelectedComponentAction', custom: [viewDescriptor_ref: 'Company.dialog.view'])
+//    action(class:'test.TestFrontAction', icon:'company-48x48.png')
+//    action(class: 'org.jspresso.framework.application.frontend.action.FrontendAction', icon: 'company-48x48.png') {
+//      wrapped(class: 'test.TestBackAction')
+//    }
   }
 }
 
