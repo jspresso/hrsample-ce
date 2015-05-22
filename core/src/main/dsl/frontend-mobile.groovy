@@ -1,7 +1,7 @@
 workspace('masterdata.workspace',
-    icon:'masterdata-48x48.png', headerDescription:'masterdata.workspace.header') {
+    icon:'masterdata.png', headerDescription:'masterdata.workspace.header') {
   nodeModule('masterdata.geography.module',
-      icon:'geography-48x48.png') {
+      icon:'geography.png') {
     filterModule('masterdata.cities.module',
         component:'City',
         filterView: 'City.filter.view',
@@ -12,13 +12,13 @@ workspace('masterdata.workspace',
 }
 
 workspace('employees.workspace',
-    icon:'people-48x48.png',
+    icon:'people.png',
     grantedRoles:[
         'administrator',
         'staff-manager'
     ]) {
   filterModule('employees.module',
-      icon:'employees-48x48.png',
+      icon:'employees.png',
       component:'Employee',
       filterView: 'Employee.filter.view',
       detailView:'Employee.page.view',
@@ -27,13 +27,13 @@ workspace('employees.workspace',
 }
 
 workspace('organization.workspace',
-    icon:'structure-48x48.png',
+    icon:'structure.png',
     grantedRoles:[
         'administrator',
         'organization-manager'
     ]) {
   filterModule('companies.module',
-      icon:'company-48x48.png',
+      icon:'company.png',
       component:'Company',
       filterView: 'Company.filter.view',
       detailView:'Company.page.view',
@@ -42,15 +42,15 @@ workspace('organization.workspace',
 }
 
 workspace('departments.workspace',
-    icon:'department-48x48.png') {
+    icon:'department.png') {
   filterModule('departments.module',
-      icon:'department-48x48.png',
+      icon:'department.png',
       component:'Department')
 }
 
 controller 'hrsample.name',
     description: 'hrsample.description',
-    icon:'people-48x48.png',
+    icon:'people.png',
     context:'hrsample',
     language:'en',
     //startup:'startupHrsampleAction',

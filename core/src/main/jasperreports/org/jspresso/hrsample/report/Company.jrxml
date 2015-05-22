@@ -86,7 +86,7 @@ order by c_name, d_name, t_name;]]>
 		<band height="132" splitType="Stretch">
 			<image>
 				<reportElement x="2" y="0" width="118" height="132" uuid="858df65a-c153-437b-a99e-f2c7cfb4e791"/>
-				<imageExpression><![CDATA["org/jspresso/hrsample/images/company-48x48.png"]]></imageExpression>
+				<imageExpression><![CDATA["org/jspresso/hrsample/images/company.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement style="Title" x="120" y="10" width="435" height="93" uuid="21f32938-090a-478d-be41-76a87b774d26"/>
@@ -128,7 +128,7 @@ order by c_name, d_name, t_name;]]>
 			</textField>
 			<image>
 				<reportElement x="2" y="0" width="56" height="80" uuid="ec69d395-40f0-4106-b3c8-87a5030a5a0a"/>
-				<imageExpression><![CDATA["org/jspresso/hrsample/images/team-48x48.png"]]></imageExpression>
+				<imageExpression><![CDATA["org/jspresso/hrsample/images/team.png"]]></imageExpression>
 			</image>
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="2" y="90" width="551" height="1" uuid="f374172c-c185-4c64-8028-63cb531c7aec"/>

@@ -1,7 +1,7 @@
 workspace('masterdata.workspace',
-    icon:'masterdata-48x48.png') {
+    icon:'masterdata.png') {
       nodeModule('masterdata.geography.module',
-          icon:'geography-48x48.png') {
+          icon:'geography.png') {
             filterModule('masterdata.cities.module',
                 component:'City',
                 detailView:'City.module.view',
@@ -10,13 +10,13 @@ workspace('masterdata.workspace',
     }
 
 workspace('employees.workspace',
-    icon:'people-48x48.png',
+    icon:'people.png',
     grantedRoles:[
       'administrator',
       'staff-manager'
     ]) {
       filterModule('employees.module',
-          icon:'employees-48x48.png',
+          icon:'employees.png',
           component:'Employee',
           //filterView:'Employee.filter.pane',
           moduleView:'Employee.table.view',
@@ -26,22 +26,22 @@ workspace('employees.workspace',
     }
 
 workspace('organization.workspace',
-    icon:'structure-48x48.png',
+    icon:'structure.png',
     grantedRoles:[
       'administrator',
       'organization-manager'
     ]) {
       filterModule('companies.module',
-          icon:'company-48x48.png',
+          icon:'company.png',
           component:'Company',
           detailView:'Company.module.view',
           startup:'filterModuleStartup')
     }
 
 workspace('departments.workspace',
-    icon:'department-48x48.png') {
+    icon:'department.png') {
   filterModule('departments.module',
-      icon:'department-48x48.png',
+      icon:'department.png',
       component:'Department',
       filterView:'Department.filter.pane')
 }
@@ -54,7 +54,7 @@ action 'filterModuleStartup',
     class:'org.jspresso.framework.application.frontend.action.FrontendAction',
     wrapped:'initModuleFilterAction',
     next:'queryModuleFilterAction'
-    
+
 actionMap('controllerActionMap') {
   actionList {
     action ref:'showRunningExecutorsAction'
@@ -63,7 +63,7 @@ actionMap('controllerActionMap') {
 }
 
 controller 'hrsample.name',
-    icon:'people-48x48.png',
+    icon:'people.png',
     context:'hrsample',
     language:'en',
     startup:'startupHrsampleAction',
@@ -77,7 +77,14 @@ controller 'hrsample.name',
       //'departments.workspace',
     ]
 
-bean 'viewFactoryBase', parent:'abstractViewFactory',
+bean('viewFactoryBase', parent:'abstractViewFactory',
     custom: [
       defaultActionMapRenderingOptions:'LABEL_ICON'
-    ]
+    ])
+
+bean('iconFactoryBase', parent:'abstractIconFactory') {
+  bean('largeIconSize', class:'org.jspresso.framework.util.gui.Dimension', custom: [width: 32, height: 32])
+  bean('mediumIconSize', class: 'org.jspresso.framework.util.gui.Dimension', custom: [width: 24, height: 24])
+  bean('smallIconSize', class: 'org.jspresso.framework.util.gui.Dimension', custom: [width: 20, height: 20])
+  bean('tinyIconSize', class: 'org.jspresso.framework.util.gui.Dimension', custom: [width: 16, height: 16])
+}

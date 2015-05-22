@@ -47,7 +47,7 @@ treeNode('Company-departments.treeNode',
 tree('Company.tree',
     rendered: 'name',
     preferredHeight: 200,
-    icon: 'structure-48x48.png') {
+    icon: 'structure.png') {
   subTree('Company-employees.treeNode')
   subTree('Company-departments.treeNode') {
     subTree('Department-teams.treeNode') //subTree('Department-employees.treeNode')
@@ -219,8 +219,8 @@ actionMap('Company-module-am') {
 //        description: 'company.chart',
 //        custom: [chartDescriptor_ref: 'Company.chart'])
 //    action(parent: 'editSelectedComponentAction', custom: [viewDescriptor_ref: 'Company.dialog.view'])
-//    action(class:'test.TestFrontAction', icon:'company-48x48.png')
-//    action(class: 'org.jspresso.framework.application.frontend.action.FrontendAction', icon: 'company-48x48.png') {
+//    action(class:'test.TestFrontAction', icon:'company.png')
+//    action(class: 'org.jspresso.framework.application.frontend.action.FrontendAction', icon: 'company.png') {
 //      wrapped(class: 'test.TestBackAction')
 //    }
   }
