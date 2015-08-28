@@ -88,3 +88,16 @@ bean('iconFactoryBase', parent:'abstractIconFactory') {
   bean('smallIconSize', class: 'org.jspresso.framework.util.gui.Dimension', custom: [width: 20, height: 20])
   bean('tinyIconSize', class: 'org.jspresso.framework.util.gui.Dimension', custom: [width: 16, height: 16])
 }
+
+action('createEntityFromLovOkAction', parent: 'okDialogFrontAction', class:'test.CreateEntityFromLOVPersistAction',
+       wrapped: 'saveBackAction', next: 'closeDialogAction')
+
+action('createEntityFromLovAction', parent: 'editComponentAction', class: 'test.CreateEntityFromLOVAction',
+       name:'add.name', custom: [
+           okAction_ref: 'createEntityFromLovOkAction'
+       ]
+)
+
+action('lovActionWithCreate', parent: 'lovActionBase', class:'test.LovActionWithCreate',
+    custom: [createAction_ref:'createEntityFromLovAction']
+)
