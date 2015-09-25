@@ -693,6 +693,57 @@ public class JspressoModelTest extends BackTestStartup {
     });
   }
 
+  /**
+   * Test lifecycle called at right time. Fixes bug #55
+   */
+  @Test
+  public void testLifecycleCalledAtRightTime() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    final Serializable id1 = hbc.getTransactionTemplate().execute(new TransactionCallback<Serializable>() {
+      @Override
+      public Serializable doInTransaction(TransactionStatus status) {
+        Company company = hbc.getEntityFactory().createEntityInstance(Company.class);
+        company.setName("testComp");
+        hbc.registerForUpdate(company);
+        assertNull("Create timestamp assigned too early", company.getCreateTimestamp());
+        company.setName("testCompMod");
+        return company.getId();
+      }
+    });
+    Company sessionCompany = hbc.findById(id1, EMergeMode.MERGE_KEEP, Company.class);
+    assertNotNull("Create timestamp not assigned", sessionCompany.getCreateTimestamp());
+    assertNull("Last update timestamp assigned, but should not be", sessionCompany.getLastUpdateTimestamp());
+
+    final Serializable id2 = hbc.getTransactionTemplate().execute(new TransactionCallback<Serializable>() {
+      @Override
+      public Serializable doInTransaction(TransactionStatus status) {
+        Company company = hbc.getEntityFactory().createEntityInstance(Company.class);
+        company.setName("testComp2");
+        hbc.registerForUpdate(company);
+        hbc.flush();
+        assertNotNull("Create timestamp not assigned after flush", company.getCreateTimestamp());
+        company.setName("testComp2Mod");
+        return company.getId();
+      }
+    });
+    Company sessionCompany2 = hbc.findById(id2, EMergeMode.MERGE_KEEP, Company.class);
+    assertNotNull("Create timestamp not assigned", sessionCompany2.getCreateTimestamp());
+    assertNotNull("Last update timestamp not assigned", sessionCompany2.getLastUpdateTimestamp());
+
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        Company company1 = hbc.findById(id1, EMergeMode.MERGE_KEEP, Company.class);
+        Company company2 = hbc.findById(id2, EMergeMode.MERGE_KEEP, Company.class);
+        hbc.registerForDeletion(company1);
+        hbc.registerForDeletion(company2);
+      }
+    });
+    assertNull("Company 1 not correctly deleted.", hbc.findById(id1, EMergeMode.MERGE_KEEP, Company.class));
+    assertNull("Company 2 not correctly deleted.", hbc.findById(id2, EMergeMode.MERGE_KEEP, Company.class));
+  }
+
 
   static class PropertyMatcher extends ArgumentMatcher<Object[]> {
 
