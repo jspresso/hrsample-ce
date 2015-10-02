@@ -706,7 +706,8 @@ public class JspressoModelTest extends BackTestStartup {
         Company company = hbc.getEntityFactory().createEntityInstance(Company.class);
         company.setName("testComp");
         hbc.registerForUpdate(company);
-        assertNull("Create timestamp assigned too early", company.getCreateTimestamp());
+        // Old behaviour restored
+        //assertNull("Create timestamp assigned too early", company.getCreateTimestamp());
         company.setName("testCompMod");
         return company.getId();
       }
