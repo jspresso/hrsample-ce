@@ -76,7 +76,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
 
         Employee mikeDen = createEmployee("M", "Den", "Mike", "denpass",
             "26 rue de la Pie qui Chante", suresnes, "mike.den@design2see.com",
-            "+33 1 968 846 398", "05/07/1970", "01/03/2004", "1859637461",
+            "+33 1 968 846 398", "05/07/1990", "01/03/2004", "1859637461",
             false, "0xFFCC1255", "80000", design2see);
 
         Employee evaGreen = createEmployee("F", "Green", "Eva", null,
@@ -91,26 +91,26 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
 
         Employee mariaTrulli = createEmployee("F", "Trulli", "Maria", null,
             "20 avenue du Crocodile Marteau", evry,
-            "maria.trulli@design2see.com", "+33 1 868 745 369", "01/02/1976",
-            "03/10/2006", "2325985423", true, "0xFF9489AB", "110000",
+            "maria.trulli@design2see.com", "+33 1 868 745 369", 
+            "01/02/1963", "03/10/2006", "2325985423", true, "0xFF9489AB", "110000",
             design2see);
 
         Employee isabelleMartin = createEmployee("F", "Martin", "Isabelle",
             null, "20 allée de la Gazelle Sauteuse", evry,
             "isabelle.martin@design2see.com", "+33 1 698 256 365",
             "04/07/1970", "12/06/2001", "2652398751", false, "0xFFAA6512",
-            "95000", design2see);
+            "39000", design2see);
 
         Employee graziellaBerlutti = createEmployee("F", "Berlutti",
             "Graziella", null, "104 square des Bégonias", suresnes,
             "graziella.berlutti@design2see.com", "+33 1 698 234 986",
-            "17/03/1971", "12/06/2003", "2256725396", false, "0xFFAA1133",
+            "17/03/1982", "12/06/2003", "2256725396", false, "0xFFAA1133",
             "100000", design2see);
 
         @SuppressWarnings("unused") Employee frankWurst = createEmployee("M",
             "Wurst", "Frank", null, "120 rue des Pétoncles", evry,
-            "frank.wurst@design2see.com", "+33 1 708 544 985", "23/05/1969",
-            "17/11/2002", "1256725235", false, "0xFF14ADFE", "110000",
+            "frank.wurst@design2see.com", "+33 1 708 544 985", 
+            "23/05/1969", "17/11/2002", "1256725235", false, "0xFF14ADFE", "110000",
             design2see);
 
         // Departments and teams.
