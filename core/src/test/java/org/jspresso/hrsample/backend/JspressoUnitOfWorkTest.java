@@ -69,7 +69,7 @@ import org.jspresso.hrsample.model.Nameable;
 
 /**
  * Unit Of Work management integration tests.
- * 
+ *
  * @author Vincent Vandenschrick
  */
 public class JspressoUnitOfWorkTest extends BackTestStartup {
@@ -759,9 +759,27 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
       }
     });
   }
-  
+
   /**
-   * Tests that an in-memory TX preserves entities unicity in the UOW even if 
+   * Tests that an in-memory TX isolates its UOW from any inner transaction (see bug #63).
+   */
+  @Test
+  public void testInMemoryTxIsolation() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    hbc.beginUnitOfWork();
+    EnhancedDetachedCriteria compCrit = EnhancedDetachedCriteria.forClass(Company.class);
+
+    hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_KEEP, Company.class);
+
+    // Try to clone the company in the UOW.
+    assertTrue("The in-memory TX has been terminated by the previous find", hbc.isUnitOfWorkActive());
+
+    hbc.rollbackUnitOfWork();
+  }
+
+  /**
+   * Tests that an in-memory TX preserves entities unicity in the UOW even if
    * multiple requests are spanned (see bug #1043).
    */
   @Test
@@ -770,19 +788,19 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
 
     EnhancedDetachedCriteria compCrit = EnhancedDetachedCriteria.forClass(Company.class);
     Company company = hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_KEEP, Company.class);
-    
+
     // Simulates a new request
     hbc.cleanupRequestResources();
-    
+
     hbc.beginUnitOfWork();
     Company companyClone = hbc.cloneInUnitOfWork(company);
     assertNotSame("The company clone is the same instance as the original", companyClone, company);
-    
+
     hbc.cleanupRequestResources();
-    
+
     Company c1 = (Company) hbc.getHibernateSession().byId(Company.class).load(company.getId());
     assertSame("Both company instances should have been the same in UOW", c1, companyClone);
-    
+
     hbc.rollbackUnitOfWork();
 
     hbc.beginUnitOfWork();
@@ -790,10 +808,10 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
 
     hbc.cleanupRequestResources();
     Company c3 = (Company) hbc.getHibernateSession().byId(Company.class).load(company.getId());
-    
+
     hbc.cleanupRequestResources();
     companyClone = hbc.cloneInUnitOfWork(company);
-    
+
     assertSame("Both company instances should have been the same in UOW", c2, c3);
     assertSame("Both company instances should have been the same in UOW", c2, companyClone);
     assertNotSame("The company clone is the same instance as the original", companyClone, company);
@@ -826,11 +844,13 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
          @Override
          protected void doInTransactionWithoutResult(TransactionStatus status) {
            Company companyCloneClone = hbc.cloneInUnitOfWork(companyClone);
-           assertSame("Cloning is not idempotent", companyClone, companyCloneClone);
+           assertNotSame("Cloning in a nested TX results in another clone", companyClone, companyCloneClone);
          }
        });
+    assertTrue("The outer in-memory TX has been closed", hbc.isUnitOfWorkActive());
+    hbc.commitUnitOfWork();
 
-    assertFalse(hbc.isUnitOfWorkActive());
+    assertFalse("The outer in-memory TX is still open", hbc.isUnitOfWorkActive());
 
     company = hbc.findById(company.getId(), EMergeMode.MERGE_CLEAN_EAGER, Company.class);
     assertEquals("Company has not been correctly merged", modifiedInUOW, company.getName());
