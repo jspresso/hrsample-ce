@@ -416,7 +416,7 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   }
 
   /**
-   * Tests in TX collection element update with // optimistick locking.
+   * Tests in TX collection element update with // optimistic locking.
    */
   @Test
   public void testInTXCollectionElementUpdate() {
@@ -776,6 +776,66 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     assertTrue("The in-memory TX has been terminated by the previous find", hbc.isUnitOfWorkActive());
 
     hbc.rollbackUnitOfWork();
+
+    final Company company = hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_KEEP, Company.class);
+    String originalCompanyName = company.getName();
+
+    hbc.beginUnitOfWork();
+    final Company companyCloneRollBack = hbc.cloneInUnitOfWork(company);
+
+    final Department newDepartmentRollBack = hbc.getEntityFactory().createEntityInstance(Department.class);
+    newDepartmentRollBack.setName("TestDepartment");
+    newDepartmentRollBack.setOuId("TE-001");
+    companyCloneRollBack.addToDepartments(newDepartmentRollBack);
+
+    String companyNameUpdated = "Updated by 63";
+    companyCloneRollBack.setName(companyNameUpdated);
+
+    hbc.rollbackUnitOfWork();
+
+    Company reloadedCompany = hbc.findById(company.getId(), EMergeMode.MERGE_CLEAN_EAGER, Company.class);
+    assertEquals("Company has incorrectly been saved", originalCompanyName, reloadedCompany.getName());
+
+    boolean containsNewDepartment = false;
+    for (Department department : reloadedCompany.getDepartments()) {
+      if (department.getId().equals(newDepartmentRollBack.getId())) {
+        containsNewDepartment = true;
+      }
+    }
+    assertFalse("Company contains the department created in the in-memory TX although rolled-back", containsNewDepartment);
+
+    hbc.beginUnitOfWork();
+    final Company companyClone = hbc.cloneInUnitOfWork(company);
+
+    final Department newDepartment = hbc.getEntityFactory().createEntityInstance(Department.class);
+    newDepartment.setName("TestDepartment");
+    newDepartment.setOuId("TE-001");
+    companyClone.addToDepartments(newDepartment);
+
+    companyClone.setName(companyNameUpdated);
+
+    hbc.commitUnitOfWork();
+    hbc.merge(companyClone, EMergeMode.MERGE_EAGER);
+
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        Company saveTxCompanyClone = hbc.cloneInUnitOfWork(company);
+        hbc.registerForUpdate(saveTxCompanyClone);
+      }
+    });
+
+    reloadedCompany = hbc.findById(company.getId(), EMergeMode.MERGE_CLEAN_EAGER, Company.class);
+    assertEquals("Company has not correctly be saved by inner transaction", companyNameUpdated, reloadedCompany.getName());
+
+    containsNewDepartment = false;
+    for (Department department : reloadedCompany.getDepartments()) {
+      if (department.getId().equals(newDepartment.getId())) {
+        containsNewDepartment = true;
+      }
+    }
+
+    assertTrue("Company does not contain the department created in the in-memory TX", containsNewDepartment);
   }
 
   /**
