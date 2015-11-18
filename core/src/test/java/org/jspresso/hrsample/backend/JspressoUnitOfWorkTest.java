@@ -21,6 +21,7 @@ package org.jspresso.hrsample.backend;
 import static org.junit.Assert.*;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -833,6 +834,48 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     }
 
     assertTrue("Company does not contain the department created in the in-memory TX", containsNewDepartment);
+
+    hbc.beginUnitOfWork();
+    Company companyClone2 = hbc.cloneInUnitOfWork(company);
+    for (Department department : companyClone2.getDepartments()) {
+      if (department.getId().equals(newDepartment.getId())) {
+        try {
+          hbc.cleanRelationshipsOnDeletion(department, false);
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+          throw new RuntimeException(e);
+        }
+        break;
+      }
+    }
+    hbc.merge(companyClone2, EMergeMode.MERGE_EAGER);
+    hbc.commitUnitOfWork();
+
+    containsNewDepartment = false;
+    for (Department department : reloadedCompany.getDepartments()) {
+      if (department.getId().equals(newDepartment.getId())) {
+        containsNewDepartment = true;
+      }
+    }
+
+    assertFalse("Company still contains the department removed in the in-memory TX", containsNewDepartment);
+
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.performPendingOperations();
+      }
+    });
+
+    reloadedCompany = hbc.findById(company.getId(), EMergeMode.MERGE_CLEAN_EAGER, Company.class);
+
+    containsNewDepartment = false;
+    for (Department department : reloadedCompany.getDepartments()) {
+      if (department.getId().equals(newDepartment.getId())) {
+        containsNewDepartment = true;
+      }
+    }
+
+    assertFalse("Company still contains the department removed in the in-memory TX", containsNewDepartment);
   }
 
   /**
