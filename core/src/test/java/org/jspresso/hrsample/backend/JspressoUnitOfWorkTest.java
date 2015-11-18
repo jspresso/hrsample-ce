@@ -732,8 +732,7 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
 
           @Override
           public Department doInTransaction(TransactionStatus status) {
-            Department anotherDeptClone = hbc.cloneInUnitOfWork(
-                anotherDepartment, true);
+            Department anotherDeptClone = hbc.cloneInUnitOfWork(anotherDepartment);
 
             assertFalse("Other department clone teams property is initialized",
                 Hibernate.isInitialized(anotherDeptClone
@@ -753,8 +752,7 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
 
       @Override
       public Department doInTransaction(TransactionStatus status) {
-        Department yetAnotherDeptClone = hbc.cloneInUnitOfWork(
-            anotherDepartmentClone, false);
+        Department yetAnotherDeptClone = hbc.cloneInUnitOfWork(anotherDepartmentClone);
         return yetAnotherDeptClone;
       }
     });
@@ -813,9 +811,8 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     companyClone.addToDepartments(newDepartment);
 
     companyClone.setName(companyNameUpdated);
-
-    hbc.commitUnitOfWork();
     hbc.merge(companyClone, EMergeMode.MERGE_EAGER);
+    hbc.commitUnitOfWork();
 
     hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
       @Override
@@ -839,9 +836,41 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   }
 
   /**
-   * Tests that an in-memory TX preserves entities unicity in the UOW even if
-   * multiple requests are spanned (see bug #1043).
+   * Tests that an in-memory TX does not dirty an entity when merging eagerly a persistent collection (see bug #66).
    */
+  @Test
+  public void testInMemoryTxEagerMerge() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+
+    hbc.beginUnitOfWork();
+
+    EnhancedDetachedCriteria compCrit = EnhancedDetachedCriteria.forClass(Company.class);
+    Company company = hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_KEEP, Company.class);
+    String companyNameUpdated = "test";
+    company.setName(companyNameUpdated);
+    company = hbc.merge(company, EMergeMode.MERGE_EAGER);
+    hbc.commitUnitOfWork();
+
+    hbc.registerForUpdate(company);
+
+
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.performPendingOperations();
+      }
+    });
+
+    Company reloadedCompany = hbc.findById(company.getId(), EMergeMode.MERGE_CLEAN_EAGER, Company.class);
+    assertEquals("Company has not correctly be saved by inner transaction", companyNameUpdated, reloadedCompany.getName());
+
+  }
+
+
+    /**
+     * Tests that an in-memory TX preserves entities unicity in the UOW even if
+     * multiple requests are spanned (see bug #1043).
+     */
   @Test
   public void testInMemoryTxEntityUnicity() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
