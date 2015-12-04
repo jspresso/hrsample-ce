@@ -48,24 +48,16 @@
       <artifactId>hsqldb</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.adobe.blazeds</groupId>
-      <artifactId>blazeds-common</artifactId>
+      <groupId>org.apache.flex.blazeds</groupId>
+      <artifactId>flex-messaging-remoting</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.adobe.blazeds</groupId>
-      <artifactId>blazeds-core</artifactId>
+      <groupId>org.apache.flex.blazeds</groupId>
+      <artifactId>flex-messaging-proxy</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.adobe.blazeds</groupId>
-      <artifactId>blazeds-remoting</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.adobe.blazeds</groupId>
-      <artifactId>blazeds-proxy</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>commons-httpclient</groupId>
-      <artifactId>commons-httpclient</artifactId>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>

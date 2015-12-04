@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+  <!-- ============================== -->
+  <!-- Append messages to the console -->
+  <!-- ============================== -->
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <!--<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>-->
+      <PatternLayout pattern="[%-5level] [%logger{36}] - %msg%n"/>
+    </Console>
+  </Appenders>
+
+  <!-- ================ -->
+  <!-- Limit categories -->
+  <!-- ================ -->
+  <Loggers>
+
+    <Logger name="org.hibernate"/>
+    <Logger name="org.hibernate.SQL" level="debug"/>
+    <Logger name="org.hibernate.type"/>
+    <Logger name="org.hibernate.tool.hbm2ddl"/>
+
+    <Logger name="org.springframework"/>
+    <Logger name="org.springframework.jdbc"/>
+    <Logger name="org.springframework.data"/>
+
+    <Logger name="org.apache"/>
+
+    <Logger name="org.jspresso"/>
+    <Logger name="com.mongodb"/>
+
+    <!-- ======================= -->
+    <!-- Setup the Root category -->
+    <!-- ======================= -->
+    <Root level="error">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</Configuration>
