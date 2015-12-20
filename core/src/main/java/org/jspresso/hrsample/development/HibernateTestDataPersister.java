@@ -69,6 +69,11 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
             "+33 123 456 000");
 
         // Employees
+        Employee demo = createEmployee("M", "Demo", "Demo", "demo",
+            "Impasse de la demo", evry, "demo@jspresso.com",
+            "+33 1 152 368 984", "02/05/1972", "03/08/2005", "0123456789",
+            true, "0xFF449911", "100000", design2see);
+        
         Employee johnDoe = createEmployee("M", "Doe", "John", "doepass",
             "12 allée du Chien qui Fume", evry, "john.doe@design2see.com",
             "+33 1 152 368 984", "02/05/1972", "03/08/2005", "1523698754",
@@ -150,6 +155,10 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
             "+33 123 456 202", itDepartment, isabelleMartin);
         it002Team.addToTeamMembers(gloriaSan);
         it002Team.addToTeamMembers(isabelleMartin);
+        it002Team.addToTeamMembers(demo);
+        
+        demo.setManagedOu(it002Team);
+        it002Team.setDepartment(itDepartment);
 
         saveOrUpdate(design2see);
       }
