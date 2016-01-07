@@ -57,6 +57,7 @@ import org.jspresso.framework.application.backend.ControllerAwareTransactionTemp
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateHelper;
 import org.jspresso.framework.application.backend.session.EMergeMode;
+import org.jspresso.framework.model.component.IPropertyTranslation;
 import org.jspresso.framework.model.entity.IEntity;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
 
@@ -1098,4 +1099,63 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     assertFalse("Session company has been assigned to UOW department",
         HibernateHelper.objectEquals(company, uowCompany));
   }
+
+  @Test
+  public void testTranslationComponentUpdate() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    EnhancedDetachedCriteria compCrit = EnhancedDetachedCriteria.forClass(Company.class);
+    final Company company = hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_KEEP, Company.class);
+
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      public void doInTransactionWithoutResult(TransactionStatus status) {
+        Company companyClone = hbc.cloneInUnitOfWork(company);
+        companyClone.setName("Translation");
+      }
+    });
+
+    for (Company.Translation translation : company.getPropertyTranslations()) {
+      if ("Translation".equals(translation.getTranslatedValue())) {
+        translation.setTranslatedValue("UpdatedTranslation");
+      }
+    }
+
+    IPropertyTranslation translationBefore = null;
+    for (Company.Translation translation : company.getPropertyTranslations()) {
+      if ("UpdatedTranslation".equals(translation.getTranslatedValue())) {
+        translationBefore = translation;
+      }
+    }
+
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      public void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.cloneInUnitOfWork(company);
+      }
+    });
+
+    IPropertyTranslation translationAfter = null;
+    for (Company.Translation translation : company.getPropertyTranslations()) {
+      if ("UpdatedTranslation".equals(translation.getTranslatedValue())) {
+        translationAfter = translation;
+      }
+    }
+
+    assertSame("translationBefore/After should be the same reference", translationBefore, translationAfter);
+
+
+    Company reloadedCompany = hbc.findById(company.getId(), EMergeMode.MERGE_CLEAN_EAGER, Company.class);
+    assertEquals("Translation component not correctly updated", "UpdatedTranslation", reloadedCompany.getName());
+
+    IPropertyTranslation translationReloaded = null;
+    for (Company.Translation translation : reloadedCompany.getPropertyTranslations()) {
+      if ("UpdatedTranslation".equals(translation.getTranslatedValue())) {
+        translationReloaded = translation;
+      }
+    }
+    assertNotNull("Updated translation not found", translationReloaded);
+
+    assertSame("translationBefore/After/Reloaded should be the same reference", translationAfter, translationReloaded);
+  }
+
 }
