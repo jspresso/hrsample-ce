@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005-2013 Vincent Vandenschrick. All rights reserved.
+ * Copyright (c) 2005-2016 Vincent Vandenschrick. All rights reserved.
  *
  *  This file is part of the Jspresso framework.
  *
@@ -44,14 +44,14 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
  * Base class for integration tests.
- * 
+ *
  * @author Vincent Vandenschrick
  */
 public class FrontTestStartup extends RemoteStartup {
 
   /**
    * Performs DB initialization and test data creation.
-   * 
+   *
    * @throws java.lang.Exception
    */
   @BeforeClass
@@ -62,7 +62,7 @@ public class FrontTestStartup extends RemoteStartup {
 
   /**
    * Destroys all data from DB.
-   * 
+   *
    * @throws java.lang.Exception
    */
   @AfterClass
@@ -98,7 +98,7 @@ public class FrontTestStartup extends RemoteStartup {
   /**
    * Starts a new controller and creates the session using the "test" user with
    * english locale.
-   * 
+   *
    * @throws java.lang.Exception
    */
   @Before
@@ -120,7 +120,7 @@ public class FrontTestStartup extends RemoteStartup {
 
   /**
    * Stops the controller.
-   * 
+   *
    * @throws java.lang.Exception
    */
   @After

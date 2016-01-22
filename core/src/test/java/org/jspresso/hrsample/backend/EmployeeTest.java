@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005-2013 Vincent Vandenschrick. All rights reserved.
+ * Copyright (c) 2005-2016 Vincent Vandenschrick. All rights reserved.
  *
  *  This file is part of the Jspresso framework.
  *
@@ -28,7 +28,7 @@ import org.junit.Test;
 
 /**
  * Employee tests
- * 
+ *
  * @author Maxime Hamm
  */
 public class EmployeeTest extends BackTestStartup {
@@ -44,8 +44,8 @@ public class EmployeeTest extends BackTestStartup {
     // check age is null if birth date is not set
     final Employee employee = controller.getEntityFactory().createEntityInstance(Employee.class);
     assertEquals(null, employee.getAge());
-    
-    // check age is correctly calculated if the birth date is set 
+
+    // check age is correctly calculated if the birth date is set
     cal.add(Calendar.YEAR, - 28);
     employee.setBirthDate(cal.getTime());
     assertEquals(28, (long)employee.getAge());
@@ -57,5 +57,5 @@ public class EmployeeTest extends BackTestStartup {
 
   }
 
- 
+
 }

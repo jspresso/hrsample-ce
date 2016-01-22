@@ -1,5 +1,20 @@
 /*
- * Copyright (c) 2005-2013 Vincent Vandenschrick. All rights reserved.
+ * Copyright (c) 2005-2016 Vincent Vandenschrick. All rights reserved.
+ *
+ *  This file is part of the Jspresso framework.
+ *
+ *  Jspresso is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Lesser General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Jspresso is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public License
+ *  along with Jspresso.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.jspresso.hrsample.development;
 
@@ -73,7 +88,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
             "Impasse de la demo", evry, "demo@jspresso.com",
             "+33 1 152 368 984", "02/05/1972", "03/08/2005", "0123456789",
             true, "0xFF449911", "100000", design2see);
-        
+
         Employee johnDoe = createEmployee("M", "Doe", "John", "doepass",
             "12 allée du Chien qui Fume", evry, "john.doe@design2see.com",
             "+33 1 152 368 984", "02/05/1972", "03/08/2005", "1523698754",
@@ -96,7 +111,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
 
         Employee mariaTrulli = createEmployee("F", "Trulli", "Maria", null,
             "20 avenue du Crocodile Marteau", evry,
-            "maria.trulli@design2see.com", "+33 1 868 745 369", 
+            "maria.trulli@design2see.com", "+33 1 868 745 369",
             "01/02/1963", "03/10/2006", "2325985423", true, "0xFF9489AB", "110000",
             design2see);
 
@@ -114,7 +129,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
 
         @SuppressWarnings("unused") Employee frankWurst = createEmployee("M",
             "Wurst", "Frank", null, "120 rue des Pétoncles", evry,
-            "frank.wurst@design2see.com", "+33 1 708 544 985", 
+            "frank.wurst@design2see.com", "+33 1 708 544 985",
             "23/05/1969", "17/11/2002", "1256725235", false, "0xFF14ADFE", "110000",
             design2see);
 
@@ -156,7 +171,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         it002Team.addToTeamMembers(gloriaSan);
         it002Team.addToTeamMembers(isabelleMartin);
         it002Team.addToTeamMembers(demo);
-        
+
         demo.setManagedOu(it002Team);
         it002Team.setDepartment(itDepartment);
 

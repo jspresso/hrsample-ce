@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005-2014 Vincent Vandenschrick. All rights reserved.
+ * Copyright (c) 2005-2016 Vincent Vandenschrick. All rights reserved.
  *
  *  This file is part of the Jspresso framework.
  *
@@ -44,7 +44,7 @@ import org.jspresso.hrsample.model.Team;
 
 /**
  * Performance tests.
- * 
+ *
  * @author Vincent Vandenschrick
  */
 public class PerformanceTest extends FrontTestStartup {

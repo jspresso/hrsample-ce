@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005-2014 Vincent Vandenschrick. All rights reserved.
+ * Copyright (c) 2005-2016 Vincent Vandenschrick. All rights reserved.
  *
  *  This file is part of the Jspresso framework.
  *
@@ -22,7 +22,7 @@ import org.jspresso.framework.application.startup.remote.RemoteStartup;
 
 /**
  * Remote HR sample startup class.
- * 
+ *
  * @author Vincent Vandenschrick
  */
 public class RemoteMobileApplicationStartup extends RemoteStartup {

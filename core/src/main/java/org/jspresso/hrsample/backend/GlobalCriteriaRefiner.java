@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005-2013 Vincent Vandenschrick. All rights reserved.
+ * Copyright (c) 2005-2016 Vincent Vandenschrick. All rights reserved.
  *
  *  This file is part of the Jspresso framework.
  *
@@ -27,7 +27,7 @@ import org.jspresso.hrsample.model.Employee;
 
 /**
  * Application global criteria refiner.
- * 
+ *
  * @author Vincent Vandenschrick
  */
 public class GlobalCriteriaRefiner implements ICriteriaRefiner {
