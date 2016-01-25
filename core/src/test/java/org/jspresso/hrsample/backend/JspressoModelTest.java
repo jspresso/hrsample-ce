@@ -56,6 +56,7 @@ import org.jspresso.framework.application.backend.entity.ControllerAwareEntityIn
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
 import org.jspresso.framework.model.component.ComponentException;
+import org.jspresso.framework.model.component.basic.ICollectionWrapper;
 import org.jspresso.framework.model.descriptor.MandatoryPropertyException;
 import org.jspresso.framework.model.entity.IEntity;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
@@ -316,6 +317,7 @@ public class JspressoModelTest extends BackTestStartup {
    * Tests fix for bug #928.
    */
   @Test
+  @SuppressWarnings("unchecked")
   public void testJoinOrderBy() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
     EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(Department.class);
@@ -335,6 +337,9 @@ public class JspressoModelTest extends BackTestStartup {
       Set<Team> teams = d.getTeams();
       Set<?> innerSet;
       try {
+        if (teams instanceof ICollectionWrapper<?>) {
+          teams = (Set<Team>) ((ICollectionWrapper) teams).getWrappedCollection();
+        }
         innerSet = (Set<?>) ReflectHelper.getPrivateFieldValue(PersistentSet.class, "set", teams);
       } catch (Exception ex) {
         throw new RuntimeException(ex);
