@@ -61,8 +61,7 @@ tabs('Company.tab.pane',
             'Company.tree',
             'Traceable.pane'/*,
             'decorated.translations.table'*/],
-    preferredHeight: 150,
-    tabSelectionAction: 'saveModuleObjectFrontAction')
+    preferredHeight: 150)
 
 table('Company-departments.table',
     actionMap: 'masterDetailActionMap', columnReordering: false) {
