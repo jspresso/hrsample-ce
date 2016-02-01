@@ -89,7 +89,7 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
    *
    * @return the HTML description of an employee.
    */
-  @DependsOn(Employee.FULL_NAME)
+  @DependsOn({Employee.FULL_NAME, Employee.AGE})
   public String getHtmlDescription() {
     return "<html><b><i>" + getComponent().getFullName() + "</i></b><br>" + "  Age: " + getComponent().getAge() + "</html>";
 
