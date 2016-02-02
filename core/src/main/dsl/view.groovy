@@ -178,16 +178,27 @@ split_horizontal('Employee.pane',
     preferredHeight: 200)
 
 table('Employee-events.table',
-    selectionMode: 'SINGLE_INTERVAL_CUMULATIVE_SELECTION') {
-  actionMap(parents: ['masterDetailActionMap']) {
-    actionList('ORGANIZE') {
+    selectionMode: 'SINGLE_INTERVAL_CUMULATIVE_SELECTION',
+    actionMap:'eventsTableActionMap') {
+
+  secondaryActionMap {
+    actionList (renderingOptions:'ICON') {
       action ref: 'moveBottomFrontAction'
+    }
+    actionList (renderingOptions:'LABEL_ICON') {
       action ref: 'moveDownFrontAction'
-      action ref: 'moveUpFrontAction'
+    }
+    actionList (renderingOptions:'ICON') {
       action ref: 'moveTopFrontAction'
+    }
+    actionList (renderingOptions:'LABEL_ICON') {
+      action ref: 'moveUpFrontAction'
     }
   }
 }
+    
+actionMap ('eventsTableActionMap', 
+  parents:['masterDetailActionMap']) 
 
 propertyView('Event-text.pane',
     name: 'text',
