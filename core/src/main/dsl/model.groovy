@@ -71,7 +71,12 @@ Entity('Employee',
                 'birthDate',
                 'company', 
                 'managedOu.manager',
-                'managedOu.manager.birthDate']) {
+                'managedOu.manager.birthDate',
+                'managedOu.manager.salary',
+                
+                'managedOu.manager.company',
+                'managedOu.manager.company.name',
+                'managedOu.manager.company.workforce']) {
   string_32 'firstName', mandatory: true, processors: 'FirstNameProcessor', translatable: true
   string_10 'ssn', regex: "[\\d]{10}", regexSample: '0123456789', unicityScope: 'empSsn'
   date 'birthDate', processors: 'BirthDateProcessor'
