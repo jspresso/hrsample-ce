@@ -1161,7 +1161,7 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   /**
    * Test multiple uow cloning.
    */
-  @Test(timeout = 200)
+  @Test(timeout = 300)
   public void testMultipleUOWCloning() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
     EnhancedDetachedCriteria empCrit = EnhancedDetachedCriteria.forClass(Employee.class);
