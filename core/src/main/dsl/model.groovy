@@ -69,11 +69,11 @@ Entity('Employee',
                 'firstName',
                 'gender',
                 'birthDate',
-                'company', 
+                'company',
                 'managedOu.manager',
                 'managedOu.manager.birthDate',
                 'managedOu.manager.salary',
-                
+
                 'managedOu.manager.company',
                 'managedOu.manager.company.name',
                 'managedOu.manager.company.workforce']) {

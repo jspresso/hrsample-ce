@@ -4,6 +4,7 @@ workspace('masterdata.workspace',
           icon:'geography.png') {
             filterModule('masterdata.cities.module',
                 component:'City',
+                //moduleView: 'City.table.view',
                 detailView:'City.module.view',
                 startup:'filterModuleStartup')
           }

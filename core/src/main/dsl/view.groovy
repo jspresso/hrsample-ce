@@ -196,9 +196,9 @@ table('Employee-events.table',
     }
   }
 }
-    
-actionMap ('eventsTableActionMap', 
-  parents:['masterDetailActionMap']) 
+
+actionMap ('eventsTableActionMap',
+  parents:['masterDetailActionMap'])
 
 propertyView('Event-text.pane',
     name: 'text',
@@ -264,6 +264,8 @@ split_vertical('Employee.module.view',
 border('Company.module.view',
     parent: 'Company.organization.view',
     actionMap: 'Company-module-am')
+
+table('City.table.view', parent: 'filterableBeanCollectionModuleView', readOnly: true)
 
 table('Employee.table.view', parent: 'filterableBeanCollectionModuleView'
 /*, selectionMode:'MULTIPLE_INTERVAL_CUMULATIVE_SELECTION'*/) {
