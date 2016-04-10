@@ -53,8 +53,9 @@ actionMap('controllerActionMap') {
 workspace('masterdata.workspace',
   icon:'masterdata.png') {
 
-nodeModule('masterdata.geography.module',
+  nodeModule('masterdata.geography.module',
     icon:'geography.png') {
+    
       filterModule('masterdata.cities.module',
           component:'City',
           detailView:'City.module.view',

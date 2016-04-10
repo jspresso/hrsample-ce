@@ -1158,4 +1158,35 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     assertSame("translationBefore/After/Reloaded should be the same reference", translationAfter, translationReloaded);
   }
 
+  /**
+   * Test multiple uow cloning.
+   */
+  @Test(timeout = 300)
+  public void testMultipleUOWCloning() {
+    final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
+    EnhancedDetachedCriteria empCrit = EnhancedDetachedCriteria.forClass(Employee.class);
+    final List<Employee> employees = hbc.findByCriteria(empCrit, EMergeMode.MERGE_KEEP, Employee.class);
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+      @Override
+      public void doInTransactionWithoutResult(TransactionStatus status) {
+        List<Employee> employeeClones = hbc.cloneInUnitOfWork(employees);
+        List<Employee> newEmployeeClones = null;
+        for (int i = 0; i < 100; i++) {
+          newEmployeeClones = hbc.cloneInUnitOfWork(employees);
+        }
+        for (int i = 0; i < employeeClones.size(); i++) {
+          assertSame("Multiple cloning did not clone to the same instance. Cloning is not idempotent.",
+              employeeClones.get(i), newEmployeeClones.get(i));
+        }
+        for (int i = 0; i < 100; i++) {
+          newEmployeeClones = hbc.cloneInUnitOfWork(employeeClones);
+        }
+        for (int i = 0; i < employeeClones.size(); i++) {
+          assertSame("Multiple cloning did not clone to the same instance. Cloning is not idempotent.",
+              employeeClones.get(i), newEmployeeClones.get(i));
+        }
+      }
+    });
+  }
+
 }
