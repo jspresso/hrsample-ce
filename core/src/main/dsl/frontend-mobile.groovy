@@ -1,7 +1,26 @@
+/*
+ * Controller
+ */
+controller ('hrsample.name',
+  description: 'hrsample.description',
+  icon:'people.png',
+  context:'hrsample',
+  language:'en',
+  workspaces:[
+      'organization.workspace',
+      'employees.workspace',
+      'masterdata.workspace'
+  ])
+
+/*
+ * Workspaces
+ */
 workspace('masterdata.workspace',
     icon:'masterdata.png', headerDescription:'masterdata.workspace.header') {
+  
   nodeModule('masterdata.geography.module',
       icon:'geography.png') {
+      
     filterModule('masterdata.cities.module',
         component:'City',
         filterView: 'City.filter.view',
@@ -48,15 +67,16 @@ workspace('departments.workspace',
       component:'Department')
 }
 
-controller 'hrsample.name',
-    description: 'hrsample.description',
-    icon:'people.png',
-    context:'hrsample',
-    language:'en',
-    //startup:'startupHrsampleAction',
-    workspaces:[
-        'organization.workspace',
-        'employees.workspace',
-        'masterdata.workspace'
-    ]
+/*
+ * login
+ */
+actionMap('secondaryLoginActionMapBase') {
+  actionList(description:'login.action.title') {
+    action ref:'helpFrontAction'
+  }
+}
+actionMap('secondaryLoginActionMap',
+  parents:['secondaryLoginActionMapBase'])
+
+   
 
