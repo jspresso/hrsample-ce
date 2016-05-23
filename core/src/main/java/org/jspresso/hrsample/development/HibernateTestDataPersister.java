@@ -18,20 +18,21 @@
  */
 package org.jspresso.hrsample.development;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Set;
 
-import org.springframework.beans.factory.BeanFactory;
-
 import org.jspresso.framework.application.startup.development.AbstractHibernateTestDataPersister;
-
+import org.jspresso.framework.util.image.ImageHelper;
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Team;
+import org.jspresso.hrsample.model.User;
+import org.springframework.beans.factory.BeanFactory;
 
 /**
  * Persists some test data for the HR sample application.
@@ -92,57 +93,57 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         Employee demo = createEmployee("M", "Demo", "Demo", "demo",
             "Impasse de la demo", evry, "demo@jspresso.com",
             "+33 1 152 368 984", "02/05/1972", "03/08/2005", "0123456789",
-            true, "0xFF449911", "100000");
+            true, "0xFF449911", "100000", "employees/Mark_Zuckerberg.jpg", "employees/Mark_Zuckerberg_Signature.png");
         employees.add(demo);
 
         Employee johnDoe = createEmployee("M", "Doe", "John", "doepass",
             "12 allée du Chien qui Fume", evry, "john.doe@design2see.com",
             "+33 1 152 368 984", "02/05/1972", "03/08/2005", "1523698754",
-            true, "0xFF449911", "100000");
+            true, "0xFF449911", "100000", null, null);
         employees.add(johnDoe);
 
         Employee mikeDen = createEmployee("M", "Den", "Mike", "denpass",
             "26 rue de la Pie qui Chante", suresnes, "mike.den@design2see.com",
             "+33 1 968 846 398", "05/07/1990", "01/03/2004", "1859637461",
-            false, "0xFFCC1255", "80000");
+            false, "0xFFCC1255", "80000", "employees/Mike.jpg", null);
         employees.add(mikeDen);
 
         Employee evaGreen = createEmployee("F", "Green", "Eva", null,
             "68 rue de l'Eléphant Vert", suresnes, "eva.green@design2see.com",
             "+33 1 958 536 972", "10/08/1977", "06/04/2002", "2856752387",
-            true, "0xFFAA4411", "85000");
+            true, "0xFFAA4411", "85000", null, null);
         employees.add(evaGreen);
 
         Employee gloriaSan = createEmployee("F", "San", "Gloria", null,
             "13 avenue du Poisson Enragé", evry, "gloria.san@design2see.com",
             "+33 1 956 367 412", "09/01/1969", "03/01/2006", "2597853274",
-            false, "0xFF001276", "75000");
+            false, "0xFF001276", "75000", null, null);
         employees.add(gloriaSan);
 
         Employee mariaTrulli = createEmployee("F", "Trulli", "Maria", null,
             "20 avenue du Crocodile Marteau", evry,
             "maria.trulli@design2see.com", "+33 1 868 745 369",
-            "01/02/1963", "03/10/2006", "2325985423", true, "0xFF9489AB", "110000");
+            "01/02/1963", "03/10/2006", "2325985423", true, "0xFF9489AB", "110000", null, null);
         employees.add(mariaTrulli);
 
         Employee isabelleMartin = createEmployee("F", "Martin", "Isabelle",
             null, "20 allée de la Gazelle Sauteuse", evry,
             "isabelle.martin@design2see.com", "+33 1 698 256 365",
             "04/07/1970", "12/06/2001", "2652398751", false, "0xFFAA6512",
-            "39000");
+            "39000", null, null);
         employees.add(isabelleMartin);
 
         Employee graziellaBerlutti = createEmployee("F", "Berlutti",
             "Graziella", null, "104 square des Bégonias", suresnes,
             "graziella.berlutti@design2see.com", "+33 1 698 234 986",
             "17/03/1982", "12/06/2003", "2256725396", false, "0xFFAA1133",
-            "100000");
+            "100000", "employees/Graziella.jpg", null);
         employees.add(graziellaBerlutti);
 
-        @SuppressWarnings("unused") Employee frankWurst = createEmployee("M",
+        Employee frankWurst = createEmployee("M",
             "Wurst", "Frank", null, "120 rue des Pétoncles", evry,
             "frank.wurst@design2see.com", "+33 1 708 544 985",
-            "23/05/1969", "17/11/2002", "1256725235", false, "0xFF14ADFE", "110000");
+            "23/05/1969", "17/11/2002", "1256725235", false, "0xFF14ADFE", "110000", null, null);
         employees.add(frankWurst);
 
 
@@ -254,7 +255,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
   private Employee createEmployee(String gender, String name, String firstName,
       String password, String address, City city, String email, String phone,
       String birthDate, String hireDate, String ssn, boolean married,
-      String preferredColor, String salary) {
+      String preferredColor, String salary, String image, String signature) throws IOException {
     SimpleDateFormat df = new SimpleDateFormat("DD/MM/yyyy");
 
     Employee employee = createEntityInstance(Employee.class);
@@ -281,11 +282,29 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     employee.setPreferredColor(preferredColor);
     employee.setSalary(new BigDecimal(salary));
 
+    if (image!=null)
+      employee.setPhoto(loadImage(image));
+    
     Employee.Translation t = getEntityFactory().createComponentInstance(Employee.Translation.class);
     t.setLanguage("de");
     t.setPropertyName("firstName");
     t.setTranslatedValue(new StringBuilder(employee.getFirstNameRaw()).reverse().toString());
     employee.addToPropertyTranslations(t);
+    
+    if (password!=null) {
+      User u = getEntityFactory().createEntityInstance(User.class);
+      u.setLogin(password);
+      u.setPassword(password);
+      employee.addToUsers(u);
+    }
+    
+    if (signature!=null) 
+      employee.setSignature(loadImage(signature));
+    
     return employee;
+  }
+  
+  private byte[] loadImage(String path) throws IOException {
+    return ImageHelper.loadImage("/org/jspresso/hrsample/images/" + path);
   }
 }

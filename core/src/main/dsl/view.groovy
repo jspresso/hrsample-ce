@@ -288,3 +288,4 @@ table('Employee.table.view', parent: 'filterableBeanCollectionModuleView'
 }
 
 messageSource(basenames: 'org.jspresso.hrsample.i18n.Messages')
+

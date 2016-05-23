@@ -18,10 +18,14 @@
  */
 package org.jspresso.hrsample.model.extension;
 
+import java.io.IOException;
+
+import org.jspresso.framework.application.backend.BackendControllerHolder;
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.framework.model.component.service.DependsOn;
 import org.jspresso.framework.model.descriptor.IEnumerationPropertyDescriptor;
-
+import org.jspresso.framework.util.image.ImageHelper;
+import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Employee;
 
 /**
@@ -84,14 +88,40 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
     return buff.toString();
   }
 
+//  /**
+//   * Computes the HTML description of an employee.
+//   *
+//   * @return the HTML description of an employee.
+//   */
+//  @DependsOn({Employee.FULL_NAME, Employee.BIRTH_DATE})
+//  public String getHtmlDescription() {
+//    return "<html><b><i>" + getComponent().getFullName() + "</i></b><br>" + "  Age: " + getComponent().getAge() + "</html>";
+//
+//  }
+  
   /**
-   * Computes the HTML description of an employee.
-   *
-   * @return the HTML description of an employee.
+   * Gets html description.
+   * @return The html description.
+   * @throws IOException If image is not available
    */
-  @DependsOn({Employee.FULL_NAME, Employee.BIRTH_DATE})
-  public String getHtmlDescription() {
-    return "<html><b><i>" + getComponent().getFullName() + "</i></b><br>" + "  Age: " + getComponent().getAge() + "</html>";
-
+  @DependsOn({Employee.FULL_NAME, Employee.COMPANY+'.'+Company.NAME, Employee.PHOTO})
+  public String getHtmlDescription() throws IOException {
+    Employee employee = getComponent();
+    
+    StringBuffer sb = new StringBuffer();
+    sb.append("<html><b>").append(employee.getFullName()).append("</b><br/>");
+    
+    if (employee.getCompany()!=null) {   
+      sb.append("<i><font size='2'>");
+      sb.append(employee.getCompany().getName());
+      sb.append("</font></i>");
+    }
+    
+    if (employee.getPhoto()!=null) {
+      sb.append("<br><img src='").append(ImageHelper.toBase64Src(employee.getPhoto(), "png")).append("'>");
+    }
+    
+    sb.append("</html>");
+    return sb.toString();
   }
 }

@@ -31,19 +31,14 @@ mobileCompositePage('City.page.view', actionMap: 'beanModuleActionMap', editorPa
 
 mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap') {
   sections {
-    mobileForm(labelsPosition: 'NONE') {
-      fields {
-        propertyView name: 'genderImageUrl'
-      }
-    }
+//    mobileForm(labelsPosition: 'NONE') {
+//      fields {
+//        propertyView name: 'genderImageUrl'
+//      }
+//    }
     mobileForm(labelsPosition: 'NONE') {
       fields {
         image name: 'photo', scaledWidth: 150
-      }
-    }
-    mobileForm(labelsPosition: 'NONE') {
-      fields {
-        image name: 'signature', drawable:true, scaledWidth: 300, scaledHeight: 200
       }
     }
     mobileForm(excludedReading:['company'], excludedWriting:['createTimestamp', 'lastUpdateTimestamp']) {
@@ -61,6 +56,11 @@ mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap') {
         propertyView name: 'company'
         propertyView name: 'createTimestamp'
         propertyView name: 'lastUpdateTimestamp'
+      }
+    }
+    mobileForm(labelsPosition: 'NONE') {
+      fields {
+        image name: 'signature', drawable:true, scaledWidth: 300, scaledHeight: 200
       }
     }
     mobileMapView(model: 'contact', name: 'map',  longitude: 'city.longitude', latitude: 'city.latitude')
@@ -113,3 +113,49 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
     mobileMapView(model: 'contact', name: 'map', longitude: 'city.longitude', latitude: 'city.latitude')
   }
 }
+
+/*
+ * My profile
+ */
+mobileCompositePage('my.profile.module.page', model:'Employee') {
+  sections {
+
+    mobileForm(labelsPosition:'NONE', name:'my.informations', borderType:'TITLED', position:'LEFT',
+    excludedReading:['name', 'firstName'],
+    excludedWriting:['fullName']) {
+      fields {
+        propertyView name:'fullName'
+        propertyView name:'name'
+        propertyView name:'firstName'
+      }
+    }
+
+    mobileForm(labelsPosition:'NONE', name:'my.phone', borderType:'TITLED', position:'RIGHT',
+    excludedReading:['contact.phone'],
+    excludedWriting:['contact.phoneAsHtml']) {
+      fields {
+        propertyView name:'contact.phoneAsHtml'
+        propertyView name:'contact.phone'
+      }
+    }
+
+    mobileForm(labelsPosition:'NONE', name:'my.photo', borderType:'TITLED', position:'TOP') {
+      fields {
+        image name:'photo'
+      }
+    }
+
+    mobileForm(labelsPosition:'NONE', name:'my.signature', borderType:'TITLED', position:'BOTTOM') {
+      fields {
+        image name:'signature', drawable:true
+      }
+    }
+
+  }
+}
+
+/*
+ * actions
+ */
+action ('myProfileModuleInitAction',
+  class:'org.jspresso.hrsample.frontend.MyProfileModuleInitAction')

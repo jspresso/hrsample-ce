@@ -6,10 +6,12 @@ controller ('hrsample.name',
   icon:'people.png',
   context:'hrsample',
   language:'en',
+  startup:'startupHRSampleAction',
   workspaces:[
       'organization.workspace',
       'employees.workspace',
-      'masterdata.workspace'
+      'masterdata.workspace',
+      'parameters.mobile.workspace'
   ])
 
 /*
@@ -67,6 +69,17 @@ workspace('departments.workspace',
       component:'Department')
 }
 
+workspace('parameters.mobile.workspace', 
+  icon:'classpath:org/jspresso/framework/application/images/execute-48x48.png', 
+  headerDescription:'parameters.mobile.workspace.header') {
+    
+  beanModule ('my.profile.module', icon:'people.png',
+    moduleView:'my.profile.module.page',
+    entry:'myProfileModuleInitAction',
+    component:'Employee')
+    
+}
+    
 /*
  * login
  */
@@ -78,5 +91,9 @@ actionMap('secondaryLoginActionMapBase') {
 actionMap('secondaryLoginActionMap',
   parents:['secondaryLoginActionMapBase'])
 
-   
+/*
+ * Init action  
+ */
+action ('startupHRSampleAction',
+  class:'org.jspresso.hrsample.frontend.UserSessionInitAction')
 
