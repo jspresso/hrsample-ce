@@ -30,6 +30,7 @@ import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
+import org.jspresso.hrsample.model.Role;
 import org.jspresso.hrsample.model.Team;
 import org.jspresso.hrsample.model.User;
 import org.springframework.beans.factory.BeanFactory;
@@ -189,6 +190,22 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         demo.setManagedOu(it002Team);
         it002Team.setDepartment(itDepartment);
 
+        // Roles
+        Role adminRole = getEntityFactory().createEntityInstance(Role.class);
+        adminRole.setRoleId("administrator");
+        adminRole.addToUsers(demo.getUsers().iterator().next());
+        saveOrUpdate(adminRole);
+        
+        Role employeeRole = getEntityFactory().createEntityInstance(Role.class);
+        employeeRole.setRoleId("employee");
+        for (Employee e : design2see.getEmployees()) {
+          if (! e.getUsers().isEmpty()) {
+            employeeRole.addToUsers(e.getUsers().iterator().next());
+          }
+        }
+        saveOrUpdate(employeeRole);
+        
+        //
         saveOrUpdate(design2see);
       }
     } catch (Throwable ex) {

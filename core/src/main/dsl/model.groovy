@@ -54,7 +54,7 @@ Entity('Employee',
     toString: 'fullName',
     toHtml: 'htmlDescription',
     autoComplete: 'name',
-    pageSize: 3,
+    pageSize: 20,
     rendered: ['name',
                'firstName',
                'gender',
@@ -178,25 +178,27 @@ Component('Link', extend: 'Nameable', rendered: 'name') {
   set 'children', ref: 'Link'
 }
  
-Entity('User', 
+Entity('User',
   extend: ['Traceable'],
   extension:'UserExtension',
+  rendered:['login', 'password', 'employee', 'createTimestamp', 'lastUpdateTimestamp'],
   services:['UserService':'UserServiceDelegate']) {
   
   string_64 'login', mandatory:true, unicityScope:'community'
   password  'password', maxLength:32
   
-  string_64 'firstname'
-  string_64 'lastname' 
-  
   set 'roles', ref:'Role'
   
   // relations
-  reference 'employee', ref:'Employee'
+  reference 'employee', ref:'Employee', i18nNameKey:'org.jspresso.hrsample.model.Employee'
   
+  // computed
+  reference 'mainRole', ref:'Role', computed:true
 }
 
-Entity('Role', extend:['Traceable'],
+Entity('Role', 
+  extend:['Traceable'],
+  rendered:['roleId', 'createTimestamp', 'lastUpdateTimestamp'],
   icon:'employees.png') {
   
   string_30 'roleId', unicityScope:'roleId'

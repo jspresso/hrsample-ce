@@ -52,7 +52,7 @@ actionMap('controllerActionMap') {
  */
 workspace('masterdata.workspace',
   icon:'masterdata.png') {
-
+  
   nodeModule('masterdata.geography.module',
     icon:'geography.png') {
     
