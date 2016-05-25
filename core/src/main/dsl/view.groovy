@@ -13,13 +13,13 @@ template 'listView',
     parent: 'decoratedView'
 
 form('Traceable.pane',
-    model: 'Traceable',
+    model: 'Traceable', borderType:'NONE',
     description: 'traceable.editing',
     fields: ['createTimestamp',
              'lastUpdateTimestamp'])
 
 form('Company.pane',
-    labelsPosition: 'ASIDE',
+    labelsPosition: 'ASIDE', borderType:'NONE',
     fields: ['name',
              'contact.address',
              'contact.city',
@@ -45,7 +45,7 @@ treeNode('Company-departments.treeNode',
     actionMap: 'masterDetailActionMap')
 
 tree('Company.tree',
-    rendered: 'name',
+    rendered: 'name', borderType:'NONE',
     preferredHeight: 200,
     icon: 'structure.png') {
   subTree('Company-employees.treeNode')
@@ -61,7 +61,8 @@ tabs('Company.tab.pane',
             'Company.tree',
             'Traceable.pane'/*,
             'decorated.translations.table'*/],
-    preferredHeight: 150)
+    preferredHeight: 130)
+ 
 
 table('Company-departments.table',
     actionMap: 'masterDetailActionMap', columnReordering: false) {
@@ -83,24 +84,38 @@ table('Department-teams.table',
 action('addFromList',
     parent: 'lovOkFrontAction') { next(parent: 'addAnyToMasterFrontAction') }
 
-listView('Team-teamMembers.list', preferredWidth: 300, displayIcon:false) {
-  actionMap {
-    actionList('EDIT') {
-      action(parent: 'pickupAndAddAnyFrontAction',
-          custom: [entityDescriptor_ref : 'Employee',
-                   initializationMapping: ['company': 'company'],])
-      action(ref: 'removeAnyCollectionFromMasterFrontAction')
-    }
-  }
-}
-
 split_vertical('Company.departments.and.teams.view',
     cascadingModels: true,
     top: 'Company-departments.table') {
   bottom {
-    border(center: 'Department-teams.table',
-        east: 'Team-teamMembers.list',
-        cascadingModels: true)
+    
+    repeater (model:'Department-teams', 
+      secondaryActionMap:'masterDetailActionMap') {
+      
+      repeat {
+        border (model:'Team') {
+          north {
+            form (
+              fields:['ouId', 'name', 'manager'], labelsPosition:'ABOVE', columnCount:3)
+          }
+          center {
+            table (model:'Team-teamMembers', borderType:'NONE', horizontallyScrollable:false, preferredHeight:120) {
+              actionMap {
+                actionList('EDIT') {
+                  action(parent: 'pickupAndAddAnyFrontAction', custom: [entityDescriptor_ref: 'Employee', initializationMapping: ['company':'company']])
+                  action(ref: 'removeAnyCollectionFromMasterFrontAction')
+                }
+              }
+              columns {
+                image name:'photo', scaledHeight:25, preferredWidth:50
+                propertyView name:'fullName'
+              }
+            }
+          }
+        }
+      }
+      
+    }
   }
 }
 
@@ -239,7 +254,20 @@ actionMap('Company-module-am') {
 
 tabs('Company.dialog.view', parent: 'Company.tab.pane')
 
-tabs('City.module.view') {
+//repeater('City.module.view', actionMap:'filterableBeanCollectionModuleActionMap') {
+//  repeat {
+//    border (model:'City') {
+//      north {
+//        form (fields:['name'], borderType:'NONE', labelsPosition:'ASIDE')
+//      }
+//      center {
+//        form (fields:['zip', 'longitude', 'latitude'], columnCount:3, borderType:'NONE', labelsPosition:'ASIDE')
+//      }
+//    }
+//  }
+//}
+
+tabs('City.detail.view') {
   views {
     form(labelsPosition: 'ABOVE',
         actionMap: 'beanModuleActionMap',

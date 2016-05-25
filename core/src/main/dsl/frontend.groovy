@@ -58,7 +58,8 @@ workspace('masterdata.workspace',
     
       filterModule('masterdata.cities.module',
           component:'City',
-          detailView:'City.module.view',
+          detailView:'City.detail.view',
+          //moduleView:'City.module.view',
           startup:'filterModuleStartup')
     }
 }
@@ -68,15 +69,15 @@ workspace('employees.workspace',
   grantedRoles:[
     'administrator',
     'staff-manager']) {
-  
-filterModule('employees.module',
-    icon:'employees.png',
-    component:'Employee',
-    //filterView:'Employee.filter.pane',
-    moduleView:'Employee.table.view',
-    detailView:'Employee.module.view',
-    startup:'filterModuleStartup',
-    pageSize:4)
+    
+  filterModule('employees.module',
+      icon:'employees.png',
+      component:'Employee',
+      //filterView:'Employee.filter.pane',
+      moduleView:'Employee.table.view',
+      detailView:'Employee.module.view',
+      startup:'filterModuleStartup',
+      pageSize:4)
 }
 
 workspace('organization.workspace',
@@ -85,18 +86,19 @@ workspace('organization.workspace',
     'administrator',
     'organization-manager']) {
   
-filterModule('companies.module',
-    icon:'company.png',
-    component:'Company',
-    detailView:'Company.module.view',
-    startup:'filterModuleStartup')
+  filterModule('companies.module',
+      icon:'company.png',
+      component:'Company',
+      detailView:'Company.module.view',
+      startup:'filterModuleStartup')
 }
 
 workspace('departments.workspace',
   icon:'department.png') {
-filterModule('departments.module',
-    icon:'department.png',
-    component:'Department',
-    filterView:'Department.filter.pane')
+  
+  filterModule('departments.module',
+      icon:'department.png',
+      component:'Department',
+      filterView:'Department.filter.pane')
 }
 

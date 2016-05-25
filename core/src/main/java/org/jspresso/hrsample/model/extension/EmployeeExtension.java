@@ -20,7 +20,6 @@ package org.jspresso.hrsample.model.extension;
 
 import java.io.IOException;
 
-import org.jspresso.framework.application.backend.BackendControllerHolder;
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.framework.model.component.service.DependsOn;
 import org.jspresso.framework.model.descriptor.IEnumerationPropertyDescriptor;
@@ -34,7 +33,7 @@ import org.jspresso.hrsample.model.Employee;
  * @author Vincent Vandenschrick
  */
 public class EmployeeExtension extends AbstractComponentExtension<Employee> {
-
+ 
   /**
    * Constructs a new {@code EmployeeExtension} instance.
    *

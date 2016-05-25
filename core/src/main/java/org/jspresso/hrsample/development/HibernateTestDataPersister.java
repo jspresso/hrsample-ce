@@ -100,7 +100,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         Employee johnDoe = createEmployee("M", "Doe", "John", "doepass",
             "12 allée du Chien qui Fume", evry, "john.doe@design2see.com",
             "+33 1 152 368 984", "02/05/1972", "03/08/2005", "1523698754",
-            true, "0xFF449911", "100000", null, null);
+            true, "0xFF449911", "100000", "employees/Ryan-Gosling.jpg", null);
         employees.add(johnDoe);
 
         Employee mikeDen = createEmployee("M", "Den", "Mike", "denpass",
@@ -112,26 +112,26 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         Employee evaGreen = createEmployee("F", "Green", "Eva", null,
             "68 rue de l'Eléphant Vert", suresnes, "eva.green@design2see.com",
             "+33 1 958 536 972", "10/08/1977", "06/04/2002", "2856752387",
-            true, "0xFFAA4411", "85000", null, null);
+            true, "0xFFAA4411", "85000", "employees/Eva_Green.jpg", null);
         employees.add(evaGreen);
 
         Employee gloriaSan = createEmployee("F", "San", "Gloria", null,
             "13 avenue du Poisson Enragé", evry, "gloria.san@design2see.com",
             "+33 1 956 367 412", "09/01/1969", "03/01/2006", "2597853274",
-            false, "0xFF001276", "75000", null, null);
+            false, "0xFF001276", "75000", "employees/Angelina-Jolie.jpg", null);
         employees.add(gloriaSan);
 
         Employee mariaTrulli = createEmployee("F", "Trulli", "Maria", null,
             "20 avenue du Crocodile Marteau", evry,
             "maria.trulli@design2see.com", "+33 1 868 745 369",
-            "01/02/1963", "03/10/2006", "2325985423", true, "0xFF9489AB", "110000", null, null);
+            "01/02/1963", "03/10/2006", "2325985423", true, "0xFF9489AB", "110000", "employees/Jack_Ryan.jpg", null);
         employees.add(mariaTrulli);
 
         Employee isabelleMartin = createEmployee("F", "Martin", "Isabelle",
             null, "20 allée de la Gazelle Sauteuse", evry,
             "isabelle.martin@design2see.com", "+33 1 698 256 365",
             "04/07/1970", "12/06/2001", "2652398751", false, "0xFFAA6512",
-            "39000", null, null);
+            "39000", "employees/Marion_Cotillard.jpg", null);
         employees.add(isabelleMartin);
 
         Employee graziellaBerlutti = createEmployee("F", "Berlutti",
@@ -144,7 +144,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         Employee frankWurst = createEmployee("M",
             "Wurst", "Frank", null, "120 rue des Pétoncles", evry,
             "frank.wurst@design2see.com", "+33 1 708 544 985",
-            "23/05/1969", "17/11/2002", "1256725235", false, "0xFF14ADFE", "110000", null, null);
+            "23/05/1969", "17/11/2002", "1256725235", false, "0xFF14ADFE", "110000", "employees/John_Goodman.jpg", null);
         employees.add(frankWurst);
 
 
