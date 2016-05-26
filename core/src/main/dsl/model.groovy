@@ -102,7 +102,7 @@ Entity('Employee',
   reference 'managedOu', ref: 'OrganizationalUnit', reverse: 'OrganizationalUnit-manager'
   integer 'age', minValue: 0, maxValue: 150, sqlName: 'YEAR(current_date) - YEAR(BIRTH_DATE)', computed: true, cacheable: true
   imageUrl 'genderImageUrl', maxLength: 512, id: 'Employee-genderImageUrl', computed: true, scaledHeight: 100
-  string_512 'fullName', computed: true, i18nNameKey:'name'
+  string_512 'fullName', computed: true, i18nNameKey:'name', id:'Employee-fullname'
   html 'htmlDescription', computed: true
   set 'users', ref:'User', reverse:'User-employee'
   enumeration 'language', enumName:'language', values:['fr', 'en'], defaultValue:'fr'

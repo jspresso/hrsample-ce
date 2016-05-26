@@ -89,14 +89,35 @@ split_vertical('Company.departments.and.teams.view',
     top: 'Company-departments.table') {
   bottom {
     
-    repeater (model:'Department-teams', 
-      secondaryActionMap:'masterDetailActionMap') {
-      
+    repeater (model:'Department-teams') {
+      actionMap {
+        actionList {
+          action parent:'addToMasterFrontAction', custom:[elementEntityDescriptor_ref:'Team']
+        }
+      }
       repeat {
-        border (model:'Team') {
+        border {
           north {
-            form (
-              fields:['ouId', 'name', 'manager'], labelsPosition:'ABOVE', columnCount:3)
+            border (borderType:'TITLED') {
+              west {
+                evenGrid (drivingCellCount:1, drivingDimension:'ROW') {
+                  cells {
+                    evenCell {
+                      actionView action:'removeEntityCollectionParentFromMasterFrontAction'
+                    }
+                  }
+                }
+              }
+              center {
+                form (labelsPosition:'ABOVE', columnCount:3, borderType:'NONE') {
+                  fields {
+                    propertyView name:'ouId'
+                    propertyView name:'name'
+                    propertyView ref:'OrganizationalUnit-manager.property'
+                  }
+                }
+              }
+            }
           }
           center {
             table (model:'Team-teamMembers', borderType:'NONE', horizontallyScrollable:false, preferredHeight:120) {
@@ -108,7 +129,7 @@ split_vertical('Company.departments.and.teams.view',
               }
               columns {
                 image name:'photo', scaledHeight:25, preferredWidth:50
-                propertyView name:'fullName'
+                propertyView parent:'Employee-fullname.property', name:'fullName'
               }
             }
           }
@@ -119,6 +140,26 @@ split_vertical('Company.departments.and.teams.view',
   }
 }
 
+// Repeater crud actions 
+external id:['removeComponentsFromWorkspacesFrontAction']
+action ('removeEntityCollectionParentFromMasterFrontAction',
+  parent:'removeEntityCollectionFromMasterFrontAction',
+  custom:[yesAction_ref:'removeComponentsParentFromWorkspacesFrontAction'])
+
+action ('removeComponentsParentFromWorkspacesFrontAction', 
+  parent:'removeComponentsFromWorkspacesFrontAction',
+  wrapped:'removeCollectionParentFromMasterBackAction')
+
+action ('removeCollectionParentFromMasterBackAction',
+  class:'org.jspresso.framework.application.backend.action.persistence.RemoveCollectionParentFromMasterAction',
+  parent:'removeCollectionFromMasterBackAction')
+
+
+
+// Overiden into HRSample EE    
+propertyView('Employee-fullname.property')    
+propertyView('OrganizationalUnit-manager.property')  
+    
 border('Company.organization.view',
     model: 'Company',
     north: 'Company.tab.pane',
@@ -145,10 +186,10 @@ form('Employee.component.pane',
     propertyView name: 'contact'
     propertyView name: 'married'
     propertyView name: 'preferredColor'
-    propertyView name: 'photo'
+    //propertyView name: 'photo'
     propertyView name: 'company'
-    propertyView name: 'createTimestamp'
-    propertyView name: 'lastUpdateTimestamp'
+    //propertyView name: 'createTimestamp'
+    //propertyView name: 'lastUpdateTimestamp'
   }
 }
 
