@@ -38,6 +38,7 @@ workspace('employees.workspace',
         'administrator',
         'staff-manager'
     ]) {
+  
   filterModule('employees.module',
       icon:'employees.png',
       component:'Employee',
@@ -45,6 +46,7 @@ workspace('employees.workspace',
       detailView:'Employee.page.view',
       pageSize: 10,
       startup:'filterModuleStartup')
+
 }
 
 workspace('organization.workspace',
@@ -53,6 +55,7 @@ workspace('organization.workspace',
         'administrator',
         'organization-manager'
     ]) {
+  
   filterModule('companies.module',
       icon:'company.png',
       component:'Company',
@@ -60,13 +63,6 @@ workspace('organization.workspace',
       detailView:'Company.page.view',
       pageSize: 10,
       startup:'filterModuleStartup')
-}
-
-workspace('departments.workspace',
-    icon:'department.png') {
-  filterModule('departments.module',
-      icon:'department.png',
-      component:'Department')
 }
 
 workspace('parameters.mobile.workspace', 

@@ -70,7 +70,8 @@ table('Company-departments.table',
     propertyView name: 'ouId'
     propertyView name: 'teamCount'
     propertyView name: 'name'
-    propertyView name: 'manager'
+    //propertyView name: 'manager'
+    propertyView ref:'OrganizationalUnit-manager.property'
     propertyView name: 'contact'
     propertyView name: 'createTimestamp'
     propertyView name: 'lastUpdateTimestamp'
@@ -102,9 +103,8 @@ split_vertical('Company.departments.and.teams.view',
               west {
                 evenGrid (drivingCellCount:1, drivingDimension:'ROW') {
                   cells {
-                    evenCell {
-                      actionView action:'removeEntityCollectionParentFromMasterFrontAction'
-                    }
+                    evenCell { actionView action:'removeEntityCollectionFromMasterFrontAction' }
+                    evenCell { actionView action:'cloneEntityCollectionFrontAction' }
                   }
                 }
               }
@@ -129,7 +129,7 @@ split_vertical('Company.departments.and.teams.view',
               }
               columns {
                 image name:'photo', scaledHeight:25, preferredWidth:50
-                propertyView parent:'Employee-fullname.property', name:'fullName'
+                propertyView ref:'Employee-fullname.property'
               }
             }
           }
@@ -139,21 +139,6 @@ split_vertical('Company.departments.and.teams.view',
     }
   }
 }
-
-// Repeater crud actions 
-external id:['removeComponentsFromWorkspacesFrontAction']
-action ('removeEntityCollectionParentFromMasterFrontAction',
-  parent:'removeEntityCollectionFromMasterFrontAction',
-  custom:[yesAction_ref:'removeComponentsParentFromWorkspacesFrontAction'])
-
-action ('removeComponentsParentFromWorkspacesFrontAction', 
-  parent:'removeComponentsFromWorkspacesFrontAction',
-  wrapped:'removeCollectionParentFromMasterBackAction')
-
-action ('removeCollectionParentFromMasterBackAction',
-  class:'org.jspresso.framework.application.backend.action.persistence.RemoveCollectionParentFromMasterAction',
-  parent:'removeCollectionFromMasterBackAction')
-
 
 
 // Overiden into HRSample EE    
