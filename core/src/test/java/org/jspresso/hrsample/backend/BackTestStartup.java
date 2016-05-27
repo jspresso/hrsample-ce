@@ -35,6 +35,8 @@ import org.jspresso.framework.util.exception.NestedRuntimeException;
 import org.jspresso.hrsample.development.HibernateTestDataPersister;
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
+import org.jspresso.hrsample.model.Role;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -77,6 +79,7 @@ public class BackTestStartup extends AbstractBackendStartup {
       protected void doInTransactionWithoutResult(TransactionStatus status) {
         deleteAllInstances(bc, Company.class);
         deleteAllInstances(bc, City.class);
+        deleteAllInstances(bc, Role.class);
       }
     });
   }

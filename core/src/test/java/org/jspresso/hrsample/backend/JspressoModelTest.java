@@ -21,10 +21,7 @@ package org.jspresso.hrsample.backend;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.argThat;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -42,7 +39,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.hamcrest.Description;
-import org.hibernate.FetchMode;
 import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.collection.internal.PersistentSet;
@@ -52,6 +48,12 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
+import org.junit.Test;
+import org.mockito.ArgumentMatcher;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+
 import org.jspresso.framework.application.backend.entity.ControllerAwareEntityInvocationHandler;
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.backend.session.EMergeMode;
@@ -63,6 +65,7 @@ import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDeta
 import org.jspresso.framework.util.bean.integrity.IntegrityException;
 import org.jspresso.framework.util.reflect.ReflectHelper;
 import org.jspresso.framework.util.uid.ByteArray;
+
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.ContactInfo;
@@ -73,11 +76,6 @@ import org.jspresso.hrsample.model.Link;
 import org.jspresso.hrsample.model.Nameable;
 import org.jspresso.hrsample.model.OrganizationalUnit;
 import org.jspresso.hrsample.model.Team;
-import org.junit.Test;
-import org.mockito.ArgumentMatcher;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallback;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
  * Model integration tests.
@@ -260,7 +258,7 @@ public class JspressoModelTest extends BackTestStartup {
     // emp.setName(Integer.toHexString(emp.hashCode()));
     // company.addToEmployees(emp);
     // }
-    Set<Employee> employees = new HashSet<Employee>();
+    Set<Employee> employees = new HashSet<>();
     for (int i = 0; i < 5000; i++) {
       Employee emp = hbc.getEntityFactory().createEntityInstance(Employee.class);
       // The employee collection should be sorted by name
@@ -272,6 +270,9 @@ public class JspressoModelTest extends BackTestStartup {
 
   /**
    * Tests entities memory consumption.
+   *
+   * @throws InterruptedException
+   *     the interrupted exception
    */
   @Test
   public void testEntitiesMemoryConsumption() throws InterruptedException {

@@ -27,14 +27,14 @@ import org.jspresso.hrsample.model.Employee;
 import org.junit.Test;
 
 /**
- * Employee tests
+ * Employee tests.
  *
  * @author Maxime Hamm
  */
 public class EmployeeTest extends BackTestStartup {
 
   /**
-   * Test the computed field age calculation
+   * Test the computed field age calculation.
    */
   @Test
   public void testComputedAge() {
