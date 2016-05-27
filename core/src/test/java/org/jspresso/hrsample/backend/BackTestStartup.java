@@ -25,6 +25,13 @@ import javax.security.auth.Subject;
 import org.hibernate.criterion.DetachedCriteria;
 import org.jboss.security.SimpleGroup;
 import org.jboss.security.SimplePrincipal;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+
 import org.jspresso.framework.application.backend.persistence.hibernate.HibernateBackendController;
 import org.jspresso.framework.application.startup.AbstractBackendStartup;
 import org.jspresso.framework.model.entity.IEntity;
@@ -32,17 +39,11 @@ import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDeta
 import org.jspresso.framework.security.SecurityHelper;
 import org.jspresso.framework.security.UserPrincipal;
 import org.jspresso.framework.util.exception.NestedRuntimeException;
+
 import org.jspresso.hrsample.development.HibernateTestDataPersister;
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Role;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
 /**
  * Base class for integration tests.
@@ -54,7 +55,8 @@ public class BackTestStartup extends AbstractBackendStartup {
   /**
    * Performs DB initialization and test data creation.
    *
-   * @throws java.lang.Exception
+   * @throws Exception
+   *     the exception
    */
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
@@ -65,7 +67,8 @@ public class BackTestStartup extends AbstractBackendStartup {
   /**
    * Destroys all data from DB.
    *
-   * @throws java.lang.Exception
+   * @throws Exception
+   *     the exception
    */
   @AfterClass
   public static void tearDownAfterClass() throws Exception {
@@ -102,7 +105,8 @@ public class BackTestStartup extends AbstractBackendStartup {
    * Starts a new controller and creates the session using the "test" user with
    * english locale.
    *
-   * @throws java.lang.Exception
+   * @throws Exception
+   *     the exception
    */
   @Before
   public void setUp() throws Exception {
@@ -124,7 +128,8 @@ public class BackTestStartup extends AbstractBackendStartup {
   /**
    * Stops the controller.
    *
-   * @throws java.lang.Exception
+   * @throws Exception
+   *     the exception
    */
   @After
   public void tearDown() throws Exception {
