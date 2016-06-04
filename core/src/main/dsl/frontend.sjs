@@ -36,11 +36,11 @@ controller ('hrsample.name',
       //'departments.workspace',
     ])
 
-action('helpFrontAction', 
-  parent:'staticInfoFrontAction', name:'help.action.name', description:'', 
+action('helpFrontAction',
+  parent:'staticInfoFrontAction', name:'help.action.name', description:'',
   custom:[messageCode:'help'])
-    
-actionMap('controllerActionMap') { 
+
+actionMap('controllerActionMap') {
   actionList {
     action ref:'showRunningExecutorsAction'
     action ref:'changePasswordAction'
@@ -52,10 +52,10 @@ actionMap('controllerActionMap') {
  */
 workspace('masterdata.workspace',
   icon:'masterdata.png') {
-  
+
   nodeModule('masterdata.geography.module',
     icon:'geography.png') {
-    
+
       filterModule('masterdata.cities.module',
           component:'City',
           detailView:'City.detail.view',
@@ -69,7 +69,7 @@ workspace('employees.workspace',
   grantedRoles:[
     'administrator',
     'staff-manager']) {
-    
+
   filterModule('employees.module',
       icon:'employees.png',
       component:'Employee',
@@ -93,7 +93,7 @@ workspace('organization.workspace',
   grantedRoles:[
     'administrator',
     'organization-manager']) {
-  
+
   filterModule('companies.module',
       icon:'company.png',
       component:'Company',
@@ -103,7 +103,7 @@ workspace('organization.workspace',
 
 workspace('departments.workspace',
   icon:'department.png') {
-  
+
   filterModule('departments.module',
       icon:'department.png',
       component:'Department',
@@ -113,4 +113,3 @@ workspace('departments.workspace',
     icon:'team.png',
     component:'Team')
 }
-

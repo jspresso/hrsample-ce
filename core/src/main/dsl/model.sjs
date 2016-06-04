@@ -25,14 +25,14 @@ Entity('City',
   set 'neighbours', ref: 'City', reverse: 'City-neighbours'
 }
 
-Component('ContactInfo', 
+Component('ContactInfo',
   extension:'ContactInfoExtension') {
-  
+
   string_256 'address'
   reference 'city', ref: 'City'
   string_32 'phone'
   string_128 'email', regex: '[\\w\\-\\.]*@[\\w\\-\\.]*', regexSample: 'contact@acme.com'
-  
+
   html 'phoneAsHtml', computed:true, i18nNameKey:'phone'
 }
 
@@ -177,31 +177,31 @@ Component('Link', extend: 'Nameable', rendered: 'name') {
   reference 'parent', ref: 'Link', mandatory: false
   set 'children', ref: 'Link'
 }
- 
+
 Entity('User',
   extend: ['Traceable'],
   extension:'UserExtension',
   rendered:['login', 'password', 'employee', 'createTimestamp', 'lastUpdateTimestamp'],
   services:['UserService':'UserServiceDelegate']) {
-  
+
   string_64 'login', mandatory:true, unicityScope:'community'
   password  'password', maxLength:32
-  
+
   set 'roles', ref:'Role'
-  
+
   // relations
   reference 'employee', ref:'Employee', i18nNameKey:'org.jspresso.hrsample.model.Employee'
-  
+
   // computed
   reference 'mainRole', ref:'Role', computed:true
 }
 
-Entity('Role', 
+Entity('Role',
   extend:['Traceable'],
   rendered:['roleId', 'createTimestamp', 'lastUpdateTimestamp'],
   icon:'employees.png') {
-  
+
   string_30 'roleId', unicityScope:'roleId'
-  
+
   set 'users', ref:'User', reverse:'User-roles'
 }
