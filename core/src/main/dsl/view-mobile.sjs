@@ -78,6 +78,24 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
         mobileCompositePage(actionMap:'detailActionMap') {
           sections {
             mobileForm()
+            mobileBorder() {
+              center {
+                mobileRepeater(model: 'Department-teams') {
+                  repeat {
+                    mobileBorder() {
+                      north {
+                        mobileForm()
+                      }
+                      center {
+                        mobileListView(model: 'Team-teamMembers', actionMap: 'masterActionMap',
+                          selectionMode:'MULTIPLE_INTERVAL_CUMULATIVE_SELECTION')
+                      }
+                    }
+                  }
+                }
+              }
+            }
+/*
             mobileNavPage() {
               selection {
                 mobileListView(model:'Department-teams', actionMap: 'masterActionMap')
@@ -98,6 +116,7 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
                 }
               }
             }
+*/
           }
         }
       }
