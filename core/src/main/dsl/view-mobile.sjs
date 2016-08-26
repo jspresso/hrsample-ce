@@ -104,7 +104,18 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
     }
     mobileNavPage() {
       selection {
-        mobileListView(model: 'Company-employees', actionMap: 'masterActionMap')
+        //mobileListView(model: 'Company-employees', actionMap: 'masterActionMap')
+        mobileRepeater(model: 'Company-employees') {
+          repeat {
+            mobileForm() {
+              fields {
+                propertyView name: 'name'
+                propertyView name: 'firstName'
+                enumerationPropertyView name: 'gender', radio: true
+              }
+            }
+          }
+        }
       }
       nextPage {
         mobileCompositePage (parent: 'Employee.page.view', actionMap: 'detailActionMap')
