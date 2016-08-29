@@ -1,6 +1,7 @@
 mobileForm('Employee.filter.view') {
   fields {
     propertyView name: 'name'
+    propertyView name: 'contact.city'
   }
 }
 
