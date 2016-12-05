@@ -78,11 +78,11 @@ workspace('employees.workspace',
       detailView:'Employee.module.view',
       startup:'filterModuleStartup',
       pageSize:4)
-  
+
   filterModule('departments.module',
     icon:'department.png',
     component:'Department')
-  
+
   filterModule('teams.module',
     icon:'team.png',
     component:'Team')
@@ -108,7 +108,7 @@ workspace('departments.workspace',
       icon:'department.png',
       component:'Department',
       filterView:'Department.filter.pane')
-  
+
   filterModule('teams.module',
     icon:'team.png',
     component:'Team')
