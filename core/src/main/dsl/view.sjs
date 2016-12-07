@@ -62,7 +62,7 @@ tabs('Company.tab.pane',
             'Traceable.pane'/*,
             'decorated.translations.table'*/],
     preferredHeight: 130)
- 
+
 
 table('Company-departments.table',
     actionMap: 'masterDetailActionMap', columnReordering: false) {
@@ -89,7 +89,7 @@ split_vertical('Company.departments.and.teams.view',
     cascadingModels: true,
     top: 'Company-departments.table') {
   bottom {
-    
+
     repeater (model:'Department-teams') {
       actionMap {
         actionList {
@@ -135,16 +135,16 @@ split_vertical('Company.departments.and.teams.view',
           }
         }
       }
-      
+
     }
   }
 }
 
 
-// Overiden into HRSample EE    
-propertyView('Employee-fullname.property')    
-propertyView('OrganizationalUnit-manager.property')  
-    
+// Overiden into HRSample EE
+propertyView('Employee-fullname.property')
+propertyView('OrganizationalUnit-manager.property')
+
 border('Company.organization.view',
     model: 'Company',
     north: 'Company.tab.pane',
@@ -314,6 +314,10 @@ split_vertical('Employee.module.view',
     }
   }
 }
+
+form('Department.module.view', actionMap:'beanModuleActionMap', columnCount: 2)
+
+form('Team.module.view', actionMap:'beanModuleActionMap', columnCount: 2)
 
 border('Company.module.view',
     parent: 'Company.organization.view',

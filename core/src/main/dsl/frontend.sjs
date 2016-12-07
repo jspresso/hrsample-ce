@@ -81,11 +81,13 @@ workspace('employees.workspace',
 
   filterModule('departments.module',
     icon:'department.png',
-    component:'Department')
+    component:'Department',
+    detailView:'Department.module.view')
 
   filterModule('teams.module',
     icon:'team.png',
-    component:'Team')
+    component:'Team',
+    detailView:'Team.module.view')
 }
 
 workspace('organization.workspace',
