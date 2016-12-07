@@ -261,10 +261,8 @@ bean('Company.chart',
     custom: [url  : 'classpath:com/fusioncharts/FCF_Column3D.swf',
              title: 'company.chart'])
 
-actionMap('Company-module-am') {
-  actionList('FILE') {
-    action(ref: 'saveModuleObjectFrontAction')
-    action(ref: 'reloadModuleObjectFrontAction')
+actionMap('Company-module-am', parents:['beanModuleActionMap']) {
+  actionList('REPORT') {
     action(parent: 'staticReportAction',
         custom: [reportDescriptor_ref: 'Company.report'])
 //    action(parent: 'chartAction',
