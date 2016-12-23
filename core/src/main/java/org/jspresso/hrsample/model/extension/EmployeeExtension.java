@@ -81,6 +81,7 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
         buff.append(" ");
       }
     }
+    getFullName();
     if (getComponent().getFirstName() != null) {
       buff.append(getComponent().getFirstName());
     }
@@ -97,13 +98,17 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
 //    return "<html><b><i>" + getComponent().getFullName() + "</i></b><br>" + "  Age: " + getComponent().getAge() + "</html>";
 //
 //  }
+
+  protected void testDdd() {
+    testDdd();
+  }
   
   /**
    * Gets html description.
    * @return The html description.
    * @throws IOException If image is not available
    */
-  @DependsOn({Employee.FULL_NAME, Employee.COMPANY+'.'+Company.NAME, Employee.PHOTO})
+  @DependsOn({Employee.FULL_NAME, Employee.COMPANY+'.'+ Company.NAME, Employee.PHOTO})
   public String getHtmlDescription() throws IOException {
     Employee employee = getComponent();
     

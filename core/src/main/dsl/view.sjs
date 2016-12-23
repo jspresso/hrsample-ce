@@ -269,9 +269,9 @@ actionMap('Company-module-am', parents:['beanModuleActionMap']) {
 //        description: 'company.chart',
 //        custom: [chartDescriptor_ref: 'Company.chart'])
 //    action(parent: 'editSelectedComponentAction', custom: [viewDescriptor_ref: 'Company.dialog.view'])
-//    action(class:'test.TestFrontAction', icon:'company.png')
+//    action(class:'testDdd.TestFrontAction', icon:'company.png')
 //    action(class: 'org.jspresso.framework.application.frontend.action.FrontendAction', icon: 'company.png') {
-//      wrapped(class: 'test.TestBackAction')
+//      wrapped(class: 'testDdd.TestBackAction')
 //    }
   }
 }

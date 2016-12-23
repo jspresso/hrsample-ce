@@ -36,7 +36,7 @@ import org.jspresso.hrsample.model.User;
 import org.springframework.beans.factory.BeanFactory;
 
 /**
- * Persists some test data for the HR sample application.
+ * Persists some testDdd data for the HR sample application.
  *
  * @author Vincent Vandenschrick
  */
@@ -54,7 +54,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
   }
 
   /**
-   * Creates some test data using the passed in Spring application context.
+   * Creates some testDdd data using the passed in Spring application context.
    */
   @Override
   public void createAndPersistTestData() {
@@ -210,7 +210,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
       }
     } catch (Throwable ex) {
       ex.printStackTrace(System.err);
-      // In no way the test data persister should make the application
+      // In no way the testDdd data persister should make the application
       // startup fail.
     }
   }
@@ -231,7 +231,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
   }
 
   private Company createCompany(String name, String address, City city,
-      String email, String phone) {
+                                String email, String phone) {
     Company company = createEntityInstance(Company.class);
     company.setName(name);
     company.getContact().setAddress(address);
@@ -242,7 +242,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
   }
 
   private Department createDepartment(String name, String ouId, String address,
-      City city, String email, String phone, Company company, Employee manager) {
+                                      City city, String email, String phone, Company company, Employee manager) {
     Department department = createEntityInstance(Department.class);
     department.setName(name);
     department.setOuId(ouId);
