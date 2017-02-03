@@ -294,8 +294,13 @@ tabs('Company.dialog.view', parent: 'Company.tab.pane')
 tabs('City.detail.view') {
   views {
     form(labelsPosition: 'ABOVE',
-        actionMap: 'beanModuleActionMap',
-        columnCount: 1)
+        columnCount: 1) {
+      actionMap (parents:['beanModuleActionMap']) {
+        actionList {
+          action parent:'reloadModuleObjectFrontAction', repeatPeriodMillis: 5000
+        }
+      }
+    }
     mapView(name: 'map', longitude: 'longitude', latitude: 'latitude')
   }
 }
