@@ -406,7 +406,7 @@ public class JspressoModelTest extends BackTestStartup {
 
           @Override
           public void propertyChange(PropertyChangeEvent evt) {
-            buff.append(evt.getNewValue());
+            buff.replace(0, buff.length(), String.valueOf(evt.getNewValue()));
           }
         });
     City currentCity = d.getManager().getContact().getCity();
