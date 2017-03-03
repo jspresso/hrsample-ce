@@ -184,12 +184,12 @@ form('Employee.married.pane', fields: ['name', 'firstName'])
 
 form('Employee.notmarried.pane', columnCount: 3, fields: ['firstName', 'name', 'age'])
 
-form('Employee.filter.pane', columnCount: 8, fields: ['firstName',
+form('Employee.filter.pane', columnCount: 3, widthResizeable:false, fields: ['firstName',
                                                       'name',
                                                       'gender',
                                                       'salary',
                                                       'birthDate'],
-    widths: ['firstName': 4, 'name': 4, 'gender': 4, 'salary': 4, 'birthDate': 4])
+    widths: ['firstName': 1, 'name': 1, 'gender': 1, 'salary': 2, 'birthDate': 2])
 
 form('Department.filter.pane', columnCount: 8, fields: ['ouId',
                                                         'name',
