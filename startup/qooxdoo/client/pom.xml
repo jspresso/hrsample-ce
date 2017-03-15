@@ -46,7 +46,7 @@
         <executions>
           <execution>
             <id>unpack-qooxdoo-sdk</id>
-            <phase>prepare-package</phase>
+            <phase>generate-resources</phase>
             <goals>
               <goal>unpack-dependencies</goal>
             </goals>
@@ -57,7 +57,7 @@
           </execution>
           <execution>
             <id>unpack-jspresso-qooxdoo</id>
-            <phase>prepare-package</phase>
+            <phase>generate-resources</phase>
             <goals>
               <goal>unpack-dependencies</goal>
             </goals>
@@ -70,7 +70,7 @@
           </execution>
           <execution>
             <id>unpack-qooxdoo-contribs</id>
-            <phase>prepare-package</phase>
+            <phase>generate-resources</phase>
             <goals>
               <goal>unpack-dependencies</goal>
             </goals>
@@ -93,7 +93,7 @@
             <goals>
               <goal>exec</goal>
             </goals>
-            <phase>prepare-package</phase>
+            <phase>generate-resources</phase>
           </execution>
         </executions>
         <configuration>
@@ -114,7 +114,7 @@
             <goals>
               <goal>run</goal>
             </goals>
-            <phase>prepare-package</phase>
+            <phase>generate-resources</phase>
             <configuration>
               <target>
                 <property name="web-debug.dir" value="${project.build.directory}/web-debug" />
@@ -137,19 +137,6 @@
                 <delete dir="${project.build.directory}/antrun" />
               </target>
             </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>package webapp resources</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>resources</goal>
-            </goals>
           </execution>
         </executions>
       </plugin>
