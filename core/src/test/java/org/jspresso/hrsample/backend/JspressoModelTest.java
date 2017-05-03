@@ -246,7 +246,7 @@ public class JspressoModelTest extends BackTestStartup {
   /**
    * Tests the performance of adder when the collection is big.
    */
-  @Test(timeout = 15000)
+  @Test(timeout = 10000)
   public void testCollectionSetterPerf() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
