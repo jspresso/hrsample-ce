@@ -16,6 +16,7 @@ Interface('Traceable',
 
 Entity('City',
     extend: 'Nameable',
+    extension: 'CityExtension',
     icon: 'city.png',
     pageSize: 4,
     toString: 'name') {
@@ -23,6 +24,9 @@ Entity('City',
   decimal 'longitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   decimal 'latitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   set 'neighbours', ref: 'City', reverse: 'City-neighbours'
+
+  color 'longitudeBackground', computed: true
+  color 'latitudeBackground', computed: true
 }
 
 Component('ContactInfo',

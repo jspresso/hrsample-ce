@@ -59,7 +59,7 @@ workspace('masterdata.workspace',
       filterModule('masterdata.cities.module',
           component:'City',
           detailView:'City.detail.view',
-          //moduleView:'City.module.view',
+          moduleView:'City.module.view',
           startup:'filterModuleStartup')
     }
 }
