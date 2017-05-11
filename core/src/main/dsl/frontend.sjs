@@ -60,7 +60,8 @@ workspace('masterdata.workspace',
           component:'City',
           detailView:'City.detail.view',
           moduleView:'City.module.view',
-          startup:'filterModuleStartup')
+          startup:'filterModuleStartup',
+          includeDetail: true)
     }
 }
 

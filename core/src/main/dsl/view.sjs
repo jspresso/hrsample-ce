@@ -291,6 +291,11 @@ tabs('Company.dialog.view', parent: 'Company.tab.pane')
 //}
 
 tabs('City.detail.view') {
+  actionMap(parents: ['beanModuleActionMap']) {
+    actionList {
+      action parent: 'reloadModuleObjectFrontAction', repeatPeriodMillis: 5000
+    }
+  }
   views {
     form(labelsPosition: 'ABOVE',
         columnCount: 1) {
@@ -299,11 +304,6 @@ tabs('City.detail.view') {
         propertyView name: 'zip'
         propertyView name: 'longitude', background: 'longitudeBackground'
         propertyView name: 'latitude', background: 'latitudeBackground'
-      }
-      actionMap(parents: ['beanModuleActionMap']) {
-        actionList {
-          action parent: 'reloadModuleObjectFrontAction', repeatPeriodMillis: 5000
-        }
       }
     }
     mapView(name: 'map', longitude: 'longitude', latitude: 'latitude')
