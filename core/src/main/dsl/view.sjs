@@ -292,9 +292,11 @@ tabs('Company.dialog.view', parent: 'Company.tab.pane')
 
 tabs('City.detail.view') {
   actionMap(parents: ['beanModuleActionMap']) {
+/*
     actionList {
       action parent: 'reloadModuleObjectFrontAction', repeatPeriodMillis: 5000
     }
+*/
   }
   views {
     form(labelsPosition: 'ABOVE',
