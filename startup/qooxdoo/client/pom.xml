@@ -10,7 +10,7 @@
 
   <artifactId>hrsample-startup-qooxdoo-client</artifactId>
   <packaging>jar</packaging>
-  <name>Jspresso HR Sample - Startup - Qooxdoo - Client</name>
+  <name>HR Sample CE - Startup Qooxdoo Client</name>
 
   <dependencies>
     <dependency>

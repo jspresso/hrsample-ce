@@ -8,7 +8,7 @@
   </parent>
   <artifactId>hrsample-startup-flex-config</artifactId>
   <packaging>jar</packaging>
-  <name>Jspresso HR Sample - Startup - Flex - Config</name>
+  <name>HR Sample CE - Startup Flex Config</name>
 
   <build>
     <resources>

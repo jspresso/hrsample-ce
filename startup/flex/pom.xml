@@ -8,7 +8,7 @@
   </parent>
   <artifactId>hrsample-startup-flex</artifactId>
   <packaging>pom</packaging>
-  <name>Jspresso HR Sample - Startup - Flex</name>
+  <name>HR Sample CE - Startup Flex</name>
   <modules>
     <module>config</module>
     <module>client</module>
