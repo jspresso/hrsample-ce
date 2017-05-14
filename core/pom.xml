@@ -9,7 +9,7 @@
   </parent>
   <artifactId>hrsample-core</artifactId>
   <packaging>jar</packaging>
-  <name>Jspresso HR Sample - Core</name>
+  <name>HR Sample CE - Core</name>
   <dependencies>
     <dependency>
       <groupId>org.jspresso.framework</groupId>

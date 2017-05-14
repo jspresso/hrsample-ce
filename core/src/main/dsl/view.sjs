@@ -13,13 +13,13 @@ template 'listView',
     parent: 'decoratedView'
 
 form('Traceable.pane',
-    model: 'Traceable', borderType:'NONE',
+    model: 'Traceable', borderType: 'NONE',
     description: 'traceable.editing',
     fields: ['createTimestamp',
              'lastUpdateTimestamp'])
 
 form('Company.pane',
-    labelsPosition: 'ASIDE', borderType:'NONE',
+    labelsPosition: 'ASIDE', borderType: 'NONE',
     fields: ['name',
              'contact.address',
              'contact.city',
@@ -45,7 +45,7 @@ treeNode('Company-departments.treeNode',
     actionMap: 'masterDetailActionMap')
 
 tree('Company.tree',
-    rendered: 'name', borderType:'NONE',
+    rendered: 'name', borderType: 'NONE',
     preferredHeight: 200,
     icon: 'structure.png') {
   subTree('Company-employees.treeNode')
@@ -71,7 +71,7 @@ table('Company-departments.table',
     propertyView name: 'teamCount'
     propertyView name: 'name'
     //propertyView name: 'manager'
-    propertyView ref:'OrganizationalUnit-manager.property'
+    propertyView ref: 'OrganizationalUnit-manager.property'
     propertyView name: 'contact'
     propertyView name: 'createTimestamp'
     propertyView name: 'lastUpdateTimestamp'
@@ -83,53 +83,53 @@ table('Department-teams.table',
     actionMap: 'masterDetailActionMap')
 
 action('addFromList',
-    parent: 'lovOkFrontAction') { next(parent: 'addAnyToMasterFrontAction') }
+    parent: 'lovOkFrontAction') {next(parent: 'addAnyToMasterFrontAction')}
 
 split_vertical('Company.departments.and.teams.view',
     cascadingModels: true,
     top: 'Company-departments.table') {
   bottom {
 
-    repeater (model:'Department-teams') {
+    repeater(model: 'Department-teams') {
       actionMap {
         actionList {
-          action parent:'addToMasterFrontAction', custom:[elementEntityDescriptor_ref:'Team']
+          action parent: 'addToMasterFrontAction', custom: [elementEntityDescriptor_ref: 'Team']
         }
       }
       repeat {
         border {
           north {
-            border (borderType:'TITLED') {
+            border(borderType: 'TITLED') {
               west {
-                evenGrid (drivingCellCount:1, drivingDimension:'ROW') {
+                evenGrid(drivingCellCount: 1, drivingDimension: 'ROW') {
                   cells {
-                    evenCell { actionView action:'removeEntityCollectionFromMasterFrontAction' }
-                    evenCell { actionView action:'cloneEntityCollectionFrontAction' }
+                    evenCell {actionView action: 'removeEntityCollectionFromMasterFrontAction'}
+                    evenCell {actionView action: 'cloneEntityCollectionFrontAction'}
                   }
                 }
               }
               center {
-                form (labelsPosition:'ABOVE', columnCount:3, borderType:'NONE') {
+                form(labelsPosition: 'ABOVE', columnCount: 3, borderType: 'NONE') {
                   fields {
-                    propertyView name:'ouId'
-                    propertyView name:'name'
-                    propertyView ref:'OrganizationalUnit-manager.property'
+                    propertyView name: 'ouId'
+                    propertyView name: 'name'
+                    propertyView ref: 'OrganizationalUnit-manager.property'
                   }
                 }
               }
             }
           }
           center {
-            table (model:'Team-teamMembers', borderType:'NONE', horizontallyScrollable:false, preferredHeight:120) {
+            table(model: 'Team-teamMembers', borderType: 'NONE', horizontallyScrollable: false, preferredHeight: 120) {
               actionMap {
                 actionList('EDIT') {
-                  action(parent: 'pickupAndAddAnyFrontAction', custom: [entityDescriptor_ref: 'Employee', initializationMapping: ['company':'company']])
+                  action(parent: 'pickupAndAddAnyFrontAction', custom: [entityDescriptor_ref: 'Employee', initializationMapping: ['company': 'company']])
                   action(ref: 'removeAnyCollectionFromMasterFrontAction')
                 }
               }
               columns {
-                image name:'photo', scaledHeight:25, preferredWidth:50
-                propertyView ref:'Employee-fullname.property'
+                image name: 'photo', scaledHeight: 25, preferredWidth: 50
+                propertyView ref: 'Employee-fullname.property'
               }
             }
           }
@@ -139,7 +139,6 @@ split_vertical('Company.departments.and.teams.view',
     }
   }
 }
-
 
 // Overiden into HRSample EE
 propertyView('Employee-fullname.property')
@@ -184,11 +183,11 @@ form('Employee.married.pane', fields: ['name', 'firstName'])
 
 form('Employee.notmarried.pane', columnCount: 3, fields: ['firstName', 'name', 'age'])
 
-form('Employee.filter.pane', columnCount: 3, widthResizeable:false, fields: ['firstName',
-                                                      'name',
-                                                      'gender',
-                                                      'salary',
-                                                      'birthDate'],
+form('Employee.filter.pane', columnCount: 3, widthResizeable: false, fields: ['firstName',
+                                                                              'name',
+                                                                              'gender',
+                                                                              'salary',
+                                                                              'birthDate'],
     widths: ['firstName': 1, 'name': 1, 'gender': 1, 'salary': 2, 'birthDate': 2])
 
 form('Department.filter.pane', columnCount: 8, fields: ['ouId',
@@ -220,26 +219,26 @@ split_horizontal('Employee.pane',
 
 table('Employee-events.table',
     selectionMode: 'SINGLE_INTERVAL_CUMULATIVE_SELECTION',
-    actionMap:'eventsTableActionMap') {
+    actionMap: 'eventsTableActionMap') {
 
   secondaryActionMap {
-    actionList (renderingOptions:'ICON') {
+    actionList(renderingOptions: 'ICON') {
       action ref: 'moveBottomFrontAction'
     }
-    actionList (renderingOptions:'LABEL_ICON') {
+    actionList(renderingOptions: 'LABEL_ICON') {
       action ref: 'moveDownFrontAction'
     }
-    actionList (renderingOptions:'ICON') {
+    actionList(renderingOptions: 'ICON') {
       action ref: 'moveTopFrontAction'
     }
-    actionList (renderingOptions:'LABEL_ICON') {
+    actionList(renderingOptions: 'LABEL_ICON') {
       action ref: 'moveUpFrontAction'
     }
   }
 }
 
-actionMap ('eventsTableActionMap',
-  parents:['masterDetailActionMap'])
+actionMap('eventsTableActionMap',
+    parents: ['masterDetailActionMap'])
 
 propertyView('Event-text.pane',
     name: 'text',
@@ -261,7 +260,7 @@ bean('Company.chart',
     custom: [url  : 'classpath:com/fusioncharts/FCF_Column3D.swf',
              title: 'company.chart'])
 
-actionMap('Company-module-am', parents:['beanModuleActionMap']) {
+actionMap('Company-module-am', parents: ['beanModuleActionMap']) {
   actionList('REPORT') {
     action(parent: 'staticReportAction',
         custom: [reportDescriptor_ref: 'Company.report'])
@@ -292,13 +291,21 @@ tabs('Company.dialog.view', parent: 'Company.tab.pane')
 //}
 
 tabs('City.detail.view') {
+  actionMap(parents: ['beanModuleActionMap']) {
+/*
+    actionList {
+      action parent: 'reloadModuleObjectFrontAction', repeatPeriodMillis: 5000
+    }
+*/
+  }
   views {
     form(labelsPosition: 'ABOVE',
         columnCount: 1) {
-      actionMap (parents:['beanModuleActionMap']) {
-        actionList {
-          action parent:'reloadModuleObjectFrontAction', repeatPeriodMillis: 5000
-        }
+      fields {
+        propertyView name: 'name'
+        propertyView name: 'zip'
+        propertyView name: 'longitude', background: 'longitudeBackground'
+        propertyView name: 'latitude', background: 'latitudeBackground'
       }
     }
     mapView(name: 'map', longitude: 'longitude', latitude: 'latitude')
@@ -309,7 +316,7 @@ split_vertical('Employee.module.view',
     actionMap: 'beanModuleActionMap',
     top: 'Employee.pane') {
   bottom {
-    tabs (preferredHeight: 400) {
+    tabs(preferredHeight: 400) {
       views {
         mapView(model: 'contact', name: 'map', longitude: 'city.longitude', latitude: 'city.latitude')
         split_horizontal(name: 'events', left: 'Employee-events.table', right: 'Event-text.pane', cascadingModels: true)
@@ -318,9 +325,9 @@ split_vertical('Employee.module.view',
   }
 }
 
-form('Department.module.view', actionMap:'beanModuleActionMap', columnCount: 2)
+form('Department.module.view', actionMap: 'beanModuleActionMap', columnCount: 2)
 
-form('Team.module.view', actionMap:'beanModuleActionMap', columnCount: 2)
+form('Team.module.view', actionMap: 'beanModuleActionMap', columnCount: 2)
 
 border('Company.module.view',
     parent: 'Company.organization.view',
@@ -345,6 +352,15 @@ table('Employee.table.view', parent: 'filterableBeanCollectionModuleView'
     propertyView name: 'company'
     propertyView name: 'createTimestamp'
     propertyView name: 'lastUpdateTimestamp'
+  }
+}
+
+table('City.module.view', parent: 'filterableBeanCollectionModuleView') {
+  columns {
+    propertyView name: 'name'
+    propertyView name: 'zip'
+    propertyView name: 'longitude', background: 'longitudeBackground'
+    propertyView name: 'latitude', background: 'latitudeBackground'
   }
 }
 

@@ -9,7 +9,7 @@
   </parent>
   <artifactId>hrsample-startup-swing</artifactId>
   <packaging>jar</packaging>
-  <name>Jspresso HR Sample - Startup - Swing</name>
+  <name>HR Sample CE - Startup Swing</name>
   <dependencies>
     <dependency>
       <groupId>org.jspresso.hrsample</groupId>

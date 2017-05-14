@@ -8,7 +8,7 @@
   </parent>
   <artifactId>hrsample-webapp</artifactId>
   <packaging>war</packaging>
-  <name>Jspresso HR Sample - Webapp</name>
+  <name>HR Sample CE - Webapp</name>
   <dependencies>
     <dependency>
       <groupId>org.jspresso.hrsample</groupId>

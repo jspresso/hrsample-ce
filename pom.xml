@@ -10,7 +10,7 @@
   <artifactId>hrsample</artifactId>
   <packaging>pom</packaging>
   <version>4.3-SNAPSHOT</version>
-  <name>Jspresso HR Sample Application</name>
+  <name>HR Sample CE</name>
   <scm>
     <connection>scm:git:https://github.com/jspresso/hrsample-ce.git</connection>
     <tag>HEAD</tag>
