@@ -68,7 +68,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         City paris = createCity("Paris I", "75001", 2.3470, 48.8590);
         City suresnes = createCity("Suresnes", "92150", 2.2292, 48.8714);
         City evry = createCity("Evry", "91000", 2.4500, 48.6333);
-        createCity("Versailles", "78000", 2.2069, 48.7379);
+        createCity("Versailles", "78000", 2.1301, 48.8014);
         createCity("Marseille", "13000", 5.3811, 43.2970);
         createCity("Alençon", "61000", 0.0834, 48.4334);
         createCity("Ambleny", "02290", 3.1845, 49.3808);
@@ -195,7 +195,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         adminRole.setRoleId("administrator");
         adminRole.addToUsers(demo.getUsers().iterator().next());
         saveOrUpdate(adminRole);
-        
+
         Role employeeRole = getEntityFactory().createEntityInstance(Role.class);
         employeeRole.setRoleId("employee");
         for (Employee e : design2see.getEmployees()) {
@@ -204,7 +204,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
           }
         }
         saveOrUpdate(employeeRole);
-        
+
         //
         saveOrUpdate(design2see);
       }
@@ -301,26 +301,26 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
 
     if (image!=null)
       employee.setPhoto(loadImage(image));
-    
+
     Employee.Translation t = getEntityFactory().createComponentInstance(Employee.Translation.class);
     t.setLanguage("de");
     t.setPropertyName("firstName");
     t.setTranslatedValue(new StringBuilder(employee.getFirstNameRaw()).reverse().toString());
     employee.addToPropertyTranslations(t);
-    
+
     if (password!=null) {
       User u = getEntityFactory().createEntityInstance(User.class);
       u.setLogin(password);
       u.setPassword(password);
       employee.addToUsers(u);
     }
-    
-    if (signature!=null) 
+
+    if (signature!=null)
       employee.setSignature(loadImage(signature));
-    
+
     return employee;
   }
-  
+
   private byte[] loadImage(String path) throws IOException {
     return ImageHelper.loadImage("/org/jspresso/hrsample/images/" + path);
   }
