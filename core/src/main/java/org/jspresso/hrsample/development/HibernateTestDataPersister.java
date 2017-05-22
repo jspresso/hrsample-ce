@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Random;
 import java.util.Set;
 
 import org.jspresso.framework.application.startup.development.AbstractHibernateTestDataPersister;
@@ -65,16 +66,16 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
            * .isEmpty()
            */true) {
         // Cities
-        City paris = createCity("Paris I", "75001", 2.3470, 48.8590);
-        City suresnes = createCity("Suresnes", "92150", 2.2292, 48.8714);
-        City evry = createCity("Evry", "91000", 2.4500, 48.6333);
-        createCity("Versailles", "78000", 2.1301, 48.8014);
-        createCity("Marseille", "13000", 5.3811, 43.2970);
-        createCity("Alençon", "61000", 0.0834, 48.4334);
-        createCity("Ambleny", "02290", 3.1845, 49.3808);
-        createCity("Nantes", "44000", -1.5534, 47.2172);
-        createCity("Bourg-en-Bresse", "01000", 5.2281, 46.2047);
-        createCity("Lyon", "69000", 4.8467, 45.7485);
+        City paris = createCity("Paris I", "75001", 2.3470, 48.8590, true);
+        City suresnes = createCity("Suresnes", "92150", 2.2292, 48.8714, true);
+        City evry = createCity("Evry", "91000", 2.4500, 48.6333, true);
+        createCity("Versailles", "78000", 2.1301, 48.8014, false);
+        createCity("Marseille", "13000", 5.3811, 43.2970, false);
+        createCity("Alençon", "61000", 0.0834, 48.4334, false);
+        createCity("Ambleny", "02290", 3.1845, 49.3808, true);
+        createCity("Nantes", "44000", -1.5534, 47.2172, false);
+        createCity("Bourg-en-Bresse", "01000", 5.2281, 46.2047, true);
+        createCity("Lyon", "69000", 4.8467, 45.7485, false);
 
 /*
         for(int i = 0; i < 200; i++) {
@@ -215,12 +216,23 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     }
   }
 
-  private City createCity(String name, String zip, Double longitude, Double latitude) {
+  private City createCity(String name, String zip, Double longitude, Double latitude, boolean createRoute) {
     City city = createEntityInstance(City.class);
     city.setName(name);
     city.setZip(zip);
     city.setLongitude(longitude);
     city.setLatitude(latitude);
+    if (createRoute && longitude != null && latitude != null) {
+      double[][] randomRoute = new double[10][2];
+      randomRoute[0][0] = longitude;
+      randomRoute[0][1] = latitude;
+      for (int i = 1; i < 10; i++) {
+        Random random = new Random();
+        randomRoute[i][0] = randomRoute[i-1][0] + random.nextDouble() * 0.05d /* * (random.nextBoolean() ? 1 : -1)*/;
+        randomRoute[i][1] = randomRoute[i - 1][1] + random.nextDouble() * 0.05d * (random.nextBoolean() ? 1 : -1);
+      }
+      city.setRoute(randomRoute);
+    }
     City.Translation t = getEntityFactory().createComponentInstance(City.Translation.class);
     t.setLanguage("de");
     t.setPropertyName("name");

@@ -26,7 +26,7 @@ mobileCompositePage('City.page.editor') {
 mobileCompositePage('City.page.view', actionMap: 'beanModuleActionMap', editorPage: 'City.page.editor') {
   sections {
     mobileForm()
-    mobileMapView(name: 'map', longitude: 'longitude', latitude: 'latitude')
+    mobileMapView(name: 'map', longitude: 'longitude', latitude: 'latitude', route: 'route')
   }
 }
 

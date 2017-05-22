@@ -308,7 +308,7 @@ tabs('City.detail.view') {
         propertyView name: 'latitude', background: 'latitudeBackground'
       }
     }
-    mapView(name: 'map', longitude: 'longitude', latitude: 'latitude')
+    mapView(name: 'map', longitude: 'longitude', latitude: 'latitude', route: 'route')
   }
 }
 

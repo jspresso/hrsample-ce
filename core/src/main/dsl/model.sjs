@@ -19,10 +19,12 @@ Entity('City',
     extension: 'CityExtension',
     icon: 'city.png',
     pageSize: 4,
-    toString: 'name') {
+    toString: 'name',
+    rendered: ['name', 'zip', 'longitude', 'latitude']) {
   string_10 'zip', upperCase: true, truncate: true
   decimal 'longitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   decimal 'latitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
+  java 'route', class: 'double[][]', maxLength: 2048
   set 'neighbours', ref: 'City', reverse: 'City-neighbours'
 
   color 'longitudeBackground', computed: true
