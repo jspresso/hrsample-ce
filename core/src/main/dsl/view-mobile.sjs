@@ -26,7 +26,7 @@ mobileCompositePage('City.page.editor') {
 mobileCompositePage('City.page.view', actionMap: 'beanModuleActionMap', editorPage: 'City.page.editor') {
   sections {
     mobileForm()
-    mobileMapView(name: 'map', longitude: 'longitude', latitude: 'latitude', route: 'route')
+    mobileMapView(name: 'map', mapContent: 'mapContent')
   }
 }
 
@@ -64,7 +64,7 @@ mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap') {
         image name: 'signature', drawable:true, scaledWidth: 300, scaledHeight: 200
       }
     }
-    mobileMapView(model: 'contact', name: 'map',  longitude: 'city.longitude', latitude: 'city.latitude')
+    mobileMapView(model: 'contact', name: 'map',  mapContent: 'city.mapContent')
   }
 }
 
@@ -141,7 +141,7 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
         mobileCompositePage (parent: 'Employee.page.view', actionMap: 'detailActionMap')
       }
     }
-    mobileMapView(model: 'contact', name: 'map', longitude: 'city.longitude', latitude: 'city.latitude')
+    mobileMapView(model: 'contact', name: 'map', mapContent: 'city.mapContent')
   }
 }
 

@@ -18,8 +18,17 @@
  */
 package org.jspresso.hrsample.model.extension;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
+
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.framework.model.component.service.DependsOn;
+import org.jspresso.framework.util.exception.NestedRuntimeException;
+import org.jspresso.framework.view.descriptor.IMapViewDescriptor;
 
 import org.jspresso.hrsample.model.City;
 
@@ -71,4 +80,37 @@ public class CityExtension extends AbstractComponentExtension<City> {
   }
 
 
+  /**
+   * Gets the mapContent.
+   *
+   * @return the mapContent.
+   */
+  @DependsOn({City.LATITUDE, City.LONGITUDE, City.ROUTES})
+  public String getMapContent() {
+    City city = getComponent();
+
+    try {
+      JSONObject mapContent = new JSONObject();
+      if (city.getLongitude() != null && city.getLatitude() != null) {
+        mapContent.put(IMapViewDescriptor.MARKERS_KEY,
+            Arrays.asList(Arrays.asList(city.getLongitude(), city.getLatitude())));
+      }
+      double[][][] routes = city.getRoutes();
+      if (routes != null && routes.length > 0) {
+        List<List<List<Double>>> routesList = new ArrayList<>();
+        for (int i = 0; i < routes.length; i++) {
+          double[][] route = routes[i];
+          List<List<Double>> routeAsList = new ArrayList<>();
+          for (int j = 0; j < route.length; j++) {
+            routeAsList.add(Arrays.asList(route[j][0], route[j][1]));
+          }
+          routesList.add(routeAsList);
+        }
+        mapContent.put(IMapViewDescriptor.ROUTES_KEY, routesList);
+      }
+      return mapContent.toString(2);
+    } catch (JSONException ex) {
+      throw new NestedRuntimeException(ex);
+    }
+  }
 }

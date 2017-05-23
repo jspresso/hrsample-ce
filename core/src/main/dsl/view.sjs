@@ -308,7 +308,7 @@ tabs('City.detail.view') {
         propertyView name: 'latitude', background: 'latitudeBackground'
       }
     }
-    mapView(name: 'map', longitude: 'longitude', latitude: 'latitude', route: 'route')
+    mapView(name: 'map', mapContent: 'mapContent')
   }
 }
 
@@ -318,7 +318,7 @@ split_vertical('Employee.module.view',
   bottom {
     tabs(preferredHeight: 400) {
       views {
-        mapView(model: 'contact', name: 'map', longitude: 'city.longitude', latitude: 'city.latitude')
+        mapView(model: 'contact', name: 'map', mapContent: 'city.mapContent')
         split_horizontal(name: 'events', left: 'Employee-events.table', right: 'Event-text.pane', cascadingModels: true)
       }
     }

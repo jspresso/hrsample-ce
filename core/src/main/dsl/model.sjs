@@ -24,7 +24,8 @@ Entity('City',
   string_10 'zip', upperCase: true, truncate: true
   decimal 'longitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   decimal 'latitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
-  java 'route', class: 'double[][]', maxLength: 2048
+  java 'routes', class: 'double[][][]', maxLength: 2048
+  string 'mapContent', maxLength: 4096, computed:true
   set 'neighbours', ref: 'City', reverse: 'City-neighbours'
 
   color 'longitudeBackground', computed: true
