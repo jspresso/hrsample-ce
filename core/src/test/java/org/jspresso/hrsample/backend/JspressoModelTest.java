@@ -62,6 +62,7 @@ import org.jspresso.framework.model.component.basic.ICollectionWrapper;
 import org.jspresso.framework.model.descriptor.MandatoryPropertyException;
 import org.jspresso.framework.model.entity.IEntity;
 import org.jspresso.framework.model.persistence.hibernate.criterion.EnhancedDetachedCriteria;
+import org.jspresso.framework.util.bean.AbstractPropertyChangeCapable;
 import org.jspresso.framework.util.bean.integrity.IntegrityException;
 import org.jspresso.framework.util.reflect.ReflectHelper;
 import org.jspresso.framework.util.uid.ByteArray;
@@ -103,12 +104,12 @@ public class JspressoModelTest extends BackTestStartup {
       Employee employeeMock = (Employee) Proxy.newProxyInstance(getClass().getClassLoader(),
           new Class<?>[]{Employee.class}, handlerSpy);
 
-      Method firePropertyChangeMethod = Employee.class.getMethod("firePropertyChange",
-          String.class, Object.class, Object.class);
+      Method firePropertyChangeMethod = Employee.class.getMethod("firePropertyChange", String.class, Object.class,
+          Object.class);
 
       employeeMock.setBirthDate(new Date(0));
-      verify(handlerSpy, never()).invoke(eq(employeeMock), eq(firePropertyChangeMethod), argThat(new PropertyMatcher(
-          Employee.AGE)));
+      verify(handlerSpy, never()).invoke(eq(employeeMock), eq(firePropertyChangeMethod),
+          argThat(new PropertyMatcher(Employee.AGE)));
 
       PropertyChangeListener fakeListener = new PropertyChangeListener() {
 
@@ -120,18 +121,18 @@ public class JspressoModelTest extends BackTestStartup {
 
       employeeMock.addPropertyChangeListener(fakeListener);
       employeeMock.setBirthDate(new Date(1));
-      verify(handlerSpy, times(1)).invoke(eq(employeeMock), eq(firePropertyChangeMethod), argThat(new PropertyMatcher(
-          Employee.AGE)));
+      verify(handlerSpy, times(1)).invoke(eq(employeeMock), eq(firePropertyChangeMethod),
+          argThat(new PropertyMatcher(Employee.AGE)));
 
       employeeMock.removePropertyChangeListener(fakeListener);
       employeeMock.setBirthDate(new Date(2));
-      verify(handlerSpy, times(1)).invoke(eq(employeeMock), eq(firePropertyChangeMethod), argThat(new PropertyMatcher(
-          Employee.AGE)));
+      verify(handlerSpy, times(1)).invoke(eq(employeeMock), eq(firePropertyChangeMethod),
+          argThat(new PropertyMatcher(Employee.AGE)));
 
       employeeMock.addPropertyChangeListener(Employee.AGE, fakeListener);
       employeeMock.setBirthDate(new Date(3));
-      verify(handlerSpy, times(2)).invoke(eq(employeeMock), eq(firePropertyChangeMethod), argThat(new PropertyMatcher(
-          Employee.AGE)));
+      verify(handlerSpy, times(2)).invoke(eq(employeeMock), eq(firePropertyChangeMethod),
+          argThat(new PropertyMatcher(Employee.AGE)));
     } finally {
       hbc.setThrowExceptionOnBadUsage(wasThrowExceptionOnBadUsage);
     }
@@ -291,8 +292,9 @@ public class JspressoModelTest extends BackTestStartup {
     System.gc();
     //Thread.sleep(2000);
     long end = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-    System.out.println((end - start) / 1024 / 1024 + " MB used memory for " + employees.size() + " entities. This " +
-        "means " + (end - start) / employees.size() + " B per entity.");
+    System.out.println(
+        (end - start) / 1024 / 1024 + " MB used memory for " + employees.size() + " entities. This " + "means "
+            + (end - start) / employees.size() + " B per entity.");
   }
 
   /**
@@ -443,6 +445,115 @@ public class JspressoModelTest extends BackTestStartup {
     anotherNewCity.setName("anotherNewNotif");
     assertEquals("Sub-nested notification did not arrive correctly", anotherNewCity.getName(), buff.toString());
     buff.delete(0, buff.length());
+  }
+
+
+  public static class AComponent extends AbstractPropertyChangeCapable {
+    private String     aaa;
+    private BComponent bcomp;
+
+    public String getAaa() {
+      return aaa;
+    }
+
+    public void setAaa(String aaa) {
+      String oldAaa = this.aaa;
+      this.aaa = aaa;
+      firePropertyChange("aaa", oldAaa, this.aaa);
+    }
+
+    public BComponent getBcomp() {
+      return bcomp;
+    }
+
+    public void setBcomp(BComponent bcomp) {
+      BComponent oldBcomp = this.bcomp;
+      this.bcomp = bcomp;
+      firePropertyChange("bcomp", oldBcomp, this.bcomp);
+    }
+  }
+
+  public static class BComponent extends AbstractPropertyChangeCapable {
+    private String     bbb;
+    private CComponent ccomp;
+
+    public String getBbb() {
+      return bbb;
+    }
+
+    public void setBbb(String bbb) {
+      String oldBbb = this.bbb;
+      this.bbb = bbb;
+      firePropertyChange("bbb", oldBbb, this.bbb);
+    }
+
+    public CComponent getCcomp() {
+      return ccomp;
+    }
+
+    public void setCcomp(CComponent ccomp) {
+      CComponent oldComp = this.ccomp;
+      this.ccomp = ccomp;
+      firePropertyChange("ccomp", oldComp, this.ccomp);
+    }
+  }
+
+  public static class CComponent extends AbstractPropertyChangeCapable {
+    private String ccc;
+
+    public String getCcc() {
+      return ccc;
+    }
+
+    public void setCcc(String ccc) {
+      String oldCcc = this.ccc;
+      this.ccc = ccc;
+      firePropertyChange("ccc", oldCcc, this.ccc);
+    }
+  }
+
+  /**
+   * Test that nested property changes are supported on subclasses of AbstractPropertyChangeCapable.
+   * @see https://github.com/jspresso/jspresso-ce/issues/284
+   */
+  @Test
+  public void testNestedPropertyChangeOnAbstractPropertyChangeCapable() {
+    final StringBuilder result = new StringBuilder();
+    AComponent a = new AComponent();
+    PropertyChangeListener listener = new PropertyChangeListener() {
+      @Override
+      public void propertyChange(PropertyChangeEvent evt) {
+        result.replace(0, result.length(), String.valueOf(evt.getNewValue()));
+      }
+    };
+    a.addPropertyChangeListener("bcomp.ccomp.ccc", listener);
+    BComponent b = new BComponent();
+    a.setBcomp(b);
+    CComponent c = new CComponent();
+    b.setCcomp(c);
+    c.setCcc("init ccc");
+    a.setBcomp(b);
+    assertEquals("Initial value not correctly propagated", "init ccc", result.toString());
+    c.setCcc("ccc1");
+    assertEquals("Updated value not correctly propagated", "ccc1", result.toString());
+
+    BComponent b2 = new BComponent();
+    CComponent c2 = new CComponent();
+    b2.setCcomp(c2);
+    c2.setCcc("new ccc");
+    a.setBcomp(b2);
+    assertEquals("Updated value not correctly propagated", "new ccc", result.toString());
+    c2.setCcc("ccc2");
+    assertEquals("Updated value not correctly propagated", "ccc2", result.toString());
+    c.setCcc("cccbad");
+    assertEquals("Updated value wrongly propagated", "ccc2", result.toString());
+
+    b2.setCcomp(null);
+    assertEquals("Updated value not correctly propagated", "null", result.toString());
+
+    a.removePropertyChangeListener("bcomp.ccomp.ccc", listener);
+    b2.setCcomp(c);
+    assertEquals("Updated value wrongly propagated", "null", result.toString());
   }
 
   /**
@@ -683,8 +794,8 @@ public class JspressoModelTest extends BackTestStartup {
         EnhancedDetachedCriteria critDept = EnhancedDetachedCriteria.forClass(Department.class);
         critDept.add(Restrictions.like(Department.OU_ID, "HR", MatchMode.START));
         Department dept = hbc.findFirstByCriteria(critDept, EMergeMode.MERGE_KEEP, Department.class);
-        assertTrue("OneToOne has not been initialized when querying", Hibernate.isInitialized(dept.straightGetProperty(
-            Department.MANAGER)));
+        assertTrue("OneToOne has not been initialized when querying",
+            Hibernate.isInitialized(dept.straightGetProperty(Department.MANAGER)));
       }
     });
     hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
@@ -693,8 +804,8 @@ public class JspressoModelTest extends BackTestStartup {
         EnhancedDetachedCriteria critEmp = EnhancedDetachedCriteria.forClass(Employee.class);
         critEmp.add(Restrictions.like(Employee.FIRST_NAME, "Gloria", MatchMode.START));
         Employee emp = hbc.findFirstByCriteria(critEmp, EMergeMode.MERGE_KEEP, Employee.class);
-        assertFalse("ManyToOne has not been initialized when querying", Hibernate.isInitialized(emp.straightGetProperty(
-            Employee.MANAGED_OU)));
+        assertFalse("ManyToOne has not been initialized when querying",
+            Hibernate.isInitialized(emp.straightGetProperty(Employee.MANAGED_OU)));
       }
     });
   }
@@ -759,7 +870,8 @@ public class JspressoModelTest extends BackTestStartup {
     /**
      * Constructs a new {@code PropertyMatcher} instance.
      *
-     * @param propertyName the property name
+     * @param propertyName
+     *     the property name
      */
     public PropertyMatcher(String propertyName) {
       this.propertyName = propertyName;
