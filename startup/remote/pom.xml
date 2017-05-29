@@ -9,7 +9,7 @@
   </parent>
   <artifactId>hrsample-startup-remote</artifactId>
   <packaging>jar</packaging>
-  <name>Jspresso HR Sample - Startup - Remote</name>
+  <name>HR Sample CE - Startup Remote</name>
   <dependencies>
     <dependency>
       <groupId>org.jspresso.hrsample</groupId>

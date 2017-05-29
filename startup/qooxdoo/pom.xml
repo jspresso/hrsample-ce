@@ -10,7 +10,7 @@
 
   <artifactId>hrsample-startup-qooxdoo</artifactId>
   <packaging>pom</packaging>
-  <name>Jspresso HR Sample - Startup - Qooxdoo</name>
+  <name>HR Sample CE - Startup Qooxdoo</name>
 
   <modules>
     <module>client</module>

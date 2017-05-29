@@ -22,10 +22,14 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Random;
 import java.util.Set;
+
+import org.springframework.beans.factory.BeanFactory;
 
 import org.jspresso.framework.application.startup.development.AbstractHibernateTestDataPersister;
 import org.jspresso.framework.util.image.ImageHelper;
+
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
@@ -33,10 +37,9 @@ import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Role;
 import org.jspresso.hrsample.model.Team;
 import org.jspresso.hrsample.model.User;
-import org.springframework.beans.factory.BeanFactory;
 
 /**
- * Persists some testDdd data for the HR sample application.
+ * Persists some test data for the HR sample application.
  *
  * @author Vincent Vandenschrick
  */
@@ -46,15 +49,14 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
    * Constructs a new {@code HibernateTestDataPersister} instance.
    *
    * @param beanFactory
-   *
-   *          the spring bean factory to use.
+   *     the spring bean factory to use.
    */
   public HibernateTestDataPersister(BeanFactory beanFactory) {
     super(beanFactory);
   }
 
   /**
-   * Creates some testDdd data using the passed in Spring application context.
+   * Creates some test data using the passed in Spring application context.
    */
   @Override
   public void createAndPersistTestData() {
@@ -65,16 +67,16 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
            * .isEmpty()
            */true) {
         // Cities
-        City paris = createCity("Paris I", "75001", 2.3470, 48.8590);
-        City suresnes = createCity("Suresnes", "92150", 2.2292, 48.8714);
-        City evry = createCity("Evry", "91000", 2.4500, 48.6333);
-        createCity("Versailles", "78000", 2.2069, 48.7379);
-        createCity("Marseille", "13000", 5.3811, 43.2970);
-        createCity("Alençon", "61000", 0.0834, 48.4334);
-        createCity("Ambleny", "02290", 3.1845, 49.3808);
-        createCity("Nantes", "44000", -1.5534, 47.2172);
-        createCity("Bourg-en-Bresse", "01000", 5.2281, 46.2047);
-        createCity("Lyon", "69000", 4.8467, 45.7485);
+        City paris = createCity("Paris I", "75001", 2.3470, 48.8590, true);
+        City suresnes = createCity("Suresnes", "92150", 2.2292, 48.8714, true);
+        City evry = createCity("Evry", "91000", 2.4500, 48.6333, true);
+        createCity("Versailles", "78000", 2.1301, 48.8014, false);
+        createCity("Marseille", "13000", 5.3811, 43.2970, false);
+        createCity("Alençon", "61000", 0.0834, 48.4334, false);
+        createCity("Ambleny", "02290", 3.1845, 49.3808, true);
+        createCity("Nantes", "44000", -1.5534, 47.2172, false);
+        createCity("Bourg-en-Bresse", "01000", 5.2281, 46.2047, true);
+        createCity("Lyon", "69000", 4.8467, 45.7485, false);
 
 /*
         for(int i = 0; i < 200; i++) {
@@ -83,105 +85,86 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
 */
 
         // Company
-        Company design2see = createCompany("Design2See",
-            "123 avenue de la Liberté", paris, "contact@design2see.com",
+        Company design2see = createCompany("Design2See", "123 avenue de la Liberté", paris, "contact@design2see.com",
             "+33 123 456 000");
 
         // Tests the RFE #87
         Set<Employee> employees = design2see.getEmployees();
 
         // Employees
-        Employee demo = createEmployee("M", "Demo", "Demo", "demo",
-            "Impasse de la demo", evry, "demo@jspresso.com",
-            "+33 1 152 368 984", "02/05/1972", "03/08/2005", "0123456789",
-            true, "0xFF449911", "100000", "employees/Mark_Zuckerberg.jpg", "employees/Mark_Zuckerberg_Signature.png");
+        Employee demo = createEmployee("M", "Demo", "Demo", "demo", "Impasse de la demo", evry, "demo@jspresso.com",
+            "+33 1 152 368 984", "02/05/1972", "03/08/2005", "0123456789", true, "0xFF449911", "100000",
+            "employees/Mark_Zuckerberg.jpg", "employees/Mark_Zuckerberg_Signature.png");
         employees.add(demo);
 
-        Employee johnDoe = createEmployee("M", "Doe", "John", "doepass",
-            "12 allée du Chien qui Fume", evry, "john.doe@design2see.com",
-            "+33 1 152 368 984", "02/05/1972", "03/08/2005", "1523698754",
-            true, "0xFF449911", "100000", "employees/Ryan-Gosling.jpg", null);
+        Employee johnDoe = createEmployee("M", "Doe", "John", "doepass", "12 allée du Chien qui Fume", evry,
+            "john.doe@design2see.com", "+33 1 152 368 984", "02/05/1972", "03/08/2005", "1523698754", true,
+            "0xFF449911", "100000", "employees/Ryan-Gosling.jpg", null);
         employees.add(johnDoe);
 
-        Employee mikeDen = createEmployee("M", "Den", "Mike", "denpass",
-            "26 rue de la Pie qui Chante", suresnes, "mike.den@design2see.com",
-            "+33 1 968 846 398", "05/07/1990", "01/03/2004", "1859637461",
-            false, "0xFFCC1255", "80000", "employees/Mike.jpg", null);
+        Employee mikeDen = createEmployee("M", "Den", "Mike", "denpass", "26 rue de la Pie qui Chante", suresnes,
+            "mike.den@design2see.com", "+33 1 968 846 398", "05/07/1990", "01/03/2004", "1859637461", false,
+            "0xFFCC1255", "80000", "employees/Mike.jpg", null);
         employees.add(mikeDen);
 
-        Employee evaGreen = createEmployee("F", "Green", "Eva", null,
-            "68 rue de l'Eléphant Vert", suresnes, "eva.green@design2see.com",
-            "+33 1 958 536 972", "10/08/1977", "06/04/2002", "2856752387",
-            true, "0xFFAA4411", "85000", "employees/Eva_Green.jpg", null);
+        Employee evaGreen = createEmployee("F", "Green", "Eva", null, "68 rue de l'Eléphant Vert", suresnes,
+            "eva.green@design2see.com", "+33 1 958 536 972", "10/08/1977", "06/04/2002", "2856752387", true,
+            "0xFFAA4411", "85000", "employees/Eva_Green.jpg", null);
         employees.add(evaGreen);
 
-        Employee gloriaSan = createEmployee("F", "San", "Gloria", null,
-            "13 avenue du Poisson Enragé", evry, "gloria.san@design2see.com",
-            "+33 1 956 367 412", "09/01/1969", "03/01/2006", "2597853274",
-            false, "0xFF001276", "75000", "employees/Angelina-Jolie.jpg", null);
+        Employee gloriaSan = createEmployee("F", "San", "Gloria", null, "13 avenue du Poisson Enragé", evry,
+            "gloria.san@design2see.com", "+33 1 956 367 412", "09/01/1969", "03/01/2006", "2597853274", false,
+            "0xFF001276", "75000", "employees/Angelina-Jolie.jpg", null);
         employees.add(gloriaSan);
 
-        Employee mariaTrulli = createEmployee("F", "Trulli", "Maria", null,
-            "20 avenue du Crocodile Marteau", evry,
-            "maria.trulli@design2see.com", "+33 1 868 745 369",
-            "01/02/1963", "03/10/2006", "2325985423", true, "0xFF9489AB", "110000", "employees/Jack_Ryan.jpg", null);
+        Employee mariaTrulli = createEmployee("F", "Trulli", "Maria", null, "20 avenue du Crocodile Marteau", evry,
+            "maria.trulli@design2see.com", "+33 1 868 745 369", "01/02/1963", "03/10/2006", "2325985423", true,
+            "0xFF9489AB", "110000", "employees/Jack_Ryan.jpg", null);
         employees.add(mariaTrulli);
 
-        Employee isabelleMartin = createEmployee("F", "Martin", "Isabelle",
-            null, "20 allée de la Gazelle Sauteuse", evry,
-            "isabelle.martin@design2see.com", "+33 1 698 256 365",
-            "04/07/1970", "12/06/2001", "2652398751", false, "0xFFAA6512",
-            "39000", "employees/Marion_Cotillard.jpg", null);
+        Employee isabelleMartin = createEmployee("F", "Martin", "Isabelle", null, "20 allée de la Gazelle Sauteuse",
+            evry, "isabelle.martin@design2see.com", "+33 1 698 256 365", "04/07/1970", "12/06/2001", "2652398751",
+            false, "0xFFAA6512", "39000", "employees/Marion_Cotillard.jpg", null);
         employees.add(isabelleMartin);
 
-        Employee graziellaBerlutti = createEmployee("F", "Berlutti",
-            "Graziella", null, "104 square des Bégonias", suresnes,
-            "graziella.berlutti@design2see.com", "+33 1 698 234 986",
-            "17/03/1982", "12/06/2003", "2256725396", false, "0xFFAA1133",
-            "100000", "employees/Graziella.jpg", null);
+        Employee graziellaBerlutti = createEmployee("F", "Berlutti", "Graziella", null, "104 square des Bégonias",
+            suresnes, "graziella.berlutti@design2see.com", "+33 1 698 234 986", "17/03/1982", "12/06/2003",
+            "2256725396", false, "0xFFAA1133", "100000", "employees/Graziella.jpg", null);
         employees.add(graziellaBerlutti);
 
-        Employee frankWurst = createEmployee("M",
-            "Wurst", "Frank", null, "120 rue des Pétoncles", evry,
-            "frank.wurst@design2see.com", "+33 1 708 544 985",
-            "23/05/1969", "17/11/2002", "1256725235", false, "0xFF14ADFE", "110000", "employees/John_Goodman.jpg", null);
+        Employee frankWurst = createEmployee("M", "Wurst", "Frank", null, "120 rue des Pétoncles", evry,
+            "frank.wurst@design2see.com", "+33 1 708 544 985", "23/05/1969", "17/11/2002", "1256725235", false,
+            "0xFF14ADFE", "110000", "employees/John_Goodman.jpg", null);
         employees.add(frankWurst);
 
 
         // Departments and teams.
-        Department hrDepartment = createDepartment("Human Resources", "HR-000",
-            "124 avenue de la Liberté", paris, "hr@design2see.com",
-            "+33 123 456 100", design2see, johnDoe);
+        Department hrDepartment = createDepartment("Human Resources", "HR-000", "124 avenue de la Liberté", paris,
+            "hr@design2see.com", "+33 123 456 100", design2see, johnDoe);
 
-        Team hr001Team = createTeam("HR 001 Team", "HR-001",
-            "124 avenue de la Liberté", paris, "hr001@design2see.com",
+        Team hr001Team = createTeam("HR 001 Team", "HR-001", "124 avenue de la Liberté", paris, "hr001@design2see.com",
             "+33 123 456 101", hrDepartment, mikeDen);
         hr001Team.addToTeamMembers(johnDoe);
         hr001Team.addToTeamMembers(mikeDen);
 
-        Team hr002Team = createTeam("HR 002 Team", "HR-002",
-            "124 avenue de la Liberté", paris, "hr002@design2see.com",
+        Team hr002Team = createTeam("HR 002 Team", "HR-002", "124 avenue de la Liberté", paris, "hr002@design2see.com",
             "+33 123 456 102", hrDepartment, evaGreen);
         hr002Team.addToTeamMembers(johnDoe);
         hr002Team.addToTeamMembers(evaGreen);
 
-        Team hr003Team = createTeam("HR 003 Team", "HR-003",
-            "124 avenue de la Liberté", paris, "hr003@design2see.com",
+        Team hr003Team = createTeam("HR 003 Team", "HR-003", "124 avenue de la Liberté", paris, "hr003@design2see.com",
             "+33 123 456 103", hrDepartment, graziellaBerlutti);
         hr003Team.addToTeamMembers(graziellaBerlutti);
 
-        Department itDepartment = createDepartment("Information Technology",
-            "IT-000", "125 avenue de la Liberté", paris, "it@design2see.com",
-            "+33 123 456 200", design2see, gloriaSan);
+        Department itDepartment = createDepartment("Information Technology", "IT-000", "125 avenue de la Liberté",
+            paris, "it@design2see.com", "+33 123 456 200", design2see, gloriaSan);
 
-        Team it001Team = createTeam("IT 001 Team", "IT-001",
-            "125 avenue de la Liberté", paris, "it001@design2see.com",
+        Team it001Team = createTeam("IT 001 Team", "IT-001", "125 avenue de la Liberté", paris, "it001@design2see.com",
             "+33 123 456 201", itDepartment, mariaTrulli);
         it001Team.addToTeamMembers(gloriaSan);
         it001Team.addToTeamMembers(mariaTrulli);
 
-        Team it002Team = createTeam("IT 002 Team", "IT-002",
-            "125 avenue de la Liberté", paris, "it002@design2see.com",
+        Team it002Team = createTeam("IT 002 Team", "IT-002", "125 avenue de la Liberté", paris, "it002@design2see.com",
             "+33 123 456 202", itDepartment, isabelleMartin);
         it002Team.addToTeamMembers(gloriaSan);
         it002Team.addToTeamMembers(isabelleMartin);
@@ -195,32 +178,49 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         adminRole.setRoleId("administrator");
         adminRole.addToUsers(demo.getUsers().iterator().next());
         saveOrUpdate(adminRole);
-        
+
         Role employeeRole = getEntityFactory().createEntityInstance(Role.class);
         employeeRole.setRoleId("employee");
         for (Employee e : design2see.getEmployees()) {
-          if (! e.getUsers().isEmpty()) {
+          if (!e.getUsers().isEmpty()) {
             employeeRole.addToUsers(e.getUsers().iterator().next());
           }
         }
         saveOrUpdate(employeeRole);
-        
+
         //
         saveOrUpdate(design2see);
       }
     } catch (Throwable ex) {
       ex.printStackTrace(System.err);
-      // In no way the testDdd data persister should make the application
+      // In no way the test data persister should make the application
       // startup fail.
     }
   }
 
-  private City createCity(String name, String zip, Double longitude, Double latitude) {
+  private City createCity(String name, String zip, Double longitude, Double latitude, boolean createRoute) {
     City city = createEntityInstance(City.class);
     city.setName(name);
     city.setZip(zip);
     city.setLongitude(longitude);
     city.setLatitude(latitude);
+    if (createRoute && longitude != null && latitude != null) {
+      int routeCount = new Random().nextInt(5);
+      double[][][] randomRoutes = new double[routeCount][][];
+      for (int r = 0; r < routeCount; r++) {
+        double[][] randomRoute = new double[10][2];
+        randomRoute[0][0] = longitude;
+        randomRoute[0][1] = latitude;
+        for (int i = 1; i < 10; i++) {
+          Random random = new Random();
+          randomRoute[i][0] = Math.round(1000d * (randomRoute[i - 1][0] + random.nextDouble() * 0.05d)) / 1000d;
+          randomRoute[i][1] = Math.round(
+              1000d * (randomRoute[i - 1][1] + random.nextDouble() * 0.05d * (random.nextBoolean() ? 1 : -1))) / 1000d;
+        }
+        randomRoutes[r] = randomRoute;
+      }
+      city.setRoutes(randomRoutes);
+    }
     City.Translation t = getEntityFactory().createComponentInstance(City.Translation.class);
     t.setLanguage("de");
     t.setPropertyName("name");
@@ -230,8 +230,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     return city;
   }
 
-  private Company createCompany(String name, String address, City city,
-                                String email, String phone) {
+  private Company createCompany(String name, String address, City city, String email, String phone) {
     Company company = createEntityInstance(Company.class);
     company.setName(name);
     company.getContact().setAddress(address);
@@ -241,8 +240,8 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     return company;
   }
 
-  private Department createDepartment(String name, String ouId, String address,
-                                      City city, String email, String phone, Company company, Employee manager) {
+  private Department createDepartment(String name, String ouId, String address, City city, String email, String phone,
+                                      Company company, Employee manager) {
     Department department = createEntityInstance(Department.class);
     department.setName(name);
     department.setOuId(ouId);
@@ -255,8 +254,8 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     return department;
   }
 
-  private Team createTeam(String name, String ouId, String address, City city,
-      String email, String phone, Department department, Employee manager) {
+  private Team createTeam(String name, String ouId, String address, City city, String email, String phone,
+                          Department department, Employee manager) {
     Team team = createEntityInstance(Team.class);
     team.setName(name);
     team.setOuId(ouId);
@@ -269,10 +268,10 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     return team;
   }
 
-  private Employee createEmployee(String gender, String name, String firstName,
-      String password, String address, City city, String email, String phone,
-      String birthDate, String hireDate, String ssn, boolean married,
-      String preferredColor, String salary, String image, String signature) throws IOException {
+  private Employee createEmployee(String gender, String name, String firstName, String password, String address,
+                                  City city, String email, String phone, String birthDate, String hireDate, String ssn,
+                                  boolean married, String preferredColor, String salary, String image, String signature)
+      throws IOException {
     SimpleDateFormat df = new SimpleDateFormat("DD/MM/yyyy");
 
     Employee employee = createEntityInstance(Employee.class);
@@ -299,28 +298,30 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     employee.setPreferredColor(preferredColor);
     employee.setSalary(new BigDecimal(salary));
 
-    if (image!=null)
+    if (image != null) {
       employee.setPhoto(loadImage(image));
-    
+    }
+
     Employee.Translation t = getEntityFactory().createComponentInstance(Employee.Translation.class);
     t.setLanguage("de");
     t.setPropertyName("firstName");
     t.setTranslatedValue(new StringBuilder(employee.getFirstNameRaw()).reverse().toString());
     employee.addToPropertyTranslations(t);
-    
-    if (password!=null) {
+
+    if (password != null) {
       User u = getEntityFactory().createEntityInstance(User.class);
       u.setLogin(password);
       u.setPassword(password);
       employee.addToUsers(u);
     }
-    
-    if (signature!=null) 
+
+    if (signature != null) {
       employee.setSignature(loadImage(signature));
-    
+    }
+
     return employee;
   }
-  
+
   private byte[] loadImage(String path) throws IOException {
     return ImageHelper.loadImage("/org/jspresso/hrsample/images/" + path);
   }

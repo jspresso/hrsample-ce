@@ -1,27 +1,20 @@
 {
-  "name"    : "jspresso-hrsample",
-
-  "include" :
-  [
+  "name": "jspresso-hrsample",
+  "include": [
     {
-      "path" : "${QOOXDOO_PATH}/tool/data/config/application.json"
-    }
-    ,
+      "path": "${QOOXDOO_PATH}/tool/data/config/application.json"
+    },
     {
-      "path" : "${TARGET}/jspresso-qooxdoo-client-zip/py/library.json",
-      "as"   : "jspresso-qooxdoo"
-    }
-    ,
+      "path": "${TARGET}/jspresso-qooxdoo-client-zip/py/library.json",
+      "as": "jspresso-qooxdoo"
+    },
     {
       "path": "${TARGET}/jspresso-qooxdoo-theme-zip/py/library.json",
       "as": "jspresso-qooxdoo-theme"
     }
   ],
-
-  "config-warnings" :
-  {
-    "job-shadowing" :
-    [
+  "config-warnings": {
+    "job-shadowing": [
       "common",
       "libraries",
       "build-files",
@@ -31,222 +24,223 @@
       "build"
     ]
   },
-
-  "let" :
-  {
-    "ROOT"                 : "..",
-    "TARGET"               : "../../../target",
-    "RESOURCES"            : "${ROOT}/resources",
-    "QX_RESOURCES"         : "${QOOXDOO_PATH}/framework/source/resource",
-    "BUILD_PATH"           : "${TARGET}/web",
-    "BUILD_PATH_CSS"       : "${TARGET}/css",
-    "APPLICATION"          : "org.jspresso.hrsample.startup.qooxdoo",
-    "APPLICATION_PATH"     : "org/jspresso/hrsample/startup/qooxdoo",
-    "APPLICATION_CSS"      : "${APPLICATION_PATH}/css/styles.css",
-    "QOOXDOO_PATH"         : "${TARGET}/qooxdoo-sdk",
-    "QXTHEME"              : "org.jspresso.hrsample.startup.qooxdoo.theme.Theme",
-//    "QXTHEME"              : "org.jspresso.framework.JspressoTheme",
-//    "QXTHEME"              : "qx.theme.Indigo",
-//    "QXTHEME"              : "qx.theme.Classic",
-//    "QXTHEME"              : "qx.theme.Simple",
-//    "QXTHEME"              : "qx.theme.Modern",
-    "QXICONTHEME"          : ["Oxygen", "Tango"],
-    "JSPRESSO_QX_DIR"      : "${TARGET}/jspresso-qooxdoo-client-zip",
-    "JSPRESSO_TH_DIR"      : "${TARGET}/jspresso-qooxdoo-theme-zip",
-    "JSPRESSO_QX_SCSS_DIR" : "${JSPRESSO_QX_DIR}/resources/org/jspresso/framework/mobile/scss",
-    "MOBILE_THEME"         : "custom",
-//    "MOBILE_THEME"         : "indigo",
-//    "MOBILE_THEME"         : "flat",
-    "MOBILE_CSS_DIR"       : "${APPLICATION_PATH}/css",
-    "MOBILE_CSS_PATH"      : "${MOBILE_CSS_DIR}/${MOBILE_THEME}.css",
-    "MOBILE_SCSS_DIR"      : "${APPLICATION_PATH}/scss",
-    "MOBILE_SCSS_PATH"     : "${MOBILE_SCSS_DIR}/${MOBILE_THEME}.scss",
-    "QX_MOBILE_SCSS_DIR"   : "${QX_RESOURCES}/qx/mobile/scss",
-    "QX_SHARED_SCSS_DIR"   : "${QX_RESOURCES}/qx/scss",
-    "QX_MOBILE_CSS_PATH"   : "qx/mobile/css/${MOBILE_THEME}.css",
-    "LOCALES"              : ["en"],
-    "MKDIRCMD"             : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/mkdir.py",
-    "CATCMD"               : "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/cat.py",
-    "SCSS_CMD"             : "sass"
+  "let": {
+    "ROOT": "..",
+    "TARGET": "../../../target",
+    "RESOURCES": "${ROOT}/resources",
+    "QX_RESOURCES": "${QOOXDOO_PATH}/framework/source/resource",
+    "BUILD_PATH": "${TARGET}/web",
+    "BUILD_PATH_CSS": "${TARGET}/css",
+    "APPLICATION": "org.jspresso.hrsample.startup.qooxdoo",
+    "APPLICATION_PATH": "org/jspresso/hrsample/startup/qooxdoo",
+    "APPLICATION_CSS": "${APPLICATION_PATH}/css/styles.css",
+    "QOOXDOO_PATH": "${TARGET}/qooxdoo-sdk",
+    "QXTHEME": "org.jspresso.hrsample.startup.qooxdoo.theme.Theme",
+    //    "QXTHEME"              : "org.jspresso.framework.JspressoTheme",
+    //    "QXTHEME"              : "qx.theme.Indigo",
+    //    "QXTHEME"              : "qx.theme.Classic",
+    //    "QXTHEME"              : "qx.theme.Simple",
+    //    "QXTHEME"              : "qx.theme.Modern",
+    "QXICONTHEME": [
+      "Oxygen",
+      "Tango"
+    ],
+    "JSPRESSO_QX_DIR": "${TARGET}/jspresso-qooxdoo-client-zip",
+    "JSPRESSO_TH_DIR": "${TARGET}/jspresso-qooxdoo-theme-zip",
+    "JSPRESSO_QX_SCSS_DIR": "${JSPRESSO_QX_DIR}/resources/org/jspresso/framework/mobile/scss",
+    "MOBILE_THEME": "custom",
+    //    "MOBILE_THEME"         : "indigo",
+    //    "MOBILE_THEME"         : "flat",
+    "MOBILE_CSS_DIR": "${APPLICATION_PATH}/css",
+    "MOBILE_CSS_PATH": "${MOBILE_CSS_DIR}/${MOBILE_THEME}.css",
+    "MOBILE_SCSS_DIR": "${APPLICATION_PATH}/scss",
+    "MOBILE_SCSS_PATH": "${MOBILE_SCSS_DIR}/${MOBILE_THEME}.scss",
+    "QX_MOBILE_SCSS_DIR": "${QX_RESOURCES}/qx/mobile/scss",
+    "QX_SHARED_SCSS_DIR": "${QX_RESOURCES}/qx/scss",
+    "QX_MOBILE_CSS_PATH": "qx/mobile/css/${MOBILE_THEME}.css",
+    "LOCALES": [
+      "en"
+    ],
+    "MKDIRCMD": "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/mkdir.py",
+    "CATCMD": "${PYTHON_CMD} ${QOOXDOO_PATH}/tool/bin/cat.py",
+    "SCSS_CMD": "sass"
   },
-
-  "jobs" :
-  {
-    "common" : 
-    {
-      "cache" :
-      {
-        "compile"     : "${TARGET}/cache",
-        "downloads"   : "${TARGET}/cache/downloads"
+  "jobs": {
+    "common": {
+      "extend": [
+        "jspresso-qooxdoo::common"
+      ],
+      "cache": {
+        "compile": "${TARGET}/cache",
+        "downloads": "${TARGET}/cache/downloads"
       }
     },
-    "libraries" :
-    {
-      "extend" : ["jspresso-qooxdoo::libraries"],
-      
-      "library" :
-      [
+    "libraries": {
+      "extend": [
+        "jspresso-qooxdoo::libraries"
+      ],
+      "library": [
         {
-          "manifest" : "${JSPRESSO_QX_DIR}/Manifest.json"
+          "manifest": "${JSPRESSO_QX_DIR}/Manifest.json"
         },
         {
-          "manifest" : "${JSPRESSO_TH_DIR}/Manifest.json"
+          "manifest": "${JSPRESSO_TH_DIR}/Manifest.json"
         }
       ]
     },
-
-
-    "build-files" :
-    {
-      "copy-files" :
-      {
-        "files" : ["*.html","*.png"],
-        "source" : "${ROOT}/html"
+    "build-files": {
+      "copy-files": {
+        "files": [
+          "*.html",
+          "*.png"
+        ],
+        "source": "${ROOT}/html"
       }
     },
-    "source-files" :
-    {
-      "extend"     : ["build-files"],
-      "copy-files" :
-      {
-        "target" : "${TARGET}/web-debug"
+    "source-files": {
+      "extend": [
+        "build-files"
+      ],
+      "copy-files": {
+        "target": "${TARGET}/web-debug"
       }
     },
-    
-    "common-mobile" : {
-      "compile-options" :
-      {
-        "paths" :
-        {
-          "loader-template" : "${QOOXDOO_PATH}/tool/data/generator/mobile.loader.tmpl.js"
+    "common-mobile": {
+      "compile-options": {
+        "paths": {
+          "loader-template": "${QOOXDOO_PATH}/tool/data/generator/mobile.loader.tmpl.js"
         }
       },
-      "environment" :
-      {
-        "qx.mobile.emulatetouch" : false,
-        "qx.mobile.nativescroll" : true,
-        "qx.theme"               : "${MOBILE_THEME}"
+      "environment": {
+        "qx.mobile.emulatetouch": false,
+        "qx.mobile.nativescroll": true,
+        "qx.theme": "${MOBILE_THEME}"
       }
     },
-
-    "source-script" :
-    {
-      "extend" : ["source-files"],
-      "compile-options" :
-      {
-			  "paths" :
-			  {
-			    "file" : "${TARGET}/web-debug/script/${APPLICATION}.js",
-          "scripts-add-hash" : false
-			  },
-        "uris" :
-        {
-          "add-nocache-param" : false
+    "source-script": {
+      "extend": [
+        "source-files"
+      ],
+      "compile-options": {
+        "paths": {
+          "file": "${TARGET}/web-debug/script/${APPLICATION}.js",
+          "scripts-add-hash": false
+        },
+        "uris": {
+          "add-nocache-param": false
         }
       }
     },
-    "source-script-mobile" :
-    {
-      "extend" : ["source-script", "common-mobile"],
-      "compile-options" :
-      {
-        "paths" :
-        {
-          "file" : "${TARGET}/web-debug/script/${APPLICATION}-mobile.js"
+    "source-script-mobile": {
+      "extend": [
+        "source-script",
+        "common-mobile"
+      ],
+      "compile-options": {
+        "paths": {
+          "file": "${TARGET}/web-debug/script/${APPLICATION}-mobile.js"
         }
       },
-      "add-css" : [
-        { "uri" : "${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}" },
-        { "uri" : "${RESOURCES}/${APPLICATION_CSS}" }
+      "add-css": [
+        {
+          "uri": "${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}"
+        },
+        {
+          "uri": "${RESOURCES}/${APPLICATION_CSS}"
+        }
       ]
     },
-
-    "build-script" :
-    {
-      "extend" : ["build-files"]
-    },
-    "build-script-mobile" :
-    {
-      "extend" : ["build-script", "common-mobile"],
-      "compile-options" :
-      {
-        "paths" : {
-          "file" : "${BUILD_PATH}/script/${APPLICATION}-mobile.js"
-        }
-      },
-      "add-css" : [
-        { "uri" : "./resource/${APPLICATION_CSS}" }
+    "build-script": {
+      "extend": [
+        "build-files"
       ]
     },
-
-    "source" : {
-    },
-    "source-mobile" :
-    {
-      "extend" : ["source"],
-      "let" :
-      {
-        "APPLICATION_MAIN_CLASS" : "${APPLICATION}.MobileApplication",
-        "QXTHEME"      : "",
-        "QXICONTHEME"  : []
+    "build-script-mobile": {
+      "extend": [
+        "build-script",
+        "common-mobile"
+      ],
+      "compile-options": {
+        "paths": {
+          "file": "${BUILD_PATH}/script/${APPLICATION}-mobile.js"
+        }
       },
-      "=run" : ["source-script-mobile"]
-    },
-
-    "build" : {
-    },
-    "build-mobile" :
-    {
-      "extend" : ["build"],
-      "let" :
-      {
-        "APPLICATION_MAIN_CLASS" : "${APPLICATION}.MobileApplication",
-        "QXTHEME"      : "",
-        "QXICONTHEME"  : []
-      },
-      "=run" : ["build-resources","build-script-mobile","build-files","compile-scss","combine-css"]
-    },
-
-    "combine-css" :
-    {
-      "extend" : ["cache"],
-      "shell" :
-      {
-        "command" :
-            [
-              "${MKDIRCMD} ${BUILD_PATH}/resource/${MOBILE_CSS_DIR}",
-              "${CATCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} ${RESOURCES}/${APPLICATION_CSS} > ${BUILD_PATH}/resource/${APPLICATION_CSS}"
-            ]
-      }
-    },
-
-
-    "compile-scss" :
-    {
-      "desc"   : "Compile mobile theme scss",
-      "extend" : ["cache"],
-      "shell" :
-      {
-        "command" :
-            [
-              "${MKDIRCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_DIR}",
-              "${SCSS_CMD} --style compressed --cache-location ${TARGET}/cache-sass --load-path ${RESOURCES}/${MOBILE_SCSS_DIR} --load-path ${QX_MOBILE_SCSS_DIR} --load-path ${QX_SHARED_SCSS_DIR} --load-path ${JSPRESSO_QX_SCSS_DIR} ${RESOURCES}/${MOBILE_SCSS_PATH} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}"
-            ]
-      }
-    },
-
-    "watch-scss" :
-    {
-      "desc"   : "Watch and compile mobile theme scss",
-      "extend" : ["cache"],
-      "watch-files" :
-      {
-        "paths"    : ["${RESOURCES}/${MOBILE_SCSS_DIR}"],
-        "command" :
+      "add-css": [
         {
-          "line"  : "${SCSS_CMD} --style compressed --cache-location ${TARGET}/cache-sass --load-path ${RESOURCES}/${MOBILE_SCSS_DIR} --load-path ${QX_MOBILE_SCSS_DIR} --load-path ${QX_SHARED_SCSS_DIR} --load-path ${JSPRESSO_QX_SCSS_DIR} ${RESOURCES}/${MOBILE_SCSS_PATH} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}",
-          "exec-on-startup" : true,
-          "per-file" : false
+          "uri": "./resource/${APPLICATION_CSS}"
+        }
+      ]
+    },
+    "source": {
+    },
+    "source-mobile": {
+      "extend": [
+        "source"
+      ],
+      "let": {
+        "APPLICATION_MAIN_CLASS": "${APPLICATION}.MobileApplication",
+        "QXTHEME": "",
+        "QXICONTHEME": []
+      },
+      "=run": [
+        "source-script-mobile"
+      ]
+    },
+    "build": {
+    },
+    "build-mobile": {
+      "extend": [
+        "build"
+      ],
+      "let": {
+        "APPLICATION_MAIN_CLASS": "${APPLICATION}.MobileApplication",
+        "QXTHEME": "",
+        "QXICONTHEME": []
+      },
+      "=run": [
+        "build-resources",
+        "build-script-mobile",
+        "build-files",
+        "compile-scss",
+        "combine-css"
+      ]
+    },
+    "combine-css": {
+      "extend": [
+        "cache"
+      ],
+      "shell": {
+        "command": [
+          "${MKDIRCMD} ${BUILD_PATH}/resource/${MOBILE_CSS_DIR}",
+          "${CATCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH} ${RESOURCES}/${APPLICATION_CSS} > ${BUILD_PATH}/resource/${APPLICATION_CSS}"
+        ]
+      }
+    },
+    "compile-scss": {
+      "desc": "Compile mobile theme scss",
+      "extend": [
+        "cache"
+      ],
+      "shell": {
+        "command": [
+          "${MKDIRCMD} ${BUILD_PATH_CSS}/${MOBILE_CSS_DIR}",
+          "${SCSS_CMD} --style compressed --cache-location ${TARGET}/cache-sass --load-path ${RESOURCES}/${MOBILE_SCSS_DIR} --load-path ${QX_MOBILE_SCSS_DIR} --load-path ${QX_SHARED_SCSS_DIR} --load-path ${JSPRESSO_QX_SCSS_DIR} ${RESOURCES}/${MOBILE_SCSS_PATH} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}"
+        ]
+      }
+    },
+    "watch-scss": {
+      "desc": "Watch and compile mobile theme scss",
+      "extend": [
+        "cache"
+      ],
+      "watch-files": {
+        "paths": [
+          "${RESOURCES}/${MOBILE_SCSS_DIR}"
+        ],
+        "command": {
+          "line": "${SCSS_CMD} --style compressed --cache-location ${TARGET}/cache-sass --load-path ${RESOURCES}/${MOBILE_SCSS_DIR} --load-path ${QX_MOBILE_SCSS_DIR} --load-path ${QX_SHARED_SCSS_DIR} --load-path ${JSPRESSO_QX_SCSS_DIR} ${RESOURCES}/${MOBILE_SCSS_PATH} ${BUILD_PATH_CSS}/${MOBILE_CSS_PATH}",
+          "exec-on-startup": true,
+          "per-file": false
         }
       }
     }
