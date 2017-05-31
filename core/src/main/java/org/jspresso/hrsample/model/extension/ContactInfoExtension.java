@@ -4,11 +4,12 @@ import org.jspresso.framework.application.backend.BackendControllerHolder;
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.framework.model.component.service.DependsOn;
 import org.jspresso.hrsample.model.ContactInfo;
+import org.jspresso.hrsample.model.IContactInfoExtension;
 
 /**
  * ContactInfo extension.
  */
-public class ContactInfoExtension extends AbstractComponentExtension<ContactInfo> {
+public class ContactInfoExtension extends AbstractComponentExtension<ContactInfo> implements IContactInfoExtension {
 
   /**
    * ContactInfoExtension constructor.
@@ -19,7 +20,7 @@ public class ContactInfoExtension extends AbstractComponentExtension<ContactInfo
 
   /**
    * {@inheritDoc}
-   * 
+   *
    * @return
    */
   /**
@@ -30,16 +31,16 @@ public class ContactInfoExtension extends AbstractComponentExtension<ContactInfo
   public String getPhoneAsHtml() {
     ContactInfo cinfo = getComponent();
 
-    String phone = cinfo.getPhone(); 
+    String phone = cinfo.getPhone();
     if (phone == null) {
       return null;
     }
-    
+
     if (!BackendControllerHolder.getCurrentBackendController().getClientType().isHTML5()) {
       return phone;
     }
 
     return "<a href='tel:" + phone +"' style='pointer-events:all;'>" + phone + "</a>";
   }
-  
+
 }
