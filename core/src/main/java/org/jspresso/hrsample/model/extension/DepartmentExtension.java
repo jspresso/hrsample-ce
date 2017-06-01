@@ -25,6 +25,7 @@ import org.hibernate.Hibernate;
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.hrsample.model.Department;
 import org.jspresso.hrsample.model.Employee;
+import org.jspresso.hrsample.model.IDepartmentExtension;
 import org.jspresso.hrsample.model.Team;
 
 /**
@@ -32,7 +33,7 @@ import org.jspresso.hrsample.model.Team;
  *
  * @author Vincent Vandenschrick
  */
-public class DepartmentExtension extends AbstractComponentExtension<Department> {
+public class DepartmentExtension extends AbstractComponentExtension<Department> implements IDepartmentExtension {
 
   /**
    * Constructs a new <code>DepartmentExtension</code> instance.

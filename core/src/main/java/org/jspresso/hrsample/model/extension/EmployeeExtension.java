@@ -22,23 +22,27 @@ import java.io.IOException;
 
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.framework.model.component.service.DependsOn;
+import org.jspresso.framework.model.component.service.DependsOnGroup;
 import org.jspresso.framework.model.descriptor.IEnumerationPropertyDescriptor;
+import org.jspresso.framework.util.exception.NestedRuntimeException;
 import org.jspresso.framework.util.image.ImageHelper;
+
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Employee;
+import org.jspresso.hrsample.model.IEmployeeExtension;
 
 /**
  * Helper class computing extended properties for Employee entity.
  *
  * @author Vincent Vandenschrick
  */
-public class EmployeeExtension extends AbstractComponentExtension<Employee> {
- 
+public class EmployeeExtension extends AbstractComponentExtension<Employee> implements IEmployeeExtension {
+
   /**
    * Constructs a new {@code EmployeeExtension} instance.
    *
    * @param extendedEmployee
-   *          The extended Employee instance.
+   *     The extended Employee instance.
    */
   public EmployeeExtension(Employee extendedEmployee) {
     super(extendedEmployee);
@@ -72,7 +76,7 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
    *
    * @return the concatenation of last name and first name.
    */
-  @DependsOn({Employee.FIRST_NAME, Employee.NAME })
+  @DependsOnGroup({@DependsOn(Employee.FIRST_NAME), @DependsOn(Employee.NAME)})
   public String getFullName() {
     StringBuilder buff = new StringBuilder();
     if (getComponent().getName() != null) {
@@ -81,7 +85,6 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
         buff.append(" ");
       }
     }
-    getFullName();
     if (getComponent().getFirstName() != null) {
       buff.append(getComponent().getFirstName());
     }
@@ -95,36 +98,41 @@ public class EmployeeExtension extends AbstractComponentExtension<Employee> {
 //   */
 //  @DependsOn({Employee.FULL_NAME, Employee.BIRTH_DATE})
 //  public String getHtmlDescription() {
-//    return "<html><b><i>" + getComponent().getFullName() + "</i></b><br>" + "  Age: " + getComponent().getAge() + "</html>";
+//    return "<html><b><i>" + getComponent().getFullName() + "</i></b><br>" + "  Age: " + getComponent().getAge() +
+// "</html>";
 //
 //  }
 
-  protected void testDdd() {
-    testDdd();
-  }
-  
   /**
    * Gets html description.
+   *
    * @return The html description.
-   * @throws IOException If image is not available
+   *
+   * @throws IOException
+   *     If image is not available
    */
-  @DependsOn({Employee.FULL_NAME, Employee.COMPANY+'.'+ Company.NAME, Employee.PHOTO})
-  public String getHtmlDescription() throws IOException {
+  @DependsOn({Employee.FULL_NAME, Employee.COMPANY + '.' + Company.NAME, Employee.PHOTO})
+  public String getHtmlDescription() {
     Employee employee = getComponent();
-    
+
     StringBuffer sb = new StringBuffer();
     sb.append("<html><b>").append(employee.getFullName()).append("</b><br/>");
-    
-    if (employee.getCompany()!=null) {   
+
+    if (employee.getCompany() != null) {
       sb.append("<i><font size='2'>");
       sb.append(employee.getCompany().getName());
       sb.append("</font></i>");
     }
-    
-    if (employee.getPhoto()!=null) {
-      sb.append("<br><img src='").append(ImageHelper.toBase64Src(employee.getPhoto(), "png")).append("'>");
+
+    if (employee.getPhoto() != null) {
+      try {
+        String base64Image = ImageHelper.toBase64Src(employee.getPhoto(), "png");
+        sb.append("<br><img src='").append(base64Image).append("'>");
+      } catch (IOException e) {
+        throw new NestedRuntimeException(e);
+      }
     }
-    
+
     sb.append("</html>");
     return sb.toString();
   }

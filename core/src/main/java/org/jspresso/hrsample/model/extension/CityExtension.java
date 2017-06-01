@@ -31,13 +31,14 @@ import org.jspresso.framework.util.exception.NestedRuntimeException;
 import org.jspresso.framework.view.descriptor.IMapViewDescriptor;
 
 import org.jspresso.hrsample.model.City;
+import org.jspresso.hrsample.model.ICityExtension;
 
 /**
  * City extension.
  *
  * @author Vincent Vandenschrick
  */
-public class CityExtension extends AbstractComponentExtension<City> {
+public class CityExtension extends AbstractComponentExtension<City> implements ICityExtension {
 
   /**
    *  * Constructs a new {@code CityExtension} instance.

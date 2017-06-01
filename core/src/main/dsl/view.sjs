@@ -145,7 +145,6 @@ propertyView('Employee-fullname.property')
 propertyView('OrganizationalUnit-manager.property')
 
 border('Company.organization.view',
-    model: 'Company',
     north: 'Company.tab.pane',
     center: 'Company.departments.and.teams.view')
 
