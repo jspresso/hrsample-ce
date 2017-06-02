@@ -21,6 +21,7 @@ package org.jspresso.hrsample.model.extension;
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.hrsample.model.Company;
 import org.jspresso.hrsample.model.Department;
+import org.jspresso.hrsample.model.IOrganizationalUnitExtension;
 import org.jspresso.hrsample.model.Nameable;
 import org.jspresso.hrsample.model.OrganizationalUnit;
 import org.jspresso.hrsample.model.Team;
@@ -31,7 +32,7 @@ import org.jspresso.hrsample.model.Team;
  * @author Vincent Vandenschrick
  */
 public class OrganizationalUnitExtension extends
-    AbstractComponentExtension<OrganizationalUnit> {
+    AbstractComponentExtension<OrganizationalUnit> implements IOrganizationalUnitExtension {
 
   /**
    * Constructs a new <code>OrganizationalUnitExtension</code> instance.

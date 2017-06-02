@@ -25,7 +25,7 @@ Entity('City',
   decimal 'longitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   decimal 'latitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   java 'routes', class: 'double[][][]', maxLength: 2048
-  string 'mapContent', maxLength: 4096, computed:true
+  string 'mapContent', maxLength: 4096, computed: true, cacheable: true
   set 'neighbours', ref: 'City', reverse: 'City-neighbours'
 
   color 'longitudeBackground', computed: true

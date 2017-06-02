@@ -2,13 +2,15 @@ package org.jspresso.hrsample.model.extension;
 
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.framework.model.component.service.DependsOn;
+
+import org.jspresso.hrsample.model.IUserExtension;
 import org.jspresso.hrsample.model.User;
 import org.jspresso.hrsample.model.Role;
 
 /**
  * User extension.
  */
-public class UserExtension extends AbstractComponentExtension<User> {
+public class UserExtension extends AbstractComponentExtension<User> implements IUserExtension {
 
   /**
    * UserExtension constructor.
@@ -21,7 +23,7 @@ public class UserExtension extends AbstractComponentExtension<User> {
 
   /**
    * {@inheritDoc}
-   * 
+   *
    * @return
    */
 	@DependsOn ({User.ROLES})
@@ -33,5 +35,5 @@ public class UserExtension extends AbstractComponentExtension<User> {
     }
     return null;
   }
-  
+
 }
