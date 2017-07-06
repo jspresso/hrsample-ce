@@ -131,7 +131,12 @@
                     <useSeparateTomcatClassLoader>true</useSeparateTomcatClassLoader>
                     <systemProperties>
                         <JAVA_OPTS>-Xms256m -Xmx512m -Xmx1024m -XX:MaxPermSize=256m</JAVA_OPTS>
-                        <java.security.auth.login.config>${project.basedir}/src/main/webapp/conf/jaas.config</java.security.auth.login.config>
+                        <skipTests/>
+                        <disableAttachJavadocs/>
+                        <disableAttachSources/>
+                        <java.security.auth.login.config>${project.basedir}/conf/jaas.config</java.security.auth.login.config>
+                        <log4j.configuration>file://${project.basedir}/conf/log4j.xml</log4j.configuration>
+                        <tomcatContextXml>file://${project.basedir}/conf/context.xml</tomcatContextXml>
                     </systemProperties>
                 </configuration>
                 <dependencies>
