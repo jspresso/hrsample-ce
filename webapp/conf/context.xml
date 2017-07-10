@@ -39,33 +39,17 @@
         name="SupportCenterJavaMailSession"
         type="javax.mail.Session"
         auth="Container"
-        mail.from="support@jspresso.io"
+        mail.from="From address (noreply@jspresso.org for instance)"
         mail.transport.protocol="smtp"
-        mail.smtp.host="votre serveur smtp"
-        mail.smtp.port="N°port (par exemple 465)"
+        mail.smtp.host="Your SMTP server"
+        mail.smtp.port="Port # (465 for instance)"
         mail.smtp.auth="true/false (SMTP authentifié ?)"
-        mail.smtp.user="nom utilisateur (si SMTP authentifié)"
+        mail.smtp.user="username (if authenticated SMTP)"
         mail.smtp.ssl.enable="true/false (SSL ?)"
         mail.smtp.starttls.enable="true/false (start TLS ?)"
         mail.smtp.timeout="60000"
         mail.smtp.connectiontimeout="60000"
-        password="mot de passe (si authentifié)"
+        password="password (if authenticated SMTP)"
         mail.debug="false"/>
    -->
-
-   <Resource
-       name="SupportCenterJavaMailSession"
-       type="javax.mail.Session"
-       auth="Container"
-       mail.from="support@jspresso.io"
-       mail.transport.protocol="smtp"
-       mail.smtp.host="smtp.free.fr"
-       mail.smtp.port="587"
-       mail.smtp.auth="false"
-       mail.smtp.ssl.enable="true"
-       mail.smtp.starttls.enable="false"
-       mail.smtp.timeout="60000"
-       mail.smtp.connectiontimeout="60000"
-       mail.debug="false"/>
-
 </Context>
