@@ -129,6 +129,7 @@
                     <warDirectory> ${project.build.directory}/hrsample-webapp</warDirectory>
                     <useTestClasspath>false</useTestClasspath>
                     <useSeparateTomcatClassLoader>true</useSeparateTomcatClassLoader>
+                    <contextFile>conf/context.xml</contextFile>
                     <systemProperties>
                         <JAVA_OPTS>-Xms256m -Xmx512m -Xmx1024m -XX:MaxPermSize=256m</JAVA_OPTS>
                         <skipTests/>
@@ -136,7 +137,6 @@
                         <disableAttachSources/>
                         <java.security.auth.login.config>${project.basedir}/conf/jaas.config</java.security.auth.login.config>
                         <log4j.configuration>file://${project.basedir}/conf/log4j.xml</log4j.configuration>
-                        <tomcatContextXml>file://${project.basedir}/conf/context.xml</tomcatContextXml>
                     </systemProperties>
                 </configuration>
                 <dependencies>

@@ -22,10 +22,6 @@
 	<!-- Limit categories -->
 	<!-- ================ -->
 
-	<category name="fr.gefco">
-		<priority value="error" />
-	</category>
-
 	<category name="org.jspresso">
 		<priority value="error" />
 	</category>
