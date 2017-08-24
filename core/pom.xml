@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jspresso.hrsample</groupId>
     <artifactId>hrsample</artifactId>
-    <version>4.3-SNAPSHOT</version>
+    <version>5.0.0-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <artifactId>hrsample-core</artifactId>
@@ -192,6 +192,12 @@
     <resources>
       <resource>
         <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>${project.build.directory}/generated-resources/dsl</directory>
+      </resource>
+      <resource>
+        <directory>${project.build.directory}/generated-resources/xdoclet</directory>
       </resource>
       <resource>
         <directory>${project.build.directory}/generated-resources/jasperreports</directory>

@@ -57,3 +57,25 @@ frontendBuilder.writeOutputFile('frontend/mobile',project.properties['outputDir'
 //Export as module
 ManageModule manageModule = new ManageModule()
 manageModule.exportModule('hrsample',domainBuilder,frontendBuilder,project.properties['outputDir'])
+
+// Uml output (see colors at http://www.graphviz.org/doc/info/colors.html)
+try {
+
+  String umlPath = project.properties['outputDir'] + "/../../";
+  new File(umlPath + "umlMain.dot").write(domainBuilder.getDotGraph(
+          ['Traceable', 'ContactInfo', 'Nameable'],
+          ['@Employee', '@Company', '@User'],
+          false, // No computed fields
+          [gold           : ['Company', 'Departement', 'Team'],
+           lightgoldenrod1: ['Employee'],
+          ]))
+
+
+}
+catch (Exception ignored) {
+  //To avoid problems on non windows platform or if GraphWiz is not installed
+  println ignored.message
+  println "GraphViz not available ?"
+}
+
+println "Build finished."

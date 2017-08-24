@@ -1,0 +1,554 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="vvandens (generated)" id="1497423516935-1">
+        <createTable tableName="CITY">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ZIP" type="VARCHAR(10)"/>
+            <column name="LONGITUDE" type="DOUBLE"/>
+            <column name="LATITUDE" type="DOUBLE"/>
+            <column name="ROUTES" type="BLOB"/>
+            <column name="NAME" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-2">
+        <createTable tableName="CITY_NEIGHBOURS">
+            <column name="C1CITY_ID1" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="C2CITY_ID2" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-3">
+        <createTable tableName="CITY_T">
+            <column name="T_CITY_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PROPERTY_NAME" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LANGUAGE" type="VARCHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TRANSLATED_VALUE" type="VARCHAR(512)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-4">
+        <createTable tableName="COMPANY">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONTACT_ADDRESS" type="VARCHAR(256)"/>
+            <column name="CONTACT_CITY_ID" type="VARCHAR(36)"/>
+            <column name="CONTACT_PHONE" type="VARCHAR(32)"/>
+            <column name="CONTACT_EMAIL" type="VARCHAR(128)"/>
+            <column name="NAME" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATE_TIMESTAMP" type="TIMESTAMP"/>
+            <column name="LAST_UPDATE_TIMESTAMP" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-5">
+        <createTable tableName="COMPANY_T">
+            <column name="T_COMPANY_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PROPERTY_NAME" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LANGUAGE" type="VARCHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TRANSLATED_VALUE" type="VARCHAR(512)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-6">
+        <createTable tableName="DEPARTMENT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COMPANY_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-7">
+        <createTable tableName="DEPARTMENT_T">
+            <column name="T_DEPARTMENT_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PROPERTY_NAME" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LANGUAGE" type="VARCHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TRANSLATED_VALUE" type="VARCHAR(512)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-8">
+        <createTable tableName="EMPLOYEE">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FIRST_NAME" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SSN" type="VARCHAR(10)"/>
+            <column name="BIRTH_DATE" type="date"/>
+            <column name="HIRE_DATE" type="date"/>
+            <column name="GENDER" type="VARCHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PREFERRED_COLOR" type="VARCHAR(10)"/>
+            <column name="MARRIED" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SALARY" type="numeric(10, 2)"/>
+            <column name="PHOTO" type="BLOB"/>
+            <column name="SIGNATURE" type="BLOB"/>
+            <column name="PASSWORD" type="VARCHAR(32)"/>
+            <column name="CONTACT_ADDRESS" type="VARCHAR(256)"/>
+            <column name="CONTACT_CITY_ID" type="VARCHAR(36)"/>
+            <column name="CONTACT_PHONE" type="VARCHAR(32)"/>
+            <column name="CONTACT_EMAIL" type="VARCHAR(128)"/>
+            <column name="COMPANY_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MANAGED_OU_ID" type="VARCHAR(36)"/>
+            <column name="LANGUAGE" type="VARCHAR(2)"/>
+            <column name="NAME" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATE_TIMESTAMP" type="TIMESTAMP"/>
+            <column name="LAST_UPDATE_TIMESTAMP" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-9">
+        <createTable tableName="EMPLOYEE_ALTERNATIVE_CONTACTS">
+            <column name="ALTERNAT_CONTACTS_EMPLOYEE0_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ADDRESS" type="VARCHAR(256)"/>
+            <column name="CITY_ID" type="VARCHAR(36)"/>
+            <column name="PHONE" type="VARCHAR(32)"/>
+            <column name="EMAIL" type="VARCHAR(128)"/>
+            <column name="EMPLOYE_ALTERNA_CONTACT0_SEQ" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-10">
+        <createTable tableName="EMPLOYEE_T">
+            <column name="T_EMPLOYEE_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PROPERTY_NAME" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LANGUAGE" type="VARCHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TRANSLATED_VALUE" type="VARCHAR(512)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-11">
+        <createTable tableName="EVENT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TEXT" type="VARCHAR(2048)"/>
+            <column name="EMPLOYEE_ID" type="VARCHAR(36)"/>
+            <column name="CREATE_TIMESTAMP" type="TIMESTAMP"/>
+            <column name="LAST_UPDATE_TIMESTAMP" type="TIMESTAMP"/>
+            <column name="EMPLOYEE_EVENTS_SEQ" type="INT"/>
+            <column name="ALTERNATIVE_EVENTS_EMPLOYEE_ID" type="VARCHAR(36)"/>
+            <column name="EMPLOYEE_ALTERNA_EVENTS0_SEQ" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-12">
+        <createTable tableName="ORGANIZATIONAL_UNIT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OU_ID" type="VARCHAR(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONTACT_ADDRESS" type="VARCHAR(256)"/>
+            <column name="CONTACT_CITY_ID" type="VARCHAR(36)"/>
+            <column name="CONTACT_PHONE" type="VARCHAR(32)"/>
+            <column name="CONTACT_EMAIL" type="VARCHAR(128)"/>
+            <column name="CREATE_TIMESTAMP" type="TIMESTAMP"/>
+            <column name="LAST_UPDATE_TIMESTAMP" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-13">
+        <createTable tableName="PREFERENCES">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PREFERENCE_VALUE" type="VARCHAR(2048)"/>
+            <column name="PREFERENCE_PATH" type="VARCHAR(128)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-14">
+        <createTable tableName="ROLE">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ROLE_ID" type="VARCHAR(30)"/>
+            <column name="CREATE_TIMESTAMP" type="TIMESTAMP"/>
+            <column name="LAST_UPDATE_TIMESTAMP" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-15">
+        <createTable tableName="ROLE_USERS">
+            <column name="ROLE_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USER__ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-16">
+        <createTable tableName="TEAM">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DEPARTMENT_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-17">
+        <createTable tableName="TEAM_T">
+            <column name="T_TEAM_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PROPERTY_NAME" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LANGUAGE" type="VARCHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TRANSLATED_VALUE" type="VARCHAR(512)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-18">
+        <createTable tableName="TEAM_TEAM_MEMBERS">
+            <column name="EMPLOYEE_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TEAM_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-19">
+        <createTable tableName="USER_">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LOGIN" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD" type="VARCHAR(32)"/>
+            <column name="EMPLOYEE_ID" type="VARCHAR(36)"/>
+            <column name="CREATE_TIMESTAMP" type="TIMESTAMP"/>
+            <column name="LAST_UPDATE_TIMESTAMP" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-20">
+        <addPrimaryKey columnNames="ID" constraintName="CITYPK" tableName="CITY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-21">
+        <addPrimaryKey columnNames="ID" constraintName="COMPANYPK" tableName="COMPANY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-22">
+        <addPrimaryKey columnNames="ID" constraintName="DEPARTMENTPK" tableName="DEPARTMENT"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-23">
+        <addPrimaryKey columnNames="ID" constraintName="EMPLOYEEPK" tableName="EMPLOYEE"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-24">
+        <addPrimaryKey columnNames="ID" constraintName="EVENTPK" tableName="EVENT"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-25">
+        <addPrimaryKey columnNames="ID" constraintName="ORGANIZATIONAL_UNITPK" tableName="ORGANIZATIONAL_UNIT"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-26">
+        <addPrimaryKey columnNames="ID" constraintName="PREFERENCESPK" tableName="PREFERENCES"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-27">
+        <addPrimaryKey columnNames="ID" constraintName="ROLEPK" tableName="ROLE"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-28">
+        <addPrimaryKey columnNames="C1CITY_ID1, C2CITY_ID2" constraintName="SYS_PK_10246" tableName="CITY_NEIGHBOURS"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-29">
+        <addPrimaryKey columnNames="T_CITY_ID, PROPERTY_NAME, LANGUAGE" constraintName="SYS_PK_10249" tableName="CITY_T"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-30">
+        <addPrimaryKey columnNames="T_COMPANY_ID, PROPERTY_NAME, LANGUAGE" constraintName="SYS_PK_10253" tableName="COMPANY_T"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-31">
+        <addPrimaryKey columnNames="T_DEPARTMENT_ID, PROPERTY_NAME, LANGUAGE" constraintName="SYS_PK_10257" tableName="DEPARTMENT_T"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-32">
+        <addPrimaryKey columnNames="ALTERNAT_CONTACTS_EMPLOYEE0_ID, EMPLOYE_ALTERNA_CONTACT0_SEQ" constraintName="SYS_PK_10261" tableName="EMPLOYEE_ALTERNATIVE_CONTACTS"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-33">
+        <addPrimaryKey columnNames="T_EMPLOYEE_ID, PROPERTY_NAME, LANGUAGE" constraintName="SYS_PK_10264" tableName="EMPLOYEE_T"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-34">
+        <addPrimaryKey columnNames="ROLE_ID, USER__ID" constraintName="SYS_PK_10268" tableName="ROLE_USERS"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-35">
+        <addPrimaryKey columnNames="T_TEAM_ID, PROPERTY_NAME, LANGUAGE" constraintName="SYS_PK_10271" tableName="TEAM_T"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-36">
+        <addPrimaryKey columnNames="TEAM_ID, EMPLOYEE_ID" constraintName="SYS_PK_10275" tableName="TEAM_TEAM_MEMBERS"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-37">
+        <addPrimaryKey columnNames="ID" constraintName="TEAMPK" tableName="TEAM"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-38">
+        <addPrimaryKey columnNames="ID" constraintName="USER_PK" tableName="USER_"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-39">
+        <addUniqueConstraint columnNames="LOGIN" constraintName="COMMUNITY_UNQ" tableName="USER_"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-40">
+        <addUniqueConstraint columnNames="SSN" constraintName="EMP_SSN_UNQ" tableName="EMPLOYEE"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-41">
+        <addUniqueConstraint columnNames="ROLE_ID" constraintName="ROLE_ID_UNQ" tableName="ROLE"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-42">
+        <createIndex indexName="SYS_IDX_ALTERNATIVE_EVENTS_EMPLOYEE_FK_10325" tableName="EVENT">
+            <column name="ALTERNATIVE_EVENTS_EMPLOYEE_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-43">
+        <createIndex indexName="SYS_IDX_ALTERNAT_CONTACTS_EMPLOYEE1_FK_10329" tableName="EMPLOYEE_ALTERNATIVE_CONTACTS">
+            <column name="ALTERNAT_CONTACTS_EMPLOYEE0_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-44">
+        <createIndex indexName="SYS_IDX_CITY_NEIGHBOURS_CIT1_FK2_10333" tableName="CITY_NEIGHBOURS">
+            <column name="C2CITY_ID2"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-45">
+        <createIndex indexName="SYS_IDX_CITY_NEIGHBOURS_CITY_FK1_10337" tableName="CITY_NEIGHBOURS">
+            <column name="C1CITY_ID1"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-46">
+        <createIndex indexName="SYS_IDX_DEPARTMENT_COMPANY_FK_10341" tableName="DEPARTMENT">
+            <column name="COMPANY_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-47">
+        <createIndex indexName="SYS_IDX_EMPLOYEE_COMPANY_FK_10351" tableName="EMPLOYEE">
+            <column name="COMPANY_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-48">
+        <createIndex indexName="SYS_IDX_EMPLOYEE_MANAGED_OU_FK_10360" tableName="EMPLOYEE">
+            <column name="MANAGED_OU_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-49">
+        <createIndex indexName="SYS_IDX_EVENT_EMPLOYEE_FK_10369" tableName="EVENT">
+            <column name="EMPLOYEE_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-50">
+        <createIndex indexName="SYS_IDX_FK_D75OK1M91TX67H0S0D8U7Q3OW_10373" tableName="ORGANIZATIONAL_UNIT">
+            <column name="CONTACT_CITY_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-51">
+        <createIndex indexName="SYS_IDX_FK_FW73DCGMRE3LOBP90TJ5YK1Q1_10378" tableName="EMPLOYEE_ALTERNATIVE_CONTACTS">
+            <column name="CITY_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-52">
+        <createIndex indexName="SYS_IDX_FK_K8TA07QPCXHJ9ARWGNR8IK4PD_10382" tableName="COMPANY">
+            <column name="CONTACT_CITY_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-53">
+        <createIndex indexName="SYS_IDX_FK_OT8FLMT6LU4B4CKPP6693NO85_10387" tableName="EMPLOYEE">
+            <column name="CONTACT_CITY_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-54">
+        <createIndex indexName="SYS_IDX_ROLE_USERS_ROLE_FK_10396" tableName="ROLE_USERS">
+            <column name="ROLE_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-55">
+        <createIndex indexName="SYS_IDX_ROLE_USERS_USER__FK_10400" tableName="ROLE_USERS">
+            <column name="USER__ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-56">
+        <createIndex indexName="SYS_IDX_TEAM_DEPARTMENT_FK_10404" tableName="TEAM">
+            <column name="DEPARTMENT_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-57">
+        <createIndex indexName="SYS_IDX_TEAM_TEAM_MEMBERS_EMPLOYE1_FK_10414" tableName="TEAM_TEAM_MEMBERS">
+            <column name="EMPLOYEE_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-58">
+        <createIndex indexName="SYS_IDX_TEAM_TEAM_MEMBERS_TEA1_FK_10418" tableName="TEAM_TEAM_MEMBERS">
+            <column name="TEAM_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-59">
+        <createIndex indexName="SYS_IDX_T_CITY_FK_10422" tableName="CITY_T">
+            <column name="T_CITY_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-60">
+        <createIndex indexName="SYS_IDX_T_COMPANY_FK_10427" tableName="COMPANY_T">
+            <column name="T_COMPANY_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-61">
+        <createIndex indexName="SYS_IDX_T_DEPARTMENT_FK_10432" tableName="DEPARTMENT_T">
+            <column name="T_DEPARTMENT_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-62">
+        <createIndex indexName="SYS_IDX_T_EMPLOYEE_FK_10437" tableName="EMPLOYEE_T">
+            <column name="T_EMPLOYEE_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-63">
+        <createIndex indexName="SYS_IDX_T_TEAM_FK_10442" tableName="TEAM_T">
+            <column name="T_TEAM_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-64">
+        <createIndex indexName="SYS_IDX_USER__EMPLOYEE_FK_10447" tableName="USER_">
+            <column name="EMPLOYEE_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-65">
+        <addForeignKeyConstraint baseColumnNames="ALTERNATIVE_EVENTS_EMPLOYEE_ID" baseTableName="EVENT" constraintName="ALTERNATIVE_EVENTS_EMPLOYEE_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-66">
+        <addForeignKeyConstraint baseColumnNames="ALTERNAT_CONTACTS_EMPLOYEE0_ID" baseTableName="EMPLOYEE_ALTERNATIVE_CONTACTS" constraintName="ALTERNAT_CONTACTS_EMPLOYEE1_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-67">
+        <addForeignKeyConstraint baseColumnNames="C2CITY_ID2" baseTableName="CITY_NEIGHBOURS" constraintName="CITY_NEIGHBOURS_CIT1_FK2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="CITY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-68">
+        <addForeignKeyConstraint baseColumnNames="C1CITY_ID1" baseTableName="CITY_NEIGHBOURS" constraintName="CITY_NEIGHBOURS_CITY_FK1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="CITY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-69">
+        <addForeignKeyConstraint baseColumnNames="COMPANY_ID" baseTableName="DEPARTMENT" constraintName="DEPARTMENT_COMPANY_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="COMPANY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-70">
+        <addForeignKeyConstraint baseColumnNames="ID" baseTableName="DEPARTMENT" constraintName="DEPARTMENT_SUPER_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="ORGANIZATIONAL_UNIT"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-71">
+        <addForeignKeyConstraint baseColumnNames="COMPANY_ID" baseTableName="EMPLOYEE" constraintName="EMPLOYEE_COMPANY_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="COMPANY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-72">
+        <addForeignKeyConstraint baseColumnNames="MANAGED_OU_ID" baseTableName="EMPLOYEE" constraintName="EMPLOYEE_MANAGED_OU_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="ORGANIZATIONAL_UNIT"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-73">
+        <addForeignKeyConstraint baseColumnNames="EMPLOYEE_ID" baseTableName="EVENT" constraintName="EVENT_EMPLOYEE_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-74">
+        <addForeignKeyConstraint baseColumnNames="CONTACT_CITY_ID" baseTableName="ORGANIZATIONAL_UNIT" constraintName="FK_D75OK1M91TX67H0S0D8U7Q3OW" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="CITY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-75">
+        <addForeignKeyConstraint baseColumnNames="CITY_ID" baseTableName="EMPLOYEE_ALTERNATIVE_CONTACTS" constraintName="FK_FW73DCGMRE3LOBP90TJ5YK1Q1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="CITY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-76">
+        <addForeignKeyConstraint baseColumnNames="CONTACT_CITY_ID" baseTableName="COMPANY" constraintName="FK_K8TA07QPCXHJ9ARWGNR8IK4PD" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="CITY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-77">
+        <addForeignKeyConstraint baseColumnNames="CONTACT_CITY_ID" baseTableName="EMPLOYEE" constraintName="FK_OT8FLMT6LU4B4CKPP6693NO85" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="CITY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-78">
+        <addForeignKeyConstraint baseColumnNames="ROLE_ID" baseTableName="ROLE_USERS" constraintName="ROLE_USERS_ROLE_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="ROLE"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-79">
+        <addForeignKeyConstraint baseColumnNames="USER__ID" baseTableName="ROLE_USERS" constraintName="ROLE_USERS_USER__FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="USER_"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-80">
+        <addForeignKeyConstraint baseColumnNames="DEPARTMENT_ID" baseTableName="TEAM" constraintName="TEAM_DEPARTMENT_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="DEPARTMENT"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-81">
+        <addForeignKeyConstraint baseColumnNames="ID" baseTableName="TEAM" constraintName="TEAM_SUPER_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="ORGANIZATIONAL_UNIT"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-82">
+        <addForeignKeyConstraint baseColumnNames="EMPLOYEE_ID" baseTableName="TEAM_TEAM_MEMBERS" constraintName="TEAM_TEAM_MEMBERS_EMPLOYE1_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-83">
+        <addForeignKeyConstraint baseColumnNames="TEAM_ID" baseTableName="TEAM_TEAM_MEMBERS" constraintName="TEAM_TEAM_MEMBERS_TEA1_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="TEAM"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-84">
+        <addForeignKeyConstraint baseColumnNames="T_CITY_ID" baseTableName="CITY_T" constraintName="T_CITY_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="CITY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-85">
+        <addForeignKeyConstraint baseColumnNames="T_COMPANY_ID" baseTableName="COMPANY_T" constraintName="T_COMPANY_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="COMPANY"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-86">
+        <addForeignKeyConstraint baseColumnNames="T_DEPARTMENT_ID" baseTableName="DEPARTMENT_T" constraintName="T_DEPARTMENT_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="DEPARTMENT"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-87">
+        <addForeignKeyConstraint baseColumnNames="T_EMPLOYEE_ID" baseTableName="EMPLOYEE_T" constraintName="T_EMPLOYEE_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-88">
+        <addForeignKeyConstraint baseColumnNames="T_TEAM_ID" baseTableName="TEAM_T" constraintName="T_TEAM_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="TEAM"/>
+    </changeSet>
+    <changeSet author="vvandens (generated)" id="1497423516935-89">
+        <addForeignKeyConstraint baseColumnNames="EMPLOYEE_ID" baseTableName="USER_" constraintName="USER__EMPLOYEE_FK" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
+    </changeSet>
+</databaseChangeLog>
