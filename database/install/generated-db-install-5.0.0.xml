@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet author="vvandens (generated)" id="1497424134584-1">
+    <changeSet author="vvandens (generated)" id="1504790707459-1">
         <createTable tableName="CITY">
             <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -17,7 +17,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-2">
+    <changeSet author="vvandens (generated)" id="1504790707459-2">
         <createTable tableName="CITY_NEIGHBOURS">
             <column name="C1CITY_ID1" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -27,7 +27,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-3">
+    <changeSet author="vvandens (generated)" id="1504790707459-3">
         <createTable tableName="CITY_T">
             <column name="T_CITY_ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -41,7 +41,7 @@
             <column name="TRANSLATED_VALUE" type="VARCHAR(512)"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-4">
+    <changeSet author="vvandens (generated)" id="1504790707459-4">
         <createTable tableName="COMPANY">
             <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -60,7 +60,7 @@
             <column name="LAST_UPDATE_TIMESTAMP" type="timestamp"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-5">
+    <changeSet author="vvandens (generated)" id="1504790707459-5">
         <createTable tableName="COMPANY_T">
             <column name="T_COMPANY_ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -74,7 +74,7 @@
             <column name="TRANSLATED_VALUE" type="VARCHAR(512)"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-6">
+    <changeSet author="vvandens (generated)" id="1504790707459-6">
         <createTable tableName="DEPARTMENT">
             <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -87,7 +87,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-7">
+    <changeSet author="vvandens (generated)" id="1504790707459-7">
         <createTable tableName="DEPARTMENT_T">
             <column name="T_DEPARTMENT_ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -101,7 +101,7 @@
             <column name="TRANSLATED_VALUE" type="VARCHAR(512)"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-8">
+    <changeSet author="vvandens (generated)" id="1504790707459-8">
         <createTable tableName="EMPLOYEE">
             <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -142,7 +142,7 @@
             <column name="LAST_UPDATE_TIMESTAMP" type="timestamp"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-9">
+    <changeSet author="vvandens (generated)" id="1504790707459-9">
         <createTable tableName="EMPLOYEE_ALTERNATIVE_CONTACTS">
             <column name="ALTERNAT_CONTACTS_EMPLOYEE0_ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -156,7 +156,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-10">
+    <changeSet author="vvandens (generated)" id="1504790707459-10">
         <createTable tableName="EMPLOYEE_T">
             <column name="T_EMPLOYEE_ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -170,7 +170,7 @@
             <column name="TRANSLATED_VALUE" type="VARCHAR(512)"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-11">
+    <changeSet author="vvandens (generated)" id="1504790707459-11">
         <createTable tableName="EVENT">
             <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -187,7 +187,7 @@
             <column name="EMPLOYEE_ALTERNA_EVENTS0_SEQ" type="INT"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-12">
+    <changeSet author="vvandens (generated)" id="1504790707459-12">
         <createTable tableName="ORGANIZATIONAL_UNIT">
             <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -206,7 +206,7 @@
             <column name="LAST_UPDATE_TIMESTAMP" type="timestamp"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-13">
+    <changeSet author="vvandens (generated)" id="1504790707459-13">
         <createTable tableName="PREFERENCES">
             <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -218,7 +218,7 @@
             <column name="PREFERENCE_PATH" type="VARCHAR(128)"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-14">
+    <changeSet author="vvandens (generated)" id="1504790707459-14">
         <createTable tableName="ROLE">
             <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -231,17 +231,17 @@
             <column name="LAST_UPDATE_TIMESTAMP" type="timestamp"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-15">
+    <changeSet author="vvandens (generated)" id="1504790707459-15">
         <createTable tableName="ROLE_USERS">
-            <column name="ROLE_ID" type="VARCHAR(36)">
+            <column name="USER__ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
             </column>
-            <column name="USER__ID" type="VARCHAR(36)">
+            <column name="ROLE_ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-16">
+    <changeSet author="vvandens (generated)" id="1504790707459-16">
         <createTable tableName="TEAM">
             <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -254,7 +254,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-17">
+    <changeSet author="vvandens (generated)" id="1504790707459-17">
         <createTable tableName="TEAM_T">
             <column name="T_TEAM_ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -268,17 +268,17 @@
             <column name="TRANSLATED_VALUE" type="VARCHAR(512)"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-18">
+    <changeSet author="vvandens (generated)" id="1504790707459-18">
         <createTable tableName="TEAM_TEAM_MEMBERS">
-            <column name="EMPLOYEE_ID" type="VARCHAR(36)">
+            <column name="TEAM_ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
             </column>
-            <column name="TEAM_ID" type="VARCHAR(36)">
+            <column name="EMPLOYEE_ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-19">
+    <changeSet author="vvandens (generated)" id="1504790707459-19">
         <createTable tableName="USER_">
             <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false"/>
@@ -295,145 +295,145 @@
             <column name="LAST_UPDATE_TIMESTAMP" type="timestamp"/>
         </createTable>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-20">
+    <changeSet author="vvandens (generated)" id="1504790707459-20">
         <addPrimaryKey columnNames="C1CITY_ID1, C2CITY_ID2" tableName="CITY_NEIGHBOURS"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-21">
+    <changeSet author="vvandens (generated)" id="1504790707459-21">
         <addPrimaryKey columnNames="T_CITY_ID, PROPERTY_NAME, LANGUAGE" tableName="CITY_T"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-22">
+    <changeSet author="vvandens (generated)" id="1504790707459-22">
         <addPrimaryKey columnNames="T_COMPANY_ID, PROPERTY_NAME, LANGUAGE" tableName="COMPANY_T"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-23">
+    <changeSet author="vvandens (generated)" id="1504790707459-23">
         <addPrimaryKey columnNames="T_DEPARTMENT_ID, PROPERTY_NAME, LANGUAGE" tableName="DEPARTMENT_T"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-24">
+    <changeSet author="vvandens (generated)" id="1504790707459-24">
         <addPrimaryKey columnNames="ALTERNAT_CONTACTS_EMPLOYEE0_ID, EMPLOYE_ALTERNA_CONTACT0_SEQ" tableName="EMPLOYEE_ALTERNATIVE_CONTACTS"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-25">
+    <changeSet author="vvandens (generated)" id="1504790707459-25">
         <addPrimaryKey columnNames="T_EMPLOYEE_ID, PROPERTY_NAME, LANGUAGE" tableName="EMPLOYEE_T"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-26">
+    <changeSet author="vvandens (generated)" id="1504790707459-26">
         <addPrimaryKey columnNames="ROLE_ID, USER__ID" tableName="ROLE_USERS"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-27">
+    <changeSet author="vvandens (generated)" id="1504790707459-27">
         <addPrimaryKey columnNames="T_TEAM_ID, PROPERTY_NAME, LANGUAGE" tableName="TEAM_T"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-28">
+    <changeSet author="vvandens (generated)" id="1504790707459-28">
         <addPrimaryKey columnNames="TEAM_ID, EMPLOYEE_ID" tableName="TEAM_TEAM_MEMBERS"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-29">
+    <changeSet author="vvandens (generated)" id="1504790707459-29">
         <addPrimaryKey columnNames="ID" constraintName="CITYPK" tableName="CITY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-30">
+    <changeSet author="vvandens (generated)" id="1504790707459-30">
         <addPrimaryKey columnNames="ID" constraintName="COMPANYPK" tableName="COMPANY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-31">
+    <changeSet author="vvandens (generated)" id="1504790707459-31">
         <addPrimaryKey columnNames="ID" constraintName="DEPARTMENTPK" tableName="DEPARTMENT"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-32">
+    <changeSet author="vvandens (generated)" id="1504790707459-32">
         <addPrimaryKey columnNames="ID" constraintName="EMPLOYEEPK" tableName="EMPLOYEE"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-33">
+    <changeSet author="vvandens (generated)" id="1504790707459-33">
         <addPrimaryKey columnNames="ID" constraintName="EVENTPK" tableName="EVENT"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-34">
+    <changeSet author="vvandens (generated)" id="1504790707459-34">
         <addPrimaryKey columnNames="ID" constraintName="ORGANIZATIONAL_UNITPK" tableName="ORGANIZATIONAL_UNIT"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-35">
+    <changeSet author="vvandens (generated)" id="1504790707459-35">
         <addPrimaryKey columnNames="ID" constraintName="PREFERENCESPK" tableName="PREFERENCES"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-36">
+    <changeSet author="vvandens (generated)" id="1504790707459-36">
         <addPrimaryKey columnNames="ID" constraintName="ROLEPK" tableName="ROLE"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-37">
+    <changeSet author="vvandens (generated)" id="1504790707459-37">
         <addPrimaryKey columnNames="ID" constraintName="TEAMPK" tableName="TEAM"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-38">
+    <changeSet author="vvandens (generated)" id="1504790707459-38">
         <addPrimaryKey columnNames="ID" constraintName="USER_PK" tableName="USER_"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-39">
+    <changeSet author="vvandens (generated)" id="1504790707459-39">
         <addUniqueConstraint columnNames="LOGIN" constraintName="COMMUNITY_UNQ" tableName="USER_"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-40">
+    <changeSet author="vvandens (generated)" id="1504790707459-40">
         <addUniqueConstraint columnNames="SSN" constraintName="EMP_SSN_UNQ" tableName="EMPLOYEE"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-41">
+    <changeSet author="vvandens (generated)" id="1504790707459-41">
         <addUniqueConstraint columnNames="ROLE_ID" constraintName="ROLE_ID_UNQ" tableName="ROLE"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-42">
+    <changeSet author="vvandens (generated)" id="1504790707459-42">
         <addForeignKeyConstraint baseColumnNames="ALTERNATIVE_EVENTS_EMPLOYEE_ID" baseTableName="EVENT" constraintName="ALTERNATIVE_EVENTS_EMPLOYEE_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-43">
+    <changeSet author="vvandens (generated)" id="1504790707459-43">
         <addForeignKeyConstraint baseColumnNames="ALTERNAT_CONTACTS_EMPLOYEE0_ID" baseTableName="EMPLOYEE_ALTERNATIVE_CONTACTS" constraintName="ALTERNAT_CONTACTS_EMPLOYEE1_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-44">
+    <changeSet author="vvandens (generated)" id="1504790707459-44">
         <addForeignKeyConstraint baseColumnNames="C2CITY_ID2" baseTableName="CITY_NEIGHBOURS" constraintName="CITY_NEIGHBOURS_CIT1_FK2" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="CITY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-45">
+    <changeSet author="vvandens (generated)" id="1504790707459-45">
         <addForeignKeyConstraint baseColumnNames="C1CITY_ID1" baseTableName="CITY_NEIGHBOURS" constraintName="CITY_NEIGHBOURS_CITY_FK1" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="CITY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-46">
+    <changeSet author="vvandens (generated)" id="1504790707459-46">
         <addForeignKeyConstraint baseColumnNames="COMPANY_ID" baseTableName="DEPARTMENT" constraintName="DEPARTMENT_COMPANY_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="COMPANY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-47">
+    <changeSet author="vvandens (generated)" id="1504790707459-47">
         <addForeignKeyConstraint baseColumnNames="ID" baseTableName="DEPARTMENT" constraintName="DEPARTMENT_SUPER_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="ORGANIZATIONAL_UNIT"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-48">
+    <changeSet author="vvandens (generated)" id="1504790707459-48">
         <addForeignKeyConstraint baseColumnNames="COMPANY_ID" baseTableName="EMPLOYEE" constraintName="EMPLOYEE_COMPANY_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="COMPANY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-49">
+    <changeSet author="vvandens (generated)" id="1504790707459-49">
         <addForeignKeyConstraint baseColumnNames="MANAGED_OU_ID" baseTableName="EMPLOYEE" constraintName="EMPLOYEE_MANAGED_OU_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="ORGANIZATIONAL_UNIT"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-50">
+    <changeSet author="vvandens (generated)" id="1504790707459-50">
         <addForeignKeyConstraint baseColumnNames="EMPLOYEE_ID" baseTableName="EVENT" constraintName="EVENT_EMPLOYEE_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-51">
+    <changeSet author="vvandens (generated)" id="1504790707459-51">
         <addForeignKeyConstraint baseColumnNames="CONTACT_CITY_ID" baseTableName="ORGANIZATIONAL_UNIT" constraintName="FK_d75ok1m91tx67h0s0d8u7q3ow" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="CITY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-52">
+    <changeSet author="vvandens (generated)" id="1504790707459-52">
         <addForeignKeyConstraint baseColumnNames="CITY_ID" baseTableName="EMPLOYEE_ALTERNATIVE_CONTACTS" constraintName="FK_fw73dcgmre3lobp90tj5yk1q1" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="CITY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-53">
+    <changeSet author="vvandens (generated)" id="1504790707459-53">
         <addForeignKeyConstraint baseColumnNames="CONTACT_CITY_ID" baseTableName="COMPANY" constraintName="FK_k8ta07qpcxhj9arwgnr8ik4pd" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="CITY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-54">
+    <changeSet author="vvandens (generated)" id="1504790707459-54">
         <addForeignKeyConstraint baseColumnNames="CONTACT_CITY_ID" baseTableName="EMPLOYEE" constraintName="FK_ot8flmt6lu4b4ckpp6693no85" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="CITY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-55">
-        <addForeignKeyConstraint baseColumnNames="ROLE_ID" baseTableName="ROLE_USERS" constraintName="ROLE_USERS_ROLE_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="ROLE"/>
+    <changeSet author="vvandens (generated)" id="1504790707459-55">
+        <addForeignKeyConstraint baseColumnNames="ROLE_ID" baseTableName="ROLE_USERS" constraintName="ROLE_USERS_ROL1_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="ROLE"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-56">
-        <addForeignKeyConstraint baseColumnNames="USER__ID" baseTableName="ROLE_USERS" constraintName="ROLE_USERS_USER__FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="USER_"/>
+    <changeSet author="vvandens (generated)" id="1504790707459-56">
+        <addForeignKeyConstraint baseColumnNames="USER__ID" baseTableName="ROLE_USERS" constraintName="ROLE_USERS_USER1_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="USER_"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-57">
+    <changeSet author="vvandens (generated)" id="1504790707459-57">
         <addForeignKeyConstraint baseColumnNames="DEPARTMENT_ID" baseTableName="TEAM" constraintName="TEAM_DEPARTMENT_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="DEPARTMENT"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-58">
+    <changeSet author="vvandens (generated)" id="1504790707459-58">
         <addForeignKeyConstraint baseColumnNames="ID" baseTableName="TEAM" constraintName="TEAM_SUPER_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="ORGANIZATIONAL_UNIT"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-59">
-        <addForeignKeyConstraint baseColumnNames="EMPLOYEE_ID" baseTableName="TEAM_TEAM_MEMBERS" constraintName="TEAM_TEAM_MEMBERS_EMPLOYE1_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
+    <changeSet author="vvandens (generated)" id="1504790707459-59">
+        <addForeignKeyConstraint baseColumnNames="EMPLOYEE_ID" baseTableName="TEAM_TEAM_MEMBERS" constraintName="TEAM_TEAM_MEMBERS_EMPLOYEE_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-60">
-        <addForeignKeyConstraint baseColumnNames="TEAM_ID" baseTableName="TEAM_TEAM_MEMBERS" constraintName="TEAM_TEAM_MEMBERS_TEA1_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="TEAM"/>
+    <changeSet author="vvandens (generated)" id="1504790707459-60">
+        <addForeignKeyConstraint baseColumnNames="TEAM_ID" baseTableName="TEAM_TEAM_MEMBERS" constraintName="TEAM_TEAM_MEMBERS_TEAM_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="TEAM"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-61">
+    <changeSet author="vvandens (generated)" id="1504790707459-61">
         <addForeignKeyConstraint baseColumnNames="T_CITY_ID" baseTableName="CITY_T" constraintName="T_CITY_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="CITY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-62">
+    <changeSet author="vvandens (generated)" id="1504790707459-62">
         <addForeignKeyConstraint baseColumnNames="T_COMPANY_ID" baseTableName="COMPANY_T" constraintName="T_COMPANY_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="COMPANY"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-63">
+    <changeSet author="vvandens (generated)" id="1504790707459-63">
         <addForeignKeyConstraint baseColumnNames="T_DEPARTMENT_ID" baseTableName="DEPARTMENT_T" constraintName="T_DEPARTMENT_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="DEPARTMENT"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-64">
+    <changeSet author="vvandens (generated)" id="1504790707459-64">
         <addForeignKeyConstraint baseColumnNames="T_EMPLOYEE_ID" baseTableName="EMPLOYEE_T" constraintName="T_EMPLOYEE_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-65">
+    <changeSet author="vvandens (generated)" id="1504790707459-65">
         <addForeignKeyConstraint baseColumnNames="T_TEAM_ID" baseTableName="TEAM_T" constraintName="T_TEAM_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="TEAM"/>
     </changeSet>
-    <changeSet author="vvandens (generated)" id="1497424134584-66">
+    <changeSet author="vvandens (generated)" id="1504790707459-66">
         <addForeignKeyConstraint baseColumnNames="EMPLOYEE_ID" baseTableName="USER_" constraintName="USER__EMPLOYEE_FK" deferrable="false" initiallyDeferred="false" referencedColumnNames="ID" referencedTableName="EMPLOYEE"/>
     </changeSet>
 </databaseChangeLog>
