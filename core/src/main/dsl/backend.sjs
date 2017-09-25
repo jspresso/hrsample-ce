@@ -11,3 +11,9 @@ bean_proto('userPreferencesStore',
 //  custom:[fileName:'D:/tmp/security_dump.txt'])
 
 bean('applicationCriteriaRefiner', class:'org.jspresso.hrsample.backend.GlobalCriteriaRefiner')
+
+bean('abstractBackController',
+    class: 'org.jspresso.framework.application.backend.AbstractBackendController',
+    parent: 'abstractBackControllerBase',
+    custom: [loginContextName: 'hrsample']
+)
