@@ -113,6 +113,13 @@ Entity('Employee',
   html 'htmlDescription', computed: true
   set 'users', ref:'User', reverse:'User-employee'
   enumeration 'language', enumName:'language', values:['fr', 'en'], defaultValue:'fr'
+
+  reference 'bonus', ref:'EncryptedDecimal', readOnly:true
+}
+
+Component('EncryptedDecimal', extension:'EncryptedDecimalExtension', toString:'decryptedValue') {
+  decimal    'decryptedValue', computed:true, delegateWritable:true, thousandsGrouping:false
+  binary     'encryptedValue'
 }
 
 Entity('Company',
@@ -131,6 +138,8 @@ Entity('Company',
   set 'employees', composition: true, ref: 'Employee'
 
   integer 'workforce', computed: true
+
+  reference 'budget', ref:'EncryptedDecimal', readOnly:true
 }
 
 Entity('OrganizationalUnit',
