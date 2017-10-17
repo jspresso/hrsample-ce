@@ -18,25 +18,17 @@
  */
 package org.jspresso.hrsample.development;
 
+import org.jspresso.framework.application.startup.development.AbstractHibernateTestDataPersister;
+import org.jspresso.framework.util.image.ImageHelper;
+import org.jspresso.hrsample.model.*;
+import org.springframework.beans.factory.BeanFactory;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Random;
 import java.util.Set;
-
-import org.springframework.beans.factory.BeanFactory;
-
-import org.jspresso.framework.application.startup.development.AbstractHibernateTestDataPersister;
-import org.jspresso.framework.util.image.ImageHelper;
-
-import org.jspresso.hrsample.model.City;
-import org.jspresso.hrsample.model.Company;
-import org.jspresso.hrsample.model.Department;
-import org.jspresso.hrsample.model.Employee;
-import org.jspresso.hrsample.model.Role;
-import org.jspresso.hrsample.model.Team;
-import org.jspresso.hrsample.model.User;
 
 /**
  * Persists some test data for the HR sample application.
@@ -86,7 +78,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
 
         // Company
         Company design2see = createCompany("Design2See", "123 avenue de la Liberté", paris, "contact@design2see.com",
-            "+33 123 456 000");
+            "+33 123 456 000", 3000000.0);
 
         // Tests the RFE #87
         Set<Employee> employees = design2see.getEmployees();
@@ -230,13 +222,14 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     return city;
   }
 
-  private Company createCompany(String name, String address, City city, String email, String phone) {
+  private Company createCompany(String name, String address, City city, String email, String phone, double budget) {
     Company company = createEntityInstance(Company.class);
     company.setName(name);
     company.getContact().setAddress(address);
     company.getContact().setCity(city);
     company.getContact().setEmail(email);
     company.getContact().setPhone(phone);
+    company.setBudget(getEncryptedDecimal(budget));
     return company;
   }
 
@@ -298,6 +291,8 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     employee.setPreferredColor(preferredColor);
     employee.setSalary(new BigDecimal(salary));
 
+    employee.setBonus(getEncryptedDecimal(employee.getSalary().doubleValue()/2));
+
     if (image != null) {
       employee.setPhoto(loadImage(image));
     }
@@ -320,6 +315,14 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     }
 
     return employee;
+  }
+
+  private EncryptedDecimal getEncryptedDecimal(Double v) {
+
+    EncryptedDecimal d = getEntityFactory().createComponentInstance(EncryptedDecimal.class);
+    d.setDecryptedValue(v);
+
+    return d;
   }
 
   private byte[] loadImage(String path) throws IOException {
