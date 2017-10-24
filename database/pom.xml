@@ -1,5 +1,17 @@
+<!--
+To create the release install changelog for the current version, run "mvn generate-resources -PcreateInstallChangeLog"
+To create a release upgrade changelog from a previous version, run "mvn generate-resources -PcreateUpgradeChangeLog -DfromVersion=X.Y.Z"
+To create a release upgrade changelog between 2 released versions, run "mvn generate-resources -PcreateUpgradeChangeLog -DfromVersion=X.Y.Z -DtoVersion=A.B.C"
+
+To create the install SQL scripts for the current version, run "mvn generate-resources -PcreateInstallSQL"
+To create the install SQL scripts for a specific version, run "mvn generate-resources -PcreateInstallSQL -DtoVersion=X.Y.Z"
+
+To create the upgrade SQL scripts for the current version against the Jspresso suppport database, run "mvn generate-resources -PcreateUpgradeSQL"
+To create the upgrade SQL scripts for a specific version, run "mvn generate-resources -PupgradeSQL -DtoVersion=X.Y.Z"
+-->
 <!--suppress MavenModelInspection -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jspresso.hrsample</groupId>
@@ -10,22 +22,12 @@
   <artifactId>hrsample-database</artifactId>
   <packaging>pom</packaging>
   <name>HR Sample CE - Database</name>
-  <dependencies>
-    <dependency>
-      <groupId>org.jspresso.framework</groupId>
-      <artifactId>jspresso-app-template-core</artifactId>
-    </dependency>
-  </dependencies>
+
   <properties>
-    <finalVersion>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}</finalVersion>
-    <dbInstallFile>${project.basedir}/install/db-install-${finalVersion}.xml</dbInstallFile>
-    <generatedDbInstallFile>${project.basedir}/install/generated-db-install-${finalVersion}.xml</generatedDbInstallFile>
-    <dbUpgradeFile>${project.basedir}/upgrade/generated-db-upgrade-${finalVersion}.xml</dbUpgradeFile>
-    <generatedDbUpgradeFile>${project.basedir}/upgrade/generated-db-upgrade-${finalVersion}.xml</generatedDbUpgradeFile>
-    <hibernateUrl>hibernate:spring:org/jspresso/hrsample/core-config.xml?bean=hibernateSessionFactory</hibernateUrl>
-    <currentDbUrl>jdbc:hsqldb:file:datafiles/${finalVersion}/db.${finalVersion}</currentDbUrl>
-    <referenceDbUrl>jdbc:hsqldb:mem:reference</referenceDbUrl>
+    <finalVersion>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}
+    </finalVersion>
   </properties>
+
   <build>
     <plugins>
       <plugin>
@@ -41,91 +43,258 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-clean-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>delete-db-install</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>clean</goal>
-            </goals>
-            <configuration>
-              <filesets>
-                <fileset>
-                  <directory>install</directory>
-                  <includes>
-                    <include>**/generated-*.xml</include>
-                  </includes>
-                </fileset>
-              </filesets>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.liquibase</groupId>
-        <artifactId>liquibase-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>generate-db-install</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>generateChangeLog</goal>
-            </goals>
-            <configuration>
-              <url>${hibernateUrl}</url>
-              <outputChangeLogFile>${generatedDbInstallFile}</outputChangeLogFile>
-            </configuration>
-          </execution>
-          <execution>
-            <id>create-reference-db</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>update</goal>
-            </goals>
-            <configuration>
-              <url>${referenceDbUrl}</url>
-              <changeLogFile>${generatedDbInstallFile}</changeLogFile>
-              <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-            </configuration>
-          </execution>
-          <execution>
-            <id>generate-db-upgrade</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>diff</goal>
-            </goals>
-            <configuration>
-              <url>${currentDbUrl}</url>
-              <referenceUrl>${referenceDbUrl}</referenceUrl>
-              <changeLogFile>${generatedDbInstallFile}</changeLogFile>
-              <diffChangeLogFile>${generatedDbUpgradeFile}</diffChangeLogFile>
-              <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-            </configuration>
-          </execution>
-          <execution>
-            <id>update-current-db</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>update</goal>
-            </goals>
-            <configuration>
-              <url>${currentDbUrl}</url>
-              <changeLogFile>${generatedDbUpgradeFile}</changeLogFile>
-              <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-            </configuration>
-          </execution>
-        </executions>
-        <dependencies>
-          <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>${hsql.version}</version>
-          </dependency>
-        </dependencies>
-      </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>createInstallChangeLog</id>
+      <properties>
+        <installChangeLogFileName>generated-db-install-${finalVersion}.xml</installChangeLogFileName>
+        <generatedDbInstallChangeLog>${project.basedir}/install/${installChangeLogFileName}
+        </generatedDbInstallChangeLog>
+        <hibernateUrl>hibernate:spring:org/jspresso/hrsample/core-config.xml?bean=hibernateSessionFactory
+        </hibernateUrl>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-clean-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>delete-db-install</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>clean</goal>
+                </goals>
+                <configuration>
+                  <filesets>
+                    <fileset>
+                      <directory>install</directory>
+                      <includes>
+                        <include>${installChangeLogFileName}</include>
+                      </includes>
+                    </fileset>
+                  </filesets>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>generate-db-install</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>generateChangeLog</goal>
+                </goals>
+                <configuration>
+                  <url>${hibernateUrl}</url>
+                  <outputChangeLogFile>${generatedDbInstallChangeLog}</outputChangeLogFile>
+                </configuration>
+              </execution>
+            </executions>
+            <dependencies>
+              <dependency>
+                <groupId>org.hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>${hsql.version}</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>createUpgradeChangeLog</id>
+      <properties>
+        <fromVersion>${finalVersion}</fromVersion>
+        <toVersion>${finalVersion}</toVersion>
+        <fromDbInstallChangeLog>${project.basedir}/install/db-install-${fromVersion}.xml</fromDbInstallChangeLog>
+        <toDbInstallChangeLog>${project.basedir}/install/db-install-${toVersion}.xml</toDbInstallChangeLog>
+        <upgradeChangeLogFileName>generated-db-upgrade-${fromVersion}-${toVersion}.xml</upgradeChangeLogFileName>
+        <generatedDbUpgradeChangeLog>${project.basedir}/upgrade/${upgradeChangeLogFileName}
+        </generatedDbUpgradeChangeLog>
+        <fromDbUrl>jdbc:hsqldb:mem:FROM-${fromVersion}</fromDbUrl>
+        <toDbUrl>jdbc:hsqldb:mem:TO-${toVersion}</toDbUrl>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-clean-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>delete-db-upgrade</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>clean</goal>
+                </goals>
+                <configuration>
+                  <filesets>
+                    <fileset>
+                      <directory>upgrade</directory>
+                      <includes>
+                        <include>${upgradeChangeLogFileName}</include>
+                      </includes>
+                    </fileset>
+                  </filesets>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>create-to-db</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>update</goal>
+                </goals>
+                <configuration>
+                  <url>${toDbUrl}</url>
+                  <changeLogFile>${toDbInstallChangeLog}</changeLogFile>
+                </configuration>
+              </execution>
+              <execution>
+                <id>create-from-db</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>update</goal>
+                </goals>
+                <configuration>
+                  <url>${fromDbUrl}</url>
+                  <changeLogFile>${fromDbInstallChangeLog}</changeLogFile>
+                </configuration>
+              </execution>
+              <execution>
+                <id>generate-db-upgrade</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>diff</goal>
+                </goals>
+                <configuration>
+                  <url>${fromDbUrl}</url>
+                  <referenceUrl>${toDbUrl}</referenceUrl>
+                  <changeLogFile>${toDbInstallChangeLog}</changeLogFile>
+                  <diffChangeLogFile>${generatedDbUpgradeChangeLog}</diffChangeLogFile>
+                </configuration>
+              </execution>
+            </executions>
+            <configuration>
+              <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+            </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>org.hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>${hsql.version}</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>createInstallSQL</id>
+      <properties>
+        <dbName>hrsample</dbName>
+        <dbUrl>jdbc:hsqldb:mem:${dbName}</dbUrl>
+        <toVersion>${finalVersion}</toVersion>
+        <dbUser>hrsample</dbUser>
+        <dbPassword>hrsample</dbPassword>
+        <dbInstallChangeLog>${project.basedir}/install/db-install-${toVersion}.xml</dbInstallChangeLog>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>generate-install-sql</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>updateSQL</goal>
+                </goals>
+                <configuration>
+                  <changeLogFile>${dbInstallChangeLog}</changeLogFile>
+                  <migrationSqlOutputFile>${project.build.directory}/${dbName}/install-${toVersion}.sql
+                  </migrationSqlOutputFile>
+                </configuration>
+              </execution>
+            </executions>
+            <configuration>
+              <url>${dbUrl}</url>
+              <username>${dbUser}</username>
+              <password>${dbPassword}</password>
+              <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+            </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>org.hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>${hsql.version}</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>createUpgradeSQL</id>
+      <properties>
+        <dbName>hrsample</dbName>
+        <dbUrl>jdbc:hsqldb:mem:FROM-${dbName}</dbUrl>
+        <dbUser>hrsample</dbUser>
+        <dbPassword>hrsample</dbPassword>
+        <toVersion>${finalVersion}</toVersion>
+        <dbUpgradeChangeLog>${project.basedir}/upgrade/db-upgrade-${toVersion}.xml</dbUpgradeChangeLog>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>generate-upgrade-sql</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>updateSQL</goal>
+                </goals>
+                <configuration>
+                  <changeLogFile>${dbUpgradeChangeLog}</changeLogFile>
+                  <migrationSqlOutputFile>${project.build.directory}/${dbName}/upgrade-to-${toVersion}.sql
+                  </migrationSqlOutputFile>
+                </configuration>
+              </execution>
+            </executions>
+            <configuration>
+              <url>${dbUrl}</url>
+              <username>${dbUser}</username>
+              <password>${dbPassword}</password>
+              <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+            </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>org.hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>${hsql.version}</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
+
