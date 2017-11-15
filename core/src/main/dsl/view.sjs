@@ -349,8 +349,8 @@ table('Employee.table.view', parent: 'filterableBeanCollectionModuleView'
     propertyView name: 'preferredColor'
     propertyView name: 'photo'
     propertyView name: 'company'
-    propertyView name: 'createTimestamp'
-    propertyView name: 'lastUpdateTimestamp'
+    propertyView name: 'createTimestamp', preferredHeight:-1 // Hidden by default
+    propertyView name: 'lastUpdateTimestamp', preferredHeight:-1 // Hidden by default
   }
 }
 
