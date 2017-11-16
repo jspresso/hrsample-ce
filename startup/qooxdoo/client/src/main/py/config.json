@@ -11,6 +11,10 @@
     {
       "path": "${TARGET}/jspresso-qooxdoo-theme-zip/py/library.json",
       "as": "jspresso-qooxdoo-theme"
+    },
+    {
+      "path": "${TARGET}/jspresso-qooxdoo-legacy-theme-zip/py/library.json",
+      "as": "jspresso-qooxdoo-legacy-theme"
     }
   ],
   "config-warnings": {
