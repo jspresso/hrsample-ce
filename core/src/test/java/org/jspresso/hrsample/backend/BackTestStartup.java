@@ -53,7 +53,7 @@ import org.jspresso.hrsample.model.Role;
 public class BackTestStartup extends AbstractBackendStartup {
 
   /**
-   * Performs DB initialization and test data creation.
+   * Performs DB initialization and testDdd data creation.
    *
    * @throws Exception
    *     the exception
@@ -102,7 +102,7 @@ public class BackTestStartup extends AbstractBackendStartup {
   }
 
   /**
-   * Starts a new controller and creates the session using the "test" user with
+   * Starts a new controller and creates the session using the "testDdd" user with
    * english locale.
    *
    * @throws Exception

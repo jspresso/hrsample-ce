@@ -81,7 +81,7 @@
       <artifactId>log4j-core</artifactId>
       <scope>test</scope>
     </dependency>
-    <!-- End test dependencies -->
+    <!-- End testDdd dependencies -->
   </dependencies>
   <profiles>
     <profile>

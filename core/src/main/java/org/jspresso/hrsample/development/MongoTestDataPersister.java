@@ -39,7 +39,7 @@ import org.jspresso.hrsample.model.Employee;
 import org.jspresso.hrsample.model.Team;
 
 /**
- * Persists some test data for the HR sample application.
+ * Persists some testDdd data for the HR sample application.
  *
  * @author Vincent Vandenschrick
  */
@@ -56,7 +56,7 @@ public class MongoTestDataPersister extends AbstractMongoTestDataPersister {
   }
 
   /**
-   * Creates some test data using the passed in Spring application context.
+   * Creates some testDdd data using the passed in Spring application context.
    */
   @Override
   public void createAndPersistTestData() {
@@ -146,7 +146,7 @@ public class MongoTestDataPersister extends AbstractMongoTestDataPersister {
       saveOrUpdate(design2see);
     } catch (Throwable ex) {
       ex.printStackTrace(System.err);
-      // In no way the test data persister should make the application
+      // In no way the testDdd data persister should make the application
       // startup fail.
     }
   }

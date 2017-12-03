@@ -646,8 +646,8 @@ public class JspressoModelTest extends BackTestStartup {
     assertEquals("contact toString() should be the holding entity one when not null.", c.toString(),
         companyContact.toString());
     ContactInfo orphanContact = hbc.getEntityFactory().createComponentInstance(ContactInfo.class);
-    orphanContact.setAddress("toString test");
-    assertEquals("contact toString() should be address when the holding entity is null.", "toString test",
+    orphanContact.setAddress("toString testDdd");
+    assertEquals("contact toString() should be address when the holding entity is null.", "toString testDdd",
         orphanContact.toString());
   }
 
