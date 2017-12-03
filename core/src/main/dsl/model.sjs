@@ -81,12 +81,7 @@ Entity('Employee',
                 'gender',
                 'birthDate',
                 'company',
-                'managedOu.manager',
-                'managedOu.createTimestamp',
-                'managedOu.manager.salary',
-                'managedOu.contact.email',
-                'managedOu.manager.company',
-                'managedOu.manager.company.workforce']) {
+                'managedOu.manager']) {
   string_32 'firstName', mandatory: true, processors: 'FirstNameProcessor', translatable: true
   string_10 'ssn', regex: "[\\d]{10}", regexSample: '0123456789', unicityScope: 'empSsn'
   date 'birthDate', processors: 'BirthDateProcessor'
@@ -198,6 +193,7 @@ Entity('User',
   extend: ['Traceable'],
   extension:'UserExtension',
   rendered:['login', 'password', 'employee', 'createTimestamp', 'lastUpdateTimestamp'],
+  queryable: ['login', 'employee.name'],
   services:['UserService':'UserServiceDelegate']) {
 
   string_64 'login', mandatory:true, unicityScope:'community'

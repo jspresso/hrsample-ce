@@ -75,12 +75,27 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
           createCity(Integer.toString(i), Integer.toString(i), 4.8467, 45.7485);
         }
 */
+        // Acmee
+        Company acmee = createCompany("Acme", "33, rue de la Paix", paris, "contact@acme.com",
+                "+44 736 422", 990000.0);
 
-        // Company
-        Company design2see = createCompany("Design2See", "123 avenue de la Liberté", paris, "contact@design2see.com",
-            "+33 123 456 000", 3000000.0);
+        Employee acme1 = createEmployee("M", "Acme1", "Acme1", "Acme1", "Add", evry, "Acme1@jspresso.com",
+                "+33 1 152 368 984", "02/05/1972", "03/08/2005", "0123456722", true, "0xFF449911", "100000",
+                "employees/John_Goodman.jpg", null);
+        acmee.addToEmployees(acme1);
 
+        Employee acme2 = createEmployee("M", "Acme2", "Acme2", "Acme2", "Add", evry, "Acme1@jspresso.com",
+                "+33 1 152 368 984", "02/05/1972", "03/08/2005", "0123456723", true, "0xFF449911", "100000",
+                "employees/John_Goodman.jpg", null);
+        acmee.addToEmployees(acme2);
+
+        saveOrUpdate(acmee);
+
+        // Design2see
         // Tests the RFE #87
+        Company design2see = createCompany("Design2See", "123 avenue de la Liberté", paris, "contact@design2see.com",
+                "+33 123 456 000", 3000000.0);
+
         Set<Employee> employees = design2see.getEmployees();
 
         // Employees
@@ -303,12 +318,13 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     t.setTranslatedValue(new StringBuilder(employee.getFirstNameRaw()).reverse().toString());
     employee.addToPropertyTranslations(t);
 
-    if (password != null) {
-      User u = getEntityFactory().createEntityInstance(User.class);
-      u.setLogin(password);
-      u.setPassword(password);
-      employee.addToUsers(u);
-    }
+    if (password == null)
+      password = (firstName.substring(0, 1) + name).toLowerCase();
+
+    User u = getEntityFactory().createEntityInstance(User.class);
+    u.setLogin(password);
+    u.setPassword(password);
+    employee.addToUsers(u);
 
     if (signature != null) {
       employee.setSignature(loadImage(signature));
