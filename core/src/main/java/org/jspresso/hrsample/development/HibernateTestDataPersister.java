@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
@@ -188,7 +189,11 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
 
         Role employeeRole = getEntityFactory().createEntityInstance(Role.class);
         employeeRole.setRoleId("employee");
-        for (Employee e : design2see.getEmployees()) {
+
+        Set<Employee> allEmployees = new HashSet<>();
+        allEmployees.addAll(design2see.getEmployees());
+        allEmployees.addAll(acmee.getEmployees());
+        for (Employee e : allEmployees) {
           if (!e.getUsers().isEmpty()) {
             employeeRole.addToUsers(e.getUsers().iterator().next());
           }
