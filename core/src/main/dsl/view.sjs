@@ -156,6 +156,8 @@ image('Employee-photo.pane',
 
 form('Employee.component.pane',
     columnCount: 3,
+    name: 'fullName',
+    background: 'preferredColor',
     description: 'htmlDescription',
     labelsPosition: 'ABOVE') {
   fields {
