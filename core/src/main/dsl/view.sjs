@@ -151,7 +151,7 @@ border('Company.organization.view',
 image('Employee-photo.pane',
     parent: 'decoratedView',
     // actionMap: 'binaryPropertyActionMap',
-    preferredWidth: 500)
+    preferredWidth: 400)
 
 
 form('Employee.component.pane',
