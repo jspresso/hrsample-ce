@@ -150,8 +150,8 @@ border('Company.organization.view',
 
 image('Employee-photo.pane',
     parent: 'decoratedView',
-    actionMap: 'binaryPropertyActionMap',
-    preferredWidth: 300)
+    // actionMap: 'binaryPropertyActionMap',
+    preferredWidth: 500)
 
 
 form('Employee.component.pane',
@@ -349,7 +349,7 @@ table('Employee.table.view', parent: 'filterableBeanCollectionModuleView'
     propertyView name: 'contact'
     propertyView name: 'married'
     propertyView name: 'preferredColor'
-    propertyView name: 'photo'
+    image        name: 'photo', scaledHeight: 18
     propertyView name: 'company'
     propertyView name: 'createTimestamp', preferredHeight:-1 // Hidden by default
     propertyView name: 'lastUpdateTimestamp', preferredHeight:-1 // Hidden by default
