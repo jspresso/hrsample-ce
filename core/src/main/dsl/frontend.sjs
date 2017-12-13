@@ -78,7 +78,8 @@ workspace('employees.workspace',
       moduleView:'Employee.table.view',
       detailView:'Employee.module.view',
       startup:'filterModuleStartup',
-      pageSize:4)
+      pageSize:4,
+      ordering: ['salary': 'DESCENDING'])
 
   filterModule('departments.module',
     icon:'department.png',
