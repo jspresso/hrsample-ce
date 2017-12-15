@@ -192,7 +192,7 @@ Component('Link', extend: 'Nameable', rendered: 'name') {
 Entity('User',
   extend: ['Traceable'],
   extension:'UserExtension',
-  rendered:['login', 'password', 'employee', 'createTimestamp', 'lastUpdateTimestamp'],
+  rendered:['login', 'employee', 'createTimestamp', 'lastUpdateTimestamp'],
   queryable: ['login', 'employee.name'],
   services:['UserService':'UserServiceDelegate']) {
 
