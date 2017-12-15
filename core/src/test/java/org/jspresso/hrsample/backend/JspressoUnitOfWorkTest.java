@@ -76,6 +76,9 @@ import org.jspresso.hrsample.model.Nameable;
  */
 public class JspressoUnitOfWorkTest extends BackTestStartup {
 
+  private static final String TEST_COMPANY = "Design2See";
+  private static final String TEST_DEPARTMENT = "HR-000";
+
   /**
    * Test retrieve UOW cloned instance from session. See bug 746.
    */
@@ -83,50 +86,42 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   public void testClonedInstanceFromHibernateSession() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
-    EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria
-        .forClass(Department.class);
-    final List<Department> departments = hbc.findByCriteria(departmentCriteria,
-        EMergeMode.MERGE_KEEP, Department.class);
+    EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria.forClass(Department.class);
+    final List<Department> departments = hbc.findByCriteria(departmentCriteria, EMergeMode.MERGE_KEEP,
+        Department.class);
 
-    EnhancedDetachedCriteria companyCriteria = EnhancedDetachedCriteria
-        .forClass(Company.class);
-    final Company company = hbc.findFirstByCriteria(companyCriteria,
-        EMergeMode.MERGE_KEEP, Company.class);
+    EnhancedDetachedCriteria companyCriteria = EnhancedDetachedCriteria.forClass(Company.class);
+    final Company company = hbc.findFirstByCriteria(companyCriteria, EMergeMode.MERGE_KEEP, Company.class);
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            // Clone the company
-            Company companyClone = hbc.cloneInUnitOfWork(company);
-            // Check that the departments property is not initialized
-            assertFalse(Hibernate.isInitialized(companyClone
-                .straightGetProperty(Company.DEPARTMENTS)));
-            // Retrieve the company departments (load them in the Hibernate
-            // session)
-            Set<Department> hibernateSessionDepartments = companyClone
-                .getDepartments();
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        // Clone the company
+        Company companyClone = hbc.cloneInUnitOfWork(company);
+        // Check that the departments property is not initialized
+        assertFalse(Hibernate.isInitialized(companyClone.straightGetProperty(Company.DEPARTMENTS)));
+        // Retrieve the company departments (load them in the Hibernate
+        // session)
+        Set<Department> hibernateSessionDepartments = companyClone.getDepartments();
 
-            Map<Serializable, Department> hibernateSessionDepartmentsById = new HashMap<Serializable, Department>();
-            for (Department d : hibernateSessionDepartments) {
-              hibernateSessionDepartmentsById.put(d.getId(), d);
-            }
+        Map<Serializable, Department> hibernateSessionDepartmentsById = new HashMap<Serializable, Department>();
+        for (Department d : hibernateSessionDepartments) {
+          hibernateSessionDepartmentsById.put(d.getId(), d);
+        }
 
-            // Now clone each of the Jspresso session department and verify that
-            // there is no reference duplication, ie.e we are able to retrieve
-            // the Hibernate session instances.
-            List<Department> departmentClones = hbc
-                .cloneInUnitOfWork(departments);
-            for (Department d : departmentClones) {
-              Department hibernateSessionDepartment = hibernateSessionDepartmentsById
-                  .get(d.getId());
-              if (hibernateSessionDepartment != null) {
-                assertSame(hibernateSessionDepartment, d);
-              }
-            }
+        // Now clone each of the Jspresso session department and verify that
+        // there is no reference duplication, ie.e we are able to retrieve
+        // the Hibernate session instances.
+        List<Department> departmentClones = hbc.cloneInUnitOfWork(departments);
+        for (Department d : departmentClones) {
+          Department hibernateSessionDepartment = hibernateSessionDepartmentsById.get(d.getId());
+          if (hibernateSessionDepartment != null) {
+            assertSame(hibernateSessionDepartment, d);
           }
-        });
+        }
+      }
+    });
   }
 
   /**
@@ -136,10 +131,8 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   public void testCloneEntityListWithHoles() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
-    EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
-        .forClass(Employee.class);
-    final Employee emp = hbc.findFirstByCriteria(employeeCriteria,
-        EMergeMode.MERGE_KEEP, Employee.class);
+    EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria.forClass(Employee.class);
+    final Employee emp = hbc.findFirstByCriteria(employeeCriteria, EMergeMode.MERGE_KEEP, Employee.class);
 
     List<Event> events = new ArrayList<Event>();
     events.add(hbc.getEntityFactory().createEntityInstance(Event.class));
@@ -147,23 +140,21 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     events.add(hbc.getEntityFactory().createEntityInstance(Event.class));
     emp.setAlternativeEvents(events);
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            hbc.cloneInUnitOfWork(emp);
-          }
-        });
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.cloneInUnitOfWork(emp);
+      }
+    });
     emp.addToAlternativeEvents(hbc.getEntityFactory().createEntityInstance(Event.class));
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            hbc.cloneInUnitOfWork(emp);
-          }
-        });
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.cloneInUnitOfWork(emp);
+      }
+    });
   }
 
   /**
@@ -173,37 +164,30 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   public void testCloneComponentListWithHoles() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
-    EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria
-        .forClass(Employee.class);
-    final Employee emp = hbc.findFirstByCriteria(employeeCriteria,
-        EMergeMode.MERGE_KEEP, Employee.class);
+    EnhancedDetachedCriteria employeeCriteria = EnhancedDetachedCriteria.forClass(Employee.class);
+    final Employee emp = hbc.findFirstByCriteria(employeeCriteria, EMergeMode.MERGE_KEEP, Employee.class);
 
     List<ContactInfo> alternativeContacts = new ArrayList<ContactInfo>();
-    alternativeContacts.add(hbc.getEntityFactory().createComponentInstance(
-        ContactInfo.class));
+    alternativeContacts.add(hbc.getEntityFactory().createComponentInstance(ContactInfo.class));
     alternativeContacts.add(null);
-    alternativeContacts.add(hbc.getEntityFactory().createComponentInstance(
-        ContactInfo.class));
+    alternativeContacts.add(hbc.getEntityFactory().createComponentInstance(ContactInfo.class));
     emp.setAlternativeContacts(alternativeContacts);
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            hbc.cloneInUnitOfWork(emp);
-          }
-        });
-    emp.addToAlternativeContacts(hbc.getEntityFactory()
-        .createComponentInstance(ContactInfo.class));
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.cloneInUnitOfWork(emp);
+      }
+    });
+    emp.addToAlternativeContacts(hbc.getEntityFactory().createComponentInstance(ContactInfo.class));
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            hbc.cloneInUnitOfWork(emp);
-          }
-        });
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.cloneInUnitOfWork(emp);
+      }
+    });
   }
 
   /**
@@ -218,22 +202,18 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
 
       @Override
       public Serializable doInTransaction(TransactionStatus status) {
-        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(
-            tt.getTransactionManager());
-        nestedTT
-            .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
-        Serializable id = nestedTT
-            .execute(new TransactionCallback<Serializable>() {
+        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(tt.getTransactionManager());
+        nestedTT.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+        Serializable id = nestedTT.execute(new TransactionCallback<Serializable>() {
 
-              @Override
-              public Serializable doInTransaction(TransactionStatus nestedStatus) {
-                DetachedCriteria empCrit = DetachedCriteria
-                    .forClass(Employee.class);
-                Employee emp = hbc.findFirstByCriteria(empCrit, null, Employee.class);
-                emp.setFirstName("Committed");
-                return emp.getId();
-              }
-            });
+          @Override
+          public Serializable doInTransaction(TransactionStatus nestedStatus) {
+            DetachedCriteria empCrit = DetachedCriteria.forClass(Employee.class);
+            Employee emp = hbc.findFirstByCriteria(empCrit, null, Employee.class);
+            emp.setFirstName("Committed");
+            return emp.getId();
+          }
+        });
         // asserts that UOW is still active after the end of the nested transaction.
         assertTrue("UOW should still be active since outer TX is ongoing.", hbc.isUnitOfWorkActive());
         // forces rollback of outer TX.
@@ -243,31 +223,25 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     });
     DetachedCriteria empById = DetachedCriteria.forClass(Employee.class);
     empById.add(Restrictions.eq(IEntity.ID, empId));
-    Employee emp = hbc.findFirstByCriteria(empById,
-        EMergeMode.MERGE_CLEAN_EAGER, Employee.class);
-    assertTrue("Inner transaction should have been committed",
-        "Committed".equals(emp.getFirstName()));
+    Employee emp = hbc.findFirstByCriteria(empById, EMergeMode.MERGE_CLEAN_EAGER, Employee.class);
+    assertTrue("Inner transaction should have been committed", "Committed".equals(emp.getFirstName()));
 
     Serializable emp2Id = tt.execute(new TransactionCallback<Serializable>() {
 
       @Override
       public Serializable doInTransaction(TransactionStatus status) {
-        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(
-            tt.getTransactionManager());
-        nestedTT
-            .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
-        Serializable id = nestedTT
-            .execute(new TransactionCallback<Serializable>() {
+        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(tt.getTransactionManager());
+        nestedTT.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+        Serializable id = nestedTT.execute(new TransactionCallback<Serializable>() {
 
-              @Override
-              public Serializable doInTransaction(TransactionStatus nestedStatus) {
-                DetachedCriteria empCrit = DetachedCriteria
-                    .forClass(Employee.class);
-                Employee emp2 = hbc.findFirstByCriteria(empCrit, null, Employee.class);
-                emp2.setFirstName("Rollbacked");
-                return emp2.getId();
-              }
-            });
+          @Override
+          public Serializable doInTransaction(TransactionStatus nestedStatus) {
+            DetachedCriteria empCrit = DetachedCriteria.forClass(Employee.class);
+            Employee emp2 = hbc.findFirstByCriteria(empCrit, null, Employee.class);
+            emp2.setFirstName("Rollbacked");
+            return emp2.getId();
+          }
+        });
         // forces rollback of outer TX.
         status.setRollbackOnly();
         return id;
@@ -275,10 +249,8 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     });
     DetachedCriteria emp2ById = DetachedCriteria.forClass(Employee.class);
     emp2ById.add(Restrictions.eq(IEntity.ID, emp2Id));
-    Employee emp2 = hbc.findFirstByCriteria(empById,
-        EMergeMode.MERGE_CLEAN_EAGER, Employee.class);
-    assertFalse("Inner transaction should have been rollbacked",
-        "Rollbacked".equals(emp2.getFirstName()));
+    Employee emp2 = hbc.findFirstByCriteria(empById, EMergeMode.MERGE_CLEAN_EAGER, Employee.class);
+    assertFalse("Inner transaction should have been rollbacked", "Rollbacked".equals(emp2.getFirstName()));
 
     tt.execute(new TransactionCallbackWithoutResult() {
 
@@ -287,10 +259,8 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
         City newCity = hbc.getEntityFactory().createEntityInstance(City.class);
         newCity.setName("Test City");
 
-        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(
-            tt.getTransactionManager());
-        nestedTT
-            .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(tt.getTransactionManager());
+        nestedTT.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
         String testZip = nestedTT.execute(new TransactionCallback<String>() {
 
           @Override
@@ -309,10 +279,8 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
       protected void doInTransactionWithoutResult(TransactionStatus status) {
         final City randomCity = hbc.findFirstByCriteria(DetachedCriteria.forClass(City.class), EMergeMode.MERGE_KEEP,
             City.class);
-        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(
-            tt.getTransactionManager());
-        nestedTT
-            .setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+        TransactionTemplate nestedTT = new ControllerAwareTransactionTemplate(tt.getTransactionManager());
+        nestedTT.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
         nestedTT.execute(new TransactionCallbackWithoutResult() {
 
           @Override
@@ -344,9 +312,7 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
       @Override
       public Employee doInTransaction(TransactionStatus status) {
         DetachedCriteria empCrit = DetachedCriteria.forClass(Employee.class);
-        return (Employee) empCrit
-            .getExecutableCriteria(hbc.getHibernateSession()).list().iterator()
-            .next();
+        return (Employee) empCrit.getExecutableCriteria(hbc.getHibernateSession()).list().iterator().next();
       }
     });
     // From here, any modification on employee should result in an exception
@@ -363,34 +329,28 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   public void testMergeModes() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
-    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria
-        .forClass(City.class);
-    final City c1 = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_CLEAN_EAGER,
-        City.class);
+    EnhancedDetachedCriteria crit = EnhancedDetachedCriteria.forClass(City.class);
+    final City c1 = hbc.findFirstByCriteria(crit, EMergeMode.MERGE_CLEAN_EAGER, City.class);
     String name = c1.getName();
 
-    JdbcTemplate jdbcTemplate = getApplicationContext().getBean("jdbcTemplate",
-        JdbcTemplate.class);
+    JdbcTemplate jdbcTemplate = getApplicationContext().getBean("jdbcTemplate", JdbcTemplate.class);
     jdbcTemplate.execute(new ConnectionCallback<Object>() {
 
       @Override
       public Object doInConnection(Connection con) throws SQLException {
-        PreparedStatement ps = con
-            .prepareStatement("UPDATE CITY SET NAME = ? WHERE ID = ?");
+        PreparedStatement ps = con.prepareStatement("UPDATE CITY SET NAME = ? WHERE ID = ?");
         ps.setString(1, "test");
         ps.setObject(2, c1.getId());
         assertEquals(1, ps.executeUpdate());
         return null;
       }
     });
-    final City c2 = hbc.findById(c1.getId(), EMergeMode.MERGE_CLEAN_LAZY,
-        City.class);
+    final City c2 = hbc.findById(c1.getId(), EMergeMode.MERGE_CLEAN_LAZY, City.class);
 
     assertSame(c1, c2);
     assertEquals(name, c2.getName());
 
-    final City c3 = hbc.findById(c1.getId(), EMergeMode.MERGE_CLEAN_EAGER,
-        City.class);
+    final City c3 = hbc.findById(c1.getId(), EMergeMode.MERGE_CLEAN_EAGER, City.class);
     assertSame(c1, c3);
     assertEquals("test", c3.getNameRaw());
 
@@ -398,8 +358,7 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
 
       @Override
       public Object doInConnection(Connection con) throws SQLException {
-        PreparedStatement ps = con
-            .prepareStatement("UPDATE CITY SET NAME = ?, VERSION = VERSION+1 WHERE ID = ?");
+        PreparedStatement ps = con.prepareStatement("UPDATE CITY SET NAME = ?, VERSION = VERSION+1 WHERE ID = ?");
         ps.setString(1, "test2");
         ps.setObject(2, c1.getId());
         assertEquals(1, ps.executeUpdate());
@@ -411,8 +370,7 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     assertSame(c1, c4);
     assertEquals("test", c4.getNameRaw());
 
-    final City c5 = hbc.findById(c1.getId(), EMergeMode.MERGE_CLEAN_LAZY,
-        City.class);
+    final City c5 = hbc.findById(c1.getId(), EMergeMode.MERGE_CLEAN_LAZY, City.class);
     assertSame(c1, c5);
     assertEquals("test2", c5.getNameRaw());
   }
@@ -432,11 +390,9 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
 
         @Override
         public Set<String> call() throws Exception {
-          final HibernateBackendController threadHbc = getApplicationContext()
-              .getBean("applicationBackController",
-                  HibernateBackendController.class);
-          final TransactionTemplate threadTT = threadHbc
-              .getTransactionTemplate();
+          final HibernateBackendController threadHbc = getApplicationContext().getBean("applicationBackController",
+              HibernateBackendController.class);
+          final TransactionTemplate threadTT = threadHbc.getTransactionTemplate();
           threadHbc.start(hbc.getLocale(), hbc.getClientTimeZone());
           threadHbc.setApplicationSession(hbc.getApplicationSession());
           BackendControllerHolder.setThreadBackendController(threadHbc);
@@ -447,12 +403,10 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
              */
             @Override
             public Set<String> doInTransaction(TransactionStatus status) {
-              DetachedCriteria compCrit = DetachedCriteria
-                  .forClass(Company.class);
+              DetachedCriteria compCrit = DetachedCriteria.forClass(Company.class);
               Set<String> names = new HashSet<String>();
-              Company c = (Company) compCrit
-                  .getExecutableCriteria(threadHbc.getHibernateSession())
-                  .list().iterator().next();
+              Company c = (Company) compCrit.getExecutableCriteria(threadHbc.getHibernateSession()).list().iterator()
+                                            .next();
 
               synchronized (countDown) {
                 countDown.decrementAndGet();
@@ -508,13 +462,10 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     assertTrue("Only 1 TX succeeded", successfullTxCount == 1);
 
     DetachedCriteria compCrit = DetachedCriteria.forClass(Company.class);
-    Company c = hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_LAZY,
-        Company.class);
-    assertTrue("the company name is the one of the successfull TX",
-        names.contains(c.getName()));
+    Company c = hbc.findFirstByCriteria(compCrit, EMergeMode.MERGE_LAZY, Company.class);
+    assertTrue("the company name is the one of the successfull TX", names.contains(c.getName()));
     for (Department d : c.getDepartments()) {
-      assertTrue("the department name is the one of the successfull TX",
-          names.contains(d.getName()));
+      assertTrue("the department name is the one of the successfull TX", names.contains(d.getName()));
     }
   }
 
@@ -525,44 +476,34 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   public void testDirtyPropertiesInUOW() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
-    EnhancedDetachedCriteria companyCriteria = EnhancedDetachedCriteria
-        .forClass(Company.class);
-    final Company comp = hbc.findFirstByCriteria(companyCriteria,
-        EMergeMode.MERGE_KEEP, Company.class);
-    assertTrue("Dirty properties are not initialized",
-        hbc.getDirtyProperties(comp) != null);
-    assertTrue("Dirty properties are not empty", hbc.getDirtyProperties(comp)
-        .isEmpty());
+    EnhancedDetachedCriteria companyCriteria = EnhancedDetachedCriteria.forClass(Company.class);
+    companyCriteria.add(Restrictions.eq(Company.NAME, TEST_COMPANY));
+    final Company comp = hbc.findFirstByCriteria(companyCriteria, EMergeMode.MERGE_KEEP, Company.class);
+    assertTrue("Dirty properties are not initialized", hbc.getDirtyProperties(comp) != null);
+    assertTrue("Dirty properties are not empty", hbc.getDirtyProperties(comp).isEmpty());
     comp.setName("Updated");
-    assertTrue("Company name is not dirty", hbc.getDirtyProperties(comp)
-        .containsKey(Nameable.NAME));
+    assertTrue("Company name is not dirty", hbc.getDirtyProperties(comp).containsKey(Nameable.NAME));
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria
-                .forClass(Department.class);
-            Department dep = hbc.findFirstByCriteria(departmentCriteria,
-                EMergeMode.MERGE_KEEP, Department.class);
-            assertFalse("Company property is already initialized", Hibernate
-                .isInitialized(dep.straightGetProperty(Department.COMPANY)));
-            // Should be initialized now
-            Company uowComp = dep.getCompany();
-            assertTrue("Dirty properties are not initialized",
-                hbc.getDirtyProperties(uowComp) != null);
-            assertTrue("Dirty properties are not empty", hbc
-                .getDirtyProperties(uowComp).isEmpty());
-            assertFalse("Company is not fresh from DB",
-                comp.getName().equals(uowComp.getName()));
-            uowComp.setNameRaw("UpdatedUow");
-            assertTrue("Company name is not dirty",
-                hbc.getDirtyProperties(uowComp).containsKey(Nameable.NAME_RAW));
-          }
-        });
-    assertEquals("Company name has not been correctly committed", "UpdatedUow",
-        comp.getNameRaw());
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria.forClass(Department.class);
+        departmentCriteria.add(
+            Restrictions.eq(Department.OU_ID, TEST_DEPARTMENT));
+        Department dep = hbc.findFirstByCriteria(departmentCriteria, EMergeMode.MERGE_KEEP, Department.class);
+        assertFalse("Company property is already initialized",
+            Hibernate.isInitialized(dep.straightGetProperty(Department.COMPANY)));
+        // Should be initialized now
+        Company uowComp = dep.getCompany();
+        assertTrue("Dirty properties are not initialized", hbc.getDirtyProperties(uowComp) != null);
+        assertTrue("Dirty properties are not empty", hbc.getDirtyProperties(uowComp).isEmpty());
+        assertFalse("Company is not fresh from DB", comp.getName().equals(uowComp.getName()));
+        uowComp.setNameRaw("UpdatedUow");
+        assertTrue("Company name is not dirty", hbc.getDirtyProperties(uowComp).containsKey(Nameable.NAME_RAW));
+      }
+    });
+    assertEquals("Company name has not been correctly committed", "UpdatedUow", comp.getNameRaw());
   }
 
   /**
@@ -572,65 +513,51 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   public void testUnititializedPropertiesMerge() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
-    EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria
-        .forClass(Department.class);
-    List<Department> departments = hbc.findByCriteria(departmentCriteria,
-        EMergeMode.MERGE_KEEP, Department.class);
+    EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria.forClass(Department.class);
+    List<Department> departments = hbc.findByCriteria(departmentCriteria, EMergeMode.MERGE_KEEP, Department.class);
     final Department department = departments.get(0);
-    final Company existingCompany = (Company) department
-        .straightGetProperty(Department.COMPANY);
-    assertFalse("Company property is already initialized",
-        Hibernate.isInitialized(existingCompany));
+    final Company existingCompany = (Company) department.straightGetProperty(Department.COMPANY);
+    assertFalse("Company property is already initialized", Hibernate.isInitialized(existingCompany));
 
-    Serializable newCompanyId = hbc.getTransactionTemplate().execute(
-        new TransactionCallback<Serializable>() {
+    Serializable newCompanyId = hbc.getTransactionTemplate().execute(new TransactionCallback<Serializable>() {
 
-          @Override
-          public Serializable doInTransaction(TransactionStatus status) {
-            Department departmentClone = hbc.cloneInUnitOfWork(department);
-            Company newCompany = hbc.getEntityFactory().createEntityInstance(
-                Company.class);
-            newCompany.setName("NewCompany");
-            departmentClone.setCompany(newCompany);
-            return newCompany.getId();
-          }
-        });
-    assertEquals("New company reference is not correctly merged", newCompanyId,
+      @Override
+      public Serializable doInTransaction(TransactionStatus status) {
+        Department departmentClone = hbc.cloneInUnitOfWork(department);
+        Company newCompany = hbc.getEntityFactory().createEntityInstance(Company.class);
+        newCompany.setName("NewCompany");
+        departmentClone.setCompany(newCompany);
+        return newCompany.getId();
+      }
+    });
+    assertEquals("New company reference is not correctly merged", newCompanyId, department.getCompany().getId());
+    assertEquals("New company name is not correctly merged", "NewCompany", department.getCompany().getName());
+
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
+
+      @Override
+      public void doInTransactionWithoutResult(TransactionStatus status) {
+        List<IEntity> clonedEntities = hbc.cloneInUnitOfWork(Arrays.asList((IEntity) existingCompany, department));
+        Company existingCompanyClone = (Company) clonedEntities.get(0);
+        assertFalse("Company clone is already initialized", Hibernate.isInitialized(existingCompanyClone));
+        Department departmentClone = (Department) clonedEntities.get(1);
+        departmentClone.setCompany(existingCompanyClone);
+      }
+    });
+    assertEquals("New company reference is not correctly merged", existingCompany.getId(),
         department.getCompany().getId());
-    assertEquals("New company name is not correctly merged", "NewCompany",
-        department.getCompany().getName());
-
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
-
-          @Override
-          public void doInTransactionWithoutResult(TransactionStatus status) {
-            List<IEntity> clonedEntities = hbc.cloneInUnitOfWork(Arrays.asList(
-                (IEntity) existingCompany, department));
-            Company existingCompanyClone = (Company) clonedEntities.get(0);
-            assertFalse("Company clone is already initialized",
-                Hibernate.isInitialized(existingCompanyClone));
-            Department departmentClone = (Department) clonedEntities.get(1);
-            departmentClone.setCompany(existingCompanyClone);
-          }
-        });
-    assertEquals("New company reference is not correctly merged",
-        existingCompany.getId(), department.getCompany().getId());
 
     final Department otherDepartment = departments.get(1);
-    Department deptFromUow = hbc.getTransactionTemplate().execute(
-        new TransactionCallback<Department>() {
+    Department deptFromUow = hbc.getTransactionTemplate().execute(new TransactionCallback<Department>() {
 
-          @Override
-          public Department doInTransaction(TransactionStatus status) {
-            Department d = hbc.findById(otherDepartment.getId(), null,
-                Department.class);
-            return d;
-          }
-        });
+      @Override
+      public Department doInTransaction(TransactionStatus status) {
+        Department d = hbc.findById(otherDepartment.getId(), null, Department.class);
+        return d;
+      }
+    });
     assertFalse("Department Company property from UOW is initialized",
-        Hibernate.isInitialized(deptFromUow
-            .straightGetProperty(Department.COMPANY)));
+        Hibernate.isInitialized(deptFromUow.straightGetProperty(Department.COMPANY)));
     hbc.merge(deptFromUow, EMergeMode.MERGE_EAGER);
   }
 
@@ -645,25 +572,23 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     c1.setName("ToUpdate");
     c1.setZip("12345");
     hbc.registerForUpdate(c1);
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            hbc.performPendingOperations();
-          }
-        });
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.performPendingOperations();
+      }
+    });
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            City c1Clone = hbc.cloneInUnitOfWork(c1);
-            c1Clone.setName("ToDelete");
-            hbc.registerForUpdate(c1Clone);
-            hbc.registerForDeletion(c1Clone);
-          }
-        });
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        City c1Clone = hbc.cloneInUnitOfWork(c1);
+        c1Clone.setName("ToDelete");
+        hbc.registerForUpdate(c1Clone);
+        hbc.registerForDeletion(c1Clone);
+      }
+    });
     City c2 = hbc.findById(c1.getId(), EMergeMode.MERGE_KEEP, City.class);
     assertNull("City has not been deleted correctly.", c2);
   }
@@ -676,69 +601,56 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   public void testJustInitializedCollectionPropertyClone() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
-    final EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria
-        .forClass(Department.class);
-    final List<Department> departments = hbc.findByCriteria(departmentCriteria,
-        EMergeMode.MERGE_KEEP, Department.class);
+    final EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria.forClass(Department.class);
+    final List<Department> departments = hbc.findByCriteria(departmentCriteria, EMergeMode.MERGE_KEEP,
+        Department.class);
     final Department department = departments.get(0);
     assertFalse("Department teams property from is initialized",
-        Hibernate.isInitialized(department
-            .straightGetProperty(Department.TEAMS)));
+        Hibernate.isInitialized(department.straightGetProperty(Department.TEAMS)));
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            Department departmentInTx = hbc.findById(department.getId(),
-                EMergeMode.MERGE_KEEP, Department.class);
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        Department departmentInTx = hbc.findById(department.getId(), EMergeMode.MERGE_KEEP, Department.class);
 
-            assertFalse("TX department teams property is initialized",
-                Hibernate.isInitialized(departmentInTx
-                    .straightGetProperty(Department.TEAMS)));
+        assertFalse("TX department teams property is initialized",
+            Hibernate.isInitialized(departmentInTx.straightGetProperty(Department.TEAMS)));
 
-            departmentInTx.getTeams();
-            Map<String, Object> inTxDirtyProperties = hbc
-                .getDirtyProperties(departmentInTx);
-            assertFalse("teams property is dirty whereas is shouldn't",
-                inTxDirtyProperties.containsKey(Department.TEAMS));
-          }
-        });
+        departmentInTx.getTeams();
+        Map<String, Object> inTxDirtyProperties = hbc.getDirtyProperties(departmentInTx);
+        assertFalse("teams property is dirty whereas is shouldn't", inTxDirtyProperties.containsKey(Department.TEAMS));
+      }
+    });
 
     department.getTeams();
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            Department departmentInTx = hbc.cloneInUnitOfWork(department);
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        Department departmentInTx = hbc.cloneInUnitOfWork(department);
 
-            departmentInTx.getTeams();
-            Map<String, Object> inTxDirtyProperties = hbc
-                .getDirtyProperties(departmentInTx);
-            assertFalse("teams property is dirty whereas is shouldn't",
-                inTxDirtyProperties.containsKey(Department.TEAMS));
-          }
-        });
+        departmentInTx.getTeams();
+        Map<String, Object> inTxDirtyProperties = hbc.getDirtyProperties(departmentInTx);
+        assertFalse("teams property is dirty whereas is shouldn't", inTxDirtyProperties.containsKey(Department.TEAMS));
+      }
+    });
     Map<String, Object> dirtyProperties = hbc.getDirtyProperties(department);
-    assertFalse("teams property is dirty whereas is shouldn't",
-        dirtyProperties.containsKey(Department.TEAMS));
+    assertFalse("teams property is dirty whereas is shouldn't", dirtyProperties.containsKey(Department.TEAMS));
 
     final Department anotherDepartment = departments.get(1);
     assertFalse("Other department teams property is initialized",
-        Hibernate.isInitialized(anotherDepartment
-            .straightGetProperty(Department.TEAMS)));
-    final Department anotherDepartmentClone = hbc.getTransactionTemplate()
-        .execute(new TransactionCallback<Department>() {
+        Hibernate.isInitialized(anotherDepartment.straightGetProperty(Department.TEAMS)));
+    final Department anotherDepartmentClone = hbc.getTransactionTemplate().execute(
+        new TransactionCallback<Department>() {
 
           @Override
           public Department doInTransaction(TransactionStatus status) {
             Department anotherDeptClone = hbc.cloneInUnitOfWork(anotherDepartment);
 
             assertFalse("Other department clone teams property is initialized",
-                Hibernate.isInitialized(anotherDeptClone
-                    .straightGetProperty(Department.TEAMS)));
+                Hibernate.isInitialized(anotherDeptClone.straightGetProperty(Department.TEAMS)));
 
             anotherDeptClone.getTeams();
             return anotherDeptClone;
@@ -746,8 +658,7 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
         });
     hbc.merge(anotherDepartmentClone, EMergeMode.MERGE_EAGER);
     Map<String, Object> anotherDirtyProperties = hbc.getDirtyProperties(anotherDepartment);
-    assertFalse(
-        "Other department teams property is dirty whereas is shouldn't",
+    assertFalse("Other department teams property is dirty whereas is shouldn't",
         anotherDirtyProperties.containsKey(Department.TEAMS));
 
     hbc.getTransactionTemplate().execute(new TransactionCallback<Department>() {
@@ -802,7 +713,8 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
         containsNewDepartment = true;
       }
     }
-    assertFalse("Company contains the department created in the in-memory TX although rolled-back", containsNewDepartment);
+    assertFalse("Company contains the department created in the in-memory TX although rolled-back",
+        containsNewDepartment);
 
     hbc.beginUnitOfWork();
     final Company companyClone = hbc.cloneInUnitOfWork(company);
@@ -825,7 +737,8 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     });
 
     reloadedCompany = hbc.findById(company.getId(), EMergeMode.MERGE_CLEAN_EAGER, Company.class);
-    assertEquals("Company has not correctly be saved by inner transaction", companyNameUpdated, reloadedCompany.getName());
+    assertEquals("Company has not correctly be saved by inner transaction", companyNameUpdated,
+        reloadedCompany.getName());
 
     containsNewDepartment = false;
     for (Department department : reloadedCompany.getDepartments()) {
@@ -906,15 +819,16 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     });
 
     Company reloadedCompany = hbc.findById(company.getId(), EMergeMode.MERGE_CLEAN_EAGER, Company.class);
-    assertEquals("Company has not correctly be saved by inner transaction", companyNameUpdated, reloadedCompany.getName());
+    assertEquals("Company has not correctly be saved by inner transaction", companyNameUpdated,
+        reloadedCompany.getName());
 
   }
 
 
-    /**
-     * Tests that an in-memory TX preserves entities unicity in the UOW even if
-     * multiple requests are spanned (see bug #1043).
-     */
+  /**
+   * Tests that an in-memory TX preserves entities unicity in the UOW even if
+   * multiple requests are spanned (see bug #1043).
+   */
   @Test
   public void testInMemoryTxEntityUnicity() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
@@ -971,15 +885,14 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     String modifiedInUOW = "modifiedInUOW";
     companyClone.setName(modifiedInUOW);
 
-    hbc.getTransactionTemplate()
-       .execute(new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-         @Override
-         protected void doInTransactionWithoutResult(TransactionStatus status) {
-           Company companyCloneClone = hbc.cloneInUnitOfWork(companyClone);
-           assertNotSame("Cloning in a nested TX results in another clone", companyClone, companyCloneClone);
-         }
-       });
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        Company companyCloneClone = hbc.cloneInUnitOfWork(companyClone);
+        assertNotSame("Cloning in a nested TX results in another clone", companyClone, companyCloneClone);
+      }
+    });
     assertTrue("The outer in-memory TX has been closed", hbc.isUnitOfWorkActive());
     hbc.commitUnitOfWork();
 
@@ -1002,14 +915,13 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     final City newCity = hbc.getEntityFactory().createEntityInstance(City.class);
     newCity.setName("New");
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            hbc.registerForUpdate(newCity);
-          }
-        });
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        hbc.registerForUpdate(newCity);
+      }
+    });
   }
 
 
@@ -1051,27 +963,25 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     company.removeFromDepartments(department);
 
     Set<?> detachedEntities = (Set<?>) company.straightGetProperty("detachedEntities");
-    assertTrue("DetachedEntities is empty and should not be.",
-        detachedEntities != null && !detachedEntities.isEmpty());
+    assertTrue("DetachedEntities is empty and should not be.", detachedEntities != null && !detachedEntities.isEmpty());
 
-    hbc.getTransactionTemplate().execute(
-        new TransactionCallbackWithoutResult() {
+    hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
 
-          @Override
-          protected void doInTransactionWithoutResult(TransactionStatus status) {
-            Company companyClone = hbc.cloneInUnitOfWork(company);
-            Department departmentClone = hbc.cloneInUnitOfWork(department);
+      @Override
+      protected void doInTransactionWithoutResult(TransactionStatus status) {
+        Company companyClone = hbc.cloneInUnitOfWork(company);
+        Department departmentClone = hbc.cloneInUnitOfWork(department);
 
-            Set<?> detachedEntities = (Set<?>) companyClone.straightGetProperty("detachedEntities");
-            assertTrue("DetachedEntities is empty and should not be.",
-                detachedEntities != null && !detachedEntities.isEmpty());
+        Set<?> detachedEntities = (Set<?>) companyClone.straightGetProperty("detachedEntities");
+        assertTrue("DetachedEntities is empty and should not be.",
+            detachedEntities != null && !detachedEntities.isEmpty());
 
-            assertSame("DetachedEntities have not been cloned correctly.", departmentClone,
-                detachedEntities.iterator().next());
+        assertSame("DetachedEntities have not been cloned correctly.", departmentClone,
+            detachedEntities.iterator().next());
 
-            hbc.registerForUpdate(companyClone);
-          }
-        });
+        hbc.registerForUpdate(companyClone);
+      }
+    });
 
     detachedEntities = (Set<?>) company.straightGetProperty("detachedEntities");
     assertNull("DetachedEntities should have been reset.", detachedEntities);
@@ -1161,10 +1071,12 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   /**
    * Test multiple uow cloning.
    */
-  @Test(timeout = 300)
+  @Test(timeout = 500)
   public void testMultipleUOWCloning() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
     EnhancedDetachedCriteria empCrit = EnhancedDetachedCriteria.forClass(Employee.class);
+    empCrit.getSubCriteriaFor(empCrit, Employee.COMPANY).add(
+        Restrictions.eq(Company.NAME, TEST_COMPANY));
     final List<Employee> employees = hbc.findByCriteria(empCrit, EMergeMode.MERGE_KEEP, Employee.class);
     hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
       @Override
