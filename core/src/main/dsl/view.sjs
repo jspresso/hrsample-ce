@@ -13,7 +13,7 @@ template 'listView',
     parent: 'decoratedView'
 
 form('Traceable.pane',
-    model: 'Traceable', borderType: 'NONE',
+    borderType: 'NONE',
     description: 'traceable.editing',
     fields: ['createTimestamp',
              'lastUpdateTimestamp'])
@@ -172,11 +172,20 @@ form('Employee.component.pane',
     propertyView name: 'married'
     propertyView name: 'preferredColor'
     //propertyView name: 'photo'
-    propertyView name: 'company'
+    referencePropertyView name: 'company', lovAction: 'testLovAction'
     //propertyView name: 'createTimestamp'
     //propertyView name: 'lastUpdateTimestamp'
   }
 }
+
+action('testLovAction', parent: 'lovAction',
+    class: 'org.jspresso.framework.application.frontend.action.lov.LovAction',
+    icon: 'female.png',
+    custom: ['criteriaRefiner_ref': 'testCriteriaRefiner']) {
+}
+
+bean('testCriteriaRefiner', class: 'test.TestCriteriaRefiner')
+
 
 bean('employeeCardSelector', class: 'org.jspresso.hrsample.view.EmployeeCardSelector')
 

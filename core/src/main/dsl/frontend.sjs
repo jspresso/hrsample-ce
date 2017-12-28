@@ -77,9 +77,11 @@ workspace('employees.workspace',
       //filterView:'Employee.filter.pane',
       moduleView:'Employee.table.view',
       detailView:'Employee.module.view',
-      startup:'filterModuleStartup',
+      //startup:'filterModuleStartup',
       pageSize:4,
-      ordering: ['salary': 'DESCENDING'])
+      ordering: ['salary': 'DESCENDING'],
+      custom: ['criteriaRefiner_ref': 'testCriteriaRefiner']
+  )
 
   filterModule('departments.module',
     icon:'department.png',
