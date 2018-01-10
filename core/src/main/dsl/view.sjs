@@ -300,27 +300,57 @@ tabs('Company.dialog.view', parent: 'Company.tab.pane')
 //  }
 //}
 
-tabs('City.detail.view') {
-  actionMap(parents: ['beanModuleActionMap']) {
-/*
-    actionList {
-      action parent: 'reloadModuleObjectFrontAction', repeatPeriodMillis: 5000
-    }
-*/
-  }
-  views {
-    form(labelsPosition: 'ABOVE',
-        columnCount: 1) {
-      fields {
-        propertyView name: 'name'
-        propertyView name: 'zip'
-        propertyView name: 'longitude', background: 'longitudeBackground'
-        propertyView name: 'latitude', background: 'latitudeBackground'
-      }
-    }
-    mapView(name: 'map', mapContent: 'mapContent')
+//tabs('City.detail.view') {
+//  actionMap(parents: ['beanModuleActionMap'])
+//  views {
+//    form parent: 'City.view'
+//    mapView parent: 'City.map'
+//  }
+//}
+
+
+
+external id: ['refreshCardViewFrontAction']
+
+border('City.detail.view', borderType: 'TITLED') {
+  actionMap(parents: ['beanModuleActionMap'])
+  center {
+    basicCardView(
+            selector: 'City.card.selector',
+            permId: 'city.card.permId',
+            views: ['NOMAP':'City.view',
+                    'MAP':'City.map.view'])
   }
 }
+
+form('City.view', labelsPosition: 'ABOVE', borderType: 'NONE',
+        columnCount: 1) {
+  fields {
+    propertyView name: 'name'
+    propertyView name: 'zip'
+    propertyView name: 'longitude', background: 'longitudeBackground', action: 'refreshCityCardFrontAction'
+    propertyView name: 'latitude', background: 'latitudeBackground', action: 'refreshCityCardFrontAction'
+  }
+}
+
+border('City.map.view',
+        west: 'City.view') {
+  center {
+    mapView(name: 'map', mapContent: 'mapContent', preferredWidth:500, preferredHeight:500)
+  }
+}
+
+
+bean('City.card.selector',
+        class: 'org.jspresso.hrsample.frontend.CityCardSelector')
+
+action('refreshCityCardFrontAction',
+        parent: 'refreshCardViewFrontAction',
+        custom: [cardViewId: 'city.card.permId',
+                 viewPath: ['-2']])
+
+
+
 
 split_vertical('Employee.module.view',
     actionMap: 'beanModuleActionMap',
