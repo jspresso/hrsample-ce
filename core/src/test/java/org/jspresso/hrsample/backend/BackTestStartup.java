@@ -61,7 +61,7 @@ public class BackTestStartup extends AbstractBackendStartup {
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
     BackTestStartup startup = new BackTestStartup();
-    new HibernateTestDataPersister(startup.getApplicationContext()).persistTestData();
+    new HibernateTestDataPersister(startup.getApplicationContext(), true).persistTestData();
   }
 
   /**

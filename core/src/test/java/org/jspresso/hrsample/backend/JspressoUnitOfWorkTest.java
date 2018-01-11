@@ -76,9 +76,6 @@ import org.jspresso.hrsample.model.Nameable;
  */
 public class JspressoUnitOfWorkTest extends BackTestStartup {
 
-  private static final String TEST_COMPANY = "Design2See";
-  private static final String TEST_DEPARTMENT = "HR-000";
-
   /**
    * Test retrieve UOW cloned instance from session. See bug 746.
    */
@@ -477,7 +474,6 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
 
     EnhancedDetachedCriteria companyCriteria = EnhancedDetachedCriteria.forClass(Company.class);
-    companyCriteria.add(Restrictions.eq(Company.NAME, TEST_COMPANY));
     final Company comp = hbc.findFirstByCriteria(companyCriteria, EMergeMode.MERGE_KEEP, Company.class);
     assertTrue("Dirty properties are not initialized", hbc.getDirtyProperties(comp) != null);
     assertTrue("Dirty properties are not empty", hbc.getDirtyProperties(comp).isEmpty());
@@ -489,8 +485,6 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
       @Override
       protected void doInTransactionWithoutResult(TransactionStatus status) {
         EnhancedDetachedCriteria departmentCriteria = EnhancedDetachedCriteria.forClass(Department.class);
-        departmentCriteria.add(
-            Restrictions.eq(Department.OU_ID, TEST_DEPARTMENT));
         Department dep = hbc.findFirstByCriteria(departmentCriteria, EMergeMode.MERGE_KEEP, Department.class);
         assertFalse("Company property is already initialized",
             Hibernate.isInitialized(dep.straightGetProperty(Department.COMPANY)));
@@ -1075,8 +1069,6 @@ public class JspressoUnitOfWorkTest extends BackTestStartup {
   public void testMultipleUOWCloning() {
     final HibernateBackendController hbc = (HibernateBackendController) getBackendController();
     EnhancedDetachedCriteria empCrit = EnhancedDetachedCriteria.forClass(Employee.class);
-    empCrit.getSubCriteriaFor(empCrit, Employee.COMPANY).add(
-        Restrictions.eq(Company.NAME, TEST_COMPANY));
     final List<Employee> employees = hbc.findByCriteria(empCrit, EMergeMode.MERGE_KEEP, Employee.class);
     hbc.getTransactionTemplate().execute(new TransactionCallbackWithoutResult() {
       @Override

@@ -18,11 +18,6 @@
  */
 package org.jspresso.hrsample.development;
 
-import org.jspresso.framework.application.startup.development.AbstractHibernateTestDataPersister;
-import org.jspresso.framework.util.image.ImageHelper;
-import org.jspresso.hrsample.model.*;
-import org.springframework.beans.factory.BeanFactory;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -31,12 +26,28 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import org.springframework.beans.factory.BeanFactory;
+
+import org.jspresso.framework.application.startup.development.AbstractHibernateTestDataPersister;
+import org.jspresso.framework.util.image.ImageHelper;
+
+import org.jspresso.hrsample.model.City;
+import org.jspresso.hrsample.model.Company;
+import org.jspresso.hrsample.model.Department;
+import org.jspresso.hrsample.model.Employee;
+import org.jspresso.hrsample.model.EncryptedDecimal;
+import org.jspresso.hrsample.model.Role;
+import org.jspresso.hrsample.model.Team;
+import org.jspresso.hrsample.model.User;
+
 /**
  * Persists some test data for the HR sample application.
  *
  * @author Vincent Vandenschrick
  */
 public class HibernateTestDataPersister extends AbstractHibernateTestDataPersister {
+
+  boolean forTests = false;
 
   /**
    * Constructs a new {@code HibernateTestDataPersister} instance.
@@ -45,7 +56,18 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
    *     the spring bean factory to use.
    */
   public HibernateTestDataPersister(BeanFactory beanFactory) {
+    this(beanFactory, false);
+  }
+
+  /**
+   * Constructs a new {@code HibernateTestDataPersister} instance.
+   *
+   * @param beanFactory
+   *     the spring bean factory to use.
+   */
+  public HibernateTestDataPersister(BeanFactory beanFactory, boolean forTests) {
     super(beanFactory);
+    this.forTests = forTests;
   }
 
   /**
@@ -56,9 +78,9 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
 
     try {
       if (/*
-           * findByCriteria(EnhancedDetachedCriteria.forClass(Company.class))
-           * .isEmpty()
-           */true) {
+       * findByCriteria(EnhancedDetachedCriteria.forClass(Company.class))
+       * .isEmpty()
+       */true) {
         // Cities
         City paris = createCity("Paris I", "75001", 2.3470, 48.8590, true);
         City suresnes = createCity("Suresnes", "92150", 2.2292, 48.8714, true);
@@ -76,26 +98,28 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
           createCity(Integer.toString(i), Integer.toString(i), 4.8467, 45.7485);
         }
 */
-        // Acmee
-        Company acmee = createCompany("Acme", "33, rue de la Paix", paris, "contact@acme.com",
-                "+44 736 422", 990000.0);
+        Company acme = null;
+        if (!forTests) {
+          // Acme
+          acme = createCompany("Acme", "33, rue de la Paix", paris, "contact@acme.com", "+44 736 422", 990000.0);
 
-        Employee acme1 = createEmployee("M", "Acme1", "Acme1", "Acme1", "Add", evry, "Acme1@jspresso.com",
-                "+33 1 152 368 984", "02/05/1972", "03/08/2005", "0123456722", true, "0xFF449911", "100000",
-                "employees/John_Goodman.jpg", null);
-        acmee.addToEmployees(acme1);
+          Employee acme1 = createEmployee("M", "Acme1", "Acme1", "Acme1", "Add", evry, "Acme1@jspresso.com",
+              "+33 1 152 368 984", "02/05/1972", "03/08/2005", "0123456722", true, "0xFF449911", "100000",
+              "employees/John_Goodman.jpg", null);
+          acme.addToEmployees(acme1);
 
-        Employee acme2 = createEmployee("M", "Acme2", "Acme2", "Acme2", "Add", evry, "Acme1@jspresso.com",
-                "+33 1 152 368 984", "02/05/1972", "03/08/2005", "0123456723", true, "0xFF449911", "100000",
-                "employees/John_Goodman.jpg", null);
-        acmee.addToEmployees(acme2);
+          Employee acme2 = createEmployee("M", "Acme2", "Acme2", "Acme2", "Add", evry, "Acme1@jspresso.com",
+              "+33 1 152 368 984", "02/05/1972", "03/08/2005", "0123456723", true, "0xFF449911", "100000",
+              "employees/John_Goodman.jpg", null);
+          acme.addToEmployees(acme2);
 
-        saveOrUpdate(acmee);
+          saveOrUpdate(acme);
+        }
 
         // Design2see
         // Tests the RFE #87
         Company design2see = createCompany("Design2See", "123 avenue de la Liberté", paris, "contact@design2see.com",
-                "+33 123 456 000", 3000000.0);
+            "+33 123 456 000", 3000000.0);
 
         Set<Employee> employees = design2see.getEmployees();
 
@@ -190,9 +214,10 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         Role employeeRole = getEntityFactory().createEntityInstance(Role.class);
         employeeRole.setRoleId("employee");
 
-        Set<Employee> allEmployees = new HashSet<>();
-        allEmployees.addAll(design2see.getEmployees());
-        allEmployees.addAll(acmee.getEmployees());
+        Set<Employee> allEmployees = new HashSet<>(design2see.getEmployees());
+        if (acme != null) {
+          allEmployees.addAll(acme.getEmployees());
+        }
         for (Employee e : allEmployees) {
           if (!e.getUsers().isEmpty()) {
             employeeRole.addToUsers(e.getUsers().iterator().next());
@@ -311,7 +336,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     employee.setPreferredColor(preferredColor);
     employee.setSalary(new BigDecimal(salary));
 
-    employee.setBonus(getEncryptedDecimal(employee.getSalary().doubleValue()/2));
+    employee.setBonus(getEncryptedDecimal(employee.getSalary().doubleValue() / 2));
 
     if (image != null) {
       employee.setPhoto(loadImage(image));
@@ -323,8 +348,9 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     t.setTranslatedValue(new StringBuilder(employee.getFirstNameRaw()).reverse().toString());
     employee.addToPropertyTranslations(t);
 
-    if (password == null)
+    if (password == null) {
       password = (firstName.substring(0, 1) + name).toLowerCase();
+    }
 
     User u = getEntityFactory().createEntityInstance(User.class);
     u.setLogin(password);
