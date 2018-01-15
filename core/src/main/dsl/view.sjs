@@ -32,7 +32,7 @@ treeNode('Department-teams.treeNode',
     rendered: 'ouId',
     actionMap: 'masterDetailActionMap')
 
-treeNode('Department-employees.treeNode',
+treeNode('Department-members.treeNode',
     rendered: 'name',
     actionMap: 'masterDetailActionMap')
 
@@ -120,7 +120,7 @@ split_vertical('Company.departments.and.teams.view',
             }
           }
           center {
-            table(model: 'Team-teamMembers', borderType: 'NONE', horizontallyScrollable: false, preferredHeight: 120) {
+            table(model: 'Team-members', borderType: 'NONE', horizontallyScrollable: false, preferredHeight: 120) {
               actionMap {
                 actionList('EDIT') {
                   action(parent: 'pickupAndAddAnyFrontAction', custom: [entityDescriptor_ref: 'Employee', initializationMapping: ['company': 'company']])

@@ -118,30 +118,30 @@ public class MongoTestDataPersister extends AbstractMongoTestDataPersister {
 
       Team hr001Team = createTeam("HR 001 Team", "HR-001", "124 avenue de la Liberté", paris, "hr001@design2see.com",
           "+33 123 456 101", hrDepartment, mikeDen);
-      hr001Team.addToTeamMembers(johnDoe);
-      hr001Team.addToTeamMembers(mikeDen);
+      hr001Team.addToMembers(johnDoe);
+      hr001Team.addToMembers(mikeDen);
 
       Team hr002Team = createTeam("HR 002 Team", "HR-002", "124 avenue de la Liberté", paris, "hr002@design2see.com",
           "+33 123 456 102", hrDepartment, evaGreen);
-      hr002Team.addToTeamMembers(johnDoe);
-      hr002Team.addToTeamMembers(evaGreen);
+      hr002Team.addToMembers(johnDoe);
+      hr002Team.addToMembers(evaGreen);
 
       Team hr003Team = createTeam("HR 003 Team", "HR-003", "124 avenue de la Liberté", paris, "hr003@design2see.com",
           "+33 123 456 103", hrDepartment, graziellaBerlutti);
-      hr003Team.addToTeamMembers(graziellaBerlutti);
+      hr003Team.addToMembers(graziellaBerlutti);
 
       Department itDepartment = createDepartment("Information Technology", "IT-000", "125 avenue de la Liberté", paris,
           "it@design2see.com", "+33 123 456 200", design2see, gloriaSan);
 
       Team it001Team = createTeam("IT 001 Team", "IT-001", "125 avenue de la Liberté", paris, "it001@design2see.com",
           "+33 123 456 201", itDepartment, mariaTrulli);
-      it001Team.addToTeamMembers(gloriaSan);
-      it001Team.addToTeamMembers(mariaTrulli);
+      it001Team.addToMembers(gloriaSan);
+      it001Team.addToMembers(mariaTrulli);
 
       Team it002Team = createTeam("IT 002 Team", "IT-002", "125 avenue de la Liberté", paris, "it002@design2see.com",
           "+33 123 456 202", itDepartment, isabelleMartin);
-      it002Team.addToTeamMembers(gloriaSan);
-      it002Team.addToTeamMembers(isabelleMartin);
+      it002Team.addToMembers(gloriaSan);
+      it002Team.addToMembers(isabelleMartin);
 
       saveOrUpdate(design2see);
     } catch (Throwable ex) {

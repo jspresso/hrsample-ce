@@ -88,7 +88,7 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
                         mobileForm()
                       }
                       center {
-                        mobileListView(model: 'Team-teamMembers', actionMap: 'masterActionMap',
+                        mobileListView(model: 'Team-members', actionMap: 'masterActionMap',
                           selectionMode:'MULTIPLE_INTERVAL_CUMULATIVE_SELECTION')
                       }
                     }
@@ -107,7 +107,7 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
                     mobileForm()
                     mobileNavPage() {
                       selection {
-                        mobileListView(model: 'Team-teamMembers', actionMap: 'masterActionMap')
+                        mobileListView(model: 'Team-members', actionMap: 'masterActionMap')
                       }
                       nextPage {
                         mobileCompositePage (parent:'Employee.page.view')

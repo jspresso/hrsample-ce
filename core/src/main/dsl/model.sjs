@@ -148,6 +148,8 @@ Entity('OrganizationalUnit',
       initializationMapping: ['company': 'company']
   reference 'company', ref: 'Company', computed: true
   html 'htmlDescription', computed: true
+  set 'members', ref: 'Employee', computedFurther: true
+  string_16 'filterOnlyProp', filterOnly: true
 }
 
 Entity('Department',
@@ -163,7 +165,7 @@ Entity('Department',
                'lastUpdateTimestamp']) {
   reference 'company', ref: 'Company', reverse: 'Company-departments', mandatory: true
   set 'teams', composition: true, ref: 'Team'
-  set 'employees', ref: 'Employee', computed: true
+  set 'members', ref: 'Employee', computed: true
   integer 'teamCount', computed: true, sqlName: '(SELECT COUNT(T.ID) FROM TEAM T WHERE T.DEPARTMENT_ID=ID)'
 }
 
@@ -176,7 +178,7 @@ Entity('Team',
                'manager',
                'contact']) {
   reference 'department', ref: 'Department', mandatory: true, reverse: 'Department-teams'
-  set 'teamMembers', ref: 'Employee', reverse: 'Employee-teams'
+  set 'members', ref: 'Employee', reverse: 'Employee-teams'
 }
 
 Entity('Preferences') {

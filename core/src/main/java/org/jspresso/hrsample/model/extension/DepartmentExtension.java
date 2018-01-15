@@ -53,13 +53,13 @@ public class DepartmentExtension extends AbstractComponentExtension<Department> 
    *         company; if this organizational unit is a team, then we must
    *         navigate to the enclosing department to get its team.
    */
-  public Set<Employee> getEmployees() {
+  public Set<Employee> getMembers() {
     Set<Employee> employees = new LinkedHashSet<Employee>();
     Set<Team> teams = getComponent().getTeams();
     if (teams != null) {
       for (Team team : teams) {
-        Set<Employee> teamMembers = team.getTeamMembers();
-        if (team.getTeamMembers() != null) {
+        Set<Employee> teamMembers = team.getMembers();
+        if (team.getMembers() != null) {
           employees.addAll(teamMembers);
         }
       }
