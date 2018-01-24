@@ -375,6 +375,25 @@ border('Company.module.view',
 
 table('City.table.view', parent: 'filterableBeanCollectionModuleView', readOnly: true)
 
+table('Company.table.view', parent: 'filterableBeanCollectionModuleView') {
+  columns {
+    propertyView (name: 'name', readOnly: true) {
+      actionMap {
+        actionList {
+          action ref: 'saveModuleObjectFrontAction'
+        }
+      }
+    }
+    propertyView name: 'contact'
+    propertyView name: 'createTimestamp'
+    propertyView name: 'lastUpdateTimestamp'
+    propertyView name: 'contact.city'
+    propertyView name: 'contact.city.zip'
+    propertyView name: 'workforce'
+    propertyView name: 'budget'
+  }
+}
+
 table('Employee.table.view', parent: 'filterableBeanCollectionModuleView'
 /*, selectionMode:'MULTIPLE_INTERVAL_CUMULATIVE_SELECTION'*/) {
   columns {

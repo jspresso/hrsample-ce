@@ -103,6 +103,7 @@ workspace('organization.workspace',
   filterModule('companies.module',
       icon:'company.png',
       component:'Company',
+      //moduleView: 'Company.table.view',
       detailView:'Company.module.view',
       startup:'filterModuleStartup')
 }
