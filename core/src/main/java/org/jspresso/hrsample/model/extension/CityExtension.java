@@ -28,6 +28,8 @@ import org.codehaus.jettison.json.JSONObject;
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.framework.model.component.service.DependsOn;
 import org.jspresso.framework.util.exception.NestedRuntimeException;
+import org.jspresso.framework.util.gui.Dimension;
+import org.jspresso.framework.util.resources.server.ResourceProviderServlet;
 import org.jspresso.framework.view.descriptor.IMapViewDescriptor;
 
 import org.jspresso.hrsample.model.City;
@@ -93,19 +95,31 @@ public class CityExtension extends AbstractComponentExtension<City> implements I
     try {
       JSONObject mapContent = new JSONObject();
       if (city.getLongitude() != null && city.getLatitude() != null) {
-        mapContent.put(IMapViewDescriptor.MARKERS_KEY,
-            Arrays.asList(Arrays.asList(city.getLongitude(), city.getLatitude())));
+        JSONObject marker = new JSONObject();
+        marker.put(IMapViewDescriptor.MARKER_COORD_KEY, Arrays.asList(city.getLongitude(), city.getLatitude()));
+        JSONObject image = new JSONObject();
+        image.put("src", ResourceProviderServlet
+            .computeImageResourceDownloadUrl("classpath:/org/jspresso/hrsample/images/city.png",
+                new Dimension(24, 24)));
+        marker.put(IMapViewDescriptor.MARKER_IMAGE_KEY, image);
+        mapContent.put(IMapViewDescriptor.MARKERS_KEY, Arrays.asList(marker));
       }
       double[][][] routes = city.getRoutes();
       if (routes != null && routes.length > 0) {
-        List<List<List<Double>>> routesList = new ArrayList<>();
+        List<JSONObject> routesList = new ArrayList<>();
         for (int i = 0; i < routes.length; i++) {
-          double[][] route = routes[i];
-          List<List<Double>> routeAsList = new ArrayList<>();
-          for (int j = 0; j < route.length; j++) {
-            routeAsList.add(Arrays.asList(route[j][0], route[j][1]));
+          double[][] routePoints = routes[i];
+          List<List<Double>> routePath = new ArrayList<>();
+          for (int j = 0; j < routePoints.length; j++) {
+            routePath.add(Arrays.asList(routePoints[j][0], routePoints[j][1]));
           }
-          routesList.add(routeAsList);
+          JSONObject route = new JSONObject();
+          route.put(IMapViewDescriptor.ROUTE_PATH_KEY, routePath);
+          JSONObject routeStyle = new JSONObject();
+          routeStyle.put("color", "#9F78FF");
+          routeStyle.put("width", 4);
+          route.put(IMapViewDescriptor.ROUTE_STYLE_KEY, routeStyle);
+          routesList.add(route);
         }
         mapContent.put(IMapViewDescriptor.ROUTES_KEY, routesList);
       }
