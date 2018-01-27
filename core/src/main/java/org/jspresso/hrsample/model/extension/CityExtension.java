@@ -84,7 +84,7 @@ public class CityExtension extends AbstractComponentExtension<City> implements I
 
 
   /**
-   * Gets the mapContent.
+   * Gets the mapContent.0
    *
    * @return the mapContent.
    */
