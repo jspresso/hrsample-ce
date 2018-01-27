@@ -208,14 +208,11 @@ Entity('User',
 
   // computed
   reference 'mainRole', ref:'Role', computed:true
-
-  integer 'rolesCount', computed: true
 }
 
 Entity('Role',
   extend:['Traceable'],
   rendered:['roleId', 'createTimestamp', 'lastUpdateTimestamp'],
-  services: ['RoleService': 'RoleServiceDelegate'],
   icon:'employees.png') {
 
   string_30 'roleId', unicityScope:'roleId'
