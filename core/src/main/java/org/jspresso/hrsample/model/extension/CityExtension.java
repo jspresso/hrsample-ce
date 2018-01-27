@@ -18,22 +18,16 @@
  */
 package org.jspresso.hrsample.model.extension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
-
 import org.jspresso.framework.model.component.AbstractComponentExtension;
 import org.jspresso.framework.model.component.service.DependsOn;
-import org.jspresso.framework.util.exception.NestedRuntimeException;
-import org.jspresso.framework.util.gui.Dimension;
-import org.jspresso.framework.util.resources.server.ResourceProviderServlet;
-import org.jspresso.framework.view.descriptor.IMapViewDescriptor;
-
+import org.jspresso.framework.model.component.service.DependsOnGroup;
+import org.jspresso.framework.util.gui.map.MapHelper;
+import org.jspresso.framework.util.gui.map.Point;
+import org.jspresso.framework.util.gui.map.Route;
 import org.jspresso.hrsample.model.City;
 import org.jspresso.hrsample.model.ICityExtension;
+
+import java.util.Random;
 
 /**
  * City extension.
@@ -88,44 +82,55 @@ public class CityExtension extends AbstractComponentExtension<City> implements I
    *
    * @return the mapContent.
    */
-  @DependsOn({City.LATITUDE, City.LONGITUDE, City.ROUTES})
+  @DependsOn({City.LATITUDE,
+          City.LONGITUDE,
+          City.ROUTE})
   public String getMapContent() {
+
     City city = getComponent();
 
-    try {
-      JSONObject mapContent = new JSONObject();
-      if (city.getLongitude() != null && city.getLatitude() != null) {
-        JSONObject marker = new JSONObject();
-        marker.put(IMapViewDescriptor.MARKER_COORD_KEY, Arrays.asList(city.getLongitude(), city.getLatitude()));
-        JSONObject image = new JSONObject();
-        image.put("src", ResourceProviderServlet
-            .computeImageResourceDownloadUrl("classpath:/org/jspresso/hrsample/images/city.png",
-                new Dimension(24, 24)));
-        marker.put(IMapViewDescriptor.MARKER_IMAGE_KEY, image);
-        mapContent.put(IMapViewDescriptor.MARKERS_KEY, Arrays.asList(marker));
-      }
-      double[][][] routes = city.getRoutes();
-      if (routes != null && routes.length > 0) {
-        List<JSONObject> routesList = new ArrayList<>();
-        for (int i = 0; i < routes.length; i++) {
-          double[][] routePoints = routes[i];
-          List<List<Double>> routePath = new ArrayList<>();
-          for (int j = 0; j < routePoints.length; j++) {
-            routePath.add(Arrays.asList(routePoints[j][0], routePoints[j][1]));
-          }
-          JSONObject route = new JSONObject();
-          route.put(IMapViewDescriptor.ROUTE_PATH_KEY, routePath);
-          JSONObject routeStyle = new JSONObject();
-          routeStyle.put("color", "#9F78FF");
-          routeStyle.put("width", 4);
-          route.put(IMapViewDescriptor.ROUTE_STYLE_KEY, routeStyle);
-          routesList.add(route);
-        }
-        mapContent.put(IMapViewDescriptor.ROUTES_KEY, routesList);
-      }
-      return mapContent.toString(2);
-    } catch (JSONException ex) {
-      throw new NestedRuntimeException(ex);
-    }
+    // Get city point and route
+    Point[] points = city.getPoint() != null ? new Point[]{city.getPoint()} : null;
+    Route[] routes = city.getRoute() != null ? new Route[]{city.getRoute()} : null;
+
+    // Build map
+    return MapHelper.buildMap(points, routes);
   }
+
+  /**
+   * Gets the route.
+   *
+   * @return the route.
+   */
+  @DependsOn({City.LATITUDE,
+          City.LONGITUDE})
+  @Override
+  public org.jspresso.framework.util.gui.map.Route getRoute() {
+
+    City city = getComponent();
+    Double longitude = city.getLongitude();
+    if (longitude == null) {
+      return null;
+    }
+    Double latitude = city.getLatitude();
+    if (latitude == null) {
+      return null;
+    }
+
+    Random random = new Random();
+    int routeCount = random.nextInt(5)+5;
+    Point[] points = new Point[routeCount];
+    for (int r = 1; r < routeCount-1; r++) {
+
+      longitude = Math.round(1000d * (longitude + random.nextDouble() * 0.05d)) / 1000d;
+      latitude =  Math.round(1000d * (latitude + random.nextDouble() * 0.05d * (random.nextBoolean() ? 1 : -1))) / 1000d;
+
+      points[r] = new Point(longitude, latitude);
+    }
+    points[0] = points[routeCount-1] = city.getPoint();
+
+    return new Route(points);
+  }
+
+
 }

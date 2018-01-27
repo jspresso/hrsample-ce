@@ -17,6 +17,7 @@ Interface('Traceable',
 Entity('City',
     extend: 'Nameable',
     extension: 'CityExtension',
+    services: ['CityService': 'CityServiceDelegate'],
     icon: 'city.png',
     pageSize: 4,
     toString: 'name',
@@ -24,7 +25,8 @@ Entity('City',
   string_10 'zip', upperCase: true, truncate: true
   decimal 'longitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   decimal 'latitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
-  java 'routes', class: 'double[][][]', maxLength: 2048
+
+  java 'route', class: 'org.jspresso.framework.util.gui.map.Route', maxLength: 2048, computed: true, cacheable: true
   string 'mapContent', maxLength: 4096, computed: true, cacheable: true
   set 'neighbours', ref: 'City', reverse: 'City-neighbours'
 

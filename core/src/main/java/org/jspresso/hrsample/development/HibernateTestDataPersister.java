@@ -26,6 +26,8 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import org.jspresso.framework.util.gui.map.Point;
+import org.jspresso.framework.util.gui.map.Route;
 import org.springframework.beans.factory.BeanFactory;
 
 import org.jspresso.framework.application.startup.development.AbstractHibernateTestDataPersister;
@@ -241,23 +243,22 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     city.setZip(zip);
     city.setLongitude(longitude);
     city.setLatitude(latitude);
-    if (createRoute && longitude != null && latitude != null) {
-      int routeCount = new Random().nextInt(5);
-      double[][][] randomRoutes = new double[routeCount][][];
-      for (int r = 0; r < routeCount; r++) {
-        double[][] randomRoute = new double[10][2];
-        randomRoute[0][0] = longitude;
-        randomRoute[0][1] = latitude;
-        for (int i = 1; i < 10; i++) {
-          Random random = new Random();
-          randomRoute[i][0] = Math.round(1000d * (randomRoute[i - 1][0] + random.nextDouble() * 0.05d)) / 1000d;
-          randomRoute[i][1] = Math.round(
-              1000d * (randomRoute[i - 1][1] + random.nextDouble() * 0.05d * (random.nextBoolean() ? 1 : -1))) / 1000d;
-        }
-        randomRoutes[r] = randomRoute;
-      }
-      city.setRoutes(randomRoutes);
-    }
+
+//    if (createRoute && longitude != null && latitude != null) {
+//      int routeCount = new Random().nextInt(5);
+//
+//      Random random = new Random();
+//      Point[] points = new Point[routeCount];
+//      for (int r = 0; r < routeCount; r++) {
+//
+//        longitude = Math.round(1000d * (longitude + random.nextDouble() * 0.05d)) / 1000d;
+//        latitude =  Math.round(1000d * (latitude + random.nextDouble() * 0.05d * (random.nextBoolean() ? 1 : -1))) / 1000d;
+//
+//        points[r] = new Point(longitude, latitude);
+//      }
+//      city.setRoute(new Route(points));
+//    }
+
     City.Translation t = getEntityFactory().createComponentInstance(City.Translation.class);
     t.setLanguage("de");
     t.setPropertyName("name");
