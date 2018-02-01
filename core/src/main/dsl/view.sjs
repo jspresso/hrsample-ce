@@ -408,7 +408,7 @@ table('Employee.table.view', parent: 'filterableBeanCollectionModuleView'
     propertyView name: 'married'
     propertyView name: 'preferredColor'
     image        name: 'photo', scaledHeight: 18
-    propertyView name: 'company'
+    propertyView name: 'company', booleanWritabilityGates: ['!persistent']
     propertyView name: 'createTimestamp', preferredHeight:-1 // Hidden by default
     propertyView name: 'lastUpdateTimestamp', preferredHeight:-1 // Hidden by default
   }
