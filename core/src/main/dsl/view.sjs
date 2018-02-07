@@ -20,13 +20,16 @@ form('Traceable.pane',
 
 form('Company.pane',
     labelsPosition: 'ASIDE', borderType: 'NONE',
-    fields: ['name',
-             'contact.address',
-             'contact.city',
-             'contact.phone',
-             'contact.email'],
     widths: [name: 2],
-    description: 'company.editing')
+    description: 'company.editing') {
+  fields {
+    propertyView name: 'name'
+    propertyView name: 'contact.address'
+    referencePropertyView name: 'contact.city', lovAction: 'lovActionWithCreate'
+    propertyView name: 'contact.phone'
+    propertyView name: 'contact.email'
+  }
+}
 
 treeNode('Department-teams.treeNode',
     rendered: 'ouId',
