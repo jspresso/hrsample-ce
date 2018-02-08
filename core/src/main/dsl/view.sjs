@@ -417,7 +417,7 @@ table('Employee.table.view', parent: 'filterableBeanCollectionModuleView'
   }
 }
 
-table('City.module.view', parent: 'filterableBeanCollectionModuleView') {
+table('City.module.view', parent: 'filterableBeanCollectionModuleView', readOnly: true, rowAction: 'addAsChildModuleFrontAction') {
   columns {
     propertyView name: 'name'
     propertyView name: 'zip'
