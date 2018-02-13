@@ -28,8 +28,9 @@ qx.Theme.define("org.jspresso.hrsample.startup.qooxdoo.theme.Appearance",
       style: function (states) {
         return {
           height: 0,
-          width:0,
-          margin: [30, 0, 0, 20]
+          width: 0,
+          margin: 0,
+          padding: 0
         };
       }
     },
