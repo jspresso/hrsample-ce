@@ -1,5 +1,6 @@
 bean ('viewFactoryBase', parent:'abstractViewFactory',
-  custom: [defaultActionMapRenderingOptions:'LABEL_ICON'])
+  custom: [defaultActionMapRenderingOptions:'LABEL_ICON',
+           useEntityIconsForLov:false])
 
 bean('iconFactoryBase', parent:'abstractIconFactory') {
     bean('largeIconSize', class:'org.jspresso.framework.util.gui.Dimension', custom: [width: 32, height: 32])
