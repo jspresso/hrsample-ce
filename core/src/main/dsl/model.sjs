@@ -21,6 +21,7 @@ Entity('City',
     icon: 'city.png',
     pageSize: 4,
     toString: 'name',
+    description: '',
     rendered: ['name', 'zip', 'longitude', 'latitude']) {
   string_10 'zip', upperCase: true, truncate: true
   decimal 'longitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
