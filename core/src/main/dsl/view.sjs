@@ -123,7 +123,7 @@ split_vertical('Company.departments.and.teams.view',
             }
           }
           center {
-            table(model: 'Team-members', borderType: 'NONE', horizontallyScrollable: false, preferredHeight: 120) {
+            table(model: 'Team-members', borderType: 'NONE', horizontallyScrollable: false, preferredHeight: 120, permId: 'teamMembers.table') {
               actionMap {
                 actionList('EDIT') {
                   action(parent: 'pickupAndAddAnyFrontAction', custom: [entityDescriptor_ref: 'Employee', initializationMapping: ['company': 'company']])
