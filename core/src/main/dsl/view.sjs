@@ -397,7 +397,7 @@ table('Company.table.view', parent: 'filterableBeanCollectionModuleView') {
   }
 }
 
-table('Employee.table.view', parent: 'filterableBeanCollectionModuleView'
+table('Employee.table.view', parent: 'filterableBeanCollectionModuleView', booleanWritabilityGates: ['!persistent_cb']
 /*, selectionMode:'MULTIPLE_INTERVAL_CUMULATIVE_SELECTION'*/) {
   columns {
     propertyView name: 'name'
