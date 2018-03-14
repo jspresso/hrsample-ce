@@ -60,6 +60,7 @@ tree('Company.tree',
 table('decorated.translations.table', parent: 'translations.table', borderType: 'TITLED')
 
 tabs('Company.tab.pane',
+    selectFirstTab: true,
     views: ['Company.pane',
             'Company.tree',
             'Traceable.pane'/*,
