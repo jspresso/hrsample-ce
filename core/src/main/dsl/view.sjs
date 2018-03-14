@@ -69,7 +69,7 @@ tabs('Company.tab.pane',
 
 
 table('Company-departments.table',
-    actionMap: 'masterDetailActionMap', columnReordering: false) {
+    actionMap: 'masterDetailActionMap', columnReordering: false, collapsible: false) {
   columns {
     propertyView name: 'ouId'
     propertyView name: 'teamCount'
@@ -202,11 +202,13 @@ form('Employee.filter.pane', columnCount: 3, widthResizeable: false, fields: ['f
                                                                               'gender',
                                                                               'salary',
                                                                               'birthDate'],
+    collapsible: false,
     widths: ['firstName': 1, 'name': 1, 'gender': 1, 'salary': 2, 'birthDate': 2])
 
-form('Department.filter.pane', columnCount: 8, fields: ['ouId',
-                                                        'name',
-                                                        'manager.gender'])
+form('Department.filter.pane', columnCount: 8,
+    fields: ['ouId',
+            'name',
+            'manager.gender'])
 
 /*
 border('Employee.border.pane',
@@ -398,7 +400,8 @@ table('Company.table.view', parent: 'filterableBeanCollectionModuleView') {
   }
 }
 
-table('Employee.table.view', parent: 'filterableBeanCollectionModuleView', booleanWritabilityGates: ['!persistent_cb']
+table('Employee.table.view', parent: 'filterableBeanCollectionModuleView', booleanWritabilityGates: ['!persistent_cb'],
+    collapsible: false,
 /*, selectionMode:'MULTIPLE_INTERVAL_CUMULATIVE_SELECTION'*/) {
   columns {
     propertyView name: 'name'
