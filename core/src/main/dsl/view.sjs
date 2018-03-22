@@ -371,7 +371,16 @@ split_vertical('Employee.module.view',
   }
 }
 
-form('Department.module.view', actionMap: 'beanModuleActionMap', columnCount: 2)
+form('Department.module.view', actionMap: 'beanModuleActionMap', columnCount: 2) {
+  fields {
+    propertyView name: 'ouId'
+    propertyView name: 'name'
+    propertyView name: 'manager', booleanWritabilityGates: ['manager.teams']
+    propertyView name: 'contact'
+    propertyView name: 'createTimestamp'
+    propertyView name: 'lastUpdateTimestamp'
+  }
+}
 
 form('Team.module.view', actionMap: 'beanModuleActionMap', columnCount: 2)
 
