@@ -15,7 +15,7 @@ import org.jspresso.hrsample.model.User;
 
 /**
  * UserSessionInitAction.
- * 
+ *
  * @author Maxime HAMM
  *
  * @param <E>
@@ -32,28 +32,28 @@ public class UserSessionInitAction<E, F, G> extends FrontendAction<E, F, G> {
    */
   @Override
   public boolean execute(IActionHandler actionHandler, Map<String, Object> context) {
-   
+
     HibernateBackendController controller = (HibernateBackendController) getBackendController(context);
     UserPrincipal principal = controller.getApplicationSession().getPrincipal();
-    
+
     DetachedCriteria dc = DetachedCriteria.forClass(User.class);
     dc.add(Restrictions.eq(User.LOGIN, principal.getName()));
     User user = controller.findFirstByCriteria(dc, EMergeMode.MERGE_KEEP, User.class);
-     
+
     // complete principal with community, etc.
     principal.putCustomProperty(User.USER_ENTITY_ID, user.getId());
     Employee employee = user.getEmployee();
     if (employee!=null) {
       principal.putCustomProperty(User.USER_ENTITY_TRACE_NAME, employee.getFullName());
-      principal.putCustomProperty(UserPrincipal.LANGUAGE_PROPERTY, employee.getLanguage());
-      getBackendController(context).getApplicationSession().setLocale(new Locale((String) principal.getCustomProperty(UserPrincipal.LANGUAGE_PROPERTY)));
+      //principal.putCustomProperty(UserPrincipal.LANGUAGE_PROPERTY, employee.getLanguage());
+      //getBackendController(context).getApplicationSession().setLocale(new Locale((String) principal.getCustomProperty(UserPrincipal.LANGUAGE_PROPERTY)));
 
     }
-    else { 
+    else {
       principal.putCustomProperty(User.USER_ENTITY_TRACE_NAME, user.getLogin());
     }
 
-    
+
     return super.execute(actionHandler, context);
   }
 }
