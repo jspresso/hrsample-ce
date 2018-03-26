@@ -1,25 +1,40 @@
-mobileForm('Employee.filter.view') {
-  fields {
-    propertyView name: 'name'
-    propertyView name: 'contact.city'
+mobileCompositePage('Employee.filter.view') {
+  sections {
+
+    mobileForm {
+      fields {
+        propertyView name: 'name'
+        propertyView name: 'contact.city'
+      }
+    }
+
+    mobileForm (clientTypes: ['TABLET']) {
+      fields {
+        propertyView name: 'birthDate'
+        propertyView name: 'gender'
+        propertyView name: 'ssn'
+      }
+    }
   }
 }
 
 mobileForm('City.filter.view') {
   fields {
     propertyView name: 'name'
+    propertyView name: 'zip', clientTypes: ['TABLET']
   }
 }
 
 mobileForm('Company.filter.view') {
   fields {
     propertyView name: 'name'
+    propertyView name: 'contact.city.zip'
   }
 }
 
 mobileCompositePage('City.page.editor') {
   sections {
-    mobileForm()
+    mobileForm(fields: ['zip', 'name'])
   }
 }
 
@@ -32,39 +47,50 @@ mobileCompositePage('City.page.view', actionMap: 'beanModuleActionMap', editorPa
 
 mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap') {
   sections {
-//    mobileForm(labelsPosition: 'NONE') {
-//      fields {
-//        propertyView name: 'genderImageUrl'
-//      }
-//    }
     mobileForm(labelsPosition: 'NONE') {
       fields {
         image name: 'photo', scaledWidth: 150
       }
     }
-    mobileForm(excludedReading:['company'], excludedWriting:['createTimestamp', 'lastUpdateTimestamp']) {
+    mobileForm(excludedReading:['company']){
       fields {
+        propertyView name: 'company'
+
         propertyView name: 'name'
         propertyView name: 'firstName'
         enumerationPropertyView name: 'gender', radio: true
+        propertyView name: 'married'
+       }
+    }
+
+    mobileForm(position: 'RIGHT') {
+      fields {
+        propertyView name: 'contact'
+      }
+    }
+
+    mobileMapView(model: 'contact', name: 'map',  mapContent: 'city.mapContent', position: 'RIGHT')
+
+    mobileForm(excludedWriting:['createTimestamp', 'lastUpdateTimestamp'], position: 'RIGHT') {
+      fields {
         propertyView name: 'birthDate'
         propertyView name: 'age'
         propertyView name: 'ssn'
+
         propertyView name: 'salary'
-        propertyView name: 'contact'
-        propertyView name: 'married'
         propertyView name: 'preferredColor'
-        propertyView name: 'company'
-        propertyView name: 'createTimestamp'
-        propertyView name: 'lastUpdateTimestamp'
+
+        propertyView name: 'createTimestamp', clientTypes: ['TABLET']
+        propertyView name: 'lastUpdateTimestamp', clientTypes: ['TABLET']
+
       }
     }
+
     mobileForm(labelsPosition: 'NONE') {
       fields {
         image name: 'signature', drawable:true, scaledWidth: 300, scaledHeight: 200
       }
     }
-    mobileMapView(model: 'contact', name: 'map',  mapContent: 'city.mapContent')
   }
 }
 
@@ -78,7 +104,9 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
       nextPage {
         mobileCompositePage(actionMap:'detailActionMap') {
           sections {
+
             mobileForm()
+            /*
             mobileRepeater(model: 'Department-teams') {
               repeat {
                 mobileBorder() {
@@ -92,7 +120,7 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
                 }
               }
             }
-/*
+            */
             mobileNavPage() {
               selection {
                 mobileListView(model:'Department-teams', actionMap: 'masterActionMap')
@@ -113,7 +141,7 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
                 }
               }
             }
-*/
+
           }
         }
       }
