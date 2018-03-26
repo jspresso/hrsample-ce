@@ -79,19 +79,15 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
         mobileCompositePage(actionMap:'detailActionMap') {
           sections {
             mobileForm()
-            mobileBorder() {
-              center {
-                mobileRepeater(model: 'Department-teams') {
-                  repeat {
-                    mobileBorder() {
-                      north {
-                        mobileForm()
-                      }
-                      center {
-                        mobileListView(model: 'Team-members', actionMap: 'masterActionMap',
-                          selectionMode:'MULTIPLE_INTERVAL_CUMULATIVE_SELECTION')
-                      }
-                    }
+            mobileRepeater(model: 'Department-teams') {
+              repeat {
+                mobileBorder() {
+                  north {
+                    mobileForm()
+                  }
+                  center {
+                    mobileListView(model: 'Team-members', actionMap: 'masterActionMap',
+                      selectionMode:'MULTIPLE_INTERVAL_CUMULATIVE_SELECTION')
                   }
                 }
               }
