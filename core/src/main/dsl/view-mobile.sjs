@@ -45,7 +45,7 @@ mobileCompositePage('City.page.view', actionMap: 'beanModuleActionMap', editorPa
   }
 }
 
-mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap') {
+mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap', inlineEditing: true) {
   sections {
     mobileForm(labelsPosition: 'NONE') {
       fields {
