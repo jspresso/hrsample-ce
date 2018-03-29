@@ -52,7 +52,6 @@ mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap', inli
         image name: 'photo', scaledWidth: 150
       }
     }
-    mobileActionView(actionList:'masterDetailActionList')
     mobileForm(excludedReading:['company']){
       fields {
         propertyView name: 'company'
