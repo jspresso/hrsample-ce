@@ -106,6 +106,11 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
       }
     }
 */
+/*
+    mobileActionView {
+      action (parent:'saveModuleObjectFrontAction')
+    }
+*/
     mobileNavPage() {
       selection {
         mobileListView(model:'Company-departments', actionMap: 'masterActionMap')
