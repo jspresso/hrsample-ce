@@ -97,6 +97,15 @@ mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap', inli
 mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
   sections {
     mobileForm()
+/*
+    mobileTree(rendered: 'name', borderType: 'NONE',
+        icon: 'structure.png') {
+      subTree('Company-employees.treeNode')
+      subTree('Company-departments.treeNode') {
+        subTree('Department-teams.treeNode')
+      }
+    }
+*/
     mobileNavPage() {
       selection {
         mobileListView(model:'Company-departments', actionMap: 'masterActionMap')
