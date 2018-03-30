@@ -14,14 +14,12 @@ template 'listView',
 
 form('Traceable.pane',
     borderType: 'NONE',
-    description: 'traceable.editing',
     fields: ['createTimestamp',
              'lastUpdateTimestamp'])
 
 form('Company.pane',
     labelsPosition: 'ASIDE', borderType: 'NONE',
-    widths: [name: 2],
-    description: 'company.editing') {
+    widths: [name: 2]) {
   fields {
     propertyView name: 'name'
     propertyView name: 'contact.address'
