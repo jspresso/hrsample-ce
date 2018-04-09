@@ -40,7 +40,7 @@
     <property name="hibernateProperties">
       <props>
         <prop key="hibernate.query.substitutions">true 1, false 0, yes 'Y', no 'N'</prop>
-        <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+        <prop key="hibernate.dialect">org.jspresso.framework.model.persistence.hibernate.dialect.HSQLDialect</prop>
         <prop key="hibernate.order_updates">true</prop>
         <prop key="hibernate.max_fetch_depth">1</prop>
         <prop key="hibernate.default_batch_fetch_size">8</prop>
