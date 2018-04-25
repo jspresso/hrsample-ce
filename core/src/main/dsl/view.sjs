@@ -254,10 +254,20 @@ table('Employee-events.table',
 actionMap('eventsTableActionMap',
     parents: ['masterDetailActionMap'])
 
-propertyView('Event-text.pane',
+html('Event-text.pane',
     name: 'text',
     parent: 'decoratedView',
-    actionMap: 'binaryPropertyActionMap')
+    actionMap: 'binaryPropertyActionMap',
+    editorConfiguration: """
+      {
+        &quot;menubar&quot;: false,
+        &quot;branding&quot;: false,
+        &quot;statusbar&quot;: false,
+        &quot;resize&quot;: false,
+        &quot;toolbar&quot;: &quot;undo redo | bold italic | bullist numlist&quot;,
+        &quot;plugins&quot;: &quot;template&quot;
+      }
+    """)
 
 bean('Company.report',
     parent: 'abstractReportDescriptor',
