@@ -47,7 +47,7 @@ Component('ContactInfo',
 }
 
 Entity('Event', extend: 'Traceable') {
-  html 'text', maxLength: 2048, id: 'Event-text'
+  html 'text', maxLength: 204800, id: 'Event-text'
   reference 'employee', ref: 'Employee', reverse: 'Employee-events'
 }
 

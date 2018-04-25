@@ -264,8 +264,9 @@ html('Event-text.pane',
         &quot;branding&quot;: false,
         &quot;statusbar&quot;: false,
         &quot;resize&quot;: false,
-        &quot;toolbar&quot;: &quot;undo redo | bold italic | bullist numlist&quot;,
-        &quot;plugins&quot;: &quot;template&quot;
+        &quot;toolbar&quot;: &quot;undo redo | bold italic | bullist numlist | paste | table | template&quot;,
+        &quot;plugins&quot;: &quot;template table paste&quot;,
+        &quot;paste_data_images&quot;: true
       }
     """)
 
