@@ -260,15 +260,17 @@ html('Event-text.pane',
     actionMap: 'binaryPropertyActionMap',
     editorConfiguration: """
       {
-        &quot;menubar&quot;: false,
-        &quot;branding&quot;: false,
-        &quot;statusbar&quot;: false,
-        &quot;resize&quot;: false,
-        &quot;toolbar&quot;: &quot;undo redo | bold italic | bullist numlist | paste | table | template&quot;,
-        &quot;plugins&quot;: &quot;template table paste&quot;,
-        &quot;paste_data_images&quot;: true
+        "menubar": false,
+        "branding": false,
+        "statusbar": false,
+        "resize": false,
+        "toolbar": "undo redo | bold italic | bullist numlist | paste | table | template",
+        "plugins": "template table paste",
+        "paste_data_images": true,
+        "templates": "/rest/rte/templates"
       }
-    """)
+    """
+)
 
 bean('Company.report',
     parent: 'abstractReportDescriptor',
