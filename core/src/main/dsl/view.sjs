@@ -264,10 +264,17 @@ html('Event-text.pane',
         "branding": false,
         "statusbar": false,
         "resize": false,
-        "toolbar": "undo redo | bold italic | bullist numlist | paste | table | template",
-        "plugins": "template table paste",
+        "toolbar": "undo redo | bold italic | bullist numlist | paste | table | image media | template",
+        "plugins": "template image media table paste",
         "paste_data_images": true,
-        "templates": "/rest/rte/templates"
+        "templates": "/rest/rte/templates",
+        "image_list": "/rest/rte/listImages",
+        "image_advtab": true,
+        "images_upload_url": "/rest/rte/uploadImage",
+        "automatic_uploads": true,
+        "file_browser_callback_types": "file image media",
+        "file_picker_types": "file image media",
+        "images_reuse_filename": true
       }
     """
 )
