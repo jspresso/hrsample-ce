@@ -33,6 +33,8 @@ Entity('City',
 
   color 'longitudeBackground', computed: true
   color 'latitudeBackground', computed: true
+
+  string 'cardSelector', computed: true
 }
 
 Component('ContactInfo',

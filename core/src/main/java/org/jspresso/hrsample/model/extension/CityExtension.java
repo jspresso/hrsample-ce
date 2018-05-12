@@ -133,4 +133,21 @@ public class CityExtension extends AbstractComponentExtension<City> implements I
   }
 
 
+  /**
+   * Gets the cardSelector.
+   *
+   * @return the cardSelector.
+   */
+  @DependsOn({City.LATITUDE, City.LONGITUDE})
+  @Override
+  public String getCardSelector() {
+    City city = getComponent();
+    if (city.getLongitude() != null && city.getLatitude() != null) {
+      return "MAP";
+    } else {
+      return "NOMAP";
+    }
+  }
+
+
 }

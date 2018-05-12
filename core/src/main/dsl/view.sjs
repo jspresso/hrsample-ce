@@ -339,11 +339,18 @@ external id: ['refreshCardViewFrontAction']
 border('City.detail.view', borderType: 'TITLED') {
   actionMap(parents: ['beanModuleActionMap'])
   center {
+/*
     basicCardView(
             selector: 'City.card.selector',
             permId: 'city.card.permId',
             views: ['NOMAP':'City.view',
                     'MAP':'City.map.view'])
+*/
+    propertyCardView(
+        property: 'cardSelector',
+        permId: 'city.card.permId',
+        views: ['NOMAP': 'City.view',
+                'MAP'  : 'City.map.view'])
   }
 }
 
