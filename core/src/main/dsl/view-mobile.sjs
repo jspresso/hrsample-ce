@@ -41,7 +41,7 @@ mobileCompositePage('City.page.editor') {
 mobileCompositePage('City.page.view', actionMap: 'beanModuleActionMap', editorPage: 'City.page.editor') {
   sections {
     mobileForm()
-    mobileMapView(name: 'map', mapContent: 'mapContent')
+    mobileMapView(name: 'map', mapContent: 'mapContent', defaultZoom: 12)
   }
 }
 
@@ -69,7 +69,7 @@ mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap', inli
       }
     }
 
-    mobileMapView(model: 'contact', name: 'map',  mapContent: 'city.mapContent', position: 'RIGHT')
+    mobileMapView(model: 'contact', name: 'map',  mapContent: 'city.mapContent', position: 'RIGHT', defaultZoom: 12)
 
     mobileForm(excludedWriting:['createTimestamp', 'lastUpdateTimestamp'], position: 'RIGHT') {
       fields {
@@ -179,7 +179,7 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
         mobileCompositePage (parent: 'Employee.page.view', actionMap: 'detailActionMap')
       }
     }
-    mobileMapView(model: 'contact', name: 'map', mapContent: 'city.mapContent')
+    mobileMapView(model: 'contact', name: 'map', mapContent: 'city.mapContent', defaultZoom: 12)
   }
 }
 

@@ -367,7 +367,7 @@ form('City.view', labelsPosition: 'ABOVE', borderType: 'NONE',
 border('City.map.view',
         west: 'City.view') {
   center {
-    mapView(name: 'map', mapContent: 'mapContent', preferredWidth:500, preferredHeight:500)
+    mapView(name: 'map', mapContent: 'mapContent', preferredWidth:500, preferredHeight:500, defaultZoom: 12)
   }
 }
 
@@ -391,7 +391,7 @@ split_vertical('Employee.module.view',
   bottom {
     tabs(preferredHeight: 400) {
       views {
-        mapView(model: 'contact', name: 'map', mapContent: 'city.mapContent')
+        mapView(model: 'contact', name: 'map', mapContent: 'city.mapContent', defaultZoom: 12)
         split_horizontal(name: 'events', left: 'Employee-events.table', right: 'Event-text.pane', cascadingModels: true)
       }
     }
