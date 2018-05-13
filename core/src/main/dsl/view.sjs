@@ -359,8 +359,8 @@ form('City.view', labelsPosition: 'ABOVE', borderType: 'NONE',
   fields {
     propertyView name: 'name'
     propertyView name: 'zip'
-    propertyView name: 'longitude', background: 'longitudeBackground', action: 'refreshCityCardFrontAction'
-    propertyView name: 'latitude', background: 'latitudeBackground', action: 'refreshCityCardFrontAction'
+    propertyView name: 'longitude', background: 'longitudeBackground'//, action: 'refreshCityCardFrontAction'
+    propertyView name: 'latitude', background: 'latitudeBackground'//, action: 'refreshCityCardFrontAction'
   }
 }
 
@@ -375,10 +375,12 @@ border('City.map.view',
 bean('City.card.selector',
         class: 'org.jspresso.hrsample.frontend.CityCardSelector')
 
+/*
 action('refreshCityCardFrontAction',
         parent: 'refreshCardViewFrontAction',
         custom: [cardViewId: 'city.card.permId',
                  viewPath: ['-2']])
+*/
 
 
 
