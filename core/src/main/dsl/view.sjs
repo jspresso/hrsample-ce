@@ -440,7 +440,7 @@ table('Employee.table.view', parent: 'filterableBeanCollectionModuleView', boole
     collapsible: false, singleClickEdit: true
 /*, selectionMode:'MULTIPLE_INTERVAL_CUMULATIVE_SELECTION'*/) {
   columns {
-    propertyView name: 'name'
+    propertyView name: 'name', description: 'htmlDescription'
     propertyView name: 'firstName'
     propertyView name: 'gender'
     propertyView name: 'birthDate'
