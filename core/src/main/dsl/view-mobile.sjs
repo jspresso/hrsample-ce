@@ -96,6 +96,8 @@ mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap', inli
 
 mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
   sections {
+
+    // Main formular
     mobileForm()
 /*
     mobileTree(rendered: 'name', borderType: 'NONE',
@@ -111,6 +113,12 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
       action (parent:'saveModuleObjectFrontAction')
     }
 */
+
+    // Attachments
+    mobileCompositePage (
+            parent: 'IAttachmentHolder.attachements.page', position: 'RIGHT')
+
+    // Departments
     mobileNavPage() {
       selection {
         mobileListView(model:'Company-departments', actionMap: 'masterActionMap')
@@ -160,6 +168,8 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
         }
       }
     }
+
+    // Employees
     mobileNavPage() {
       selection {
         //mobileListView(model: 'Company-employees', actionMap: 'masterActionMap')
@@ -179,7 +189,10 @@ mobileCompositePage('Company.page.view', actionMap: 'beanModuleActionMap') {
         mobileCompositePage (parent: 'Employee.page.view', actionMap: 'detailActionMap')
       }
     }
-    mobileMapView(model: 'contact', name: 'map', mapContent: 'city.mapContent', defaultZoom: 12)
+
+    // Map
+    mobileMapView(model: 'contact', name: 'map', mapContent: 'city.mapContent', defaultZoom: 12,
+            icon: 'classpath:org/jspresso/framework/application/images/view-48x48.png')
   }
 }
 
@@ -223,8 +236,53 @@ mobileCompositePage('my.profile.module.page', model:'Employee') {
   }
 }
 
+/**
+ * Common mobile UI
+ */
+mobileCompositePage ('IAttachmentHolder.attachements.page', icon:'classpath:org/jspresso/framework/application/images/save_file-48x48.png', name:'attachmentsLabel',
+        editorPage: 'IAttachmentHolder.attachements.edit.page') {
+  sections {
+    mobileListView(model: 'IAttachmentHolder-attachments',
+            rendered: 'htmlMobileDescription', showArrow: true,
+            rowAction: 'openAttachementAction')
+  }
+  actionMap {
+    actionList('ACTION', renderingOptions: 'LABEL_ICON') {
+      action ref: 'addPictureAttachementAction'
+    }
+  }
+}
+
+
+mobileCompositePage('IAttachmentHolder.attachements.edit.page', name:'attachmentsLabel') {
+  sections {
+    mobileListView(model: 'IAttachmentHolder-attachments',
+            rendered: 'htmlMobileDescription', showArrow: false,
+            selectionMode: 'MULTIPLE_INTERVAL_CUMULATIVE_SELECTION',
+            selectionModel: 'IAttachmentHolder-selectedAttachments')
+  }
+  actionMap {
+    actionList('ACTION', renderingOptions: 'LABEL_ICON') {
+      action (class: 'org.jspresso.hrsample.frontend.mobile.RemoveAttachmentFrontAction',
+              name: 'remove.name', icon: 'classpath:org/jspresso/framework/application/images/edit_remove-48x48.svg',
+              booleanActionabilityGates: ['selectedAttachments'])
+    }
+  }
+}
+
+
+
 /*
  * actions
  */
-action ('myProfileModuleInitAction',
-  class:'org.jspresso.hrsample.frontend.MyProfileModuleInitAction')
+action('myProfileModuleInitAction',
+        class: 'org.jspresso.hrsample.frontend.MyProfileModuleInitAction')
+
+action('addPictureAttachementAction', name: 'action.takeAPicture',
+        icon: 'camera.svg',
+        parent: 'openFileAction') {
+  custom {
+    bean('fileOpenCallback',
+            class: 'org.jspresso.hrsample.frontend.AddAttachmentCallBack')
+  }
+}

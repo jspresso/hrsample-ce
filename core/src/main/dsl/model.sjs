@@ -123,7 +123,7 @@ Component('EncryptedDecimal', extension:'EncryptedDecimalExtension', toString:'d
 }
 
 Entity('Company',
-    extend: ['Nameable', 'Traceable'],
+    extend: ['Nameable', 'Traceable', 'IAttachmentHolder'],
     extension: 'CompanyExtension',
     icon: 'company.png',
     rendered: ['name',
@@ -224,3 +224,35 @@ Entity('Role',
 
   set 'users', ref:'User', reverse:'User-roles'
 }
+
+Entity('Attachment',
+        extend: 'Traceable',
+        extension: 'AttachmentExtension',
+        toString: 'name',
+        icon: 'attachment.svg',
+        pageSize: 30) {
+
+  string_256 'name'
+  string_256 'description'
+  binary 'attached', maxLength: 5242880 // 5Mo
+  string_256 'attachedBy'
+  integer 'size', usingLong: true
+
+  // computed
+  string 'url', computed: true
+  string 'sizeToDisplay', computed: true, i18nNameKey: 'size'
+  string 'htmlMobileDescription', computed: true
+}
+
+Interface('IAttachmentHolder',
+        extension: 'IAttachmentHolderExtension',
+        processor: 'IAttachmentHolderProcessor',
+        services: ['org.jspresso.framework.model.component.IComponent': null]) {
+
+  set 'attachments', ref:'Attachment', processors: ['AttachmentsProcessor'], ordering: ['createTimestamp': 'DESCENDING']
+
+  // computed
+  set 'selectedAttachments', ref:'Attachment', id: 'IAttachmentHolder-selectedAttachments', computed: true, delegateWritable: true
+  string 'attachmentsLabel', computed: true
+}
+

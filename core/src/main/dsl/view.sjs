@@ -46,6 +46,7 @@ treeNode('Company-departments.treeNode',
     actionMap: 'masterDetailActionMap')
 
 tree('Company.tree',
+    name: 'Company.tree.name',
     rendered: 'name', borderType: 'NONE',
     preferredHeight: 200,
     icon: 'structure.png') {
@@ -61,6 +62,7 @@ tabs('Company.tab.pane',
     selectFirstTab: true,
     views: ['Company.pane',
             'Company.tree',
+            'IAttachmentHolder-attachments.view',
             'Traceable.pane'/*,
             'decorated.translations.table'*/],
     preferredHeight: 130)
@@ -465,6 +467,34 @@ table('City.module.view', parent: 'filterableBeanCollectionModuleView', readOnly
     propertyView name: 'latitude', background: 'latitudeBackground'
   }
 }
+
+table('IAttachmentHolder-attachments.view', horizontallyScrollable: true, readOnly: true, borderType: 'NONE') {
+  actionMap {
+    actionList ('ADD') {
+      action ref:'addAttachementAction'
+      action ref:'removeEntityCollectionFromMasterFrontAction'
+    }
+  }
+  columns {
+    propertyView name:'name', readOnly:true, action:'openAttachementAction', preferredWidth:500
+    propertyView name: 'sizeToDisplay', sortable: false
+    propertyView name: 'attachedBy'
+    propertyView name: 'createTimestamp'
+  }
+}
+
+action('addAttachementAction', name: 'action.chooseAttachement',
+        parent: 'openFileAction') {
+  custom {
+    bean('fileOpenCallback',
+            class: 'org.jspresso.hrsample.frontend.AddAttachmentCallBack')
+  }
+}
+action('openAttachementAction',
+    class: 'org.jspresso.hrsample.frontend.OpenAttachementAction',
+    icon: 'classpath:org/jspresso/framework/application/images/view-48x48.png',
+    name: 'action.openAttachement', description: 'action.openAttachement',
+    next: 'displayUrlFrontAction')
 
 messageSource(basenames: 'org.jspresso.hrsample.i18n.Messages')
 
