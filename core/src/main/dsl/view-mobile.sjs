@@ -41,7 +41,7 @@ mobileCompositePage('City.page.editor') {
 mobileCompositePage('City.page.view', actionMap: 'beanModuleActionMap', editorPage: 'City.page.editor') {
   sections {
     mobileForm()
-    mobileMapView(name: 'map', mapContent: 'mapContent', defaultZoom: 12)
+    mobileMapView(name: 'map', mapContent: 'mapContent', defaultZoom: 12, inline: true)
   }
 }
 
