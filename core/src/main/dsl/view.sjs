@@ -91,7 +91,8 @@ action('addFromList',
 
 split_vertical('Company.departments.and.teams.view',
     cascadingModels: true,
-    top: 'Company-departments.table') {
+    top: 'Company-departments.table',
+    permId: 'companySplit') {
   bottom {
 
     repeater(model: 'Department-teams') {
