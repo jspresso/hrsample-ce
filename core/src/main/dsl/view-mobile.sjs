@@ -63,7 +63,7 @@ mobileCompositePage('Employee.page.view', actionMap: 'beanModuleActionMap', inli
        }
     }
 
-    mobileForm(position: 'RIGHT') {
+    mobileForm(position: 'RIGHT', name: 'address', borderType: 'TITLED') {
       fields {
         propertyView name: 'contact'
       }
