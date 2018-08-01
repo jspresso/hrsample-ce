@@ -164,7 +164,8 @@ form('Employee.component.pane',
     name: 'fullName',
     // background: 'preferredColor',
     description: 'htmlDescription',
-    labelsPosition: 'ABOVE') {
+    labelsPosition: 'ASIDE'/*,
+    verticallyScrollable: true*/) {
   fields {
     propertyView name: 'name'
     propertyView name: 'firstName'
