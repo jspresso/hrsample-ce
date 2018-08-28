@@ -276,6 +276,7 @@ html('Event-text.pane',
         "image_advtab": true,
         "images_upload_url": "/rest/rte/uploadImage",
         "automatic_uploads": true,
+        "file_browser_callback": "window.richFileManager",
         "file_browser_callback_types": "file image media",
         "file_picker_types": "file image media",
         "images_reuse_filename": true
