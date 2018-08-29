@@ -1,3 +1,5 @@
+external id: ['defaultDomainIconProvider']
+
 template 'form',
     parent: 'decoratedView',
     labelsPosition: 'ABOVE',
@@ -49,7 +51,8 @@ tree('Company.tree',
     name: 'Company.tree.name',
     rendered: 'name', borderType: 'NONE',
     preferredHeight: 200,
-    icon: 'structure.png') {
+    icon: 'structure.png',
+    iconProvider: 'defaultDomainIconProvider') {
   subTree('Company-employees.treeNode')
   subTree('Company-departments.treeNode') {
     subTree('Department-teams.treeNode') //subTree('Department-employees.treeNode')
