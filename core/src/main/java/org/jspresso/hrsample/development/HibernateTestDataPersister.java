@@ -22,12 +22,11 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Random;
+import java.util.List;
 import java.util.Set;
 
-import org.jspresso.framework.util.gui.map.Point;
-import org.jspresso.framework.util.gui.map.Route;
 import org.springframework.beans.factory.BeanFactory;
 
 import org.jspresso.framework.application.startup.development.AbstractHibernateTestDataPersister;
@@ -227,6 +226,7 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         }
         saveOrUpdate(employeeRole);
 
+        //createExtraDepartmentsAndTeams(design2see, gloriaSan);
         //
         saveOrUpdate(design2see);
       }
@@ -252,7 +252,8 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
 //      for (int r = 0; r < routeCount; r++) {
 //
 //        longitude = Math.round(1000d * (longitude + random.nextDouble() * 0.05d)) / 1000d;
-//        latitude =  Math.round(1000d * (latitude + random.nextDouble() * 0.05d * (random.nextBoolean() ? 1 : -1))) / 1000d;
+//        latitude =  Math.round(1000d * (latitude + random.nextDouble() * 0.05d * (random.nextBoolean() ? 1 : -1)))
+// / 1000d;
 //
 //        points[r] = new Point(longitude, latitude);
 //      }
@@ -363,6 +364,22 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
     }
 
     return employee;
+  }
+
+  private List<Department> createExtraDepartmentsAndTeams(Company company, Employee manager) {
+    List<Department> departments = new ArrayList<>();
+    for (int i = 0; i < 10; i++) {
+      Department department = createDepartment("TEST-" + i, "TE-0" + (i < 10? "0"+i:i), company.getContact().getAddress(),
+          company.getContact().getCity(), company.getContact().getEmail(), company.getContact().getPhone(), company,
+          manager);
+      for (int j = 0; j < i%9 + 1 + 1; j++) {
+        Team team = createTeam("TEST-" + i + "-" + j, "TE-" + (i < 10 ? "0" + i : i) + j, company.getContact().getAddress(),
+            company.getContact().getCity(), company.getContact().getEmail(), company.getContact().getPhone(), department,
+            manager);
+      }
+      departments.add(department);
+    }
+    return departments;
   }
 
   private EncryptedDecimal getEncryptedDecimal(Double v) {
