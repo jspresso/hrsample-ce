@@ -72,7 +72,7 @@ tabs('Company.tab.pane',
 
 
 table('Company-departments.table',
-    actionMap: 'masterDetailActionMap', columnReordering: false, collapsible: false) {
+    actionMap: 'masterDetailActionMap', columnReordering: false, collapsed: true) {
   columns {
     propertyView name: 'ouId'
     propertyView name: 'teamCount'
