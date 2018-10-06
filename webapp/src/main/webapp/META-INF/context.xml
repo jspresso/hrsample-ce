@@ -1,6 +1,0 @@
-<!--
-    Context configuration file for the WebApp
--->
-
-<!--<Context antiResourceLocking="true" antiJARLocking="true" processTlds="false"/>-->
-<Context processTlds="false" />

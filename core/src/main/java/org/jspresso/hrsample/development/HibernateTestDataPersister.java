@@ -95,8 +95,8 @@ public class HibernateTestDataPersister extends AbstractHibernateTestDataPersist
         createCity("Lyon", "69000", 4.8467, 45.7485, false);
 
 /*
-        for(int i = 0; i < 200; i++) {
-          createCity(Integer.toString(i), Integer.toString(i), 4.8467, 45.7485);
+        for(int i = 0; i < 20; i++) {
+          createCity(Integer.toString(i), Integer.toString(i), 4.8467, 45.7485, false);
         }
 */
         Company acme = null;

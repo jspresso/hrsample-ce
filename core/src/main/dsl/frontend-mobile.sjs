@@ -19,15 +19,16 @@ controller ('hrsample.name',
  */
 workspace('masterdata.workspace',
     icon:'masterdata.png', headerDescription:'masterdata.workspace.header') {
-  
+
   nodeModule('masterdata.geography.module',
       icon:'geography.png') {
-      
+
     filterModule('masterdata.cities.module',
         component:'City',
         filterView: 'City.filter.view',
         detailView: 'City.page.view',
-        pageSize: 10,
+        pageSize: 20,
+        ordering: ['name': 'ASCENDING'],
         startup:'filterModuleStartup')
   }
 }
@@ -38,7 +39,7 @@ workspace('employees.workspace',
         'administrator',
         'staff-manager'
     ]) {
-  
+
   filterModule('employees.module',
       icon:'employees.png',
       component:'Employee',
@@ -55,7 +56,7 @@ workspace('organization.workspace',
         'administrator',
         'organization-manager'
     ]) {
-  
+
   filterModule('companies.module',
       icon:'company.png',
       component:'Company',
@@ -65,17 +66,17 @@ workspace('organization.workspace',
       startup:'filterModuleStartup')
 }
 
-workspace('parameters.mobile.workspace', 
-  icon:'classpath:org/jspresso/framework/application/images/execute-48x48.png', 
+workspace('parameters.mobile.workspace',
+  icon:'classpath:org/jspresso/framework/application/images/execute-48x48.png',
   headerDescription:'parameters.mobile.workspace.header') {
-    
+
   beanModule ('my.profile.module', icon:'people.png',
     moduleView:'my.profile.module.page',
     entry:'myProfileModuleInitAction',
     component:'Employee')
-    
+
 }
-    
+
 /*
  * login
  */
@@ -88,7 +89,7 @@ actionMap('secondaryLoginActionMap',
   parents:['secondaryLoginActionMapBase'])
 
 /*
- * Init action  
+ * Init action
  */
 action ('startupHRSampleAction',
   class:'org.jspresso.hrsample.frontend.UserSessionInitAction')
