@@ -273,7 +273,7 @@ html('Event-text.pane',
         "statusbar": false,
         "resize": false,
         "toolbar": "undo redo | bold italic | bullist numlist | paste | table | image media | template | print",
-        "plugins": "template image media table paste print",
+        "plugins": "template image media table paste print noneditable",
         "paste_data_images": true,
         "templates": "/rest/rte/templates",
         "image_list": "/rest/rte/listImages",
@@ -283,7 +283,8 @@ html('Event-text.pane',
         "file_browser_callback": "window.richFileManager",
         "file_browser_callback_types": "file image media",
         "file_picker_types": "file image media",
-        "images_reuse_filename": true
+        "images_reuse_filename": true,
+        "disable_toolbars_with_editor": true
       }
     """
 )
