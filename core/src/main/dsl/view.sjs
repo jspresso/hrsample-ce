@@ -314,7 +314,7 @@ actionMap('Company-module-am', parents: ['beanModuleActionMap']) {
 //    action(parent: 'editSelectedComponentAction', custom: [viewDescriptor_ref: 'Company.dialog.view'])
 //    action(class:'testDdd.TestFrontAction', icon:'company.png')
 //    action(class: 'org.jspresso.framework.application.frontend.action.FrontendAction', icon: 'company.png') {
-//      wrapped(class: 'testDdd.TestBackAction')
+//      wrapped(class: 'test.TestAsyncAction')
 //    }
   }
 }
