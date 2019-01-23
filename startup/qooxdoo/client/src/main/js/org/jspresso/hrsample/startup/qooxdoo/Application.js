@@ -37,7 +37,7 @@ qx.Class.define("org.jspresso.hrsample.startup.qooxdoo.Application",
       var remoteController;
       if (qx.core.Environment.get("qx.debug")) {
         remoteController = new org.jspresso.framework.io.Rpc(
-            "http://localhost:8080/hrsample-webapp/.qxrpc",
+            "http://localhost:9080/hrsample-webapp/.qxrpc",
             "org.jspresso.hrsample.startup.remote.RemoteApplicationStartup"
         );
         remoteController.setCrossDomain(true);
