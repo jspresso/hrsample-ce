@@ -14,7 +14,7 @@ public class CityServiceDelegate extends AbstractComponentServiceDelegate<City> 
         if (city.getLongitude() != null && city.getLatitude() != null) {
 
             Point p = new Point(city.getLongitude(), city.getLatitude());
-            p.setImagePath("classpath:/org/jspresso/hrsample/images/city.png");
+            p.setImagePath("/org/jspresso/hrsample/images/city.png");
             p.setImageDimension(new Dimension(24, 24));
 
             return p;
