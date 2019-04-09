@@ -377,8 +377,8 @@ form('City.view', labelsPosition: 'ABOVE', borderType: 'NONE',
 border('City.map.view',
         west: 'City.view') {
   center {
-    mapView(name: 'map', mapContent: 'mapContent', preferredWidth:500, preferredHeight:500, defaultZoom: 12,
-    markerAction: 'saveModuleObjectFrontAction', routeAction: 'saveModuleObjectFrontAction', zoneAction: 'saveModuleObjectFrontAction'
+    mapView(name: 'map', mapContent: 'mapContent', preferredWidth:500, preferredHeight:500, defaultZoom: 12
+//        ,markerAction: 'saveModuleObjectFrontAction', routeAction: 'saveModuleObjectFrontAction', zoneAction: 'saveModuleObjectFrontAction'
     )
   }
 }
