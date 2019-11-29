@@ -346,16 +346,9 @@ tabs('Company.dialog.view', parent: 'Company.tab.pane')
 
 external id: ['refreshCardViewFrontAction']
 
-border('City.detail.view', borderType: 'TITLED') {
-  actionMap(parents: ['beanModuleActionMap'])
+border('City.detail.view',
+    actionMap: 'cityDetailActionMap', borderType: 'TITLED') {
   center {
-/*
-    basicCardView(
-            selector: 'City.card.selector',
-            permId: 'city.card.permId',
-            views: ['NOMAP':'City.view',
-                    'MAP':'City.map.view'])
-*/
     propertyCardView(
         property: 'cardSelector',
         permId: 'city.card.permId',
@@ -363,6 +356,9 @@ border('City.detail.view', borderType: 'TITLED') {
                 'MAP'  : 'City.map.view'])
   }
 }
+
+actionMap('cityDetailActionMap',
+        parents: ['beanModuleActionMap'])
 
 form('City.view', labelsPosition: 'ABOVE', borderType: 'NONE',
         columnCount: 1) {

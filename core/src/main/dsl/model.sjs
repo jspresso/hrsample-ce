@@ -23,6 +23,7 @@ Entity('City',
     toString: 'name',
     description: '',
     rendered: ['name', 'zip', 'longitude', 'latitude']) {
+
   string_10 'zip', upperCase: true, truncate: true
   decimal 'longitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
   decimal 'latitude', maxValue: 190, minValue: -190, maxFractionDigit: 4
