@@ -99,7 +99,7 @@ public class CityExtension extends AbstractComponentExtension<City> implements I
     Point[] points = city.getPoint() != null ? new Point[]{city.getPoint()} : null;
     Route[] routes = city.getRoute() != null ? new Route[]{city.getRoute()} : null;
 
-    if (city.getName().contains("Paris")) {
+    if (city.getName()!=null && city.getName().contains("Paris")) {
       return MapHelper.buildMap(points, routes, new Shape[]{getParisShape()});
     }
     // Build map
