@@ -358,8 +358,9 @@ actionMap('cityDetailActionMap')
 form('City.view', labelsPosition: 'ABOVE', borderType: 'NONE',
         columnCount: 2) {
   fields {
-    propertyView name: 'name'
-    propertyView name: 'zip'  }
+    propertyView name: 'longitude'
+    propertyView name: 'latitude'
+  }
 }
 
 border('City.map.view',
@@ -461,8 +462,8 @@ split_horizontal('City.module.view', cascadingModels: true) {
   left {
     table(parent: 'filterableBeanCollectionModuleView', preferredWidth:300) {
       columns {
-        propertyView name: 'longitude', background: 'longitudeBackground'
-        propertyView name: 'latitude', background: 'latitudeBackground'
+        propertyView name: 'name', background: 'longitudeBackground'
+        propertyView name: 'zip', background: 'latitudeBackground'
       }
     }
   }
