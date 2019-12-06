@@ -1,4 +1,4 @@
-external id: ['defaultDomainIconProvider']
+external id: ['defaultDomainIconProvider', 'refreshCardViewFrontAction']
 
 template 'form',
     parent: 'decoratedView',
@@ -342,10 +342,6 @@ tabs('Company.dialog.view', parent: 'Company.tab.pane')
 //  }
 //}
 
-
-
-external id: ['refreshCardViewFrontAction']
-
 border('City.detail.view',
     actionMap: 'cityDetailActionMap', borderType: 'TITLED') {
   center {
@@ -357,21 +353,17 @@ border('City.detail.view',
   }
 }
 
-actionMap('cityDetailActionMap',
-        parents: ['beanModuleActionMap'])
+actionMap('cityDetailActionMap')
 
 form('City.view', labelsPosition: 'ABOVE', borderType: 'NONE',
-        columnCount: 1) {
+        columnCount: 2) {
   fields {
     propertyView name: 'name'
-    propertyView name: 'zip'
-    propertyView name: 'longitude', background: 'longitudeBackground'//, action: 'refreshCityCardFrontAction'
-    propertyView name: 'latitude', background: 'latitudeBackground'//, action: 'refreshCityCardFrontAction'
-  }
+    propertyView name: 'zip'  }
 }
 
 border('City.map.view',
-        west: 'City.view') {
+        north: 'City.view') {
   center {
     mapView(name: 'map', mapContent: 'mapContent', preferredWidth:500, preferredHeight:500, defaultZoom: 12
 //        ,markerAction: 'saveModuleObjectFrontAction', routeAction: 'saveModuleObjectFrontAction', zoneAction: 'saveModuleObjectFrontAction'
@@ -465,12 +457,17 @@ table('Employee.table.view', parent: 'filterableBeanCollectionModuleView', boole
   }
 }
 
-table('City.module.view', parent: 'filterableBeanCollectionModuleView', readOnly: true, rowAction: 'addAsChildModuleFrontAction') {
-  columns {
-    propertyView name: 'name'
-    propertyView name: 'zip'
-    propertyView name: 'longitude', background: 'longitudeBackground'
-    propertyView name: 'latitude', background: 'latitudeBackground'
+split_horizontal('City.module.view', cascadingModels: true) {
+  left {
+    table(parent: 'filterableBeanCollectionModuleView', preferredWidth:300) {
+      columns {
+        propertyView name: 'longitude', background: 'longitudeBackground'
+        propertyView name: 'latitude', background: 'latitudeBackground'
+      }
+    }
+  }
+  right {
+    border parent:'City.detail.view'
   }
 }
 

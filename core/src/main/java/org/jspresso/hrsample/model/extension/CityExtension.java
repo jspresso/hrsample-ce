@@ -64,7 +64,7 @@ public class CityExtension extends AbstractComponentExtension<City> implements I
   public String getLongitudeBackground() {
     City city = getComponent();
     if (city.getLongitude() == null) {
-      return "0xFF0000";
+      return "0xf2d0cb";
     }
     return null;
   }
@@ -79,7 +79,7 @@ public class CityExtension extends AbstractComponentExtension<City> implements I
   public String getLatitudeBackground() {
     City city = getComponent();
     if (city.getLatitude() == null) {
-      return "0xFF0000";
+      return "0xf2d0cb";
     }
     return null;
   }

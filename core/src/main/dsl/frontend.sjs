@@ -33,8 +33,7 @@ controller ('hrsample.name',
     workspaces:[
       'organization.workspace',
       'employees.workspace',
-      'masterdata.workspace',
-      //'departments.workspace',
+      'geography.workspace'
     ])
 
 action('helpFrontAction',
@@ -51,19 +50,13 @@ actionMap('controllerActionMap') {
 /*
  * Workspaces
  */
-workspace('masterdata.workspace',
-  icon:'masterdata.png') {
+workspace('geography.workspace',
+  icon:'geography.png') {
 
-  nodeModule('masterdata.geography.module',
-    icon:'geography.png') {
-
-      filterModule('masterdata.cities.module',
-          component:'City',
-          detailView:'City.detail.view',
-          moduleView:'City.module.view',
-          startup:'filterModuleStartup',
-          includeDetail: true)
-    }
+  filterModule('masterdata.cities.module',
+      component:'City',
+      moduleView:'City.module.view',
+      startup:'filterModuleStartup')
 }
 
 workspace('employees.workspace',
