@@ -115,29 +115,31 @@ public class CityExtension extends AbstractComponentExtension<City> implements I
   @Override
   public Route getRoute() {
 
-    City city = getComponent();
-    Double longitude = city.getLongitude();
-    if (longitude == null) {
-      return null;
-    }
-    Double latitude = city.getLatitude();
-    if (latitude == null) {
-      return null;
-    }
+    return null;
 
-    Random random = new Random();
-    int routeCount = random.nextInt(5) + 5;
-    Point[] points = new Point[routeCount];
-    for (int r = 1; r < routeCount - 1; r++) {
-
-      longitude = Math.round(1000d * (longitude + random.nextDouble() * 0.05d)) / 1000d;
-      latitude = Math.round(1000d * (latitude + random.nextDouble() * 0.05d * (random.nextBoolean() ? 1 : -1))) / 1000d;
-
-      points[r] = new Point(longitude, latitude);
-    }
-    points[0] = points[routeCount - 1] = city.getPoint();
-
-    return new Route(points);
+//    City city = getComponent();
+//    Double longitude = city.getLongitude();
+//    if (longitude == null) {
+//      return null;
+//    }
+//    Double latitude = city.getLatitude();
+//    if (latitude == null) {
+//      return null;
+//    }
+//
+//    Random random = new Random();
+//    int routeCount = random.nextInt(5) + 5;
+//    Point[] points = new Point[routeCount];
+//    for (int r = 1; r < routeCount - 1; r++) {
+//
+//      longitude = Math.round(1000d * (longitude + random.nextDouble() * 0.05d)) / 1000d;
+//      latitude = Math.round(1000d * (latitude + random.nextDouble() * 0.05d * (random.nextBoolean() ? 1 : -1))) / 1000d;
+//
+//      points[r] = new Point(longitude, latitude);
+//    }
+//    points[0] = points[routeCount - 1] = city.getPoint();
+//
+//    return new Route(points);
   }
 
 
